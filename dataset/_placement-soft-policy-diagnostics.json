@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-04-06T03:21:27.780Z",
+  "generatedAt": "2026-04-06T08:53:39.414Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "totals": {
     "totalRolePlacementRejections": 195,
     "severityCounts": {
       "none": 0,
       "mild": 40,
-      "moderate": 31,
-      "severe": 124
+      "moderate": 93,
+      "severe": 62
     },
     "unlockedCandidateCount": 0,
     "unlockedCaseCount": 0

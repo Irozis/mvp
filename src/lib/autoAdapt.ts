@@ -205,6 +205,8 @@ export type PreviewCandidateDiagnostics = {
   postSelectionFix: {
     assessment: LayoutAssessment
     scoreTrust: ScoreTrust
+    strategyLabel: string
+    reselectionApplied: boolean
   }
 }
 
@@ -289,6 +291,7 @@ export type MarketplaceCardExplorationDiagnostics = {
 const PREVIEW_CANDIDATE_BUDGET = 5
 const MARKETPLACE_CARD_PREVIEW_CANDIDATE_BUDGET = 10
 const MARKETPLACE_CARD_SIGNATURE_VARIANT_LIMIT = 2
+const PRIMARY_FORMAT_SIGNATURE_VARIANT_LIMIT = 2
 const MARKETPLACE_CARD_REPAIR_STRATEGY_BUDGET = 6
 const MARKETPLACE_CARD_REPAIR_RETAIN_LIMIT = 3
 const previewCandidateLogSignatures = new Map<string, string>()
@@ -316,6 +319,26 @@ type RepairEvaluatedScene = {
   strategyLabel: string
   actions: FixAction[]
 }
+
+const PRIMARY_GENERATION_RECOVERY_FORMATS = new Set<FormatKey>([
+  'social-square',
+  'social-portrait',
+  'social-landscape',
+  'display-large-rect',
+])
+
+const PRIMARY_STRUCTURAL_ESCALATION_FORMATS = new Set<FormatKey>([
+  'social-square',
+  'social-portrait',
+  'social-landscape',
+])
+
+const PRIMARY_FINAL_QUALITY_FINDINGS = new Set([
+  'major-overlap',
+  'minimum-spacing',
+  'role-placement',
+  'safe-area-compliance',
+])
 
 type RepairAttempt = {
   strategy: RepairStrategy
@@ -2309,6 +2332,24 @@ function classifyStructuralFailure(assessment: LayoutAssessment): FailureClassif
   }
 }
 
+function getRepairStructuralFindingPenalty(candidate: RepairEvaluatedScene, name: string) {
+  return getStructuralFindings(candidate.assessment)
+    .filter((finding) => finding.name === name)
+    .reduce((sum, finding) => sum + (finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1), 0)
+}
+
+function getRepairInvalidRecoveryPenalty(candidate: RepairEvaluatedScene) {
+  return (
+    getRepairStructuralFindingPenalty(candidate, 'major-overlap') * 100 +
+    getRepairStructuralFindingPenalty(candidate, 'minimum-spacing') * 70 +
+    getRepairStructuralFindingPenalty(candidate, 'safe-area-compliance') * 55 +
+    getRepairStructuralFindingPenalty(candidate, 'role-placement') * 45 +
+    getRepairStructuralFindingPenalty(candidate, 'text-size-sanity') * 28 +
+    getRepairStructuralFindingPenalty(candidate, 'image-dominance-sanity') * 18 +
+    getRepairStructuralFindingPenalty(candidate, 'structural-occupancy') * 12
+  )
+}
+
 function buildRepairDecision(input: {
   before: RepairEvaluatedScene
   after: RepairEvaluatedScene
@@ -2325,6 +2366,7 @@ function buildRepairDecision(input: {
   const findingDelta = input.before.structuralFindingWeight - input.after.structuralFindingWeight
   const geometryDelta = computeSceneGeometryDelta(input.before.scene, input.after.scene)
   const sameSceneSignature = input.before.sceneSignature === input.after.sceneSignature
+  const invalidRecoveryPenaltyDelta = getRepairInvalidRecoveryPenalty(input.before) - getRepairInvalidRecoveryPenalty(input.after)
 
   if (input.suppressAsRepeat) {
     return {
@@ -2378,6 +2420,12 @@ function buildRepairDecision(input: {
     findingDelta >= REPAIR_MEANINGFUL_FINDING_DELTA ||
     input.after.highStructuralFindingCount < input.before.highStructuralFindingCount ||
     input.after.unresolvedIssueCount < input.before.unresolvedIssueCount
+  const worsenedInvalidRecoveryProfile =
+    afterTier === beforeTier &&
+    input.before.structuralStatus === 'invalid' &&
+    invalidRecoveryPenaltyDelta < 0 &&
+    !meaningfulFindingReduction &&
+    scoreDelta <= 0
   const noOpReasons: string[] = []
   if (sameSceneSignature) noOpReasons.push('same-scene-signature')
   if (geometryDelta < REPAIR_MIN_GEOMETRY_DELTA) noOpReasons.push('negligible-geometry-change')
@@ -2407,6 +2455,23 @@ function buildRepairDecision(input: {
       noOp,
       suppressedAsRepeat: input.knownOutcomeRepeat,
       repeatedWeakOutcome: input.knownOutcomeRepeat,
+      noOpReasons,
+      attemptSignature: input.attemptSignature,
+    }
+  }
+
+  if (worsenedInvalidRecoveryProfile) {
+    return {
+      accepted: false,
+      strategy: input.strategy,
+      classification: input.classification,
+      beforeStructuralStatus: input.before.structuralStatus,
+      afterStructuralStatus: input.after.structuralStatus,
+      beforeEffectiveScore: input.before.scoreTrust.effectiveScore,
+      afterEffectiveScore: input.after.scoreTrust.effectiveScore,
+      scoreDelta,
+      findingDelta,
+      rejectionReason: 'Repair worsened the overlap/spacing recovery profile without structural gain.',
       noOpReasons,
       attemptSignature: input.attemptSignature,
     }
@@ -3733,8 +3798,351 @@ function shouldAddRegionalCandidate(formatKey: FormatKey, profile: ContentProfil
   )
 }
 
+function isPrimaryGenerationRecoveryFormat(formatKey: FormatKey) {
+  return PRIMARY_GENERATION_RECOVERY_FORMATS.has(formatKey)
+}
+
+function supportsPrimaryStructuralEscalation(formatKey: FormatKey) {
+  return PRIMARY_STRUCTURAL_ESCALATION_FORMATS.has(formatKey)
+}
+
+function supportsPrimaryFinalQualityGate(formatKey: FormatKey) {
+  return isPrimaryGenerationRecoveryFormat(formatKey)
+}
+
+function countPrimaryFinalCriticalFindings(assessment: LayoutAssessment) {
+  return (assessment.structuralState?.findings || []).filter(
+    (finding) => finding.severity === 'high' && PRIMARY_FINAL_QUALITY_FINDINGS.has(finding.name)
+  ).length
+}
+
+function getPrimaryFinalStructuralPenalty(assessment: LayoutAssessment) {
+  return (assessment.structuralState?.findings || []).reduce((sum, finding) => {
+    const severityWeight = finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1
+    const findingWeight =
+      finding.name === 'major-overlap'
+        ? 100
+        : finding.name === 'minimum-spacing'
+          ? 70
+          : finding.name === 'safe-area-compliance'
+            ? 55
+            : finding.name === 'role-placement'
+              ? 45
+              : finding.name === 'text-size-sanity'
+                ? 28
+                : finding.name === 'image-dominance-sanity'
+                  ? 18
+                  : 12
+    return sum + severityWeight * findingWeight
+  }, 0)
+}
+
+type PrimaryFinalizationState = {
+  scene: Scene
+  assessment: LayoutAssessment
+  scoreTrust: ScoreTrust
+  strategyLabel: string
+  reselectionApplied: boolean
+  compositionModelId?: Variant['compositionModelId']
+  intent: LayoutIntent
+}
+
+function isBetterPrimaryFinalizationState(candidate: PrimaryFinalizationState, current: PrimaryFinalizationState) {
+  const candidateStatusRank = getStructuralTierRank(candidate.assessment.structuralState?.status || 'invalid')
+  const currentStatusRank = getStructuralTierRank(current.assessment.structuralState?.status || 'invalid')
+  if (candidateStatusRank !== currentStatusRank) return candidateStatusRank > currentStatusRank
+
+  const candidateCriticalFindings = countPrimaryFinalCriticalFindings(candidate.assessment)
+  const currentCriticalFindings = countPrimaryFinalCriticalFindings(current.assessment)
+  if (candidateCriticalFindings !== currentCriticalFindings) return candidateCriticalFindings < currentCriticalFindings
+
+  const candidateHighFindings = countHighStructuralFindings(candidate.assessment)
+  const currentHighFindings = countHighStructuralFindings(current.assessment)
+  if (candidateHighFindings !== currentHighFindings) return candidateHighFindings < currentHighFindings
+
+  const candidateUnresolved = unresolvedIssueCount(candidate.assessment.issues)
+  const currentUnresolved = unresolvedIssueCount(current.assessment.issues)
+  if (candidateUnresolved !== currentUnresolved) return candidateUnresolved < currentUnresolved
+
+  const candidatePenalty = getPrimaryFinalStructuralPenalty(candidate.assessment)
+  const currentPenalty = getPrimaryFinalStructuralPenalty(current.assessment)
+  if (candidatePenalty !== currentPenalty) return candidatePenalty < currentPenalty
+
+  return candidate.scoreTrust.effectiveScore > current.scoreTrust.effectiveScore
+}
+
+function shouldConsiderPrimaryFinalizationAlternative(
+  candidate: PreviewCandidateEvaluation,
+  current: PrimaryFinalizationState,
+  selected: PreviewCandidateEvaluation
+) {
+  if (candidate.id === selected.id) return false
+
+  const candidateStructuralKey = createStructuralSignatureKey(candidate.structuralSignature)
+  const selectedStructuralKey = createStructuralSignatureKey(selected.structuralSignature)
+  if (candidateStructuralKey === selectedStructuralKey) {
+    const candidateGeometryKey = createSceneGeometrySignature(candidate.scene)
+    const selectedGeometryKey = createSceneGeometrySignature(selected.scene)
+    if (candidateGeometryKey === selectedGeometryKey) return false
+  }
+
+  const candidateStatusRank = getStructuralTierRank(candidate.assessment.structuralState?.status || 'invalid')
+  const currentStatusRank = getStructuralTierRank(current.assessment.structuralState?.status || 'invalid')
+  if (candidateStatusRank > currentStatusRank) return true
+
+  if (countPrimaryFinalCriticalFindings(candidate.assessment) < countPrimaryFinalCriticalFindings(current.assessment)) {
+    return true
+  }
+
+  if (countHighStructuralFindings(candidate.assessment) < countHighStructuralFindings(current.assessment)) {
+    return true
+  }
+
+  return getPrimaryFinalStructuralPenalty(candidate.assessment) < getPrimaryFinalStructuralPenalty(current.assessment)
+}
+
+function shouldRunPrimaryFinalizationReselection(assessment: LayoutAssessment) {
+  return (
+    (assessment.structuralState?.status || 'invalid') === 'invalid' &&
+    (
+      countPrimaryFinalCriticalFindings(assessment) > 0 ||
+      countHighStructuralFindings(assessment) > 0 ||
+      unresolvedIssueCount(assessment.issues) > 0
+    )
+  )
+}
+
+function finalizePrimarySelectedOutcomeSync(input: {
+  formatKey: FormatKey
+  selection: PreviewCandidateSelection
+  currentScene: Scene
+  currentAssessment: LayoutAssessment
+  currentScoreTrust: ScoreTrust
+  imageAnalysis?: EnhancedImageAnalysis
+  escalationContext?: AutoFixStructuralEscalationContext
+}): PrimaryFinalizationState {
+  const current: PrimaryFinalizationState = {
+    scene: input.currentScene,
+    assessment: input.currentAssessment,
+    scoreTrust: input.currentScoreTrust,
+    strategyLabel: input.selection.selected.strategyLabel,
+    reselectionApplied: false,
+    compositionModelId: input.selection.selected.intent.compositionModelId,
+    intent: input.selection.selected.intent,
+  }
+
+  if (!supportsPrimaryFinalQualityGate(input.formatKey) || !shouldRunPrimaryFinalizationReselection(current.assessment)) {
+    return current
+  }
+
+  let best = current
+  const alternatives = input.selection.candidates
+    .filter((candidate) => candidate.id !== input.selection.selected.id)
+    .filter((candidate) => shouldConsiderPrimaryFinalizationAlternative(candidate, best, input.selection.selected))
+    .slice(0, 3)
+
+  for (const candidate of alternatives) {
+    const repairedScene = runAutoFix(
+      candidate.scene,
+      input.formatKey,
+      candidate.assessment,
+      input.imageAnalysis,
+      candidate.intent.compositionModelId,
+      input.escalationContext,
+      false
+    )
+    const repairedAssessment = getFormatAssessment(
+      input.formatKey,
+      repairedScene,
+      candidate.intent.compositionModelId,
+      input.imageAnalysis
+    )
+    const repairedTrust = computeScoreTrust(repairedAssessment)
+    const alternative: PrimaryFinalizationState = {
+      scene: repairedScene,
+      assessment: repairedAssessment,
+      scoreTrust: repairedTrust,
+      strategyLabel: `repair-aware:${candidate.strategyLabel}`,
+      reselectionApplied: true,
+      compositionModelId: candidate.intent.compositionModelId,
+      intent: candidate.intent,
+    }
+
+    if (isBetterPrimaryFinalizationState(alternative, best)) {
+      best = alternative
+    }
+  }
+
+  return best
+}
+
+function buildPrimaryRecoveryPreviewVariants(input: {
+  formatKey: FormatKey
+  baseIntent: LayoutIntent
+  profile: ContentProfile
+  goal: Project['goal']
+  visualSystem: VisualSystemKey
+  imageAnalysis?: EnhancedImageAnalysis
+}): Array<{
+  id: string
+  strategyLabel: string
+  fixStage: PreviewCandidatePlan['fixStage']
+  override: Partial<LayoutIntent>
+  selectionReason: string
+}> {
+  if (!isPrimaryGenerationRecoveryFormat(input.formatKey)) return []
+
+  const variants: Array<{
+    id: string
+    strategyLabel: string
+    fixStage: PreviewCandidatePlan['fixStage']
+    override: Partial<LayoutIntent>
+    selectionReason: string
+  }> = []
+
+  if (input.formatKey === 'social-square') {
+    variants.push(
+      {
+        id: 'square-safe-split',
+        strategyLabel: 'recovery-square-safe-split',
+        fixStage: 'regional',
+        override: {
+          structuralArchetype: 'split-vertical',
+          family: 'square-image-top-text-bottom',
+          compositionModelId: 'square-balanced-card',
+          imageMode: 'framed',
+          textMode: 'cluster-bottom',
+          mode: 'text-first',
+          balanceRegime: 'balanced',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery square safer split with explicit CTA lane',
+      },
+      {
+        id: 'square-compact-cta-lane',
+        strategyLabel: 'recovery-square-compact-cta-lane',
+        fixStage: 'structural',
+        override: {
+          structuralArchetype: 'compact-minimal',
+          family: 'square-image-top-text-bottom',
+          compositionModelId: 'square-balanced-card',
+          imageMode: 'framed',
+          textMode: 'cluster-bottom',
+          mode: 'text-first',
+          balanceRegime: 'minimal-copy',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery square compact CTA-lane variant',
+      }
+    )
+  } else if (input.formatKey === 'social-portrait') {
+    variants.push(
+      {
+        id: 'portrait-safe-card',
+        strategyLabel: 'recovery-portrait-safe-card',
+        fixStage: 'regional',
+        override: {
+          structuralArchetype: 'split-vertical',
+          family: 'portrait-bottom-card',
+          imageMode: 'framed',
+          textMode: 'cluster-bottom',
+          mode: 'text-first',
+          balanceRegime: 'balanced',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery portrait safer bottom-card composition',
+      },
+      {
+        id: 'portrait-compact-copy',
+        strategyLabel: 'recovery-portrait-compact-copy',
+        fixStage: 'structural',
+        override: {
+          structuralArchetype: 'compact-minimal',
+          family: 'portrait-bottom-card',
+          imageMode: 'framed',
+          textMode: 'cluster-bottom',
+          mode: 'text-first',
+          balanceRegime: 'minimal-copy',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery portrait compact copy with protected CTA lane',
+      }
+    )
+  } else if (input.formatKey === 'social-landscape') {
+    variants.push(
+      {
+        id: 'landscape-strong-split',
+        strategyLabel: 'recovery-landscape-strong-split',
+        fixStage: 'regional',
+        override: {
+          structuralArchetype: 'split-horizontal',
+          family: 'landscape-balanced-split',
+          imageMode: 'split-right',
+          textMode: 'cluster-left',
+          mode: 'split',
+          balanceRegime: 'balanced',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery landscape stronger split with safer text region',
+      },
+      {
+        id: 'landscape-compact-safe',
+        strategyLabel: 'recovery-landscape-compact-safe',
+        fixStage: 'structural',
+        override: {
+          structuralArchetype: 'compact-minimal',
+          family: 'landscape-text-left-image-right',
+          imageMode: 'split-right',
+          textMode: 'cluster-left',
+          mode: 'text-first',
+          balanceRegime: 'minimal-copy',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery landscape compact safe split',
+      }
+    )
+  } else if (input.formatKey === 'display-mpu' || input.formatKey === 'display-large-rect') {
+    variants.push(
+      {
+        id: 'display-balanced-safe',
+        strategyLabel: 'recovery-display-balanced-safe',
+        fixStage: 'regional',
+        override: {
+          structuralArchetype: 'split-horizontal',
+          family: 'display-rectangle-balanced',
+          imageMode: 'split-right',
+          textMode: 'cluster-left',
+          mode: 'split',
+          balanceRegime: 'balanced',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery display balanced split with stronger CTA lane',
+      },
+      {
+        id: 'display-compact-safe',
+        strategyLabel: 'recovery-display-compact-safe',
+        fixStage: 'structural',
+        override: {
+          structuralArchetype: 'compact-minimal',
+          family: 'display-rectangle-balanced',
+          imageMode: 'split-right',
+          textMode: 'cluster-left',
+          mode: 'text-first',
+          balanceRegime: 'minimal-copy',
+          occupancyMode: 'text-safe',
+        },
+        selectionReason: 'primary recovery display compact safe rectangle',
+      }
+    )
+  }
+
+  return variants
+}
+
 function getDefaultPreviewCandidateBudget(formatKey: FormatKey) {
-  return formatKey === 'marketplace-card' ? MARKETPLACE_CARD_PREVIEW_CANDIDATE_BUDGET : PREVIEW_CANDIDATE_BUDGET
+  if (formatKey === 'marketplace-card') return MARKETPLACE_CARD_PREVIEW_CANDIDATE_BUDGET
+  if (isPrimaryGenerationRecoveryFormat(formatKey)) return PREVIEW_CANDIDATE_BUDGET + 1
+  return PREVIEW_CANDIDATE_BUDGET
 }
 
 function shouldUseExpandedPreviewPlanning(formatKey: FormatKey, includeExtendedDiagnostics?: boolean) {
@@ -3830,13 +4238,19 @@ function pushPreviewCandidatePlan(
   meta.attemptedSignatures.add(signature)
   const sameSignaturePlans = plans.filter((current) => createStructuralSignatureKey(current.structuralSignature) === signature)
   if (sameSignaturePlans.length) {
-    if (formatKey !== 'marketplace-card') {
-      meta.prunedStructuralDuplicates += 1
-      return
-    }
     const variantKey = createPreviewPlanVariantKey(plan)
     const sameVariantAlreadyKept = sameSignaturePlans.some((current) => createPreviewPlanVariantKey(current) === variantKey)
-    if (sameVariantAlreadyKept || sameSignaturePlans.length >= MARKETPLACE_CARD_SIGNATURE_VARIANT_LIMIT) {
+    const isMarketplace = formatKey === 'marketplace-card'
+    const allowPrimaryRecoveryVariant =
+      !isMarketplace &&
+      isPrimaryGenerationRecoveryFormat(formatKey) &&
+      plan.strategyLabel.startsWith('recovery-')
+    const variantLimit = isMarketplace
+      ? MARKETPLACE_CARD_SIGNATURE_VARIANT_LIMIT
+      : allowPrimaryRecoveryVariant
+        ? PRIMARY_FORMAT_SIGNATURE_VARIANT_LIMIT
+        : 1
+    if (sameVariantAlreadyKept || sameSignaturePlans.length >= variantLimit) {
       meta.prunedStructuralDuplicates += 1
       return
     }
@@ -4085,6 +4499,42 @@ function buildPreviewCandidatePlans(input: {
     }, input.formatKey, meta, budget)
   }
 
+  if (plans.length < budget && isPrimaryGenerationRecoveryFormat(input.formatKey)) {
+    const recoveryVariants = buildPrimaryRecoveryPreviewVariants({
+      formatKey: input.formatKey,
+      baseIntent,
+      profile: input.profile,
+      goal: input.goal,
+      visualSystem: input.visualSystem,
+      imageAnalysis: input.imageAnalysis,
+    })
+    for (const variant of recoveryVariants) {
+      if (plans.length >= budget) break
+      const recoveryIntent = normalizePreviewIntent({
+        formatKey: input.formatKey,
+        baseIntent,
+        profile: input.profile,
+        goal: input.goal,
+        visualSystem: input.visualSystem,
+        imageAnalysis: input.imageAnalysis,
+        override: variant.override,
+      })
+      pushPreviewCandidatePlan(plans, {
+        id: variant.id,
+        strategyLabel: variant.strategyLabel,
+        fixStage: variant.fixStage,
+        intent: recoveryIntent,
+        structuralArchetype: getIntentArchetype(recoveryIntent, input.formatKey),
+        structuralSignature: buildIntentStructuralSignature({
+          formatKey: input.formatKey,
+          intent: recoveryIntent,
+          profile: input.profile,
+        }),
+        selectionReason: variant.selectionReason,
+      }, input.formatKey, meta, budget)
+    }
+  }
+
   return {
     plans,
     meta: {
@@ -4330,6 +4780,34 @@ function evaluatePreviewCandidatePlan(input: {
   } satisfies PreviewCandidateEvaluation
 }
 
+function getPreviewStructuralFindingPenalty(candidate: PreviewCandidateEvaluation, name: string) {
+  return (candidate.assessment.structuralState?.findings || [])
+    .filter((finding) => finding.name === name)
+    .reduce((sum, finding) => sum + (finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1), 0)
+}
+
+function getPreviewInvalidRecoveryPenalty(candidate: PreviewCandidateEvaluation) {
+  return (
+    getPreviewStructuralFindingPenalty(candidate, 'major-overlap') * 100 +
+    getPreviewStructuralFindingPenalty(candidate, 'minimum-spacing') * 70 +
+    getPreviewStructuralFindingPenalty(candidate, 'safe-area-compliance') * 55 +
+    getPreviewStructuralFindingPenalty(candidate, 'role-placement') * 45 +
+    getPreviewStructuralFindingPenalty(candidate, 'text-size-sanity') * 28 +
+    getPreviewStructuralFindingPenalty(candidate, 'image-dominance-sanity') * 18 +
+    getPreviewStructuralFindingPenalty(candidate, 'structural-occupancy') * 12
+  )
+}
+
+function getPreviewInvalidRecoveryPreference(candidate: PreviewCandidateEvaluation) {
+  let preference = 0
+  if (candidate.strategyLabel.startsWith('recovery-')) preference += 8
+  if (candidate.fixStage === 'structural') preference += 5
+  else if (candidate.fixStage === 'regional') preference += 3
+  if (candidate.intent.occupancyMode === 'text-safe') preference += 3
+  if (candidate.intent.balanceRegime === 'minimal-copy' || candidate.intent.balanceRegime === 'dense-copy') preference += 2
+  return preference
+}
+
 function comparePreviewCandidates(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   if (
     isMarketplaceCardTemplateVariantCandidate(left) &&
@@ -4340,6 +4818,18 @@ function comparePreviewCandidates(left: PreviewCandidateEvaluation, right: Previ
 
   const tierDelta = getStructuralTierRank(right.structuralStatus) - getStructuralTierRank(left.structuralStatus)
   if (tierDelta !== 0) return tierDelta
+
+  if (
+    left.structuralStatus === 'invalid' &&
+    right.structuralStatus === 'invalid' &&
+    isPrimaryGenerationRecoveryFormat(left.formatKey) &&
+    isPrimaryGenerationRecoveryFormat(right.formatKey)
+  ) {
+    const recoveryPenaltyDelta = getPreviewInvalidRecoveryPenalty(left) - getPreviewInvalidRecoveryPenalty(right)
+    if (recoveryPenaltyDelta !== 0) return recoveryPenaltyDelta
+    const recoveryPreferenceDelta = getPreviewInvalidRecoveryPreference(right) - getPreviewInvalidRecoveryPreference(left)
+    if (recoveryPreferenceDelta !== 0) return recoveryPreferenceDelta
+  }
 
   const scoreDelta = right.scoreTrust.effectiveScore - left.scoreTrust.effectiveScore
   const allowMarketplaceCardVisualRerank = shouldUseMarketplaceCardVisualRerank({
@@ -4587,7 +5077,18 @@ export function getPreviewCandidateDiagnostics(input: {
     input.formatKey,
     selection.selected.assessment,
     input.assetHint?.enhancedImage,
-    selection.selected.intent.compositionModelId
+    selection.selected.intent.compositionModelId,
+    {
+      master: input.master,
+      profile,
+      scenario,
+      visualSystem: input.visualSystem,
+      brandKit: input.brandKit,
+      goal: input.goal,
+      assetHint: input.assetHint,
+      imageAnalysis: input.assetHint?.enhancedImage,
+      baseIntent,
+    }
   )
   const postSelectionFixAssessment = getFormatAssessment(
     input.formatKey,
@@ -4596,6 +5097,25 @@ export function getPreviewCandidateDiagnostics(input: {
     input.assetHint?.enhancedImage
   )
   const postSelectionFixTrust = computeScoreTrust(postSelectionFixAssessment)
+  const finalizedPostSelection = finalizePrimarySelectedOutcomeSync({
+    formatKey: input.formatKey,
+    selection,
+    currentScene: fixedScene,
+    currentAssessment: postSelectionFixAssessment,
+    currentScoreTrust: postSelectionFixTrust,
+    imageAnalysis: input.assetHint?.enhancedImage,
+    escalationContext: {
+      master: input.master,
+      profile,
+      scenario,
+      visualSystem: input.visualSystem,
+      brandKit: input.brandKit,
+      goal: input.goal,
+      assetHint: input.assetHint,
+      imageAnalysis: input.assetHint?.enhancedImage,
+      baseIntent,
+    },
+  })
 
   return {
     formatKey: input.formatKey,
@@ -4609,8 +5129,10 @@ export function getPreviewCandidateDiagnostics(input: {
     expandedPlanBuild: expandedSelection?.planBuild,
     rankingDiagnostics: selection.rankingDiagnostics,
     postSelectionFix: {
-      assessment: postSelectionFixAssessment,
-      scoreTrust: postSelectionFixTrust,
+      assessment: finalizedPostSelection.assessment,
+      scoreTrust: finalizedPostSelection.scoreTrust,
+      strategyLabel: finalizedPostSelection.strategyLabel,
+      reselectionApplied: finalizedPostSelection.reselectionApplied,
     },
   }
 }
@@ -5309,6 +5831,18 @@ function unique<T>(items: T[]) {
   return [...new Set(items)]
 }
 
+type AutoFixStructuralEscalationContext = {
+  master: Scene
+  profile: ContentProfile
+  scenario: ReturnType<typeof classifyScenario>
+  visualSystem: VisualSystemKey
+  brandKit: BrandKit
+  goal: Project['goal']
+  assetHint?: AssetHint
+  imageAnalysis?: EnhancedImageAnalysis
+  baseIntent: LayoutIntent
+}
+
 const BLOCK_FIX_PRIORITY: Record<BlockFixSuggestion['target'], number> = {
   image: 100,
   headline: 92,
@@ -5466,12 +6000,37 @@ function collectFixActions(messages: string[]): FixAction[] {
   return unique(actions)
 }
 
+function buildPrimaryStructuralEscalationStrategy(formatKey: FormatKey, candidate: PreviewCandidateEvaluation): RepairStrategy {
+  return {
+    kind: 'structural-regeneration',
+    candidateKind: 'guided-regeneration-repair',
+    label: `run-auto-fix-escalation:${candidate.strategyLabel}`,
+    reason: 'Use a bounded structural regeneration fallback when local fixes cannot rescue the primary format baseline.',
+    actions: ['change-layout-family'],
+    fixStage: candidate.fixStage === 'structural' ? 'structural' : 'regional',
+    overrideIntent: candidate.intent,
+  }
+}
+
+function pickPrimaryStructuralEscalationCandidate(input: {
+  current: RepairEvaluatedScene
+  selection: PreviewCandidateSelection
+}) {
+  return input.selection.candidates.find((candidate) => {
+    if (candidate.scene === input.selection.selected.scene) return false
+    if (createRepairSceneSignature(candidate.scene) === input.current.sceneSignature) return false
+    return candidate.fixStage === 'regional' || candidate.fixStage === 'structural' || candidate.strategyLabel.startsWith('recovery-')
+  })
+}
+
 function runAutoFix(
   scene: Scene,
   formatKey: FormatKey,
   assessment?: LayoutAssessment,
   imageAnalysis?: EnhancedImageAnalysis,
-  expectedCompositionModelId?: Variant['compositionModelId']
+  expectedCompositionModelId?: Variant['compositionModelId'],
+  escalationContext?: AutoFixStructuralEscalationContext,
+  allowStructuralEscalation = true
 ) {
   const format = FORMAT_MAP[formatKey]
   const compositionModel = expectedCompositionModelId ? getCompositionModel(format, expectedCompositionModelId) : null
@@ -5538,6 +6097,64 @@ function runAutoFix(
       seenOutcomeSignatures.add(best.sceneSignature)
     } else {
       break
+    }
+  }
+
+  if (
+    allowStructuralEscalation &&
+    escalationContext &&
+    supportsPrimaryStructuralEscalation(formatKey) &&
+    best.structuralStatus === 'invalid'
+  ) {
+    const escalationSelection = selectBestPreviewCandidate({
+      master: escalationContext.master,
+      formatKey,
+      profile: escalationContext.profile,
+      scenario: escalationContext.scenario,
+      visualSystem: escalationContext.visualSystem,
+      brandKit: escalationContext.brandKit,
+      assetHint: escalationContext.assetHint,
+      imageAnalysis: escalationContext.imageAnalysis,
+      baseIntent: escalationContext.baseIntent,
+      goal: escalationContext.goal,
+      baseFixStage: 'regional',
+      allowFamilyAlternatives: true,
+      allowModelAlternatives: true,
+      budget: getDefaultPreviewCandidateBudget(formatKey) + 1,
+      includeExtendedDiagnostics: true,
+      failureType: classifyStructuralFailure(best.assessment).dominantType,
+    })
+    const escalationCandidate = pickPrimaryStructuralEscalationCandidate({
+      current: best,
+      selection: escalationSelection,
+    })
+
+    if (escalationCandidate) {
+      const escalatedScene = runAutoFix(
+        escalationCandidate.scene,
+        formatKey,
+        escalationCandidate.assessment,
+        escalationContext.imageAnalysis,
+        escalationCandidate.intent.compositionModelId,
+        undefined,
+        false
+      )
+      const escalatedEvaluation = evaluateRepairSceneSync({
+        scene: escalatedScene,
+        formatKey,
+        expectedCompositionModelId: escalationCandidate.intent.compositionModelId,
+        imageAnalysis: escalationContext.imageAnalysis,
+        strategyLabel: `run-auto-fix-escalated:${escalationCandidate.strategyLabel}`,
+      })
+      const escalationDecision = buildRepairDecision({
+        before: best,
+        after: escalatedEvaluation,
+        strategy: buildPrimaryStructuralEscalationStrategy(formatKey, escalationCandidate),
+        classification: classifyStructuralFailure(best.assessment),
+      })
+      if (escalationDecision.accepted) {
+        best = escalatedEvaluation
+      }
     }
   }
 
@@ -5610,13 +6227,50 @@ function buildDeterministicVariant({
     allowFamilyAlternatives: true,
     allowModelAlternatives: true,
   })
-  return runAutoFix(
+  const fixedScene = runAutoFix(
     selection.selected.scene,
     formatKey,
     selection.selected.assessment,
     assetHint?.enhancedImage,
-    selection.selected.intent.compositionModelId
+    selection.selected.intent.compositionModelId,
+    {
+      master,
+      profile: contentProfile,
+      scenario,
+      visualSystem,
+      brandKit,
+      goal,
+      assetHint,
+      imageAnalysis: assetHint?.enhancedImage,
+      baseIntent: intent,
+    }
   )
+  const fixedAssessment = getFormatAssessment(
+    formatKey,
+    fixedScene,
+    selection.selected.intent.compositionModelId,
+    assetHint?.enhancedImage
+  )
+  const fixedTrust = computeScoreTrust(fixedAssessment)
+  return finalizePrimarySelectedOutcomeSync({
+    formatKey,
+    selection,
+    currentScene: fixedScene,
+    currentAssessment: fixedAssessment,
+    currentScoreTrust: fixedTrust,
+    imageAnalysis: assetHint?.enhancedImage,
+    escalationContext: {
+      master,
+      profile: contentProfile,
+      scenario,
+      visualSystem,
+      brandKit,
+      goal,
+      assetHint,
+      imageAnalysis: assetHint?.enhancedImage,
+      baseIntent: intent,
+    },
+  }).scene
 }
 
 export async function generateVariant(input: {
@@ -5700,20 +6354,73 @@ export async function generateVariant(input: {
     input.formatKey,
     assessment,
     imageAnalysis,
-    selection.selected.intent.compositionModelId
+    selection.selected.intent.compositionModelId,
+    {
+      master: input.master,
+      profile,
+      scenario,
+      visualSystem: input.visualSystem,
+      brandKit: input.brandKit,
+      goal: input.goal,
+      assetHint: input.assetHint,
+      imageAnalysis,
+      baseIntent: intent,
+    }
   )
-  const finalAssessmentBase = getFormatAssessment(
+  const fixedAssessment = getFormatAssessment(
     input.formatKey,
     fixed,
     selection.selected.intent.compositionModelId,
     imageAnalysis
   )
-  const finalAIReview = await aiReviewLayout(fixed, { format, assessment: finalAssessmentBase })
+  const fixedTrust = computeScoreTrust(fixedAssessment)
+  const finalizedSelection = finalizePrimarySelectedOutcomeSync({
+    formatKey: input.formatKey,
+    selection,
+    currentScene: fixed,
+    currentAssessment: fixedAssessment,
+    currentScoreTrust: fixedTrust,
+    imageAnalysis,
+    escalationContext: {
+      master: input.master,
+      profile,
+      scenario,
+      visualSystem: input.visualSystem,
+      brandKit: input.brandKit,
+      goal: input.goal,
+      assetHint: input.assetHint,
+      imageAnalysis,
+      baseIntent: intent,
+    },
+  })
+  const squareSubtitleCtaRepaired =
+    input.formatKey === 'social-square' && (input.fixStage || 'base') !== 'base'
+      ? applySquareSubtitleCtaPairingStructuralRepair({
+          scene: finalizedSelection.scene,
+          formatKey: input.formatKey,
+          profile,
+          visualSystem: input.visualSystem,
+          brandKit: input.brandKit,
+          goal: input.goal,
+          intent: finalizedSelection.intent,
+          assetHint,
+        })
+      : finalizedSelection.scene
+  const finalAssessmentBase = getFormatAssessment(
+    input.formatKey,
+    squareSubtitleCtaRepaired,
+    finalizedSelection.compositionModelId,
+    imageAnalysis
+  )
+  const finalAIReview = await aiReviewLayout(squareSubtitleCtaRepaired, {
+    format,
+    assessment: finalAssessmentBase,
+  })
   const finalAssessment = { ...finalAssessmentBase, aiReview: finalAIReview }
   const scoreTrust = computeScoreTrust(finalAssessment, finalAIReview)
 
   return {
-    scene: fixed,
+    scene: squareSubtitleCtaRepaired,
     profile,
     contentAnalysis,
     imageAnalysis,
@@ -6154,6 +6861,181 @@ function isSquareNearMissSafeTextScenario(assessment: LayoutAssessment, formatFa
   return significantIssues.every((issue) => issue.code === 'overlay-outside-safe-text-area')
 }
 
+function normalizeSceneText(value?: string) {
+  return (value || '').replace(/\s+/g, ' ').trim()
+}
+
+type SquareSubtitleLaneMode = 'kept' | 'compact' | 'one-line' | 'omitted'
+
+function applySquareSubtitleCtaPairingStructuralRepair(input: {
+  scene: Scene
+  formatKey: FormatKey
+  profile?: ContentProfile
+  visualSystem?: VisualSystemKey
+  brandKit?: BrandKit
+  goal?: Project['goal']
+  intent?: LayoutIntent
+  assetHint?: AssetHint
+}) {
+  const format = FORMAT_MAP[input.formatKey]
+  if (format.key !== 'social-square') return clone(input.scene)
+
+  const titleText = normalizeSceneText(input.scene.title.text)
+  const subtitleText = normalizeSceneText(input.scene.subtitle.text)
+  const ctaText = normalizeSceneText(input.scene.cta.text)
+  if (!titleText || !ctaText) return clone(input.scene)
+
+  const base =
+    input.profile && input.visualSystem && input.brandKit && input.goal && input.intent
+      ? applySquareConstrainedTextModel({
+          scene: input.scene,
+          formatKey: input.formatKey,
+          profile: input.profile,
+          visualSystem: input.visualSystem,
+          brandKit: input.brandKit,
+          goal: input.goal,
+          intent: input.intent,
+          assetHint: input.assetHint,
+        })
+      : clone(input.scene)
+
+  const subtitleLength = input.profile?.subtitleLength || subtitleText.length
+  const denseSubtitle =
+    subtitleText.length > 0 &&
+    (
+      subtitleLength > 18 ||
+      (base.subtitle.maxLines || 2) > 2 ||
+      (base.subtitle.h || 0) > 6.8
+    )
+  const modes: SquareSubtitleLaneMode[] = subtitleText
+    ? ['kept', 'compact', 'one-line', 'omitted']
+    : ['omitted']
+
+  const titleX = clamp(base.title.x || 0, 6, 16)
+  const titleW = clamp(Math.max(base.title.w || 34, 34), 34, 54)
+  const titleH = clamp((base.title.h || 14) - 1.4, 11.8, 17.6)
+  const titleYDefault = clamp(Math.min(base.title.y || 38, 42), 24, 42)
+  const ctaW = clamp(base.cta.w || 22, 18, 28)
+  const ctaH = clamp(base.cta.h || 6.6, 6, 7.4)
+  const ctaLaneTopBase = denseSubtitle ? 80 : 82
+  const ctaLaneBottom = 92
+
+  const materializeMode = (mode: SquareSubtitleLaneMode) => {
+    const candidate = clone(base)
+    candidate.title.x = titleX
+    candidate.title.y = titleYDefault
+    candidate.title.w = titleW
+    candidate.title.h = titleH
+    candidate.title.maxLines = clamp(Math.min(candidate.title.maxLines || 3, 3), 2, 3)
+
+    candidate.cta.x = titleX
+    candidate.cta.w = ctaW
+    candidate.cta.h = ctaH
+    candidate.cta.fontSize = clamp(candidate.cta.fontSize || 16, 15, 20)
+
+    const laneTop = ctaLaneTopBase
+    candidate.cta.y = clamp(
+      laneTop + Math.max((ctaLaneBottom - laneTop - ctaH) / 2, 0),
+      laneTop,
+      92 - ctaH
+    )
+
+    if (mode === 'omitted' || !subtitleText) {
+      candidate.subtitle.text = ''
+      candidate.subtitle.opacity = 0
+      candidate.subtitle.w = 0
+      candidate.subtitle.h = 0
+      candidate.subtitle.maxLines = 1
+      candidate.subtitle.y = clamp((candidate.title.y || 0) + (candidate.title.h || 0) + 1.2, 0, 88)
+      return {
+        scene: candidate,
+        fit: true,
+        clearance:
+          Math.round(((candidate.cta.y || 0) - ((candidate.title.y || 0) + (candidate.title.h || 0))) * 100) / 100,
+        mode,
+      }
+    }
+
+    const settings =
+      mode === 'kept'
+        ? {
+            subtitleH: clamp((candidate.subtitle.h || 5.6) - 0.8, 4.6, 5.8),
+            subtitleW: clamp(Math.max(candidate.subtitle.w || 28, 30), 28, 40),
+            maxLines: 2,
+            fontSize: clamp((candidate.subtitle.fontSize || 15) - 1, 12, 16),
+            opacity: 0.72,
+            gap: 1.8,
+            laneGap: 4.6,
+          }
+        : mode === 'compact'
+          ? {
+              subtitleH: clamp((candidate.subtitle.h || 5) - 1.4, 4, 5),
+              subtitleW: clamp(Math.max(candidate.subtitle.w || 30, 32), 30, 42),
+              maxLines: 2,
+              fontSize: clamp((candidate.subtitle.fontSize || 14) - 2, 11, 15),
+              opacity: 0.64,
+              gap: 1.6,
+              laneGap: 4.8,
+            }
+          : {
+              subtitleH: clamp((candidate.subtitle.h || 4.6) - 1.8, 3.4, 4.4),
+              subtitleW: clamp(Math.max(candidate.subtitle.w || 32, 34), 32, 46),
+              maxLines: 1,
+              fontSize: clamp((candidate.subtitle.fontSize || 14) - 3, 10, 14),
+              opacity: 0.58,
+              gap: 1.4,
+              laneGap: 5.2,
+            }
+
+    candidate.subtitle.x = titleX
+    candidate.subtitle.w = settings.subtitleW
+    candidate.subtitle.h = settings.subtitleH
+    candidate.subtitle.maxLines = settings.maxLines
+    candidate.subtitle.fontSize = settings.fontSize
+    candidate.subtitle.opacity = settings.opacity
+    candidate.subtitle.charsPerLine = Math.max((candidate.subtitle.charsPerLine || 16) + 8, 18)
+    candidate.subtitle.y = (candidate.title.y || 0) + (candidate.title.h || 0) + settings.gap
+
+    const maxSubtitleBottom = (candidate.cta.y || 0) - settings.laneGap
+    const subtitleBottom = (candidate.subtitle.y || 0) + (candidate.subtitle.h || 0)
+    if (subtitleBottom > maxSubtitleBottom) {
+      const shiftUp = subtitleBottom - maxSubtitleBottom
+      candidate.title.y = clamp((candidate.title.y || 0) - shiftUp, 20, titleYDefault)
+      candidate.subtitle.y = (candidate.title.y || 0) + (candidate.title.h || 0) + settings.gap
+    }
+
+    const finalSubtitleBottom = (candidate.subtitle.y || 0) + (candidate.subtitle.h || 0)
+    const fit = finalSubtitleBottom <= (candidate.cta.y || 0) - settings.laneGap
+    return {
+      scene: candidate,
+      fit,
+      clearance: Math.round(((candidate.cta.y || 0) - finalSubtitleBottom) * 100) / 100,
+      mode,
+    }
+  }
+
+  const candidates = modes.map(materializeMode)
+  const chosen =
+    candidates.find((candidate) => candidate.fit) ||
+    candidates[candidates.length - 1] ||
+    { scene: clone(base), fit: false, clearance: 0, mode: 'omitted' as const }
+
+  return chosen.scene
+}
+
+export function applySquareSubtitleCtaPairingStructuralRepairDebug(input: {
+  scene: Scene
+  formatKey: FormatKey
+  profile?: ContentProfile
+  visualSystem?: VisualSystemKey
+  brandKit?: BrandKit
+  goal?: Project['goal']
+  intent?: LayoutIntent
+  assetHint?: AssetHint
+}) {
+  return applySquareSubtitleCtaPairingStructuralRepair(input)
+}
+
 function applySquareConstrainedTextModel(input: {
   scene: Scene
   formatKey: FormatKey
@@ -6498,6 +7380,12 @@ function applyRepairActionsToScene(input: {
       compositionModel,
     })
   }
+  if (input.formatKey === 'social-square') {
+    next = applySquareSubtitleCtaPairingStructuralRepair({
+      scene: next,
+      formatKey: input.formatKey,
+    })
+  }
   return finalizeSceneGeometry(next, format, compositionModel)
 }
 
@@ -6693,7 +7581,19 @@ async function attemptGuidedRegenerationRepair(input: {
 
       const regenerated = strategyCandidate
         ? {
-            scene: strategyCandidate.scene,
+            scene:
+              input.formatKey === 'social-square'
+                ? applySquareSubtitleCtaPairingStructuralRepair({
+                    scene: strategyCandidate.scene,
+                    formatKey: input.formatKey,
+                    profile: input.profile,
+                    visualSystem: input.visualSystem,
+                    brandKit: input.brandKit,
+                    goal: input.goal,
+                    intent: strategyCandidate.intent,
+                    assetHint: input.assetHint,
+                  })
+                : strategyCandidate.scene,
             intent: strategyCandidate.intent,
             imageAnalysis: strategyCandidate.imageAnalysis,
           }

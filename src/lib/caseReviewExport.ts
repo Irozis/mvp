@@ -45,6 +45,15 @@ import type {
   SquareCtaVsTextDiagnosticsReport,
   SquareCtaVsTextSubtype,
   SquareCtaVsSubtitleCandidateGroup,
+  SquareCtaPairingStructuralFixImprovedCase,
+  SquareCtaPairingStructuralFixReport,
+  SquareCtaLaneVariantImprovedCase,
+  SquareCtaLaneVariantMode,
+  SquareCtaLaneVariantReport,
+  SquareImageStructuralCandidateGroup,
+  SquareImageStructuralDiagnosticRow,
+  SquareImageStructuralDiagnosticsReport,
+  SquareImageStructuralSubtype,
   SquareCtaVsSubtitleDiagnosticRow,
   SquareCtaVsSubtitleDiagnosticsReport,
   SquareCtaVsSubtitleSubtype,
@@ -255,6 +264,18 @@ const VALIDATED_LANDSCAPE_TEXT_HEIGHT_FLIPS = [
 
 function round(value: number) {
   return Math.round(value * 100) / 100
+}
+
+function average(values: number[]) {
+  if (!values.length) return 0
+  return round(values.reduce((sum, value) => sum + value, 0) / values.length)
+}
+
+function classifySquareSubtitleLaneMode(row: SquareCtaVsSubtitleDiagnosticRow): SquareCtaLaneVariantMode {
+  if (!row.subtitleRect || row.subtitleHeightContribution <= 0.5) return 'omitted'
+  if (row.subtitleHeightContribution <= 4.4) return 'one-line'
+  if (row.subtitleHeightContribution <= 5.8 || row.subtitleAttachmentQuality >= 70) return 'compact'
+  return 'kept'
 }
 
 function increment(record: Record<string, number>, key: string, amount = 1) {
@@ -1380,17 +1401,20 @@ function deriveSquareRoleConflictDetails(record: PlacementSoftPolicyCandidateRec
   const imageRole = getEligibleRoleEntry(record, 'image')
   const ctaRole = getEligibleRoleEntry(record, 'cta')
   const combinedTextRect = getRectUnion([titleRect, subtitleRect])
-  const messageClusterRect = getRectUnion([titleRect, subtitleRect, ctaRect])
+  const adjustedTextRect = textCluster?.adjustedTextRect || combinedTextRect
+  const messageClusterRect = getRectUnion([adjustedTextRect, ctaRect])
   const allowedTextZones = textRole?.allowedZones || []
   const ruleTextWidth = getMaxZoneDimension(allowedTextZones, 'w')
   const ruleTextHeight = getMaxZoneDimension(allowedTextZones, 'h')
   const titlePlacementDistance = textCluster?.titlePlacementDistance ?? 0
   const subtitleAttachmentDistance = textCluster?.subtitleAttachmentDistance ?? 0
   const combinedAllowedDistance = textCluster?.combinedAllowedDistance ?? textRole?.allowedDistance ?? 0
-  const ctaToMessageDistance = getRectDistance(ctaRect, combinedTextRect)
-  const ctaHorizontalOffset = getRectHorizontalOffset(ctaRect, combinedTextRect)
+  const effectiveCombinedAllowedDistance = textRole?.allowedDistance ?? combinedAllowedDistance
+  const ctaToMessageDistance =
+    textCluster?.adjustedCtaToCombinedTextDistance ?? getRectDistance(ctaRect, adjustedTextRect)
+  const ctaHorizontalOffset = getRectHorizontalOffset(ctaRect, adjustedTextRect)
   const ctaVerticalGap =
-    ctaRect && combinedTextRect ? round(Math.max(0, ctaRect.y - (combinedTextRect.y + combinedTextRect.h))) : 0
+    ctaRect && adjustedTextRect ? round(Math.max(0, ctaRect.y - (adjustedTextRect.y + adjustedTextRect.h))) : 0
   const ctaReadingFlowContinuity = round(
     clamp(100 - Math.max(0, ctaVerticalGap - 10) * 6 - Math.max(0, ctaHorizontalOffset - 8) * 4, 0, 100)
   )
@@ -1409,24 +1433,31 @@ function deriveSquareRoleConflictDetails(record: PlacementSoftPolicyCandidateRec
   const titleZoneConflict = titlePlacementDistance > 2.5
   const subtitleZoneConflict = Boolean(textCluster?.subtitleDetached) || subtitleAttachmentDistance > 2.5
   const textZoneConflict =
-    (textRole?.allowedDistance ?? 0) > 2 || (textRole?.preferredDistance ?? 0) > 4 || combinedAllowedDistance > 4
+    (textRole?.allowedDistance ?? 0) > 2 ||
+    (textRole?.preferredDistance ?? 0) > 4 ||
+    effectiveCombinedAllowedDistance > 4
   const imageZoneConflict =
     (imageRole?.allowedDistance ?? 0) > 2 || (imageRole?.preferredDistance ?? 0) > 4
   const overlapArea = getOverlapArea(combinedTextRect, imageRect)
   const imageVsTextOccupancyConflict =
     overlapArea > 0 ||
-    Boolean(combinedTextRect && imageRect && combinedTextRect.x + combinedTextRect.w > imageRect.x - 3)
+    Boolean(adjustedTextRect && imageRect && adjustedTextRect.x + adjustedTextRect.w > imageRect.x - 3)
   const ctaVsTextConflict =
-    ctaToMessageDistance > 8 || ctaHorizontalOffset > 14 || Boolean(ctaRect && combinedTextRect && getOverlapArea(ctaRect, combinedTextRect) > 0)
+    ctaToMessageDistance > 8 ||
+    ctaHorizontalOffset > 14 ||
+    Boolean(ctaRect && adjustedTextRect && getOverlapArea(ctaRect, adjustedTextRect) > 0) ||
+    Boolean(textCluster?.ctaCollisionPersistsAfterSubtitleAdjustment)
   const ctaVsImageConflict =
     Boolean(ctaRect && imageRect && getOverlapArea(ctaRect, imageRect) > 0) ||
     Boolean(ctaRect && imageRect && ctaRect.x + ctaRect.w > imageRect.x - 2)
   const textTooTallForSquare =
-    Boolean(combinedTextRect) &&
-    ((ruleTextHeight > 0 && combinedTextRect!.h > ruleTextHeight + 2) || (textCluster?.combinedClusterFootprint ?? 0) > 26)
+    Boolean(adjustedTextRect) &&
+    ((ruleTextHeight > 0 && adjustedTextRect!.h > ruleTextHeight + 2) ||
+      (textCluster?.combinedClusterFootprint ?? 0) > 26)
   const textTooWideForSquare =
-    Boolean(combinedTextRect) &&
-    ((ruleTextWidth > 0 && combinedTextRect!.w > ruleTextWidth + 2) || Boolean(combinedTextRect && combinedTextRect.w > 54))
+    Boolean(adjustedTextRect) &&
+    ((ruleTextWidth > 0 && adjustedTextRect!.w > ruleTextWidth + 2) ||
+      Boolean(adjustedTextRect && adjustedTextRect.w > 54))
   const imageSafeAreaFootprint =
     imageRect ? round((imageRect.w * imageRect.h) / Math.max(1, 92 * 92) * 100) : 0
   const imageTooDominantForSquare =
@@ -1435,11 +1466,15 @@ function deriveSquareRoleConflictDetails(record: PlacementSoftPolicyCandidateRec
   const ctaAnchorConflict = !ctaWithinSquareTolerance && (ctaVerticalGap > 12 || ctaHorizontalOffset > 12)
   const titleOnlyWouldPass = titlePlacementDistance <= 2
   const messageClusterWouldPass =
-    combinedAllowedDistance <= 4 &&
+    effectiveCombinedAllowedDistance <= 4 &&
     !Boolean(textCluster?.subtitleDetached) &&
     !textTooTallForSquare &&
-    !textTooWideForSquare
-  const remainingBlockerWouldBecomeMilder = Boolean(textCluster?.wouldBecomeMilderUnderAttachmentAwarePolicy)
+    !textTooWideForSquare &&
+    !Boolean(textCluster?.ctaCollisionPersistsAfterSubtitleAdjustment)
+  const remainingBlockerWouldBecomeMilder = Boolean(
+    textCluster?.wouldBecomeMilderUnderSquareSubtitleCtaPolicy ||
+      textCluster?.wouldBecomeMilderUnderAttachmentAwarePolicy
+  )
 
   const roleConflictReasons: SquareRoleConflictSubtype[] = []
   if (ctaAnchorConflict) roleConflictReasons.push('cta-anchor-conflict')
@@ -1461,6 +1496,7 @@ function deriveSquareRoleConflictDetails(record: PlacementSoftPolicyCandidateRec
     ctaRect,
     imageRect,
     combinedTextRect,
+    adjustedTextRect,
     messageClusterRect,
     roleConflictSubtype: pickSquareRoleConflictSubtype([...new Set(roleConflictReasons)]),
     roleConflictReasons: [...new Set(roleConflictReasons)],
@@ -1580,6 +1616,7 @@ function deriveSquareCtaVsSubtitleDetails(record: PlacementSoftPolicyCandidateRe
   const subtitleRect = base.subtitleRect
   const ctaRect = base.ctaRect
   const combinedTextRect = base.combinedTextRect
+  const adjustedTextRect = base.adjustedTextRect
   const titleRect = base.titleRect
 
   const ctaToSubtitleDistance = base.ctaToSubtitleDistance
@@ -1593,6 +1630,15 @@ function deriveSquareCtaVsSubtitleDetails(record: PlacementSoftPolicyCandidateRe
   const subtitleInflationContribution = base.subtitleInflationContribution
   const subtitleInflatesMainly =
     subtitleInflationContribution >= 10 || subtitleHeightContribution > titleHeightContribution * 0.9
+  const subtitleAttachmentQuality = textCluster?.subtitleAttachmentQuality ?? 0
+  const titlePrimaryAnchorWeight = textCluster?.titlePrimaryAnchorWeight ?? 0
+  const subtitleSecondaryMassWeight = textCluster?.subtitleSecondaryMassWeight ?? 0
+  const rawCtaToCombinedTextDistance = textCluster?.rawCtaToCombinedTextDistance ?? base.ctaToCombinedTextDistance
+  const adjustedCtaToCombinedTextDistance =
+    textCluster?.adjustedCtaToCombinedTextDistance ?? getRectDistance(ctaRect, adjustedTextRect)
+  const ctaCollisionPersistsAfterSubtitleAdjustment =
+    textCluster?.ctaCollisionPersistsAfterSubtitleAdjustment ??
+    Boolean(ctaRect && adjustedTextRect && getOverlapArea(ctaRect, adjustedTextRect) > 0)
   const subtitleOnlyWouldPass =
     !base.subtitleZoneConflict &&
     ctaToSubtitleDistance <= 8 &&
@@ -1633,23 +1679,171 @@ function deriveSquareCtaVsSubtitleDetails(record: PlacementSoftPolicyCandidateRe
   ) {
     reasons.push('cta-vs-subtitle-horizontal-collision')
   }
+  if (
+    ctaCollisionPersistsAfterSubtitleAdjustment &&
+    base.ctaOverlapRisk &&
+    !reasons.includes('true-cta-subtitle-overlap-risk')
+  ) {
+    reasons.push('true-cta-subtitle-overlap-risk')
+  }
 
   const uniqueReasons = [...new Set(reasons)]
 
   return {
     ...base,
+    adjustedTextRect,
     ctaToSubtitleDistance,
     ctaToSubtitleVerticalGap,
     ctaToSubtitleHorizontalOffset,
+    rawCtaToCombinedTextDistance,
+    adjustedCtaToCombinedTextDistance,
     subtitleInflationContribution,
     subtitleInflatesMainly,
+    subtitleAttachmentQuality,
     subtitleHeightContribution,
     titleHeightContribution,
+    titlePrimaryAnchorWeight,
+    subtitleSecondaryMassWeight,
+    ctaCollisionPersistsAfterSubtitleAdjustment,
     subtitleOnlyWouldPass,
     actionBandMismatch,
     ctaBelowSubtitleButAcceptable,
+    wouldBecomeMilderUnderSquareSubtitleCtaPolicy:
+      textCluster?.wouldBecomeMilderUnderSquareSubtitleCtaPolicy ?? false,
     ctaVsSubtitleSubtype: pickSquareCtaVsSubtitleSubtype(uniqueReasons),
     ctaVsSubtitleReasons: uniqueReasons,
+  }
+}
+
+const SQUARE_IMAGE_STRUCTURAL_SUBTYPE_PRIORITY: SquareImageStructuralSubtype[] = [
+  'image-footprint-too-large',
+  'image-vs-text-occupancy-conflict',
+  'image-vs-cta-occupancy-conflict',
+  'image-zone-mismatch',
+  'image-dominance-mismatch',
+  'image-anchor-mismatch',
+  'image-footprint-too-small',
+  'mixed-image-structural-conflict',
+]
+
+function pickSquareImageStructuralSubtype(
+  reasons: SquareImageStructuralSubtype[]
+): SquareImageStructuralSubtype {
+  if (!reasons.length) return 'mixed-image-structural-conflict'
+  if (reasons.length === 1) return reasons[0]
+  for (const subtype of SQUARE_IMAGE_STRUCTURAL_SUBTYPE_PRIORITY) {
+    if (reasons.includes(subtype)) return subtype
+  }
+  return 'mixed-image-structural-conflict'
+}
+
+function deriveSquareImageStructuralDetails(record: PlacementSoftPolicyCandidateRecord) {
+  const imageRole = getEligibleRoleEntry(record, 'image')
+  const ctaRole = getEligibleRoleEntry(record, 'cta')
+  const textBoxes = record.placementDiagnostics?.textBoxes
+  const titleRect = textBoxes?.titleRect || null
+  const subtitleRect = textBoxes?.subtitleRect || null
+  const ctaRect = ctaRole?.rect || null
+  const imageRect = imageRole?.rect || record.baselineImageRect || null
+  const messageClusterRect = getRectUnion([titleRect, subtitleRect, ctaRect])
+  const conflict = deriveSquareRoleConflictDetails(record)
+  const structuralFlags = deriveSquareStructuralFlags(record)
+  const imagePlacement = record.placementDiagnostics?.imagePlacement
+  const rawAllowedDistance = round(imagePlacement?.rawAllowedDistance ?? imageRole?.allowedDistance ?? 0)
+  const rawPreferredDistance = round(
+    imagePlacement?.rawPreferredDistance ?? imageRole?.preferredDistance ?? 0
+  )
+  const adjustedAllowedDistance = round(
+    imagePlacement?.adjustedAllowedDistance ?? imageRole?.allowedDistance ?? 0
+  )
+  const adjustedPreferredDistance = round(
+    imagePlacement?.adjustedPreferredDistance ?? imageRole?.preferredDistance ?? 0
+  )
+  const imageZoneConflict = adjustedAllowedDistance > 12 || adjustedPreferredDistance > 18
+  const overlapTextArea = getOverlapArea(imageRect, messageClusterRect)
+  const overlapCtaArea = getOverlapArea(imageRect, ctaRect)
+  const imageVsTextOccupancyConflict =
+    overlapTextArea > 0 ||
+    Boolean(imageRect && messageClusterRect && getRectDistance(imageRect, messageClusterRect) <= 1.5)
+  const imageVsCtaOccupancyConflict =
+    overlapCtaArea > 0 || Boolean(imageRect && ctaRect && getRectDistance(imageRect, ctaRect) <= 1)
+  const allowedZones = imageRole?.allowedZones || []
+  const maxAllowedWidth = getMaxZoneDimension(allowedZones, 'w')
+  const maxAllowedHeight = getMaxZoneDimension(allowedZones, 'h')
+  const maxAllowedArea = allowedZones.length
+    ? Math.max(...allowedZones.map((zone) => zone.w * zone.h))
+    : 0
+  const imageArea = imageRect ? imageRect.w * imageRect.h : 0
+  const imageCoverage = round(imageArea / 100)
+  const footprintRatio = maxAllowedArea > 0 ? imageArea / maxAllowedArea : 1
+  const imageTooTallForSquare = Boolean(
+    imageRect &&
+      ((maxAllowedHeight > 0 && imageRect.h > maxAllowedHeight + 4) || imageRect.h > 62)
+  )
+  const imageTooWideForSquare = Boolean(
+    imageRect &&
+      ((maxAllowedWidth > 0 && imageRect.w > maxAllowedWidth + 4) || imageRect.w > 56)
+  )
+  const imageTooDominantForSquare =
+    Boolean(imageRect) &&
+    ((imageTooTallForSquare || imageTooWideForSquare) && imageCoverage >= 24)
+  const imageTooWeakForSquare =
+    Boolean(imageRect) &&
+    ((maxAllowedArea > 0 && footprintRatio < 0.55) ||
+      [...record.summaryTags, ...record.penaltyTags].some((tag) =>
+        tag.toLowerCase().includes('weak-image-footprint')
+      ))
+  const imageFootprintMismatch =
+    imageTooTallForSquare || imageTooWideForSquare || imageTooWeakForSquare
+  const splitPatternMismatch = Boolean(
+    imageRect &&
+      messageClusterRect &&
+      !imageVsTextOccupancyConflict &&
+      messageClusterRect.x + messageClusterRect.w > imageRect.x - 3 &&
+      messageClusterRect.y + messageClusterRect.h > imageRect.y + 8
+  )
+
+  const reasons: SquareImageStructuralSubtype[] = []
+  if ((imageTooTallForSquare || imageTooWideForSquare || footprintRatio > 1.3) && imageRect) {
+    reasons.push('image-footprint-too-large')
+  }
+  if (imageTooWeakForSquare) reasons.push('image-footprint-too-small')
+  if (imageVsTextOccupancyConflict) reasons.push('image-vs-text-occupancy-conflict')
+  if (imageVsCtaOccupancyConflict) reasons.push('image-vs-cta-occupancy-conflict')
+  if (imageZoneConflict && !imageFootprintMismatch) reasons.push('image-zone-mismatch')
+  if ((imageTooDominantForSquare || imageTooWeakForSquare) && imageRect) {
+    reasons.push('image-dominance-mismatch')
+  }
+  if (splitPatternMismatch) reasons.push('image-anchor-mismatch')
+
+  return {
+    titleRect,
+    subtitleRect,
+    ctaRect,
+    imageRect,
+    messageClusterRect,
+    imageStructuralSubtype: pickSquareImageStructuralSubtype([...new Set(reasons)]),
+    imageStructuralReasons: [...new Set(reasons)],
+    rawAllowedDistance,
+    rawPreferredDistance,
+    adjustedAllowedDistance,
+    adjustedPreferredDistance,
+    imageZoneConflict,
+    imageVsTextOccupancyConflict,
+    imageVsCtaOccupancyConflict,
+    imageTooDominantForSquare,
+    imageTooWeakForSquare,
+    imageTooTallForSquare,
+    imageTooWideForSquare,
+    imageFootprintMismatch,
+    splitPatternMismatch,
+    titleOnlyWouldPass: conflict.titleOnlyWouldPass,
+    messageClusterWouldPass: conflict.messageClusterWouldPass,
+    remainingBlockerWouldBecomeMilder:
+      conflict.remainingBlockerWouldBecomeMilder ||
+      adjustedAllowedDistance + 2 < rawAllowedDistance ||
+      adjustedPreferredDistance + 2 < rawPreferredDistance,
+    ...structuralFlags,
   }
 }
 
@@ -1730,23 +1924,16 @@ function classifyMasterResidualBucket(record: PlacementSoftPolicyCandidateRecord
     const dominantRole = getDominantViolatingRole(record)
     const textCluster = record.placementDiagnostics?.textCluster
     if (dominantRole === 'image') {
-      const imageEntry = getEligibleRoleEntry(record, 'image')
-      const imagePlacement = record.placementDiagnostics?.imagePlacement
-      const subtype =
-        imagePlacement?.wouldBecomeMilderUnderLandscapeImagePolicy
-          ? 'image-policy-near-miss'
-          : imageEntry && imageEntry.allowedDistance <= 12
-            ? 'image-zone-near-miss'
-            : imageEntry && imageEntry.allowedDistance <= 24
-              ? 'image-zone-conflict'
-              : 'image-structural-mismatch'
+      const image = deriveSquareImageStructuralDetails(record)
       return {
         dominantBlockerFamily: 'square-image',
-        dominantBlockerSubtype: subtype,
+        dominantBlockerSubtype: image.imageStructuralSubtype,
         secondaryBlockerSubtype: null,
-        titleOnlyWouldPass: false,
-        messageClusterWouldPass: false,
-        remainingBlockerWouldBecomeMilder: Boolean(textCluster?.wouldBecomeMilderUnderAttachmentAwarePolicy),
+        titleOnlyWouldPass: image.titleOnlyWouldPass,
+        messageClusterWouldPass: image.messageClusterWouldPass,
+        remainingBlockerWouldBecomeMilder:
+          image.remainingBlockerWouldBecomeMilder ||
+          Boolean(textCluster?.wouldBecomeMilderUnderAttachmentAwarePolicy),
         allStructuralSubtypes: [],
       }
     }
@@ -4003,6 +4190,7 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       ctaRect: conflict.ctaRect,
       imageRect: conflict.imageRect,
       combinedTextRect: conflict.combinedTextRect,
+      adjustedTextRect: conflict.adjustedTextRect,
       messageClusterRect: conflict.messageClusterRect,
       ctaVsSubtitleSubtype: conflict.ctaVsSubtitleSubtype,
       ctaVsSubtitleReasons: conflict.ctaVsSubtitleReasons,
@@ -4010,7 +4198,10 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       ctaToSubtitleVerticalGap: conflict.ctaToSubtitleVerticalGap,
       ctaToSubtitleHorizontalOffset: conflict.ctaToSubtitleHorizontalOffset,
       ctaToCombinedTextDistance: conflict.ctaToCombinedTextDistance,
+      rawCtaToCombinedTextDistance: conflict.rawCtaToCombinedTextDistance,
+      adjustedCtaToCombinedTextDistance: conflict.adjustedCtaToCombinedTextDistance,
       ctaOverlapRisk: conflict.ctaOverlapRisk,
+      ctaCollisionPersistsAfterSubtitleAdjustment: conflict.ctaCollisionPersistsAfterSubtitleAdjustment,
       ctaInsideExpectedActionBand: conflict.ctaInsideExpectedActionBand,
       ctaBelowSubtitleButAcceptable: conflict.ctaBelowSubtitleButAcceptable,
       ctaWithinSquareTolerance: conflict.ctaWithinSquareTolerance,
@@ -4018,8 +4209,11 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       ctaMessageAssociationScore: conflict.ctaMessageAssociationScore,
       subtitleInflationContribution: conflict.subtitleInflationContribution,
       subtitleInflatesMainly: conflict.subtitleInflatesMainly,
+      subtitleAttachmentQuality: conflict.subtitleAttachmentQuality,
       subtitleHeightContribution: conflict.subtitleHeightContribution,
       titleHeightContribution: conflict.titleHeightContribution,
+      titlePrimaryAnchorWeight: conflict.titlePrimaryAnchorWeight,
+      subtitleSecondaryMassWeight: conflict.subtitleSecondaryMassWeight,
       titleOnlyWouldPass: conflict.titleOnlyWouldPass,
       subtitleOnlyWouldPass: conflict.subtitleOnlyWouldPass,
       messageClusterWouldPass: conflict.messageClusterWouldPass,
@@ -4029,6 +4223,7 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       ctaZoneConflict: conflict.ctaZoneConflict,
       subtitleZoneConflict: conflict.subtitleZoneConflict,
       combinedTextZoneConflict: conflict.textZoneConflict,
+      wouldBecomeMilderUnderSquareSubtitleCtaPolicy: conflict.wouldBecomeMilderUnderSquareSubtitleCtaPolicy,
       remainingBlockerWouldBecomeMilder: conflict.remainingBlockerWouldBecomeMilder,
       legacySafetyRejected: conflict.legacySafetyRejected,
       spacingCollapsePresent: conflict.spacingCollapsePresent,
@@ -4098,11 +4293,11 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       const homogeneous = new Set(groupRows.map((row) => row.ctaVsSubtitleSubtype)).size === 1
       const nonFundamental = groupRows.every(
         (row) =>
-          !row.ctaOverlapRisk &&
+          !row.ctaCollisionPersistsAfterSubtitleAdjustment &&
           !row.textClusterTooTallForCtaPairing &&
-          (row.remainingBlockerWouldBecomeMilder ||
-            row.ctaBelowSubtitleButAcceptable ||
-            row.actionBandMismatch)
+          (row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy ||
+            row.remainingBlockerWouldBecomeMilder ||
+            row.ctaBelowSubtitleButAcceptable)
       )
       const ready = narrow && homogeneous && noHardSafety && nonFundamental
       return {
@@ -4156,6 +4351,15 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
   const wouldBecomeMilderIfActionBandRelaxedCount = rows.filter(
     (row) => row.actionBandMismatch && row.ctaWithinSquareTolerance && !row.ctaOverlapRisk
   ).length
+  const wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount = rows.filter(
+    (row) => row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy
+  ).length
+  const trueCollisionPersistsAfterAdjustmentCount = rows.filter(
+    (row) => row.ctaCollisionPersistsAfterSubtitleAdjustment
+  ).length
+  const tooTallAfterSubtitleAdjustmentCount = rows.filter(
+    (row) => row.textClusterTooTallForCtaPairing && row.ctaCollisionPersistsAfterSubtitleAdjustment
+  ).length
 
   return {
     generatedAt: new Date().toISOString(),
@@ -4169,6 +4373,9 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       realOverlapRiskCount,
       wouldBecomeMilderIfSubtitleChangedCount,
       wouldBecomeMilderIfActionBandRelaxedCount,
+      wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount,
+      trueCollisionPersistsAfterAdjustmentCount,
+      tooTallAfterSubtitleAdjustmentCount,
     },
     subtypeFrequency,
     groupedCandidateSetsBySubtype,
@@ -4178,12 +4385,531 @@ export function buildSquareCtaVsSubtitleDiagnostics(input: {
       realOverlapRiskCount,
       wouldBecomeMilderIfSubtitleChangedCount,
       wouldBecomeMilderIfActionBandRelaxedCount,
+      wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount,
+      trueCollisionPersistsAfterAdjustmentCount,
+      tooTallAfterSubtitleAdjustmentCount,
       smallHomogeneousSubsetCount: recommendedSecondUnlockCandidates.filter(
         (group) => group.caseCount <= 8
       ).length,
     },
     recommendedSecondUnlockCandidates,
     topRecommendedSecondUnlockClass: recommendedSecondUnlockCandidates.find((group) => group.ready) || null,
+    cases: rows,
+  }
+}
+
+export function buildSquareCtaPairingStructuralFixReport(input: {
+  root: string
+  squareCtaVsSubtitleDiagnostics: SquareCtaVsSubtitleDiagnosticsReport
+}): SquareCtaPairingStructuralFixReport {
+  const rows = input.squareCtaVsSubtitleDiagnostics.cases
+  const beforeCollisionCount = rows.filter(
+    (row) => row.rawCtaToCombinedTextDistance <= 0.5 || row.ctaOverlapRisk
+  ).length
+  const afterCollisionCount = rows.filter(
+    (row) => row.adjustedCtaToCombinedTextDistance <= 0.5 || row.ctaCollisionPersistsAfterSubtitleAdjustment
+  ).length
+  const beforeAverageTextHeight = average(rows.map((row) => row.combinedTextRect?.h || 0))
+  const afterAverageTextHeight = average(
+    rows.map((row) => row.adjustedTextRect?.h || row.combinedTextRect?.h || 0)
+  )
+  const beforeAverageCtaDistance = average(rows.map((row) => row.rawCtaToCombinedTextDistance))
+  const afterAverageCtaDistance = average(rows.map((row) => row.adjustedCtaToCombinedTextDistance))
+  const beforeTooTallCount = rows.filter(
+    (row) => (row.combinedTextRect?.h || 0) > (row.adjustedTextRect?.h || row.combinedTextRect?.h || 0)
+  ).length
+  const afterTooTallCount = rows.filter((row) => row.textClusterTooTallForCtaPairing).length
+
+  const topImprovedCases = rows
+    .map((row) => {
+      const rawTextHeight = round(row.combinedTextRect?.h || 0)
+      const adjustedTextHeight = round(row.adjustedTextRect?.h || row.combinedTextRect?.h || 0)
+      const heightReduction = round(Math.max(rawTextHeight - adjustedTextHeight, 0))
+      const distanceImprovement = round(
+        Math.max(row.adjustedCtaToCombinedTextDistance - row.rawCtaToCombinedTextDistance, 0)
+      )
+      return {
+        caseId: row.caseId,
+        category: row.category,
+        candidateId: row.candidateId,
+        candidateKind: row.candidateKind,
+        strategyLabel: row.strategyLabel,
+        aggregateDelta: row.aggregateDelta,
+        confidenceDelta: row.confidenceDelta,
+        rawTextHeight,
+        adjustedTextHeight,
+        rawCtaToCombinedTextDistance: row.rawCtaToCombinedTextDistance,
+        adjustedCtaToCombinedTextDistance: row.adjustedCtaToCombinedTextDistance,
+        heightReduction,
+        distanceImprovement,
+        ctaCollisionPersistsAfterSubtitleAdjustment: row.ctaCollisionPersistsAfterSubtitleAdjustment,
+        textClusterTooTallForCtaPairing: row.textClusterTooTallForCtaPairing,
+        wouldBecomeMilderUnderSquareSubtitleCtaPolicy: row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy,
+      } satisfies SquareCtaPairingStructuralFixImprovedCase
+    })
+    .sort((left, right) => {
+      if (right.heightReduction !== left.heightReduction) return right.heightReduction - left.heightReduction
+      if (right.distanceImprovement !== left.distanceImprovement) {
+        return right.distanceImprovement - left.distanceImprovement
+      }
+      if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+      return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+        `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+      )
+    })
+    .slice(0, 10)
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      beforeCollisionCount,
+      afterCollisionCount,
+      beforeAverageTextHeight,
+      afterAverageTextHeight,
+      beforeAverageCtaDistance,
+      afterAverageCtaDistance,
+      beforeTooTallCount,
+      afterTooTallCount,
+      improvedCaseCount: topImprovedCases.filter(
+        (row) => row.heightReduction > 0 || row.distanceImprovement > 0
+      ).length,
+      wouldBecomeMilderCount: rows.filter((row) => row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy).length,
+    },
+    secondUnlockClassAppears: Boolean(input.squareCtaVsSubtitleDiagnostics.topRecommendedSecondUnlockClass),
+    secondUnlockClassCandidate: input.squareCtaVsSubtitleDiagnostics.topRecommendedSecondUnlockClass,
+    topImprovedCases,
+  }
+}
+
+export function buildSquareCtaLaneVariantReport(input: {
+  root: string
+  squareCtaVsSubtitleDiagnostics: SquareCtaVsSubtitleDiagnosticsReport
+  masterResidualBlockers: MasterResidualBlockersReport
+}): SquareCtaLaneVariantReport {
+  const rows = input.squareCtaVsSubtitleDiagnostics.cases
+  const affectedSquareCases = input.masterResidualBlockers.caseRows.filter(
+    (row) =>
+      row.format === 'square' &&
+      row.family === 'display' &&
+      ['square-image', 'square-text', 'square-role-conflict'].includes(row.mainBlockerBucket)
+  )
+  const modeCounts: Record<SquareCtaLaneVariantMode, number> = {
+    kept: 0,
+    compact: 0,
+    'one-line': 0,
+    omitted: 0,
+  }
+  const withMode = rows.map((row) => {
+    const subtitleMode = classifySquareSubtitleLaneMode(row)
+    modeCounts[subtitleMode] += 1
+    const rawTextHeight = round(row.combinedTextRect?.h || 0)
+    const adjustedTextHeight = round(row.adjustedTextRect?.h || row.combinedTextRect?.h || 0)
+    const rawCtaLaneClearance = round(row.rawCtaToCombinedTextDistance)
+    const adjustedCtaLaneClearance = round(row.adjustedCtaToCombinedTextDistance)
+    return {
+      row,
+      subtitleMode,
+      rawTextHeight,
+      adjustedTextHeight,
+      rawCtaLaneClearance,
+      adjustedCtaLaneClearance,
+      heightReduction: round(Math.max(rawTextHeight - adjustedTextHeight, 0)),
+      clearanceImprovement: round(Math.max(adjustedCtaLaneClearance - rawCtaLaneClearance, 0)),
+    }
+  })
+
+  const topImprovedCases = withMode
+    .map((entry) => ({
+      caseId: entry.row.caseId,
+      category: entry.row.category,
+      candidateId: entry.row.candidateId,
+      candidateKind: entry.row.candidateKind,
+      strategyLabel: entry.row.strategyLabel,
+      subtitleMode: entry.subtitleMode,
+      aggregateDelta: entry.row.aggregateDelta,
+      confidenceDelta: entry.row.confidenceDelta,
+      rawTextHeight: entry.rawTextHeight,
+      adjustedTextHeight: entry.adjustedTextHeight,
+      rawCtaLaneClearance: entry.rawCtaLaneClearance,
+      adjustedCtaLaneClearance: entry.adjustedCtaLaneClearance,
+      ctaCollisionPersistsAfterSubtitleAdjustment: entry.row.ctaCollisionPersistsAfterSubtitleAdjustment,
+      textClusterTooTallForCtaPairing: entry.row.textClusterTooTallForCtaPairing,
+      wouldBecomeMilderUnderSquareSubtitleCtaPolicy: entry.row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy,
+    } satisfies SquareCtaLaneVariantImprovedCase))
+    .sort((left, right) => {
+      const leftHeightReduction = round(left.rawTextHeight - left.adjustedTextHeight)
+      const rightHeightReduction = round(right.rawTextHeight - right.adjustedTextHeight)
+      if (rightHeightReduction !== leftHeightReduction) return rightHeightReduction - leftHeightReduction
+      if (right.adjustedCtaLaneClearance !== left.adjustedCtaLaneClearance) {
+        return right.adjustedCtaLaneClearance - left.adjustedCtaLaneClearance
+      }
+      if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+      return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+        `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+      )
+    })
+    .slice(0, 10)
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      affectedSquareCases: affectedSquareCases.length,
+      leftOldCtaSubtitleFamilyCount: rows.length ? 0 : affectedSquareCases.length,
+      beforeCollisionCount: rows.filter((row) => row.rawCtaToCombinedTextDistance <= 0.5 || row.ctaOverlapRisk).length,
+      afterCollisionCount: rows.filter(
+        (row) => row.adjustedCtaToCombinedTextDistance <= 0.5 || row.ctaCollisionPersistsAfterSubtitleAdjustment
+      ).length,
+      beforeAverageTextHeight: average(withMode.map((entry) => entry.rawTextHeight)),
+      afterAverageTextHeight: average(withMode.map((entry) => entry.adjustedTextHeight)),
+      beforeAverageCtaLaneClearance: average(withMode.map((entry) => entry.rawCtaLaneClearance)),
+      afterAverageCtaLaneClearance: average(withMode.map((entry) => entry.adjustedCtaLaneClearance)),
+      subtitleKeptCount: modeCounts.kept,
+      subtitleCompactedCount: modeCounts.compact,
+      subtitleOneLineCount: modeCounts['one-line'],
+      subtitleOmittedCount: modeCounts.omitted,
+      wouldBecomeMilderCount: rows.filter((row) => row.wouldBecomeMilderUnderSquareSubtitleCtaPolicy).length,
+    },
+    beforeBlockerFamilyDistribution: rows.length
+      ? [{ blockerFamily: 'square-cta-vs-subtitle', count: rows.length }]
+      : [{ blockerFamily: 'square-cta-vs-subtitle', count: affectedSquareCases.length }],
+    afterBlockerFamilyDistribution: sortFrequencyEntries(
+      affectedSquareCases.reduce<Record<string, number>>((acc, row) => {
+        increment(acc, row.mainBlockerBucket)
+        return acc
+      }, {}),
+      (blockerFamily, count) => ({
+        blockerFamily: blockerFamily as MasterResidualBlockerBucket,
+        count,
+      })
+    ),
+    transitionedToBlockerFamilyFrequency: sortFrequencyEntries(
+      affectedSquareCases.reduce<Record<string, number>>((acc, row) => {
+        increment(acc, row.mainBlockerBucket)
+        return acc
+      }, {}),
+      (blockerFamily, count) => ({
+        blockerFamily: blockerFamily as MasterResidualBlockerBucket,
+        count,
+      })
+    ),
+    secondUnlockClassAppears: Boolean(input.squareCtaVsSubtitleDiagnostics.topRecommendedSecondUnlockClass),
+    secondUnlockClassCandidate: input.squareCtaVsSubtitleDiagnostics.topRecommendedSecondUnlockClass,
+    topTransitionedCases: [...affectedSquareCases]
+      .sort((left, right) => {
+        if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+        if (right.confidenceDelta !== left.confidenceDelta) {
+          return right.confidenceDelta - left.confidenceDelta
+        }
+        return left.caseId.localeCompare(right.caseId)
+      })
+      .slice(0, 10)
+      .map((row) => ({
+        caseId: row.caseId,
+        category: row.category,
+        blockerFamily: row.mainBlockerBucket,
+        blockerSubtype: row.dominantBlockerSubtype,
+        aggregateDelta: row.aggregateDelta,
+        confidenceDelta: row.confidenceDelta,
+        severity: row.severity,
+      })),
+    topImprovedCases,
+  }
+}
+
+export function buildSquareImageStructuralDiagnostics(input: {
+  root: string
+  rows: CaseReviewNormalizedRow[]
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+}): SquareImageStructuralDiagnosticsReport {
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+
+  const rows: SquareImageStructuralDiagnosticRow[] = []
+  for (const row of input.rows) {
+    if (row.format !== 'square' || row.family !== 'display') continue
+    const record = pickRecord(row.caseId)
+    if (!record) continue
+    const master = classifyMasterResidualBucket(record)
+    if (master.dominantBlockerFamily !== 'square-image') continue
+    const image = deriveSquareImageStructuralDetails(record)
+    const bestRejected = bestRejectedByCase.get(row.caseId) || null
+    rows.push({
+      caseId: row.caseId,
+      category: row.category,
+      candidateId: record.candidateId,
+      candidateKind: record.candidateKind,
+      strategyLabel: record.strategyLabel,
+      aggregateDelta: record.aggregateDelta,
+      confidenceDelta: round(record.candidateConfidence - record.baselineConfidence),
+      severity: record.placementSeverity,
+      primaryBlocker: getPrimaryBlocker(record.rejectionReasons),
+      onlyBlockedByOneGate: Boolean(bestRejected?.onlyBlockedByOneGate),
+      dominantRole: getDominantViolatingRole(record),
+      imageRect: image.imageRect,
+      titleRect: image.titleRect,
+      subtitleRect: image.subtitleRect,
+      ctaRect: image.ctaRect,
+      messageClusterRect: image.messageClusterRect,
+      imageStructuralSubtype: image.imageStructuralSubtype,
+      imageStructuralReasons: image.imageStructuralReasons,
+      rawAllowedDistance: image.rawAllowedDistance,
+      rawPreferredDistance: image.rawPreferredDistance,
+      adjustedAllowedDistance: image.adjustedAllowedDistance,
+      adjustedPreferredDistance: image.adjustedPreferredDistance,
+      imageZoneConflict: image.imageZoneConflict,
+      imageVsTextOccupancyConflict: image.imageVsTextOccupancyConflict,
+      imageVsCtaOccupancyConflict: image.imageVsCtaOccupancyConflict,
+      imageTooDominantForSquare: image.imageTooDominantForSquare,
+      imageTooWeakForSquare: image.imageTooWeakForSquare,
+      imageTooTallForSquare: image.imageTooTallForSquare,
+      imageTooWideForSquare: image.imageTooWideForSquare,
+      imageFootprintMismatch: image.imageFootprintMismatch,
+      splitPatternMismatch: image.splitPatternMismatch,
+      titleOnlyWouldPass: image.titleOnlyWouldPass,
+      messageClusterWouldPass: image.messageClusterWouldPass,
+      remainingBlockerWouldBecomeMilder: image.remainingBlockerWouldBecomeMilder,
+      legacySafetyRejected: image.legacySafetyRejected,
+      spacingCollapsePresent: image.spacingCollapsePresent,
+      hardStructuralInvalidityPresent: image.hardStructuralInvalidityPresent,
+      criticalOverlapPresent: image.criticalOverlapPresent,
+      roleLossPresent: image.roleLossPresent,
+      closeToAcceptable:
+        record.aggregateDelta > 0 &&
+        Boolean(bestRejected?.onlyBlockedByOneGate) &&
+        !image.legacySafetyRejected &&
+        !image.spacingCollapsePresent &&
+        !image.hardStructuralInvalidityPresent &&
+        !image.criticalOverlapPresent &&
+        !image.roleLossPresent &&
+        (record.placementSeverity !== 'severe' || image.remainingBlockerWouldBecomeMilder),
+    } satisfies SquareImageStructuralDiagnosticRow)
+  }
+
+  rows.sort((left, right) => {
+    if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+    if (right.confidenceDelta !== left.confidenceDelta) return right.confidenceDelta - left.confidenceDelta
+    if (right.adjustedAllowedDistance !== left.adjustedAllowedDistance) {
+      return right.adjustedAllowedDistance - left.adjustedAllowedDistance
+    }
+    return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+      `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+    )
+  })
+
+  const subtypeFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.imageStructuralSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareImageStructuralSubtype, count })
+  )
+
+  const dominantRoleFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.dominantRole)
+      return acc
+    }, {}),
+    (role, count) => ({ role, count })
+  )
+
+  const groupedCandidateSetsBySubtype = Array.from(
+    rows.reduce<Map<string, SquareImageStructuralDiagnosticRow[]>>((acc, row) => {
+      const bucket = acc.get(row.imageStructuralSubtype) || []
+      bucket.push(row)
+      acc.set(row.imageStructuralSubtype, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([blockerSubtype, groupRows]) => ({
+      blockerSubtype: blockerSubtype as SquareImageStructuralSubtype,
+      caseCount: groupRows.length,
+      topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+    }))
+    .sort((left, right) => right.caseCount - left.caseCount || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const blockerSeverityConfidenceGatePatterns = Array.from(
+    rows.reduce<Map<string, number>>((acc, row) => {
+      const confidencePattern =
+        row.confidenceDelta > 0 ? 'positive' : row.confidenceDelta === 0 ? 'neutral' : 'mixed'
+      const key = `${row.imageStructuralSubtype}::${row.severity}::${confidencePattern}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      acc.set(key, (acc.get(key) || 0) + 1)
+      return acc
+    }, new Map())
+  )
+    .map(([key, count]) => {
+      const [blockerSubtype, severity, confidencePattern, singleGatePattern] = key.split('::')
+      return {
+        blockerSubtype: blockerSubtype as SquareImageStructuralSubtype,
+        severity: severity as PlacementViolationSeverity,
+        confidencePattern: confidencePattern as 'positive' | 'neutral' | 'mixed',
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        count,
+      }
+    })
+    .sort((left, right) => {
+      if (right.count !== left.count) return right.count - left.count
+      return `${left.blockerSubtype}:${left.severity}:${left.confidencePattern}:${left.singleGatePattern}`.localeCompare(
+        `${right.blockerSubtype}:${right.severity}:${right.confidencePattern}:${right.singleGatePattern}`
+      )
+    })
+
+  const nearMissSingleGateSubgroupCounts = sortFrequencyEntries(
+    rows
+      .filter(
+        (row) =>
+          row.onlyBlockedByOneGate &&
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent &&
+          row.confidenceDelta >= 0 &&
+          row.closeToAcceptable
+      )
+      .reduce<Record<string, number>>((acc, row) => {
+        increment(acc, row.imageStructuralSubtype)
+        return acc
+      }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareImageStructuralSubtype, count })
+  )
+
+  const recommendedSecondUnlockCandidates = Array.from(
+    rows.reduce<Map<string, SquareImageStructuralDiagnosticRow[]>>((acc, row) => {
+      const confidencePattern =
+        row.confidenceDelta > 0 ? 'positive' : row.confidenceDelta === 0 ? 'neutral' : 'mixed'
+      const key = `${row.imageStructuralSubtype}::${row.severity}::${confidencePattern}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      const bucket = acc.get(key) || []
+      bucket.push(row)
+      acc.set(key, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([key, groupRows]) => {
+      const [blockerSubtype, severity, confidencePattern, singleGatePattern] = key.split('::')
+      const noHardSafety = groupRows.every(
+        (row) =>
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      const narrow = groupRows.length <= 8
+      const homogeneous = new Set(groupRows.map((row) => row.imageStructuralSubtype)).size === 1
+      const mostlySingleGate = groupRows.filter((row) => row.onlyBlockedByOneGate).length / groupRows.length >= 0.8
+      const nonNegativeConfidence = groupRows.every((row) => row.confidenceDelta >= 0)
+      const notFundamentallySevere = groupRows.every(
+        (row) =>
+          row.severity !== 'severe' ||
+          row.remainingBlockerWouldBecomeMilder ||
+          row.imageStructuralSubtype === 'image-zone-mismatch'
+      )
+      const ready =
+        narrow &&
+        homogeneous &&
+        mostlySingleGate &&
+        nonNegativeConfidence &&
+        noHardSafety &&
+        notFundamentallySevere
+      const expectedSafeguardsNeeded = [
+        'single-gate only',
+        'no legacy-safety-rejection',
+        'no hard-structural-invalidity',
+        'no spacing-collapse',
+        'no critical-overlap',
+        'no role-loss',
+        'non-negative confidence delta',
+        'image mismatch must be non-fundamental',
+      ]
+      return {
+        proposedUnlockClassKey: ready
+          ? `square-${blockerSubtype}-near-miss-v1`
+          : `not-ready:square-image:${blockerSubtype}`,
+        blockerSubtype: blockerSubtype as SquareImageStructuralSubtype,
+        severity: severity as PlacementViolationSeverity,
+        confidencePattern: confidencePattern as 'positive' | 'neutral' | 'mixed',
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        caseCount: groupRows.length,
+        ready,
+        whyReady: ready
+          ? 'Narrow homogeneous square image subgroup with stable confidence and no hard safety findings.'
+          : '',
+        whyNotReady: ready
+          ? ''
+          : [
+              !narrow ? 'too-broad' : null,
+              !homogeneous ? 'mixed-subtypes' : null,
+              !mostlySingleGate ? 'not-mostly-single-gate' : null,
+              !nonNegativeConfidence ? 'confidence-not-stable' : null,
+              !noHardSafety ? 'hard-safety-flags-present' : null,
+              !notFundamentallySevere ? 'still-fundamental-image-structural-conflict' : null,
+            ]
+              .filter((value): value is string => Boolean(value))
+              .join(', '),
+        expectedSafeguardsNeeded,
+        topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+      } satisfies SquareImageStructuralCandidateGroup
+    })
+    .sort((left, right) => {
+      if (Number(right.ready) !== Number(left.ready)) return Number(right.ready) - Number(left.ready)
+      if (right.caseCount !== left.caseCount) return right.caseCount - left.caseCount
+      return left.proposedUnlockClassKey.localeCompare(right.proposedUnlockClassKey)
+    })
+
+  const topRecommendedSecondUnlockClass =
+    recommendedSecondUnlockCandidates.find((group) => group.ready) ||
+    recommendedSecondUnlockCandidates[0] ||
+    null
+
+  const topRecommendedNextStructuralFix = subtypeFrequency[0]
+    ? {
+        blockerSubtype: subtypeFrequency[0].subtype,
+        caseCount: subtypeFrequency[0].count,
+        rationale:
+          subtypeFrequency[0].subtype === 'image-footprint-too-large'
+            ? 'Square image candidates are still materially larger than usable image zones, so the next fix should target image crop/footprint generation rather than acceptance.'
+            : 'Highest-frequency residual square image subtype should be addressed structurally before any unlock experiment.',
+      }
+    : null
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      closeToAcceptableCount: rows.filter((row) => row.closeToAcceptable).length,
+      singleGateNearMissCount: rows.filter((row) => row.onlyBlockedByOneGate).length,
+      imageZoneConflictCount: rows.filter((row) => row.imageZoneConflict).length,
+      imageVsTextOccupancyConflictCount: rows.filter((row) => row.imageVsTextOccupancyConflict).length,
+      imageVsCtaOccupancyConflictCount: rows.filter((row) => row.imageVsCtaOccupancyConflict).length,
+      imageFootprintTooLargeCount: rows.filter(
+        (row) => row.imageStructuralSubtype === 'image-footprint-too-large'
+      ).length,
+      imageFootprintTooSmallCount: rows.filter(
+        (row) => row.imageStructuralSubtype === 'image-footprint-too-small'
+      ).length,
+      imageDominanceMismatchCount: rows.filter((row) => row.imageTooDominantForSquare || row.imageTooWeakForSquare)
+        .length,
+      wouldBecomeMilderCount: rows.filter((row) => row.remainingBlockerWouldBecomeMilder).length,
+    },
+    subtypeFrequency,
+    dominantRoleFrequency,
+    groupedCandidateSetsBySubtype,
+    blockerSeverityConfidenceGatePatterns,
+    nearMissSingleGateSubgroupCounts,
+    recommendedSecondUnlockCandidates,
+    topRecommendedSecondUnlockClass,
+    topRecommendedNextStructuralFix,
     cases: rows,
   }
 }
@@ -4852,6 +5578,21 @@ export async function exportCaseReviewTable(
     bestRejectedCandidates,
     records: placementRecords,
   })
+  const squareCtaPairingStructuralFixReport = buildSquareCtaPairingStructuralFixReport({
+    root: roots.outputRoot,
+    squareCtaVsSubtitleDiagnostics,
+  })
+  const squareImageStructuralDiagnostics = buildSquareImageStructuralDiagnostics({
+    root: roots.outputRoot,
+    rows: sortedRows,
+    bestRejectedCandidates,
+    records: placementRecords,
+  })
+  const squareCtaLaneVariantReport = buildSquareCtaLaneVariantReport({
+    root: roots.outputRoot,
+    squareCtaVsSubtitleDiagnostics,
+    masterResidualBlockers,
+  })
   const landscapeTextHeightProductionExperiment = buildLandscapeTextHeightProductionExperiment({
     root: roots.outputRoot,
     rows: sortedRows,
@@ -4931,6 +5672,22 @@ export async function exportCaseReviewTable(
       roots.outputRoot,
       '_square-cta-vs-subtitle-diagnostics.json'
     ),
+    squareSubtitleCtaPairingDiagnosticsJson: path.join(
+      roots.outputRoot,
+      '_square-subtitle-cta-pairing-diagnostics.json'
+    ),
+    squareCtaPairingStructuralFixReportJson: path.join(
+      roots.outputRoot,
+      '_square-cta-pairing-structural-fix-report.json'
+    ),
+    squareCtaLaneVariantReportJson: path.join(
+      roots.outputRoot,
+      '_square-cta-lane-variant-report.json'
+    ),
+    squareImageStructuralDiagnosticsJson: path.join(
+      roots.outputRoot,
+      '_square-image-structural-diagnostics.json'
+    ),
     masterResidualBlockersJson: path.join(roots.outputRoot, '_master-residual-blockers.json'),
     landscapeTextHeightProductionExperimentJson: path.join(
       roots.outputRoot,
@@ -4966,6 +5723,16 @@ export async function exportCaseReviewTable(
   await writeJson(outputPaths.squareRoleConflictDiagnosticsJson, squareRoleConflictDiagnostics)
   await writeJson(outputPaths.squareCtaVsTextDiagnosticsJson, squareCtaVsTextDiagnostics)
   await writeJson(outputPaths.squareCtaVsSubtitleDiagnosticsJson, squareCtaVsSubtitleDiagnostics)
+  await writeJson(
+    outputPaths.squareSubtitleCtaPairingDiagnosticsJson,
+    squareCtaVsSubtitleDiagnostics
+  )
+  await writeJson(
+    outputPaths.squareCtaPairingStructuralFixReportJson,
+    squareCtaPairingStructuralFixReport
+  )
+  await writeJson(outputPaths.squareCtaLaneVariantReportJson, squareCtaLaneVariantReport)
+  await writeJson(outputPaths.squareImageStructuralDiagnosticsJson, squareImageStructuralDiagnostics)
   await writeJson(outputPaths.masterResidualBlockersJson, masterResidualBlockers)
   await writeJson(
     outputPaths.landscapeTextHeightProductionExperimentJson,
@@ -4999,6 +5766,9 @@ export async function exportCaseReviewTable(
     squareRoleConflictDiagnostics,
     squareCtaVsTextDiagnostics,
     squareCtaVsSubtitleDiagnostics,
+    squareCtaPairingStructuralFixReport,
+    squareCtaLaneVariantReport,
+    squareImageStructuralDiagnostics,
     masterResidualBlockers,
     landscapeImageNearMissExperiment,
     landscapeTextHeightProductionExperiment,

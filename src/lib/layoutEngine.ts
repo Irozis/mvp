@@ -2199,13 +2199,165 @@ function buildModelZones(model: CompositionModel, format: FormatDefinition, imag
   const logoZone = logoSlot ? anchorRegionWithinZone(getCompositionZoneRegion(model, logoSlot.zoneId, format) || rectToRegion(getFormatRuleSet(format).safeArea, format), logoSlot, format) : undefined
   const badgeZone = badgeSlot ? anchorRegionWithinZone(getCompositionZoneRegion(model, badgeSlot.zoneId, format) || rectToRegion(getFormatRuleSet(format).safeArea, format), badgeSlot, format) : undefined
   const ctaZone = ctaSlot ? anchorRegionWithinZone(getCompositionZoneRegion(model, ctaSlot.zoneId, format) || rectToRegion(getFormatRuleSet(format).safeArea, format), ctaSlot, format) : undefined
-  return {
+  return applyPrimarySquareBaselineZoneGuard(
+    {
     image: imageZone || { x: 8, y: 8, w: 84, h: 64 },
     text: textZone || { x: 8, y: 24, w: 44, h: 40 },
     logo: logoZone || { x: 6, y: 6, w: 10, h: 5 },
     badge: badgeZone || { x: 80, y: 6, w: 12, h: 5 },
     cta: ctaZone || { x: 8, y: 84, w: 18, h: 6 },
+    },
+    format,
+    imageAnalysis
+  )
+}
+
+function applyPrimarySquareBaselineZoneGuard(
+  zones: FamilyZoneSet,
+  format: FormatDefinition,
+  imageAnalysis?: EnhancedImageAnalysis
+): FamilyZoneSet {
+  if (format.key !== 'social-square') return zones
+
+  const next = clone(zones)
+  const imageProfile = imageAnalysis?.imageProfile
+  const imageMaxW =
+    imageProfile === 'portrait' || imageProfile === 'tall'
+      ? 30
+      : imageProfile === 'ultraWide'
+        ? 28
+        : 32
+  const imageMaxH = imageProfile === 'ultraWide' ? 26 : imageProfile === 'portrait' || imageProfile === 'tall' ? 34 : 32
+  const ctaHeight = clamp(next.cta.h || 6, 5.6, 6.4)
+  const ctaY = clamp(Math.max(next.cta.y, 82), 80, 86)
+  const textX = clamp(Math.min(next.text.x, 8), 6.5, 10)
+  const textY = clamp(Math.min(next.text.y, 18), 14, 22)
+  const textW = clamp(Math.max(next.text.w, 38), 36, 42)
+  const textBottomCap = ctaY - 11
+  const textH = clamp(Math.min(Math.max(next.text.h, 20), textBottomCap - textY), 18, 24)
+
+  next.text = normalizeRegion({
+    x: textX,
+    y: textY,
+    w: textW,
+    h: textH,
+  })
+  next.cta = normalizeRegion({
+    x: textX,
+    y: ctaY,
+    w: clamp(next.cta.w || 20, 18, 22),
+    h: ctaHeight,
+  })
+
+  const imageX = clamp(Math.max(next.image.x, next.text.x + next.text.w + 8), 54, 66)
+  const imageY = clamp(next.image.y, 12, 18)
+  const imageBottomCap = next.cta.y - 9
+  const imageH = clamp(Math.min(next.image.h, imageBottomCap - imageY), 22, imageMaxH)
+  const imageW = clamp(Math.min(next.image.w, imageMaxW), 24, imageMaxW)
+  next.image = normalizeRegion({
+    x: imageX,
+    y: imageY,
+    w: imageW,
+    h: imageH,
+  })
+
+  next.logo = normalizeRegion({
+    x: clamp(next.logo.x, 6, 10),
+    y: clamp(next.logo.y, 5, 8),
+    w: clamp(next.logo.w || 10, 9, 12),
+    h: clamp(next.logo.h || 5, 4.2, 5.2),
+  })
+  next.badge = normalizeRegion({
+    x: clamp(Math.max(next.badge.x, next.image.x + 2), 72, 84),
+    y: clamp(next.badge.y, 5, 10),
+    w: clamp(next.badge.w || 12, 10, 16),
+    h: clamp(next.badge.h || 5, 4.2, 5.2),
+  })
+
+  return next
+}
+
+function getPrimarySquareImageCoverageCap(textClusterCoverage: number) {
+  if (textClusterCoverage >= 0.18) return 0.105
+  if (textClusterCoverage >= 0.15) return 0.115
+  if (textClusterCoverage >= 0.12) return 0.125
+  return 0.135
+}
+
+function normalizePrimarySquareImageCandidate(candidate: Region, base: Region): Region {
+  const maxW = clamp(Math.min(base.w, 30), 22, 30)
+  const maxH = clamp(Math.min(base.h, 32), 22, 32)
+  let next = normalizeRegion({
+    x: candidate.x,
+    y: candidate.y,
+    w: clamp(candidate.w, 20, maxW),
+    h: clamp(candidate.h, 20, maxH),
+  })
+  const maxArea = 1040
+  const area = next.w * next.h
+  if (area > maxArea) {
+    const scale = Math.sqrt(maxArea / area)
+    next = normalizeRegion({
+      ...next,
+      w: clamp(next.w * scale, 20, maxW),
+      h: clamp(next.h * scale, 20, maxH),
+    })
   }
+  return normalizeRegion({
+    x: clamp(next.x, base.x, base.x + base.w - next.w),
+    y: clamp(next.y, base.y, base.y + base.h - next.h),
+    w: next.w,
+    h: next.h,
+  })
+}
+
+function clampPrimarySquareMaterializedImage(input: {
+  image: Region
+  safeArea: Region
+  textClusterBounds: Rect
+  ctaRect: Rect
+}) {
+  const textRight =
+    input.textClusterBounds.w > 0 && input.textClusterBounds.h > 0
+      ? input.textClusterBounds.x + input.textClusterBounds.w
+      : 46
+  const imageX = clamp(Math.max(input.image.x, textRight + 7), 54, 66)
+  const imageY = clamp(input.image.y, 12, 18)
+  const imageBottomCap = clamp(
+    Math.min(
+      input.ctaRect.w > 0 && input.ctaRect.h > 0 ? input.ctaRect.y - 8 : input.safeArea.y + input.safeArea.h - 8,
+      52
+    ),
+    34,
+    56
+  )
+  const maxW = 30
+  const maxH = clamp(imageBottomCap - imageY, 22, 34)
+  let next = normalizeRegion({
+    x: imageX,
+    y: imageY,
+    w: clamp(input.image.w, 22, maxW),
+    h: clamp(input.image.h, 22, maxH),
+  })
+  const maxCoverage = getPrimarySquareImageCoverageCap(
+    ((input.textClusterBounds.w || 0) * (input.textClusterBounds.h || 0)) / 10000
+  )
+  const maxArea = 10000 * maxCoverage
+  const area = next.w * next.h
+  if (area > maxArea) {
+    const scale = Math.sqrt(maxArea / area)
+    next = normalizeRegion({
+      ...next,
+      w: clamp(next.w * scale, 22, maxW),
+      h: clamp(next.h * scale, 22, maxH),
+    })
+  }
+  return normalizeRegion({
+    x: clamp(next.x, 54, 92 - next.w),
+    y: clamp(next.y, 12, imageBottomCap - next.h),
+    w: next.w,
+    h: next.h,
+  })
 }
 
 function buildFamilyZones({
@@ -2232,6 +2384,10 @@ function buildFamilyZones({
   const ruleLogo = getRuleZone(ruleSet, 'logo', ruleSet.elements.logo.allowedZones)
   const ruleBadge = getRuleZone(ruleSet, 'badge', ruleSet.elements.badge?.allowedZones)
   const ruleCta = getRuleZone(ruleSet, 'cta', ruleSet.elements.cta.allowedZones)
+  const isPrimarySquare = format.key === 'social-square'
+  const isPrimaryPortrait = format.key === 'social-portrait'
+  const isPrimaryLandscape = format.key === 'social-landscape'
+  const isPrimaryDisplayLargeRect = format.key === 'display-large-rect'
 
   if (intent.family === 'square-hero-overlay' || intent.family === 'square-image-top-text-bottom') {
     const current = {
@@ -2239,12 +2395,19 @@ function buildFamilyZones({
         x: 8,
         y: insets.y + 2,
         w: intent.family === 'square-hero-overlay' ? 86 : 82,
-        h: intent.family === 'square-hero-overlay' ? (imageAnalysis?.imageProfile === 'ultraWide' ? 44 : 54) : 42,
+        h: intent.family === 'square-hero-overlay'
+          ? (imageAnalysis?.imageProfile === 'ultraWide' ? 42 : isPrimarySquare ? 46 : 54)
+          : isPrimarySquare ? 36 : 42,
       },
-      text: { x: insets.x + 1, y: intent.family === 'square-hero-overlay' ? 60 : 58, w: profile.density === 'dense' ? 62 : 58, h: 30 },
+      text: {
+        x: insets.x + 1,
+        y: intent.family === 'square-hero-overlay' ? (isPrimarySquare ? 54 : 60) : (isPrimarySquare ? 52 : 58),
+        w: profile.density === 'dense' ? (isPrimarySquare ? 62 : 62) : (isPrimarySquare ? 58 : 58),
+        h: isPrimarySquare ? 24 : 30,
+      },
       logo: { x: insets.x, y: insets.y, w: 12, h: 5.2 },
       badge: { x: 74, y: insets.y, w: 18, h: 5.2 },
-      cta: { x: insets.x + 1, y: 86, w: 26, h: 8 },
+      cta: { x: insets.x + 1, y: isPrimarySquare ? 84 : 86, w: 26, h: isPrimarySquare ? 6.8 : 8 },
     }
     if (isNoImageMarketplaceCardLayout({ format, assetHint, imageAnalysis }) && intent.family === 'square-hero-overlay') {
       current.image = {
@@ -2256,7 +2419,8 @@ function buildFamilyZones({
       current.text = { x: insets.x + 2, y: 46, w: 76, h: 28 }
       current.cta = { x: insets.x + 2, y: 80, w: 28, h: 6 }
     }
-    return finalizeFamilyZones({
+    return applyPrimarySquareBaselineZoneGuard(
+      finalizeFamilyZones({
       current,
       format,
       intent,
@@ -2271,7 +2435,10 @@ function buildFamilyZones({
       assetHint,
       imageAnalysis,
       mins: { image: [24, 20], text: [24, 16], logo: [6, 3], badge: [8, 3], cta: [12, 4] },
-    })
+      }),
+      format,
+      imageAnalysis
+    )
   }
 
   if (intent.family === 'portrait-hero-overlay') {
@@ -2279,13 +2446,13 @@ function buildFamilyZones({
       image: { x: 4, y: 4, w: 92, h: format.family === 'skyscraper' ? 92 : 88 },
       text: {
         x: clamp(safeText.x, insets.x + 1, 18),
-        y: clamp(Math.max(safeText.y, format.family === 'skyscraper' ? 56 : 54), 50, 64),
+        y: clamp(Math.max(safeText.y, format.family === 'skyscraper' ? 56 : isPrimaryPortrait ? 48 : 54), 46, 64),
         w: format.family === 'skyscraper' ? 78 : 74,
-        h: format.family === 'skyscraper' ? 34 : 28,
+        h: format.family === 'skyscraper' ? 34 : isPrimaryPortrait ? 22 : 28,
       },
       logo: { x: insets.x, y: insets.y, w: format.family === 'skyscraper' ? 22 : 12, h: format.family === 'skyscraper' ? 5 : 4.8 },
       badge: { x: 100 - insets.x - 16, y: insets.y, w: 16, h: format.family === 'skyscraper' ? 5 : 4.8 },
-      cta: { x: clamp(safeText.x, insets.x + 1, 18), y: clamp(Math.max(safeText.y, format.family === 'skyscraper' ? 82 : 78), 72, 88), w: 26, h: 7.6 },
+      cta: { x: clamp(safeText.x, insets.x + 1, 18), y: clamp(Math.max(safeText.y, format.family === 'skyscraper' ? 82 : isPrimaryPortrait ? 80 : 78), 72, 88), w: 26, h: isPrimaryPortrait ? 6.8 : 7.6 },
     }
     return finalizeFamilyZones({
       current,
@@ -2337,17 +2504,17 @@ function buildFamilyZones({
         x: format.family === 'skyscraper' ? 10 : insets.x + 1,
         y: insets.y + 3,
         w: format.family === 'skyscraper' ? 80 : 100 - (insets.x + 1) * 2,
-        h: format.family === 'printPortrait' ? 38 : format.family === 'skyscraper' ? 28 : imageAnalysis?.imageProfile === 'portrait' || imageAnalysis?.imageProfile === 'tall' ? 38 : 32,
+        h: format.family === 'printPortrait' ? 38 : format.family === 'skyscraper' ? 28 : imageAnalysis?.imageProfile === 'portrait' || imageAnalysis?.imageProfile === 'tall' ? (isPrimaryPortrait ? 30 : 38) : (isPrimaryPortrait ? 26 : 32),
       },
       text: {
         x: format.family === 'skyscraper' ? 10 : insets.x + 1,
-        y: format.family === 'skyscraper' ? 46 : format.family === 'printPortrait' ? 50 : 52,
-        w: format.family === 'skyscraper' ? 76 : format.family === 'printPortrait' ? 70 : 74,
-        h: format.family === 'skyscraper' ? 42 : 32,
+        y: format.family === 'skyscraper' ? 46 : format.family === 'printPortrait' ? 50 : isPrimaryPortrait ? 46 : 52,
+        w: format.family === 'skyscraper' ? 76 : format.family === 'printPortrait' ? 70 : isPrimaryPortrait ? 72 : 74,
+        h: format.family === 'skyscraper' ? 42 : isPrimaryPortrait ? 26 : 32,
       },
       logo: { x: insets.x, y: insets.y, w: format.family === 'skyscraper' ? 22 : 12, h: format.family === 'skyscraper' ? 5 : 4.8 },
       badge: { x: insets.x, y: format.family === 'skyscraper' ? 38 : 44, w: 18, h: format.family === 'skyscraper' ? 5 : 4.8 },
-      cta: { x: format.family === 'skyscraper' ? 10 : insets.x + 1, y: format.family === 'skyscraper' ? 82 : 86, w: 24, h: 7.2 },
+      cta: { x: format.family === 'skyscraper' ? 10 : insets.x + 1, y: format.family === 'skyscraper' ? 82 : isPrimaryPortrait ? 84 : 86, w: 24, h: isPrimaryPortrait ? 6.6 : 7.2 },
     }
     return finalizeFamilyZones({
       current,
@@ -2368,15 +2535,22 @@ function buildFamilyZones({
   }
 
   if (intent.family === 'landscape-text-left-image-right' || intent.family === 'landscape-balanced-split') {
-    const imageW = imageAnalysis?.imageProfile === 'portrait' || imageAnalysis?.imageProfile === 'tall' ? 24 : imageAnalysis?.imageProfile === 'ultraWide' ? 34 : 30
+    const compactWideBaseline = isPrimaryLandscape || isPrimaryDisplayLargeRect
+    const imageW =
+      imageAnalysis?.imageProfile === 'portrait' || imageAnalysis?.imageProfile === 'tall'
+        ? (compactWideBaseline ? 22 : 24)
+        : imageAnalysis?.imageProfile === 'ultraWide'
+          ? (compactWideBaseline ? 32 : 34)
+          : (compactWideBaseline ? 28 : 30)
     const imageX = intent.imageMode === 'split-left' ? insets.x : 100 - insets.x - imageW
-    const textX = intent.imageMode === 'split-left' ? 100 - insets.x - 48 : insets.x
+    const textWidth = intent.family === 'landscape-balanced-split' ? (compactWideBaseline ? 46 : 44) : (compactWideBaseline ? 48 : 46)
+    const textX = intent.imageMode === 'split-left' ? 100 - insets.x - textWidth : insets.x
     const current = {
-      image: { x: imageX, y: 18, w: imageW, h: 56 },
-      text: { x: textX, y: 24, w: intent.family === 'landscape-balanced-split' ? 44 : 46, h: 42 },
+      image: { x: imageX, y: compactWideBaseline ? 16 : 18, w: imageW, h: compactWideBaseline ? 52 : 56 },
+      text: { x: textX, y: compactWideBaseline ? 18 : 24, w: textWidth, h: compactWideBaseline ? 34 : 42 },
       logo: { x: insets.x, y: insets.y, w: 10, h: 5 },
       badge: { x: textX, y: 14, w: 16, h: 5 },
-      cta: { x: textX, y: 70, w: 22, h: 7 },
+      cta: { x: textX, y: compactWideBaseline ? 68 : 70, w: 22, h: compactWideBaseline ? 6.6 : 7 },
     }
     return finalizeFamilyZones({
       current,
@@ -2425,11 +2599,11 @@ function buildFamilyZones({
 
   if (intent.family === 'display-rectangle-balanced') {
     const current = {
-      image: { x: 58, y: 14, w: 30, h: 58 },
+      image: { x: 60, y: 14, w: 30, h: 58 },
       text: { x: 8, y: 22, w: 42, h: 40 },
       logo: { x: insets.x, y: insets.y, w: 12, h: 5 },
       badge: { x: 8, y: 14, w: 18, h: 5 },
-      cta: { x: 8, y: 68, w: 22, h: 7 },
+      cta: { x: 8, y: 68, w: 24, h: 7 },
     }
     return finalizeFamilyZones({
       current,
@@ -3344,13 +3518,14 @@ function buildImagePackingCandidates(input: {
 }) {
   const base = normalizeRegion(input.baseRegion)
   const safeShift = clamp(input.variant.imageShiftBias, -6, 6)
-  const scale = clamp(input.variant.imageScale, 0.76, 1)
-  const scaledWidth = clamp(base.w * scale, 16, base.w)
-  const scaledHeight = clamp(base.h * scale, 14, base.h)
+  const isPrimarySquare = input.format.key === 'social-square'
+  const scale = clamp(input.variant.imageScale, isPrimarySquare ? 0.72 : 0.76, isPrimarySquare ? 0.92 : 1)
+  const scaledWidth = clamp(base.w * scale, 16, isPrimarySquare ? Math.min(base.w, 30) : base.w)
+  const scaledHeight = clamp(base.h * scale, 14, isPrimarySquare ? Math.min(base.h, 32) : base.h)
   const centeredX = clamp(base.x + (base.w - scaledWidth) / 2, base.x, base.x + base.w - scaledWidth)
   const centeredY = clamp(base.y + (base.h - scaledHeight) / 2, base.y, base.y + base.h - scaledHeight)
   const edgeBiasX = clamp(centeredX + safeShift, base.x, base.x + base.w - scaledWidth)
-  return [
+  const candidates = [
     { x: edgeBiasX, y: centeredY, w: scaledWidth, h: scaledHeight },
     { x: base.x, y: base.y, w: scaledWidth, h: scaledHeight },
     {
@@ -3360,6 +3535,10 @@ function buildImagePackingCandidates(input: {
       h: scaledHeight,
     },
   ].map((candidate) => normalizeRegion(candidate))
+
+  return isPrimarySquare
+    ? candidates.map((candidate) => normalizePrimarySquareImageCandidate(candidate, base))
+    : candidates
 }
 
 function evaluatePackingAttempt(input: {
@@ -3574,14 +3753,48 @@ function fitTextClusterToZones(input: {
   ctaAnchors?: Array<'start' | 'end'>
 }) {
   const next = clone(input.scene)
+  const isPrimarySquareFormat = input.format.key === 'social-square'
+  const isPrimaryBaselineFormat =
+    isPrimarySquareFormat ||
+    input.format.key === 'social-portrait' ||
+    input.format.key === 'social-landscape' ||
+    input.format.key === 'display-large-rect'
+  const isPrimaryRecoveryFormat =
+    isPrimarySquareFormat ||
+    input.format.key === 'social-portrait' ||
+    input.format.key === 'social-landscape'
   const headlineRule = input.ruleSet.typography.headline
   const subtitleRule = input.ruleSet.typography.subtitle
   const clusterGap = pxToPercentY(input.contract.clusterGapPx, input.format)
-  const imageGap = pxToPercentX(input.contract.textToImageGapPx, input.format)
+  const squareImageGapBoost = isPrimarySquareFormat ? 6 : 0
+  const squareCtaReserveBoost = isPrimarySquareFormat ? 10 : 0
+  const imageGap = pxToPercentX(
+    input.contract.textToImageGapPx +
+      squareImageGapBoost +
+      (isPrimaryBaselineFormat ? 2 : 0) +
+      (isPrimaryRecoveryFormat ? 2 : 0),
+    input.format
+  )
   const topReserve = pxToPercentY(input.contract.topReservePx, input.format)
-  const ctaReserve = Math.max(pxToPercentY(input.contract.ctaReservePx, input.format), (next.cta.h || 0) + clusterGap + 2)
+  const ctaReserve = Math.max(
+    pxToPercentY(
+      input.contract.ctaReservePx +
+        squareCtaReserveBoost +
+        (isPrimaryBaselineFormat ? 4 : 0) +
+        (isPrimaryRecoveryFormat ? 4 : 0),
+      input.format
+    ),
+    (next.cta.h || 0) +
+      clusterGap +
+      (isPrimarySquareFormat ? 3.5 : isPrimaryBaselineFormat ? 2.5 : 2) +
+      (isPrimaryRecoveryFormat ? 1.5 : 0)
+  )
   const blockers = [input.logoRect, input.badgeRect].filter((item): item is Rect => Boolean(item && item.w > 0 && item.h > 0))
-  const ctaAnchors: Array<'start' | 'end'> = input.ctaAnchors?.length ? input.ctaAnchors : ['start', 'end']
+  const ctaAnchors: Array<'start' | 'end'> = isPrimarySquareFormat
+    ? ['start']
+    : input.ctaAnchors?.length
+      ? input.ctaAnchors
+      : ['start', 'end']
   let workingTextRegion = reserveTextRegionFromBlockers(
     {
       x: input.textRegion.x,
@@ -3615,7 +3828,16 @@ function fitTextClusterToZones(input: {
   let titleChars = next.title.charsPerLine || input.typography.titleCharsPerLine
   let subtitleChars = next.subtitle.charsPerLine || input.typography.subtitleCharsPerLine
   let titleMaxLines = Math.min(next.title.maxLines || input.typography.titleMaxLines, input.contract.headlineMaxLines)
-  let subtitleMaxLines = Math.min(next.subtitle.maxLines || input.typography.subtitleMaxLines, input.contract.subtitleMaxLines)
+  let subtitleMaxLines = Math.min(
+    next.subtitle.maxLines || input.typography.subtitleMaxLines,
+    Math.max(
+      1,
+      input.contract.subtitleMaxLines -
+        (isPrimarySquareFormat ? 1 : 0) -
+        (isPrimaryBaselineFormat ? 1 : 0) -
+        (isPrimaryRecoveryFormat ? 1 : 0)
+    )
+  )
   let headlineBox = null as ReturnType<typeof fitSceneTextToRule> | null
   let subtitleBox = null as ReturnType<typeof fitSceneTextToRule> | null
   let ctaY = input.ctaRegion.y
@@ -3663,11 +3885,17 @@ function fitTextClusterToZones(input: {
       measurementHint: next.subtitle.measurementHint,
     })
 
-    const preferredCtaY = clamp(
-      subtitleBox.rect.y + subtitleBox.rect.h + clusterGap,
-      input.ctaRegion.y,
-      input.ctaRegion.y + input.ctaRegion.h - ctaHeight
-    )
+    const preferredCtaY = isPrimarySquareFormat
+      ? clamp(
+          input.ctaRegion.y + input.ctaRegion.h - ctaHeight,
+          input.ctaRegion.y,
+          input.ctaRegion.y + input.ctaRegion.h - ctaHeight
+        )
+      : clamp(
+          subtitleBox.rect.y + subtitleBox.rect.h + clusterGap,
+          input.ctaRegion.y,
+          input.ctaRegion.y + input.ctaRegion.h - ctaHeight
+        )
 
     let chosenCtaRect: Rect | null = null
     let chosenAnchor: 'start' | 'end' = ctaAnchors[0]
@@ -3697,7 +3925,9 @@ function fitTextClusterToZones(input: {
       reasons.push('reservation-conflict')
       chosenCtaRect = {
         x: clamp(workingTextRegion.x, input.ctaRegion.x, input.ctaRegion.x + input.ctaRegion.w - ctaWidth),
-        y: preferredCtaY,
+        y: isPrimaryBaselineFormat
+          ? clamp(input.ctaRegion.y + input.ctaRegion.h - ctaHeight, input.ctaRegion.y, input.ctaRegion.y + input.ctaRegion.h - ctaHeight)
+          : preferredCtaY,
         w: ctaWidth,
         h: ctaHeight,
       }
@@ -3739,7 +3969,9 @@ function fitTextClusterToZones(input: {
     else if (titleChars < 40) titleChars += 2
     else if (titleMaxLines < input.contract.headlineMaxLines) titleMaxLines += 1
 
-    if (subtitleFont > subtitleRule.minFontSize) subtitleFont -= 1
+    if (isPrimarySquareFormat && subtitleMaxLines > 1) subtitleMaxLines -= 1
+    else if (isPrimaryBaselineFormat && subtitleMaxLines > 1) subtitleMaxLines -= 1
+    else if (subtitleFont > subtitleRule.minFontSize) subtitleFont -= 1
     else if (subtitleChars < 44) subtitleChars += 2
     else if (subtitleMaxLines < input.contract.subtitleMaxLines) subtitleMaxLines += 1
 
@@ -5496,6 +5728,7 @@ function applyRuleConstraints(scene: Scene, format: FormatDefinition, ruleSet: F
   const safeArea = rectToRegion(ruleSet.safeArea, format)
   const imageMinCoverage = ruleSet.composition.minImageCoverage
   const imageMaxCoverage = ruleSet.composition.maxImageCoverage
+  const isPrimarySquare = format.key === 'social-square'
   const textGeometry = buildSceneTextGeometry(next, format)
   const textClusterBounds = getBounds([
     textGeometry.headline.rect,
@@ -5520,15 +5753,32 @@ function applyRuleConstraints(scene: Scene, format: FormatDefinition, ruleSet: F
   next.badge.y = clamp(next.badge.y || 0, safeArea.y, safeArea.y + safeArea.h - (next.badge.h || 0))
   next.image.x = clamp(next.image.x || 0, safeArea.x, safeArea.x + safeArea.w - (next.image.w || 0))
   next.image.y = clamp(next.image.y || 0, safeArea.y, safeArea.y + safeArea.h - (next.image.h || 0))
+  if (isPrimarySquare) {
+    next.image = clampPrimarySquareMaterializedImage({
+      image: normalizeRegion({
+        x: next.image.x || 0,
+        y: next.image.y || 0,
+        w: next.image.w || 0,
+        h: next.image.h || 0,
+      }),
+      safeArea,
+      textClusterBounds,
+      ctaRect: { x: next.cta.x || 0, y: next.cta.y || 0, w: next.cta.w || 0, h: next.cta.h || 0 },
+    })
+  }
   const marketplaceSafe = isConstrainedMarketplaceFormat(format)
   const clampedOnly = marketplaceSafe ? clone(next) : null
   const beforeMetrics = marketplaceSafe ? getMarketplaceStageGuardMetrics(scene, format) : null
   const clampedMetrics = marketplaceSafe && clampedOnly ? getMarketplaceStageGuardMetrics(clampedOnly, format) : null
 
-  const targetMinImageCoverage =
-    textClusterCoverage >= Math.max(ruleSet.composition.minTextCoverage, 0.18)
+  const targetMinImageCoverage = isPrimarySquare
+    ? Math.min(getPrimarySquareImageCoverageCap(textClusterCoverage), Math.max(imageMinCoverage - 0.22, 0.11))
+    : textClusterCoverage >= Math.max(ruleSet.composition.minTextCoverage, 0.18)
       ? Math.max(imageMinCoverage - 0.08, 0.18)
       : imageMinCoverage
+  const effectiveImageMaxCoverage = isPrimarySquare
+    ? Math.min(imageMaxCoverage, getPrimarySquareImageCoverageCap(textClusterCoverage) + 0.025)
+    : imageMaxCoverage
 
   if (imageCoverage < targetMinImageCoverage) {
     const scale = Math.sqrt(targetMinImageCoverage / Math.max(imageCoverage, 0.01))
@@ -5556,20 +5806,46 @@ function applyRuleConstraints(scene: Scene, format: FormatDefinition, ruleSet: F
       next.image.w = clamp((next.image.w || 0) * scale, next.image.w || 0, safeArea.w)
       next.image.h = clamp((next.image.h || 0) * scale, next.image.h || 0, safeArea.h)
     }
-  } else if (imageCoverage > imageMaxCoverage) {
-    const scale = Math.sqrt(imageMaxCoverage / imageCoverage)
+  } else if (imageCoverage > effectiveImageMaxCoverage) {
+    const scale = Math.sqrt(effectiveImageMaxCoverage / imageCoverage)
     next.image.w = Math.max((next.image.w || 0) * scale, pxToPercentX(ruleSet.elements.image.minW || 0, format))
     next.image.h = Math.max((next.image.h || 0) * scale, pxToPercentY(ruleSet.elements.image.minH || 0, format))
   }
   next.image.x = clamp(next.image.x || 0, safeArea.x, safeArea.x + safeArea.w - (next.image.w || 0))
   next.image.y = clamp(next.image.y || 0, safeArea.y, safeArea.y + safeArea.h - (next.image.h || 0))
+  if (isPrimarySquare) {
+    next.image = clampPrimarySquareMaterializedImage({
+      image: normalizeRegion({
+        x: next.image.x || 0,
+        y: next.image.y || 0,
+        w: next.image.w || 0,
+        h: next.image.h || 0,
+      }),
+      safeArea,
+      textClusterBounds,
+      ctaRect: { x: next.cta.x || 0, y: next.cta.y || 0, w: next.cta.w || 0, h: next.cta.h || 0 },
+    })
+  }
   imageCoverage = ((next.image.w || 0) * (next.image.h || 0)) / 10000
 
-  if (imageCoverage > imageMaxCoverage * 0.98 && textClusterCoverage < Math.max(ruleSet.composition.minTextCoverage * 0.86, 0.12)) {
+  if (imageCoverage > effectiveImageMaxCoverage * 0.98 && textClusterCoverage < Math.max(ruleSet.composition.minTextCoverage * 0.86, 0.12)) {
     next.image.w = Math.max((next.image.w || 0) - 4, pxToPercentX(ruleSet.elements.image.minW || 0, format))
     next.image.h = Math.max((next.image.h || 0) - 4, pxToPercentY(ruleSet.elements.image.minH || 0, format))
     next.image.x = clamp(next.image.x || 0, safeArea.x, safeArea.x + safeArea.w - (next.image.w || 0))
     next.image.y = clamp(next.image.y || 0, safeArea.y, safeArea.y + safeArea.h - (next.image.h || 0))
+    if (isPrimarySquare) {
+      next.image = clampPrimarySquareMaterializedImage({
+        image: normalizeRegion({
+          x: next.image.x || 0,
+          y: next.image.y || 0,
+          w: next.image.w || 0,
+          h: next.image.h || 0,
+        }),
+        safeArea,
+        textClusterBounds,
+        ctaRect: { x: next.cta.x || 0, y: next.cta.y || 0, w: next.cta.w || 0, h: next.cta.h || 0 },
+      })
+    }
   }
 
   if (marketplaceSafe && beforeMetrics && clampedOnly && clampedMetrics) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T03:21:31.484Z",
+  "generatedAt": "2026-04-06T08:53:49.124Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "reviewConfig": {
     "reviewQueueSize": 10,
@@ -34,16 +34,16 @@
       "count": 42
     },
     {
-      "reason": "insufficient-net-gain",
-      "count": 35
+      "reason": "aggregate-below-baseline",
+      "count": 38
     },
     {
       "reason": "role-placement-out-of-zone",
       "count": 35
     },
     {
-      "reason": "aggregate-below-baseline",
-      "count": 7
+      "reason": "insufficient-net-gain",
+      "count": 4
     },
     {
       "reason": "weak-balance",
@@ -424,8 +424,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -439,8 +439,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -454,8 +454,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -469,8 +469,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -484,8 +484,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -499,8 +499,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -514,8 +514,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -529,8 +529,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -544,8 +544,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -559,8 +559,8 @@
       "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/report.json",
       "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/telemetry.json",
       "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"

@@ -2,7 +2,7 @@
 
 - Total cases: 42
 - Positive rejected candidates: 35
-- Single-gate blocked cases: 31
+- Single-gate blocked cases: 0
 
 | caseId | category | format | baselineWon | delta | bestRejectedCandidateKind | primaryBlocker | reviewPriority |
 | --- | --- | --- | --- | --- | --- | --- | --- |

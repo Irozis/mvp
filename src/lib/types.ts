@@ -1526,15 +1526,25 @@ export type PlacementViolationDiagnostics = {
     titlePreferredDistance: number
     combinedAllowedDistance: number
     combinedPreferredDistance: number
+    rawCtaToCombinedTextDistance: number
+    adjustedCtaToCombinedTextDistance: number
     subtitleAttachmentDistance: number
+    subtitleAttachmentQuality: number
     combinedClusterFootprint: number
     subtitleInflationContribution: number
+    titlePrimaryAnchorWeight: number
+    subtitleSecondaryMassWeight: number
     titleDominatesMainTextPlacement: boolean
     subtitleDetached: boolean
+    ctaCollisionPersistsAfterSubtitleAdjustment: boolean
     severeDrivenByCombinedClusterOnly: boolean
     wouldBecomeMilderUnderAttachmentAwarePolicy: boolean
+    wouldBecomeMilderUnderSquareSubtitleCtaPolicy: boolean
+    adjustedTextRect: Rect
+    adjustedAllowedDistance: number
+    adjustedPreferredDistance: number
   }
-    landscapeTextCluster?: {
+  landscapeTextCluster?: {
       titlePlacementDistance: number
       titlePreferredDistance: number
       combinedAllowedDistance: number

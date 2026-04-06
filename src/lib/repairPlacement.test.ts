@@ -375,6 +375,13 @@ describe('repairPlacement', () => {
 
     expect(attachmentAware.textCluster).toBeTruthy()
     expect(attachmentAware.textCluster?.subtitleDetached).toBe(false)
+    expect(typeof attachmentAware.textCluster?.subtitleAttachmentQuality).toBe('number')
+    expect(attachmentAware.textCluster?.adjustedTextRect?.h ?? Infinity).toBeLessThanOrEqual(
+      (createScene(79.2).subtitle.y || 0) +
+        (createScene(79.2).subtitle.h || 0) -
+        (createScene(79.2).title.y || 0)
+    )
+    expect(typeof attachmentAware.textCluster?.ctaCollisionPersistsAfterSubtitleAdjustment).toBe('boolean')
     expect(
       (attachmentAware.textCluster?.combinedAllowedDistance ?? 0) >=
         (attachmentAware.perRole.find((entry) => entry.role === 'text')?.allowedDistance ?? Infinity)

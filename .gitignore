@@ -1,0 +1,13 @@
+node_modules/
+dist/
+tsconfig.tsbuildinfo
+
+# Generated diagnostics / previews
+artifacts/
+dataset/_*.json
+dataset/_*.csv
+dataset/_*.md
+
+# Common local files
+.DS_Store
+Thumbs.db

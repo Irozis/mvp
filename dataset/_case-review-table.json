@@ -28,8 +28,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -49,24 +49,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-stronger-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-split-vertical-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -112,8 +113,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -133,24 +134,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -196,8 +198,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -217,24 +219,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -280,8 +283,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -301,24 +304,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-stronger-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-split-vertical-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -364,8 +368,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -385,24 +389,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -448,8 +453,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -469,24 +474,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -532,8 +538,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -553,24 +559,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -616,8 +623,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -637,24 +644,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-stronger-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-split-vertical-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -700,8 +708,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -721,24 +729,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -784,8 +793,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -805,24 +814,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -868,8 +878,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -889,24 +899,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -952,8 +963,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -973,24 +984,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1036,8 +1048,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1057,24 +1069,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1120,8 +1133,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1141,24 +1154,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1204,8 +1218,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1225,24 +1239,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-stronger-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-split-vertical-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1288,8 +1303,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1309,24 +1324,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1372,8 +1388,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1393,24 +1409,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1456,8 +1473,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1477,24 +1494,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1540,8 +1558,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1561,24 +1579,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1624,8 +1643,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1645,24 +1664,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1708,8 +1728,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1729,24 +1749,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1792,8 +1813,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1813,24 +1834,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1876,8 +1898,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1897,24 +1919,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -1960,8 +1983,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -1981,24 +2004,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2044,8 +2068,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2065,24 +2089,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2128,8 +2153,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2149,24 +2174,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2212,8 +2238,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2233,24 +2259,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2296,8 +2323,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2317,24 +2344,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2380,8 +2408,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2401,24 +2429,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2464,8 +2493,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2485,24 +2514,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,
@@ -2548,8 +2578,8 @@
     "topRejectionReasons": [
       "role-placement-out-of-zone",
       "no-net-gain",
-      "legacy-safety-rejection",
-      "insufficient-net-gain"
+      "insufficient-net-gain",
+      "legacy-safety-rejection"
     ],
     "dominantTags": [
       "insufficient-breathing-room",
@@ -2569,24 +2599,25 @@
     "verdict": "Poor",
     "score": 0,
     "bestRejectedCandidateKind": "guided-regeneration-repair",
-    "bestRejectedCandidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-    "bestRejectedCandidateStrategy": "guided-overlay-balanced-regeneration",
-    "bestRejectedCandidateAggregate": 49,
-    "bestRejectedCandidateDelta": 5,
+    "bestRejectedCandidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "bestRejectedCandidateStrategy": "guided-stronger-dense-information-regeneration",
+    "bestRejectedCandidateAggregate": 48,
+    "bestRejectedCandidateDelta": 4,
     "bestRejectedCandidateConfidence": 0,
     "bestRejectedCandidateRejectionReasons": [
-      "role-placement-out-of-zone"
+      "role-placement-out-of-zone",
+      "spacing-threshold-exceeded"
     ],
     "bestRejectedCandidatePrimaryBlocker": "role-placement-out-of-zone",
-    "bestRejectedCandidateOnlyBlockedByOneGate": true,
+    "bestRejectedCandidateOnlyBlockedByOneGate": false,
     "bestRejectedCandidateWouldBeatBaseline": true,
     "bestRejectedCandidateWouldImproveConfidence": false,
     "hasPositiveRejectedCandidate": true,
-    "hasSingleGateBlockedCandidate": true,
+    "hasSingleGateBlockedCandidate": false,
     "blockedByRolePlacement": true,
     "blockedByLegacySafety": false,
     "blockedByNoNetGain": false,
-    "blockedBySpacing": false,
+    "blockedBySpacing": true,
     "blockedByAggregateBelowBaseline": false,
     "needsHumanAttention": true,
     "humanVerdictPresent": false,

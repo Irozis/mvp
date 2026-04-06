@@ -49,13 +49,21 @@ type SquareDisplayTextClusterDiagnostics = {
   titlePreferredDistance: number
   combinedAllowedDistance: number
   combinedPreferredDistance: number
+  rawCtaToCombinedTextDistance: number
+  adjustedCtaToCombinedTextDistance: number
   subtitleAttachmentDistance: number
+  subtitleAttachmentQuality: number
   combinedClusterFootprint: number
   subtitleInflationContribution: number
+  titlePrimaryAnchorWeight: number
+  subtitleSecondaryMassWeight: number
   titleDominatesMainTextPlacement: boolean
   subtitleDetached: boolean
+  ctaCollisionPersistsAfterSubtitleAdjustment: boolean
   severeDrivenByCombinedClusterOnly: boolean
   wouldBecomeMilderUnderAttachmentAwarePolicy: boolean
+  wouldBecomeMilderUnderSquareSubtitleCtaPolicy: boolean
+  adjustedTextRect: Rect
   adjustedAllowedDistance: number
   adjustedPreferredDistance: number
 }
@@ -152,6 +160,22 @@ function bounds(rects: Rect[]): Rect {
     w: right - left,
     h: bottom - top,
   }
+}
+
+function getRectDistance(a: Rect | null, b: Rect | null) {
+  if (!a || !b) return 0
+  const horizontalGap = Math.max(0, Math.max(a.x - (b.x + b.w), b.x - (a.x + a.w)))
+  const verticalGap = Math.max(0, Math.max(a.y - (b.y + b.h), b.y - (a.y + a.h)))
+  if (horizontalGap === 0) return round(verticalGap)
+  if (verticalGap === 0) return round(horizontalGap)
+  return round(Math.sqrt(horizontalGap * horizontalGap + verticalGap * verticalGap))
+}
+
+function getOverlapArea(a: Rect | null, b: Rect | null) {
+  if (!a || !b) return 0
+  const overlapX = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x))
+  const overlapY = Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y))
+  return round(overlapX * overlapY)
 }
 
 function containsRect(container: Rect, subject: Rect) {
@@ -725,6 +749,7 @@ function getSquareDisplayTextClusterDiagnostics(input: {
   const rects = getRectangles(input.scene, format)
   const titleRect = rects.title
   const subtitleRect = rects.subtitle
+  const ctaRect = rects.cta
   const combinedRect = bounds([titleRect, subtitleRect])
   const allowedZones = textMetric.allowedZones
   const preferredZones = textMetric.preferredZones.length ? textMetric.preferredZones : textMetric.allowedZones
@@ -753,6 +778,16 @@ function getSquareDisplayTextClusterDiagnostics(input: {
       Math.max(0, horizontalOffset - 6) * 0.45 +
       (subtitleRect.y + 1 < titleRect.y ? 4 : 0)
   )
+  const subtitleAttachmentQuality = round(
+    clamp(
+      100 -
+        subtitleAttachmentDistance * 12 -
+        Math.max(0, verticalGap - 10) * 1.8 -
+        Math.max(0, horizontalOffset - 6) * 2.5,
+      0,
+      100
+    )
+  )
   const subtitleDetached =
     verticalGap > 18 ||
     horizontalOffset > 10 ||
@@ -765,23 +800,121 @@ function getSquareDisplayTextClusterDiagnostics(input: {
   const titleDominatesMainTextPlacement =
     titlePlacementDistance >= combinedAllowedDistance * 0.65 ||
     titlePreferredDistance >= combinedPreferredDistance * 0.65
+  const titlePrimaryAnchorWeight = round(
+    subtitleDetached ? 0.72 : clamp(0.82 + subtitleAttachmentQuality / 1000, 0.82, 0.92)
+  )
+  const subtitleSecondaryMassWeight = round(
+    subtitleDetached
+      ? 0.88
+      : clamp(
+          0.14 + Math.min(subtitleInflationContribution, 24) / 180 - subtitleAttachmentQuality / 900,
+          0.14,
+          0.28
+        )
+  )
   const severeDrivenByCombinedClusterOnly =
     classifyDistanceBand(combinedAllowedDistance, combinedPreferredDistance) === 'severe' &&
     classifyDistanceBand(titlePlacementDistance, titlePreferredDistance) !== 'severe' &&
     !subtitleDetached &&
     !oversizedCluster
 
+  const titleRight = titleRect.x + titleRect.w
+  const titleBottom = titleRect.y + titleRect.h
+  const subtitleRight = subtitleRect.x + subtitleRect.w
+  const subtitleBottom = subtitleRect.y + subtitleRect.h
+  const adjustedRight = round(
+    Math.max(
+      titleRight,
+      titleRight + Math.max(0, subtitleRight - titleRight) * clamp(subtitleSecondaryMassWeight + 0.08, 0.18, 0.38)
+    )
+  )
+  const adjustedBottom = round(
+    Math.max(
+      titleBottom,
+      titleBottom +
+        Math.max(0, subtitleBottom - titleBottom) *
+          clamp(subtitleSecondaryMassWeight + (subtitleDetached ? 0.22 : 0), 0.18, 0.92)
+    )
+  )
+  const adjustedTextRect: Rect = {
+    x: round(Math.min(titleRect.x, subtitleRect.x)),
+    y: round(Math.min(titleRect.y, subtitleRect.y)),
+    w: round(Math.max(titleRect.w, adjustedRight - Math.min(titleRect.x, subtitleRect.x))),
+    h: round(Math.max(titleRect.h, adjustedBottom - Math.min(titleRect.y, subtitleRect.y))),
+  }
+  const rawCtaToCombinedTextDistance = round(getRectDistance(ctaRect, combinedRect))
+  const adjustedCtaToCombinedTextDistance = round(getRectDistance(ctaRect, adjustedTextRect))
+  const rawCtaOverlapRisk =
+    getOverlapArea(ctaRect, subtitleRect) > 0 ||
+    getOverlapArea(ctaRect, combinedRect) > 0
+  const adjustedCtaOverlapRisk =
+    getOverlapArea(ctaRect, adjustedTextRect) > 0 || getOverlapArea(ctaRect, subtitleRect) > 0
+  const ctaHorizontalOffset = round(Math.abs(ctaRect.x - titleRect.x))
+  const ctaVerticalGap = round(Math.max(0, ctaRect.y - adjustedBottom))
+  const ctaReadingFlowContinuity = round(
+    clamp(100 - Math.max(0, ctaVerticalGap - 8) * 6 - Math.max(0, ctaHorizontalOffset - 10) * 3.5, 0, 100)
+  )
+  const ctaMessageAssociationScore = round(
+    clamp(
+      100 -
+        Math.max(0, adjustedCtaToCombinedTextDistance - 4) * 10 -
+        Math.max(0, ctaHorizontalOffset - 12) * 2.5 -
+        Math.max(0, ctaVerticalGap - 10) * 4,
+      0,
+      100
+    )
+  )
+  const ctaPairingCoherent =
+    ctaReadingFlowContinuity >= 72 &&
+    ctaMessageAssociationScore >= 72 &&
+    ctaHorizontalOffset <= 14
+  const adjustedSafeAreaFootprint =
+    safeArea.w > 0 && safeArea.h > 0
+      ? (adjustedTextRect.w * adjustedTextRect.h) / (safeArea.w * safeArea.h)
+      : 0
+  const adjustedClusterFootprint = round(adjustedSafeAreaFootprint * 100)
+  const adjustedClusterTooTall =
+    adjustedClusterFootprint > 24 ||
+    adjustedTextRect.h > safeArea.h * 0.36 ||
+    adjustedTextRect.w > safeArea.w * 0.74
+  const ctaCollisionPersistsAfterSubtitleAdjustment =
+    adjustedCtaOverlapRisk ||
+    adjustedClusterTooTall ||
+    subtitleDetached ||
+    !ctaPairingCoherent ||
+    adjustedCtaToCombinedTextDistance <= 1.5
+  const squareSubtitleCtaNearPass =
+    titlePlacementDistance <= 2.5 &&
+    !subtitleDetached &&
+    subtitleAttachmentQuality >= 70 &&
+    !adjustedClusterTooTall &&
+    !ctaCollisionPersistsAfterSubtitleAdjustment &&
+    (rawCtaOverlapRisk || rawCtaToCombinedTextDistance <= 2.5 || severeDrivenByCombinedClusterOnly)
+
   let adjustedAllowedDistance = combinedAllowedDistance
   let adjustedPreferredDistance = combinedPreferredDistance
-  if (!subtitleDetached && !oversizedCluster) {
+  if (squareSubtitleCtaNearPass) {
     adjustedAllowedDistance = round(
-      titlePlacementDistance +
-        Math.max(0, combinedAllowedDistance - titlePlacementDistance) * 0.35 +
+      titlePlacementDistance * titlePrimaryAnchorWeight +
+        Math.max(0, combinedAllowedDistance - titlePlacementDistance) * subtitleSecondaryMassWeight +
+        subtitleAttachmentDistance * 0.14 +
+        Math.max(0, adjustedCtaToCombinedTextDistance - 2) * 0.08
+    )
+    adjustedPreferredDistance = round(
+      titlePreferredDistance * titlePrimaryAnchorWeight +
+        Math.max(0, combinedPreferredDistance - titlePreferredDistance) * subtitleSecondaryMassWeight +
+        subtitleAttachmentDistance * 0.16 +
+        Math.max(0, adjustedCtaToCombinedTextDistance - 2) * 0.1
+    )
+  } else if (!subtitleDetached && !oversizedCluster) {
+    adjustedAllowedDistance = round(
+      titlePlacementDistance * titlePrimaryAnchorWeight +
+        Math.max(0, combinedAllowedDistance - titlePlacementDistance) * subtitleSecondaryMassWeight +
         subtitleAttachmentDistance * 0.35
     )
     adjustedPreferredDistance = round(
-      titlePreferredDistance +
-        Math.max(0, combinedPreferredDistance - titlePreferredDistance) * 0.35 +
+      titlePreferredDistance * titlePrimaryAnchorWeight +
+        Math.max(0, combinedPreferredDistance - titlePreferredDistance) * subtitleSecondaryMassWeight +
         subtitleAttachmentDistance * 0.4
     )
   } else if (subtitleDetached) {
@@ -803,19 +936,30 @@ function getSquareDisplayTextClusterDiagnostics(input: {
   const wouldBecomeMilderUnderAttachmentAwarePolicy =
     classifyDistanceBand(adjustedAllowedDistance, adjustedPreferredDistance) !==
     classifyDistanceBand(combinedAllowedDistance, combinedPreferredDistance)
+  const wouldBecomeMilderUnderSquareSubtitleCtaPolicy =
+    squareSubtitleCtaNearPass ||
+    (wouldBecomeMilderUnderAttachmentAwarePolicy && !ctaCollisionPersistsAfterSubtitleAdjustment)
 
   return {
     titlePlacementDistance,
     titlePreferredDistance,
     combinedAllowedDistance,
     combinedPreferredDistance,
+    rawCtaToCombinedTextDistance,
+    adjustedCtaToCombinedTextDistance,
     subtitleAttachmentDistance,
+    subtitleAttachmentQuality,
     combinedClusterFootprint,
     subtitleInflationContribution,
+    titlePrimaryAnchorWeight,
+    subtitleSecondaryMassWeight,
     titleDominatesMainTextPlacement,
     subtitleDetached,
+    ctaCollisionPersistsAfterSubtitleAdjustment,
     severeDrivenByCombinedClusterOnly,
     wouldBecomeMilderUnderAttachmentAwarePolicy,
+    wouldBecomeMilderUnderSquareSubtitleCtaPolicy,
+    adjustedTextRect,
     adjustedAllowedDistance,
     adjustedPreferredDistance,
   }

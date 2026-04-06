@@ -12,7 +12,7 @@
       "y": 57.40740740740741,
       "w": 42.592592592592595,
       "fontSize": 92,
-      "charsPerLine": 20,
+      "charsPerLine": 21,
       "maxLines": 3,
       "weight": 800,
       "fill": "#f8fafc",
@@ -21,10 +21,10 @@
     },
     "subtitle": {
       "x": 6.666666666666667,
-      "y": 59.333333333333336,
-      "w": 29.140740740740746,
+      "y": 57.40740740740741,
+      "w": 34.74074074074074,
       "fontSize": 30,
-      "charsPerLine": 32,
+      "charsPerLine": 34,
       "maxLines": 4,
       "weight": 420,
       "fill": "#dcd3d2",
@@ -44,7 +44,7 @@
       "rx": 18
     },
     "badge": {
-      "x": 81.33333333333334,
+      "x": 77.62962962962962,
       "y": 16.666666666666664,
       "w": 12,
       "h": 5,
@@ -64,29 +64,22 @@
       "fill": "#f8fafc"
     },
     "image": {
-      "x": 43.64861306068384,
-      "y": 21.962962962962962,
-      "w": 49.6847202726495,
-      "h": 60.380736442456005,
-      "rx": 28,
-      "fit": "xMidYMid slice"
+      "x": 62,
+      "y": 12.962962962962962,
+      "w": 30,
+      "h": 34
     }
   },
   "structuralStatus": "invalid",
-  "score": 0,
+  "score": 4,
   "verdict": "Poor",
   "issueCodes": [
-    "structural-major-overlap",
     "structural-minimum-spacing",
     "violates-image-footprint-rule",
-    "violates-allowed-zone"
+    "violates-allowed-zone",
+    "structural-role-placement"
   ],
   "structuralFindings": [
-    {
-      "name": "major-overlap",
-      "severity": "high",
-      "message": "Major blocks still overlap after synthesis."
-    },
     {
       "name": "minimum-spacing",
       "severity": "high",
@@ -99,40 +92,40 @@
     }
   ],
   "visual": {
-    "overallScore": 57,
+    "overallScore": 52,
     "band": "weak",
     "breakdown": {
-      "focusHierarchy": 77,
+      "focusHierarchy": 69,
       "compositionBalance": 62,
-      "textImageHarmony": 67,
+      "textImageHarmony": 51,
       "ctaQuality": 92,
       "negativeSpaceQuality": 84,
-      "coherence": 76
+      "coherence": 72
     },
     "warnings": [
-      "Composition lacks counterweight."
+      "Composition lacks counterweight.",
+      "Image presence is too weak to support the message."
     ],
     "strengths": [
-      "Image carries a clear primary focal role.",
+      "Headline establishes a readable primary focus.",
       "CTA feels integrated with the message cluster.",
-      "Negative space feels intentional rather than abandoned.",
-      "Overall composition reads as a coherent advertising layout."
+      "Negative space feels intentional rather than abandoned."
     ],
     "debug": {
       "imageAnalysisPresent": false,
-      "focusDominant": "image",
+      "focusDominant": "title",
       "visualBalance": 62,
       "compositionBalanceDebug": {
-        "visualCenterX": 52.7,
-        "visualCenterY": 59.5,
+        "visualCenterX": 44.7,
+        "visualCenterY": 56.9,
         "verticalStack": false,
         "usefulAsymmetry": false,
         "compactMarketplaceStack": false,
-        "centerOffset": 9.9,
+        "centerOffset": 8.7,
         "balanceAnchorBonus": 0,
-        "dominantQuadrantShare": 0.62
+        "dominantQuadrantShare": 0.64
       },
-      "clusterHarmony": 67,
+      "clusterHarmony": 51,
       "ctaSupport": 92,
       "emptySpaceIntentionality": 84,
       "structuralPenalty": 18
@@ -143,7 +136,7 @@
     "readability": 100,
     "contrast": 86,
     "textHierarchy": 100,
-    "visualBalance": 8,
+    "visualBalance": 52,
     "spacingQuality": 82,
     "ctaProminence": 86,
     "logoPlacement": 100,
@@ -157,19 +150,19 @@
     "scaleToCanvas": 100
   },
   "confidence": {
-    "deterministicScore": 0,
+    "deterministicScore": 4,
     "aiReviewScore": 0,
-    "disagreement": 0,
+    "disagreement": 4,
     "effectiveScore": 0,
     "needsHumanAttention": true
   },
   "objective": {
-    "structuralValidity": 0,
-    "perceptualQuality": 69,
-    "commercialStrength": 79,
+    "structuralValidity": 12,
+    "perceptualQuality": 79,
+    "commercialStrength": 78,
     "familyFidelity": 100,
     "sideEffectCost": 0,
-    "aggregateScore": 44,
+    "aggregateScore": 50,
     "weights": {
       "structuralValidity": 0.36,
       "perceptualQuality": 0.24,
@@ -186,5 +179,5 @@
     "weak-balance",
     "insufficient-net-gain"
   ],
-  "aggregateScore": 44
+  "aggregateScore": 50
 }

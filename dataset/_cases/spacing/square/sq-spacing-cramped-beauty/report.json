@@ -5,8 +5,8 @@
   "family": "display",
   "formatKey": "social-square",
   "status": "success",
-  "baselineAggregate": 44,
-  "winnerAggregate": 44,
+  "baselineAggregate": 50,
+  "winnerAggregate": 50,
   "delta": 0,
   "baselineWon": true,
   "winnerKind": "local-structural-repair",
@@ -23,7 +23,7 @@
     "role-placement-out-of-zone",
     "no-net-gain",
     "legacy-safety-rejection",
-    "insufficient-net-gain"
+    "aggregate-below-baseline"
   ],
   "reviewPriority": "urgent-review",
   "whyReview": "Baseline retained despite available repair candidates",

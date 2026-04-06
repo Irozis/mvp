@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T03:21:27.779Z",
+  "generatedAt": "2026-04-06T08:53:39.412Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "totals": {
     "totalCases": 42,
@@ -7,7 +7,7 @@
     "baselineWinCount": 38,
     "candidateWinCount": 4,
     "positiveRejectedCandidateCount": 35,
-    "singleGateBlockedCount": 31,
+    "singleGateBlockedCount": 0,
     "confidenceImprovedRejectedCount": 4
   },
   "blockerFrequency": {
@@ -25,6 +25,10 @@
       {
         "blocker": "role-placement-out-of-zone",
         "count": 35
+      },
+      {
+        "blocker": "spacing-threshold-exceeded",
+        "count": 31
       },
       {
         "blocker": "legacy-safety-rejection",
@@ -74,39 +78,7 @@
       "ls-balance-left-heavy-png",
       "ls-cta-detached-png"
     ],
-    "singleGateBlockedCases": [
-      "geometric-modern-layout-01-png",
-      "hero-product-red-tag-urgency-02-png",
-      "hero-product-soft-shapes-01-png",
-      "inefficient-layout-banner-04-png",
-      "inefficient-layout-blue-grid-01-png",
-      "inefficient-layout-card-variations-02-png",
-      "inefficient-layout-circle-focus-03-png",
-      "minimal-product-display-glass-01-png",
-      "sq-balance-empty-hero-png",
-      "sq-balance-empty-right-minimal",
-      "sq-balance-empty-side-png",
-      "sq-balance-left-heavy",
-      "sq-balance-weak-image-png",
-      "sq-cta-low-contrast-hidden",
-      "sq-cta-overlay-block-png",
-      "sq-grid-misaligned-blocks",
-      "sq-image-missing-text-only",
-      "sq-image-weak-product-small",
-      "sq-layout-overlap-elements",
-      "sq-spacing-cramped-beauty",
-      "sq-spacing-cramped-png",
-      "sq-spacing-overflow-airy",
-      "sq-spacing-overflow-png",
-      "sq-structure-centered-minimal-png",
-      "sq-structure-illustration-focus-png",
-      "sq-structure-split-grid-png",
-      "sq-structure-thumbnail-collapse",
-      "sq-text-dominant-overlay-png",
-      "sq-text-dominant-scene-png",
-      "sq-visual-chaotic-abstract-png",
-      "sq-visual-rich-illustrative-png"
-    ],
+    "singleGateBlockedCases": [],
     "confidenceImprovedRejectedCases": [
       "disconnected-cta-dark-split-01-png",
       "disconnected-cta-skewed-layout-02-png",
@@ -120,7 +92,7 @@
       "caseCount": 8,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 8,
-      "singleGateBlockedCount": 8,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -141,7 +113,7 @@
       "caseCount": 5,
       "baselineWinRate": 0.8,
       "positiveRejectedCandidateCount": 5,
-      "singleGateBlockedCount": 4,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 1,
       "dominantBlockers": [
         {
@@ -162,7 +134,7 @@
       "caseCount": 5,
       "baselineWinRate": 0.4,
       "positiveRejectedCandidateCount": 5,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 3,
       "dominantBlockers": [
         {
@@ -204,7 +176,7 @@
       "caseCount": 5,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 5,
-      "singleGateBlockedCount": 5,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -225,7 +197,7 @@
       "caseCount": 4,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 4,
-      "singleGateBlockedCount": 4,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -245,7 +217,7 @@
       "caseCount": 2,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -281,7 +253,7 @@
       "caseCount": 2,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -299,7 +271,7 @@
       "caseCount": 2,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -317,7 +289,7 @@
       "caseCount": 1,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 1,
-      "singleGateBlockedCount": 1,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -334,7 +306,7 @@
       "caseCount": 1,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 1,
-      "singleGateBlockedCount": 1,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -353,7 +325,7 @@
       "caseCount": 35,
       "baselineWinRate": 1,
       "positiveRejectedCandidateCount": 31,
-      "singleGateBlockedCount": 31,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
         {
@@ -405,7 +377,7 @@
       "caseCount": 35,
       "baselineWinRate": 0.89,
       "positiveRejectedCandidateCount": 35,
-      "singleGateBlockedCount": 31,
+      "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 4,
       "dominantBlockers": [
         {
@@ -550,7 +522,7 @@
       "family": "display",
       "caseCount": 8,
       "positiveRejectedCandidateCount": 8,
-      "singleGateBlockedCount": 8,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "inefficient-layout-banner-04-png",
         "inefficient-layout-blue-grid-01-png",
@@ -567,7 +539,7 @@
       "family": "display",
       "caseCount": 5,
       "positiveRejectedCandidateCount": 5,
-      "singleGateBlockedCount": 5,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "geometric-modern-layout-01-png",
         "sq-structure-centered-minimal-png",
@@ -584,7 +556,7 @@
       "family": "display",
       "caseCount": 4,
       "positiveRejectedCandidateCount": 4,
-      "singleGateBlockedCount": 4,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "sq-balance-empty-right-minimal",
         "sq-balance-empty-side-png",
@@ -600,7 +572,7 @@
       "family": "display",
       "caseCount": 4,
       "positiveRejectedCandidateCount": 4,
-      "singleGateBlockedCount": 4,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "hero-product-red-tag-urgency-02-png",
         "hero-product-soft-shapes-01-png",
@@ -631,7 +603,7 @@
       "family": "display",
       "caseCount": 2,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "sq-cta-low-contrast-hidden",
         "sq-cta-overlay-block-png"
@@ -645,7 +617,7 @@
       "family": "display",
       "caseCount": 2,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "sq-image-missing-text-only",
         "sq-image-weak-product-small"
@@ -659,7 +631,7 @@
       "family": "display",
       "caseCount": 2,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "sq-text-dominant-overlay-png",
         "sq-text-dominant-scene-png"
@@ -673,36 +645,10 @@
       "family": "display",
       "caseCount": 2,
       "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 2,
+      "singleGateBlockedCount": 0,
       "topCaseIds": [
         "sq-visual-chaotic-abstract-png",
         "sq-visual-rich-illustrative-png"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in grid square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "grid",
-      "format": "square",
-      "family": "display",
-      "caseCount": 1,
-      "positiveRejectedCandidateCount": 1,
-      "singleGateBlockedCount": 1,
-      "topCaseIds": [
-        "sq-grid-misaligned-blocks"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in layout_overlap square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "layout_overlap",
-      "format": "square",
-      "family": "display",
-      "caseCount": 1,
-      "positiveRejectedCandidateCount": 1,
-      "singleGateBlockedCount": 1,
-      "topCaseIds": [
-        "sq-layout-overlap-elements"
       ]
     },
     {
@@ -716,6 +662,32 @@
       "singleGateBlockedCount": 0,
       "topCaseIds": [
         "ls-balance-left-heavy-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in grid square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "grid",
+      "format": "square",
+      "family": "display",
+      "caseCount": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-grid-misaligned-blocks"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in layout_overlap square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "layout_overlap",
+      "format": "square",
+      "family": "display",
+      "caseCount": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-layout-overlap-elements"
       ]
     }
   ],

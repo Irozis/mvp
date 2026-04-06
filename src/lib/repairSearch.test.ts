@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+  applySquareSubtitleCtaPairingStructuralRepairDebug,
   autoAdaptFormat,
   buildProject,
   evaluateLandscapeTextHeightNearMissOverrideDecisionDebug,
@@ -76,6 +77,28 @@ function makeFlowFocused(scene: Scene) {
   next.image.w = Math.min((next.image.w || 0) + 4, 52)
   next.title.w = Math.min((next.title.w || 0) + 4, 44)
   next.subtitle.w = Math.min((next.subtitle.w || 0) + 4, 44)
+  return next
+}
+
+function makeSquareSubtitleCtaCollision(scene: Scene) {
+  const next = cloneScene(scene)
+  next.title.x = 8
+  next.title.y = 42
+  next.title.w = 40
+  next.subtitle.text = 'Limited-time colorway with bonus bundle and fast shipping'
+  next.subtitle.x = 8
+  next.subtitle.y = 55
+  next.subtitle.w = 40
+  next.subtitle.h = 11
+  next.subtitle.fontSize = 17
+  next.subtitle.maxLines = 3
+  next.subtitle.charsPerLine = 15
+  next.subtitle.opacity = 0.9
+  next.cta.text = 'Shop now'
+  next.cta.x = 11
+  next.cta.y = 64
+  next.cta.w = 24
+  next.cta.h = 7
   return next
 }
 
@@ -275,6 +298,23 @@ function createLandscapeNearMissEvaluation(overrides?: Partial<RepairCandidateEv
 }
 
 describe('repair search objective layer', () => {
+  it('compresses subtitle footprint and preserves a cleaner CTA lane for square subtitle+cta pairings', () => {
+    const { scene } = createGoodScene('social-square')
+    const collision = makeSquareSubtitleCtaCollision(scene)
+
+    const repaired = applySquareSubtitleCtaPairingStructuralRepairDebug({
+      scene: collision,
+      formatKey: 'social-square',
+    })
+
+    expect(repaired.subtitle.h || 0).toBeLessThan(collision.subtitle.h || 0)
+    expect(repaired.subtitle.maxLines || 0).toBeLessThanOrEqual(2)
+    expect(repaired.cta.x).toBe(repaired.title.x)
+    expect(repaired.cta.y || 0).toBeGreaterThanOrEqual(
+      (repaired.subtitle.y || 0) + (repaired.subtitle.h || 0) + 3.8 - 0.01
+    )
+  })
+
   it('retains the baseline when all candidates regress and emits telemetry', async () => {
     const { brandKit, master, scene } = createGoodScene('marketplace-card')
     const diagnostics = await getRepairDiagnostics({

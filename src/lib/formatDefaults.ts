@@ -209,10 +209,25 @@ const CATEGORY_DEFAULTS: Record<FormatDefinition['category'], FormatDefaultPrese
 const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDefaultPreset>>> = {
   'social-square': {
     rankedArchetypes: ['overlay-balanced', 'compact-minimal', 'image-hero', 'split-vertical', 'dense-information', 'split-horizontal', 'text-stack'],
+    safeFallbackArchetype: 'compact-minimal',
     contractOverrides: {
+      default: {
+        clusterGapPx: 16,
+        textToImageGapPx: 30,
+        subtitleMaxLines: 2,
+        ctaReservePx: 88,
+        occupancyMode: 'text-safe',
+        fallbackMode: 'safe-shelf',
+      },
       'overlay-balanced': {
-        textCoverageRange: [0.22, 0.34],
-        imageCoverageRange: [0.24, 0.48],
+        textCoverageRange: [0.2, 0.3],
+        imageCoverageRange: [0.22, 0.36],
+        subtitleMaxLines: 1,
+        ctaReservePx: 84,
+      },
+      'compact-minimal': {
+        subtitleMaxLines: 1,
+        ctaReservePx: 80,
       },
     },
   },
@@ -224,8 +239,20 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
     safeFallbackArchetype: 'split-vertical',
     contractOverrides: {
       default: {
-        clusterGapPx: 16,
-        topReservePx: 78,
+        clusterGapPx: 18,
+        textToImageGapPx: 22,
+        topReservePx: 80,
+        subtitleMaxLines: 2,
+        ctaReservePx: 80,
+        occupancyMode: 'text-safe',
+      },
+      'split-vertical': {
+        subtitleMaxLines: 2,
+        ctaReservePx: 78,
+      },
+      'dense-information': {
+        subtitleMaxLines: 2,
+        ctaReservePx: 82,
       },
     },
   },
@@ -244,9 +271,22 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
   'social-landscape': {
     rankedArchetypes: ['split-horizontal', 'compact-minimal', 'overlay-balanced', 'dense-information', 'image-hero', 'split-vertical', 'text-stack'],
     contractOverrides: {
+      default: {
+        clusterGapPx: 14,
+        textToImageGapPx: 28,
+        subtitleMaxLines: 2,
+        ctaReservePx: 70,
+        occupancyMode: 'text-safe',
+      },
       'split-horizontal': {
-        textCoverageRange: [0.22, 0.38],
-        imageCoverageRange: [0.2, 0.46],
+        textCoverageRange: [0.2, 0.34],
+        imageCoverageRange: [0.2, 0.42],
+        subtitleMaxLines: 2,
+        ctaReservePx: 68,
+      },
+      'compact-minimal': {
+        subtitleMaxLines: 1,
+        ctaReservePx: 64,
       },
     },
   },
@@ -261,6 +301,25 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
     rankedArchetypes: ['compact-minimal', 'split-horizontal', 'dense-information', 'image-hero', 'overlay-balanced', 'split-vertical', 'text-stack'],
     densityPreset: 'balanced-copy',
     safeFallbackArchetype: 'compact-minimal',
+    contractOverrides: {
+      default: {
+        clusterGapPx: 14,
+        textToImageGapPx: 28,
+        subtitleMaxLines: 1,
+        ctaReservePx: 58,
+        occupancyMode: 'spacious',
+      },
+      'split-horizontal': {
+        textCoverageRange: [0.22, 0.34],
+        imageCoverageRange: [0.18, 0.42],
+        subtitleMaxLines: 1,
+        ctaReservePx: 56,
+      },
+      'compact-minimal': {
+        subtitleMaxLines: 1,
+        ctaReservePx: 54,
+      },
+    },
   },
   'display-leaderboard': {
     rankedArchetypes: ['split-horizontal', 'compact-minimal', 'dense-information', 'image-hero', 'overlay-balanced', 'split-vertical', 'text-stack'],

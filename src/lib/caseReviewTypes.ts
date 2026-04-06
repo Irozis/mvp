@@ -221,6 +221,9 @@ export type CaseReviewExportResult = {
   squareRoleConflictDiagnostics: SquareRoleConflictDiagnosticsReport
   squareCtaVsTextDiagnostics: SquareCtaVsTextDiagnosticsReport
   squareCtaVsSubtitleDiagnostics: SquareCtaVsSubtitleDiagnosticsReport
+  squareCtaPairingStructuralFixReport: SquareCtaPairingStructuralFixReport
+  squareCtaLaneVariantReport: SquareCtaLaneVariantReport
+  squareImageStructuralDiagnostics: SquareImageStructuralDiagnosticsReport
   masterResidualBlockers: MasterResidualBlockersReport
   landscapeImageNearMissExperiment: LandscapeImageNearMissExperimentReport
   landscapeTextHeightProductionExperiment: LandscapeTextHeightProductionExperimentReport
@@ -247,6 +250,10 @@ export type CaseReviewExportResult = {
     squareRoleConflictDiagnosticsJson: string
     squareCtaVsTextDiagnosticsJson: string
     squareCtaVsSubtitleDiagnosticsJson: string
+    squareSubtitleCtaPairingDiagnosticsJson: string
+    squareCtaPairingStructuralFixReportJson: string
+    squareCtaLaneVariantReportJson: string
+    squareImageStructuralDiagnosticsJson: string
     masterResidualBlockersJson: string
     landscapeImageNearMissExperimentJson: string
     landscapeTextHeightProductionExperimentJson: string
@@ -1222,6 +1229,7 @@ export type SquareCtaVsSubtitleDiagnosticRow = {
   ctaRect: { x: number; y: number; w: number; h: number } | null
   imageRect: { x: number; y: number; w: number; h: number } | null
   combinedTextRect: { x: number; y: number; w: number; h: number } | null
+  adjustedTextRect: { x: number; y: number; w: number; h: number } | null
   messageClusterRect: { x: number; y: number; w: number; h: number } | null
   ctaVsSubtitleSubtype: SquareCtaVsSubtitleSubtype
   ctaVsSubtitleReasons: SquareCtaVsSubtitleSubtype[]
@@ -1229,7 +1237,10 @@ export type SquareCtaVsSubtitleDiagnosticRow = {
   ctaToSubtitleVerticalGap: number
   ctaToSubtitleHorizontalOffset: number
   ctaToCombinedTextDistance: number
+  rawCtaToCombinedTextDistance: number
+  adjustedCtaToCombinedTextDistance: number
   ctaOverlapRisk: boolean
+  ctaCollisionPersistsAfterSubtitleAdjustment: boolean
   ctaInsideExpectedActionBand: boolean
   ctaBelowSubtitleButAcceptable: boolean
   ctaWithinSquareTolerance: boolean
@@ -1237,8 +1248,11 @@ export type SquareCtaVsSubtitleDiagnosticRow = {
   ctaMessageAssociationScore: number
   subtitleInflationContribution: number
   subtitleInflatesMainly: boolean
+  subtitleAttachmentQuality: number
   subtitleHeightContribution: number
   titleHeightContribution: number
+  titlePrimaryAnchorWeight: number
+  subtitleSecondaryMassWeight: number
   titleOnlyWouldPass: boolean
   subtitleOnlyWouldPass: boolean
   messageClusterWouldPass: boolean
@@ -1248,6 +1262,7 @@ export type SquareCtaVsSubtitleDiagnosticRow = {
   ctaZoneConflict: boolean
   subtitleZoneConflict: boolean
   combinedTextZoneConflict: boolean
+  wouldBecomeMilderUnderSquareSubtitleCtaPolicy: boolean
   remainingBlockerWouldBecomeMilder: boolean
   legacySafetyRejected: boolean
   spacingCollapsePresent: boolean
@@ -1280,6 +1295,9 @@ export type SquareCtaVsSubtitleDiagnosticsReport = {
     realOverlapRiskCount: number
     wouldBecomeMilderIfSubtitleChangedCount: number
     wouldBecomeMilderIfActionBandRelaxedCount: number
+    wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount: number
+    trueCollisionPersistsAfterAdjustmentCount: number
+    tooTallAfterSubtitleAdjustmentCount: number
   }
   subtypeFrequency: Array<{ subtype: SquareCtaVsSubtitleSubtype; count: number }>
   groupedCandidateSetsBySubtype: Array<{
@@ -1293,11 +1311,217 @@ export type SquareCtaVsSubtitleDiagnosticsReport = {
     realOverlapRiskCount: number
     wouldBecomeMilderIfSubtitleChangedCount: number
     wouldBecomeMilderIfActionBandRelaxedCount: number
+    wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount: number
+    trueCollisionPersistsAfterAdjustmentCount: number
+    tooTallAfterSubtitleAdjustmentCount: number
     smallHomogeneousSubsetCount: number
   }
   recommendedSecondUnlockCandidates: SquareCtaVsSubtitleCandidateGroup[]
   topRecommendedSecondUnlockClass: SquareCtaVsSubtitleCandidateGroup | null
   cases: SquareCtaVsSubtitleDiagnosticRow[]
+}
+
+export type SquareCtaPairingStructuralFixImprovedCase = {
+  caseId: string
+  category: string
+  candidateId: string
+  candidateKind: string
+  strategyLabel: string
+  aggregateDelta: number
+  confidenceDelta: number
+  rawTextHeight: number
+  adjustedTextHeight: number
+  rawCtaToCombinedTextDistance: number
+  adjustedCtaToCombinedTextDistance: number
+  heightReduction: number
+  distanceImprovement: number
+  ctaCollisionPersistsAfterSubtitleAdjustment: boolean
+  textClusterTooTallForCtaPairing: boolean
+  wouldBecomeMilderUnderSquareSubtitleCtaPolicy: boolean
+}
+
+export type SquareCtaPairingStructuralFixReport = {
+  generatedAt: string
+  root: string
+  totals: {
+    squareDisplayBlockedCases: number
+    beforeCollisionCount: number
+    afterCollisionCount: number
+    beforeAverageTextHeight: number
+    afterAverageTextHeight: number
+    beforeAverageCtaDistance: number
+    afterAverageCtaDistance: number
+    beforeTooTallCount: number
+    afterTooTallCount: number
+    improvedCaseCount: number
+    wouldBecomeMilderCount: number
+  }
+  secondUnlockClassAppears: boolean
+  secondUnlockClassCandidate: SquareCtaVsSubtitleCandidateGroup | null
+  topImprovedCases: SquareCtaPairingStructuralFixImprovedCase[]
+}
+
+export type SquareCtaLaneVariantMode = 'kept' | 'compact' | 'one-line' | 'omitted'
+
+export type SquareCtaLaneVariantImprovedCase = {
+  caseId: string
+  category: string
+  candidateId: string
+  candidateKind: string
+  strategyLabel: string
+  subtitleMode: SquareCtaLaneVariantMode
+  aggregateDelta: number
+  confidenceDelta: number
+  rawTextHeight: number
+  adjustedTextHeight: number
+  rawCtaLaneClearance: number
+  adjustedCtaLaneClearance: number
+  ctaCollisionPersistsAfterSubtitleAdjustment: boolean
+  textClusterTooTallForCtaPairing: boolean
+  wouldBecomeMilderUnderSquareSubtitleCtaPolicy: boolean
+}
+
+export type SquareCtaLaneVariantReport = {
+  generatedAt: string
+  root: string
+  totals: {
+    squareDisplayBlockedCases: number
+    affectedSquareCases: number
+    leftOldCtaSubtitleFamilyCount: number
+    beforeCollisionCount: number
+    afterCollisionCount: number
+    beforeAverageTextHeight: number
+    afterAverageTextHeight: number
+    beforeAverageCtaLaneClearance: number
+    afterAverageCtaLaneClearance: number
+    subtitleKeptCount: number
+    subtitleCompactedCount: number
+    subtitleOneLineCount: number
+    subtitleOmittedCount: number
+    wouldBecomeMilderCount: number
+  }
+  beforeBlockerFamilyDistribution: Array<{ blockerFamily: string; count: number }>
+  afterBlockerFamilyDistribution: Array<{ blockerFamily: MasterResidualBlockerBucket; count: number }>
+  transitionedToBlockerFamilyFrequency: Array<{ blockerFamily: MasterResidualBlockerBucket; count: number }>
+  secondUnlockClassAppears: boolean
+  secondUnlockClassCandidate: SquareCtaVsSubtitleCandidateGroup | null
+  topTransitionedCases: Array<{
+    caseId: string
+    category: string
+    blockerFamily: MasterResidualBlockerBucket
+    blockerSubtype: string
+    aggregateDelta: number
+    confidenceDelta: number
+    severity: PlacementViolationSeverity | null
+  }>
+  topImprovedCases: SquareCtaLaneVariantImprovedCase[]
+}
+
+export type SquareImageStructuralSubtype =
+  | 'image-footprint-too-large'
+  | 'image-footprint-too-small'
+  | 'image-vs-text-occupancy-conflict'
+  | 'image-vs-cta-occupancy-conflict'
+  | 'image-zone-mismatch'
+  | 'image-dominance-mismatch'
+  | 'image-anchor-mismatch'
+  | 'mixed-image-structural-conflict'
+
+export type SquareImageStructuralDiagnosticRow = {
+  caseId: string
+  category: string
+  candidateId: string
+  candidateKind: string
+  strategyLabel: string
+  aggregateDelta: number
+  confidenceDelta: number
+  severity: PlacementViolationSeverity
+  primaryBlocker: CaseReviewPrimaryBlocker | null
+  onlyBlockedByOneGate: boolean
+  dominantRole: string
+  imageRect: { x: number; y: number; w: number; h: number } | null
+  titleRect: { x: number; y: number; w: number; h: number } | null
+  subtitleRect: { x: number; y: number; w: number; h: number } | null
+  ctaRect: { x: number; y: number; w: number; h: number } | null
+  messageClusterRect: { x: number; y: number; w: number; h: number } | null
+  imageStructuralSubtype: SquareImageStructuralSubtype
+  imageStructuralReasons: SquareImageStructuralSubtype[]
+  rawAllowedDistance: number
+  rawPreferredDistance: number
+  adjustedAllowedDistance: number
+  adjustedPreferredDistance: number
+  imageZoneConflict: boolean
+  imageVsTextOccupancyConflict: boolean
+  imageVsCtaOccupancyConflict: boolean
+  imageTooDominantForSquare: boolean
+  imageTooWeakForSquare: boolean
+  imageTooTallForSquare: boolean
+  imageTooWideForSquare: boolean
+  imageFootprintMismatch: boolean
+  splitPatternMismatch: boolean
+  titleOnlyWouldPass: boolean
+  messageClusterWouldPass: boolean
+  remainingBlockerWouldBecomeMilder: boolean
+  legacySafetyRejected: boolean
+  spacingCollapsePresent: boolean
+  hardStructuralInvalidityPresent: boolean
+  criticalOverlapPresent: boolean
+  roleLossPresent: boolean
+  closeToAcceptable: boolean
+}
+
+export type SquareImageStructuralCandidateGroup = {
+  proposedUnlockClassKey: string
+  blockerSubtype: SquareImageStructuralSubtype
+  severity: PlacementViolationSeverity
+  confidencePattern: 'positive' | 'neutral' | 'mixed'
+  singleGatePattern: 'single-gate' | 'multi-gate'
+  caseCount: number
+  ready: boolean
+  whyReady: string
+  whyNotReady: string
+  expectedSafeguardsNeeded: string[]
+  topCaseIds: string[]
+}
+
+export type SquareImageStructuralDiagnosticsReport = {
+  generatedAt: string
+  root: string
+  totals: {
+    squareDisplayBlockedCases: number
+    closeToAcceptableCount: number
+    singleGateNearMissCount: number
+    imageZoneConflictCount: number
+    imageVsTextOccupancyConflictCount: number
+    imageVsCtaOccupancyConflictCount: number
+    imageFootprintTooLargeCount: number
+    imageFootprintTooSmallCount: number
+    imageDominanceMismatchCount: number
+    wouldBecomeMilderCount: number
+  }
+  subtypeFrequency: Array<{ subtype: SquareImageStructuralSubtype; count: number }>
+  dominantRoleFrequency: Array<{ role: string; count: number }>
+  groupedCandidateSetsBySubtype: Array<{
+    blockerSubtype: SquareImageStructuralSubtype
+    caseCount: number
+    topCaseIds: string[]
+  }>
+  blockerSeverityConfidenceGatePatterns: Array<{
+    blockerSubtype: SquareImageStructuralSubtype
+    severity: PlacementViolationSeverity
+    confidencePattern: 'positive' | 'neutral' | 'mixed'
+    singleGatePattern: 'single-gate' | 'multi-gate'
+    count: number
+  }>
+  nearMissSingleGateSubgroupCounts: Array<{ subtype: SquareImageStructuralSubtype; count: number }>
+  recommendedSecondUnlockCandidates: SquareImageStructuralCandidateGroup[]
+  topRecommendedSecondUnlockClass: SquareImageStructuralCandidateGroup | null
+  topRecommendedNextStructuralFix: {
+    blockerSubtype: SquareImageStructuralSubtype
+    caseCount: number
+    rationale: string
+  } | null
+  cases: SquareImageStructuralDiagnosticRow[]
 }
 
 export type MasterResidualBlockerBucket =

@@ -70,6 +70,14 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
   console.log(`square-role-conflict-diagnostics=${result.outputPaths.squareRoleConflictDiagnosticsJson}`)
   console.log(`square-cta-vs-text-diagnostics=${result.outputPaths.squareCtaVsTextDiagnosticsJson}`)
   console.log(`square-cta-vs-subtitle-diagnostics=${result.outputPaths.squareCtaVsSubtitleDiagnosticsJson}`)
+  console.log(
+    `square-subtitle-cta-pairing-diagnostics=${result.outputPaths.squareSubtitleCtaPairingDiagnosticsJson}`
+  )
+  console.log(
+    `square-cta-pairing-structural-fix-report=${result.outputPaths.squareCtaPairingStructuralFixReportJson}`
+  )
+  console.log(`square-cta-lane-variant-report=${result.outputPaths.squareCtaLaneVariantReportJson}`)
+  console.log(`square-image-structural-diagnostics=${result.outputPaths.squareImageStructuralDiagnosticsJson}`)
   console.log(`master-residual-blockers=${result.outputPaths.masterResidualBlockersJson}`)
   console.log(
     `landscape-text-height-production-experiment=${result.outputPaths.landscapeTextHeightProductionExperimentJson}`
@@ -81,6 +89,15 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
   )
   console.log(
     `role-placement rejects=${result.placementSoftPolicyDiagnostics.totals.totalRolePlacementRejections}, soft-unlocked cases=${result.placementSoftPolicyDiagnostics.totals.unlockedCaseCount}`
+  )
+  console.log(
+    `square structural fix: before-collisions=${result.squareCtaPairingStructuralFixReport.totals.beforeCollisionCount}, after-collisions=${result.squareCtaPairingStructuralFixReport.totals.afterCollisionCount}, second-unlock-class=${result.squareCtaPairingStructuralFixReport.secondUnlockClassAppears}`
+  )
+  console.log(
+    `square cta-lane variant: affected=${result.squareCtaLaneVariantReport.totals.affectedSquareCases}, transitioned=${result.squareCtaLaneVariantReport.totals.leftOldCtaSubtitleFamilyCount}, after-clearance=${result.squareCtaLaneVariantReport.totals.afterAverageCtaLaneClearance}, omitted=${result.squareCtaLaneVariantReport.totals.subtitleOmittedCount}`
+  )
+  console.log(
+    `square image structural: cases=${result.squareImageStructuralDiagnostics.totals.squareDisplayBlockedCases}, zone-conflict=${result.squareImageStructuralDiagnostics.totals.imageZoneConflictCount}, footprint-too-large=${result.squareImageStructuralDiagnostics.totals.imageFootprintTooLargeCount}`
   )
   if (result.placementRoleHotspots.dominantRoleFrequency.length) {
     console.log('dominant violating roles:')
@@ -139,7 +156,7 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
     `square-display cta-vs-text cases=${result.squareCtaVsTextDiagnostics.totals.squareDisplayBlockedCases}, close-to-acceptable=${result.squareCtaVsTextDiagnostics.totals.closeToAcceptableCount}, single-gate=${result.squareCtaVsTextDiagnostics.totals.singleGateNearMissCount}`
   )
   console.log(
-    `square-display cta-vs-subtitle cases=${result.squareCtaVsSubtitleDiagnostics.totals.squareDisplayBlockedCases}, inflation-driven=${result.squareCtaVsSubtitleDiagnostics.totals.subtitleInflationDrivenCount}, action-band-mismatch=${result.squareCtaVsSubtitleDiagnostics.totals.actionBandMismatchCount}, overlap-risk=${result.squareCtaVsSubtitleDiagnostics.totals.realOverlapRiskCount}`
+    `square-display subtitle+cta cases=${result.squareCtaVsSubtitleDiagnostics.totals.squareDisplayBlockedCases}, inflation-driven=${result.squareCtaVsSubtitleDiagnostics.totals.subtitleInflationDrivenCount}, milder-under-policy=${result.squareCtaVsSubtitleDiagnostics.totals.wouldBecomeMilderUnderSquareSubtitleCtaPolicyCount}, collision-persists=${result.squareCtaVsSubtitleDiagnostics.totals.trueCollisionPersistsAfterAdjustmentCount}`
   )
   if (result.masterResidualBlockers.blockerFamilyFrequency.length) {
     console.log('master residual blocker families:')
