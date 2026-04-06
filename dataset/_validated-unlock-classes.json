@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-04-06T03:21:27.792Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "summary": {
+    "validatedClassCount": 1,
+    "totalFlippedCases": 4
+  },
+  "classes": [
+    {
+      "unlockClassKey": "landscape-text-height-near-miss-v1",
+      "flagName": "enableLandscapeTextHeightNearMissOverride",
+      "validated": true,
+      "eligibilityRules": [
+        "family=display",
+        "format=landscape",
+        "best rejected candidate only",
+        "dominant blocker family = landscape-text-height",
+        "severity = mild",
+        "aggregateDelta > 0",
+        "confidenceDelta >= 0",
+        "titleOnlyWouldPass = true",
+        "messageClusterWouldPass = true",
+        "remainingBlockerWouldBecomeMilder = true",
+        "primary blocker = role-placement-out-of-zone",
+        "onlyBlockedByOneGate = true"
+      ],
+      "guardConditions": [
+        "no legacy-safety-rejection",
+        "no hard-structural-invalidity",
+        "no spacing-collapse",
+        "no critical overlap",
+        "no role-loss",
+        "flag remains disabled by default"
+      ],
+      "flippedCases": [
+        "disconnected-cta-dark-split-01-png",
+        "disconnected-cta-skewed-layout-02-png",
+        "ls-balance-left-heavy-png",
+        "ls-cta-detached-png"
+      ],
+      "totals": {
+        "eligibleCandidates": 4,
+        "eligibleCases": 4,
+        "appliedOverrides": 4,
+        "flippedCases": 4
+      },
+      "notes": [
+        "This class is intentionally narrow and only covers the audited landscape display near-miss set.",
+        "It should not be broadened without a separate residual-blocker diagnosis proving equivalent safety.",
+        "The override is considered validated only when exactly the audited 4 cases flip and no others do."
+      ]
+    }
+  ]
+}

@@ -67,10 +67,15 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
   console.log(
     `placement-role-conflict-landscape-diagnostics=${result.outputPaths.placementRoleConflictLandscapeDiagnosticsJson}`
   )
+  console.log(`square-role-conflict-diagnostics=${result.outputPaths.squareRoleConflictDiagnosticsJson}`)
+  console.log(`square-cta-vs-text-diagnostics=${result.outputPaths.squareCtaVsTextDiagnosticsJson}`)
+  console.log(`square-cta-vs-subtitle-diagnostics=${result.outputPaths.squareCtaVsSubtitleDiagnosticsJson}`)
   console.log(`master-residual-blockers=${result.outputPaths.masterResidualBlockersJson}`)
   console.log(
     `landscape-text-height-production-experiment=${result.outputPaths.landscapeTextHeightProductionExperimentJson}`
   )
+  console.log(`validated-unlock-classes=${result.outputPaths.validatedUnlockClassesJson}`)
+  console.log(`next-unlock-candidates=${result.outputPaths.nextUnlockCandidatesJson}`)
   console.log(
     `cases=${result.rows.length}, positive-rejected=${result.tuningSummary.totals.positiveRejectedCandidateCount}, single-gate=${result.tuningSummary.totals.singleGateBlockedCount}`
   )
@@ -93,6 +98,19 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
   console.log(
     `landscape text-height override eligible=${result.landscapeTextHeightProductionExperiment.totals.eligibleCandidates}, applied=${result.landscapeTextHeightProductionExperiment.totals.appliedOverrides}, flipped-cases=${result.landscapeTextHeightProductionExperiment.totals.flippedCases}`
   )
+  const validatedClass = result.validatedUnlockClasses.classes[0]
+  if (validatedClass) {
+    console.log(
+      `validated unlock class=${validatedClass.unlockClassKey}, validated=${validatedClass.validated}, flipped=${validatedClass.flippedCases.length}`
+    )
+  }
+  if (result.nextUnlockCandidates.topRecommendedNextClass) {
+    console.log(
+      `next unlock class=${result.nextUnlockCandidates.topRecommendedNextClass.recommendedUnlockClass}, priority=${result.nextUnlockCandidates.topRecommendedNextClass.recommendedUnlockPriority}, cases=${result.nextUnlockCandidates.topRecommendedNextClass.caseCount}`
+    )
+  } else {
+    console.log('next unlock class=none-ready')
+  }
   console.log(
     `square-display text-dominant=${result.placementTextSquareDiagnostics.totals.dominantTextCount}, title-only-milder=${result.placementTextSquareDiagnostics.totals.titleOnlyMilderThanCombinedCount}, attachment-aware-milder=${result.placementTextSquareDiagnostics.totals.wouldBecomeMilderCount}`
   )
@@ -113,6 +131,15 @@ function printSummary(result: Awaited<ReturnType<typeof exportCaseReviewTable>>)
   )
   console.log(
     `landscape-display role-conflict text-dominant=${result.placementRoleConflictLandscapeDiagnostics.totals.textDominantCount}, cta-dominant=${result.placementRoleConflictLandscapeDiagnostics.totals.ctaDominantCount}, close-to-acceptable=${result.placementRoleConflictLandscapeDiagnostics.totals.closeToAcceptableCount}`
+  )
+  console.log(
+    `square-display role-conflict cases=${result.squareRoleConflictDiagnostics.totals.squareDisplayBlockedCases}, close-to-acceptable=${result.squareRoleConflictDiagnostics.totals.closeToAcceptableCount}, single-gate=${result.squareRoleConflictDiagnostics.totals.singleGateNearMissCount}`
+  )
+  console.log(
+    `square-display cta-vs-text cases=${result.squareCtaVsTextDiagnostics.totals.squareDisplayBlockedCases}, close-to-acceptable=${result.squareCtaVsTextDiagnostics.totals.closeToAcceptableCount}, single-gate=${result.squareCtaVsTextDiagnostics.totals.singleGateNearMissCount}`
+  )
+  console.log(
+    `square-display cta-vs-subtitle cases=${result.squareCtaVsSubtitleDiagnostics.totals.squareDisplayBlockedCases}, inflation-driven=${result.squareCtaVsSubtitleDiagnostics.totals.subtitleInflationDrivenCount}, action-band-mismatch=${result.squareCtaVsSubtitleDiagnostics.totals.actionBandMismatchCount}, overlap-risk=${result.squareCtaVsSubtitleDiagnostics.totals.realOverlapRiskCount}`
   )
   if (result.masterResidualBlockers.blockerFamilyFrequency.length) {
     console.log('master residual blocker families:')

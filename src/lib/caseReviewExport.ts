@@ -39,6 +39,18 @@ import type {
   PlacementRoleConflictLandscapeSubtype,
   PlacementImageSquareDiagnosticRow,
   PlacementImageSquareDiagnosticsReport,
+  SquareRoleConflictCandidateGroup,
+  SquareCtaVsTextCandidateGroup,
+  SquareCtaVsTextDiagnosticRow,
+  SquareCtaVsTextDiagnosticsReport,
+  SquareCtaVsTextSubtype,
+  SquareCtaVsSubtitleCandidateGroup,
+  SquareCtaVsSubtitleDiagnosticRow,
+  SquareCtaVsSubtitleDiagnosticsReport,
+  SquareCtaVsSubtitleSubtype,
+  SquareRoleConflictDiagnosticRow,
+  SquareRoleConflictDiagnosticsReport,
+  SquareRoleConflictSubtype,
   PlacementTextLandscapeDiagnosticRow,
   PlacementTextLandscapeDiagnosticsReport,
   PlacementTextSquareDiagnosticRow,
@@ -51,6 +63,12 @@ import type {
   MasterResidualBlockerBucket,
   MasterResidualBlockerCaseRow,
   MasterResidualBlockersReport,
+  NextUnlockCandidateGroup,
+  NextUnlockCandidateRow,
+  NextUnlockCandidatesReport,
+  NextUnlockPriority,
+  ValidatedUnlockClass,
+  ValidatedUnlockClassesReport,
 } from './caseReviewTypes'
 import type {
   Rect,
@@ -226,6 +244,13 @@ const BLOCKER_PRIORITY: CaseReviewPrimaryBlocker[] = [
   'confidence-collapse',
   'aggregate-below-baseline',
   'no-net-gain',
+]
+
+const VALIDATED_LANDSCAPE_TEXT_HEIGHT_FLIPS = [
+  'disconnected-cta-dark-split-01-png',
+  'disconnected-cta-skewed-layout-02-png',
+  'ls-balance-left-heavy-png',
+  'ls-cta-detached-png',
 ]
 
 function round(value: number) {
@@ -1251,6 +1276,383 @@ function deriveLandscapeRoleConflictDetails(record: PlacementSoftPolicyCandidate
   }
 }
 
+function getRectDistance(a: Rect | null, b: Rect | null) {
+  if (!a || !b) return 0
+  const dx = Math.max(0, Math.max(a.x - (b.x + b.w), b.x - (a.x + a.w)))
+  const dy = Math.max(0, Math.max(a.y - (b.y + b.h), b.y - (a.y + a.h)))
+  return round(Math.hypot(dx, dy))
+}
+
+function getRectHorizontalOffset(a: Rect | null, b: Rect | null) {
+  if (!a || !b) return 0
+  const aCenter = a.x + a.w / 2
+  const bCenter = b.x + b.w / 2
+  return round(Math.abs(aCenter - bCenter))
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value))
+}
+
+function deriveSquareStructuralFlags(record: PlacementSoftPolicyCandidateRecord) {
+  const tags = [...record.summaryTags, ...record.penaltyTags].map((tag) => tag.toLowerCase())
+  return {
+    legacySafetyRejected: record.rejectionReasons.includes('legacy-safety-rejection'),
+    spacingCollapsePresent: record.rejectionReasons.includes('spacing-threshold-exceeded'),
+    hardStructuralInvalidityPresent: record.rejectionReasons.includes('hard-structural-invalidity'),
+    criticalOverlapPresent: tags.some((tag) => tag.includes('overlap')),
+    roleLossPresent: tags.some((tag) => tag.includes('role-loss')),
+  }
+}
+
+const SQUARE_ROLE_CONFLICT_SUBTYPE_PRIORITY: SquareRoleConflictSubtype[] = [
+  'cta-anchor-conflict',
+  'cta-vs-text-conflict',
+  'cta-vs-image-conflict',
+  'image-vs-text-occupancy-conflict',
+  'title-zone-conflict',
+  'subtitle-zone-conflict',
+  'text-too-tall-for-square',
+  'text-too-wide-for-square',
+  'image-too-dominant-for-square',
+  'text-zone-conflict',
+]
+
+function pickSquareRoleConflictSubtype(reasons: SquareRoleConflictSubtype[]): SquareRoleConflictSubtype {
+  if (!reasons.length) return 'mixed-role-zone-conflict'
+  if (reasons.length === 1) return reasons[0]
+  for (const subtype of SQUARE_ROLE_CONFLICT_SUBTYPE_PRIORITY) {
+    if (reasons.includes(subtype)) return subtype
+  }
+  return 'mixed-role-zone-conflict'
+}
+
+const SQUARE_CTA_VS_TEXT_SUBTYPE_PRIORITY: SquareCtaVsTextSubtype[] = [
+  'cta-below-text-but-valid',
+  'cta-vs-subtitle-conflict',
+  'cta-vs-combined-text-footprint',
+  'text-cluster-too-tall-for-cta-pairing',
+  'text-cluster-too-wide-for-cta-pairing',
+  'cta-band-mismatch',
+  'cta-too-close-to-text',
+  'cta-too-far-from-text',
+  'mixed-cta-text-zone-conflict',
+]
+
+function pickSquareCtaVsTextSubtype(reasons: SquareCtaVsTextSubtype[]): SquareCtaVsTextSubtype {
+  if (!reasons.length) return 'mixed-cta-text-zone-conflict'
+  if (reasons.length === 1) return reasons[0]
+  for (const subtype of SQUARE_CTA_VS_TEXT_SUBTYPE_PRIORITY) {
+    if (reasons.includes(subtype)) return subtype
+  }
+  return 'mixed-cta-text-zone-conflict'
+}
+
+const SQUARE_CTA_VS_SUBTITLE_SUBTYPE_PRIORITY: SquareCtaVsSubtitleSubtype[] = [
+  'subtitle-inflation-causes-cta-collision',
+  'combined-text-footprint-causes-cta-collision',
+  'action-band-mismatch',
+  'true-cta-subtitle-overlap-risk',
+  'cta-vs-subtitle-vertical-collision',
+  'cta-vs-subtitle-horizontal-collision',
+  'mixed-cta-subtitle-zone-conflict',
+]
+
+function pickSquareCtaVsSubtitleSubtype(
+  reasons: SquareCtaVsSubtitleSubtype[]
+): SquareCtaVsSubtitleSubtype {
+  if (!reasons.length) return 'mixed-cta-subtitle-zone-conflict'
+  if (reasons.length === 1) return reasons[0]
+  for (const subtype of SQUARE_CTA_VS_SUBTITLE_SUBTYPE_PRIORITY) {
+    if (reasons.includes(subtype)) return subtype
+  }
+  return 'mixed-cta-subtitle-zone-conflict'
+}
+
+function deriveSquareRoleConflictDetails(record: PlacementSoftPolicyCandidateRecord) {
+  const textBoxes = record.placementDiagnostics?.textBoxes
+  const textCluster = record.placementDiagnostics?.textCluster
+  const titleRect = textBoxes?.titleRect || null
+  const subtitleRect = textBoxes?.subtitleRect || null
+  const ctaRect = getEligibleRoleEntry(record, 'cta')?.rect || null
+  const imageRect = getEligibleRoleEntry(record, 'image')?.rect || record.baselineImageRect || null
+  const textRole = getEligibleRoleEntry(record, 'text')
+  const imageRole = getEligibleRoleEntry(record, 'image')
+  const ctaRole = getEligibleRoleEntry(record, 'cta')
+  const combinedTextRect = getRectUnion([titleRect, subtitleRect])
+  const messageClusterRect = getRectUnion([titleRect, subtitleRect, ctaRect])
+  const allowedTextZones = textRole?.allowedZones || []
+  const ruleTextWidth = getMaxZoneDimension(allowedTextZones, 'w')
+  const ruleTextHeight = getMaxZoneDimension(allowedTextZones, 'h')
+  const titlePlacementDistance = textCluster?.titlePlacementDistance ?? 0
+  const subtitleAttachmentDistance = textCluster?.subtitleAttachmentDistance ?? 0
+  const combinedAllowedDistance = textCluster?.combinedAllowedDistance ?? textRole?.allowedDistance ?? 0
+  const ctaToMessageDistance = getRectDistance(ctaRect, combinedTextRect)
+  const ctaHorizontalOffset = getRectHorizontalOffset(ctaRect, combinedTextRect)
+  const ctaVerticalGap =
+    ctaRect && combinedTextRect ? round(Math.max(0, ctaRect.y - (combinedTextRect.y + combinedTextRect.h))) : 0
+  const ctaReadingFlowContinuity = round(
+    clamp(100 - Math.max(0, ctaVerticalGap - 10) * 6 - Math.max(0, ctaHorizontalOffset - 8) * 4, 0, 100)
+  )
+  const ctaMessageAssociationScore = round(
+    clamp(
+      100 -
+        Math.max(0, ctaToMessageDistance - 6) * 7 -
+        Math.max(0, ctaHorizontalOffset - 10) * 3 -
+        Math.max(0, ctaVerticalGap - 12) * 4,
+      0,
+      100
+    )
+  )
+  const ctaWithinSquareTolerance =
+    ctaVerticalGap <= 14 && ctaHorizontalOffset <= 12 && ctaReadingFlowContinuity >= 68 && ctaMessageAssociationScore >= 66
+  const titleZoneConflict = titlePlacementDistance > 2.5
+  const subtitleZoneConflict = Boolean(textCluster?.subtitleDetached) || subtitleAttachmentDistance > 2.5
+  const textZoneConflict =
+    (textRole?.allowedDistance ?? 0) > 2 || (textRole?.preferredDistance ?? 0) > 4 || combinedAllowedDistance > 4
+  const imageZoneConflict =
+    (imageRole?.allowedDistance ?? 0) > 2 || (imageRole?.preferredDistance ?? 0) > 4
+  const overlapArea = getOverlapArea(combinedTextRect, imageRect)
+  const imageVsTextOccupancyConflict =
+    overlapArea > 0 ||
+    Boolean(combinedTextRect && imageRect && combinedTextRect.x + combinedTextRect.w > imageRect.x - 3)
+  const ctaVsTextConflict =
+    ctaToMessageDistance > 8 || ctaHorizontalOffset > 14 || Boolean(ctaRect && combinedTextRect && getOverlapArea(ctaRect, combinedTextRect) > 0)
+  const ctaVsImageConflict =
+    Boolean(ctaRect && imageRect && getOverlapArea(ctaRect, imageRect) > 0) ||
+    Boolean(ctaRect && imageRect && ctaRect.x + ctaRect.w > imageRect.x - 2)
+  const textTooTallForSquare =
+    Boolean(combinedTextRect) &&
+    ((ruleTextHeight > 0 && combinedTextRect!.h > ruleTextHeight + 2) || (textCluster?.combinedClusterFootprint ?? 0) > 26)
+  const textTooWideForSquare =
+    Boolean(combinedTextRect) &&
+    ((ruleTextWidth > 0 && combinedTextRect!.w > ruleTextWidth + 2) || Boolean(combinedTextRect && combinedTextRect.w > 54))
+  const imageSafeAreaFootprint =
+    imageRect ? round((imageRect.w * imageRect.h) / Math.max(1, 92 * 92) * 100) : 0
+  const imageTooDominantForSquare =
+    imageSafeAreaFootprint > 32 &&
+    ((imageRole?.allowedDistance ?? 0) > 4 || imageVsTextOccupancyConflict)
+  const ctaAnchorConflict = !ctaWithinSquareTolerance && (ctaVerticalGap > 12 || ctaHorizontalOffset > 12)
+  const titleOnlyWouldPass = titlePlacementDistance <= 2
+  const messageClusterWouldPass =
+    combinedAllowedDistance <= 4 &&
+    !Boolean(textCluster?.subtitleDetached) &&
+    !textTooTallForSquare &&
+    !textTooWideForSquare
+  const remainingBlockerWouldBecomeMilder = Boolean(textCluster?.wouldBecomeMilderUnderAttachmentAwarePolicy)
+
+  const roleConflictReasons: SquareRoleConflictSubtype[] = []
+  if (ctaAnchorConflict) roleConflictReasons.push('cta-anchor-conflict')
+  if (ctaVsTextConflict) roleConflictReasons.push('cta-vs-text-conflict')
+  if (ctaVsImageConflict) roleConflictReasons.push('cta-vs-image-conflict')
+  if (imageVsTextOccupancyConflict) roleConflictReasons.push('image-vs-text-occupancy-conflict')
+  if (titleZoneConflict) roleConflictReasons.push('title-zone-conflict')
+  if (subtitleZoneConflict) roleConflictReasons.push('subtitle-zone-conflict')
+  if (textTooTallForSquare) roleConflictReasons.push('text-too-tall-for-square')
+  if (textTooWideForSquare) roleConflictReasons.push('text-too-wide-for-square')
+  if (imageTooDominantForSquare) roleConflictReasons.push('image-too-dominant-for-square')
+  if (textZoneConflict) roleConflictReasons.push('text-zone-conflict')
+
+  const structuralFlags = deriveSquareStructuralFlags(record)
+
+  return {
+    titleRect,
+    subtitleRect,
+    ctaRect,
+    imageRect,
+    combinedTextRect,
+    messageClusterRect,
+    roleConflictSubtype: pickSquareRoleConflictSubtype([...new Set(roleConflictReasons)]),
+    roleConflictReasons: [...new Set(roleConflictReasons)],
+    ctaAnchorConflict,
+    ctaToMessageDistance,
+    ctaHorizontalOffset,
+    ctaVerticalGap,
+    ctaWithinSquareTolerance,
+    ctaReadingFlowContinuity,
+    ctaMessageAssociationScore,
+    imageZoneConflict,
+    textZoneConflict,
+    titleZoneConflict,
+    subtitleZoneConflict,
+    imageVsTextOccupancyConflict,
+    ctaVsTextConflict,
+    ctaVsImageConflict,
+    textTooTallForSquare,
+    textTooWideForSquare,
+    imageTooDominantForSquare,
+    titleOnlyWouldPass,
+    messageClusterWouldPass,
+    remainingBlockerWouldBecomeMilder,
+    ...structuralFlags,
+  }
+}
+
+function deriveSquareCtaVsTextDetails(record: PlacementSoftPolicyCandidateRecord) {
+  const base = deriveSquareRoleConflictDetails(record)
+  const textCluster = record.placementDiagnostics?.textCluster
+  const ctaRole = getEligibleRoleEntry(record, 'cta')
+  const ctaRect = base.ctaRect
+  const titleRect = base.titleRect
+  const subtitleRect = base.subtitleRect
+  const combinedTextRect = base.combinedTextRect
+  const messageClusterRect = base.messageClusterRect
+
+  const ctaToTitleDistance = getRectDistance(ctaRect, titleRect)
+  const ctaToSubtitleDistance = getRectDistance(ctaRect, subtitleRect)
+  const ctaToCombinedTextDistance = base.ctaToMessageDistance
+  const ctaOverlapRisk = Boolean(
+    (ctaRect && titleRect && getOverlapArea(ctaRect, titleRect) > 0) ||
+      (ctaRect && subtitleRect && getOverlapArea(ctaRect, subtitleRect) > 0) ||
+      (ctaRect && combinedTextRect && getOverlapArea(ctaRect, combinedTextRect) > 0)
+  )
+  const ctaZoneConflict =
+    (ctaRole?.allowedDistance ?? 0) > 2 || (ctaRole?.preferredDistance ?? 0) > 4
+  const ctaBandMaxY = ctaRole?.allowedZones.reduce((max, zone) => Math.max(max, zone.y + zone.h), 0) ?? 0
+  const ctaBandMinY = ctaRole?.allowedZones.reduce((min, zone) => Math.min(min, zone.y), 100) ?? 100
+  const ctaInsideExpectedActionBand = Boolean(
+    ctaRect &&
+      ctaRole?.allowedZones.length &&
+      ctaRect.y >= ctaBandMinY - 2 &&
+      ctaRect.y + ctaRect.h <= ctaBandMaxY + 2
+  )
+  const ctaBelowTextButAcceptable = Boolean(
+    ctaRect &&
+      combinedTextRect &&
+      ctaRect.y >= combinedTextRect.y + combinedTextRect.h - 1 &&
+      base.ctaWithinSquareTolerance &&
+      base.ctaReadingFlowContinuity >= 72 &&
+      base.ctaMessageAssociationScore >= 72
+  )
+  const textClusterTooTallForCtaPairing = base.textTooTallForSquare || (combinedTextRect?.h ?? 0) > 24
+  const textClusterTooWideForCtaPairing = base.textTooWideForSquare || (combinedTextRect?.w ?? 0) > 50
+  const subtitleInflationContribution = textCluster?.subtitleInflationContribution ?? 0
+  const subtitleInflatesMainly = subtitleInflationContribution >= 10
+
+  const reasons: SquareCtaVsTextSubtype[] = []
+  if (ctaBelowTextButAcceptable && !ctaZoneConflict && !ctaOverlapRisk) {
+    reasons.push('cta-below-text-but-valid')
+  }
+  if (
+    subtitleRect &&
+    subtitleInflatesMainly &&
+    (ctaToSubtitleDistance <= ctaToTitleDistance + 2 ||
+      (ctaRect && subtitleRect && ctaRect.y <= subtitleRect.y + subtitleRect.h + 2))
+  ) {
+    reasons.push('cta-vs-subtitle-conflict')
+  }
+  if ((base.messageClusterWouldPass === false && base.titleOnlyWouldPass) || subtitleInflatesMainly) {
+    reasons.push('cta-vs-combined-text-footprint')
+  }
+  if (textClusterTooTallForCtaPairing) reasons.push('text-cluster-too-tall-for-cta-pairing')
+  if (textClusterTooWideForCtaPairing) reasons.push('text-cluster-too-wide-for-cta-pairing')
+  if (ctaZoneConflict && !ctaInsideExpectedActionBand) reasons.push('cta-band-mismatch')
+  if (ctaOverlapRisk || ctaToCombinedTextDistance <= 2) reasons.push('cta-too-close-to-text')
+  if (
+    !base.ctaWithinSquareTolerance &&
+    (base.ctaVerticalGap > 14 || base.ctaHorizontalOffset > 12 || base.ctaMessageAssociationScore < 66)
+  ) {
+    reasons.push('cta-too-far-from-text')
+  }
+
+  const uniqueReasons = [...new Set(reasons)]
+
+  return {
+    ...base,
+    ctaToTitleDistance,
+    ctaToSubtitleDistance,
+    ctaToCombinedTextDistance,
+    ctaOverlapRisk,
+    ctaZoneConflict,
+    ctaInsideExpectedActionBand,
+    ctaBelowTextButAcceptable,
+    textClusterTooTallForCtaPairing,
+    textClusterTooWideForCtaPairing,
+    subtitleInflationContribution,
+    ctaVsTextSubtype: pickSquareCtaVsTextSubtype(uniqueReasons),
+    ctaVsTextReasons: uniqueReasons,
+  }
+}
+
+function deriveSquareCtaVsSubtitleDetails(record: PlacementSoftPolicyCandidateRecord) {
+  const base = deriveSquareCtaVsTextDetails(record)
+  const textCluster = record.placementDiagnostics?.textCluster
+  const subtitleRect = base.subtitleRect
+  const ctaRect = base.ctaRect
+  const combinedTextRect = base.combinedTextRect
+  const titleRect = base.titleRect
+
+  const ctaToSubtitleDistance = base.ctaToSubtitleDistance
+  const ctaToSubtitleHorizontalOffset = getRectHorizontalOffset(ctaRect, subtitleRect)
+  const ctaToSubtitleVerticalGap =
+    ctaRect && subtitleRect
+      ? round(Math.max(0, ctaRect.y - (subtitleRect.y + subtitleRect.h)))
+      : 0
+  const subtitleHeightContribution = subtitleRect?.h ?? 0
+  const titleHeightContribution = titleRect?.h ?? 0
+  const subtitleInflationContribution = base.subtitleInflationContribution
+  const subtitleInflatesMainly =
+    subtitleInflationContribution >= 10 || subtitleHeightContribution > titleHeightContribution * 0.9
+  const subtitleOnlyWouldPass =
+    !base.subtitleZoneConflict &&
+    ctaToSubtitleDistance <= 8 &&
+    ctaToSubtitleHorizontalOffset <= 10 &&
+    ctaToSubtitleVerticalGap <= 10
+  const actionBandMismatch = base.ctaZoneConflict && !base.ctaInsideExpectedActionBand
+  const ctaBelowSubtitleButAcceptable = Boolean(
+    ctaRect &&
+      subtitleRect &&
+      ctaRect.y >= subtitleRect.y + subtitleRect.h - 1 &&
+      ctaToSubtitleVerticalGap <= 10 &&
+      ctaToSubtitleHorizontalOffset <= 10 &&
+      base.ctaWithinSquareTolerance &&
+      base.ctaReadingFlowContinuity >= 72 &&
+      base.ctaMessageAssociationScore >= 72
+  )
+
+  const reasons: SquareCtaVsSubtitleSubtype[] = []
+  if (subtitleInflatesMainly && base.textClusterTooTallForCtaPairing) {
+    reasons.push('subtitle-inflation-causes-cta-collision')
+  }
+  if (!base.messageClusterWouldPass && base.titleOnlyWouldPass) {
+    reasons.push('combined-text-footprint-causes-cta-collision')
+  }
+  if (actionBandMismatch) reasons.push('action-band-mismatch')
+  if (base.ctaOverlapRisk) reasons.push('true-cta-subtitle-overlap-risk')
+  if (
+    !base.ctaOverlapRisk &&
+    ctaToSubtitleVerticalGap > 10 &&
+    ctaToSubtitleHorizontalOffset <= 10
+  ) {
+    reasons.push('cta-vs-subtitle-vertical-collision')
+  }
+  if (
+    !base.ctaOverlapRisk &&
+    ctaToSubtitleHorizontalOffset > 10 &&
+    ctaToSubtitleVerticalGap <= 10
+  ) {
+    reasons.push('cta-vs-subtitle-horizontal-collision')
+  }
+
+  const uniqueReasons = [...new Set(reasons)]
+
+  return {
+    ...base,
+    ctaToSubtitleDistance,
+    ctaToSubtitleVerticalGap,
+    ctaToSubtitleHorizontalOffset,
+    subtitleInflationContribution,
+    subtitleInflatesMainly,
+    subtitleHeightContribution,
+    titleHeightContribution,
+    subtitleOnlyWouldPass,
+    actionBandMismatch,
+    ctaBelowSubtitleButAcceptable,
+    ctaVsSubtitleSubtype: pickSquareCtaVsSubtitleSubtype(uniqueReasons),
+    ctaVsSubtitleReasons: uniqueReasons,
+  }
+}
+
 function sortFrequencyEntries<T>(counts: Record<string, number>, map: (key: string, count: number) => T): T[] {
   return Object.entries(counts)
     .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
@@ -2093,6 +2495,48 @@ export function buildLandscapeTextHeightProductionExperiment(input: {
     appliedOverrides: applied.map(toRow),
     eligibleCandidates: eligible.map(toRow),
     safeguardFailures: safeguardFailures.map(toRow),
+  }
+}
+
+function buildBestRejectedRecordMap(input: {
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+}) {
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+  const recordsByCase = new Map<string, PlacementSoftPolicyCandidateRecord[]>()
+  for (const record of input.records) {
+    const bucket = recordsByCase.get(record.caseId) || []
+    bucket.push(record)
+    recordsByCase.set(record.caseId, bucket)
+  }
+
+  const pickRecord = (caseId: string) => {
+    const bestRejected = bestRejectedByCase.get(caseId) || null
+    return (
+      (bestRejected
+        ? (recordsByCase.get(caseId) || []).find(
+            (record) =>
+              record.candidateId === bestRejected.candidateId &&
+              record.candidateKind === bestRejected.candidateKind
+          )
+        : null) ||
+      (recordsByCase.get(caseId) || [])
+        .slice()
+        .sort((left, right) => {
+          if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+          if (right.effectiveScore !== left.effectiveScore) return right.effectiveScore - left.effectiveScore
+          return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+            `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+          )
+        })[0] ||
+      null
+    )
+  }
+
+  return {
+    pickRecord,
   }
 }
 
@@ -3011,42 +3455,752 @@ export function buildPlacementRoleConflictLandscapeDiagnostics(input: {
   }
 }
 
+export function buildSquareRoleConflictDiagnostics(input: {
+  root: string
+  rows: CaseReviewNormalizedRow[]
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+}): SquareRoleConflictDiagnosticsReport {
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+
+  const rows: SquareRoleConflictDiagnosticRow[] = []
+  for (const row of input.rows) {
+    if (row.format !== 'square' || row.family !== 'display') continue
+    const record = pickRecord(row.caseId)
+    if (!record) continue
+    const master = classifyMasterResidualBucket(record)
+    if (master.dominantBlockerFamily !== 'square-role-conflict') continue
+    const conflict = deriveSquareRoleConflictDetails(record)
+    const bestRejected = bestRejectedByCase.get(row.caseId) || null
+    rows.push({
+        caseId: row.caseId,
+        category: row.category,
+        format: row.format,
+        family: row.family,
+        candidateId: record.candidateId,
+        candidateKind: record.candidateKind,
+        strategyLabel: record.strategyLabel,
+        dominantRole: getDominantViolatingRole(record),
+        aggregateDelta: record.aggregateDelta,
+        confidenceDelta: round(record.candidateConfidence - record.baselineConfidence),
+        severity: record.placementSeverity,
+        primaryBlocker: getPrimaryBlocker(record.rejectionReasons),
+        onlyBlockedByOneGate: Boolean(bestRejected?.onlyBlockedByOneGate),
+        titleRect: conflict.titleRect,
+        subtitleRect: conflict.subtitleRect,
+        ctaRect: conflict.ctaRect,
+        imageRect: conflict.imageRect,
+        combinedTextRect: conflict.combinedTextRect,
+        messageClusterRect: conflict.messageClusterRect,
+        roleConflictSubtype: conflict.roleConflictSubtype,
+        roleConflictReasons: conflict.roleConflictReasons,
+        ctaAnchorConflict: conflict.ctaAnchorConflict,
+        ctaToMessageDistance: conflict.ctaToMessageDistance,
+        ctaHorizontalOffset: conflict.ctaHorizontalOffset,
+        ctaVerticalGap: conflict.ctaVerticalGap,
+        ctaWithinSquareTolerance: conflict.ctaWithinSquareTolerance,
+        ctaReadingFlowContinuity: conflict.ctaReadingFlowContinuity,
+        ctaMessageAssociationScore: conflict.ctaMessageAssociationScore,
+        imageZoneConflict: conflict.imageZoneConflict,
+        textZoneConflict: conflict.textZoneConflict,
+        titleZoneConflict: conflict.titleZoneConflict,
+        subtitleZoneConflict: conflict.subtitleZoneConflict,
+        imageVsTextOccupancyConflict: conflict.imageVsTextOccupancyConflict,
+        ctaVsTextConflict: conflict.ctaVsTextConflict,
+        ctaVsImageConflict: conflict.ctaVsImageConflict,
+        textTooTallForSquare: conflict.textTooTallForSquare,
+        textTooWideForSquare: conflict.textTooWideForSquare,
+        imageTooDominantForSquare: conflict.imageTooDominantForSquare,
+        titleOnlyWouldPass: conflict.titleOnlyWouldPass,
+        messageClusterWouldPass: conflict.messageClusterWouldPass,
+        remainingBlockerWouldBecomeMilder: conflict.remainingBlockerWouldBecomeMilder,
+        legacySafetyRejected: conflict.legacySafetyRejected,
+        spacingCollapsePresent: conflict.spacingCollapsePresent,
+        hardStructuralInvalidityPresent: conflict.hardStructuralInvalidityPresent,
+        criticalOverlapPresent: conflict.criticalOverlapPresent,
+        roleLossPresent: conflict.roleLossPresent,
+        closeToAcceptable:
+          record.aggregateDelta > 0 &&
+          Boolean(bestRejected?.onlyBlockedByOneGate) &&
+          !conflict.legacySafetyRejected &&
+          !conflict.spacingCollapsePresent &&
+          !conflict.hardStructuralInvalidityPresent &&
+          !conflict.criticalOverlapPresent &&
+          !conflict.roleLossPresent,
+      } satisfies SquareRoleConflictDiagnosticRow)
+  }
+
+  rows.sort((left, right) => {
+    if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+    if (right.confidenceDelta !== left.confidenceDelta) return right.confidenceDelta - left.confidenceDelta
+    return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+      `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+    )
+  })
+
+  const subtypeFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.roleConflictSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareRoleConflictSubtype, count })
+  )
+
+  const dominantRoleFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.dominantRole)
+      return acc
+    }, {}),
+    (role, count) => ({ role, count })
+  )
+
+  const blockerSeverityGatePatterns = Array.from(
+    rows.reduce<Map<string, number>>((acc, row) => {
+      const key = `${row.roleConflictSubtype}::${row.severity}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      acc.set(key, (acc.get(key) || 0) + 1)
+      return acc
+    }, new Map())
+  )
+    .map(([key, count]) => {
+      const [blockerSubtype, severity, singleGatePattern] = key.split('::')
+      return {
+        blockerSubtype: blockerSubtype as SquareRoleConflictSubtype,
+        severity: severity as PlacementViolationSeverity,
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        count,
+      }
+    })
+    .sort((left, right) => right.count - left.count || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const candidateGroupsBySubtype = Array.from(
+    rows.reduce<Map<string, SquareRoleConflictDiagnosticRow[]>>((acc, row) => {
+      const bucket = acc.get(row.roleConflictSubtype) || []
+      bucket.push(row)
+      acc.set(row.roleConflictSubtype, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([blockerSubtype, groupRows]) => ({
+      blockerSubtype: blockerSubtype as SquareRoleConflictSubtype,
+      caseCount: groupRows.length,
+      topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+    }))
+    .sort((left, right) => right.caseCount - left.caseCount || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const closeToAcceptableSubgroupCounts = sortFrequencyEntries(
+    rows.filter((row) => row.closeToAcceptable).reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.roleConflictSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareRoleConflictSubtype, count })
+  )
+
+  const nearMissSingleGateSubgroupCounts = sortFrequencyEntries(
+    rows
+      .filter(
+        (row) =>
+          row.onlyBlockedByOneGate &&
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      .reduce<Record<string, number>>((acc, row) => {
+        increment(acc, row.roleConflictSubtype)
+        return acc
+      }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareRoleConflictSubtype, count })
+  )
+
+  const recommendedSecondUnlockCandidates = Array.from(
+    rows.reduce<Map<string, SquareRoleConflictDiagnosticRow[]>>((acc, row) => {
+      const key = `${row.roleConflictSubtype}::${row.severity}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      const bucket = acc.get(key) || []
+      bucket.push(row)
+      acc.set(key, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([key, groupRows]) => {
+      const [blockerSubtype, severity, singleGatePattern] = key.split('::')
+      const noHardSafety = groupRows.every(
+        (row) =>
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      const nonNegativeConfidence = groupRows.every((row) => row.confidenceDelta >= 0)
+      const mostlySingleGate = groupRows.filter((row) => row.onlyBlockedByOneGate).length / groupRows.length >= 0.8
+      const narrow = groupRows.length <= 8
+      const homogeneous = new Set(groupRows.map((row) => row.roleConflictSubtype)).size === 1
+      const mildOrModerate = groupRows.every((row) => row.severity !== 'severe')
+      const ready =
+        narrow &&
+        homogeneous &&
+        mostlySingleGate &&
+        nonNegativeConfidence &&
+        noHardSafety &&
+        mildOrModerate
+      const expectedSafeguardsNeeded = [
+        'single-gate only',
+        'no legacy-safety-rejection',
+        'no hard-structural-invalidity',
+        'no spacing-collapse',
+        'no critical-overlap',
+        'no role-loss',
+        'non-negative confidence delta',
+      ]
+      return {
+        proposedUnlockClassKey: ready
+          ? `square-${blockerSubtype}-near-miss-v1`
+          : `not-ready:square-role-conflict:${blockerSubtype}`,
+        blockerSubtype: blockerSubtype as SquareRoleConflictSubtype,
+        severity: severity as PlacementViolationSeverity,
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        caseCount: groupRows.length,
+        ready,
+        whyReady: ready
+          ? 'Narrow homogeneous square subgroup with single-gate behavior and no hard safety findings.'
+          : '',
+        whyNotReady: ready
+          ? ''
+          : [
+              !narrow ? 'too-broad' : null,
+              !homogeneous ? 'mixed-subtypes' : null,
+              !mostlySingleGate ? 'not-mostly-single-gate' : null,
+              !nonNegativeConfidence ? 'confidence-not-stable' : null,
+              !noHardSafety ? 'hard-safety-flags-present' : null,
+              !mildOrModerate ? 'severe-placement-present' : null,
+            ]
+              .filter((value): value is string => Boolean(value))
+              .join(', '),
+        expectedSafeguardsNeeded,
+        topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+      } satisfies SquareRoleConflictCandidateGroup
+    })
+    .sort((left, right) => {
+      if (Number(right.ready) !== Number(left.ready)) return Number(right.ready) - Number(left.ready)
+      if (right.caseCount !== left.caseCount) return right.caseCount - left.caseCount
+      return left.proposedUnlockClassKey.localeCompare(right.proposedUnlockClassKey)
+    })
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      closeToAcceptableCount: rows.filter((row) => row.closeToAcceptable).length,
+      singleGateNearMissCount: rows.filter((row) => row.onlyBlockedByOneGate).length,
+    },
+    subtypeFrequency,
+    dominantRoleFrequency,
+    blockerSeverityGatePatterns,
+    candidateGroupsBySubtype,
+    closeToAcceptableSubgroupCounts,
+    nearMissSingleGateSubgroupCounts,
+    recommendedSecondUnlockCandidates,
+    topRecommendedSecondUnlockClass: recommendedSecondUnlockCandidates.find((group) => group.ready) || null,
+    cases: rows,
+  }
+}
+
+export function buildSquareCtaVsTextDiagnostics(input: {
+  root: string
+  rows: CaseReviewNormalizedRow[]
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+}): SquareCtaVsTextDiagnosticsReport {
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+
+  const rows: SquareCtaVsTextDiagnosticRow[] = []
+  for (const row of input.rows) {
+    if (row.format !== 'square' || row.family !== 'display') continue
+    const record = pickRecord(row.caseId)
+    if (!record) continue
+    const master = classifyMasterResidualBucket(record)
+    if (master.dominantBlockerFamily !== 'square-role-conflict') continue
+    const conflict = deriveSquareCtaVsTextDetails(record)
+    if (conflict.roleConflictSubtype !== 'cta-vs-text-conflict') continue
+    const bestRejected = bestRejectedByCase.get(row.caseId) || null
+    rows.push({
+      caseId: row.caseId,
+      category: row.category,
+      candidateId: record.candidateId,
+      candidateKind: record.candidateKind,
+      strategyLabel: record.strategyLabel,
+      aggregateDelta: record.aggregateDelta,
+      confidenceDelta: round(record.candidateConfidence - record.baselineConfidence),
+      severity: record.placementSeverity,
+      primaryBlocker: getPrimaryBlocker(record.rejectionReasons),
+      onlyBlockedByOneGate: Boolean(bestRejected?.onlyBlockedByOneGate),
+      dominantRole: getDominantViolatingRole(record),
+      titleRect: conflict.titleRect,
+      subtitleRect: conflict.subtitleRect,
+      ctaRect: conflict.ctaRect,
+      imageRect: conflict.imageRect,
+      combinedTextRect: conflict.combinedTextRect,
+      messageClusterRect: conflict.messageClusterRect,
+      ctaVsTextSubtype: conflict.ctaVsTextSubtype,
+      ctaVsTextReasons: conflict.ctaVsTextReasons,
+      ctaToTitleDistance: conflict.ctaToTitleDistance,
+      ctaToSubtitleDistance: conflict.ctaToSubtitleDistance,
+      ctaToCombinedTextDistance: conflict.ctaToCombinedTextDistance,
+      ctaVerticalGap: conflict.ctaVerticalGap,
+      ctaHorizontalOffset: conflict.ctaHorizontalOffset,
+      ctaOverlapRisk: conflict.ctaOverlapRisk,
+      ctaWithinSquareTolerance: conflict.ctaWithinSquareTolerance,
+      ctaReadingFlowContinuity: conflict.ctaReadingFlowContinuity,
+      ctaMessageAssociationScore: conflict.ctaMessageAssociationScore,
+      textZoneConflict: conflict.textZoneConflict,
+      ctaZoneConflict: conflict.ctaZoneConflict,
+      ctaInsideExpectedActionBand: conflict.ctaInsideExpectedActionBand,
+      ctaBelowTextButAcceptable: conflict.ctaBelowTextButAcceptable,
+      textClusterTooTallForCtaPairing: conflict.textClusterTooTallForCtaPairing,
+      textClusterTooWideForCtaPairing: conflict.textClusterTooWideForCtaPairing,
+      subtitleInflationContribution: conflict.subtitleInflationContribution,
+      titleOnlyWouldPass: conflict.titleOnlyWouldPass,
+      messageClusterWouldPass: conflict.messageClusterWouldPass,
+      remainingBlockerWouldBecomeMilder: conflict.remainingBlockerWouldBecomeMilder,
+      legacySafetyRejected: conflict.legacySafetyRejected,
+      spacingCollapsePresent: conflict.spacingCollapsePresent,
+      hardStructuralInvalidityPresent: conflict.hardStructuralInvalidityPresent,
+      criticalOverlapPresent: conflict.criticalOverlapPresent,
+      roleLossPresent: conflict.roleLossPresent,
+      closeToAcceptable:
+        record.aggregateDelta > 0 &&
+        Boolean(bestRejected?.onlyBlockedByOneGate) &&
+        !conflict.legacySafetyRejected &&
+        !conflict.spacingCollapsePresent &&
+        !conflict.hardStructuralInvalidityPresent &&
+        !conflict.criticalOverlapPresent &&
+        !conflict.roleLossPresent,
+    } satisfies SquareCtaVsTextDiagnosticRow)
+  }
+
+  rows.sort((left, right) => {
+    if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+    if (right.confidenceDelta !== left.confidenceDelta) return right.confidenceDelta - left.confidenceDelta
+    return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+      `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+    )
+  })
+
+  const subtypeFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.ctaVsTextSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareCtaVsTextSubtype, count })
+  )
+
+  const groupedCandidateSetsBySubtype = Array.from(
+    rows.reduce<Map<string, SquareCtaVsTextDiagnosticRow[]>>((acc, row) => {
+      const bucket = acc.get(row.ctaVsTextSubtype) || []
+      bucket.push(row)
+      acc.set(row.ctaVsTextSubtype, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([blockerSubtype, groupRows]) => ({
+      blockerSubtype: blockerSubtype as SquareCtaVsTextSubtype,
+      caseCount: groupRows.length,
+      topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+    }))
+    .sort((left, right) => right.caseCount - left.caseCount || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const blockerSeverityConfidenceGatePatterns = Array.from(
+    rows.reduce<Map<string, number>>((acc, row) => {
+      const confidencePattern =
+        row.confidenceDelta > 0 ? 'positive' : row.confidenceDelta === 0 ? 'neutral' : 'mixed'
+      const key = `${row.ctaVsTextSubtype}::${row.severity}::${confidencePattern}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      acc.set(key, (acc.get(key) || 0) + 1)
+      return acc
+    }, new Map())
+  )
+    .map(([key, count]) => {
+      const [blockerSubtype, severity, confidencePattern, singleGatePattern] = key.split('::')
+      return {
+        blockerSubtype: blockerSubtype as SquareCtaVsTextSubtype,
+        severity: severity as PlacementViolationSeverity,
+        confidencePattern: confidencePattern as 'positive' | 'neutral' | 'mixed',
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        count,
+      }
+    })
+    .sort((left, right) => right.count - left.count || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const nearMissSubgroupCounts = sortFrequencyEntries(
+    rows
+      .filter(
+        (row) =>
+          row.onlyBlockedByOneGate &&
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      .reduce<Record<string, number>>((acc, row) => {
+        increment(acc, row.ctaVsTextSubtype)
+        return acc
+      }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareCtaVsTextSubtype, count })
+  )
+
+  const recommendedSecondUnlockCandidates = Array.from(
+    rows.reduce<Map<string, SquareCtaVsTextDiagnosticRow[]>>((acc, row) => {
+      const confidencePattern =
+        row.confidenceDelta > 0 ? 'positive' : row.confidenceDelta === 0 ? 'neutral' : 'mixed'
+      const key = `${row.ctaVsTextSubtype}::${row.severity}::${confidencePattern}::${row.onlyBlockedByOneGate ? 'single-gate' : 'multi-gate'}`
+      const bucket = acc.get(key) || []
+      bucket.push(row)
+      acc.set(key, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([key, groupRows]) => {
+      const [blockerSubtype, severity, confidencePattern, singleGatePattern] = key.split('::')
+      const noHardSafety = groupRows.every(
+        (row) =>
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      const narrow = groupRows.length <= 8
+      const homogeneous = new Set(groupRows.map((row) => row.ctaVsTextSubtype)).size === 1
+      const mostlySingleGate = groupRows.filter((row) => row.onlyBlockedByOneGate).length / groupRows.length >= 0.8
+      const nonNegativeConfidence = groupRows.every((row) => row.confidenceDelta >= 0)
+      const notFundamentallySevere = groupRows.every(
+        (row) =>
+          row.severity !== 'severe' ||
+          row.remainingBlockerWouldBecomeMilder ||
+          row.messageClusterWouldPass ||
+          row.ctaBelowTextButAcceptable
+      )
+      const ready =
+        narrow &&
+        homogeneous &&
+        mostlySingleGate &&
+        nonNegativeConfidence &&
+        noHardSafety &&
+        notFundamentallySevere
+      return {
+        proposedUnlockClassKey: ready
+          ? `square-${blockerSubtype}-near-miss-v1`
+          : `not-ready:square-cta-vs-text:${blockerSubtype}`,
+        blockerSubtype: blockerSubtype as SquareCtaVsTextSubtype,
+        severity: severity as PlacementViolationSeverity,
+        confidencePattern: confidencePattern as 'positive' | 'neutral' | 'mixed',
+        singleGatePattern: singleGatePattern as 'single-gate' | 'multi-gate',
+        caseCount: groupRows.length,
+        ready,
+        whyReady: ready
+          ? 'Narrow homogeneous square CTA/text subgroup with stable confidence and no hard safety findings.'
+          : '',
+        whyNotReady: ready
+          ? ''
+          : [
+              !narrow ? 'too-broad' : null,
+              !homogeneous ? 'mixed-subtypes' : null,
+              !mostlySingleGate ? 'not-mostly-single-gate' : null,
+              !nonNegativeConfidence ? 'confidence-not-stable' : null,
+              !noHardSafety ? 'hard-safety-flags-present' : null,
+              !notFundamentallySevere ? 'fundamentally-severe-cta-text-conflict' : null,
+            ]
+              .filter((value): value is string => Boolean(value))
+              .join(', '),
+        expectedSafeguardsNeeded: [
+          'single-gate only',
+          'no legacy-safety-rejection',
+          'no hard-structural-invalidity',
+          'no spacing-collapse',
+          'no critical-overlap',
+          'no role-loss',
+          'stable confidence',
+          'cta/text conflict must be non-fundamental',
+        ],
+        topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+      } satisfies SquareCtaVsTextCandidateGroup
+    })
+    .sort((left, right) => {
+      if (Number(right.ready) !== Number(left.ready)) return Number(right.ready) - Number(left.ready)
+      if (right.caseCount !== left.caseCount) return right.caseCount - left.caseCount
+      return left.proposedUnlockClassKey.localeCompare(right.proposedUnlockClassKey)
+    })
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      closeToAcceptableCount: rows.filter((row) => row.closeToAcceptable).length,
+      singleGateNearMissCount: rows.filter((row) => row.onlyBlockedByOneGate).length,
+    },
+    subtypeFrequency,
+    groupedCandidateSetsBySubtype,
+    blockerSeverityConfidenceGatePatterns,
+    nearMissSubgroupCounts,
+    recommendedSecondUnlockCandidates,
+    topRecommendedSecondUnlockClass: recommendedSecondUnlockCandidates.find((group) => group.ready) || null,
+    cases: rows,
+  }
+}
+
+export function buildSquareCtaVsSubtitleDiagnostics(input: {
+  root: string
+  rows: CaseReviewNormalizedRow[]
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+}): SquareCtaVsSubtitleDiagnosticsReport {
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+
+  const rows: SquareCtaVsSubtitleDiagnosticRow[] = []
+  for (const row of input.rows) {
+    if (row.format !== 'square' || row.family !== 'display') continue
+    const record = pickRecord(row.caseId)
+    if (!record) continue
+    const master = classifyMasterResidualBucket(record)
+    if (master.dominantBlockerFamily !== 'square-role-conflict') continue
+    const conflict = deriveSquareCtaVsSubtitleDetails(record)
+    if (conflict.ctaVsTextSubtype !== 'cta-vs-subtitle-conflict') continue
+    const bestRejected = bestRejectedByCase.get(row.caseId) || null
+    rows.push({
+      caseId: row.caseId,
+      category: row.category,
+      candidateId: record.candidateId,
+      candidateKind: record.candidateKind,
+      strategyLabel: record.strategyLabel,
+      aggregateDelta: record.aggregateDelta,
+      confidenceDelta: round(record.candidateConfidence - record.baselineConfidence),
+      severity: record.placementSeverity,
+      primaryBlocker: getPrimaryBlocker(record.rejectionReasons),
+      onlyBlockedByOneGate: Boolean(bestRejected?.onlyBlockedByOneGate),
+      titleRect: conflict.titleRect,
+      subtitleRect: conflict.subtitleRect,
+      ctaRect: conflict.ctaRect,
+      imageRect: conflict.imageRect,
+      combinedTextRect: conflict.combinedTextRect,
+      messageClusterRect: conflict.messageClusterRect,
+      ctaVsSubtitleSubtype: conflict.ctaVsSubtitleSubtype,
+      ctaVsSubtitleReasons: conflict.ctaVsSubtitleReasons,
+      ctaToSubtitleDistance: conflict.ctaToSubtitleDistance,
+      ctaToSubtitleVerticalGap: conflict.ctaToSubtitleVerticalGap,
+      ctaToSubtitleHorizontalOffset: conflict.ctaToSubtitleHorizontalOffset,
+      ctaToCombinedTextDistance: conflict.ctaToCombinedTextDistance,
+      ctaOverlapRisk: conflict.ctaOverlapRisk,
+      ctaInsideExpectedActionBand: conflict.ctaInsideExpectedActionBand,
+      ctaBelowSubtitleButAcceptable: conflict.ctaBelowSubtitleButAcceptable,
+      ctaWithinSquareTolerance: conflict.ctaWithinSquareTolerance,
+      ctaReadingFlowContinuity: conflict.ctaReadingFlowContinuity,
+      ctaMessageAssociationScore: conflict.ctaMessageAssociationScore,
+      subtitleInflationContribution: conflict.subtitleInflationContribution,
+      subtitleInflatesMainly: conflict.subtitleInflatesMainly,
+      subtitleHeightContribution: conflict.subtitleHeightContribution,
+      titleHeightContribution: conflict.titleHeightContribution,
+      titleOnlyWouldPass: conflict.titleOnlyWouldPass,
+      subtitleOnlyWouldPass: conflict.subtitleOnlyWouldPass,
+      messageClusterWouldPass: conflict.messageClusterWouldPass,
+      textClusterTooTallForCtaPairing: conflict.textClusterTooTallForCtaPairing,
+      textClusterTooWideForCtaPairing: conflict.textClusterTooWideForCtaPairing,
+      actionBandMismatch: conflict.actionBandMismatch,
+      ctaZoneConflict: conflict.ctaZoneConflict,
+      subtitleZoneConflict: conflict.subtitleZoneConflict,
+      combinedTextZoneConflict: conflict.textZoneConflict,
+      remainingBlockerWouldBecomeMilder: conflict.remainingBlockerWouldBecomeMilder,
+      legacySafetyRejected: conflict.legacySafetyRejected,
+      spacingCollapsePresent: conflict.spacingCollapsePresent,
+      hardStructuralInvalidityPresent: conflict.hardStructuralInvalidityPresent,
+      criticalOverlapPresent: conflict.criticalOverlapPresent,
+      roleLossPresent: conflict.roleLossPresent,
+      closeToAcceptable:
+        record.aggregateDelta > 0 &&
+        Boolean(bestRejected?.onlyBlockedByOneGate) &&
+        !conflict.legacySafetyRejected &&
+        !conflict.spacingCollapsePresent &&
+        !conflict.hardStructuralInvalidityPresent &&
+        !conflict.criticalOverlapPresent &&
+        !conflict.roleLossPresent,
+    } satisfies SquareCtaVsSubtitleDiagnosticRow)
+  }
+
+  rows.sort((left, right) => {
+    if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+    if (right.confidenceDelta !== left.confidenceDelta) return right.confidenceDelta - left.confidenceDelta
+    return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
+      `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
+    )
+  })
+
+  const subtypeFrequency = sortFrequencyEntries(
+    rows.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.ctaVsSubtitleSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype: subtype as SquareCtaVsSubtitleSubtype, count })
+  )
+
+  const groupedCandidateSetsBySubtype = Array.from(
+    rows.reduce<Map<string, SquareCtaVsSubtitleDiagnosticRow[]>>((acc, row) => {
+      const bucket = acc.get(row.ctaVsSubtitleSubtype) || []
+      bucket.push(row)
+      acc.set(row.ctaVsSubtitleSubtype, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([blockerSubtype, groupRows]) => ({
+      blockerSubtype: blockerSubtype as SquareCtaVsSubtitleSubtype,
+      caseCount: groupRows.length,
+      topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+    }))
+    .sort((left, right) => right.caseCount - left.caseCount || left.blockerSubtype.localeCompare(right.blockerSubtype))
+
+  const recommendedSecondUnlockCandidates = Array.from(
+    rows.reduce<Map<string, SquareCtaVsSubtitleDiagnosticRow[]>>((acc, row) => {
+      const bucket = acc.get(row.ctaVsSubtitleSubtype) || []
+      bucket.push(row)
+      acc.set(row.ctaVsSubtitleSubtype, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([blockerSubtype, groupRows]) => {
+      const noHardSafety = groupRows.every(
+        (row) =>
+          !row.legacySafetyRejected &&
+          !row.spacingCollapsePresent &&
+          !row.hardStructuralInvalidityPresent &&
+          !row.criticalOverlapPresent &&
+          !row.roleLossPresent
+      )
+      const narrow = groupRows.length <= 8
+      const homogeneous = new Set(groupRows.map((row) => row.ctaVsSubtitleSubtype)).size === 1
+      const nonFundamental = groupRows.every(
+        (row) =>
+          !row.ctaOverlapRisk &&
+          !row.textClusterTooTallForCtaPairing &&
+          (row.remainingBlockerWouldBecomeMilder ||
+            row.ctaBelowSubtitleButAcceptable ||
+            row.actionBandMismatch)
+      )
+      const ready = narrow && homogeneous && noHardSafety && nonFundamental
+      return {
+        proposedUnlockClassKey: ready
+          ? `square-${blockerSubtype}-near-miss-v1`
+          : `not-ready:square-cta-vs-subtitle:${blockerSubtype}`,
+        blockerSubtype: blockerSubtype as SquareCtaVsSubtitleSubtype,
+        caseCount: groupRows.length,
+        ready,
+        whyReady: ready
+          ? 'Narrow homogeneous square CTA/subtitle subgroup with non-fundamental structural drift only.'
+          : '',
+        whyNotReady: ready
+          ? ''
+          : [
+              !narrow ? 'too-broad' : null,
+              !homogeneous ? 'mixed-subtypes' : null,
+              !noHardSafety ? 'hard-safety-flags-present' : null,
+              !nonFundamental ? 'still-fundamental-cta-subtitle-conflict' : null,
+            ]
+              .filter((value): value is string => Boolean(value))
+              .join(', '),
+        expectedSafeguardsNeeded: [
+          'single-gate only',
+          'no legacy-safety-rejection',
+          'no hard-structural-invalidity',
+          'no spacing-collapse',
+          'no critical-overlap',
+          'no role-loss',
+          'cta/subtitle conflict must be non-fundamental',
+        ],
+        topCaseIds: groupRows.slice(0, 10).map((row) => row.caseId),
+      } satisfies SquareCtaVsSubtitleCandidateGroup
+    })
+    .sort((left, right) => {
+      if (Number(right.ready) !== Number(left.ready)) return Number(right.ready) - Number(left.ready)
+      if (right.caseCount !== left.caseCount) return right.caseCount - left.caseCount
+      return left.proposedUnlockClassKey.localeCompare(right.proposedUnlockClassKey)
+    })
+
+  const subtitleInflationDrivenCount = rows.filter(
+    (row) =>
+      row.ctaVsSubtitleSubtype === 'subtitle-inflation-causes-cta-collision' ||
+      (row.subtitleInflatesMainly && row.textClusterTooTallForCtaPairing)
+  ).length
+  const actionBandMismatchCount = rows.filter((row) => row.actionBandMismatch).length
+  const realOverlapRiskCount = rows.filter((row) => row.ctaOverlapRisk).length
+  const wouldBecomeMilderIfSubtitleChangedCount = rows.filter(
+    (row) => row.subtitleInflatesMainly && row.titleOnlyWouldPass && !row.messageClusterWouldPass
+  ).length
+  const wouldBecomeMilderIfActionBandRelaxedCount = rows.filter(
+    (row) => row.actionBandMismatch && row.ctaWithinSquareTolerance && !row.ctaOverlapRisk
+  ).length
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      squareDisplayBlockedCases: rows.length,
+      closeToAcceptableCount: rows.filter((row) => row.closeToAcceptable).length,
+      singleGateNearMissCount: rows.filter((row) => row.onlyBlockedByOneGate).length,
+      subtitleInflationDrivenCount,
+      actionBandMismatchCount,
+      realOverlapRiskCount,
+      wouldBecomeMilderIfSubtitleChangedCount,
+      wouldBecomeMilderIfActionBandRelaxedCount,
+    },
+    subtypeFrequency,
+    groupedCandidateSetsBySubtype,
+    rootCauseSummary: {
+      subtitleInflationDrivenCount,
+      actionBandMismatchCount,
+      realOverlapRiskCount,
+      wouldBecomeMilderIfSubtitleChangedCount,
+      wouldBecomeMilderIfActionBandRelaxedCount,
+      smallHomogeneousSubsetCount: recommendedSecondUnlockCandidates.filter(
+        (group) => group.caseCount <= 8
+      ).length,
+    },
+    recommendedSecondUnlockCandidates,
+    topRecommendedSecondUnlockClass: recommendedSecondUnlockCandidates.find((group) => group.ready) || null,
+    cases: rows,
+  }
+}
+
 export function buildMasterResidualBlockers(input: {
   root: string
   rows: CaseReviewNormalizedRow[]
   bestRejectedCandidates: BestRejectedCandidateRow[]
   records: PlacementSoftPolicyCandidateRecord[]
 }): MasterResidualBlockersReport {
-  const bestRejectedByCase = new Map(
-    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
-  )
-  const recordsByCase = new Map<string, PlacementSoftPolicyCandidateRecord[]>()
-  for (const record of input.records) {
-    const bucket = recordsByCase.get(record.caseId) || []
-    bucket.push(record)
-    recordsByCase.set(record.caseId, bucket)
-  }
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
 
   const caseRows: MasterResidualBlockerCaseRow[] = input.rows.map((row) => {
-    const bestRejected = bestRejectedByCase.get(row.caseId) || null
-    const matchingRecord =
-      (bestRejected
-        ? (recordsByCase.get(row.caseId) || []).find(
-            (record) =>
-              record.candidateId === bestRejected.candidateId &&
-              record.candidateKind === bestRejected.candidateKind
-          )
-        : null) ||
-      (recordsByCase.get(row.caseId) || [])
-        .slice()
-        .sort((left, right) => {
-          if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
-          if (right.effectiveScore !== left.effectiveScore) return right.effectiveScore - left.effectiveScore
-          return `${left.caseId}:${left.candidateKind}:${left.strategyLabel}`.localeCompare(
-            `${right.caseId}:${right.candidateKind}:${right.strategyLabel}`
-          )
-        })[0] ||
-      null
+    const matchingRecord = pickRecord(row.caseId)
 
     if (!matchingRecord) {
       return {
@@ -3255,6 +4409,288 @@ export function buildMasterResidualBlockers(input: {
   }
 }
 
+export function buildValidatedUnlockClasses(input: {
+  root: string
+  experiment: LandscapeTextHeightProductionExperimentReport
+}): ValidatedUnlockClassesReport {
+  const flippedCases = input.experiment.flippedCases
+    .map((item) => item.caseId)
+    .slice()
+    .sort((left, right) => left.localeCompare(right))
+  const expectedFlips = VALIDATED_LANDSCAPE_TEXT_HEIGHT_FLIPS.slice().sort((left, right) =>
+    left.localeCompare(right)
+  )
+  const exactCaseMatch =
+    flippedCases.length === expectedFlips.length &&
+    flippedCases.every((caseId, index) => caseId === expectedFlips[index])
+  const validatedClass: ValidatedUnlockClass = {
+    unlockClassKey: 'landscape-text-height-near-miss-v1',
+    flagName: 'enableLandscapeTextHeightNearMissOverride',
+    validated:
+      exactCaseMatch &&
+      input.experiment.totals.eligibleCandidates === 4 &&
+      input.experiment.totals.eligibleCases === 4 &&
+      input.experiment.totals.appliedOverrides === 4 &&
+      input.experiment.totals.flippedCases === 4,
+    eligibilityRules: [
+      'family=display',
+      'format=landscape',
+      'best rejected candidate only',
+      'dominant blocker family = landscape-text-height',
+      'severity = mild',
+      'aggregateDelta > 0',
+      'confidenceDelta >= 0',
+      'titleOnlyWouldPass = true',
+      'messageClusterWouldPass = true',
+      'remainingBlockerWouldBecomeMilder = true',
+      'primary blocker = role-placement-out-of-zone',
+      'onlyBlockedByOneGate = true',
+    ],
+    guardConditions: [
+      'no legacy-safety-rejection',
+      'no hard-structural-invalidity',
+      'no spacing-collapse',
+      'no critical overlap',
+      'no role-loss',
+      'flag remains disabled by default',
+    ],
+    flippedCases,
+    totals: {
+      eligibleCandidates: input.experiment.totals.eligibleCandidates,
+      eligibleCases: input.experiment.totals.eligibleCases,
+      appliedOverrides: input.experiment.totals.appliedOverrides,
+      flippedCases: input.experiment.totals.flippedCases,
+    },
+    notes: [
+      'This class is intentionally narrow and only covers the audited landscape display near-miss set.',
+      'It should not be broadened without a separate residual-blocker diagnosis proving equivalent safety.',
+      'The override is considered validated only when exactly the audited 4 cases flip and no others do.',
+    ],
+  }
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    summary: {
+      validatedClassCount: validatedClass.validated ? 1 : 0,
+      totalFlippedCases: validatedClass.flippedCases.length,
+    },
+    classes: [validatedClass],
+  }
+}
+
+function getNextUnlockPriority(input: {
+  bestRejected: CaseReviewBestRejectedCandidate | null
+  masterRow: MasterResidualBlockerCaseRow | null
+  record: PlacementSoftPolicyCandidateRecord | null
+}): NextUnlockPriority {
+  if (!input.bestRejected || !input.masterRow || !input.record) return 'not-ready'
+  if (input.record.rejectionReasons.includes('legacy-safety-rejection')) return 'not-ready'
+  if (input.record.rejectionReasons.includes('hard-structural-invalidity')) return 'not-ready'
+  if (input.record.rejectionReasons.includes('spacing-threshold-exceeded')) return 'not-ready'
+  if (input.record.placementSeverity === 'severe') return 'not-ready'
+  if (
+    input.masterRow.closeToAcceptable &&
+    input.bestRejected.aggregateDelta > 0 &&
+    input.bestRejected.onlyBlockedByOneGate
+  ) {
+    return 'high'
+  }
+  if (
+    input.bestRejected.aggregateDelta > 0 &&
+    (input.masterRow.remainingBlockerWouldBecomeMilder || input.bestRejected.onlyBlockedByOneGate)
+  ) {
+    return 'medium'
+  }
+  if (input.bestRejected.aggregateDelta >= 0) return 'low'
+  return 'not-ready'
+}
+
+function getRecommendedUnlockClass(input: {
+  priority: NextUnlockPriority
+  masterRow: MasterResidualBlockerCaseRow | null
+}): string | null {
+  if (input.priority === 'not-ready' || !input.masterRow) return null
+  switch (input.masterRow.dominantBlockerFamily) {
+    case 'square-role-conflict':
+      return 'square-role-conflict-near-miss'
+    case 'square-image':
+      return 'square-image-near-miss'
+    case 'landscape-title-zone':
+      return 'landscape-title-zone-near-miss'
+    case 'landscape-text-height':
+      return 'landscape-text-height-near-miss-v2'
+    case 'landscape-role-conflict':
+      return 'landscape-role-conflict-near-miss'
+    default:
+      return null
+  }
+}
+
+export function buildNextUnlockCandidates(input: {
+  root: string
+  rows: CaseReviewNormalizedRow[]
+  bestRejectedCandidates: BestRejectedCandidateRow[]
+  records: PlacementSoftPolicyCandidateRecord[]
+  masterResidualBlockers: MasterResidualBlockersReport
+  experiment: LandscapeTextHeightProductionExperimentReport
+}): NextUnlockCandidatesReport {
+  const flippedCaseIds = new Set(input.experiment.flippedCases.map((item) => item.caseId))
+  const bestRejectedByCase = new Map(
+    input.bestRejectedCandidates.map((row) => [row.caseId, row.bestRejectedCandidate])
+  )
+  const masterByCase = new Map(input.masterResidualBlockers.caseRows.map((row) => [row.caseId, row]))
+  const { pickRecord } = buildBestRejectedRecordMap({
+    bestRejectedCandidates: input.bestRejectedCandidates,
+    records: input.records,
+  })
+
+  const cases: NextUnlockCandidateRow[] = input.rows
+    .filter((row) => !flippedCaseIds.has(row.caseId))
+    .map((row) => {
+      const bestRejected = bestRejectedByCase.get(row.caseId) || null
+      const masterRow = masterByCase.get(row.caseId) || null
+      const record = pickRecord(row.caseId)
+      const structuralSubtypes = masterRow?.allStructuralSubtypes || []
+      const priority = getNextUnlockPriority({
+        bestRejected,
+        masterRow,
+        record,
+      })
+
+      return {
+        caseId: row.caseId,
+        format: row.format,
+        family: row.family,
+        category: row.category,
+        dominantBlockerFamily: masterRow?.dominantBlockerFamily || 'other',
+        dominantBlockerSubtype: masterRow?.dominantBlockerSubtype || 'unknown',
+        aggregateDelta: bestRejected?.aggregateDelta || 0,
+        confidenceDelta:
+          bestRejected && row.baselineConfidence !== null
+            ? round(bestRejected.confidence - row.baselineConfidence)
+            : 0,
+        severity: masterRow?.severity || record?.placementSeverity || null,
+        bestRejectedCandidateKind: bestRejected?.candidateKind || null,
+        onlyBlockedByOneGate: Boolean(bestRejected?.onlyBlockedByOneGate),
+        primaryBlocker: bestRejected?.primaryBlocker || null,
+        titleOnlyWouldPass: Boolean(masterRow?.titleOnlyWouldPass),
+        messageClusterWouldPass: Boolean(masterRow?.messageClusterWouldPass),
+        remainingBlockerWouldBecomeMilder: Boolean(masterRow?.remainingBlockerWouldBecomeMilder),
+        legacySafetyRejected: Boolean(record?.rejectionReasons.includes('legacy-safety-rejection')),
+        spacingCollapsePresent: structuralSubtypes.includes('spacing-collapse'),
+        hardStructuralInvalidityPresent: Boolean(
+          record?.rejectionReasons.includes('hard-structural-invalidity')
+        ),
+        criticalOverlapPresent: structuralSubtypes.includes('overlap-critical'),
+        roleLossPresent: structuralSubtypes.includes('role-loss'),
+        closeToAcceptable: Boolean(masterRow?.closeToAcceptable),
+        recommendedUnlockClass: getRecommendedUnlockClass({
+          priority,
+          masterRow,
+        }),
+        recommendedUnlockPriority: priority,
+      }
+    })
+    .sort((left, right) => {
+      const rank: Record<NextUnlockPriority, number> = {
+        high: 4,
+        medium: 3,
+        low: 2,
+        'not-ready': 1,
+      }
+      if (rank[right.recommendedUnlockPriority] !== rank[left.recommendedUnlockPriority]) {
+        return rank[right.recommendedUnlockPriority] - rank[left.recommendedUnlockPriority]
+      }
+      if (right.aggregateDelta !== left.aggregateDelta) return right.aggregateDelta - left.aggregateDelta
+      if (right.confidenceDelta !== left.confidenceDelta) return right.confidenceDelta - left.confidenceDelta
+      return left.caseId.localeCompare(right.caseId)
+    })
+
+  const blockerFamilyFrequency = sortFrequencyEntries(
+    cases.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.dominantBlockerFamily)
+      return acc
+    }, {}),
+    (family, count) => ({ family: family as MasterResidualBlockerBucket, count })
+  )
+
+  const blockerSubtypeFrequency = sortFrequencyEntries(
+    cases.reduce<Record<string, number>>((acc, row) => {
+      increment(acc, row.dominantBlockerSubtype)
+      return acc
+    }, {}),
+    (subtype, count) => ({ subtype, count })
+  )
+
+  const groupedCandidateSets = Array.from(
+    cases.reduce<Map<string, NextUnlockCandidateRow[]>>((acc, row) => {
+      const key =
+        row.recommendedUnlockClass || `not-ready:${row.dominantBlockerFamily}:${row.dominantBlockerSubtype}`
+      const bucket = acc.get(key) || []
+      bucket.push(row)
+      acc.set(key, bucket)
+      return acc
+    }, new Map())
+  )
+    .map(([key, rows]) => {
+      const rank: Record<NextUnlockPriority, number> = {
+        high: 4,
+        medium: 3,
+        low: 2,
+        'not-ready': 1,
+      }
+      const bestPriority = rows
+        .map((row) => row.recommendedUnlockPriority)
+        .sort((left, right) => rank[right] - rank[left])[0] as NextUnlockPriority
+      const sample = rows[0]
+      return {
+        recommendedUnlockClass: key,
+        recommendedUnlockPriority: bestPriority,
+        blockerFamily: sample.dominantBlockerFamily,
+        blockerSubtype: sample.dominantBlockerSubtype,
+        caseCount: rows.length,
+        topCaseIds: rows.slice(0, 10).map((row) => row.caseId),
+        ready: bestPriority === 'high',
+        whyReady:
+          bestPriority === 'high'
+            ? 'Single-gate near-miss cluster with positive score gain and no hard safety blockers.'
+            : bestPriority === 'medium'
+              ? 'Promising but still missing the same level of validated guard evidence as the current milestone override.'
+              : bestPriority === 'low'
+                ? 'Weak gain or diffuse blocker pattern; not ready for a guarded production unlock.'
+                : 'Blocked by hard safety signals, severe placement, or unresolved multi-gate conflicts.',
+      } satisfies NextUnlockCandidateGroup
+    })
+    .sort((left, right) => {
+      const rank: Record<NextUnlockPriority, number> = {
+        high: 4,
+        medium: 3,
+        low: 2,
+        'not-ready': 1,
+      }
+      if (rank[right.recommendedUnlockPriority] !== rank[left.recommendedUnlockPriority]) {
+        return rank[right.recommendedUnlockPriority] - rank[left.recommendedUnlockPriority]
+      }
+      if (right.caseCount !== left.caseCount) return right.caseCount - left.caseCount
+      return left.recommendedUnlockClass.localeCompare(right.recommendedUnlockClass)
+    })
+
+  return {
+    generatedAt: new Date().toISOString(),
+    root: input.root,
+    totals: {
+      nonFlippedCases: cases.length,
+      closeToAcceptableCases: cases.filter((row) => row.closeToAcceptable).length,
+    },
+    cases,
+    blockerFamilyFrequency,
+    blockerSubtypeFrequency,
+    groupedCandidateSets,
+    topRecommendedNextClass: groupedCandidateSets[0] || null,
+  }
+}
+
 export function renderCaseReviewCsv(rows: CaseReviewNormalizedRow[]) {
   const encode = (value: unknown) => {
     if (Array.isArray(value)) {
@@ -3392,6 +4828,24 @@ export async function exportCaseReviewTable(
     root: roots.outputRoot,
     records: placementRecords,
   })
+  const squareRoleConflictDiagnostics = buildSquareRoleConflictDiagnostics({
+    root: roots.outputRoot,
+    rows: sortedRows,
+    bestRejectedCandidates,
+    records: placementRecords,
+  })
+  const squareCtaVsTextDiagnostics = buildSquareCtaVsTextDiagnostics({
+    root: roots.outputRoot,
+    rows: sortedRows,
+    bestRejectedCandidates,
+    records: placementRecords,
+  })
+  const squareCtaVsSubtitleDiagnostics = buildSquareCtaVsSubtitleDiagnostics({
+    root: roots.outputRoot,
+    rows: sortedRows,
+    bestRejectedCandidates,
+    records: placementRecords,
+  })
   const masterResidualBlockers = buildMasterResidualBlockers({
     root: roots.outputRoot,
     rows: sortedRows,
@@ -3402,6 +4856,18 @@ export async function exportCaseReviewTable(
     root: roots.outputRoot,
     rows: sortedRows,
     records: placementRecords,
+  })
+  const validatedUnlockClasses = buildValidatedUnlockClasses({
+    root: roots.outputRoot,
+    experiment: landscapeTextHeightProductionExperiment,
+  })
+  const nextUnlockCandidates = buildNextUnlockCandidates({
+    root: roots.outputRoot,
+    rows: sortedRows,
+    bestRejectedCandidates,
+    records: placementRecords,
+    masterResidualBlockers,
+    experiment: landscapeTextHeightProductionExperiment,
   })
 
   const outputPaths = {
@@ -3453,11 +4919,25 @@ export async function exportCaseReviewTable(
       roots.outputRoot,
       '_placement-role-conflict-landscape-diagnostics.json'
     ),
+    squareRoleConflictDiagnosticsJson: path.join(
+      roots.outputRoot,
+      '_square-role-conflict-diagnostics.json'
+    ),
+    squareCtaVsTextDiagnosticsJson: path.join(
+      roots.outputRoot,
+      '_square-cta-vs-text-diagnostics.json'
+    ),
+    squareCtaVsSubtitleDiagnosticsJson: path.join(
+      roots.outputRoot,
+      '_square-cta-vs-subtitle-diagnostics.json'
+    ),
     masterResidualBlockersJson: path.join(roots.outputRoot, '_master-residual-blockers.json'),
     landscapeTextHeightProductionExperimentJson: path.join(
       roots.outputRoot,
       '_landscape-text-height-production-experiment.json'
     ),
+    validatedUnlockClassesJson: path.join(roots.outputRoot, '_validated-unlock-classes.json'),
+    nextUnlockCandidatesJson: path.join(roots.outputRoot, '_next-unlock-candidates.json'),
   }
 
   await writeJson(outputPaths.tableJson, sortedRows)
@@ -3483,11 +4963,16 @@ export async function exportCaseReviewTable(
     outputPaths.placementRoleConflictLandscapeDiagnosticsJson,
     placementRoleConflictLandscapeDiagnostics
   )
+  await writeJson(outputPaths.squareRoleConflictDiagnosticsJson, squareRoleConflictDiagnostics)
+  await writeJson(outputPaths.squareCtaVsTextDiagnosticsJson, squareCtaVsTextDiagnostics)
+  await writeJson(outputPaths.squareCtaVsSubtitleDiagnosticsJson, squareCtaVsSubtitleDiagnostics)
   await writeJson(outputPaths.masterResidualBlockersJson, masterResidualBlockers)
   await writeJson(
     outputPaths.landscapeTextHeightProductionExperimentJson,
     landscapeTextHeightProductionExperiment
   )
+  await writeJson(outputPaths.validatedUnlockClassesJson, validatedUnlockClasses)
+  await writeJson(outputPaths.nextUnlockCandidatesJson, nextUnlockCandidates)
   await writeText(
     outputPaths.tableMarkdown,
     renderCaseReviewMarkdown(sortedRows, tuningSummary, options.markdownLimit || 30)
@@ -3511,9 +4996,14 @@ export async function exportCaseReviewTable(
     placementCtaAnchorLandscapeDiagnostics,
     placementMessageLandscapeDiagnostics,
     placementRoleConflictLandscapeDiagnostics,
+    squareRoleConflictDiagnostics,
+    squareCtaVsTextDiagnostics,
+    squareCtaVsSubtitleDiagnostics,
     masterResidualBlockers,
     landscapeImageNearMissExperiment,
     landscapeTextHeightProductionExperiment,
+    validatedUnlockClasses,
+    nextUnlockCandidates,
     outputPaths,
   }
 }
