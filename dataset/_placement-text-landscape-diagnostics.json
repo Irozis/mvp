@@ -1,0 +1,2420 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.310Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "landscapeDisplayBlockedCandidates": 40,
+    "dominantTextCount": 40,
+    "dominantCtaCount": 0,
+    "titleFineButAttachmentWeakCount": 0,
+    "combinedClusterDrivenCount": 0,
+    "ctaDetachedMainCount": 0,
+    "wouldBecomeMilderCount": 0
+  },
+  "dominantBlockerFrequency": [
+    {
+      "blocker": "title-placement",
+      "count": 40
+    }
+  ],
+  "criticalIssueFrequency": [
+    {
+      "issue": "other-structural-invalidity",
+      "count": 28
+    },
+    {
+      "issue": "spacing-collapse",
+      "count": 4
+    }
+  ],
+  "topBlockedCandidates": [
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-vertical-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":26},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-vertical-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":26},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-horizontal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-horizontal-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":26},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 20.11,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 1,
+      "confidenceDelta": 3
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-vertical-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "dominantRole": "title-placement",
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "combinedTextRect": {
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 46,
+        "h": 56.000000000000014
+      },
+      "allowedTextZones": [
+        {
+          "x": 2,
+          "y": 17.6,
+          "w": 58,
+          "h": 39.199999999999996
+        },
+        {
+          "x": 2,
+          "y": 18.464,
+          "w": 52,
+          "h": 43.616
+        },
+        {
+          "x": 2,
+          "y": 16.768,
+          "w": 53.760000000000005,
+          "h": 47.008
+        },
+        {
+          "x": 2.88,
+          "y": 20.16,
+          "w": 50.239999999999995,
+          "h": 50.400000000000006
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 0,
+          "y": 15.600000000000001,
+          "w": 62,
+          "h": 43.199999999999996
+        },
+        {
+          "x": 0,
+          "y": 16.464,
+          "w": 56,
+          "h": 47.616
+        },
+        {
+          "x": 0,
+          "y": 14.768,
+          "w": 57.760000000000005,
+          "h": 51.00800000000001
+        },
+        {
+          "x": 0.8799999999999999,
+          "y": 18.16,
+          "w": 54.239999999999995,
+          "h": 54.400000000000006
+        }
+      ],
+      "titlePlacementDistance": 0,
+      "titlePreferredDistance": 0,
+      "subtitleAttachmentDistance": 0,
+      "ctaAttachmentDistance": 3.68,
+      "ctaAttachmentSeverity": "mild",
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "disconnectDrivenPrimarilyByGap": true,
+      "disconnectDrivenPrimarilyByHorizontalOffset": false,
+      "combinedAllowedDistance": 0,
+      "combinedPreferredDistance": 0,
+      "clusterFootprint": 18.5,
+      "titleDominatesMainTextPlacement": true,
+      "subtitleDetached": false,
+      "ctaDetached": false,
+      "textImageSplitCoherent": true,
+      "fullClusterCoherent": true,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "wouldBecomeMilderUnderLandscapeCtaAttachmentPolicy": true,
+      "titleSubtitleVerticalGap": 9,
+      "titleSubtitleHorizontalOffset": 0,
+      "titleCtaDistance": 29.25,
+      "subtitleCtaDistance": 14.79,
+      "subtitleInflationContribution": 14.46,
+      "criticalIssues": [
+        "other-structural-invalidity"
+      ],
+      "aggregateDelta": 0,
+      "confidenceDelta": 0
+    }
+  ],
+  "topAttachmentCandidates": []
+}

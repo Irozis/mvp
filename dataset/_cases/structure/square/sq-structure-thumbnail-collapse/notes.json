@@ -1,0 +1,19 @@
+{
+  "id": "sq-structure-thumbnail-collapse",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "structure",
+  "expectedProblems": [
+    "structure"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "structure",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from structure/square/sq-structure-thumbnail-collapse.png"
+}

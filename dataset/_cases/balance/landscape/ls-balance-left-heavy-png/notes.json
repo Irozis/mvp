@@ -1,0 +1,19 @@
+{
+  "id": "ls-balance-left-heavy-png",
+  "family": "display",
+  "format": "landscape",
+  "source": "legacy-flat-import",
+  "category": "balance",
+  "expectedProblems": [
+    "balance"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "balance",
+    "landscape",
+    "display"
+  ],
+  "comment": "Auto-generated from balance/landscape/ls-balance-left-heavy.png.png"
+}

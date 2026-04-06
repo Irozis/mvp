@@ -1,0 +1,595 @@
+{
+  "generatedAt": "2026-03-25T09:20:15.016Z",
+  "entries": [
+    {
+      "id": "marketplace-card-no-image",
+      "formatKey": "marketplace-card",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 44,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 51,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-no-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 45,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 18,
+        "textImageHarmony": 0,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    },
+    {
+      "id": "marketplace-tile-no-image",
+      "formatKey": "marketplace-tile",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 37,
+      "visualScore": 46,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 60,
+        "negativeSpaceQuality": 73,
+        "coherence": 46
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image feels detached from the text cluster.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "inactive-empty-space",
+        "insufficient-breathing-room"
+      ],
+      "geometry": {
+        "title": "14:43.3:46.9:0",
+        "image": "79:20.4:16:38.7",
+        "cta": "5:71.5:12:5.3"
+      }
+    },
+    {
+      "id": "social-square-no-image",
+      "formatKey": "social-square",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 0,
+      "visualScore": 53,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 20,
+        "textImageHarmony": 78,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 73
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Text and image read as a coordinated composition.",
+        "CTA feels integrated with the message cluster.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-major-overlap",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "headline-image-overlap"
+      ],
+      "geometry": {
+        "title": "8.9:53.3:48.1:20.4",
+        "image": "6.7:46.6:64.3:46.7",
+        "cta": "11.2:84.2:21.4:6.7"
+      }
+    },
+    {
+      "id": "display-mpu-no-image",
+      "formatKey": "display-mpu",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 23,
+      "visualScore": 59,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 57,
+        "compositionBalance": 87,
+        "textImageHarmony": 69,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 79
+      },
+      "warnings": [],
+      "strengths": [
+        "Visual mass feels intentionally balanced across the canvas.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-minimum-spacing",
+        "violates-allowed-zone",
+        "structural-role-placement",
+        "violates-model-slot"
+      ],
+      "geometry": {
+        "title": "7:32.6:46:31.2",
+        "image": "63.6:12:30.4:59.2",
+        "cta": "7:70.2:32.7:11.2"
+      }
+    },
+    {
+      "id": "marketplace-card-square-image",
+      "formatKey": "marketplace-card",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 44,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 51,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-square-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 45,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 18,
+        "textImageHarmony": 0,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    },
+    {
+      "id": "marketplace-tile-square-image",
+      "formatKey": "marketplace-tile",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 37,
+      "visualScore": 46,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 60,
+        "negativeSpaceQuality": 73,
+        "coherence": 46
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image feels detached from the text cluster.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "inactive-empty-space",
+        "insufficient-breathing-room"
+      ],
+      "geometry": {
+        "title": "14:43.3:46.9:0",
+        "image": "79:20.4:16:38.7",
+        "cta": "5:71.5:12:5.3"
+      }
+    },
+    {
+      "id": "social-square-square-image",
+      "formatKey": "social-square",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 0,
+      "visualScore": 53,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 20,
+        "textImageHarmony": 78,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 73
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Text and image read as a coordinated composition.",
+        "CTA feels integrated with the message cluster.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-major-overlap",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "headline-image-overlap"
+      ],
+      "geometry": {
+        "title": "8.9:53.3:48.1:20.4",
+        "image": "6.7:46.6:64.3:46.7",
+        "cta": "11.2:84.2:21.4:6.7"
+      }
+    },
+    {
+      "id": "display-mpu-square-image",
+      "formatKey": "display-mpu",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 23,
+      "visualScore": 59,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 57,
+        "compositionBalance": 87,
+        "textImageHarmony": 69,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 79
+      },
+      "warnings": [],
+      "strengths": [
+        "Visual mass feels intentionally balanced across the canvas.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-minimum-spacing",
+        "violates-allowed-zone",
+        "structural-role-placement",
+        "violates-model-slot"
+      ],
+      "geometry": {
+        "title": "7:32.6:46:31.2",
+        "image": "63.6:12:30.4:59.2",
+        "cta": "7:70.2:32.7:11.2"
+      }
+    }
+  ],
+  "flaggedNoisyCases": [
+    {
+      "id": "marketplace-card-no-image",
+      "formatKey": "marketplace-card",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 44,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 51,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-no-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 45,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 18,
+        "textImageHarmony": 0,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    },
+    {
+      "id": "marketplace-card-square-image",
+      "formatKey": "marketplace-card",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 44,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 17,
+        "textImageHarmony": 0,
+        "ctaQuality": 51,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-square-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 45,
+      "visualBand": "poor",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 18,
+        "textImageHarmony": 0,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 74,
+        "coherence": 45
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    }
+  ],
+  "axisAverages": [
+    {
+      "axis": "focusHierarchy",
+      "average": 77
+    },
+    {
+      "axis": "compositionBalance",
+      "average": 31.8
+    },
+    {
+      "axis": "textImageHarmony",
+      "average": 29.4
+    },
+    {
+      "axis": "ctaQuality",
+      "average": 72.6
+    },
+    {
+      "axis": "negativeSpaceQuality",
+      "average": 77.8
+    },
+    {
+      "axis": "coherence",
+      "average": 57.6
+    }
+  ]
+}

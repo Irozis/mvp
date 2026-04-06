@@ -1,0 +1,503 @@
+{
+  "generatedAt": "2026-03-18T08:30:50.864Z",
+  "sources": {
+    "visualPreview": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\report-visual-preview.md",
+    "applyPreview": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\report-apply-preview.md",
+    "metrics": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\metrics.csv",
+    "manifest": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\extracted\\manifest.json",
+    "policy": "C:\\Users\\Fedelesh_dm\\mvp\\src\\lib\\overlayPolicies.ts"
+  },
+  "counts": {
+    "stillFail": 12,
+    "suspiciousPass": 12
+  },
+  "analyses": [
+    {
+      "id": "Group 10",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "text sizing/reflow failure",
+      "mainReasons": [
+        "subtitle 0.017 > 0.015"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0045,
+        "subtitleOverlapRatio": 0.017,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": 0.0022,
+        "safeTextScore": 0.8798,
+        "safeAreaCoverage": 0.4974,
+        "safeCoverage": 0.4526
+      }
+    },
+    {
+      "id": "Group 5",
+      "bucket": "stress",
+      "classification": "ambiguous",
+      "outcome": "still-fail",
+      "taxonomy": "ambiguous dataset issue",
+      "mainReasons": [
+        "safeTextScore 0.7807 < 0.87",
+        "safeAreaCoverage 0 < 0.22"
+      ],
+      "issueCause": "dataset classification",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.7807,
+        "safeAreaCoverage": 0,
+        "safeCoverage": 0
+      }
+    },
+    {
+      "id": "Group 18",
+      "bucket": "stress",
+      "classification": "ambiguous",
+      "outcome": "still-fail",
+      "taxonomy": "ambiguous dataset issue",
+      "mainReasons": [
+        "headline 0.0487 > 0.0125",
+        "safeTextScore 0.823 < 0.87"
+      ],
+      "issueCause": "dataset classification",
+      "metrics": {
+        "headlineOverlapRatio": 0.0487,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.823,
+        "safeAreaCoverage": 0.5104,
+        "safeCoverage": 0.3942
+      }
+    },
+    {
+      "id": "Group 2",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "text sizing/reflow failure",
+      "mainReasons": [
+        "headline 0.0206 > 0.0125"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0206,
+        "subtitleOverlapRatio": 0.0022,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.9848,
+        "safeAreaCoverage": 0.8419,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 3",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "invalid/stress-like composition",
+      "mainReasons": [
+        "subtitle 0.0428 > 0.015"
+      ],
+      "issueCause": "layout engine",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0428,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9741,
+        "safeAreaCoverage": 0.6437,
+        "safeCoverage": 0.9495
+      }
+    },
+    {
+      "id": "Group 6",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "text sizing/reflow failure",
+      "mainReasons": [
+        "headline 0.0127 > 0.0125",
+        "subtitle 0.0162 > 0.015"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0127,
+        "subtitleOverlapRatio": 0.0162,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8934,
+        "safeAreaCoverage": 0.6758,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 12",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "scoring failure",
+      "mainReasons": [
+        "safeTextScore 0.859 < 0.87"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.859,
+        "safeAreaCoverage": 1,
+        "safeCoverage": 0
+      }
+    },
+    {
+      "id": "Group 15",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "scoring failure",
+      "mainReasons": [
+        "safeAreaCoverage 0 < 0.22"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9324,
+        "safeAreaCoverage": 0,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 20",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "invalid/stress-like composition",
+      "mainReasons": [
+        "subtitle 0.1527 > 0.015",
+        "badge 0.0179 > 0.005"
+      ],
+      "issueCause": "layout engine",
+      "metrics": {
+        "headlineOverlapRatio": 0.0036,
+        "subtitleOverlapRatio": 0.1527,
+        "logoOverlapRatio": 0.0004,
+        "badgeOverlapRatio": 0.0179,
+        "safeTextScore": 0.9225,
+        "safeAreaCoverage": 0.7843,
+        "safeCoverage": 0.7774
+      }
+    },
+    {
+      "id": "Group 21",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "invalid/stress-like composition",
+      "mainReasons": [
+        "headline 0.019 > 0.0125",
+        "subtitle 0.0282 > 0.015"
+      ],
+      "issueCause": "layout engine",
+      "metrics": {
+        "headlineOverlapRatio": 0.019,
+        "subtitleOverlapRatio": 0.0282,
+        "logoOverlapRatio": 0.0077,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.8724,
+        "safeAreaCoverage": 0.8247,
+        "safeCoverage": 0.3527
+      }
+    },
+    {
+      "id": "Group 22",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "invalid/stress-like composition",
+      "mainReasons": [
+        "headline 0.0486 > 0.0125",
+        "safeTextScore 0.7579 < 0.87"
+      ],
+      "issueCause": "layout engine",
+      "metrics": {
+        "headlineOverlapRatio": 0.0486,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.7579,
+        "safeAreaCoverage": 0.7353,
+        "safeCoverage": 0
+      }
+    },
+    {
+      "id": "Group 24",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "still-fail",
+      "taxonomy": "text sizing/reflow failure",
+      "mainReasons": [
+        "headline 0.0241 > 0.0125"
+      ],
+      "issueCause": "layout engine",
+      "metrics": {
+        "headlineOverlapRatio": 0.0241,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0.0029,
+        "safeTextScore": 0.9751,
+        "safeAreaCoverage": 0.6505,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 4",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "duplicate/noisy signal",
+      "mainReasons": [
+        "suspicious flag is mostly heuristic noise rather than a real policy edge"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0012,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9923,
+        "safeAreaCoverage": 0.2929,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 7",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "acceptable soft pass",
+      "mainReasons": [
+        "policy relaxation looks acceptable on this case"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0032,
+        "subtitleOverlapRatio": 0.0062,
+        "logoOverlapRatio": 0.0027,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.9602,
+        "safeAreaCoverage": 0.3971,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 8",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "acceptable soft pass",
+      "mainReasons": [
+        "policy relaxation looks acceptable on this case"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0027,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0.003,
+        "safeTextScore": 0.9896,
+        "safeAreaCoverage": 0.2254,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 9",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "acceptable soft pass",
+      "mainReasons": [
+        "policy relaxation looks acceptable on this case"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.008,
+        "subtitleOverlapRatio": 0.0007,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9428,
+        "safeAreaCoverage": 0.5484,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 23",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "likely false pass",
+      "mainReasons": [
+        "metric sits very close to the provisional gate"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0115,
+        "subtitleOverlapRatio": 0.0102,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.97,
+        "safeAreaCoverage": 0.4138,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 25",
+      "bucket": "core",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "duplicate/noisy signal",
+      "mainReasons": [
+        "suspicious flag is mostly heuristic noise rather than a real policy edge"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": null,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": null,
+        "safeAreaCoverage": null,
+        "safeCoverage": null
+      }
+    },
+    {
+      "id": "Group 11",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "stress case now passes under provisional square overlay policy"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0043,
+        "subtitleOverlapRatio": 0.0049,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9596,
+        "safeAreaCoverage": 0.8301,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 13",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "stress case now passes under provisional square overlay policy"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0023,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.986,
+        "safeAreaCoverage": 0.4615,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 14",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "stress case now passes under provisional square overlay policy"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9662,
+        "safeAreaCoverage": 1,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 16",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "canonical duplicate stress case intentionally reviewed as pass"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0011,
+        "subtitleOverlapRatio": 0.0025,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0.0005,
+        "safeTextScore": 0.9345,
+        "safeAreaCoverage": 0.4733,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 17",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "stress case now passes under provisional square overlay policy"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0064,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9934,
+        "safeAreaCoverage": 0.8242,
+        "safeCoverage": 1
+      }
+    },
+    {
+      "id": "Group 19",
+      "bucket": "stress",
+      "classification": "clean",
+      "outcome": "suspicious-pass",
+      "taxonomy": "stress case now intentionally allowed",
+      "mainReasons": [
+        "stress case now passes under provisional square overlay policy"
+      ],
+      "issueCause": "thresholds",
+      "metrics": {
+        "headlineOverlapRatio": 0.0074,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8789,
+        "safeAreaCoverage": 0.6305,
+        "safeCoverage": 1
+      }
+    }
+  ],
+  "recommendation": "leave thresholds unchanged and improve repair/layout logic next"
+}

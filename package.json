@@ -1,0 +1,37 @@
+{
+  "name": "adaptive-graphics-mvp",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "extract:social-square": "vite-node scripts/calibration/socialSquareExtraction.ts",
+    "metrics:social-square": "vite-node scripts/calibration/socialSquareMetrics.ts",
+    "fit-thresholds:social-square": "vite-node scripts/calibration/socialSquareThresholdFitting.ts",
+    "package-policy:social-square": "vite-node scripts/calibration/socialSquarePolicyPackaging.ts",
+    "preview-apply:social-square": "vite-node scripts/calibration/socialSquareApplyPreview.ts",
+    "preview-batch:social-square": "vite-node scripts/calibration/socialSquareVisualPreview.ts",
+    "preview-repair:social-square": "vite-node scripts/calibration/socialSquareRepairPreview.ts",
+    "analyze-failures:social-square": "vite-node scripts/calibration/socialSquareFailureAnalysis.ts",
+    "calibrate:social-square": "vite-node scripts/calibration/socialSquareCalibration.ts",
+    "calibration:pass": "vite-node scripts/diagnostics/runCalibrationPass.ts",
+    "calibration:export-review": "vite-node scripts/diagnostics/exportCaseReview.ts"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^0.511.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vitest": "^3.2.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

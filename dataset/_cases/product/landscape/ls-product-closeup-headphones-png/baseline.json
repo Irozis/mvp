@@ -1,0 +1,174 @@
+{
+  "scene": {
+    "background": [
+      "#24150f",
+      "#5b2414",
+      "#f97316"
+    ],
+    "accent": "#ff6b2c",
+    "chip": "Campaign",
+    "title": {
+      "x": 14.033333333333333,
+      "y": 34.808917197452224,
+      "w": 51.66666666666667,
+      "fontSize": 53,
+      "charsPerLine": 20,
+      "maxLines": 2,
+      "weight": 800,
+      "fill": "#f8fafc",
+      "text": "Adaptive creative systems for every placement"
+    },
+    "subtitle": {
+      "x": 14.033333333333333,
+      "y": 49.853503184713375,
+      "w": 51.66666666666667,
+      "fontSize": 21,
+      "charsPerLine": 32,
+      "maxLines": 1,
+      "weight": 420,
+      "fill": "#dcd3d2",
+      "opacity": 0,
+      "text": "",
+      "h": 0,
+      "normalizedTextLength": 0
+    },
+    "cta": {
+      "x": 5,
+      "y": 71.47770700636943,
+      "w": 18,
+      "h": 5.273885350318472,
+      "fontSize": 16,
+      "bg": "#ff6b2c",
+      "fill": "#f8fafc",
+      "text": "Learn more",
+      "rx": 18
+    },
+    "badge": {
+      "x": 80,
+      "y": 7.006369426751593,
+      "w": 0,
+      "h": 0,
+      "fontSize": 14,
+      "bg": "#3e312c",
+      "bgOpacity": 0,
+      "fill": "#f8fafc",
+      "text": ""
+    },
+    "logo": {
+      "x": 6,
+      "y": 7.006369426751593,
+      "w": 7.199999999999999,
+      "h": 3.8,
+      "bg": "#1f1615",
+      "bgOpacity": 0.12,
+      "fill": "#f8fafc"
+    },
+    "image": {
+      "x": 77.86666666666667,
+      "y": 10.5,
+      "w": 15.771799388159991,
+      "h": 43.89423022079999,
+      "rx": 28,
+      "fit": "xMidYMid slice"
+    }
+  },
+  "structuralStatus": "valid",
+  "score": 43,
+  "verdict": "Poor",
+  "issueCodes": [
+    "violates-image-footprint-rule",
+    "violates-allowed-zone",
+    "inactive-empty-space",
+    "insufficient-breathing-room"
+  ],
+  "structuralFindings": [],
+  "visual": {
+    "overallScore": 61,
+    "band": "weak",
+    "breakdown": {
+      "focusHierarchy": 79,
+      "compositionBalance": 63,
+      "textImageHarmony": 29,
+      "ctaQuality": 51,
+      "negativeSpaceQuality": 79,
+      "coherence": 60
+    },
+    "warnings": [
+      "Composition lacks counterweight.",
+      "Image feels detached from the text cluster.",
+      "Image presence is too weak to support the message.",
+      "Text-image ratio feels weak.",
+      "CTA looks detached from the message.",
+      "Canvas underused without compositional payoff."
+    ],
+    "strengths": [
+      "Headline establishes a readable primary focus.",
+      "Negative space feels intentional rather than abandoned."
+    ],
+    "debug": {
+      "imageAnalysisPresent": false,
+      "focusDominant": "title",
+      "visualBalance": 63,
+      "compositionBalanceDebug": {
+        "visualCenterX": 55.2,
+        "visualCenterY": 41.5,
+        "verticalStack": false,
+        "usefulAsymmetry": false,
+        "compactMarketplaceStack": false,
+        "centerOffset": 9.9,
+        "balanceAnchorBonus": 0,
+        "dominantQuadrantShare": 0.6
+      },
+      "clusterHarmony": 29,
+      "ctaSupport": 51,
+      "emptySpaceIntentionality": 79,
+      "structuralPenalty": 0
+    }
+  },
+  "perceptual": null,
+  "metrics": {
+    "readability": 100,
+    "contrast": 86,
+    "textHierarchy": 88,
+    "visualBalance": 4,
+    "spacingQuality": 82,
+    "ctaProminence": 100,
+    "logoPlacement": 100,
+    "imageTextHarmony": 84,
+    "negativeSpaceBalance": 100,
+    "clusterCohesion": 88,
+    "ratioSuitability": 100,
+    "overlayHeaviness": 100,
+    "textRhythm": 100,
+    "lineBreakQuality": 100,
+    "scaleToCanvas": 100
+  },
+  "confidence": {
+    "deterministicScore": 43,
+    "aiReviewScore": 35,
+    "disagreement": 8,
+    "effectiveScore": 26,
+    "needsHumanAttention": true
+  },
+  "objective": {
+    "structuralValidity": 100,
+    "perceptualQuality": 72,
+    "commercialStrength": 78,
+    "familyFidelity": 100,
+    "sideEffectCost": 0,
+    "aggregateScore": 75,
+    "weights": {
+      "structuralValidity": 0.34,
+      "perceptualQuality": 0.22,
+      "commercialStrength": 0.14,
+      "familyFidelity": 0.14,
+      "sideEffectCost": 0.16
+    }
+  },
+  "summaryTags": [],
+  "penaltyTags": [
+    "weak-balance",
+    "insufficient-net-gain"
+  ],
+  "aggregateScore": 75
+}

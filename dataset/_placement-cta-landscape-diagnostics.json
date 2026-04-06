@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.311Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "landscapeDisplayBlockedCandidates": 40,
+    "dominantCtaCount": 0,
+    "ctaDetachedMainCount": 0,
+    "gapDrivenCount": 0,
+    "horizontalDrivenCount": 0,
+    "wouldBecomeMilderCount": 0
+  },
+  "categoriesAffected": [],
+  "criticalIssueFrequency": [],
+  "topImprovedCandidates": [],
+  "topBlockedCandidates": []
+}

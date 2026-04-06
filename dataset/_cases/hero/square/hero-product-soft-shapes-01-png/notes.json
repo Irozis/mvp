@@ -1,0 +1,19 @@
+{
+  "id": "hero-product-soft-shapes-01-png",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "hero",
+  "expectedProblems": [
+    "hero"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "hero",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from hero/square/hero_product_soft_shapes_01.png.png"
+}

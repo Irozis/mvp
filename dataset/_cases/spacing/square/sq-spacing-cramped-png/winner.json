@@ -1,0 +1,195 @@
+{
+  "winnerCandidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+  "winnerCandidateKind": "local-structural-repair",
+  "winnerStrategyLabel": "current",
+  "baselineWon": true,
+  "aggregateDelta": 0,
+  "scene": {
+    "background": [
+      "#3a1e12",
+      "#5b2414",
+      "#fa721a"
+    ],
+    "accent": "#ff6b2c",
+    "chip": "Campaign",
+    "title": {
+      "x": 8,
+      "y": 57.40740740740741,
+      "w": 42.592592592592595,
+      "fontSize": 92,
+      "charsPerLine": 20,
+      "maxLines": 3,
+      "weight": 800,
+      "fill": "#f8fafc",
+      "text": "Adaptive creative systems for every placement",
+      "h": 27.77777777777778
+    },
+    "subtitle": {
+      "x": 6.666666666666667,
+      "y": 59.333333333333336,
+      "w": 29.140740740740746,
+      "fontSize": 30,
+      "charsPerLine": 32,
+      "maxLines": 4,
+      "weight": 420,
+      "fill": "#dcd3d2",
+      "opacity": 0.9,
+      "text": "Turn one master layout into multiple channel-ready formats without breaking the visual language.",
+      "h": 27.77777777777778
+    },
+    "cta": {
+      "x": 8,
+      "y": 87.33333333333334,
+      "w": 20,
+      "h": 6,
+      "fontSize": 20,
+      "bg": "#ff6b2c",
+      "fill": "#f8fafc",
+      "text": "Learn more",
+      "rx": 18
+    },
+    "badge": {
+      "x": 81.33333333333334,
+      "y": 16.666666666666664,
+      "w": 12,
+      "h": 5,
+      "fontSize": 20,
+      "bg": "#ff6b2c",
+      "bgOpacity": 1,
+      "fill": "#f8fafc",
+      "text": "Campaign"
+    },
+    "logo": {
+      "x": 6.666666666666667,
+      "y": 6.666666666666667,
+      "w": 11.481481481481481,
+      "h": 5,
+      "bg": "#301d17",
+      "bgOpacity": 0.16,
+      "fill": "#f8fafc"
+    },
+    "image": {
+      "x": 43.64861306068384,
+      "y": 21.962962962962962,
+      "w": 49.6847202726495,
+      "h": 60.380736442456005,
+      "rx": 28,
+      "fit": "xMidYMid slice"
+    }
+  },
+  "structuralStatus": "invalid",
+  "score": 0,
+  "verdict": "Poor",
+  "issueCodes": [
+    "structural-major-overlap",
+    "structural-minimum-spacing",
+    "violates-image-footprint-rule",
+    "violates-allowed-zone"
+  ],
+  "structuralFindings": [
+    {
+      "name": "major-overlap",
+      "severity": "high",
+      "message": "Major blocks still overlap after synthesis."
+    },
+    {
+      "name": "minimum-spacing",
+      "severity": "high",
+      "message": "Minimum spacing between major blocks is not respected."
+    },
+    {
+      "name": "role-placement",
+      "severity": "medium",
+      "message": "Role-specific anchor placement is drifting outside the configured format zones."
+    }
+  ],
+  "visual": {
+    "overallScore": 57,
+    "band": "weak",
+    "breakdown": {
+      "focusHierarchy": 77,
+      "compositionBalance": 62,
+      "textImageHarmony": 67,
+      "ctaQuality": 92,
+      "negativeSpaceQuality": 84,
+      "coherence": 76
+    },
+    "warnings": [
+      "Composition lacks counterweight."
+    ],
+    "strengths": [
+      "Image carries a clear primary focal role.",
+      "CTA feels integrated with the message cluster.",
+      "Negative space feels intentional rather than abandoned.",
+      "Overall composition reads as a coherent advertising layout."
+    ],
+    "debug": {
+      "imageAnalysisPresent": false,
+      "focusDominant": "image",
+      "visualBalance": 62,
+      "compositionBalanceDebug": {
+        "visualCenterX": 52.7,
+        "visualCenterY": 59.5,
+        "verticalStack": false,
+        "usefulAsymmetry": false,
+        "compactMarketplaceStack": false,
+        "centerOffset": 9.9,
+        "balanceAnchorBonus": 0,
+        "dominantQuadrantShare": 0.62
+      },
+      "clusterHarmony": 67,
+      "ctaSupport": 92,
+      "emptySpaceIntentionality": 84,
+      "structuralPenalty": 18
+    }
+  },
+  "perceptual": null,
+  "metrics": {
+    "readability": 100,
+    "contrast": 86,
+    "textHierarchy": 100,
+    "visualBalance": 8,
+    "spacingQuality": 82,
+    "ctaProminence": 86,
+    "logoPlacement": 100,
+    "imageTextHarmony": 100,
+    "negativeSpaceBalance": 100,
+    "clusterCohesion": 76,
+    "ratioSuitability": 100,
+    "overlayHeaviness": 100,
+    "textRhythm": 100,
+    "lineBreakQuality": 100,
+    "scaleToCanvas": 100
+  },
+  "confidence": {
+    "deterministicScore": 0,
+    "aiReviewScore": 0,
+    "disagreement": 0,
+    "effectiveScore": 0,
+    "needsHumanAttention": true
+  },
+  "objective": {
+    "structuralValidity": 0,
+    "perceptualQuality": 69,
+    "commercialStrength": 79,
+    "familyFidelity": 100,
+    "sideEffectCost": 0,
+    "aggregateScore": 44,
+    "weights": {
+      "structuralValidity": 0.36,
+      "perceptualQuality": 0.24,
+      "commercialStrength": 0.14,
+      "familyFidelity": 0.16,
+      "sideEffectCost": 0.1
+    }
+  },
+  "summaryTags": [
+    "insufficient-breathing-room",
+    "structural-drift"
+  ],
+  "penaltyTags": [
+    "weak-balance",
+    "insufficient-net-gain"
+  ],
+  "aggregateScore": 44
+}

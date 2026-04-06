@@ -1,0 +1,2961 @@
+{
+  "formatKey": "marketplace-card",
+  "explorationBudget": 24,
+  "variationIndex": 0,
+  "profile": {
+    "headlineLength": 42,
+    "subtitleLength": 111,
+    "bodyLength": 0,
+    "ctaLength": 8,
+    "badgeLength": 8,
+    "priceLength": 0,
+    "density": "balanced",
+    "textWeight": 149.70000000000002,
+    "hasOffer": false,
+    "offerWeight": 0,
+    "preferredMessageMode": "balanced",
+    "messageType": "promo",
+    "promoIntensity": "high",
+    "tone": "aggressive",
+    "ctaImportance": "high",
+    "semanticType": "promo",
+    "headlineTone": "direct",
+    "needsStrongCTA": true,
+    "needsOfferDominance": false
+  },
+  "scenario": "product-card",
+  "baseIntent": {
+    "family": "square-image-top-text-bottom",
+    "imageMode": "split-right",
+    "textMode": "cluster-bottom",
+    "balanceMode": "text-dominant",
+    "tension": "promo",
+    "sourceFamily": "square",
+    "presetId": "square-image-top-text-bottom",
+    "mode": "text-first",
+    "structuralArchetype": "compact-minimal",
+    "balanceRegime": "text-first",
+    "occupancyMode": "text-safe"
+  },
+  "normalBaseCandidate": {
+    "strategyLabel": "base-heuristic",
+    "structuralArchetype": "compact-minimal",
+    "structuralStatus": "degraded",
+    "effectiveScore": 0,
+    "geometrySignature": "title:11.2:63.2:82.2:0|subtitle:11.2:75.4:82.2:0|cta:12.2:83:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14"
+  },
+  "normalSelectedCandidate": {
+    "strategyLabel": "archetype-dense-information",
+    "structuralArchetype": "dense-information",
+    "structuralStatus": "valid",
+    "effectiveScore": 9,
+    "geometrySignature": "title:12.7:59:80.6:0|subtitle:12.7:71.3:80.6:0|cta:14:78.2:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14"
+  },
+  "attemptedCandidates": 77,
+  "duplicatePlansFiltered": 0,
+  "duplicateCandidatesFiltered": 57,
+  "candidates": [
+    {
+      "candidateId": "base-archetype-image-hero",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-image-hero",
+      "fixStage": "base",
+      "structuralArchetype": "image-hero",
+      "structuralSignature": {
+        "archetype": "image-hero",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "image-first",
+        "occupancyMode": "visual-first"
+      },
+      "structuralSignatureKey": "image-hero|vertical|bottom|right|0|4|separate|image-first|visual-first",
+      "geometrySignature": "title:10.6:58.6:82.2:0|subtitle:10.6:71.1:82.2:0|cta:14:78.2:18:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 15,
+      "scoreTrust": {
+        "deterministicScore": 30,
+        "aiReviewScore": 30,
+        "disagreement": 0,
+        "effectiveScore": 15,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 10.633333333333326,
+          "y": 58.60000000000001,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 10.633333333333326,
+          "y": 71.06333333333335,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 18,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 10.633333333333326,
+          "y": 58.60000000000001,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 10.633333333333326,
+          "y": 71.06333333333335,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 18,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-image-hero",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-image-hero",
+      "fixStage": "structural",
+      "structuralArchetype": "image-hero",
+      "structuralSignature": {
+        "archetype": "image-hero",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "image-first",
+        "occupancyMode": "visual-first"
+      },
+      "structuralSignatureKey": "image-hero|vertical|bottom|right|0|4|separate|image-first|visual-first",
+      "geometrySignature": "title:10.6:59:82.2:0|subtitle:10.6:72:82.2:0|cta:14:79.3:18:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 15,
+      "scoreTrust": {
+        "deterministicScore": 30,
+        "aiReviewScore": 30,
+        "disagreement": 0,
+        "effectiveScore": 15,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 10.633333333333326,
+          "y": 59.01666666666667,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 10.633333333333326,
+          "y": 71.96333333333335,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.29666666666668,
+          "w": 18,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 10.633333333333326,
+          "y": 59.01666666666667,
+          "w": 82.16666666666667,
+          "fontSize": 96,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 10.633333333333326,
+          "y": 71.96333333333335,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.29666666666668,
+          "w": 18,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-archetype-dense-information",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-dense-information",
+      "fixStage": "regional",
+      "structuralArchetype": "dense-information",
+      "structuralSignature": {
+        "archetype": "dense-information",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "dense-copy",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "dense-information|vertical|bottom|right|0|4|separate|dense-copy|text-safe",
+      "geometrySignature": "title:12.7:59:80.6:0|subtitle:12.7:71.3:80.6:0|cta:14:78.2:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": true,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 58.96750000000001,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 71.34750000000001,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 58.96750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 91,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 71.34750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 2,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-archetype-split-vertical",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-split-vertical",
+      "fixStage": "base",
+      "structuralArchetype": "split-vertical",
+      "structuralSignature": {
+        "archetype": "split-vertical",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "split-vertical|vertical|bottom|right|0|4|separate|balanced|balanced",
+      "geometrySignature": "title:12.7:59.8:80.6:0|subtitle:12.7:72.2:80.6:0|cta:14:79.6:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.80750000000001,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.18750000000001,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.60416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.80750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.18750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.60416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-archetype-text-stack",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-text-stack",
+      "fixStage": "base",
+      "structuralArchetype": "text-stack",
+      "structuralSignature": {
+        "archetype": "text-stack",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "text-first",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "text-stack|vertical|bottom|right|0|4|separate|text-first|balanced",
+      "geometrySignature": "title:12.7:59.8:80.6:0|subtitle:12.7:72.3:80.6:0|cta:14:79.6:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.80750000000001,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.27083333333334,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.60416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.80750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 91,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.27083333333334,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.60416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-card-base",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-card:base-heuristic",
+      "fixStage": "regional",
+      "structuralArchetype": "dense-information",
+      "structuralSignature": {
+        "archetype": "dense-information",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "dense-information|vertical|bottom|right|0|4|separate|balanced|text-safe",
+      "geometrySignature": "title:12.7:59:80.6:0|subtitle:12.7:71.3:80.6:0|cta:14:78.2:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": true,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 58.96750000000001,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 71.34750000000001,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 58.96750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 91,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 71.34750000000001,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 2,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-dense-information",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-dense-information",
+      "fixStage": "structural",
+      "structuralArchetype": "dense-information",
+      "structuralSignature": {
+        "archetype": "dense-information",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "dense-copy",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "dense-information|vertical|bottom|right|0|4|separate|dense-copy|text-safe",
+      "geometrySignature": "title:12.7:59.4:80.6:0|subtitle:12.7:72.2:80.6:0|cta:14:79.7:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.38416666666667,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.24750000000002,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.66416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.38416666666667,
+          "w": 80.63333333333334,
+          "fontSize": 96,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.24750000000002,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 2,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.66416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-split-vertical",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-split-vertical",
+      "fixStage": "structural",
+      "structuralArchetype": "split-vertical",
+      "structuralSignature": {
+        "archetype": "split-vertical",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "split-vertical|vertical|bottom|right|0|4|separate|balanced|balanced",
+      "geometrySignature": "title:12.7:60.2:80.6:0|subtitle:12.7:73.1:80.6:0|cta:6.7:79.9:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 60.224166666666676,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 73.08750000000002,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 60.224166666666676,
+          "w": 80.63333333333334,
+          "fontSize": 96,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 73.08750000000002,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-text-stack",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-text-stack",
+      "fixStage": "structural",
+      "structuralArchetype": "text-stack",
+      "structuralSignature": {
+        "archetype": "text-stack",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "text-first",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "text-stack|vertical|bottom|right|0|4|separate|text-first|balanced",
+      "geometrySignature": "title:12.7:60.2:80.6:0|subtitle:12.7:73.2:80.6:0|cta:6.7:79.9:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 60.224166666666676,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 73.17083333333335,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 60.224166666666676,
+          "w": 80.63333333333334,
+          "fontSize": 96,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 73.17083333333335,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "safe-fallback-base",
+      "source": "safe-fallback",
+      "strategyLabel": "safe-fallback:base-heuristic",
+      "fixStage": "structural",
+      "structuralArchetype": "dense-information",
+      "structuralSignature": {
+        "archetype": "dense-information",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "text-first",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "dense-information|vertical|bottom|right|0|4|separate|text-first|text-safe",
+      "geometrySignature": "title:12.7:59.4:80.6:0|subtitle:12.7:72.2:80.6:0|cta:14:79.7:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 9,
+      "scoreTrust": {
+        "deterministicScore": 24,
+        "aiReviewScore": 24,
+        "disagreement": 0,
+        "effectiveScore": 9,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.38416666666667,
+          "w": 80.63333333333334
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.24750000000002,
+          "w": 80.63333333333334,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.66416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.700000000000003,
+          "y": 59.38416666666667,
+          "w": 80.63333333333334,
+          "fontSize": 96,
+          "charsPerLine": 21,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.700000000000003,
+          "y": 72.24750000000002,
+          "w": 80.63333333333334,
+          "fontSize": 29,
+          "charsPerLine": 34,
+          "maxLines": 2,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.66416666666667,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-archetype-split-horizontal",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-split-horizontal",
+      "fixStage": "base",
+      "structuralArchetype": "split-horizontal",
+      "structuralSignature": {
+        "archetype": "split-horizontal",
+        "flowDirection": "horizontal",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "split-horizontal|horizontal|bottom|right|0|4|separate|balanced|balanced",
+      "geometrySignature": "title:11.2:58.6:82.2:0|subtitle:11.2:71.1:82.2:0|cta:14:78.2:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 15,
+        "aiReviewScore": 15,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 58.60000000000001,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.06333333333335,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 58.60000000000001,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.06333333333335,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-compact-minimal",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-compact-minimal",
+      "fixStage": "structural",
+      "structuralArchetype": "compact-minimal",
+      "structuralSignature": {
+        "archetype": "compact-minimal",
+        "flowDirection": "vertical",
+        "textZone": "left",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 9,
+        "overlay": false,
+        "balanceRegime": "minimal-copy",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "compact-minimal|vertical|left|right|0|9|separate|minimal-copy|text-safe",
+      "geometrySignature": "title:12.2:50.7:81.2:0|subtitle:12.2:63.4:81.2:0|cta:6.7:79.9:14:5.2|logo:8:6.9:6:3|badge:80:6.7:0:0|image:35.2:12.3:51.6:18.1",
+      "structuralStatus": "valid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 15,
+        "aiReviewScore": 15,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 12.166666666666671,
+          "y": 50.733333333333334,
+          "w": 81.16666666666667
+        },
+        "subtitle": {
+          "x": 12.166666666666671,
+          "y": 63.43,
+          "w": 81.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 8,
+          "y": 6.9,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 35.2,
+          "y": 12.26,
+          "w": 51.640270847999986,
+          "h": 18.074094796799997
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 12.166666666666671,
+          "y": 50.733333333333334,
+          "w": 81.16666666666667,
+          "fontSize": 96,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 12.166666666666671,
+          "y": 63.43,
+          "w": 81.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 6.666666666666667,
+          "y": 79.91714666666665,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 8,
+          "y": 6.9,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 35.2,
+          "y": 12.26,
+          "w": 51.640270847999986,
+          "h": 18.074094796799997,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-archetype-split-horizontal",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:archetype-split-horizontal",
+      "fixStage": "structural",
+      "structuralArchetype": "split-horizontal",
+      "structuralSignature": {
+        "archetype": "split-horizontal",
+        "flowDirection": "horizontal",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "split-horizontal|horizontal|bottom|right|0|4|separate|balanced|balanced",
+      "geometrySignature": "title:11.2:59:82.2:0|subtitle:11.2:72:82.2:0|cta:14:79.3:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 15,
+        "aiReviewScore": 15,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 59.01666666666667,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.96333333333335,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.29666666666668,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 59.01666666666667,
+          "w": 82.16666666666667,
+          "fontSize": 96,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.96333333333335,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 79.29666666666668,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "split-right-card-base",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "split-right-card:base-heuristic",
+      "fixStage": "regional",
+      "structuralArchetype": "split-horizontal",
+      "structuralSignature": {
+        "archetype": "split-horizontal",
+        "flowDirection": "horizontal",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "compact"
+      },
+      "structuralSignatureKey": "split-horizontal|horizontal|bottom|right|0|4|separate|balanced|compact",
+      "geometrySignature": "title:11.2:58.7:82.2:0|subtitle:11.2:71.1:82.2:0|cta:14:78.2:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "valid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 15,
+        "aiReviewScore": 15,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [],
+      "structuralFindingCount": 0,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 58.674634000000005,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.13796733333334,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 58.674634000000005,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 71.13796733333334,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 78.16666666666666,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-base",
+      "source": "base-path",
+      "strategyLabel": "base:base-heuristic",
+      "fixStage": "base",
+      "structuralArchetype": "compact-minimal",
+      "structuralSignature": {
+        "archetype": "compact-minimal",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "text-first",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "compact-minimal|vertical|bottom|right|0|4|separate|text-first|text-safe",
+      "geometrySignature": "title:11.2:63.2:82.2:0|subtitle:11.2:75.4:82.2:0|cta:12.2:83:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "degraded",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 6,
+        "aiReviewScore": 6,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 1,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-card-archetype-compact-minimal",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-card:archetype-compact-minimal",
+      "fixStage": "regional",
+      "structuralArchetype": "compact-minimal",
+      "structuralSignature": {
+        "archetype": "compact-minimal",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "minimal-copy",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "compact-minimal|vertical|bottom|right|0|4|separate|minimal-copy|text-safe",
+      "geometrySignature": "title:11.2:63.2:82.2:0|subtitle:11.2:75.4:82.2:0|cta:12.2:83:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "degraded",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 6,
+        "aiReviewScore": 6,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 1,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "compact-commerce-base",
+      "source": "alternative-balance-density",
+      "strategyLabel": "compact-commerce:base-heuristic",
+      "fixStage": "regional",
+      "structuralArchetype": "compact-minimal",
+      "structuralSignature": {
+        "archetype": "compact-minimal",
+        "flowDirection": "vertical",
+        "textZone": "bottom",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 4,
+        "overlay": false,
+        "balanceRegime": "balanced",
+        "occupancyMode": "compact"
+      },
+      "structuralSignatureKey": "compact-minimal|vertical|bottom|right|0|4|separate|balanced|compact",
+      "geometrySignature": "title:11.2:63.2:82.2:0|subtitle:11.2:75.4:82.2:0|cta:12.2:83:14:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:59.8:14:25.3:14",
+      "structuralStatus": "degraded",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 6,
+        "aiReviewScore": 6,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 1,
+      "highStructuralFindingCount": 0,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 11.166666666666671,
+          "y": 63.18333333333334,
+          "w": 82.16666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 11.166666666666671,
+          "y": 75.39666666666668,
+          "w": 82.16666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 12.200000000000001,
+          "y": 82.98,
+          "w": 13.999999999999998,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 59.83333333333333,
+          "y": 14,
+          "w": 25.33333333333333,
+          "h": 14,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "base-archetype-overlay-balanced",
+      "source": "base-path",
+      "strategyLabel": "base:archetype-overlay-balanced",
+      "fixStage": "regional",
+      "structuralArchetype": "overlay-balanced",
+      "structuralSignature": {
+        "archetype": "overlay-balanced",
+        "flowDirection": "overlay",
+        "textZone": "overlay",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 26,
+        "overlay": true,
+        "balanceRegime": "balanced",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "overlay-balanced|overlay|overlay|right|0|26|overlay|balanced|text-safe",
+      "geometrySignature": "title:9.8:75.7:83:0|subtitle:9.8:88.1:83:0|cta:14:88.1:18:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:28.7:14.4:62.3:41.2",
+      "structuralStatus": "invalid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 5,
+        "aiReviewScore": 5,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "minimum-spacing",
+          "severity": "high"
+        },
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 2,
+      "highStructuralFindingCount": 1,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 9.833333333333329,
+          "y": 75.68333333333332,
+          "w": 82.96666666666667
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 88.14666666666666,
+          "w": 82.96666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 9.833333333333329,
+          "y": 75.68333333333332,
+          "w": 82.96666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 88.14666666666666,
+          "w": 82.96666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "centered-overlay-base",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "centered-overlay:base-heuristic",
+      "fixStage": "structural",
+      "structuralArchetype": "overlay-balanced",
+      "structuralSignature": {
+        "archetype": "overlay-balanced",
+        "flowDirection": "overlay",
+        "textZone": "overlay",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 26,
+        "overlay": true,
+        "balanceRegime": "balanced",
+        "occupancyMode": "text-safe"
+      },
+      "structuralSignatureKey": "overlay-balanced|overlay|overlay|right|0|26|overlay|balanced|text-safe",
+      "geometrySignature": "title:9.8:76.1:83:0|subtitle:9.8:89:83:0|cta:14:88.1:18:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:28.7:14.4:62.3:41.2",
+      "structuralStatus": "invalid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 6,
+        "aiReviewScore": 6,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "minimum-spacing",
+          "severity": "high"
+        },
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 2,
+      "highStructuralFindingCount": 1,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 9.833333333333329,
+          "y": 76.1,
+          "w": 82.96666666666667
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 89.04666666666667,
+          "w": 82.96666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 9.833333333333329,
+          "y": 76.1,
+          "w": 82.96666666666667,
+          "fontSize": 96,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 89.04666666666667,
+          "w": 82.96666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    },
+    {
+      "candidateId": "framed-overlay-base",
+      "source": "alternative-layout-intent",
+      "strategyLabel": "framed-overlay:base-heuristic",
+      "fixStage": "regional",
+      "structuralArchetype": "overlay-balanced",
+      "structuralSignature": {
+        "archetype": "overlay-balanced",
+        "flowDirection": "overlay",
+        "textZone": "overlay",
+        "imageZone": "right",
+        "textWeight": 0,
+        "imageWeight": 26,
+        "overlay": true,
+        "balanceRegime": "balanced",
+        "occupancyMode": "balanced"
+      },
+      "structuralSignatureKey": "overlay-balanced|overlay|overlay|right|0|26|overlay|balanced|balanced",
+      "geometrySignature": "title:9.8:75.7:83:0|subtitle:9.8:88.1:83:0|cta:14:88.1:18:5.2|logo:7.2:6.7:6:3|badge:80:6.7:0:0|image:28.7:14.4:62.3:41.2",
+      "structuralStatus": "invalid",
+      "effectiveScore": 0,
+      "scoreTrust": {
+        "deterministicScore": 5,
+        "aiReviewScore": 5,
+        "disagreement": 0,
+        "effectiveScore": 0,
+        "needsHumanAttention": true
+      },
+      "topStructuralFindings": [
+        {
+          "name": "minimum-spacing",
+          "severity": "high"
+        },
+        {
+          "name": "role-placement",
+          "severity": "medium"
+        }
+      ],
+      "structuralFindingCount": 2,
+      "highStructuralFindingCount": 1,
+      "issueCount": 4,
+      "wouldNormallyBeSelected": false,
+      "geometrySummary": {
+        "title": {
+          "x": 9.833333333333329,
+          "y": 75.68333333333332,
+          "w": 82.96666666666667
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 88.14666666666666,
+          "w": 82.96666666666667,
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192
+        }
+      },
+      "scene": {
+        "background": [
+          "#24150f",
+          "#5b2414",
+          "#f97316"
+        ],
+        "accent": "#ff6b2c",
+        "chip": "New drop",
+        "title": {
+          "x": 9.833333333333329,
+          "y": 75.68333333333332,
+          "w": 82.96666666666667,
+          "fontSize": 91,
+          "charsPerLine": 20,
+          "maxLines": 2,
+          "weight": 800,
+          "fill": "#f8fafc",
+          "text": "Launch a product line across every channel"
+        },
+        "subtitle": {
+          "x": 9.833333333333329,
+          "y": 88.14666666666666,
+          "w": 82.96666666666667,
+          "fontSize": 29,
+          "charsPerLine": 32,
+          "maxLines": 1,
+          "weight": 420,
+          "fill": "#dcd3d2",
+          "opacity": 0,
+          "text": "",
+          "h": 0
+        },
+        "cta": {
+          "x": 14.033333333333333,
+          "y": 88.08381333333334,
+          "w": 18,
+          "h": 5.24952,
+          "fontSize": 22,
+          "bg": "#ff6b2c",
+          "fill": "#f8fafc",
+          "text": "Shop now",
+          "rx": 18
+        },
+        "badge": {
+          "x": 80,
+          "y": 6.666666666666667,
+          "w": 0,
+          "h": 0,
+          "fontSize": 20,
+          "bg": "#3e312c",
+          "bgOpacity": 0,
+          "fill": "#f8fafc",
+          "text": ""
+        },
+        "logo": {
+          "x": 7.2,
+          "y": 6.666666666666667,
+          "w": 6,
+          "h": 3,
+          "bg": "#1f1615",
+          "bgOpacity": 0.12,
+          "fill": "#f8fafc"
+        },
+        "image": {
+          "x": 28.68,
+          "y": 14.404000000000002,
+          "w": 62.32,
+          "h": 41.192,
+          "rx": 28,
+          "fit": "xMidYMid slice"
+        }
+      }
+    }
+  ]
+}

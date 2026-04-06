@@ -1,0 +1,101 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.306Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "totalRolePlacementRejections": 195,
+    "severityCounts": {
+      "none": 0,
+      "mild": 40,
+      "moderate": 31,
+      "severe": 124
+    },
+    "unlockedCandidateCount": 0,
+    "unlockedCaseCount": 0
+  },
+  "byCategory": [
+    {
+      "key": "cta",
+      "rolePlacementRejectionCount": 40,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "spacing",
+      "rolePlacementRejectionCount": 40,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "balance",
+      "rolePlacementRejectionCount": 30,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "structure",
+      "rolePlacementRejectionCount": 25,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "hero",
+      "rolePlacementRejectionCount": 20,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "image_presence",
+      "rolePlacementRejectionCount": 10,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "text_priority",
+      "rolePlacementRejectionCount": 10,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "visual_style",
+      "rolePlacementRejectionCount": 10,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "grid",
+      "rolePlacementRejectionCount": 5,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "layout_overlap",
+      "rolePlacementRejectionCount": 5,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    }
+  ],
+  "byFormat": [
+    {
+      "key": "square",
+      "rolePlacementRejectionCount": 155,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "landscape",
+      "rolePlacementRejectionCount": 40,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    }
+  ],
+  "byFamily": [
+    {
+      "key": "display",
+      "rolePlacementRejectionCount": 195,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    }
+  ],
+  "topCaseIdsUnlockedBySoftPlacement": [],
+  "topCandidateKindsUnlockedBySoftPlacement": []
+}

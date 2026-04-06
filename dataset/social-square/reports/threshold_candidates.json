@@ -1,0 +1,80 @@
+{
+  "currentPolicyBaseline": "src/lib/overlayPolicies.ts -> social-square / square-hero-overlay",
+  "thresholds": [
+    {
+      "metric": "headline maxOverlapRatio",
+      "currentPolicy": 0.24,
+      "measured": {
+        "source": "core",
+        "p90": 0.0307,
+        "p95": 0.0397,
+        "max": 0.0487
+      },
+      "candidate": 0.05,
+      "status": "candidate",
+      "reason": "core upper-tail heuristic: max(p95, p90 + 0.01), rounded up to 0.01 and capped near observed max"
+    },
+    {
+      "metric": "subtitle maxOverlapRatio",
+      "currentPolicy": 0.22,
+      "measured": {
+        "source": "core",
+        "p90": 0.0138,
+        "p95": 0.015,
+        "max": 0.0162
+      },
+      "candidate": 0.03,
+      "status": "candidate",
+      "reason": "core upper-tail heuristic: max(p95, p90 + 0.01), rounded up to 0.01 and capped near observed max"
+    },
+    {
+      "metric": "logo maxOverlapRatio",
+      "currentPolicy": 0.06,
+      "measured": null,
+      "candidate": null,
+      "status": "insufficient-data",
+      "reason": "insufficient signal in core bucket (too few meaningful non-zero overlaps)"
+    },
+    {
+      "metric": "badge maxOverlapRatio",
+      "currentPolicy": 0.08,
+      "measured": null,
+      "candidate": null,
+      "status": "insufficient-data",
+      "reason": "insufficient signal in core bucket (too few meaningful non-zero overlaps)"
+    },
+    {
+      "metric": "safeTextScoreMin",
+      "currentPolicy": 0.58,
+      "measured": {
+        "source": "core",
+        "p10": 0.8582
+      },
+      "candidate": 0.84,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic: p10 - 0.01, rounded down to 0.01"
+    },
+    {
+      "metric": "safeCoverageMin",
+      "currentPolicy": 0.7,
+      "measured": {
+        "source": "core",
+        "p10": 0.6971
+      },
+      "candidate": 0.67,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic after recomputing coverage at candidate safeTextScoreMin: p10 - 0.02"
+    },
+    {
+      "metric": "safeAreaCoverageMin",
+      "currentPolicy": 0.85,
+      "measured": {
+        "source": "core",
+        "p10": 0.3196
+      },
+      "candidate": 0.29,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic: p10 - 0.02, rounded down to 0.01"
+    }
+  ]
+}

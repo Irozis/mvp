@@ -1,0 +1,416 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.311Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "landscapeDisplayBlockedCandidates": 40,
+    "ctaAnchorConflictCount": 0,
+    "dominantCtaCount": 0,
+    "wouldBecomeMilderCount": 40,
+    "nearUnlockCandidateCount": 8
+  },
+  "categoriesAffected": [],
+  "structuralSubtypeFrequency": [],
+  "topBlockedCandidates": [],
+  "topImprovedCandidates": [
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "title-placement",
+      "aggregateDelta": 1,
+      "confidenceDelta": 3,
+      "ctaRect": {
+        "label": "CTA",
+        "x": 7,
+        "y": 70.2,
+        "w": 32.666666666666664,
+        "h": 11.200000000000001
+      },
+      "titleRect": {
+        "label": "Headline",
+        "x": 7,
+        "y": 25.399999999999995,
+        "w": 50,
+        "h": 15.552000000000001
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 7,
+        "y": 49.952,
+        "w": 38.5,
+        "h": 5.456
+      },
+      "messageClusterRect": {
+        "x": 7,
+        "y": 25.4,
+        "w": 50,
+        "h": 30.01
+      },
+      "ctaAnchorConflict": false,
+      "ctaAnchorDistance": 0,
+      "ctaAnchorVerticalGap": 14.79,
+      "ctaAnchorHorizontalOffset": 0,
+      "ctaWithinSplitLayoutTolerance": true,
+      "ctaReadingFlowContinuity": 86.05,
+      "ctaMessageAssociationScore": 75.32,
+      "ctaAnchorWouldBecomeMilder": true,
+      "structuralSubtypes": [
+        "role-placement-conflict"
+      ]
+    }
+  ]
+}

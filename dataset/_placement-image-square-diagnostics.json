@@ -1,0 +1,2178 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.309Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "squareDisplayBlockedCandidates": 155,
+    "dominantImageCount": 62,
+    "imageOnlyDominantCount": 0,
+    "justOutsideZoneCount": 0,
+    "moderatelyOutsideZoneCount": 0,
+    "fundamentallyFarCount": 62,
+    "improvedImageCandidateCount": 62,
+    "imageNoLongerDominantCount": 62
+  },
+  "topBlockedCandidates": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "imageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 51.85185185185185,
+          "y": 12.962962962962962,
+          "w": 33.33333333333333,
+          "h": 38.88888888888889
+        }
+      ],
+      "allowedDistance": 46.84,
+      "preferredDistance": 46.84,
+      "zonePaddingApplied": 0,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": false,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": false,
+      "imageMovedRelativeToBaseline": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": 0
+    }
+  ],
+  "topImprovedCandidates": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":53.3,\"w\":48.1,\"h\":20.4,\"fontSize\":87,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":10.7,\"y\":87.1,\"w\":18,\"h\":20.4,\"fontSize\":24,\"opacity\":0.9},\"cta\":{\"x\":11.2,\"y\":86.6,\"w\":21.4,\"h\":6.7},\"badge\":{\"x\":76.7,\"y\":15.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":6.7,\"y\":46.6,\"w\":64.3,\"h\":46.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-overlay-balanced-regeneration",
+      "dominantRole": "cta",
+      "imageRect": {
+        "label": "Image",
+        "x": 6.666666666666667,
+        "y": 46.648355240940695,
+        "w": 64.26049925658745,
+        "h": 46.68497809239265
+      },
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 43.64861306068384,
+        "y": 21.962962962962962,
+        "w": 49.6847202726495,
+        "h": 60.380736442456005
+      },
+      "allowedImageZones": [
+        {
+          "x": 0,
+          "y": 2,
+          "w": 100,
+          "h": 61.18518518518518
+        },
+        {
+          "x": 0,
+          "y": 0.8888888888888893,
+          "w": 100,
+          "h": 85.25925925925925
+        },
+        {
+          "x": 43.85185185185185,
+          "y": 4.962962962962962,
+          "w": 49.33333333333333,
+          "h": 54.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 31.6,
+          "w": 80.53333333333335,
+          "h": 54.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 35.06666666666666,
+          "w": 75.33333333333333,
+          "h": 50.66666666666667
+        },
+        {
+          "x": 2.133333333333333,
+          "y": 28.13333333333334,
+          "w": 74.93333333333334,
+          "h": 55.86666666666666
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 67.18518518518519
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 90.14814814814814
+        },
+        {
+          "x": 39.85185185185185,
+          "y": 0.9629629629629619,
+          "w": 57.33333333333333,
+          "h": 62.88888888888889
+        },
+        {
+          "x": 0,
+          "y": 27.6,
+          "w": 84.53333333333335,
+          "h": 62.13333333333333
+        },
+        {
+          "x": 0,
+          "y": 31.066666666666663,
+          "w": 79.33333333333333,
+          "h": 58.66666666666667
+        },
+        {
+          "x": 0,
+          "y": 24.13333333333334,
+          "w": 81.06666666666668,
+          "h": 63.86666666666666
+        }
+      ],
+      "allowedDistance": 7.19,
+      "preferredDistance": 3.19,
+      "zonePaddingApplied": 12,
+      "preservesCompositionBalance": false,
+      "likelyAlignedWithStrategy": true,
+      "isImageBalanceRepair": false,
+      "isGuidedRegenerationRepair": true,
+      "imageMovedRelativeToBaseline": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 5
+    }
+  ]
+}

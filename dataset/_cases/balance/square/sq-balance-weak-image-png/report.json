@@ -1,0 +1,51 @@
+{
+  "caseId": "sq-balance-weak-image-png",
+  "category": "balance",
+  "format": "square",
+  "family": "display",
+  "formatKey": "social-square",
+  "status": "success",
+  "baselineAggregate": 44,
+  "winnerAggregate": 44,
+  "delta": 0,
+  "baselineWon": true,
+  "winnerKind": "local-structural-repair",
+  "winnerAccepted": false,
+  "winnerStrategyLabel": "current",
+  "baselineConfidence": 0,
+  "winnerConfidence": 0,
+  "winnerConfidenceDelta": 0,
+  "topTags": [
+    "insufficient-breathing-room",
+    "structural-drift"
+  ],
+  "topRejectionReasons": [
+    "role-placement-out-of-zone",
+    "no-net-gain",
+    "legacy-safety-rejection",
+    "insufficient-net-gain"
+  ],
+  "reviewPriority": "urgent-review",
+  "whyReview": "Baseline retained despite available repair candidates",
+  "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain.",
+  "humanVerdictPresent": false,
+  "machineHumanAgreement": null,
+  "agreementType": null,
+  "artifactPaths": {
+    "input": "input.png",
+    "notes": "notes.json",
+    "baseline": "baseline.json",
+    "winner": "winner.json",
+    "telemetry": "telemetry.json",
+    "calibration": "calibration.json",
+    "report": "report.json",
+    "previewBaseline": "preview-baseline.png",
+    "previewWinner": "preview-winner.png"
+  },
+  "previewGeneration": {
+    "requested": false,
+    "supported": false,
+    "generated": false,
+    "reason": "Preview generation not requested."
+  }
+}

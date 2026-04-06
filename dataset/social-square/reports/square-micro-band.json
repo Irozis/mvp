@@ -1,0 +1,1381 @@
+{
+  "generatedAt": "2026-03-18T10:46:55.331Z",
+  "sources": {
+    "annotations": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\extracted\\annotations.json",
+    "manifest": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\extracted\\manifest.json",
+    "failureAnalysis": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\failure-analysis.json",
+    "policy": "C:\\Users\\Fedelesh_dm\\mvp\\src\\lib\\overlayPolicies.ts"
+  },
+  "summary": {
+    "total": 24,
+    "improved": 5,
+    "unchangedPasses": 12,
+    "stillFail": 7,
+    "suspiciousPassesAfter": 9,
+    "regressions": 0
+  },
+  "priorityStatus": [
+    {
+      "id": "Group 6",
+      "strategy": "soft-square-reflow",
+      "afterPass": false,
+      "beforeFailures": [
+        "headline 0.0127 > 0.0125",
+        "subtitle 0.0162 > 0.015"
+      ],
+      "afterFailures": [
+        "safeTextScore 0.8633 < 0.87"
+      ]
+    },
+    {
+      "id": "Group 12",
+      "strategy": "none",
+      "afterPass": false,
+      "beforeFailures": [
+        "safeTextScore 0.859 < 0.87"
+      ],
+      "afterFailures": [
+        "safeTextScore 0.859 < 0.87"
+      ]
+    }
+  ],
+  "priorityDiagnosis": [
+    {
+      "id": "Group 10",
+      "strategy": "soft-square-reflow",
+      "beforeFailures": [
+        "subtitle 0.017 > 0.015"
+      ],
+      "afterFailures": [],
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 6",
+      "strategy": "soft-square-reflow",
+      "beforeFailures": [
+        "headline 0.0127 > 0.0125",
+        "subtitle 0.0162 > 0.015"
+      ],
+      "afterFailures": [
+        "safeTextScore 0.8633 < 0.87"
+      ],
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 12",
+      "strategy": "none",
+      "beforeFailures": [
+        "safeTextScore 0.859 < 0.87"
+      ],
+      "afterFailures": [
+        "safeTextScore 0.859 < 0.87"
+      ],
+      "failureTaxonomy": "scoring failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 15",
+      "strategy": "square-ultra-constrained-micro-band",
+      "beforeFailures": [
+        "safeAreaCoverage 0 < 0.22"
+      ],
+      "afterFailures": [],
+      "failureTaxonomy": "scoring failure",
+      "issueCause": "thresholds"
+    }
+  ],
+  "cases": [
+    {
+      "id": "Group 10",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "priority",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": false,
+        "failures": [
+          "subtitle 0.017 > 0.015"
+        ]
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 10",
+        "filename": "Group 10.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0045,
+        "subtitleOverlapRatio": 0.017,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": 0.0022,
+        "safeTextScore": 0.8798,
+        "safeCoverage": 0.4526,
+        "safeAreaCoverage": 0.4974
+      },
+      "afterMetrics": {
+        "id": "Group 10",
+        "filename": "Group 10.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0031,
+        "subtitleOverlapRatio": 0.0022,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.8947,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6569
+      },
+      "improved": true,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 6",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "priority",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.0127 > 0.0125",
+          "subtitle 0.0162 > 0.015"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "safeTextScore 0.8633 < 0.87"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 6",
+        "filename": "Group 6.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0127,
+        "subtitleOverlapRatio": 0.0162,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8934,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6758
+      },
+      "afterMetrics": {
+        "id": "Group 6",
+        "filename": "Group 6.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0031,
+        "subtitleOverlapRatio": 0.002,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8633,
+        "safeCoverage": 0.4292,
+        "safeAreaCoverage": 0.6481
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 12",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "priority",
+      "strategy": "none",
+      "before": {
+        "pass": false,
+        "failures": [
+          "safeTextScore 0.859 < 0.87"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "safeTextScore 0.859 < 0.87"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 12",
+        "filename": "Group 12.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.859,
+        "safeCoverage": 0,
+        "safeAreaCoverage": 1
+      },
+      "afterMetrics": {
+        "id": "Group 12",
+        "filename": "Group 12.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.859,
+        "safeCoverage": 0,
+        "safeAreaCoverage": 1
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "scoring failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 15",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "priority",
+      "strategy": "square-ultra-constrained-micro-band",
+      "before": {
+        "pass": false,
+        "failures": [
+          "safeAreaCoverage 0 < 0.22"
+        ]
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 15",
+        "filename": "Group 15.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9324,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0
+      },
+      "afterMetrics": {
+        "id": "Group 15",
+        "filename": "Group 15.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0002,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8737,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.2295
+      },
+      "improved": true,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "scoring failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 3",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "secondary",
+      "strategy": "none",
+      "before": {
+        "pass": false,
+        "failures": [
+          "subtitle 0.0428 > 0.015"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "subtitle 0.0428 > 0.015"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 3",
+        "filename": "Group 3.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0428,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9741,
+        "safeCoverage": 0.9495,
+        "safeAreaCoverage": 0.6437
+      },
+      "afterMetrics": {
+        "id": "Group 3",
+        "filename": "Group 3.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0428,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9741,
+        "safeCoverage": 0.9495,
+        "safeAreaCoverage": 0.6437
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "invalid/stress-like composition",
+      "issueCause": "layout engine"
+    },
+    {
+      "id": "Group 20",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "secondary",
+      "strategy": "square-balanced-card-fallback",
+      "before": {
+        "pass": false,
+        "failures": [
+          "subtitle 0.1527 > 0.015",
+          "badge 0.0179 > 0.005"
+        ]
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 20",
+        "filename": "Group 20.png",
+        "bucket": "stress",
+        "width": 442,
+        "height": 442,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0036,
+        "subtitleOverlapRatio": 0.1527,
+        "logoOverlapRatio": 0.0004,
+        "badgeOverlapRatio": 0.0179,
+        "safeTextScore": 0.9225,
+        "safeCoverage": 0.7774,
+        "safeAreaCoverage": 0.7843
+      },
+      "afterMetrics": {
+        "id": "Group 20",
+        "filename": "Group 20.png",
+        "bucket": "stress",
+        "width": 442,
+        "height": 442,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0084,
+        "subtitleOverlapRatio": 0.0096,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.8702,
+        "safeCoverage": 0.5262,
+        "safeAreaCoverage": 0.7851
+      },
+      "improved": true,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "invalid/stress-like composition",
+      "issueCause": "layout engine"
+    },
+    {
+      "id": "Group 21",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "secondary",
+      "strategy": "square-balanced-card-fallback",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.019 > 0.0125",
+          "subtitle 0.0282 > 0.015"
+        ]
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 21",
+        "filename": "Group 21.png",
+        "bucket": "stress",
+        "width": 442,
+        "height": 442,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.019,
+        "subtitleOverlapRatio": 0.0282,
+        "logoOverlapRatio": 0.0077,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.8724,
+        "safeCoverage": 0.3527,
+        "safeAreaCoverage": 0.8247
+      },
+      "afterMetrics": {
+        "id": "Group 21",
+        "filename": "Group 21.png",
+        "bucket": "stress",
+        "width": 442,
+        "height": 442,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0068,
+        "subtitleOverlapRatio": 0.0068,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.892,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.7338
+      },
+      "improved": true,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "invalid/stress-like composition",
+      "issueCause": "layout engine"
+    },
+    {
+      "id": "Group 22",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "secondary",
+      "strategy": "square-safe-zone-repack",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.0486 > 0.0125",
+          "safeTextScore 0.7579 < 0.87"
+        ]
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 22",
+        "filename": "Group 22.png",
+        "bucket": "stress",
+        "width": 272,
+        "height": 272,
+        "flags": [],
+        "headlineOverlapRatio": 0.0486,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.7579,
+        "safeCoverage": 0,
+        "safeAreaCoverage": 0.7353
+      },
+      "afterMetrics": {
+        "id": "Group 22",
+        "filename": "Group 22.png",
+        "bucket": "stress",
+        "width": 272,
+        "height": 272,
+        "flags": [],
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8776,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.5929
+      },
+      "improved": true,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "invalid/stress-like composition",
+      "issueCause": "layout engine"
+    },
+    {
+      "id": "Group 24",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "secondary",
+      "strategy": "none",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.0241 > 0.0125"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "headline 0.0241 > 0.0125"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 24",
+        "filename": "Group 24.png",
+        "bucket": "stress",
+        "width": 274,
+        "height": 272,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0241,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0.0029,
+        "safeTextScore": 0.9751,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6505
+      },
+      "afterMetrics": {
+        "id": "Group 24",
+        "filename": "Group 24.png",
+        "bucket": "stress",
+        "width": 274,
+        "height": 272,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0241,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0.0029,
+        "safeTextScore": 0.9751,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6505
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "layout engine"
+    },
+    {
+      "id": "Group 5",
+      "bucket": "stress",
+      "classification": "ambiguous",
+      "priority": "ambiguous",
+      "strategy": "ambiguous-skip",
+      "before": {
+        "pass": false,
+        "failures": [
+          "safeTextScore 0.7807 < 0.87",
+          "safeAreaCoverage 0 < 0.22"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "safeTextScore 0.7807 < 0.87",
+          "safeAreaCoverage 0 < 0.22"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 5",
+        "filename": "Group 5.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.7807,
+        "safeCoverage": 0,
+        "safeAreaCoverage": 0
+      },
+      "afterMetrics": {
+        "id": "Group 5",
+        "filename": "Group 5.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.7807,
+        "safeCoverage": 0,
+        "safeAreaCoverage": 0
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "ambiguous dataset issue",
+      "issueCause": "dataset classification"
+    },
+    {
+      "id": "Group 18",
+      "bucket": "stress",
+      "classification": "ambiguous",
+      "priority": "ambiguous",
+      "strategy": "ambiguous-skip",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.0487 > 0.0125",
+          "safeTextScore 0.823 < 0.87"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "headline 0.0487 > 0.0125",
+          "safeTextScore 0.823 < 0.87"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 18",
+        "filename": "Group 18.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 275,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0487,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.823,
+        "safeCoverage": 0.3942,
+        "safeAreaCoverage": 0.5104
+      },
+      "afterMetrics": {
+        "id": "Group 18",
+        "filename": "Group 18.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 275,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0487,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.823,
+        "safeCoverage": 0.3942,
+        "safeAreaCoverage": 0.5104
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "ambiguous dataset issue",
+      "issueCause": "dataset classification"
+    },
+    {
+      "id": "Group 23",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "suspicious",
+      "strategy": "inspect-only",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 23",
+        "filename": "Group 23.png",
+        "bucket": "core",
+        "width": 272,
+        "height": 272,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0115,
+        "subtitleOverlapRatio": 0.0102,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.97,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.4138
+      },
+      "afterMetrics": {
+        "id": "Group 23",
+        "filename": "Group 23.png",
+        "bucket": "core",
+        "width": 272,
+        "height": 272,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0115,
+        "subtitleOverlapRatio": 0.0102,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.97,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.4138
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "likely false pass",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 4",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 4",
+        "filename": "Group 4.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0012,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9923,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.2929
+      },
+      "afterMetrics": {
+        "id": "Group 4",
+        "filename": "Group 4.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0012,
+        "logoOverlapRatio": 0.0001,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9923,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.2929
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "duplicate/noisy signal",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 7",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 7",
+        "filename": "Group 7.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0032,
+        "subtitleOverlapRatio": 0.0062,
+        "logoOverlapRatio": 0.0027,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.9602,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.3971
+      },
+      "afterMetrics": {
+        "id": "Group 7",
+        "filename": "Group 7.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0007,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.8852,
+        "safeCoverage": 0.6495,
+        "safeAreaCoverage": 0.2268
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "acceptable soft pass",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 8",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 8",
+        "filename": "Group 8.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0027,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0.003,
+        "safeTextScore": 0.9896,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.2254
+      },
+      "afterMetrics": {
+        "id": "Group 8",
+        "filename": "Group 8.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0031,
+        "subtitleOverlapRatio": 0.0004,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.949,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.5836
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "acceptable soft pass",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 9",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 9",
+        "filename": "Group 9.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.008,
+        "subtitleOverlapRatio": 0.0007,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9428,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.5484
+      },
+      "afterMetrics": {
+        "id": "Group 9",
+        "filename": "Group 9.png",
+        "bucket": "core",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0031,
+        "subtitleOverlapRatio": 0.0002,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.921,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.5634
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "acceptable soft pass",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 25",
+      "bucket": "core",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 25",
+        "filename": "Group 25.png",
+        "bucket": "core",
+        "width": 272,
+        "height": 272,
+        "flags": [],
+        "headlineOverlapRatio": null,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": null,
+        "safeCoverage": null,
+        "safeAreaCoverage": null
+      },
+      "afterMetrics": {
+        "id": "Group 25",
+        "filename": "Group 25.png",
+        "bucket": "core",
+        "width": 272,
+        "height": 272,
+        "flags": [],
+        "headlineOverlapRatio": null,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": null,
+        "safeCoverage": null,
+        "safeAreaCoverage": null
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "duplicate/noisy signal",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 2",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": false,
+        "failures": [
+          "headline 0.0206 > 0.0125"
+        ]
+      },
+      "after": {
+        "pass": false,
+        "failures": [
+          "headline 0.0206 > 0.0125"
+        ]
+      },
+      "beforeMetrics": {
+        "id": "Group 2",
+        "filename": "Group 2.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0206,
+        "subtitleOverlapRatio": 0.0022,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.9848,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.8419
+      },
+      "afterMetrics": {
+        "id": "Group 2",
+        "filename": "Group 2.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0206,
+        "subtitleOverlapRatio": 0.0022,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0,
+        "safeTextScore": 0.9848,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.8419
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "text sizing/reflow failure",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 11",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 11",
+        "filename": "Group 11.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0043,
+        "subtitleOverlapRatio": 0.0049,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9596,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.8301
+      },
+      "afterMetrics": {
+        "id": "Group 11",
+        "filename": "Group 11.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0043,
+        "subtitleOverlapRatio": 0.0049,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9596,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.8301
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 13",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 13",
+        "filename": "Group 13.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0,
+        "subtitleOverlapRatio": 0.0023,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.986,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.4615
+      },
+      "afterMetrics": {
+        "id": "Group 13",
+        "filename": "Group 13.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0004,
+        "subtitleOverlapRatio": 0.0005,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8715,
+        "safeCoverage": 0.527,
+        "safeAreaCoverage": 0.3077
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 14",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 14",
+        "filename": "Group 14.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9662,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 1
+      },
+      "afterMetrics": {
+        "id": "Group 14",
+        "filename": "Group 14.png",
+        "bucket": "stress",
+        "width": 203,
+        "height": 203,
+        "flags": [],
+        "headlineOverlapRatio": 0.0019,
+        "subtitleOverlapRatio": null,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9662,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 1
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 16",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 16",
+        "filename": "Group 16.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0011,
+        "subtitleOverlapRatio": 0.0025,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0.0005,
+        "safeTextScore": 0.9345,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.4733
+      },
+      "afterMetrics": {
+        "id": "Group 16",
+        "filename": "Group 16.png",
+        "bucket": "stress",
+        "width": 320,
+        "height": 324,
+        "flags": [],
+        "headlineOverlapRatio": 0.0011,
+        "subtitleOverlapRatio": 0.0025,
+        "logoOverlapRatio": null,
+        "badgeOverlapRatio": 0.0005,
+        "safeTextScore": 0.9345,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.4733
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 17",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "soft-square-reflow",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 17",
+        "filename": "Group 17.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 273,
+        "flags": [],
+        "headlineOverlapRatio": 0.0064,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9934,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.8242
+      },
+      "afterMetrics": {
+        "id": "Group 17",
+        "filename": "Group 17.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 273,
+        "flags": [],
+        "headlineOverlapRatio": 0.0005,
+        "subtitleOverlapRatio": 0.0009,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.9455,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.3269
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": false,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    },
+    {
+      "id": "Group 19",
+      "bucket": "stress",
+      "classification": "clean",
+      "priority": "other",
+      "strategy": "none",
+      "before": {
+        "pass": true,
+        "failures": []
+      },
+      "after": {
+        "pass": true,
+        "failures": []
+      },
+      "beforeMetrics": {
+        "id": "Group 19",
+        "filename": "Group 19.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 273,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0074,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8789,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6305
+      },
+      "afterMetrics": {
+        "id": "Group 19",
+        "filename": "Group 19.png",
+        "bucket": "stress",
+        "width": 273,
+        "height": 273,
+        "flags": [
+          "ambiguous"
+        ],
+        "headlineOverlapRatio": 0.0074,
+        "subtitleOverlapRatio": 0,
+        "logoOverlapRatio": 0,
+        "badgeOverlapRatio": null,
+        "safeTextScore": 0.8789,
+        "safeCoverage": 1,
+        "safeAreaCoverage": 0.6305
+      },
+      "improved": false,
+      "regressed": false,
+      "suspiciousAfter": true,
+      "failureTaxonomy": "stress case now intentionally allowed",
+      "issueCause": "thresholds"
+    }
+  ]
+}

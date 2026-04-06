@@ -1,0 +1,30 @@
+--- a/src/lib/overlayPolicies.ts
++++ b/src/lib/overlayPolicies.ts
+@@ social-square / square-hero-overlay @@
+-  'social-square': {
+-    'square-hero-overlay': {
+-      safeTextScoreMin: 0.58,
+-      safeCoverageMin: 0.7,
+-      safeAreaCoverageMin: 0.85,
+-      maxOverlapByKind: {
+-        headline: 0.24,
+-        subtitle: 0.22,
+-        logo: 0.06,
+-        badge: 0.08,
+-      },
+-    },
+-  },
++  'social-square': {
++    'square-hero-overlay': {
++      safeTextScoreMin: 0.87,
++      // safeCoverageMin stays diagnostic-only for now; keep current gating behavior unchanged until a richer policy shape exists
++      safeCoverageMin: 0.7,
++      safeAreaCoverageMin: 0.22,
++      maxOverlapByKind: {
++        headline: 0.0125,
++        subtitle: 0.015,
++        logo: 0.06, // unchanged: insufficient_data
++        badge: 0.005,
++      },
++    },
++  },

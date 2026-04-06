@@ -1,0 +1,628 @@
+{
+  "generatedAt": "2026-03-25T09:45:40.735Z",
+  "entries": [
+    {
+      "id": "marketplace-card-no-image",
+      "formatKey": "marketplace-card",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 63,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 74,
+        "compositionBalance": 100,
+        "textImageHarmony": 19,
+        "ctaQuality": 33,
+        "negativeSpaceQuality": 80,
+        "coherence": 61
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 100,
+        "compositionBalanceDebug": {
+          "visualCenterX": 55,
+          "visualCenterY": 45.9,
+          "verticalStack": true,
+          "usefulAsymmetry": true,
+          "compactMarketplaceStack": true,
+          "centerOffset": 5.1,
+          "balanceAnchorBonus": 13.4,
+          "dominantQuadrantShare": 0.58
+        },
+        "clusterHarmony": 19,
+        "ctaSupport": 33,
+        "emptySpaceIntentionality": 80,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "Asymmetry feels intentional rather than accidental.",
+        "Compact stack reads as a deliberate marketplace composition.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-no-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 61,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 68,
+        "compositionBalance": 100,
+        "textImageHarmony": 18,
+        "ctaQuality": 31,
+        "negativeSpaceQuality": 80,
+        "coherence": 59
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 100,
+        "compositionBalanceDebug": {
+          "visualCenterX": 54.8,
+          "visualCenterY": 45,
+          "verticalStack": true,
+          "usefulAsymmetry": true,
+          "compactMarketplaceStack": true,
+          "centerOffset": 4.9,
+          "balanceAnchorBonus": 13.5,
+          "dominantQuadrantShare": 0.55
+        },
+        "clusterHarmony": 18,
+        "ctaSupport": 31,
+        "emptySpaceIntentionality": 80,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "Asymmetry feels intentional rather than accidental.",
+        "Compact stack reads as a deliberate marketplace composition.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    },
+    {
+      "id": "marketplace-tile-no-image",
+      "formatKey": "marketplace-tile",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 37,
+      "visualScore": 60,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 81,
+        "compositionBalance": 66,
+        "textImageHarmony": 21,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 78,
+        "coherence": 60
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 66,
+        "compositionBalanceDebug": {
+          "visualCenterX": 54.1,
+          "visualCenterY": 49.2,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 4.2,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.64
+        },
+        "clusterHarmony": 21,
+        "ctaSupport": 52,
+        "emptySpaceIntentionality": 78,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Composition lacks counterweight.",
+        "Image feels detached from the text cluster.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA looks detached from the message."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "inactive-empty-space",
+        "insufficient-breathing-room"
+      ],
+      "geometry": {
+        "title": "14:43.3:46.9:0",
+        "image": "79:20.4:16:38.7",
+        "cta": "5:71.5:12:5.3"
+      }
+    },
+    {
+      "id": "social-square-no-image",
+      "formatKey": "social-square",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 0,
+      "visualScore": 53,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 20,
+        "textImageHarmony": 78,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 73
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "image",
+        "visualBalance": 20,
+        "compositionBalanceDebug": {
+          "visualCenterX": 36.3,
+          "visualCenterY": 69.7,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 24,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.99
+        },
+        "clusterHarmony": 78,
+        "ctaSupport": 100,
+        "emptySpaceIntentionality": 84,
+        "structuralPenalty": 18
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Text and image read as a coordinated composition.",
+        "CTA feels integrated with the message cluster.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-major-overlap",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "headline-image-overlap"
+      ],
+      "geometry": {
+        "title": "8.9:53.3:48.1:20.4",
+        "image": "6.7:46.6:64.3:46.7",
+        "cta": "11.2:84.2:21.4:6.7"
+      }
+    },
+    {
+      "id": "display-mpu-no-image",
+      "formatKey": "display-mpu",
+      "scenario": "no-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 23,
+      "visualScore": 59,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 57,
+        "compositionBalance": 87,
+        "textImageHarmony": 69,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 79
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "image",
+        "visualBalance": 87,
+        "compositionBalanceDebug": {
+          "visualCenterX": 49.2,
+          "visualCenterY": 49.8,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 0.8,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.42
+        },
+        "clusterHarmony": 69,
+        "ctaSupport": 100,
+        "emptySpaceIntentionality": 84,
+        "structuralPenalty": 18
+      },
+      "warnings": [],
+      "strengths": [
+        "Visual mass feels intentionally balanced across the canvas.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-minimum-spacing",
+        "violates-allowed-zone",
+        "structural-role-placement",
+        "violates-model-slot"
+      ],
+      "geometry": {
+        "title": "7:32.6:46:31.2",
+        "image": "63.6:12:30.4:59.2",
+        "cta": "7:70.2:32.7:11.2"
+      }
+    },
+    {
+      "id": "marketplace-card-square-image",
+      "formatKey": "marketplace-card",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 31,
+      "visualScore": 63,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 74,
+        "compositionBalance": 100,
+        "textImageHarmony": 19,
+        "ctaQuality": 33,
+        "negativeSpaceQuality": 80,
+        "coherence": 61
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 100,
+        "compositionBalanceDebug": {
+          "visualCenterX": 55,
+          "visualCenterY": 45.9,
+          "verticalStack": true,
+          "usefulAsymmetry": true,
+          "compactMarketplaceStack": true,
+          "centerOffset": 5.1,
+          "balanceAnchorBonus": 13.4,
+          "dominantQuadrantShare": 0.58
+        },
+        "clusterHarmony": 19,
+        "ctaSupport": 33,
+        "emptySpaceIntentionality": 80,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "Asymmetry feels intentional rather than accidental.",
+        "Compact stack reads as a deliberate marketplace composition.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "imbalanced-square-composition"
+      ],
+      "geometry": {
+        "title": "11.8:55.9:82.2:0",
+        "image": "28.3:12:63.5:14",
+        "cta": "13.8:80:12:4.4"
+      }
+    },
+    {
+      "id": "marketplace-highlight-square-image",
+      "formatKey": "marketplace-highlight",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 21,
+      "visualScore": 61,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 68,
+        "compositionBalance": 100,
+        "textImageHarmony": 18,
+        "ctaQuality": 31,
+        "negativeSpaceQuality": 80,
+        "coherence": 59
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 100,
+        "compositionBalanceDebug": {
+          "visualCenterX": 54.8,
+          "visualCenterY": 45,
+          "verticalStack": true,
+          "usefulAsymmetry": true,
+          "compactMarketplaceStack": true,
+          "centerOffset": 4.9,
+          "balanceAnchorBonus": 13.5,
+          "dominantQuadrantShare": 0.55
+        },
+        "clusterHarmony": 18,
+        "ctaSupport": 31,
+        "emptySpaceIntentionality": 80,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA feels underweighted.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "Asymmetry feels intentional rather than accidental.",
+        "Compact stack reads as a deliberate marketplace composition.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-cta-size-rule",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "outside-safe-area"
+      ],
+      "geometry": {
+        "title": "11.2:57.7:82.2:0",
+        "image": "28:12.6:64.2:14",
+        "cta": "8.9:80:13.5:4"
+      }
+    },
+    {
+      "id": "marketplace-tile-square-image",
+      "formatKey": "marketplace-tile",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "valid",
+      "structuralScore": 37,
+      "visualScore": 60,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 81,
+        "compositionBalance": 66,
+        "textImageHarmony": 21,
+        "ctaQuality": 52,
+        "negativeSpaceQuality": 78,
+        "coherence": 60
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "title",
+        "visualBalance": 66,
+        "compositionBalanceDebug": {
+          "visualCenterX": 54.1,
+          "visualCenterY": 49.2,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 4.2,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.64
+        },
+        "clusterHarmony": 21,
+        "ctaSupport": 52,
+        "emptySpaceIntentionality": 78,
+        "structuralPenalty": 0
+      },
+      "warnings": [
+        "Composition lacks counterweight.",
+        "Image feels detached from the text cluster.",
+        "Image presence is too weak to support the message.",
+        "Text-image ratio feels weak.",
+        "Image feels compositionally detached from the message.",
+        "CTA looks detached from the message."
+      ],
+      "strengths": [
+        "Headline establishes a readable primary focus.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned."
+      ],
+      "issues": [
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "inactive-empty-space",
+        "insufficient-breathing-room"
+      ],
+      "geometry": {
+        "title": "14:43.3:46.9:0",
+        "image": "79:20.4:16:38.7",
+        "cta": "5:71.5:12:5.3"
+      }
+    },
+    {
+      "id": "social-square-square-image",
+      "formatKey": "social-square",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 0,
+      "visualScore": 53,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 82,
+        "compositionBalance": 20,
+        "textImageHarmony": 78,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 73
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "image",
+        "visualBalance": 20,
+        "compositionBalanceDebug": {
+          "visualCenterX": 36.3,
+          "visualCenterY": 69.7,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 24,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.99
+        },
+        "clusterHarmony": 78,
+        "ctaSupport": 100,
+        "emptySpaceIntentionality": 84,
+        "structuralPenalty": 18
+      },
+      "warnings": [
+        "Visual mass collapses into one corner.",
+        "Composition lacks counterweight."
+      ],
+      "strengths": [
+        "Image carries a clear primary focal role.",
+        "Text and image read as a coordinated composition.",
+        "CTA feels integrated with the message cluster.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-major-overlap",
+        "violates-image-footprint-rule",
+        "violates-allowed-zone",
+        "headline-image-overlap"
+      ],
+      "geometry": {
+        "title": "8.9:53.3:48.1:20.4",
+        "image": "6.7:46.6:64.3:46.7",
+        "cta": "11.2:84.2:21.4:6.7"
+      }
+    },
+    {
+      "id": "display-mpu-square-image",
+      "formatKey": "display-mpu",
+      "scenario": "square-image",
+      "manualLabel": "",
+      "structuralTier": "invalid",
+      "structuralScore": 23,
+      "visualScore": 59,
+      "visualBand": "weak",
+      "visualBreakdown": {
+        "focusHierarchy": 57,
+        "compositionBalance": 87,
+        "textImageHarmony": 69,
+        "ctaQuality": 100,
+        "negativeSpaceQuality": 84,
+        "coherence": 79
+      },
+      "visualDebug": {
+        "imageAnalysisPresent": false,
+        "focusDominant": "image",
+        "visualBalance": 87,
+        "compositionBalanceDebug": {
+          "visualCenterX": 49.2,
+          "visualCenterY": 49.8,
+          "verticalStack": false,
+          "usefulAsymmetry": false,
+          "compactMarketplaceStack": false,
+          "centerOffset": 0.8,
+          "balanceAnchorBonus": 0,
+          "dominantQuadrantShare": 0.42
+        },
+        "clusterHarmony": 69,
+        "ctaSupport": 100,
+        "emptySpaceIntentionality": 84,
+        "structuralPenalty": 18
+      },
+      "warnings": [],
+      "strengths": [
+        "Visual mass feels intentionally balanced across the canvas.",
+        "CTA feels integrated with the message cluster.",
+        "Negative space feels intentional rather than abandoned.",
+        "Overall composition reads as a coherent advertising layout."
+      ],
+      "issues": [
+        "structural-minimum-spacing",
+        "violates-allowed-zone",
+        "structural-role-placement",
+        "violates-model-slot"
+      ],
+      "geometry": {
+        "title": "7:32.6:46:31.2",
+        "image": "63.6:12:30.4:59.2",
+        "cta": "7:70.2:32.7:11.2"
+      }
+    }
+  ],
+  "flaggedNoisyCases": [],
+  "axisAverages": [
+    {
+      "axis": "focusHierarchy",
+      "average": 72.4
+    },
+    {
+      "axis": "compositionBalance",
+      "average": 74.6
+    },
+    {
+      "axis": "textImageHarmony",
+      "average": 41
+    },
+    {
+      "axis": "ctaQuality",
+      "average": 63.2
+    },
+    {
+      "axis": "negativeSpaceQuality",
+      "average": 81.2
+    },
+    {
+      "axis": "coherence",
+      "average": 66.4
+    }
+  ]
+}

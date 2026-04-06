@@ -1,0 +1,262 @@
+[
+  {
+    "id": "Group 1",
+    "filename": "Group 1.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 4",
+    "filename": "Group 4.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 7",
+    "filename": "Group 7.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 8",
+    "filename": "Group 8.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 9",
+    "filename": "Group 9.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 10",
+    "filename": "Group 10.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 23",
+    "filename": "Group 23.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 272,
+    "height": 272,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 25",
+    "filename": "Group 25.png",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "width": 272,
+    "height": 272,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 2",
+    "filename": "Group 2.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 3",
+    "filename": "Group 3.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 5",
+    "filename": "Group 5.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 320,
+    "height": 324,
+    "classification": "ambiguous",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 6",
+    "filename": "Group 6.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 11",
+    "filename": "Group 11.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 203,
+    "height": 203,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 12",
+    "filename": "Group 12.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 203,
+    "height": 203,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 13",
+    "filename": "Group 13.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 203,
+    "height": 203,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 14",
+    "filename": "Group 14.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 203,
+    "height": 203,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 15",
+    "filename": "Group 15.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 203,
+    "height": 203,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 16",
+    "filename": "Group 16.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 320,
+    "height": 324,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 17",
+    "filename": "Group 17.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 273,
+    "height": 273,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 18",
+    "filename": "Group 18.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 273,
+    "height": 275,
+    "classification": "ambiguous",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 19",
+    "filename": "Group 19.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 273,
+    "height": 273,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 20",
+    "filename": "Group 20.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 442,
+    "height": 442,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 21",
+    "filename": "Group 21.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 442,
+    "height": 442,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 22",
+    "filename": "Group 22.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 272,
+    "height": 272,
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 24",
+    "filename": "Group 24.png",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "width": 274,
+    "height": 272,
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 26",
+    "filename": "Group 26.png",
+    "bucket": "reject",
+    "sourceBucket": "reject",
+    "width": 272,
+    "height": 275,
+    "classification": "incomplete",
+    "classificationSource": "extracted"
+  }
+]

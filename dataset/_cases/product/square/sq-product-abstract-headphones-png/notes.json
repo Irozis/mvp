@@ -1,0 +1,20 @@
+{
+  "id": "sq-product-abstract-headphones-png",
+  "family": "marketplace",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "product",
+  "expectedProblems": [
+    "product"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure",
+    "keep-text-image-balance"
+  ],
+  "tags": [
+    "product",
+    "square",
+    "marketplace"
+  ],
+  "comment": "Auto-generated from product/square/sq-product-abstract-headphones.png.png"
+}

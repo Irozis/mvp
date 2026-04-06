@@ -1,0 +1,794 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.309Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "landscapeDisplayBlockedCandidates": 40,
+    "dominantImageCount": 0,
+    "imageOnlyDominantCount": 0,
+    "imageOnlySevereCount": 0,
+    "justOutsideZoneCount": 0,
+    "moderatelyOutsideZoneCount": 0,
+    "fundamentallyFarCount": 0,
+    "improvedImageCandidateCount": 8,
+    "wouldBecomeMilderCount": 0
+  },
+  "topBlockedCandidates": [],
+  "topImprovedCandidates": [
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "baselineImageRect": {
+        "label": "Image",
+        "x": 63.57444682977341,
+        "y": 12,
+        "w": 30.425553170226596,
+        "h": 59.16079783099616
+      },
+      "candidateImageRect": {
+        "label": "Image",
+        "x": 61.08405599111398,
+        "y": 12,
+        "w": 32.91594400888602,
+        "h": 54.68474486145892
+      },
+      "imageDeltaX": -2.49,
+      "imageDeltaY": 0,
+      "imageDeltaW": 2.49,
+      "imageDeltaH": -4.48,
+      "allowedImageZones": [
+        {
+          "x": 54,
+          "y": 10.8,
+          "w": 42.66666666666666,
+          "h": 50.400000000000006
+        },
+        {
+          "x": 45.760000000000005,
+          "y": 2.895999999999999,
+          "w": 48.959999999999994,
+          "h": 76.448
+        },
+        {
+          "x": 49.28,
+          "y": 2.048,
+          "w": 45.44,
+          "h": 81.53599999999999
+        },
+        {
+          "x": 44,
+          "y": 7.983999999999998,
+          "w": 50.72,
+          "h": 69.664
+        }
+      ],
+      "preferredImageZones": [
+        {
+          "x": 52,
+          "y": 8.8,
+          "w": 46.66666666666666,
+          "h": 54.400000000000006
+        },
+        {
+          "x": 43.760000000000005,
+          "y": 0.895999999999999,
+          "w": 52.959999999999994,
+          "h": 80.448
+        },
+        {
+          "x": 47.28,
+          "y": 0.04800000000000004,
+          "w": 49.44,
+          "h": 85.53599999999999
+        },
+        {
+          "x": 42,
+          "y": 5.983999999999998,
+          "w": 54.72,
+          "h": 73.664
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "rawAllowedDistance": 0,
+      "rawPreferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "preservesVisualBalance": true,
+      "supportsTextCtaCluster": true,
+      "movedTowardCoherentSplitLayout": false,
+      "imageDominantBlockingRole": false,
+      "wouldBecomeMilderUnderLandscapeImagePolicy": false,
+      "splitSideOccupancy": 100,
+      "supportsReadingFlow": true,
+      "matchesLandscapeSplitPattern": false,
+      "structurallyAcceptableFootprint": true,
+      "justOutsideCurrentZones": true,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    }
+  ]
+}

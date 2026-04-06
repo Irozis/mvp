@@ -1,0 +1,611 @@
+{
+  "generatedAt": "2026-04-06T02:09:47.996Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "reviewConfig": {
+    "reviewQueueSize": 10,
+    "includeMarkdownReviewReport": false,
+    "concernDeltaThreshold": 1,
+    "confidenceDropThreshold": 6
+  },
+  "totals": {
+    "totalCasesProcessed": 42,
+    "successCount": 42,
+    "parseErrorCount": 0,
+    "executionErrorCount": 0,
+    "skippedCount": 0,
+    "baselineWinCount": 38,
+    "candidateWinCount": 4,
+    "negativeDeltaCaseCount": 0,
+    "materialConfidenceDropCount": 0,
+    "reviewPriorityCounts": {
+      "urgent-review": 31,
+      "high-review": 11,
+      "medium-review": 0,
+      "low-review": 0
+    }
+  },
+  "topRejectionReasons": [
+    {
+      "reason": "legacy-safety-rejection",
+      "count": 42
+    },
+    {
+      "reason": "no-net-gain",
+      "count": 42
+    },
+    {
+      "reason": "insufficient-net-gain",
+      "count": 35
+    },
+    {
+      "reason": "role-placement-out-of-zone",
+      "count": 35
+    },
+    {
+      "reason": "aggregate-below-baseline",
+      "count": 7
+    },
+    {
+      "reason": "weak-balance",
+      "count": 4
+    },
+    {
+      "reason": "repeat-suppressed",
+      "count": 3
+    }
+  ],
+  "candidateKindWinDistribution": [
+    {
+      "candidateKind": "local-structural-repair",
+      "count": 38
+    },
+    {
+      "candidateKind": "image-balance-repair",
+      "count": 4
+    }
+  ],
+  "averageScoreDeltaByCategory": [
+    {
+      "key": "spacing",
+      "count": 8,
+      "successCount": 8,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 8,
+      "highReviewCount": 0
+    },
+    {
+      "key": "structure",
+      "count": 5,
+      "successCount": 5,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 5,
+      "highReviewCount": 0
+    },
+    {
+      "key": "balance",
+      "count": 5,
+      "successCount": 5,
+      "averageDelta": 0.2,
+      "baselineWinRate": 0.8,
+      "candidateWinRate": 0.2,
+      "urgentReviewCount": 4,
+      "highReviewCount": 1
+    },
+    {
+      "key": "hero",
+      "count": 4,
+      "successCount": 4,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 4,
+      "highReviewCount": 0
+    },
+    {
+      "key": "cta",
+      "count": 5,
+      "successCount": 5,
+      "averageDelta": 0.6,
+      "baselineWinRate": 0.4,
+      "candidateWinRate": 0.6,
+      "urgentReviewCount": 2,
+      "highReviewCount": 3
+    },
+    {
+      "key": "image_presence",
+      "count": 2,
+      "successCount": 2,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 2,
+      "highReviewCount": 0
+    },
+    {
+      "key": "text_priority",
+      "count": 2,
+      "successCount": 2,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 2,
+      "highReviewCount": 0
+    },
+    {
+      "key": "visual_style",
+      "count": 2,
+      "successCount": 2,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 2,
+      "highReviewCount": 0
+    },
+    {
+      "key": "grid",
+      "count": 1,
+      "successCount": 1,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 1,
+      "highReviewCount": 0
+    },
+    {
+      "key": "layout_overlap",
+      "count": 1,
+      "successCount": 1,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 1,
+      "highReviewCount": 0
+    },
+    {
+      "key": "marketplace",
+      "count": 2,
+      "successCount": 2,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 0,
+      "highReviewCount": 2
+    },
+    {
+      "key": "product",
+      "count": 5,
+      "successCount": 5,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 0,
+      "highReviewCount": 5
+    }
+  ],
+  "averageScoreDeltaByFormat": [
+    {
+      "key": "square",
+      "count": 35,
+      "successCount": 35,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 31,
+      "highReviewCount": 4
+    },
+    {
+      "key": "landscape",
+      "count": 7,
+      "successCount": 7,
+      "averageDelta": 0.57,
+      "baselineWinRate": 0.43,
+      "candidateWinRate": 0.57,
+      "urgentReviewCount": 0,
+      "highReviewCount": 7
+    }
+  ],
+  "averageScoreDeltaByFamily": [
+    {
+      "key": "display",
+      "count": 35,
+      "successCount": 35,
+      "averageDelta": 0.11,
+      "baselineWinRate": 0.89,
+      "candidateWinRate": 0.11,
+      "urgentReviewCount": 31,
+      "highReviewCount": 4
+    },
+    {
+      "key": "marketplace",
+      "count": 7,
+      "successCount": 7,
+      "averageDelta": 0,
+      "baselineWinRate": 1,
+      "candidateWinRate": 0,
+      "urgentReviewCount": 0,
+      "highReviewCount": 7
+    }
+  ],
+  "worstPerformingCases": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "ls-product-closeup-headphones-png",
+      "category": "product",
+      "format": "landscape",
+      "family": "marketplace",
+      "delta": 0,
+      "reviewPriority": "high-review",
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "overloaded-marketplace-ui-01-png",
+      "category": "marketplace",
+      "format": "landscape",
+      "family": "marketplace",
+      "delta": 0,
+      "reviewPriority": "high-review",
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    }
+  ],
+  "mostAmbiguousCases": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "ls-product-closeup-headphones-png",
+      "category": "product",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "high-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "overloaded-marketplace-ui-01-png",
+      "category": "marketplace",
+      "delta": 0,
+      "confidenceDelta": 0,
+      "baselineWon": true,
+      "reviewPriority": "high-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    }
+  ],
+  "casesToReviewFirst": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-empty-side-png",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-side-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-left-heavy",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-left-heavy/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-weak-image-png",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-weak-image-png/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-cta-low-contrast-hidden",
+      "category": "cta",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/input.png",
+      "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/report.json",
+      "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/telemetry.json",
+      "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/cta/square/sq-cta-low-contrast-hidden/calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    }
+  ],
+  "topCategoriesNeedingReview": [
+    {
+      "category": "spacing",
+      "count": 8
+    },
+    {
+      "category": "balance",
+      "count": 5
+    },
+    {
+      "category": "cta",
+      "count": 5
+    },
+    {
+      "category": "product",
+      "count": 5
+    },
+    {
+      "category": "structure",
+      "count": 5
+    },
+    {
+      "category": "hero",
+      "count": 4
+    },
+    {
+      "category": "image_presence",
+      "count": 2
+    },
+    {
+      "category": "marketplace",
+      "count": 2
+    },
+    {
+      "category": "text_priority",
+      "count": 2
+    },
+    {
+      "category": "visual_style",
+      "count": 2
+    }
+  ]
+}

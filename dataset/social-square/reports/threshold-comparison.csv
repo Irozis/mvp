@@ -1,0 +1,76 @@
+set,group,id,filename,pass,failures,boundaryMetrics
+strict,core-clean,Group 1,Group 1.png,pass,,safeTextScoreMin (0.9345 vs 0.92)
+strict,core-clean,Group 4,Group 4.png,pass,,safeAreaCoverageMin (0.2929 vs 0.28)
+strict,core-clean,Group 7,Group 7.png,pass,,
+strict,core-clean,Group 8,Group 8.png,fail,safeAreaCoverageMin 0.2254 < 0.28,badge maxOverlapRatio (0.003 vs 0.005)
+strict,core-clean,Group 9,Group 9.png,pass,,headline maxOverlapRatio (0.008 vs 0.01) | safeTextScoreMin (0.9428 vs 0.92)
+strict,core-clean,Group 10,Group 10.png,fail,subtitle maxOverlapRatio 0.017 > 0.0125 | safeTextScoreMin 0.8798 < 0.92,
+strict,core-clean,Group 23,Group 23.png,fail,headline maxOverlapRatio 0.0115 > 0.01,headline maxOverlapRatio (0.0115 vs 0.01) | subtitle maxOverlapRatio (0.0102 vs 0.0125)
+strict,core-clean,Group 25,Group 25.png,pass,,
+strict,stress-clean,Group 2,Group 2.png,fail,headline maxOverlapRatio 0.0206 > 0.01,
+strict,stress-clean,Group 3,Group 3.png,fail,subtitle maxOverlapRatio 0.0428 > 0.0125,
+strict,stress-ambiguous,Group 5,Group 5.png,fail,safeTextScoreMin 0.7807 < 0.92 | safeAreaCoverageMin 0 < 0.28,
+strict,stress-clean,Group 6,Group 6.png,fail,headline maxOverlapRatio 0.0127 > 0.01 | subtitle maxOverlapRatio 0.0162 > 0.0125 | safeTextScoreMin 0.8934 < 0.92,safeTextScoreMin (0.8934 vs 0.92)
+strict,stress-clean,Group 11,Group 11.png,pass,,
+strict,stress-clean,Group 12,Group 12.png,fail,safeTextScoreMin 0.859 < 0.92,
+strict,stress-clean,Group 13,Group 13.png,pass,,
+strict,stress-clean,Group 14,Group 14.png,pass,,
+strict,stress-clean,Group 15,Group 15.png,fail,safeAreaCoverageMin 0 < 0.28,safeTextScoreMin (0.9324 vs 0.92)
+strict,stress-clean,Group 16,Group 16.png,pass,,safeTextScoreMin (0.9345 vs 0.92)
+strict,stress-clean,Group 17,Group 17.png,pass,,
+strict,stress-ambiguous,Group 18,Group 18.png,fail,headline maxOverlapRatio 0.0487 > 0.01 | safeTextScoreMin 0.823 < 0.92,
+strict,stress-clean,Group 19,Group 19.png,fail,safeTextScoreMin 0.8789 < 0.92,
+strict,stress-clean,Group 20,Group 20.png,fail,subtitle maxOverlapRatio 0.1527 > 0.0125 | badge maxOverlapRatio 0.0179 > 0.005,safeTextScoreMin (0.9225 vs 0.92)
+strict,stress-clean,Group 21,Group 21.png,fail,headline maxOverlapRatio 0.019 > 0.01 | subtitle maxOverlapRatio 0.0282 > 0.0125 | safeTextScoreMin 0.8724 < 0.92,
+strict,stress-clean,Group 22,Group 22.png,fail,headline maxOverlapRatio 0.0486 > 0.01 | safeTextScoreMin 0.7579 < 0.92,
+strict,stress-clean,Group 24,Group 24.png,fail,headline maxOverlapRatio 0.0241 > 0.01,badge maxOverlapRatio (0.0029 vs 0.005)
+balanced,core-clean,Group 1,Group 1.png,pass,,safeTextScoreMin (0.9345 vs 0.91)
+balanced,core-clean,Group 4,Group 4.png,pass,,
+balanced,core-clean,Group 7,Group 7.png,pass,,
+balanced,core-clean,Group 8,Group 8.png,fail,safeAreaCoverageMin 0.2254 < 0.26,badge maxOverlapRatio (0.003 vs 0.005)
+balanced,core-clean,Group 9,Group 9.png,pass,,headline maxOverlapRatio (0.008 vs 0.01)
+balanced,core-clean,Group 10,Group 10.png,fail,subtitle maxOverlapRatio 0.017 > 0.015 | safeTextScoreMin 0.8798 < 0.91,subtitle maxOverlapRatio (0.017 vs 0.015)
+balanced,core-clean,Group 23,Group 23.png,fail,headline maxOverlapRatio 0.0115 > 0.01,headline maxOverlapRatio (0.0115 vs 0.01)
+balanced,core-clean,Group 25,Group 25.png,pass,,
+balanced,stress-clean,Group 2,Group 2.png,fail,headline maxOverlapRatio 0.0206 > 0.01,
+balanced,stress-clean,Group 3,Group 3.png,fail,subtitle maxOverlapRatio 0.0428 > 0.015,
+balanced,stress-ambiguous,Group 5,Group 5.png,fail,safeTextScoreMin 0.7807 < 0.91 | safeAreaCoverageMin 0 < 0.26,
+balanced,stress-clean,Group 6,Group 6.png,fail,headline maxOverlapRatio 0.0127 > 0.01 | subtitle maxOverlapRatio 0.0162 > 0.015 | safeTextScoreMin 0.8934 < 0.91,subtitle maxOverlapRatio (0.0162 vs 0.015) | safeTextScoreMin (0.8934 vs 0.91)
+balanced,stress-clean,Group 11,Group 11.png,pass,,
+balanced,stress-clean,Group 12,Group 12.png,fail,safeTextScoreMin 0.859 < 0.91,
+balanced,stress-clean,Group 13,Group 13.png,pass,,
+balanced,stress-clean,Group 14,Group 14.png,pass,,
+balanced,stress-clean,Group 15,Group 15.png,fail,safeAreaCoverageMin 0 < 0.26,safeTextScoreMin (0.9324 vs 0.91)
+balanced,stress-clean,Group 16,Group 16.png,pass,,safeTextScoreMin (0.9345 vs 0.91)
+balanced,stress-clean,Group 17,Group 17.png,pass,,
+balanced,stress-ambiguous,Group 18,Group 18.png,fail,headline maxOverlapRatio 0.0487 > 0.01 | safeTextScoreMin 0.823 < 0.91,
+balanced,stress-clean,Group 19,Group 19.png,fail,safeTextScoreMin 0.8789 < 0.91,
+balanced,stress-clean,Group 20,Group 20.png,fail,subtitle maxOverlapRatio 0.1527 > 0.015 | badge maxOverlapRatio 0.0179 > 0.005,safeTextScoreMin (0.9225 vs 0.91)
+balanced,stress-clean,Group 21,Group 21.png,fail,headline maxOverlapRatio 0.019 > 0.01 | subtitle maxOverlapRatio 0.0282 > 0.015 | safeTextScoreMin 0.8724 < 0.91,
+balanced,stress-clean,Group 22,Group 22.png,fail,headline maxOverlapRatio 0.0486 > 0.01 | safeTextScoreMin 0.7579 < 0.91,
+balanced,stress-clean,Group 24,Group 24.png,fail,headline maxOverlapRatio 0.0241 > 0.01,badge maxOverlapRatio (0.0029 vs 0.005)
+lenient,core-clean,Group 1,Group 1.png,pass,,
+lenient,core-clean,Group 4,Group 4.png,pass,,
+lenient,core-clean,Group 7,Group 7.png,pass,,
+lenient,core-clean,Group 8,Group 8.png,pass,,badge maxOverlapRatio (0.003 vs 0.005) | safeAreaCoverageMin (0.2254 vs 0.22)
+lenient,core-clean,Group 9,Group 9.png,pass,,
+lenient,core-clean,Group 10,Group 10.png,fail,subtitle maxOverlapRatio 0.017 > 0.015,subtitle maxOverlapRatio (0.017 vs 0.015) | safeTextScoreMin (0.8798 vs 0.87)
+lenient,core-clean,Group 23,Group 23.png,pass,,headline maxOverlapRatio (0.0115 vs 0.0125)
+lenient,core-clean,Group 25,Group 25.png,pass,,
+lenient,stress-clean,Group 2,Group 2.png,fail,headline maxOverlapRatio 0.0206 > 0.0125,
+lenient,stress-clean,Group 3,Group 3.png,fail,subtitle maxOverlapRatio 0.0428 > 0.015,
+lenient,stress-ambiguous,Group 5,Group 5.png,fail,safeTextScoreMin 0.7807 < 0.87 | safeAreaCoverageMin 0 < 0.22,
+lenient,stress-clean,Group 6,Group 6.png,fail,headline maxOverlapRatio 0.0127 > 0.0125 | subtitle maxOverlapRatio 0.0162 > 0.015,headline maxOverlapRatio (0.0127 vs 0.0125) | subtitle maxOverlapRatio (0.0162 vs 0.015) | safeTextScoreMin (0.8934 vs 0.87)
+lenient,stress-clean,Group 11,Group 11.png,pass,,
+lenient,stress-clean,Group 12,Group 12.png,fail,safeTextScoreMin 0.859 < 0.87,safeTextScoreMin (0.859 vs 0.87)
+lenient,stress-clean,Group 13,Group 13.png,pass,,
+lenient,stress-clean,Group 14,Group 14.png,pass,,
+lenient,stress-clean,Group 15,Group 15.png,fail,safeAreaCoverageMin 0 < 0.22,
+lenient,stress-clean,Group 16,Group 16.png,pass,,
+lenient,stress-clean,Group 17,Group 17.png,pass,,
+lenient,stress-ambiguous,Group 18,Group 18.png,fail,headline maxOverlapRatio 0.0487 > 0.0125 | safeTextScoreMin 0.823 < 0.87,
+lenient,stress-clean,Group 19,Group 19.png,pass,,safeTextScoreMin (0.8789 vs 0.87)
+lenient,stress-clean,Group 20,Group 20.png,fail,subtitle maxOverlapRatio 0.1527 > 0.015 | badge maxOverlapRatio 0.0179 > 0.005,
+lenient,stress-clean,Group 21,Group 21.png,fail,headline maxOverlapRatio 0.019 > 0.0125 | subtitle maxOverlapRatio 0.0282 > 0.015,safeTextScoreMin (0.8724 vs 0.87)
+lenient,stress-clean,Group 22,Group 22.png,fail,headline maxOverlapRatio 0.0486 > 0.0125 | safeTextScoreMin 0.7579 < 0.87,
+lenient,stress-clean,Group 24,Group 24.png,fail,headline maxOverlapRatio 0.0241 > 0.0125,badge maxOverlapRatio (0.0029 vs 0.005)

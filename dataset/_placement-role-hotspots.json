@@ -1,0 +1,562 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.307Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "dominantRoleFrequency": [
+    {
+      "role": "cta",
+      "count": 133
+    },
+    {
+      "role": "image",
+      "count": 62
+    }
+  ],
+  "byCategory": [
+    {
+      "key": "cta",
+      "totalRolePlacementRejections": 40,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 36
+        },
+        {
+          "role": "image",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "key": "spacing",
+      "totalRolePlacementRejections": 40,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 24
+        },
+        {
+          "role": "image",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "key": "balance",
+      "totalRolePlacementRejections": 30,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 22
+        },
+        {
+          "role": "image",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "key": "structure",
+      "totalRolePlacementRejections": 25,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 15
+        },
+        {
+          "role": "image",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "key": "hero",
+      "totalRolePlacementRejections": 20,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 12
+        },
+        {
+          "role": "image",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "key": "image_presence",
+      "totalRolePlacementRejections": 10,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 6
+        },
+        {
+          "role": "image",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "key": "text_priority",
+      "totalRolePlacementRejections": 10,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 6
+        },
+        {
+          "role": "image",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "key": "visual_style",
+      "totalRolePlacementRejections": 10,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 6
+        },
+        {
+          "role": "image",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "key": "grid",
+      "totalRolePlacementRejections": 5,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 3
+        },
+        {
+          "role": "image",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "key": "layout_overlap",
+      "totalRolePlacementRejections": 5,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 3
+        },
+        {
+          "role": "image",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "byFormat": [
+    {
+      "key": "square",
+      "totalRolePlacementRejections": 155,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 93
+        },
+        {
+          "role": "image",
+          "count": 62
+        }
+      ]
+    },
+    {
+      "key": "landscape",
+      "totalRolePlacementRejections": 40,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 40
+        }
+      ]
+    }
+  ],
+  "byFamily": [
+    {
+      "key": "display",
+      "totalRolePlacementRejections": 195,
+      "dominantRoleCounts": [
+        {
+          "role": "cta",
+          "count": 133
+        },
+        {
+          "role": "image",
+          "count": 62
+        }
+      ]
+    }
+  ],
+  "badgeAloneSevereCases": [],
+  "imageAloneSevereCases": [],
+  "badgeImageSevereCases": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":20},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "image",
+      "violatingRoles": [
+        "image",
+        "text",
+        "cta",
+        "badge"
+      ],
+      "avgAllowedDistance": 16.8,
+      "avgPreferredDistance": 16.8
+    }
+  ]
+}

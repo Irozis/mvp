@@ -1,0 +1,48 @@
+{
+  "caseId": "sq-product-decorative-context-png",
+  "category": "product",
+  "format": "square",
+  "family": "marketplace",
+  "formatKey": "marketplace-card",
+  "status": "success",
+  "baselineAggregate": 78,
+  "winnerAggregate": 78,
+  "delta": 0,
+  "baselineWon": true,
+  "winnerKind": "local-structural-repair",
+  "winnerAccepted": false,
+  "winnerStrategyLabel": "current",
+  "baselineConfidence": 37,
+  "winnerConfidence": 37,
+  "winnerConfidenceDelta": 0,
+  "topTags": [],
+  "topRejectionReasons": [
+    "no-net-gain",
+    "legacy-safety-rejection",
+    "insufficient-net-gain",
+    "weak-balance"
+  ],
+  "reviewPriority": "high-review",
+  "whyReview": "Baseline retained despite available repair candidates",
+  "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain.",
+  "humanVerdictPresent": false,
+  "machineHumanAgreement": null,
+  "agreementType": null,
+  "artifactPaths": {
+    "input": "input.png",
+    "notes": "notes.json",
+    "baseline": "baseline.json",
+    "winner": "winner.json",
+    "telemetry": "telemetry.json",
+    "calibration": "calibration.json",
+    "report": "report.json",
+    "previewBaseline": "preview-baseline.png",
+    "previewWinner": "preview-winner.png"
+  },
+  "previewGeneration": {
+    "requested": false,
+    "supported": false,
+    "generated": false,
+    "reason": "Preview generation not requested."
+  }
+}

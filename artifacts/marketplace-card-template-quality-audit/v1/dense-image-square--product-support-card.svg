@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#24150f" />
+      <stop offset="50%" stop-color="#5b2414" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)" rx="28" />
+  <rect x="320" y="144" width="657" height="168" rx="20" fill="#e2e8f0" fill-opacity="0.22" stroke="#ffffff" stroke-opacity="0.18"/>
+  <rect x="84" y="72" width="72" height="36" rx="10" fill="#ffffff" fill-opacity="0.14"/>
+  <rect x="960" y="72" width="0" height="0" rx="10" fill="#ffffff" fill-opacity="0.14"/>
+  <text x="142" y="715" fill="#f8fafc" font-size="72" font-weight="800" font-family="Arial, sans-serif">Save more on the launch collection ...</text>
+  
+  <rect x="166" y="960" width="144" height="53" rx="14" fill="#ff6b2c" />
+  <text x="178" y="992.86" fill="#f8fafc" font-size="18" font-family="Arial, sans-serif">See offers</text>
+</svg>

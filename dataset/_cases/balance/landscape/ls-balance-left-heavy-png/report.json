@@ -1,0 +1,51 @@
+{
+  "caseId": "ls-balance-left-heavy-png",
+  "category": "balance",
+  "format": "landscape",
+  "family": "display",
+  "formatKey": "display-mpu",
+  "status": "success",
+  "baselineAggregate": 50,
+  "winnerAggregate": 51,
+  "delta": 1,
+  "baselineWon": false,
+  "winnerKind": "image-balance-repair",
+  "winnerAccepted": true,
+  "winnerStrategyLabel": "image-balance-repair",
+  "baselineConfidence": 6,
+  "winnerConfidence": 9,
+  "winnerConfidenceDelta": 0,
+  "topTags": [
+    "insufficient-breathing-room",
+    "structural-drift"
+  ],
+  "topRejectionReasons": [
+    "role-placement-out-of-zone",
+    "no-net-gain",
+    "legacy-safety-rejection",
+    "aggregate-below-baseline"
+  ],
+  "reviewPriority": "high-review",
+  "whyReview": "Repeated repair pressure: near-zero-delta",
+  "shortSummary": "Winner improved only marginally; review whether the selected repair meaningfully helps the case.",
+  "humanVerdictPresent": false,
+  "machineHumanAgreement": null,
+  "agreementType": null,
+  "artifactPaths": {
+    "input": "input.png",
+    "notes": "notes.json",
+    "baseline": "baseline.json",
+    "winner": "winner.json",
+    "telemetry": "telemetry.json",
+    "calibration": "calibration.json",
+    "report": "report.json",
+    "previewBaseline": "preview-baseline.png",
+    "previewWinner": "preview-winner.png"
+  },
+  "previewGeneration": {
+    "requested": false,
+    "supported": false,
+    "generated": false,
+    "reason": "Preview generation not requested."
+  }
+}

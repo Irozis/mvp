@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#24150f" />
+      <stop offset="50%" stop-color="#5b2414" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="628" fill="url(#bg)" rx="28" />
+  <rect x="948" y="128" width="192" height="243" rx="20" fill="#e2e8f0" fill-opacity="0.25" stroke="#ffffff" stroke-opacity="0.18"/>
+  <rect x="72" y="44" width="86" height="24" rx="10" fill="#ffffff" fill-opacity="0.16"/>
+  <rect x="960" y="44" width="0" height="0" rx="10" fill="#ffffff" fill-opacity="0.16"/>
+  <text x="168" y="306" fill="#f8fafc" font-size="54" font-weight="800" font-family="Arial, sans-serif">Adaptive creative systems for eve...</text>
+  <text x="168" y="386" fill="#dcd3d2" opacity="0.9" font-size="19" font-family="Arial, sans-serif">Subtitle</text>
+  <rect x="60" y="449" width="144" height="33" rx="14" fill="#ff6b2c" />
+  <text x="72" y="469.46" fill="#f8fafc" font-size="16" font-family="Arial, sans-serif">Learn more</text>
+</svg>

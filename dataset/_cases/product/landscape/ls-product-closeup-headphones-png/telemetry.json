@@ -1,0 +1,3695 @@
+{
+  "telemetry": {
+    "formatKey": "marketplace-tile",
+    "formatFamily": "landscape",
+    "aspectMode": "landscape",
+    "baselineCandidateId": "local-structural-repair:current:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "baselineAggregateScore": 75,
+    "baselineConfidence": {
+      "effectiveScore": 26,
+      "disagreement": 8,
+      "needsHumanAttention": true
+    },
+    "winnerCandidateId": "local-structural-repair:current:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+    "winnerCandidateKind": "local-structural-repair",
+    "winnerStrategyLabel": "current",
+    "winnerAggregateScore": 75,
+    "winnerDeltaVsBaseline": 0,
+    "winnerConfidence": {
+      "effectiveScore": 26,
+      "disagreement": 8,
+      "needsHumanAttention": true
+    },
+    "winnerConfidenceDelta": 0,
+    "baselineWon": true,
+    "candidateBudgetUsage": {
+      "configured": 8,
+      "nonBaselineEvaluated": 4,
+      "totalEvaluated": 5,
+      "remaining": 4,
+      "combinationConfigured": 2,
+      "combinationEvaluated": 0
+    },
+    "dominantTags": [],
+    "dominantPenalties": [
+      "weak-balance",
+      "insufficient-net-gain"
+    ],
+    "landscapeTextHeightNearMissExperiment": {
+      "enabled": true,
+      "eligibleCandidateCount": 0,
+      "eligibleCaseCount": 0,
+      "appliedOverrideCount": 0,
+      "flippedCaseIds": []
+    },
+    "candidates": [
+      {
+        "candidateId": "local-structural-repair:current:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+        "strategyLabel": "current",
+        "candidateKind": "local-structural-repair",
+        "structuralStatus": "valid",
+        "aggregateScore": 75,
+        "aggregateDelta": 0,
+        "accepted": false,
+        "rejectionReasons": [
+          "no-net-gain"
+        ],
+        "gateOutcomes": {
+          "repeatSuppressed": false,
+          "legacySafetyRejected": false,
+          "hardStructuralInvalidity": false,
+          "rolePlacementOutOfZone": false,
+          "spacingThresholdExceeded": false,
+          "confidenceCollapse": false,
+          "aggregateBelowBaseline": false,
+          "noNetGain": true,
+          "nearMissOverrideEligible": false,
+          "nearMissOverrideBlockedReasons": [
+            "not-landscape-display",
+            "dominant-blocker-not-image",
+            "landscape-image-policy-not-applicable",
+            "non-positive-aggregate-delta",
+            "critical-issues"
+          ],
+          "nearMissOverrideSafeguardsSatisfied": false,
+          "wouldWinUnderNearMissOverride": false,
+          "landscapeTextHeightNearMissEligible": false,
+          "landscapeTextHeightNearMissApplied": false,
+          "landscapeTextHeightNearMissBlockedReasons": [],
+          "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+          "landscapeTextHeightNearMissSafeguardResults": {
+            "featureEnabled": false,
+            "landscapeDisplay": false,
+            "bestRejectedCandidate": false,
+            "blockerFamilyMatch": false,
+            "mildSeverity": false,
+            "positiveAggregateDelta": false,
+            "nonNegativeConfidenceDelta": false,
+            "titleOnlyWouldPass": false,
+            "messageClusterWouldPass": false,
+            "remainingBlockerWouldBecomeMilder": false,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": false,
+            "noHardStructuralInvalidity": false,
+            "noSpacingCollapse": false,
+            "noCriticalOverlap": false,
+            "noRoleLoss": false
+          },
+          "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+        },
+        "summaryTags": [],
+        "penaltyTags": [
+          "weak-balance",
+          "insufficient-net-gain"
+        ],
+        "confidence": {
+          "effectiveScore": 26,
+          "disagreement": 8,
+          "needsHumanAttention": true
+        },
+        "confidenceDelta": 0,
+        "placementSeverity": "moderate",
+        "placementDiagnostics": {
+          "role": "text",
+          "violatingRoles": [
+            "text"
+          ],
+          "preferredZoneDistance": 5.37,
+          "allowedZoneDistance": 5.37,
+          "avgAllowedDistance": 5.37,
+          "avgPreferredDistance": 5.37,
+          "clusterIntegrity": 88,
+          "visualHierarchyPreserved": true,
+          "likelyIntentional": false,
+          "badgeSemanticallyActive": false,
+          "badgeVisuallyCritical": false,
+          "badgeAffectsCoreReadingFlow": false,
+          "badgeLikelyOptional": false,
+          "severity": "moderate",
+          "reasons": [
+            "allowed-zone-drift:5.37",
+            "preferred-zone-drift:5.37",
+            "avg-allowed-zone-drift:5.37",
+            "avg-preferred-zone-drift:5.37"
+          ],
+          "perRole": [
+            {
+              "role": "text",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 5.37,
+              "preferredDistance": 5.37,
+              "rect": {
+                "x": 14.033333333333333,
+                "y": 26.36942675159235,
+                "w": 51.66666666666667,
+                "h": 20.140127388535035
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 46.666666666666664,
+                  "h": 34.394904458598724
+                },
+                {
+                  "x": 7.000000000000001,
+                  "y": 19.745222929936308,
+                  "w": 41.66666666666667,
+                  "h": 28.02547770700637
+                },
+                {
+                  "x": 8.666666666666668,
+                  "y": 17.8343949044586,
+                  "w": 51.66666666666667,
+                  "h": 32.802547770700635
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "cta",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "CTA",
+                "x": 5,
+                "y": 71.47770700636943,
+                "w": 18,
+                "h": 5.273885350318472
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 71.01910828025477,
+                  "w": 18.666666666666668,
+                  "h": 5.7324840764331215
+                },
+                {
+                  "x": 75.33333333333333,
+                  "y": 71.01910828025477,
+                  "w": 15,
+                  "h": 5.7324840764331215
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "image",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0.96,
+              "preferredDistance": 0.96,
+              "rect": {
+                "label": "Image",
+                "x": 77.86666666666667,
+                "y": 10.5,
+                "w": 15.771799388159991,
+                "h": 43.89423022079999
+              },
+              "allowedZones": [
+                {
+                  "x": 59.333333333333336,
+                  "y": 14.331210191082802,
+                  "w": 34,
+                  "h": 50.955414012738856
+                },
+                {
+                  "x": 55.00000000000001,
+                  "y": 11.464968152866243,
+                  "w": 40,
+                  "h": 57.324840764331206
+                },
+                {
+                  "x": 5,
+                  "y": 16.560509554140125,
+                  "w": 25,
+                  "h": 41.40127388535032
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "logo",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Logo",
+                "x": 6,
+                "y": 7.006369426751593,
+                "w": 7.199999999999999,
+                "h": 3.8
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 82.66666666666667,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "badge",
+              "eligible": false,
+              "eligibilityReason": "missing-rect",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 78,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "price",
+              "eligible": false,
+              "eligibilityReason": "price-not-semantically-present",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 76.66666666666667,
+                  "y": 15.286624203821656,
+                  "w": 15,
+                  "h": 7.961783439490445
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 1,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            }
+          ],
+          "skippedRoles": [
+            {
+              "role": "badge",
+              "reason": "missing-rect"
+            },
+            {
+              "role": "price",
+              "reason": "price-not-semantically-present"
+            }
+          ],
+          "textBoxes": {
+            "titleRect": {
+              "label": "Headline",
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 18.229299363057326
+            },
+            "subtitleRect": {
+              "label": "Text",
+              "x": 14.033333333333333,
+              "y": 46.509554140127385,
+              "w": 51.66666666666667,
+              "h": 0
+            },
+            "combinedBoundsRect": {
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 20.140127388535035
+            }
+          }
+        },
+        "softPlacementPenalty": 4,
+        "adjustedAggregateScore": 71,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideReason": "not-landscape-display",
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissReason": null,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": false,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": false,
+          "noSpacingCollapse": false,
+          "noCriticalOverlap": false,
+          "noRoleLoss": false
+        },
+        "landscapeTextHeightNearMissBlockerFamily": null,
+        "landscapeTextHeightNearMissBlockerSubtype": null,
+        "finalWinnerChangedByOverride": false
+      },
+      {
+        "candidateId": "guided-regeneration-repair:guided-compact-minimal-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+        "strategyLabel": "guided-compact-minimal-regeneration",
+        "candidateKind": "guided-regeneration-repair",
+        "structuralStatus": "valid",
+        "aggregateScore": 72,
+        "aggregateDelta": -3,
+        "accepted": false,
+        "rejectionReasons": [
+          "legacy-safety-rejection",
+          "aggregate-below-baseline",
+          "no-net-gain"
+        ],
+        "gateOutcomes": {
+          "repeatSuppressed": false,
+          "legacySafetyRejected": true,
+          "hardStructuralInvalidity": false,
+          "rolePlacementOutOfZone": false,
+          "spacingThresholdExceeded": false,
+          "confidenceCollapse": false,
+          "aggregateBelowBaseline": true,
+          "noNetGain": true,
+          "nearMissOverrideEligible": false,
+          "nearMissOverrideBlockedReasons": [
+            "not-landscape-display",
+            "dominant-blocker-not-image",
+            "landscape-image-policy-not-applicable",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "critical-issues",
+            "remaining-gate:legacy-safety-rejection",
+            "remaining-gate:aggregate-below-baseline"
+          ],
+          "nearMissOverrideSafeguardsSatisfied": false,
+          "wouldWinUnderNearMissOverride": false,
+          "landscapeTextHeightNearMissEligible": false,
+          "landscapeTextHeightNearMissApplied": false,
+          "landscapeTextHeightNearMissBlockedReasons": [
+            "not-landscape-display",
+            "not-best-rejected-candidate",
+            "blocker-family:other",
+            "placement-severity:moderate",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "title-would-not-pass",
+            "message-cluster-would-not-pass",
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking",
+            "legacy-safety-rejection"
+          ],
+          "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+          "landscapeTextHeightNearMissSafeguardResults": {
+            "featureEnabled": true,
+            "landscapeDisplay": false,
+            "bestRejectedCandidate": false,
+            "blockerFamilyMatch": false,
+            "mildSeverity": false,
+            "positiveAggregateDelta": false,
+            "nonNegativeConfidenceDelta": false,
+            "titleOnlyWouldPass": false,
+            "messageClusterWouldPass": false,
+            "remainingBlockerWouldBecomeMilder": false,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": false,
+            "noHardStructuralInvalidity": true,
+            "noSpacingCollapse": true,
+            "noCriticalOverlap": true,
+            "noRoleLoss": true
+          },
+          "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+        },
+        "summaryTags": [],
+        "penaltyTags": [
+          "weak-balance",
+          "insufficient-net-gain"
+        ],
+        "confidence": {
+          "effectiveScore": 20,
+          "disagreement": 8,
+          "needsHumanAttention": true
+        },
+        "confidenceDelta": 0,
+        "placementSeverity": "moderate",
+        "placementDiagnostics": {
+          "role": "text",
+          "violatingRoles": [
+            "text"
+          ],
+          "preferredZoneDistance": 4.94,
+          "allowedZoneDistance": 4.94,
+          "avgAllowedDistance": 4.94,
+          "avgPreferredDistance": 4.94,
+          "clusterIntegrity": 76,
+          "visualHierarchyPreserved": true,
+          "likelyIntentional": false,
+          "badgeSemanticallyActive": false,
+          "badgeVisuallyCritical": false,
+          "badgeAffectsCoreReadingFlow": false,
+          "badgeLikelyOptional": false,
+          "severity": "moderate",
+          "reasons": [
+            "allowed-zone-drift:4.94",
+            "preferred-zone-drift:4.94",
+            "avg-allowed-zone-drift:4.94",
+            "avg-preferred-zone-drift:4.94"
+          ],
+          "perRole": [
+            {
+              "role": "text",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 4.94,
+              "preferredDistance": 4.94,
+              "rect": {
+                "x": 14.033333333333333,
+                "y": 34.68789808917197,
+                "w": 46.86666666666667,
+                "h": 20.324840764331213
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 46.666666666666664,
+                  "h": 34.394904458598724
+                },
+                {
+                  "x": 7.000000000000001,
+                  "y": 19.745222929936308,
+                  "w": 41.66666666666667,
+                  "h": 28.02547770700637
+                },
+                {
+                  "x": 8.666666666666668,
+                  "y": 17.8343949044586,
+                  "w": 51.66666666666667,
+                  "h": 32.802547770700635
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "cta",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "CTA",
+                "x": 5,
+                "y": 71.47770700636943,
+                "w": 12,
+                "h": 5.273885350318472
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 71.01910828025477,
+                  "w": 18.666666666666668,
+                  "h": 5.7324840764331215
+                },
+                {
+                  "x": 75.33333333333333,
+                  "y": 71.01910828025477,
+                  "w": 15,
+                  "h": 5.7324840764331215
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "image",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Image",
+                "x": 79,
+                "y": 20.445859872611464,
+                "w": 16,
+                "h": 38.726114649681534
+              },
+              "allowedZones": [
+                {
+                  "x": 59.333333333333336,
+                  "y": 14.331210191082802,
+                  "w": 34,
+                  "h": 50.955414012738856
+                },
+                {
+                  "x": 55.00000000000001,
+                  "y": 11.464968152866243,
+                  "w": 40,
+                  "h": 57.324840764331206
+                },
+                {
+                  "x": 5,
+                  "y": 16.560509554140125,
+                  "w": 25,
+                  "h": 41.40127388535032
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "logo",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Logo",
+                "x": 6,
+                "y": 7.006369426751593,
+                "w": 7.199999999999999,
+                "h": 3.8
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 82.66666666666667,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "badge",
+              "eligible": false,
+              "eligibilityReason": "missing-rect",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 78,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "price",
+              "eligible": false,
+              "eligibilityReason": "price-not-semantically-present",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 76.66666666666667,
+                  "y": 15.286624203821656,
+                  "w": 15,
+                  "h": 7.961783439490445
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 1,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            }
+          ],
+          "skippedRoles": [
+            {
+              "role": "badge",
+              "reason": "missing-rect"
+            },
+            {
+              "role": "price",
+              "reason": "price-not-semantically-present"
+            }
+          ],
+          "textBoxes": {
+            "titleRect": {
+              "label": "Headline",
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 18.573248407643312
+            },
+            "subtitleRect": {
+              "label": "Text",
+              "x": 14.033333333333333,
+              "y": 55.01273885350319,
+              "w": 46.86666666666667,
+              "h": 0
+            },
+            "combinedBoundsRect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            }
+          }
+        },
+        "softPlacementPenalty": 4,
+        "adjustedAggregateScore": 68,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideReason": "not-landscape-display",
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissReason": "not-landscape-display",
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "landscapeTextHeightNearMissBlockerFamily": "other",
+        "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+        "finalWinnerChangedByOverride": false
+      },
+      {
+        "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+        "strategyLabel": "guided-stronger-dense-information-regeneration",
+        "candidateKind": "guided-regeneration-repair",
+        "structuralStatus": "valid",
+        "aggregateScore": 72,
+        "aggregateDelta": -3,
+        "accepted": false,
+        "rejectionReasons": [
+          "repeat-suppressed",
+          "aggregate-below-baseline",
+          "no-net-gain"
+        ],
+        "gateOutcomes": {
+          "repeatSuppressed": true,
+          "legacySafetyRejected": false,
+          "hardStructuralInvalidity": false,
+          "rolePlacementOutOfZone": false,
+          "spacingThresholdExceeded": false,
+          "confidenceCollapse": false,
+          "aggregateBelowBaseline": true,
+          "noNetGain": true,
+          "nearMissOverrideEligible": false,
+          "nearMissOverrideBlockedReasons": [
+            "not-landscape-display",
+            "dominant-blocker-not-image",
+            "landscape-image-policy-not-applicable",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "critical-issues",
+            "remaining-gate:repeat-suppressed",
+            "remaining-gate:aggregate-below-baseline"
+          ],
+          "nearMissOverrideSafeguardsSatisfied": false,
+          "wouldWinUnderNearMissOverride": false,
+          "landscapeTextHeightNearMissEligible": false,
+          "landscapeTextHeightNearMissApplied": false,
+          "landscapeTextHeightNearMissBlockedReasons": [
+            "not-landscape-display",
+            "not-best-rejected-candidate",
+            "blocker-family:other",
+            "placement-severity:moderate",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "title-would-not-pass",
+            "message-cluster-would-not-pass",
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking"
+          ],
+          "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+          "landscapeTextHeightNearMissSafeguardResults": {
+            "featureEnabled": true,
+            "landscapeDisplay": false,
+            "bestRejectedCandidate": false,
+            "blockerFamilyMatch": false,
+            "mildSeverity": false,
+            "positiveAggregateDelta": false,
+            "nonNegativeConfidenceDelta": false,
+            "titleOnlyWouldPass": false,
+            "messageClusterWouldPass": false,
+            "remainingBlockerWouldBecomeMilder": false,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": true,
+            "noHardStructuralInvalidity": true,
+            "noSpacingCollapse": true,
+            "noCriticalOverlap": true,
+            "noRoleLoss": true
+          },
+          "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+        },
+        "summaryTags": [],
+        "penaltyTags": [
+          "weak-balance",
+          "insufficient-net-gain"
+        ],
+        "confidence": {
+          "effectiveScore": 20,
+          "disagreement": 8,
+          "needsHumanAttention": true
+        },
+        "confidenceDelta": 0,
+        "placementSeverity": "moderate",
+        "placementDiagnostics": {
+          "role": "text",
+          "violatingRoles": [
+            "text"
+          ],
+          "preferredZoneDistance": 4.94,
+          "allowedZoneDistance": 4.94,
+          "avgAllowedDistance": 4.94,
+          "avgPreferredDistance": 4.94,
+          "clusterIntegrity": 76,
+          "visualHierarchyPreserved": true,
+          "likelyIntentional": false,
+          "badgeSemanticallyActive": false,
+          "badgeVisuallyCritical": false,
+          "badgeAffectsCoreReadingFlow": false,
+          "badgeLikelyOptional": false,
+          "severity": "moderate",
+          "reasons": [
+            "allowed-zone-drift:4.94",
+            "preferred-zone-drift:4.94",
+            "avg-allowed-zone-drift:4.94",
+            "avg-preferred-zone-drift:4.94"
+          ],
+          "perRole": [
+            {
+              "role": "text",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 4.94,
+              "preferredDistance": 4.94,
+              "rect": {
+                "x": 14.033333333333333,
+                "y": 34.68789808917197,
+                "w": 46.86666666666667,
+                "h": 20.324840764331213
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 46.666666666666664,
+                  "h": 34.394904458598724
+                },
+                {
+                  "x": 7.000000000000001,
+                  "y": 19.745222929936308,
+                  "w": 41.66666666666667,
+                  "h": 28.02547770700637
+                },
+                {
+                  "x": 8.666666666666668,
+                  "y": 17.8343949044586,
+                  "w": 51.66666666666667,
+                  "h": 32.802547770700635
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "cta",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "CTA",
+                "x": 5,
+                "y": 71.47770700636943,
+                "w": 12,
+                "h": 5.273885350318472
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 71.01910828025477,
+                  "w": 18.666666666666668,
+                  "h": 5.7324840764331215
+                },
+                {
+                  "x": 75.33333333333333,
+                  "y": 71.01910828025477,
+                  "w": 15,
+                  "h": 5.7324840764331215
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "image",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Image",
+                "x": 79,
+                "y": 20.445859872611464,
+                "w": 16,
+                "h": 38.726114649681534
+              },
+              "allowedZones": [
+                {
+                  "x": 59.333333333333336,
+                  "y": 14.331210191082802,
+                  "w": 34,
+                  "h": 50.955414012738856
+                },
+                {
+                  "x": 55.00000000000001,
+                  "y": 11.464968152866243,
+                  "w": 40,
+                  "h": 57.324840764331206
+                },
+                {
+                  "x": 5,
+                  "y": 16.560509554140125,
+                  "w": 25,
+                  "h": 41.40127388535032
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "logo",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Logo",
+                "x": 6,
+                "y": 7.006369426751593,
+                "w": 7.199999999999999,
+                "h": 3.8
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 82.66666666666667,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "badge",
+              "eligible": false,
+              "eligibilityReason": "missing-rect",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 78,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "price",
+              "eligible": false,
+              "eligibilityReason": "price-not-semantically-present",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 76.66666666666667,
+                  "y": 15.286624203821656,
+                  "w": 15,
+                  "h": 7.961783439490445
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 1,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            }
+          ],
+          "skippedRoles": [
+            {
+              "role": "badge",
+              "reason": "missing-rect"
+            },
+            {
+              "role": "price",
+              "reason": "price-not-semantically-present"
+            }
+          ],
+          "textBoxes": {
+            "titleRect": {
+              "label": "Headline",
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 18.573248407643312
+            },
+            "subtitleRect": {
+              "label": "Text",
+              "x": 14.033333333333333,
+              "y": 55.01273885350319,
+              "w": 46.86666666666667,
+              "h": 0
+            },
+            "combinedBoundsRect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            }
+          }
+        },
+        "softPlacementPenalty": 4,
+        "adjustedAggregateScore": 68,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideReason": "not-landscape-display",
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissReason": "not-landscape-display",
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": true,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "landscapeTextHeightNearMissBlockerFamily": "other",
+        "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+        "finalWinnerChangedByOverride": false
+      },
+      {
+        "candidateId": "guided-regeneration-repair:guided-stronger-split-horizontal-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+        "strategyLabel": "guided-stronger-split-horizontal-regeneration",
+        "candidateKind": "guided-regeneration-repair",
+        "structuralStatus": "valid",
+        "aggregateScore": 72,
+        "aggregateDelta": -3,
+        "accepted": false,
+        "rejectionReasons": [
+          "repeat-suppressed",
+          "aggregate-below-baseline",
+          "no-net-gain"
+        ],
+        "gateOutcomes": {
+          "repeatSuppressed": true,
+          "legacySafetyRejected": false,
+          "hardStructuralInvalidity": false,
+          "rolePlacementOutOfZone": false,
+          "spacingThresholdExceeded": false,
+          "confidenceCollapse": false,
+          "aggregateBelowBaseline": true,
+          "noNetGain": true,
+          "nearMissOverrideEligible": false,
+          "nearMissOverrideBlockedReasons": [
+            "not-landscape-display",
+            "dominant-blocker-not-image",
+            "landscape-image-policy-not-applicable",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "critical-issues",
+            "remaining-gate:repeat-suppressed",
+            "remaining-gate:aggregate-below-baseline"
+          ],
+          "nearMissOverrideSafeguardsSatisfied": false,
+          "wouldWinUnderNearMissOverride": false,
+          "landscapeTextHeightNearMissEligible": false,
+          "landscapeTextHeightNearMissApplied": false,
+          "landscapeTextHeightNearMissBlockedReasons": [
+            "not-landscape-display",
+            "not-best-rejected-candidate",
+            "blocker-family:other",
+            "placement-severity:moderate",
+            "non-positive-aggregate-delta",
+            "confidence-below-baseline",
+            "title-would-not-pass",
+            "message-cluster-would-not-pass",
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking"
+          ],
+          "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+          "landscapeTextHeightNearMissSafeguardResults": {
+            "featureEnabled": true,
+            "landscapeDisplay": false,
+            "bestRejectedCandidate": false,
+            "blockerFamilyMatch": false,
+            "mildSeverity": false,
+            "positiveAggregateDelta": false,
+            "nonNegativeConfidenceDelta": false,
+            "titleOnlyWouldPass": false,
+            "messageClusterWouldPass": false,
+            "remainingBlockerWouldBecomeMilder": false,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": true,
+            "noHardStructuralInvalidity": true,
+            "noSpacingCollapse": true,
+            "noCriticalOverlap": true,
+            "noRoleLoss": true
+          },
+          "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+        },
+        "summaryTags": [],
+        "penaltyTags": [
+          "weak-balance",
+          "insufficient-net-gain"
+        ],
+        "confidence": {
+          "effectiveScore": 20,
+          "disagreement": 8,
+          "needsHumanAttention": true
+        },
+        "confidenceDelta": 0,
+        "placementSeverity": "moderate",
+        "placementDiagnostics": {
+          "role": "text",
+          "violatingRoles": [
+            "text"
+          ],
+          "preferredZoneDistance": 4.94,
+          "allowedZoneDistance": 4.94,
+          "avgAllowedDistance": 4.94,
+          "avgPreferredDistance": 4.94,
+          "clusterIntegrity": 76,
+          "visualHierarchyPreserved": true,
+          "likelyIntentional": false,
+          "badgeSemanticallyActive": false,
+          "badgeVisuallyCritical": false,
+          "badgeAffectsCoreReadingFlow": false,
+          "badgeLikelyOptional": false,
+          "severity": "moderate",
+          "reasons": [
+            "allowed-zone-drift:4.94",
+            "preferred-zone-drift:4.94",
+            "avg-allowed-zone-drift:4.94",
+            "avg-preferred-zone-drift:4.94"
+          ],
+          "perRole": [
+            {
+              "role": "text",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 4.94,
+              "preferredDistance": 4.94,
+              "rect": {
+                "x": 14.033333333333333,
+                "y": 34.68789808917197,
+                "w": 46.86666666666667,
+                "h": 20.324840764331213
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 46.666666666666664,
+                  "h": 34.394904458598724
+                },
+                {
+                  "x": 7.000000000000001,
+                  "y": 19.745222929936308,
+                  "w": 41.66666666666667,
+                  "h": 28.02547770700637
+                },
+                {
+                  "x": 8.666666666666668,
+                  "y": 17.8343949044586,
+                  "w": 51.66666666666667,
+                  "h": 32.802547770700635
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "cta",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "CTA",
+                "x": 5,
+                "y": 71.47770700636943,
+                "w": 12,
+                "h": 5.273885350318472
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 71.01910828025477,
+                  "w": 18.666666666666668,
+                  "h": 5.7324840764331215
+                },
+                {
+                  "x": 75.33333333333333,
+                  "y": 71.01910828025477,
+                  "w": 15,
+                  "h": 5.7324840764331215
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "image",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Image",
+                "x": 79,
+                "y": 20.445859872611464,
+                "w": 16,
+                "h": 38.726114649681534
+              },
+              "allowedZones": [
+                {
+                  "x": 59.333333333333336,
+                  "y": 14.331210191082802,
+                  "w": 34,
+                  "h": 50.955414012738856
+                },
+                {
+                  "x": 55.00000000000001,
+                  "y": 11.464968152866243,
+                  "w": 40,
+                  "h": 57.324840764331206
+                },
+                {
+                  "x": 5,
+                  "y": 16.560509554140125,
+                  "w": 25,
+                  "h": 41.40127388535032
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "logo",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Logo",
+                "x": 6,
+                "y": 7.006369426751593,
+                "w": 7.199999999999999,
+                "h": 3.8
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 82.66666666666667,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "badge",
+              "eligible": false,
+              "eligibilityReason": "missing-rect",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 78,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "price",
+              "eligible": false,
+              "eligibilityReason": "price-not-semantically-present",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 76.66666666666667,
+                  "y": 15.286624203821656,
+                  "w": 15,
+                  "h": 7.961783439490445
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 1,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            }
+          ],
+          "skippedRoles": [
+            {
+              "role": "badge",
+              "reason": "missing-rect"
+            },
+            {
+              "role": "price",
+              "reason": "price-not-semantically-present"
+            }
+          ],
+          "textBoxes": {
+            "titleRect": {
+              "label": "Headline",
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 18.573248407643312
+            },
+            "subtitleRect": {
+              "label": "Text",
+              "x": 14.033333333333333,
+              "y": 55.01273885350319,
+              "w": 46.86666666666667,
+              "h": 0
+            },
+            "combinedBoundsRect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            }
+          }
+        },
+        "softPlacementPenalty": 4,
+        "adjustedAggregateScore": 68,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideReason": "not-landscape-display",
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissReason": "not-landscape-display",
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": true,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "landscapeTextHeightNearMissBlockerFamily": "other",
+        "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+        "finalWinnerChangedByOverride": false
+      },
+      {
+        "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+        "strategyLabel": "validated-run-autofix",
+        "candidateKind": "validated-run-autofix",
+        "structuralStatus": "valid",
+        "aggregateScore": 75,
+        "aggregateDelta": 0,
+        "accepted": false,
+        "rejectionReasons": [
+          "legacy-safety-rejection",
+          "no-net-gain"
+        ],
+        "gateOutcomes": {
+          "repeatSuppressed": false,
+          "legacySafetyRejected": true,
+          "hardStructuralInvalidity": false,
+          "rolePlacementOutOfZone": false,
+          "spacingThresholdExceeded": false,
+          "confidenceCollapse": false,
+          "aggregateBelowBaseline": false,
+          "noNetGain": true,
+          "nearMissOverrideEligible": false,
+          "nearMissOverrideBlockedReasons": [
+            "not-landscape-display",
+            "dominant-blocker-not-image",
+            "landscape-image-policy-not-applicable",
+            "non-positive-aggregate-delta",
+            "critical-issues",
+            "remaining-gate:legacy-safety-rejection"
+          ],
+          "nearMissOverrideSafeguardsSatisfied": false,
+          "wouldWinUnderNearMissOverride": false,
+          "landscapeTextHeightNearMissEligible": false,
+          "landscapeTextHeightNearMissApplied": false,
+          "landscapeTextHeightNearMissBlockedReasons": [
+            "not-landscape-display",
+            "blocker-family:other",
+            "placement-severity:moderate",
+            "non-positive-aggregate-delta",
+            "title-would-not-pass",
+            "message-cluster-would-not-pass",
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking",
+            "legacy-safety-rejection"
+          ],
+          "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+          "landscapeTextHeightNearMissSafeguardResults": {
+            "featureEnabled": true,
+            "landscapeDisplay": false,
+            "bestRejectedCandidate": true,
+            "blockerFamilyMatch": false,
+            "mildSeverity": false,
+            "positiveAggregateDelta": false,
+            "nonNegativeConfidenceDelta": true,
+            "titleOnlyWouldPass": false,
+            "messageClusterWouldPass": false,
+            "remainingBlockerWouldBecomeMilder": false,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": false,
+            "noHardStructuralInvalidity": true,
+            "noSpacingCollapse": true,
+            "noCriticalOverlap": true,
+            "noRoleLoss": true
+          },
+          "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+        },
+        "summaryTags": [],
+        "penaltyTags": [
+          "weak-balance",
+          "insufficient-net-gain"
+        ],
+        "confidence": {
+          "effectiveScore": 26,
+          "disagreement": 8,
+          "needsHumanAttention": true
+        },
+        "confidenceDelta": 0,
+        "placementSeverity": "moderate",
+        "placementDiagnostics": {
+          "role": "text",
+          "violatingRoles": [
+            "text"
+          ],
+          "preferredZoneDistance": 5.37,
+          "allowedZoneDistance": 5.37,
+          "avgAllowedDistance": 5.37,
+          "avgPreferredDistance": 5.37,
+          "clusterIntegrity": 88,
+          "visualHierarchyPreserved": true,
+          "likelyIntentional": false,
+          "badgeSemanticallyActive": false,
+          "badgeVisuallyCritical": false,
+          "badgeAffectsCoreReadingFlow": false,
+          "badgeLikelyOptional": false,
+          "severity": "moderate",
+          "reasons": [
+            "allowed-zone-drift:5.37",
+            "preferred-zone-drift:5.37",
+            "avg-allowed-zone-drift:5.37",
+            "avg-preferred-zone-drift:5.37"
+          ],
+          "perRole": [
+            {
+              "role": "text",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 5.37,
+              "preferredDistance": 5.37,
+              "rect": {
+                "x": 14.033333333333333,
+                "y": 26.36942675159235,
+                "w": 51.66666666666667,
+                "h": 20.140127388535035
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 46.666666666666664,
+                  "h": 34.394904458598724
+                },
+                {
+                  "x": 7.000000000000001,
+                  "y": 19.745222929936308,
+                  "w": 41.66666666666667,
+                  "h": 28.02547770700637
+                },
+                {
+                  "x": 8.666666666666668,
+                  "y": 17.8343949044586,
+                  "w": 51.66666666666667,
+                  "h": 32.802547770700635
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "cta",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "CTA",
+                "x": 5,
+                "y": 71.47770700636943,
+                "w": 18,
+                "h": 5.273885350318472
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 71.01910828025477,
+                  "w": 18.666666666666668,
+                  "h": 5.7324840764331215
+                },
+                {
+                  "x": 75.33333333333333,
+                  "y": 71.01910828025477,
+                  "w": 15,
+                  "h": 5.7324840764331215
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "image",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0.96,
+              "preferredDistance": 0.96,
+              "rect": {
+                "label": "Image",
+                "x": 77.86666666666667,
+                "y": 10.5,
+                "w": 15.771799388159991,
+                "h": 43.89423022079999
+              },
+              "allowedZones": [
+                {
+                  "x": 59.333333333333336,
+                  "y": 14.331210191082802,
+                  "w": 34,
+                  "h": 50.955414012738856
+                },
+                {
+                  "x": 55.00000000000001,
+                  "y": 11.464968152866243,
+                  "w": 40,
+                  "h": 57.324840764331206
+                },
+                {
+                  "x": 5,
+                  "y": 16.560509554140125,
+                  "w": 25,
+                  "h": 41.40127388535032
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 3,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "logo",
+              "eligible": true,
+              "eligibilityReason": null,
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": {
+                "label": "Logo",
+                "x": 6,
+                "y": 7.006369426751593,
+                "w": 7.199999999999999,
+                "h": 3.8
+              },
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 82.66666666666667,
+                  "y": 7.006369426751593,
+                  "w": 12.333333333333334,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "badge",
+              "eligible": false,
+              "eligibilityReason": "missing-rect",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 5,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                },
+                {
+                  "x": 78,
+                  "y": 15.286624203821656,
+                  "w": 13.666666666666666,
+                  "h": 6.369426751592357
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 2,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            },
+            {
+              "role": "price",
+              "eligible": false,
+              "eligibilityReason": "price-not-semantically-present",
+              "allowedDistance": 0,
+              "preferredDistance": 0,
+              "rect": null,
+              "allowedZones": [
+                {
+                  "x": 76.66666666666667,
+                  "y": 15.286624203821656,
+                  "w": 15,
+                  "h": 7.961783439490445
+                }
+              ],
+              "preferredZones": [],
+              "allowedZonesCount": 1,
+              "preferredZonesCount": 0,
+              "zonePaddingApplied": 0
+            }
+          ],
+          "skippedRoles": [
+            {
+              "role": "badge",
+              "reason": "missing-rect"
+            },
+            {
+              "role": "price",
+              "reason": "price-not-semantically-present"
+            }
+          ],
+          "textBoxes": {
+            "titleRect": {
+              "label": "Headline",
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 18.229299363057326
+            },
+            "subtitleRect": {
+              "label": "Text",
+              "x": 14.033333333333333,
+              "y": 46.509554140127385,
+              "w": 51.66666666666667,
+              "h": 0
+            },
+            "combinedBoundsRect": {
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 20.140127388535035
+            }
+          }
+        },
+        "softPlacementPenalty": 4,
+        "adjustedAggregateScore": 71,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideReason": "not-landscape-display",
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissReason": "not-landscape-display",
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": true,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": true,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "landscapeTextHeightNearMissBlockerFamily": "other",
+        "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+        "finalWinnerChangedByOverride": false
+      }
+    ]
+  },
+  "candidateComparisons": [
+    {
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "strategyLabel": "current",
+      "candidateKind": "local-structural-repair",
+      "structuralStatus": "valid",
+      "effectiveScore": 26,
+      "aggregateScore": 75,
+      "aggregateDelta": 0,
+      "accepted": false,
+      "rejectionReasons": [
+        "no-net-gain"
+      ],
+      "gateOutcomes": {
+        "repeatSuppressed": false,
+        "legacySafetyRejected": false,
+        "hardStructuralInvalidity": false,
+        "rolePlacementOutOfZone": false,
+        "spacingThresholdExceeded": false,
+        "confidenceCollapse": false,
+        "aggregateBelowBaseline": false,
+        "noNetGain": true,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideBlockedReasons": [
+          "not-landscape-display",
+          "dominant-blocker-not-image",
+          "landscape-image-policy-not-applicable",
+          "non-positive-aggregate-delta",
+          "critical-issues"
+        ],
+        "nearMissOverrideSafeguardsSatisfied": false,
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissBlockedReasons": [],
+        "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": false,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": false,
+          "noSpacingCollapse": false,
+          "noCriticalOverlap": false,
+          "noRoleLoss": false
+        },
+        "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+      },
+      "summaryTags": [],
+      "penaltyTags": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "objective": {
+        "structuralValidity": 100,
+        "perceptualQuality": 72,
+        "commercialStrength": 78,
+        "familyFidelity": 100,
+        "sideEffectCost": 0,
+        "aggregateScore": 75,
+        "weights": {
+          "structuralValidity": 0.34,
+          "perceptualQuality": 0.22,
+          "commercialStrength": 0.14,
+          "familyFidelity": 0.14,
+          "sideEffectCost": 0.16
+        }
+      },
+      "confidence": {
+        "effectiveScore": 26,
+        "disagreement": 8,
+        "needsHumanAttention": true
+      },
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "moderate",
+      "placementDiagnostics": {
+        "role": "text",
+        "violatingRoles": [
+          "text"
+        ],
+        "preferredZoneDistance": 5.37,
+        "allowedZoneDistance": 5.37,
+        "avgAllowedDistance": 5.37,
+        "avgPreferredDistance": 5.37,
+        "clusterIntegrity": 88,
+        "visualHierarchyPreserved": true,
+        "likelyIntentional": false,
+        "badgeSemanticallyActive": false,
+        "badgeVisuallyCritical": false,
+        "badgeAffectsCoreReadingFlow": false,
+        "badgeLikelyOptional": false,
+        "severity": "moderate",
+        "reasons": [
+          "allowed-zone-drift:5.37",
+          "preferred-zone-drift:5.37",
+          "avg-allowed-zone-drift:5.37",
+          "avg-preferred-zone-drift:5.37"
+        ],
+        "perRole": [
+          {
+            "role": "text",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 5.37,
+            "preferredDistance": 5.37,
+            "rect": {
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 20.140127388535035
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 46.666666666666664,
+                "h": 34.394904458598724
+              },
+              {
+                "x": 7.000000000000001,
+                "y": 19.745222929936308,
+                "w": 41.66666666666667,
+                "h": 28.02547770700637
+              },
+              {
+                "x": 8.666666666666668,
+                "y": 17.8343949044586,
+                "w": 51.66666666666667,
+                "h": 32.802547770700635
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "cta",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "CTA",
+              "x": 5,
+              "y": 71.47770700636943,
+              "w": 18,
+              "h": 5.273885350318472
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 71.01910828025477,
+                "w": 18.666666666666668,
+                "h": 5.7324840764331215
+              },
+              {
+                "x": 75.33333333333333,
+                "y": 71.01910828025477,
+                "w": 15,
+                "h": 5.7324840764331215
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "image",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0.96,
+            "preferredDistance": 0.96,
+            "rect": {
+              "label": "Image",
+              "x": 77.86666666666667,
+              "y": 10.5,
+              "w": 15.771799388159991,
+              "h": 43.89423022079999
+            },
+            "allowedZones": [
+              {
+                "x": 59.333333333333336,
+                "y": 14.331210191082802,
+                "w": 34,
+                "h": 50.955414012738856
+              },
+              {
+                "x": 55.00000000000001,
+                "y": 11.464968152866243,
+                "w": 40,
+                "h": 57.324840764331206
+              },
+              {
+                "x": 5,
+                "y": 16.560509554140125,
+                "w": 25,
+                "h": 41.40127388535032
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "logo",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Logo",
+              "x": 6,
+              "y": 7.006369426751593,
+              "w": 7.199999999999999,
+              "h": 3.8
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 82.66666666666667,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "badge",
+            "eligible": false,
+            "eligibilityReason": "missing-rect",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 78,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "price",
+            "eligible": false,
+            "eligibilityReason": "price-not-semantically-present",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 76.66666666666667,
+                "y": 15.286624203821656,
+                "w": 15,
+                "h": 7.961783439490445
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 1,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          }
+        ],
+        "skippedRoles": [
+          {
+            "role": "badge",
+            "reason": "missing-rect"
+          },
+          {
+            "role": "price",
+            "reason": "price-not-semantically-present"
+          }
+        ],
+        "textBoxes": {
+          "titleRect": {
+            "label": "Headline",
+            "x": 14.033333333333333,
+            "y": 26.36942675159235,
+            "w": 51.66666666666667,
+            "h": 18.229299363057326
+          },
+          "subtitleRect": {
+            "label": "Text",
+            "x": 14.033333333333333,
+            "y": 46.509554140127385,
+            "w": 51.66666666666667,
+            "h": 0
+          },
+          "combinedBoundsRect": {
+            "x": 14.033333333333333,
+            "y": 26.36942675159235,
+            "w": 51.66666666666667,
+            "h": 20.140127388535035
+          }
+        }
+      },
+      "softPlacementPenalty": 4,
+      "adjustedAggregateScore": 71,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideReason": "not-landscape-display",
+      "wouldWinUnderNearMissOverride": false,
+      "landscapeTextHeightNearMissEligible": false,
+      "landscapeTextHeightNearMissApplied": false,
+      "landscapeTextHeightNearMissReason": null,
+      "landscapeTextHeightNearMissSafeguardResults": {
+        "featureEnabled": false,
+        "landscapeDisplay": false,
+        "bestRejectedCandidate": false,
+        "blockerFamilyMatch": false,
+        "mildSeverity": false,
+        "positiveAggregateDelta": false,
+        "nonNegativeConfidenceDelta": false,
+        "titleOnlyWouldPass": false,
+        "messageClusterWouldPass": false,
+        "remainingBlockerWouldBecomeMilder": false,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": false,
+        "noHardStructuralInvalidity": false,
+        "noSpacingCollapse": false,
+        "noCriticalOverlap": false,
+        "noRoleLoss": false
+      },
+      "landscapeTextHeightNearMissBlockerFamily": null,
+      "landscapeTextHeightNearMissBlockerSubtype": null,
+      "finalWinnerChangedByOverride": false
+    },
+    {
+      "candidateId": "guided-regeneration-repair:guided-compact-minimal-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "strategyLabel": "guided-compact-minimal-regeneration",
+      "candidateKind": "guided-regeneration-repair",
+      "structuralStatus": "valid",
+      "effectiveScore": 20,
+      "aggregateScore": 72,
+      "aggregateDelta": -3,
+      "accepted": false,
+      "rejectionReasons": [
+        "legacy-safety-rejection",
+        "aggregate-below-baseline",
+        "no-net-gain"
+      ],
+      "gateOutcomes": {
+        "repeatSuppressed": false,
+        "legacySafetyRejected": true,
+        "hardStructuralInvalidity": false,
+        "rolePlacementOutOfZone": false,
+        "spacingThresholdExceeded": false,
+        "confidenceCollapse": false,
+        "aggregateBelowBaseline": true,
+        "noNetGain": true,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideBlockedReasons": [
+          "not-landscape-display",
+          "dominant-blocker-not-image",
+          "landscape-image-policy-not-applicable",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "critical-issues",
+          "remaining-gate:legacy-safety-rejection",
+          "remaining-gate:aggregate-below-baseline"
+        ],
+        "nearMissOverrideSafeguardsSatisfied": false,
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissBlockedReasons": [
+          "not-landscape-display",
+          "not-best-rejected-candidate",
+          "blocker-family:other",
+          "placement-severity:moderate",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "title-would-not-pass",
+          "message-cluster-would-not-pass",
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking",
+          "legacy-safety-rejection"
+        ],
+        "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+      },
+      "summaryTags": [],
+      "penaltyTags": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "objective": {
+        "structuralValidity": 100,
+        "perceptualQuality": 70,
+        "commercialStrength": 73,
+        "familyFidelity": 100,
+        "sideEffectCost": 8,
+        "aggregateScore": 72,
+        "weights": {
+          "structuralValidity": 0.34,
+          "perceptualQuality": 0.22,
+          "commercialStrength": 0.14,
+          "familyFidelity": 0.14,
+          "sideEffectCost": 0.16
+        }
+      },
+      "confidence": {
+        "effectiveScore": 20,
+        "disagreement": 8,
+        "needsHumanAttention": true
+      },
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "moderate",
+      "placementDiagnostics": {
+        "role": "text",
+        "violatingRoles": [
+          "text"
+        ],
+        "preferredZoneDistance": 4.94,
+        "allowedZoneDistance": 4.94,
+        "avgAllowedDistance": 4.94,
+        "avgPreferredDistance": 4.94,
+        "clusterIntegrity": 76,
+        "visualHierarchyPreserved": true,
+        "likelyIntentional": false,
+        "badgeSemanticallyActive": false,
+        "badgeVisuallyCritical": false,
+        "badgeAffectsCoreReadingFlow": false,
+        "badgeLikelyOptional": false,
+        "severity": "moderate",
+        "reasons": [
+          "allowed-zone-drift:4.94",
+          "preferred-zone-drift:4.94",
+          "avg-allowed-zone-drift:4.94",
+          "avg-preferred-zone-drift:4.94"
+        ],
+        "perRole": [
+          {
+            "role": "text",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 4.94,
+            "preferredDistance": 4.94,
+            "rect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 46.666666666666664,
+                "h": 34.394904458598724
+              },
+              {
+                "x": 7.000000000000001,
+                "y": 19.745222929936308,
+                "w": 41.66666666666667,
+                "h": 28.02547770700637
+              },
+              {
+                "x": 8.666666666666668,
+                "y": 17.8343949044586,
+                "w": 51.66666666666667,
+                "h": 32.802547770700635
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "cta",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "CTA",
+              "x": 5,
+              "y": 71.47770700636943,
+              "w": 12,
+              "h": 5.273885350318472
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 71.01910828025477,
+                "w": 18.666666666666668,
+                "h": 5.7324840764331215
+              },
+              {
+                "x": 75.33333333333333,
+                "y": 71.01910828025477,
+                "w": 15,
+                "h": 5.7324840764331215
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "image",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Image",
+              "x": 79,
+              "y": 20.445859872611464,
+              "w": 16,
+              "h": 38.726114649681534
+            },
+            "allowedZones": [
+              {
+                "x": 59.333333333333336,
+                "y": 14.331210191082802,
+                "w": 34,
+                "h": 50.955414012738856
+              },
+              {
+                "x": 55.00000000000001,
+                "y": 11.464968152866243,
+                "w": 40,
+                "h": 57.324840764331206
+              },
+              {
+                "x": 5,
+                "y": 16.560509554140125,
+                "w": 25,
+                "h": 41.40127388535032
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "logo",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Logo",
+              "x": 6,
+              "y": 7.006369426751593,
+              "w": 7.199999999999999,
+              "h": 3.8
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 82.66666666666667,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "badge",
+            "eligible": false,
+            "eligibilityReason": "missing-rect",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 78,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "price",
+            "eligible": false,
+            "eligibilityReason": "price-not-semantically-present",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 76.66666666666667,
+                "y": 15.286624203821656,
+                "w": 15,
+                "h": 7.961783439490445
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 1,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          }
+        ],
+        "skippedRoles": [
+          {
+            "role": "badge",
+            "reason": "missing-rect"
+          },
+          {
+            "role": "price",
+            "reason": "price-not-semantically-present"
+          }
+        ],
+        "textBoxes": {
+          "titleRect": {
+            "label": "Headline",
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 18.573248407643312
+          },
+          "subtitleRect": {
+            "label": "Text",
+            "x": 14.033333333333333,
+            "y": 55.01273885350319,
+            "w": 46.86666666666667,
+            "h": 0
+          },
+          "combinedBoundsRect": {
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 20.324840764331213
+          }
+        }
+      },
+      "softPlacementPenalty": 4,
+      "adjustedAggregateScore": 68,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideReason": "not-landscape-display",
+      "wouldWinUnderNearMissOverride": false,
+      "landscapeTextHeightNearMissEligible": false,
+      "landscapeTextHeightNearMissApplied": false,
+      "landscapeTextHeightNearMissReason": "not-landscape-display",
+      "landscapeTextHeightNearMissSafeguardResults": {
+        "featureEnabled": true,
+        "landscapeDisplay": false,
+        "bestRejectedCandidate": false,
+        "blockerFamilyMatch": false,
+        "mildSeverity": false,
+        "positiveAggregateDelta": false,
+        "nonNegativeConfidenceDelta": false,
+        "titleOnlyWouldPass": false,
+        "messageClusterWouldPass": false,
+        "remainingBlockerWouldBecomeMilder": false,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": false,
+        "noHardStructuralInvalidity": true,
+        "noSpacingCollapse": true,
+        "noCriticalOverlap": true,
+        "noRoleLoss": true
+      },
+      "landscapeTextHeightNearMissBlockerFamily": "other",
+      "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+      "finalWinnerChangedByOverride": false
+    },
+    {
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "candidateKind": "guided-regeneration-repair",
+      "structuralStatus": "valid",
+      "effectiveScore": 20,
+      "aggregateScore": 72,
+      "aggregateDelta": -3,
+      "accepted": false,
+      "rejectionReasons": [
+        "repeat-suppressed",
+        "aggregate-below-baseline",
+        "no-net-gain"
+      ],
+      "gateOutcomes": {
+        "repeatSuppressed": true,
+        "legacySafetyRejected": false,
+        "hardStructuralInvalidity": false,
+        "rolePlacementOutOfZone": false,
+        "spacingThresholdExceeded": false,
+        "confidenceCollapse": false,
+        "aggregateBelowBaseline": true,
+        "noNetGain": true,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideBlockedReasons": [
+          "not-landscape-display",
+          "dominant-blocker-not-image",
+          "landscape-image-policy-not-applicable",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "critical-issues",
+          "remaining-gate:repeat-suppressed",
+          "remaining-gate:aggregate-below-baseline"
+        ],
+        "nearMissOverrideSafeguardsSatisfied": false,
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissBlockedReasons": [
+          "not-landscape-display",
+          "not-best-rejected-candidate",
+          "blocker-family:other",
+          "placement-severity:moderate",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "title-would-not-pass",
+          "message-cluster-would-not-pass",
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking"
+        ],
+        "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": true,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+      },
+      "summaryTags": [],
+      "penaltyTags": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "objective": {
+        "structuralValidity": 100,
+        "perceptualQuality": 70,
+        "commercialStrength": 73,
+        "familyFidelity": 100,
+        "sideEffectCost": 8,
+        "aggregateScore": 72,
+        "weights": {
+          "structuralValidity": 0.34,
+          "perceptualQuality": 0.22,
+          "commercialStrength": 0.14,
+          "familyFidelity": 0.14,
+          "sideEffectCost": 0.16
+        }
+      },
+      "confidence": {
+        "effectiveScore": 20,
+        "disagreement": 8,
+        "needsHumanAttention": true
+      },
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "moderate",
+      "placementDiagnostics": {
+        "role": "text",
+        "violatingRoles": [
+          "text"
+        ],
+        "preferredZoneDistance": 4.94,
+        "allowedZoneDistance": 4.94,
+        "avgAllowedDistance": 4.94,
+        "avgPreferredDistance": 4.94,
+        "clusterIntegrity": 76,
+        "visualHierarchyPreserved": true,
+        "likelyIntentional": false,
+        "badgeSemanticallyActive": false,
+        "badgeVisuallyCritical": false,
+        "badgeAffectsCoreReadingFlow": false,
+        "badgeLikelyOptional": false,
+        "severity": "moderate",
+        "reasons": [
+          "allowed-zone-drift:4.94",
+          "preferred-zone-drift:4.94",
+          "avg-allowed-zone-drift:4.94",
+          "avg-preferred-zone-drift:4.94"
+        ],
+        "perRole": [
+          {
+            "role": "text",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 4.94,
+            "preferredDistance": 4.94,
+            "rect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 46.666666666666664,
+                "h": 34.394904458598724
+              },
+              {
+                "x": 7.000000000000001,
+                "y": 19.745222929936308,
+                "w": 41.66666666666667,
+                "h": 28.02547770700637
+              },
+              {
+                "x": 8.666666666666668,
+                "y": 17.8343949044586,
+                "w": 51.66666666666667,
+                "h": 32.802547770700635
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "cta",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "CTA",
+              "x": 5,
+              "y": 71.47770700636943,
+              "w": 12,
+              "h": 5.273885350318472
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 71.01910828025477,
+                "w": 18.666666666666668,
+                "h": 5.7324840764331215
+              },
+              {
+                "x": 75.33333333333333,
+                "y": 71.01910828025477,
+                "w": 15,
+                "h": 5.7324840764331215
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "image",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Image",
+              "x": 79,
+              "y": 20.445859872611464,
+              "w": 16,
+              "h": 38.726114649681534
+            },
+            "allowedZones": [
+              {
+                "x": 59.333333333333336,
+                "y": 14.331210191082802,
+                "w": 34,
+                "h": 50.955414012738856
+              },
+              {
+                "x": 55.00000000000001,
+                "y": 11.464968152866243,
+                "w": 40,
+                "h": 57.324840764331206
+              },
+              {
+                "x": 5,
+                "y": 16.560509554140125,
+                "w": 25,
+                "h": 41.40127388535032
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "logo",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Logo",
+              "x": 6,
+              "y": 7.006369426751593,
+              "w": 7.199999999999999,
+              "h": 3.8
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 82.66666666666667,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "badge",
+            "eligible": false,
+            "eligibilityReason": "missing-rect",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 78,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "price",
+            "eligible": false,
+            "eligibilityReason": "price-not-semantically-present",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 76.66666666666667,
+                "y": 15.286624203821656,
+                "w": 15,
+                "h": 7.961783439490445
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 1,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          }
+        ],
+        "skippedRoles": [
+          {
+            "role": "badge",
+            "reason": "missing-rect"
+          },
+          {
+            "role": "price",
+            "reason": "price-not-semantically-present"
+          }
+        ],
+        "textBoxes": {
+          "titleRect": {
+            "label": "Headline",
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 18.573248407643312
+          },
+          "subtitleRect": {
+            "label": "Text",
+            "x": 14.033333333333333,
+            "y": 55.01273885350319,
+            "w": 46.86666666666667,
+            "h": 0
+          },
+          "combinedBoundsRect": {
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 20.324840764331213
+          }
+        }
+      },
+      "softPlacementPenalty": 4,
+      "adjustedAggregateScore": 68,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideReason": "not-landscape-display",
+      "wouldWinUnderNearMissOverride": false,
+      "landscapeTextHeightNearMissEligible": false,
+      "landscapeTextHeightNearMissApplied": false,
+      "landscapeTextHeightNearMissReason": "not-landscape-display",
+      "landscapeTextHeightNearMissSafeguardResults": {
+        "featureEnabled": true,
+        "landscapeDisplay": false,
+        "bestRejectedCandidate": false,
+        "blockerFamilyMatch": false,
+        "mildSeverity": false,
+        "positiveAggregateDelta": false,
+        "nonNegativeConfidenceDelta": false,
+        "titleOnlyWouldPass": false,
+        "messageClusterWouldPass": false,
+        "remainingBlockerWouldBecomeMilder": false,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": true,
+        "noHardStructuralInvalidity": true,
+        "noSpacingCollapse": true,
+        "noCriticalOverlap": true,
+        "noRoleLoss": true
+      },
+      "landscapeTextHeightNearMissBlockerFamily": "other",
+      "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+      "finalWinnerChangedByOverride": false
+    },
+    {
+      "candidateId": "guided-regeneration-repair:guided-stronger-split-horizontal-regeneration:{\"title\":{\"x\":14,\"y\":43.3,\"w\":46.9,\"h\":0,\"fontSize\":54,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":58.2,\"w\":46.9,\"h\":0,\"fontSize\":20,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":12,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":79,\"y\":20.4,\"w\":16,\"h\":38.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "strategyLabel": "guided-stronger-split-horizontal-regeneration",
+      "candidateKind": "guided-regeneration-repair",
+      "structuralStatus": "valid",
+      "effectiveScore": 20,
+      "aggregateScore": 72,
+      "aggregateDelta": -3,
+      "accepted": false,
+      "rejectionReasons": [
+        "repeat-suppressed",
+        "aggregate-below-baseline",
+        "no-net-gain"
+      ],
+      "gateOutcomes": {
+        "repeatSuppressed": true,
+        "legacySafetyRejected": false,
+        "hardStructuralInvalidity": false,
+        "rolePlacementOutOfZone": false,
+        "spacingThresholdExceeded": false,
+        "confidenceCollapse": false,
+        "aggregateBelowBaseline": true,
+        "noNetGain": true,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideBlockedReasons": [
+          "not-landscape-display",
+          "dominant-blocker-not-image",
+          "landscape-image-policy-not-applicable",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "critical-issues",
+          "remaining-gate:repeat-suppressed",
+          "remaining-gate:aggregate-below-baseline"
+        ],
+        "nearMissOverrideSafeguardsSatisfied": false,
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissBlockedReasons": [
+          "not-landscape-display",
+          "not-best-rejected-candidate",
+          "blocker-family:other",
+          "placement-severity:moderate",
+          "non-positive-aggregate-delta",
+          "confidence-below-baseline",
+          "title-would-not-pass",
+          "message-cluster-would-not-pass",
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking"
+        ],
+        "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": false,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": false,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": true,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+      },
+      "summaryTags": [],
+      "penaltyTags": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "objective": {
+        "structuralValidity": 100,
+        "perceptualQuality": 70,
+        "commercialStrength": 73,
+        "familyFidelity": 100,
+        "sideEffectCost": 8,
+        "aggregateScore": 72,
+        "weights": {
+          "structuralValidity": 0.34,
+          "perceptualQuality": 0.22,
+          "commercialStrength": 0.14,
+          "familyFidelity": 0.14,
+          "sideEffectCost": 0.16
+        }
+      },
+      "confidence": {
+        "effectiveScore": 20,
+        "disagreement": 8,
+        "needsHumanAttention": true
+      },
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "moderate",
+      "placementDiagnostics": {
+        "role": "text",
+        "violatingRoles": [
+          "text"
+        ],
+        "preferredZoneDistance": 4.94,
+        "allowedZoneDistance": 4.94,
+        "avgAllowedDistance": 4.94,
+        "avgPreferredDistance": 4.94,
+        "clusterIntegrity": 76,
+        "visualHierarchyPreserved": true,
+        "likelyIntentional": false,
+        "badgeSemanticallyActive": false,
+        "badgeVisuallyCritical": false,
+        "badgeAffectsCoreReadingFlow": false,
+        "badgeLikelyOptional": false,
+        "severity": "moderate",
+        "reasons": [
+          "allowed-zone-drift:4.94",
+          "preferred-zone-drift:4.94",
+          "avg-allowed-zone-drift:4.94",
+          "avg-preferred-zone-drift:4.94"
+        ],
+        "perRole": [
+          {
+            "role": "text",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 4.94,
+            "preferredDistance": 4.94,
+            "rect": {
+              "x": 14.033333333333333,
+              "y": 34.68789808917197,
+              "w": 46.86666666666667,
+              "h": 20.324840764331213
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 46.666666666666664,
+                "h": 34.394904458598724
+              },
+              {
+                "x": 7.000000000000001,
+                "y": 19.745222929936308,
+                "w": 41.66666666666667,
+                "h": 28.02547770700637
+              },
+              {
+                "x": 8.666666666666668,
+                "y": 17.8343949044586,
+                "w": 51.66666666666667,
+                "h": 32.802547770700635
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "cta",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "CTA",
+              "x": 5,
+              "y": 71.47770700636943,
+              "w": 12,
+              "h": 5.273885350318472
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 71.01910828025477,
+                "w": 18.666666666666668,
+                "h": 5.7324840764331215
+              },
+              {
+                "x": 75.33333333333333,
+                "y": 71.01910828025477,
+                "w": 15,
+                "h": 5.7324840764331215
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "image",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Image",
+              "x": 79,
+              "y": 20.445859872611464,
+              "w": 16,
+              "h": 38.726114649681534
+            },
+            "allowedZones": [
+              {
+                "x": 59.333333333333336,
+                "y": 14.331210191082802,
+                "w": 34,
+                "h": 50.955414012738856
+              },
+              {
+                "x": 55.00000000000001,
+                "y": 11.464968152866243,
+                "w": 40,
+                "h": 57.324840764331206
+              },
+              {
+                "x": 5,
+                "y": 16.560509554140125,
+                "w": 25,
+                "h": 41.40127388535032
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "logo",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Logo",
+              "x": 6,
+              "y": 7.006369426751593,
+              "w": 7.199999999999999,
+              "h": 3.8
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 82.66666666666667,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "badge",
+            "eligible": false,
+            "eligibilityReason": "missing-rect",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 78,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "price",
+            "eligible": false,
+            "eligibilityReason": "price-not-semantically-present",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 76.66666666666667,
+                "y": 15.286624203821656,
+                "w": 15,
+                "h": 7.961783439490445
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 1,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          }
+        ],
+        "skippedRoles": [
+          {
+            "role": "badge",
+            "reason": "missing-rect"
+          },
+          {
+            "role": "price",
+            "reason": "price-not-semantically-present"
+          }
+        ],
+        "textBoxes": {
+          "titleRect": {
+            "label": "Headline",
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 18.573248407643312
+          },
+          "subtitleRect": {
+            "label": "Text",
+            "x": 14.033333333333333,
+            "y": 55.01273885350319,
+            "w": 46.86666666666667,
+            "h": 0
+          },
+          "combinedBoundsRect": {
+            "x": 14.033333333333333,
+            "y": 34.68789808917197,
+            "w": 46.86666666666667,
+            "h": 20.324840764331213
+          }
+        }
+      },
+      "softPlacementPenalty": 4,
+      "adjustedAggregateScore": 68,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideReason": "not-landscape-display",
+      "wouldWinUnderNearMissOverride": false,
+      "landscapeTextHeightNearMissEligible": false,
+      "landscapeTextHeightNearMissApplied": false,
+      "landscapeTextHeightNearMissReason": "not-landscape-display",
+      "landscapeTextHeightNearMissSafeguardResults": {
+        "featureEnabled": true,
+        "landscapeDisplay": false,
+        "bestRejectedCandidate": false,
+        "blockerFamilyMatch": false,
+        "mildSeverity": false,
+        "positiveAggregateDelta": false,
+        "nonNegativeConfidenceDelta": false,
+        "titleOnlyWouldPass": false,
+        "messageClusterWouldPass": false,
+        "remainingBlockerWouldBecomeMilder": false,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": true,
+        "noHardStructuralInvalidity": true,
+        "noSpacingCollapse": true,
+        "noCriticalOverlap": true,
+        "noRoleLoss": true
+      },
+      "landscapeTextHeightNearMissBlockerFamily": "other",
+      "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+      "finalWinnerChangedByOverride": false
+    },
+    {
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":14,\"y\":34.8,\"w\":51.7,\"h\":0,\"fontSize\":53,\"maxLines\":2,\"charsPerLine\":20},\"subtitle\":{\"x\":14,\"y\":49.9,\"w\":51.7,\"h\":0,\"fontSize\":21,\"opacity\":0},\"cta\":{\"x\":5,\"y\":71.5,\"w\":18,\"h\":5.3},\"badge\":{\"x\":80,\"y\":7,\"w\":0,\"h\":0,\"opacity\":0},\"logo\":{\"x\":6,\"y\":7,\"w\":7.2,\"h\":3.8},\"image\":{\"x\":77.9,\"y\":10.5,\"w\":15.8,\"h\":43.9,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "strategyLabel": "validated-run-autofix",
+      "candidateKind": "validated-run-autofix",
+      "structuralStatus": "valid",
+      "effectiveScore": 26,
+      "aggregateScore": 75,
+      "aggregateDelta": 0,
+      "accepted": false,
+      "rejectionReasons": [
+        "legacy-safety-rejection",
+        "no-net-gain"
+      ],
+      "gateOutcomes": {
+        "repeatSuppressed": false,
+        "legacySafetyRejected": true,
+        "hardStructuralInvalidity": false,
+        "rolePlacementOutOfZone": false,
+        "spacingThresholdExceeded": false,
+        "confidenceCollapse": false,
+        "aggregateBelowBaseline": false,
+        "noNetGain": true,
+        "nearMissOverrideEligible": false,
+        "nearMissOverrideBlockedReasons": [
+          "not-landscape-display",
+          "dominant-blocker-not-image",
+          "landscape-image-policy-not-applicable",
+          "non-positive-aggregate-delta",
+          "critical-issues",
+          "remaining-gate:legacy-safety-rejection"
+        ],
+        "nearMissOverrideSafeguardsSatisfied": false,
+        "wouldWinUnderNearMissOverride": false,
+        "landscapeTextHeightNearMissEligible": false,
+        "landscapeTextHeightNearMissApplied": false,
+        "landscapeTextHeightNearMissBlockedReasons": [
+          "not-landscape-display",
+          "blocker-family:other",
+          "placement-severity:moderate",
+          "non-positive-aggregate-delta",
+          "title-would-not-pass",
+          "message-cluster-would-not-pass",
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking",
+          "legacy-safety-rejection"
+        ],
+        "landscapeTextHeightNearMissSafeguardsSatisfied": false,
+        "landscapeTextHeightNearMissSafeguardResults": {
+          "featureEnabled": true,
+          "landscapeDisplay": false,
+          "bestRejectedCandidate": true,
+          "blockerFamilyMatch": false,
+          "mildSeverity": false,
+          "positiveAggregateDelta": false,
+          "nonNegativeConfidenceDelta": true,
+          "titleOnlyWouldPass": false,
+          "messageClusterWouldPass": false,
+          "remainingBlockerWouldBecomeMilder": false,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
+          "noHardStructuralInvalidity": true,
+          "noSpacingCollapse": true,
+          "noCriticalOverlap": true,
+          "noRoleLoss": true
+        },
+        "wouldWinUnderLandscapeTextHeightNearMissOverride": false
+      },
+      "summaryTags": [],
+      "penaltyTags": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "objective": {
+        "structuralValidity": 100,
+        "perceptualQuality": 72,
+        "commercialStrength": 78,
+        "familyFidelity": 100,
+        "sideEffectCost": 0,
+        "aggregateScore": 75,
+        "weights": {
+          "structuralValidity": 0.34,
+          "perceptualQuality": 0.22,
+          "commercialStrength": 0.14,
+          "familyFidelity": 0.14,
+          "sideEffectCost": 0.16
+        }
+      },
+      "confidence": {
+        "effectiveScore": 26,
+        "disagreement": 8,
+        "needsHumanAttention": true
+      },
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "moderate",
+      "placementDiagnostics": {
+        "role": "text",
+        "violatingRoles": [
+          "text"
+        ],
+        "preferredZoneDistance": 5.37,
+        "allowedZoneDistance": 5.37,
+        "avgAllowedDistance": 5.37,
+        "avgPreferredDistance": 5.37,
+        "clusterIntegrity": 88,
+        "visualHierarchyPreserved": true,
+        "likelyIntentional": false,
+        "badgeSemanticallyActive": false,
+        "badgeVisuallyCritical": false,
+        "badgeAffectsCoreReadingFlow": false,
+        "badgeLikelyOptional": false,
+        "severity": "moderate",
+        "reasons": [
+          "allowed-zone-drift:5.37",
+          "preferred-zone-drift:5.37",
+          "avg-allowed-zone-drift:5.37",
+          "avg-preferred-zone-drift:5.37"
+        ],
+        "perRole": [
+          {
+            "role": "text",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 5.37,
+            "preferredDistance": 5.37,
+            "rect": {
+              "x": 14.033333333333333,
+              "y": 26.36942675159235,
+              "w": 51.66666666666667,
+              "h": 20.140127388535035
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 46.666666666666664,
+                "h": 34.394904458598724
+              },
+              {
+                "x": 7.000000000000001,
+                "y": 19.745222929936308,
+                "w": 41.66666666666667,
+                "h": 28.02547770700637
+              },
+              {
+                "x": 8.666666666666668,
+                "y": 17.8343949044586,
+                "w": 51.66666666666667,
+                "h": 32.802547770700635
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "cta",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "CTA",
+              "x": 5,
+              "y": 71.47770700636943,
+              "w": 18,
+              "h": 5.273885350318472
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 71.01910828025477,
+                "w": 18.666666666666668,
+                "h": 5.7324840764331215
+              },
+              {
+                "x": 75.33333333333333,
+                "y": 71.01910828025477,
+                "w": 15,
+                "h": 5.7324840764331215
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "image",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0.96,
+            "preferredDistance": 0.96,
+            "rect": {
+              "label": "Image",
+              "x": 77.86666666666667,
+              "y": 10.5,
+              "w": 15.771799388159991,
+              "h": 43.89423022079999
+            },
+            "allowedZones": [
+              {
+                "x": 59.333333333333336,
+                "y": 14.331210191082802,
+                "w": 34,
+                "h": 50.955414012738856
+              },
+              {
+                "x": 55.00000000000001,
+                "y": 11.464968152866243,
+                "w": 40,
+                "h": 57.324840764331206
+              },
+              {
+                "x": 5,
+                "y": 16.560509554140125,
+                "w": 25,
+                "h": 41.40127388535032
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 3,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "logo",
+            "eligible": true,
+            "eligibilityReason": null,
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": {
+              "label": "Logo",
+              "x": 6,
+              "y": 7.006369426751593,
+              "w": 7.199999999999999,
+              "h": 3.8
+            },
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 82.66666666666667,
+                "y": 7.006369426751593,
+                "w": 12.333333333333334,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "badge",
+            "eligible": false,
+            "eligibilityReason": "missing-rect",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 5,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              },
+              {
+                "x": 78,
+                "y": 15.286624203821656,
+                "w": 13.666666666666666,
+                "h": 6.369426751592357
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 2,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          },
+          {
+            "role": "price",
+            "eligible": false,
+            "eligibilityReason": "price-not-semantically-present",
+            "allowedDistance": 0,
+            "preferredDistance": 0,
+            "rect": null,
+            "allowedZones": [
+              {
+                "x": 76.66666666666667,
+                "y": 15.286624203821656,
+                "w": 15,
+                "h": 7.961783439490445
+              }
+            ],
+            "preferredZones": [],
+            "allowedZonesCount": 1,
+            "preferredZonesCount": 0,
+            "zonePaddingApplied": 0
+          }
+        ],
+        "skippedRoles": [
+          {
+            "role": "badge",
+            "reason": "missing-rect"
+          },
+          {
+            "role": "price",
+            "reason": "price-not-semantically-present"
+          }
+        ],
+        "textBoxes": {
+          "titleRect": {
+            "label": "Headline",
+            "x": 14.033333333333333,
+            "y": 26.36942675159235,
+            "w": 51.66666666666667,
+            "h": 18.229299363057326
+          },
+          "subtitleRect": {
+            "label": "Text",
+            "x": 14.033333333333333,
+            "y": 46.509554140127385,
+            "w": 51.66666666666667,
+            "h": 0
+          },
+          "combinedBoundsRect": {
+            "x": 14.033333333333333,
+            "y": 26.36942675159235,
+            "w": 51.66666666666667,
+            "h": 20.140127388535035
+          }
+        }
+      },
+      "softPlacementPenalty": 4,
+      "adjustedAggregateScore": 71,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideReason": "not-landscape-display",
+      "wouldWinUnderNearMissOverride": false,
+      "landscapeTextHeightNearMissEligible": false,
+      "landscapeTextHeightNearMissApplied": false,
+      "landscapeTextHeightNearMissReason": "not-landscape-display",
+      "landscapeTextHeightNearMissSafeguardResults": {
+        "featureEnabled": true,
+        "landscapeDisplay": false,
+        "bestRejectedCandidate": true,
+        "blockerFamilyMatch": false,
+        "mildSeverity": false,
+        "positiveAggregateDelta": false,
+        "nonNegativeConfidenceDelta": true,
+        "titleOnlyWouldPass": false,
+        "messageClusterWouldPass": false,
+        "remainingBlockerWouldBecomeMilder": false,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": false,
+        "noHardStructuralInvalidity": true,
+        "noSpacingCollapse": true,
+        "noCriticalOverlap": true,
+        "noRoleLoss": true
+      },
+      "landscapeTextHeightNearMissBlockerFamily": "other",
+      "landscapeTextHeightNearMissBlockerSubtype": "missing-landscape-cluster",
+      "finalWinnerChangedByOverride": false
+    }
+  ]
+}

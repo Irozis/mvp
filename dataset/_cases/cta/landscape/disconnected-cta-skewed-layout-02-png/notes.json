@@ -1,0 +1,19 @@
+{
+  "id": "disconnected-cta-skewed-layout-02-png",
+  "family": "display",
+  "format": "landscape",
+  "source": "legacy-flat-import",
+  "category": "cta",
+  "expectedProblems": [
+    "cta"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "cta",
+    "landscape",
+    "display"
+  ],
+  "comment": "Auto-generated from cta/landscape/disconnected_cta_skewed_layout_02.png.png"
+}

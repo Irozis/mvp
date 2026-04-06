@@ -1,0 +1,122 @@
+[
+  {
+    "caseId": "geometric-modern-layout-01-png",
+    "category": "structure",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/structure/square/geometric-modern-layout-01-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "hero-product-red-tag-urgency-02-png",
+    "category": "hero",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-red-tag-urgency-02-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-red-tag-urgency-02-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-red-tag-urgency-02-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-red-tag-urgency-02-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "hero-product-soft-shapes-01-png",
+    "category": "hero",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-soft-shapes-01-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-soft-shapes-01-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-soft-shapes-01-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/hero-product-soft-shapes-01-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "inefficient-layout-banner-04-png",
+    "category": "spacing",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-banner-04-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "inefficient-layout-blue-grid-01-png",
+    "category": "spacing",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-blue-grid-01-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "inefficient-layout-card-variations-02-png",
+    "category": "spacing",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-card-variations-02-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "inefficient-layout-circle-focus-03-png",
+    "category": "spacing",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/spacing/square/inefficient-layout-circle-focus-03-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "minimal-product-display-glass-01-png",
+    "category": "hero",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/minimal-product-display-glass-01-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/minimal-product-display-glass-01-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/minimal-product-display-glass-01-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/minimal-product-display-glass-01-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "sq-balance-empty-hero-png",
+    "category": "hero",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/sq-balance-empty-hero-png/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/sq-balance-empty-hero-png/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/sq-balance-empty-hero-png/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/hero/square/sq-balance-empty-hero-png/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  },
+  {
+    "caseId": "sq-balance-empty-right-minimal",
+    "category": "balance",
+    "format": "square",
+    "family": "display",
+    "inputPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/input.png",
+    "reportPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/report.json",
+    "telemetryPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/telemetry.json",
+    "calibrationPath": "C:/Users/Fedelesh_dm/mvp/dataset/_cases/balance/square/sq-balance-empty-right-minimal/calibration.json",
+    "reviewPriority": "urgent-review",
+    "whyReview": "Execution failed during calibration batch run"
+  }
+]

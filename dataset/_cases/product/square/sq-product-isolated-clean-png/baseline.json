@@ -1,0 +1,172 @@
+{
+  "scene": {
+    "background": [
+      "#24150f",
+      "#5b2414",
+      "#f97316"
+    ],
+    "accent": "#ff6b2c",
+    "chip": "Campaign",
+    "title": {
+      "x": 12,
+      "y": 29.73333333333333,
+      "w": 40,
+      "fontSize": 58,
+      "charsPerLine": 21,
+      "maxLines": 2,
+      "weight": 800,
+      "fill": "#f8fafc",
+      "text": "Adaptive creative systems for every placement"
+    },
+    "subtitle": {
+      "x": 12,
+      "y": 37.733333333333334,
+      "w": 40,
+      "fontSize": 19,
+      "charsPerLine": 34,
+      "maxLines": 1,
+      "weight": 420,
+      "fill": "#dcd3d2",
+      "opacity": 0,
+      "text": "",
+      "h": 0,
+      "normalizedTextLength": 0
+    },
+    "cta": {
+      "x": 12,
+      "y": 66,
+      "w": 18,
+      "h": 4.6000000000000005,
+      "fontSize": 18,
+      "bg": "#ff6b2c",
+      "fill": "#f8fafc",
+      "text": "Learn more",
+      "rx": 18
+    },
+    "badge": {
+      "x": 80,
+      "y": 6,
+      "w": 0,
+      "h": 0,
+      "fontSize": 20,
+      "bg": "#3e312c",
+      "bgOpacity": 0,
+      "fill": "#f8fafc",
+      "text": ""
+    },
+    "logo": {
+      "x": 8,
+      "y": 6.9,
+      "w": 6,
+      "h": 3,
+      "bg": "#1f1615",
+      "bgOpacity": 0.12,
+      "fill": "#f8fafc"
+    },
+    "image": {
+      "x": 64,
+      "y": 10,
+      "w": 30,
+      "h": 30,
+      "rx": 28,
+      "fit": "xMidYMid slice"
+    }
+  },
+  "structuralStatus": "valid",
+  "score": 52,
+  "verdict": "Weak",
+  "issueCodes": [
+    "violates-image-footprint-rule",
+    "violates-allowed-zone",
+    "insufficient-breathing-room",
+    "violates-inner-spacing"
+  ],
+  "structuralFindings": [],
+  "visual": {
+    "overallScore": 56,
+    "band": "weak",
+    "breakdown": {
+      "focusHierarchy": 64,
+      "compositionBalance": 51,
+      "textImageHarmony": 55,
+      "ctaQuality": 32,
+      "negativeSpaceQuality": 77,
+      "coherence": 56
+    },
+    "warnings": [
+      "Composition lacks counterweight.",
+      "Image presence is too weak to support the message.",
+      "CTA looks detached from the message.",
+      "Canvas underused without compositional payoff."
+    ],
+    "strengths": [
+      "Image carries a clear primary focal role.",
+      "Negative space feels intentional rather than abandoned."
+    ],
+    "debug": {
+      "imageAnalysisPresent": false,
+      "focusDominant": "image",
+      "visualBalance": 51,
+      "compositionBalanceDebug": {
+        "visualCenterX": 59.9,
+        "visualCenterY": 30.5,
+        "verticalStack": false,
+        "usefulAsymmetry": false,
+        "compactMarketplaceStack": false,
+        "centerOffset": 21.9,
+        "balanceAnchorBonus": 0,
+        "dominantQuadrantShare": 0.61
+      },
+      "clusterHarmony": 55,
+      "ctaSupport": 32,
+      "emptySpaceIntentionality": 77,
+      "structuralPenalty": 0
+    }
+  },
+  "perceptual": null,
+  "metrics": {
+    "readability": 100,
+    "contrast": 86,
+    "textHierarchy": 100,
+    "visualBalance": 14,
+    "spacingQuality": 82,
+    "ctaProminence": 100,
+    "logoPlacement": 100,
+    "imageTextHarmony": 100,
+    "negativeSpaceBalance": 100,
+    "clusterCohesion": 76,
+    "ratioSuitability": 88,
+    "overlayHeaviness": 100,
+    "textRhythm": 100,
+    "lineBreakQuality": 100,
+    "scaleToCanvas": 100
+  },
+  "confidence": {
+    "deterministicScore": 52,
+    "aiReviewScore": 44,
+    "disagreement": 8,
+    "effectiveScore": 37,
+    "needsHumanAttention": true
+  },
+  "objective": {
+    "structuralValidity": 100,
+    "perceptualQuality": 70,
+    "commercialStrength": 82,
+    "familyFidelity": 88,
+    "sideEffectCost": 0,
+    "aggregateScore": 78,
+    "weights": {
+      "structuralValidity": 0.36,
+      "perceptualQuality": 0.24,
+      "commercialStrength": 0.14,
+      "familyFidelity": 0.16,
+      "sideEffectCost": 0.1
+    }
+  },
+  "summaryTags": [],
+  "penaltyTags": [
+    "weak-balance",
+    "insufficient-net-gain"
+  ],
+  "aggregateScore": 78
+}

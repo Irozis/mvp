@@ -1,0 +1,19 @@
+{
+  "id": "geometric-modern-layout-01-png",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "structure",
+  "expectedProblems": [
+    "structure"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "structure",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from structure/square/geometric_modern_layout_01.png.png"
+}

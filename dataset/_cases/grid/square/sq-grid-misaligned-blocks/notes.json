@@ -1,0 +1,19 @@
+{
+  "id": "sq-grid-misaligned-blocks",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "grid",
+  "expectedProblems": [
+    "grid"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "grid",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from grid/square/sq-grid-misaligned-blocks.png"
+}

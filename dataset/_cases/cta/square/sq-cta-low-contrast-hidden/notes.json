@@ -1,0 +1,19 @@
+{
+  "id": "sq-cta-low-contrast-hidden",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "cta",
+  "expectedProblems": [
+    "cta"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "cta",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from cta/square/sq-cta-low-contrast-hidden.png"
+}

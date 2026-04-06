@@ -1,0 +1,1106 @@
+[
+  {
+    "id": "Group 1",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 1.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 83,
+      "y": 42,
+      "w": 168,
+      "h": 239
+    },
+    "headlineRects": [
+      {
+        "x": 32,
+        "y": 42,
+        "w": 168,
+        "h": 60
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 227,
+        "y": 285,
+        "w": 93,
+        "h": 19
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": {
+      "x": 206,
+      "y": 42,
+      "w": 60,
+      "h": 60
+    },
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 4",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 4.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 9,
+      "y": 110,
+      "w": 308,
+      "h": 211
+    },
+    "headlineRects": [
+      {
+        "x": 101,
+        "y": 45,
+        "w": 120,
+        "h": 27
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 131,
+        "y": 88,
+        "w": 61,
+        "h": 22
+      }
+    ],
+    "logoRect": {
+      "x": 163,
+      "y": 135,
+      "w": 8,
+      "h": 9
+    },
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 7",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 7.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 110,
+      "y": 44,
+      "w": 161,
+      "h": 233
+    },
+    "headlineRects": [
+      {
+        "x": 14,
+        "y": 111,
+        "w": 71,
+        "h": 173
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 282,
+        "y": 38,
+        "w": 23,
+        "h": 246
+      }
+    ],
+    "logoRect": {
+      "x": 196,
+      "y": 101,
+      "w": 27,
+      "h": 70
+    },
+    "badgeRect": {
+      "x": 23,
+      "y": 28,
+      "w": 48,
+      "h": 46
+    },
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 8",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 8.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 84,
+      "y": 81,
+      "w": 183,
+      "h": 182
+    },
+    "headlineRects": [
+      {
+        "x": 56,
+        "y": 38,
+        "w": 232,
+        "h": 36
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 132,
+        "y": 293,
+        "w": 78,
+        "h": 24
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": {
+      "x": 124,
+      "y": 270,
+      "w": 92,
+      "h": 23
+    },
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 9",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 9.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 27,
+      "y": 139,
+      "w": 261,
+      "h": 123
+    },
+    "headlineRects": [
+      {
+        "x": 28,
+        "y": 49,
+        "w": 260,
+        "h": 73
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 27,
+        "y": 273,
+        "w": 65,
+        "h": 25
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 10",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 10.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 165,
+      "y": 0,
+      "w": 146,
+      "h": 311
+    },
+    "headlineRects": [
+      {
+        "x": 0,
+        "y": 49,
+        "w": 193,
+        "h": 73
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 9,
+        "y": 139,
+        "w": 146,
+        "h": 69
+      },
+      {
+        "x": 50,
+        "y": 257,
+        "w": 63,
+        "h": 25
+      }
+    ],
+    "logoRect": {
+      "x": 286,
+      "y": 111,
+      "w": 14,
+      "h": 6
+    },
+    "badgeRect": {
+      "x": 19,
+      "y": 223,
+      "w": 128,
+      "h": 21
+    },
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 23",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 23.png",
+    "imageSize": {
+      "w": 272,
+      "h": 272
+    },
+    "heroSubjectRect": {
+      "x": 136,
+      "y": 0,
+      "w": 136,
+      "h": 272
+    },
+    "headlineRects": [
+      {
+        "x": 0,
+        "y": 61,
+        "w": 136,
+        "h": 161
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 63,
+        "y": 17,
+        "w": 73,
+        "h": 21
+      },
+      {
+        "x": 163,
+        "y": 151,
+        "w": 10,
+        "h": 16
+      }
+    ],
+    "logoRect": {
+      "x": 0,
+      "y": 13,
+      "w": 53,
+      "h": 28
+    },
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 25",
+    "bucket": "core",
+    "sourceBucket": "core",
+    "filename": "Group 25.png",
+    "imageSize": {
+      "w": 272,
+      "h": 272
+    },
+    "heroSubjectRect": {
+      "x": 84,
+      "y": 0,
+      "w": 104,
+      "h": 272
+    },
+    "headlineRects": [],
+    "subtitleRects": [],
+    "logoRect": {
+      "x": 214,
+      "y": 5,
+      "w": 48,
+      "h": 27
+    },
+    "badgeRect": {
+      "x": 227,
+      "y": 22,
+      "w": 29,
+      "h": 5
+    },
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 2",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 2.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 12,
+      "y": 55,
+      "w": 247,
+      "h": 239
+    },
+    "headlineRects": [
+      {
+        "x": 237,
+        "y": 42,
+        "w": 73,
+        "h": 252
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 12,
+        "y": 299,
+        "w": 140,
+        "h": 19
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": {
+      "x": 12,
+      "y": 25,
+      "w": 109,
+      "h": 30
+    },
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 3",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 3.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 29,
+      "y": 110,
+      "w": 230,
+      "h": 184
+    },
+    "headlineRects": [
+      {
+        "x": 55,
+        "y": 48,
+        "w": 220,
+        "h": 48
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 259,
+        "y": 110,
+        "w": 25,
+        "h": 184
+      },
+      {
+        "x": 141,
+        "y": 190,
+        "w": 17,
+        "h": 46
+      },
+      {
+        "x": 121,
+        "y": 224,
+        "w": 3,
+        "h": 8
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 5",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 5.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 35,
+      "y": 0,
+      "w": 127,
+      "h": 324
+    },
+    "headlineRects": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 35,
+        "h": 324
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": {
+      "x": 246,
+      "y": 203,
+      "w": 7,
+      "h": 7
+    },
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "ambiguous",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 6",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 6.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 27,
+      "y": 10,
+      "w": 14,
+      "h": 4
+    },
+    "headlineRects": [
+      {
+        "x": 50,
+        "y": 28,
+        "w": 228,
+        "h": 111
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 103,
+        "y": 217,
+        "w": 117,
+        "h": 29
+      },
+      {
+        "x": 104,
+        "y": 255,
+        "w": 117,
+        "h": 58
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 11",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 11.png",
+    "imageSize": {
+      "w": 203,
+      "h": 203
+    },
+    "heroSubjectRect": {
+      "x": 31,
+      "y": 33,
+      "w": 73,
+      "h": 122
+    },
+    "headlineRects": [
+      {
+        "x": 20,
+        "y": 173,
+        "w": 168,
+        "h": 26
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 110,
+        "y": 94,
+        "w": 78,
+        "h": 46
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 12",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 12.png",
+    "imageSize": {
+      "w": 203,
+      "h": 203
+    },
+    "heroSubjectRect": {
+      "x": 0,
+      "y": 50,
+      "w": 191,
+      "h": 103
+    },
+    "headlineRects": [
+      {
+        "x": 91,
+        "y": 153,
+        "w": 91,
+        "h": 15
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 13",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 13.png",
+    "imageSize": {
+      "w": 203,
+      "h": 203
+    },
+    "heroSubjectRect": {
+      "x": 0,
+      "y": 50,
+      "w": 203,
+      "h": 103
+    },
+    "headlineRects": [
+      {
+        "x": 56,
+        "y": 24,
+        "w": 91,
+        "h": 15
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 47,
+        "y": 164,
+        "w": 108,
+        "h": 19
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 14",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 14.png",
+    "imageSize": {
+      "w": 203,
+      "h": 203
+    },
+    "heroSubjectRect": {
+      "x": 0,
+      "y": 0,
+      "w": 203,
+      "h": 178
+    },
+    "headlineRects": [
+      {
+        "x": 108,
+        "y": 178,
+        "w": 88,
+        "h": 15
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 15",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 15.png",
+    "imageSize": {
+      "w": 203,
+      "h": 203
+    },
+    "heroSubjectRect": {
+      "x": 54,
+      "y": 39,
+      "w": 95,
+      "h": 146
+    },
+    "headlineRects": [
+      {
+        "x": 25,
+        "y": 13,
+        "w": 152,
+        "h": 15
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": null,
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 16",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 16.png",
+    "imageSize": {
+      "w": 320,
+      "h": 324
+    },
+    "heroSubjectRect": {
+      "x": 83,
+      "y": 42,
+      "w": 168,
+      "h": 239
+    },
+    "headlineRects": [
+      {
+        "x": 32,
+        "y": 42,
+        "w": 168,
+        "h": 60
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 227,
+        "y": 285,
+        "w": 93,
+        "h": 19
+      }
+    ],
+    "logoRect": null,
+    "badgeRect": {
+      "x": 206,
+      "y": 42,
+      "w": 60,
+      "h": 60
+    },
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 17",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 17.png",
+    "imageSize": {
+      "w": 273,
+      "h": 273
+    },
+    "heroSubjectRect": {
+      "x": 0,
+      "y": 28,
+      "w": 152,
+      "h": 224
+    },
+    "headlineRects": [
+      {
+        "x": 152,
+        "y": 155,
+        "w": 75,
+        "h": 60
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 152,
+        "y": 60,
+        "w": 104,
+        "h": 25
+      }
+    ],
+    "logoRect": {
+      "x": 0,
+      "y": 0,
+      "w": 53,
+      "h": 28
+    },
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 18",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 18.png",
+    "imageSize": {
+      "w": 273,
+      "h": 275
+    },
+    "heroSubjectRect": {
+      "x": 0,
+      "y": 0,
+      "w": 273,
+      "h": 275
+    },
+    "headlineRects": [
+      {
+        "x": 7,
+        "y": 10,
+        "w": 95,
+        "h": 41
+      },
+      {
+        "x": 49,
+        "y": 114,
+        "w": 43,
+        "h": 41
+      },
+      {
+        "x": 165,
+        "y": 229,
+        "w": 103,
+        "h": 41
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": {
+      "x": 144,
+      "y": 5,
+      "w": 43,
+      "h": 46
+    },
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "ambiguous",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 19",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 19.png",
+    "imageSize": {
+      "w": 273,
+      "h": 273
+    },
+    "heroSubjectRect": {
+      "x": 7,
+      "y": 8,
+      "w": 130,
+      "h": 247
+    },
+    "headlineRects": [
+      {
+        "x": 141,
+        "y": 144,
+        "w": 86,
+        "h": 60
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 144,
+        "y": 43,
+        "w": 116,
+        "h": 34
+      }
+    ],
+    "logoRect": {
+      "x": 41,
+      "y": 88,
+      "w": 14,
+      "h": 47
+    },
+    "badgeRect": null,
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 20",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 20.png",
+    "imageSize": {
+      "w": 442,
+      "h": 442
+    },
+    "heroSubjectRect": {
+      "x": 39,
+      "y": 128,
+      "w": 219,
+      "h": 264
+    },
+    "headlineRects": [
+      {
+        "x": 106,
+        "y": 24,
+        "w": 232,
+        "h": 83
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 42,
+        "y": 135,
+        "w": 118,
+        "h": 58
+      },
+      {
+        "x": 177,
+        "y": 135,
+        "w": 76,
+        "h": 163
+      },
+      {
+        "x": 280,
+        "y": 260,
+        "w": 141,
+        "h": 89
+      },
+      {
+        "x": 0,
+        "y": 344,
+        "w": 442,
+        "h": 80
+      }
+    ],
+    "logoRect": {
+      "x": 23,
+      "y": 24,
+      "w": 72,
+      "h": 83
+    },
+    "badgeRect": {
+      "x": 280,
+      "y": 162,
+      "w": 141,
+      "h": 89
+    },
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 21",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 21.png",
+    "imageSize": {
+      "w": 442,
+      "h": 442
+    },
+    "heroSubjectRect": {
+      "x": 33,
+      "y": 52,
+      "w": 376,
+      "h": 327
+    },
+    "headlineRects": [
+      {
+        "x": 33,
+        "y": 73,
+        "w": 197,
+        "h": 107
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 184,
+        "y": 55,
+        "w": 222,
+        "h": 109
+      },
+      {
+        "x": 368,
+        "y": 175,
+        "w": 6,
+        "h": 10
+      }
+    ],
+    "logoRect": {
+      "x": 381,
+      "y": 87,
+      "w": 51,
+      "h": 115
+    },
+    "badgeRect": {
+      "x": 0,
+      "y": 11,
+      "w": 442,
+      "h": 26
+    },
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 22",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 22.png",
+    "imageSize": {
+      "w": 272,
+      "h": 272
+    },
+    "heroSubjectRect": {
+      "x": 1,
+      "y": 1,
+      "w": 269,
+      "h": 269
+    },
+    "headlineRects": [
+      {
+        "x": 0,
+        "y": 102,
+        "w": 272,
+        "h": 170
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": {
+      "x": 0,
+      "y": 0,
+      "w": 182,
+      "h": 53
+    },
+    "badgeRect": null,
+    "flags": [],
+    "classification": "clean",
+    "classificationSource": "extracted"
+  },
+  {
+    "id": "Group 24",
+    "bucket": "stress",
+    "sourceBucket": "stress",
+    "filename": "Group 24.png",
+    "imageSize": {
+      "w": 274,
+      "h": 272
+    },
+    "heroSubjectRect": {
+      "x": 206,
+      "y": 0,
+      "w": 68,
+      "h": 272
+    },
+    "headlineRects": [
+      {
+        "x": 0,
+        "y": 81,
+        "w": 206,
+        "h": 141
+      }
+    ],
+    "subtitleRects": [],
+    "logoRect": {
+      "x": 0,
+      "y": 24,
+      "w": 148,
+      "h": 37
+    },
+    "badgeRect": {
+      "x": 122,
+      "y": 87,
+      "w": 78,
+      "h": 35
+    },
+    "flags": [
+      "ambiguous"
+    ],
+    "classification": "clean",
+    "classificationSource": "manual-triage"
+  },
+  {
+    "id": "Group 26",
+    "bucket": "reject",
+    "sourceBucket": "reject",
+    "filename": "Group 26.png",
+    "imageSize": {
+      "w": 272,
+      "h": 275
+    },
+    "heroSubjectRect": null,
+    "headlineRects": [
+      {
+        "x": 55,
+        "y": 69,
+        "w": 141,
+        "h": 76
+      }
+    ],
+    "subtitleRects": [
+      {
+        "x": 55,
+        "y": 154,
+        "w": 142,
+        "h": 77
+      }
+    ],
+    "logoRect": {
+      "x": 0,
+      "y": 0,
+      "w": 55,
+      "h": 27
+    },
+    "badgeRect": null,
+    "flags": [
+      "incomplete"
+    ],
+    "classification": "incomplete",
+    "classificationSource": "extracted"
+  }
+]

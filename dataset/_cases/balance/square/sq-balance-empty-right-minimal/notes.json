@@ -1,0 +1,19 @@
+{
+  "id": "sq-balance-empty-right-minimal",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "balance",
+  "expectedProblems": [
+    "balance"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "balance",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from balance/square/sq-balance-empty-right-minimal.png"
+}

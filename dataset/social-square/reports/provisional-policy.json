@@ -1,0 +1,51 @@
+{
+  "source": {
+    "thresholdFitting": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\threshold-fitting.json",
+    "selectedSet": "lenient",
+    "recommendationReason": "no set fully preserves core-clean, so the recommendation falls back to the fewest core-clean rejects"
+  },
+  "gating": {
+    "headline": {
+      "maxOverlapRatio": 0.0125,
+      "basis": "p95",
+      "basisValue": 0.0104
+    },
+    "subtitle": {
+      "maxOverlapRatio": 0.015,
+      "basis": "p95",
+      "basisValue": 0.015
+    },
+    "badge": {
+      "maxOverlapRatio": 0.005,
+      "basis": "p95",
+      "basisValue": 0.0028
+    },
+    "safeTextScoreMin": {
+      "value": 0.87,
+      "basis": "min (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+      "basisValue": 0.8798
+    },
+    "safeAreaCoverageMin": {
+      "value": 0.22,
+      "basis": "min (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+      "basisValue": 0.2254
+    }
+  },
+  "safeCoverageMinDiagnostic": {
+    "value": 1,
+    "basis": "min (min=1, p10=1, p15=1, robust=1)",
+    "basisValue": 1,
+    "gating": false,
+    "reason": [
+      "saturated at 1",
+      "low discriminative power",
+      "little contribution to ranking/pass-fail separation"
+    ]
+  },
+  "logo": "insufficient_data",
+  "suggestedPatchSnippet": "// Suggested manual patch for src/lib/overlayPolicies.ts\n'social-square': {\n  'square-hero-overlay': {\n    safeTextScoreMin: 0.87,\n    // safeCoverageMin intentionally stays out of gating; keep as diagnostic only\n    safeAreaCoverageMin: 0.22,\n    maxOverlapByKind: {\n      headline: 0.0125,\n      subtitle: 0.015,\n      logo: 0.06, // insufficient_data in current fitting pass\n      badge: 0.005,\n    },\n  },\n},",
+  "warnings": [
+    "safeCoverageMin: core-clean signal is saturated at 1, so this metric has low discriminative power for fitting",
+    "logo remains insufficient and is intentionally excluded from fitting"
+  ]
+}

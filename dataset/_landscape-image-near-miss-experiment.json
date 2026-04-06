@@ -1,0 +1,483 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.309Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "comparison": {
+    "baselineWinCountCurrent": 38,
+    "candidateWinCountCurrent": 4,
+    "candidateWinCountSimulated": 4,
+    "changedCasesCount": 0
+  },
+  "totals": {
+    "eligibleCandidates": 0,
+    "eligibleCases": 0,
+    "flippedCases": 0
+  },
+  "byCategory": [
+    {
+      "key": "balance",
+      "eligibleCandidates": 0,
+      "flippedCases": 0
+    },
+    {
+      "key": "cta",
+      "eligibleCandidates": 0,
+      "flippedCases": 0
+    }
+  ],
+  "byCandidateKind": [],
+  "topCaseIds": [],
+  "flippedCases": [],
+  "safeguardBlockedCandidates": [
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "aggregateDelta": 1,
+      "baselineConfidence": 6,
+      "candidateConfidence": 9,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-vertical-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":26},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":32.6,\"w\":51,\"h\":31.2,\"fontSize\":18,\"maxLines\":4,\"charsPerLine\":30},\"subtitle\":{\"x\":8,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":66.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":71,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 4,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "confidence-below-baseline",
+        "spacing-collapse",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection",
+        "remaining-gate:spacing-threshold-exceeded"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":8,\"y\":55.6,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":68,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":43,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":68,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 10,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":28},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-split-vertical-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":27},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-compact-minimal-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "guided-regeneration-repair:guided-stronger-dense-information-regeneration:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":26},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "guided-regeneration-repair",
+      "strategyLabel": "guided-stronger-dense-information-regeneration",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":7,\"y\":32.6,\"w\":46,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":41.9,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":63.6,\"y\":12,\"w\":30.4,\"h\":59.2,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "current",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 6,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "critical-issues"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":32.6,\"w\":51,\"h\":31.2,\"fontSize\":18,\"maxLines\":4,\"charsPerLine\":30},\"subtitle\":{\"x\":8,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":66.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":71,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "aggregateDelta": 0,
+      "baselineConfidence": 6,
+      "candidateConfidence": 4,
+      "nearMissOverrideEligible": false,
+      "nearMissOverrideBlockedReasons": [
+        "dominant-blocker-not-image",
+        "placement-not-moderate",
+        "landscape-image-policy-not-applicable",
+        "non-positive-aggregate-delta",
+        "confidence-below-baseline",
+        "spacing-collapse",
+        "critical-issues",
+        "remaining-gate:legacy-safety-rejection",
+        "remaining-gate:spacing-threshold-exceeded"
+      ],
+      "nearMissOverrideSafeguardsSatisfied": false,
+      "wouldWinUnderNearMissOverride": false
+    }
+  ]
+}

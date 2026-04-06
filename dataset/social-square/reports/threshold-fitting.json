@@ -1,0 +1,831 @@
+{
+  "source": {
+    "summary": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\summary.json",
+    "metrics": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\metrics.csv",
+    "reportMetrics": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\social-square\\reports\\report-metrics.md",
+    "fittingGroup": "core-clean"
+  },
+  "candidateSets": [
+    {
+      "name": "strict",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.01,
+          "basis": "p85",
+          "basisValue": 0.0084,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.0125,
+          "basis": "p85",
+          "basisValue": 0.0109,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p85",
+          "basisValue": 0.0025,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.92,
+          "basis": "max(p15, robustLowerBound) (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.929,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "max(p15, robustLowerBound) (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.28,
+          "basis": "max(p15, robustLowerBound) (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2861,
+          "sufficient": true
+        }
+      ]
+    },
+    {
+      "name": "balanced",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.01,
+          "basis": "p90",
+          "basisValue": 0.0094,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.015,
+          "basis": "p90",
+          "basisValue": 0.0129,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p90",
+          "basisValue": 0.0027,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.91,
+          "basis": "max(p10, robustLowerBound) (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.9126,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "max(p10, robustLowerBound) (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.26,
+          "basis": "max(p10, robustLowerBound) (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2659,
+          "sufficient": true
+        }
+      ]
+    },
+    {
+      "name": "lenient",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.0125,
+          "basis": "p95",
+          "basisValue": 0.0104,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.015,
+          "basis": "p95",
+          "basisValue": 0.015,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p95",
+          "basisValue": 0.0028,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.87,
+          "basis": "min (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.8798,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "min (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.22,
+          "basis": "min (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2254,
+          "sufficient": true
+        }
+      ]
+    }
+  ],
+  "evaluations": [
+    {
+      "name": "strict",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.01,
+          "basis": "p85",
+          "basisValue": 0.0084,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.0125,
+          "basis": "p85",
+          "basisValue": 0.0109,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p85",
+          "basisValue": 0.0025,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.92,
+          "basis": "max(p15, robustLowerBound) (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.929,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "max(p15, robustLowerBound) (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.28,
+          "basis": "max(p15, robustLowerBound) (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2861,
+          "sufficient": true
+        }
+      ],
+      "groups": {
+        "core-clean": {
+          "count": 8,
+          "passCount": 5,
+          "passRate": 0.625,
+          "rejectCount": 3,
+          "rejectedIds": [
+            "Group 8",
+            "Group 10",
+            "Group 23"
+          ],
+          "boundaryIds": [
+            "Group 1",
+            "Group 4",
+            "Group 8",
+            "Group 9",
+            "Group 23"
+          ]
+        },
+        "core-ambiguous": {
+          "count": 0,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 0,
+          "rejectedIds": [],
+          "boundaryIds": []
+        },
+        "stress-clean": {
+          "count": 15,
+          "passCount": 5,
+          "passRate": 0.3333,
+          "rejectCount": 10,
+          "rejectedIds": [
+            "Group 2",
+            "Group 3",
+            "Group 6",
+            "Group 12",
+            "Group 15",
+            "Group 19",
+            "Group 20",
+            "Group 21",
+            "Group 22",
+            "Group 24"
+          ],
+          "boundaryIds": [
+            "Group 6",
+            "Group 15",
+            "Group 16",
+            "Group 20",
+            "Group 24"
+          ]
+        },
+        "stress-ambiguous": {
+          "count": 2,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 2,
+          "rejectedIds": [
+            "Group 5",
+            "Group 18"
+          ],
+          "boundaryIds": []
+        }
+      },
+      "falseRejects": {
+        "coreClean": [
+          "Group 8",
+          "Group 10",
+          "Group 23"
+        ],
+        "coreAmbiguous": []
+      },
+      "stressRejectedCount": 12,
+      "boundaryCases": [
+        {
+          "id": "Group 1",
+          "group": "core-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9345 vs 0.92)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 4",
+          "group": "core-clean",
+          "metrics": [
+            "safeAreaCoverageMin (0.2929 vs 0.28)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 8",
+          "group": "core-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.003 vs 0.005)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 9",
+          "group": "core-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.008 vs 0.01)",
+            "safeTextScoreMin (0.9428 vs 0.92)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 23",
+          "group": "core-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.0115 vs 0.01)",
+            "subtitle maxOverlapRatio (0.0102 vs 0.0125)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 6",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.8934 vs 0.92)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 15",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9324 vs 0.92)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 16",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9345 vs 0.92)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 20",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9225 vs 0.92)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 24",
+          "group": "stress-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.0029 vs 0.005)"
+          ],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "name": "balanced",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.01,
+          "basis": "p90",
+          "basisValue": 0.0094,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.015,
+          "basis": "p90",
+          "basisValue": 0.0129,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p90",
+          "basisValue": 0.0027,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.91,
+          "basis": "max(p10, robustLowerBound) (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.9126,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "max(p10, robustLowerBound) (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.26,
+          "basis": "max(p10, robustLowerBound) (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2659,
+          "sufficient": true
+        }
+      ],
+      "groups": {
+        "core-clean": {
+          "count": 8,
+          "passCount": 5,
+          "passRate": 0.625,
+          "rejectCount": 3,
+          "rejectedIds": [
+            "Group 8",
+            "Group 10",
+            "Group 23"
+          ],
+          "boundaryIds": [
+            "Group 1",
+            "Group 8",
+            "Group 9",
+            "Group 10",
+            "Group 23"
+          ]
+        },
+        "core-ambiguous": {
+          "count": 0,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 0,
+          "rejectedIds": [],
+          "boundaryIds": []
+        },
+        "stress-clean": {
+          "count": 15,
+          "passCount": 5,
+          "passRate": 0.3333,
+          "rejectCount": 10,
+          "rejectedIds": [
+            "Group 2",
+            "Group 3",
+            "Group 6",
+            "Group 12",
+            "Group 15",
+            "Group 19",
+            "Group 20",
+            "Group 21",
+            "Group 22",
+            "Group 24"
+          ],
+          "boundaryIds": [
+            "Group 6",
+            "Group 15",
+            "Group 16",
+            "Group 20",
+            "Group 24"
+          ]
+        },
+        "stress-ambiguous": {
+          "count": 2,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 2,
+          "rejectedIds": [
+            "Group 5",
+            "Group 18"
+          ],
+          "boundaryIds": []
+        }
+      },
+      "falseRejects": {
+        "coreClean": [
+          "Group 8",
+          "Group 10",
+          "Group 23"
+        ],
+        "coreAmbiguous": []
+      },
+      "stressRejectedCount": 12,
+      "boundaryCases": [
+        {
+          "id": "Group 1",
+          "group": "core-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9345 vs 0.91)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 8",
+          "group": "core-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.003 vs 0.005)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 9",
+          "group": "core-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.008 vs 0.01)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 10",
+          "group": "core-clean",
+          "metrics": [
+            "subtitle maxOverlapRatio (0.017 vs 0.015)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 23",
+          "group": "core-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.0115 vs 0.01)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 6",
+          "group": "stress-clean",
+          "metrics": [
+            "subtitle maxOverlapRatio (0.0162 vs 0.015)",
+            "safeTextScoreMin (0.8934 vs 0.91)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 15",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9324 vs 0.91)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 16",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9345 vs 0.91)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 20",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.9225 vs 0.91)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 24",
+          "group": "stress-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.0029 vs 0.005)"
+          ],
+          "pass": false
+        }
+      ]
+    },
+    {
+      "name": "lenient",
+      "metrics": [
+        {
+          "metric": "headlineOverlapRatio",
+          "label": "headline maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.0125,
+          "basis": "p95",
+          "basisValue": 0.0104,
+          "sufficient": true
+        },
+        {
+          "metric": "subtitleOverlapRatio",
+          "label": "subtitle maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.015,
+          "basis": "p95",
+          "basisValue": 0.015,
+          "sufficient": true
+        },
+        {
+          "metric": "badgeOverlapRatio",
+          "label": "badge maxOverlapRatio",
+          "direction": "max",
+          "threshold": 0.005,
+          "basis": "p95",
+          "basisValue": 0.0028,
+          "sufficient": true
+        },
+        {
+          "metric": "safeTextScore",
+          "label": "safeTextScoreMin",
+          "direction": "min",
+          "threshold": 0.87,
+          "basis": "min (min=0.8798, p10=0.9126, p15=0.929, robust=0.9088)",
+          "basisValue": 0.8798,
+          "sufficient": true
+        },
+        {
+          "metric": "safeCoverage",
+          "label": "safeCoverageMin",
+          "direction": "min",
+          "threshold": 1,
+          "basis": "min (min=1, p10=1, p15=1, robust=1)",
+          "basisValue": 1,
+          "sufficient": true
+        },
+        {
+          "metric": "safeAreaCoverage",
+          "label": "safeAreaCoverageMin",
+          "direction": "min",
+          "threshold": 0.22,
+          "basis": "min (min=0.2254, p10=0.2659, p15=0.2861, robust=0.2466)",
+          "basisValue": 0.2254,
+          "sufficient": true
+        }
+      ],
+      "groups": {
+        "core-clean": {
+          "count": 8,
+          "passCount": 7,
+          "passRate": 0.875,
+          "rejectCount": 1,
+          "rejectedIds": [
+            "Group 10"
+          ],
+          "boundaryIds": [
+            "Group 8",
+            "Group 10",
+            "Group 23"
+          ]
+        },
+        "core-ambiguous": {
+          "count": 0,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 0,
+          "rejectedIds": [],
+          "boundaryIds": []
+        },
+        "stress-clean": {
+          "count": 15,
+          "passCount": 6,
+          "passRate": 0.4,
+          "rejectCount": 9,
+          "rejectedIds": [
+            "Group 2",
+            "Group 3",
+            "Group 6",
+            "Group 12",
+            "Group 15",
+            "Group 20",
+            "Group 21",
+            "Group 22",
+            "Group 24"
+          ],
+          "boundaryIds": [
+            "Group 6",
+            "Group 12",
+            "Group 19",
+            "Group 21",
+            "Group 24"
+          ]
+        },
+        "stress-ambiguous": {
+          "count": 2,
+          "passCount": 0,
+          "passRate": 0,
+          "rejectCount": 2,
+          "rejectedIds": [
+            "Group 5",
+            "Group 18"
+          ],
+          "boundaryIds": []
+        }
+      },
+      "falseRejects": {
+        "coreClean": [
+          "Group 10"
+        ],
+        "coreAmbiguous": []
+      },
+      "stressRejectedCount": 11,
+      "boundaryCases": [
+        {
+          "id": "Group 8",
+          "group": "core-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.003 vs 0.005)",
+            "safeAreaCoverageMin (0.2254 vs 0.22)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 10",
+          "group": "core-clean",
+          "metrics": [
+            "subtitle maxOverlapRatio (0.017 vs 0.015)",
+            "safeTextScoreMin (0.8798 vs 0.87)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 23",
+          "group": "core-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.0115 vs 0.0125)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 6",
+          "group": "stress-clean",
+          "metrics": [
+            "headline maxOverlapRatio (0.0127 vs 0.0125)",
+            "subtitle maxOverlapRatio (0.0162 vs 0.015)",
+            "safeTextScoreMin (0.8934 vs 0.87)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 12",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.859 vs 0.87)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 19",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.8789 vs 0.87)"
+          ],
+          "pass": true
+        },
+        {
+          "id": "Group 21",
+          "group": "stress-clean",
+          "metrics": [
+            "safeTextScoreMin (0.8724 vs 0.87)"
+          ],
+          "pass": false
+        },
+        {
+          "id": "Group 24",
+          "group": "stress-clean",
+          "metrics": [
+            "badge maxOverlapRatio (0.0029 vs 0.005)"
+          ],
+          "pass": false
+        }
+      ]
+    }
+  ],
+  "comparisonNotes": [
+    "- headline maxOverlapRatio: previous provisional=0.02, balanced=0.01 -> new balanced candidate is stricter",
+    "- subtitle maxOverlapRatio: previous provisional=0.03, balanced=0.015 -> new balanced candidate is stricter",
+    "- badge maxOverlapRatio: no previous provisional candidate to compare",
+    "- safeTextScoreMin: previous provisional=0.9, balanced=0.91 -> new balanced candidate is stricter",
+    "- safeCoverageMin: previous provisional=0.76, balanced=1 -> new balanced candidate is stricter",
+    "- safeAreaCoverageMin: previous provisional=0.24, balanced=0.26 -> new balanced candidate is stricter"
+  ],
+  "recommendation": {
+    "recommended": "lenient",
+    "reason": "no set fully preserves core-clean, so the recommendation falls back to the fewest core-clean rejects"
+  },
+  "warnings": [
+    "safeCoverageMin: core-clean signal is saturated at 1, so this metric has low discriminative power for fitting",
+    "logo remains insufficient and is intentionally excluded from fitting"
+  ]
+}

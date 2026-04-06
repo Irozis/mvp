@@ -1,0 +1,20 @@
+{
+  "id": "ls-product-closeup-headphones-png",
+  "family": "marketplace",
+  "format": "landscape",
+  "source": "legacy-flat-import",
+  "category": "product",
+  "expectedProblems": [
+    "product"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure",
+    "keep-text-image-balance"
+  ],
+  "tags": [
+    "product",
+    "landscape",
+    "marketplace"
+  ],
+  "comment": "Auto-generated from product/landscape/ls-product-closeup-headphones.png.png"
+}

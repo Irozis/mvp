@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.310Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "squareDisplayBlockedCandidates": 155,
+    "dominantTextCount": 0,
+    "textOnlyDominantCount": 0,
+    "combinedBoundsSevereCount": 0,
+    "titleOnlyMilderThanCombinedCount": 0,
+    "improvedTextCandidateCount": 0,
+    "wouldBecomeMilderCount": 0
+  },
+  "topBlockedCandidates": [],
+  "topImprovedCandidates": []
+}

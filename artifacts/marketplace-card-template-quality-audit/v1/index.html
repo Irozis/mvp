@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Marketplace-card Template Quality Audit</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; background: #0f172a; color: #e2e8f0; }
+    a { color: #93c5fd; }
+    .summary-grid, .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+    .summary-card, .variant-card { background: #111827; border: 1px solid #334155; border-radius: 16px; overflow: hidden; }
+    .winner { border-color: #60a5fa; box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.4); }
+    img { display: block; width: 100%; height: auto; background: #020617; }
+    .meta { padding: 14px 16px 18px; }
+    h1, h2, h3, h4 { margin: 0 0 10px; }
+    p { margin: 6px 0; font-size: 14px; line-height: 1.4; }
+    .case-section { margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <h1>Marketplace-card Template Quality Audit</h1>
+  <p>JSON report: <a href="./report.json">report.json</a></p>
+  <p><strong>Strongest no-image:</strong> header-panel-card (Default no-image)</p>
+  <p><strong>Strongest image-backed:</strong> text-first-promo (Default image-backed square)</p>
+  <p><strong>Weakest current template:</strong> text-first-promo (Dense no-image)</p>
+  <p><strong>Recurring failure modes:</strong> detached-text-image (24) | structural-risk (24) | weak-cta (24) | weak-top-support (21) | accidental-dead-space (12)</p>
+  <section>
+    <h2>Per-template verdicts</h2>
+    <div class="summary-grid">
+      <article class="summary-card">
+        <h3>Header Panel Card</h3>
+        <p><strong>Verdict:</strong> keep, tune</p>
+        <p><strong>Action:</strong> Keep, but target the leading failure modes</p>
+        <p><strong>Avg structural / visual:</strong> 19.3 / 65</p>
+        <p><strong>Status counts:</strong> valid 6, degraded 0, invalid 0</p>
+        <p><strong>Runtime wins:</strong> 3 | <strong>Forced best:</strong> 3</p>
+        <p><strong>Strongest scenario:</strong> Default no-image</p>
+        <p><strong>Weakest scenario:</strong> Dense image-backed square</p>
+        <p><strong>Top failure modes:</strong> detached-text-image | structural-risk | weak-cta</p>
+      </article>
+    
+
+      <article class="summary-card">
+        <h3>Minimal Promo Card</h3>
+        <p><strong>Verdict:</strong> demote</p>
+        <p><strong>Action:</strong> Demote in active rotation until tuned</p>
+        <p><strong>Avg structural / visual:</strong> 18.2 / 59.7</p>
+        <p><strong>Status counts:</strong> valid 3, degraded 0, invalid 3</p>
+        <p><strong>Runtime wins:</strong> 0 | <strong>Forced best:</strong> 0</p>
+        <p><strong>Strongest scenario:</strong> Default image-backed square</p>
+        <p><strong>Weakest scenario:</strong> Dense no-image</p>
+        <p><strong>Top failure modes:</strong> detached-text-image | structural-risk | weak-cta</p>
+      </article>
+    
+
+      <article class="summary-card">
+        <h3>Product Support Card</h3>
+        <p><strong>Verdict:</strong> demote</p>
+        <p><strong>Action:</strong> Demote in active rotation until tuned</p>
+        <p><strong>Avg structural / visual:</strong> 18.2 / 59.7</p>
+        <p><strong>Status counts:</strong> valid 3, degraded 0, invalid 3</p>
+        <p><strong>Runtime wins:</strong> 0 | <strong>Forced best:</strong> 0</p>
+        <p><strong>Strongest scenario:</strong> Default image-backed square</p>
+        <p><strong>Weakest scenario:</strong> Dense no-image</p>
+        <p><strong>Top failure modes:</strong> detached-text-image | structural-risk | weak-cta</p>
+      </article>
+    
+
+      <article class="summary-card">
+        <h3>Text-first Promo</h3>
+        <p><strong>Verdict:</strong> demote</p>
+        <p><strong>Action:</strong> Demote in active rotation until tuned</p>
+        <p><strong>Avg structural / visual:</strong> 34 / 61.7</p>
+        <p><strong>Status counts:</strong> valid 3, degraded 0, invalid 3</p>
+        <p><strong>Runtime wins:</strong> 3 | <strong>Forced best:</strong> 3</p>
+        <p><strong>Strongest scenario:</strong> Default image-backed square</p>
+        <p><strong>Weakest scenario:</strong> Dense no-image</p>
+        <p><strong>Top failure modes:</strong> detached-text-image | structural-risk | weak-cta</p>
+      </article>
+    </div>
+  </section>
+  
+        <section class="case-section">
+          <h2>Default no-image</h2>
+          <p><strong>Selector winner:</strong> header-panel-card | <strong>Runtime winner:</strong> header-panel-card | <strong>Forced best:</strong> header-panel-card</p>
+          <p><strong>Runtime candidates:</strong> 1.header-panel-card, 2.minimal-promo-card, 3.text-first-promo</p>
+          <div class="grid">
+          <article class="variant-card ">
+            <img src="./default-no-image--text-first-promo.svg" alt="default-no-image-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> invalid 24 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card winner">
+            <img src="./default-no-image--header-panel-card.svg" alt="default-no-image-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 26 / 67 weak</p>
+              <p><strong>Warnings:</strong> CTA feels underweighted. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | detached-text-image | structural-risk</p>
+              <p><strong>Geometry:</strong> image 23.8:13:62.3:25.8 | title 8.8:55.7:85.2:0 | cta 8:80.1:12:4.6</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./default-no-image--product-support-card.svg" alt="default-no-image-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> invalid 24 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./default-no-image--minimal-promo-card.svg" alt="default-no-image-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> invalid 24 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+
+        <section class="case-section">
+          <h2>Dense no-image</h2>
+          <p><strong>Selector winner:</strong> text-first-promo | <strong>Runtime winner:</strong> header-panel-card | <strong>Forced best:</strong> header-panel-card</p>
+          <p><strong>Runtime candidates:</strong> 1.header-panel-card, 2.minimal-promo-card, 3.text-first-promo</p>
+          <div class="grid">
+          <article class="variant-card ">
+            <img src="./dense-no-image--text-first-promo.svg" alt="dense-no-image-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> invalid 21 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card winner">
+            <img src="./dense-no-image--header-panel-card.svg" alt="dense-no-image-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 24 / 67 weak</p>
+              <p><strong>Warnings:</strong> CTA feels underweighted. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | detached-text-image | structural-risk</p>
+              <p><strong>Geometry:</strong> image 23.8:13:62.3:25.8 | title 8.8:55.7:85.2:0 | cta 8:80.1:12:4.6</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./dense-no-image--product-support-card.svg" alt="dense-no-image-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> invalid 21 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./dense-no-image--minimal-promo-card.svg" alt="dense-no-image-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> invalid 21 / 54 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 8:80:21:4.7</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+
+        <section class="case-section">
+          <h2>Minimal no-image</h2>
+          <p><strong>Selector winner:</strong> minimal-promo-card | <strong>Runtime winner:</strong> header-panel-card | <strong>Forced best:</strong> header-panel-card</p>
+          <p><strong>Runtime candidates:</strong> 1.header-panel-card, 2.minimal-promo-card, 3.text-first-promo</p>
+          <div class="grid">
+          <article class="variant-card ">
+            <img src="./minimal-no-image--text-first-promo.svg" alt="minimal-no-image-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> invalid 22 / 55 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 9.2:86:22:6</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card winner">
+            <img src="./minimal-no-image--header-panel-card.svg" alt="minimal-no-image-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 24 / 67 weak</p>
+              <p><strong>Warnings:</strong> CTA feels underweighted. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | detached-text-image | structural-risk</p>
+              <p><strong>Geometry:</strong> image 23.8:13:62.3:25.8 | title 8.8:55.7:85.2:0 | cta 8:80.1:12:4.6</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./minimal-no-image--product-support-card.svg" alt="minimal-no-image-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> invalid 22 / 55 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 9.2:86:22:6</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./minimal-no-image--minimal-promo-card.svg" alt="minimal-no-image-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> invalid 22 / 55 weak</p>
+              <p><strong>Warnings:</strong> Image feels compositionally detached from the message. | CTA looks detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | weak-hierarchy | bland-composition | structural-risk</p>
+              <p><strong>Geometry:</strong> image 22.5:14:57.1:22.5 | title 9.2:56:62:0 | cta 9.2:86:22:6</p>
+              <p>Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+
+        <section class="case-section">
+          <h2>Default image-backed square</h2>
+          <p><strong>Selector winner:</strong> product-support-card | <strong>Runtime winner:</strong> text-first-promo | <strong>Forced best:</strong> text-first-promo</p>
+          <p><strong>Runtime candidates:</strong> 1.text-first-promo, 2.header-panel-card, 3.product-support-card</p>
+          <div class="grid">
+          <article class="variant-card winner">
+            <img src="./default-image-square--text-first-promo.svg" alt="default-image-square-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 47 / 69 acceptable</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 49:12.3:35:27.6 | title 14:58:66:0 | cta 8:80.3:18:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./default-image-square--header-panel-card.svg" alt="default-image-square-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> valid 16 / 63 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 28.2:12:63.8:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./default-image-square--product-support-card.svg" alt="default-image-square-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> valid 16 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:12:54.7:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./default-image-square--minimal-promo-card.svg" alt="default-image-square-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> valid 16 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:13:54.7:14 | title 9.8:55.6:84.2:0 | cta 15.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+
+        <section class="case-section">
+          <h2>Dense image-backed square</h2>
+          <p><strong>Selector winner:</strong> product-support-card | <strong>Runtime winner:</strong> text-first-promo | <strong>Forced best:</strong> text-first-promo</p>
+          <p><strong>Runtime candidates:</strong> 1.text-first-promo, 2.header-panel-card, 3.product-support-card</p>
+          <div class="grid">
+          <article class="variant-card winner">
+            <img src="./dense-image-square--text-first-promo.svg" alt="dense-image-square-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 45 / 69 acceptable</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 49:12.3:35:27.6 | title 14:58:66:0 | cta 8:80.3:18:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./dense-image-square--header-panel-card.svg" alt="dense-image-square-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 63 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 28.2:12:63.8:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./dense-image-square--product-support-card.svg" alt="dense-image-square-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:12:54.7:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./dense-image-square--minimal-promo-card.svg" alt="dense-image-square-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:13:54.7:14 | title 9.8:55.6:84.2:0 | cta 15.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+
+        <section class="case-section">
+          <h2>Product-led image-backed landscape</h2>
+          <p><strong>Selector winner:</strong> product-support-card | <strong>Runtime winner:</strong> text-first-promo | <strong>Forced best:</strong> text-first-promo</p>
+          <p><strong>Runtime candidates:</strong> 1.text-first-promo, 2.header-panel-card, 3.product-support-card</p>
+          <div class="grid">
+          <article class="variant-card winner">
+            <img src="./product-image-landscape--text-first-promo.svg" alt="product-image-landscape-text-first-promo" />
+            <div class="meta">
+              <h4>Text-first Promo</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 1</p>
+              <p><strong>Structural / visual:</strong> valid 45 / 69 acceptable</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Image feels compositionally detached from the message.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 49:12.3:35:27.6 | title 14:58:66:0 | cta 8:80.3:18:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./product-image-landscape--header-panel-card.svg" alt="product-image-landscape-header-panel-card" />
+            <div class="meta">
+              <h4>Header Panel Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> 2</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 63 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 28.2:12:63.8:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./product-image-landscape--product-support-card.svg" alt="product-image-landscape-product-support-card" />
+            <div class="meta">
+              <h4>Product Support Card</h4>
+              <p><strong>Selector:</strong> selected primary | <strong>Runtime rank:</strong> 3</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:12:54.7:14 | title 11.8:56.7:82.2:0 | cta 13.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        
+
+          <article class="variant-card ">
+            <img src="./product-image-landscape--minimal-promo-card.svg" alt="product-image-landscape-minimal-promo-card" />
+            <div class="meta">
+              <h4>Minimal Promo Card</h4>
+              <p><strong>Selector:</strong> not primary | <strong>Runtime rank:</strong> not included</p>
+              <p><strong>Structural / visual:</strong> valid 13 / 65 weak</p>
+              <p><strong>Warnings:</strong> Image presence is too weak to support the message. | Text-image ratio feels weak.</p>
+              <p><strong>Failure modes:</strong> weak-cta | weak-top-support | detached-text-image | accidental-dead-space | structural-risk</p>
+              <p><strong>Geometry:</strong> image 26.6:13:54.7:14 | title 9.8:55.6:84.2:0 | cta 15.8:80:12:4.4</p>
+              <p>Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.</p>
+            </div>
+          </article>
+        </div>
+        </section>
+      
+</body>
+</html>

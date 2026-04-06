@@ -1,0 +1,48 @@
+{
+  "caseId": "ls-product-closeup-headphones-png",
+  "category": "product",
+  "format": "landscape",
+  "family": "marketplace",
+  "formatKey": "marketplace-tile",
+  "status": "success",
+  "baselineAggregate": 75,
+  "winnerAggregate": 75,
+  "delta": 0,
+  "baselineWon": true,
+  "winnerKind": "local-structural-repair",
+  "winnerAccepted": false,
+  "winnerStrategyLabel": "current",
+  "baselineConfidence": 26,
+  "winnerConfidence": 26,
+  "winnerConfidenceDelta": 0,
+  "topTags": [],
+  "topRejectionReasons": [
+    "no-net-gain",
+    "aggregate-below-baseline",
+    "legacy-safety-rejection",
+    "repeat-suppressed"
+  ],
+  "reviewPriority": "high-review",
+  "whyReview": "Baseline retained despite available repair candidates",
+  "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain.",
+  "humanVerdictPresent": false,
+  "machineHumanAgreement": null,
+  "agreementType": null,
+  "artifactPaths": {
+    "input": "input.png",
+    "notes": "notes.json",
+    "baseline": "baseline.json",
+    "winner": "winner.json",
+    "telemetry": "telemetry.json",
+    "calibration": "calibration.json",
+    "report": "report.json",
+    "previewBaseline": "preview-baseline.png",
+    "previewWinner": "preview-winner.png"
+  },
+  "previewGeneration": {
+    "requested": false,
+    "supported": false,
+    "generated": false,
+    "reason": "Preview generation not requested."
+  }
+}

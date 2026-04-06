@@ -1,0 +1,648 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.309Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "landscapeDisplayBlockedCandidates": 40,
+    "dominantBadgeCount": 0,
+    "badgeAloneSevereCount": 0,
+    "semanticallyActiveCount": 40,
+    "visuallyCriticalCount": 0,
+    "likelyOptionalCount": 0,
+    "acceptableIfBadgeIgnoredCount": 0
+  },
+  "topBlockedCandidates": [],
+  "topImprovedCandidates": [
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "image-balance-repair",
+      "strategyLabel": "image-balance-repair",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":7,\"y\":32.6,\"w\":50,\"h\":31.2,\"fontSize\":18,\"maxLines\":3,\"charsPerLine\":30},\"subtitle\":{\"x\":7,\"y\":54.4,\"w\":38.5,\"h\":31.2,\"fontSize\":11,\"opacity\":0.9},\"cta\":{\"x\":7,\"y\":70.2,\"w\":32.7,\"h\":11.2},\"badge\":{\"x\":66,\"y\":14,\"w\":18.7,\"h\":8,\"opacity\":0},\"logo\":{\"x\":14,\"y\":7.2,\"w\":16,\"h\":7.2},\"image\":{\"x\":61.1,\"y\":12,\"w\":32.9,\"h\":54.7,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateKind": "validated-run-autofix",
+      "strategyLabel": "validated-run-autofix",
+      "dominantRole": "cta",
+      "badgeRect": {
+        "label": "Badge",
+        "x": 66,
+        "y": 14,
+        "w": 18.666666666666668,
+        "h": 8
+      },
+      "allowedBadgeZones": [
+        {
+          "x": 0,
+          "y": 51.599999999999994,
+          "w": 44,
+          "h": 21.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 100,
+          "h": 28
+        },
+        {
+          "x": 0,
+          "y": 1.1999999999999993,
+          "w": 36,
+          "h": 23.2
+        }
+      ],
+      "preferredBadgeZones": [
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 49.599999999999994,
+          "w": 46,
+          "h": 25.599999999999994
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 100,
+          "h": 31.2
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 38,
+          "h": 26.4
+        }
+      ],
+      "allowedDistance": 0,
+      "preferredDistance": 0,
+      "zonePaddingApplied": 8,
+      "badgeSemanticallyActive": true,
+      "badgeVisuallyCritical": false,
+      "badgeAffectsCoreReadingFlow": true,
+      "badgeLikelyOptional": false,
+      "wouldBeAcceptableIfBadgeIgnored": false,
+      "improvedAggregateScore": true,
+      "aggregateDelta": 1
+    }
+  ]
+}

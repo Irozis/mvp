@@ -1,0 +1,1346 @@
+{
+  "inventory": {
+    "core": 8,
+    "stress": 17,
+    "reject": 1
+  },
+  "validCaseCount": 25,
+  "coreCleanSize": 8,
+  "baselineGroups": {
+    "core-clean": {
+      "headlineOverlapRatio": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 0.003,
+        "median": 0.0011,
+        "p90": 0.0066,
+        "p95": 0.0073,
+        "max": 0.008,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 0.002,
+        "median": 0.0025,
+        "p90": 0.0027,
+        "p95": 0.0027,
+        "max": 0.0027,
+        "min": 0.0007
+      },
+      "logoOverlapRatio": {
+        "count": 4,
+        "valid_count": 1,
+        "mean": 0,
+        "median": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 0.0012,
+        "median": 0.0005,
+        "p90": 0.0025,
+        "p95": 0.0028,
+        "max": 0.003,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 0.9556,
+        "median": 0.9428,
+        "p90": 0.9802,
+        "p95": 0.9849,
+        "max": 0.9896,
+        "min": 0.9345
+      },
+      "safeCoverage": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 1,
+        "median": 1,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 1
+      },
+      "safeAreaCoverage": {
+        "count": 4,
+        "valid_count": 3,
+        "mean": 0.4157,
+        "median": 0.4733,
+        "p90": 0.5334,
+        "p95": 0.5409,
+        "max": 0.5484,
+        "min": 0.2254
+      }
+    },
+    "core-ambiguous": {
+      "headlineOverlapRatio": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.0048,
+        "median": 0.0039,
+        "p90": 0.0094,
+        "p95": 0.0104,
+        "max": 0.0115,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.0087,
+        "median": 0.0082,
+        "p90": 0.015,
+        "p95": 0.016,
+        "max": 0.017,
+        "min": 0.0012
+      },
+      "logoOverlapRatio": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.0007,
+        "median": 0.0001,
+        "p90": 0.0019,
+        "p95": 0.0023,
+        "max": 0.0027,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 4,
+        "valid_count": 2,
+        "mean": 0.0011,
+        "median": 0.0011,
+        "p90": 0.002,
+        "p95": 0.0021,
+        "max": 0.0022,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.9506,
+        "median": 0.9651,
+        "p90": 0.9856,
+        "p95": 0.989,
+        "max": 0.9923,
+        "min": 0.8798
+      },
+      "safeCoverage": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.8632,
+        "median": 1,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0.4526
+      },
+      "safeAreaCoverage": {
+        "count": 4,
+        "valid_count": 4,
+        "mean": 0.4003,
+        "median": 0.4054,
+        "p90": 0.4723,
+        "p95": 0.4849,
+        "max": 0.4974,
+        "min": 0.2929
+      }
+    },
+    "stress-clean": {
+      "headlineOverlapRatio": {
+        "count": 10,
+        "valid_count": 10,
+        "mean": 0.0085,
+        "median": 0.0019,
+        "p90": 0.0234,
+        "p95": 0.036,
+        "max": 0.0486,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 10,
+        "valid_count": 6,
+        "mean": 0.0091,
+        "median": 0.0024,
+        "p90": 0.0239,
+        "p95": 0.0333,
+        "max": 0.0428,
+        "min": 0
+      },
+      "logoOverlapRatio": {
+        "count": 10,
+        "valid_count": 2,
+        "mean": 0,
+        "median": 0,
+        "p90": 0,
+        "p95": 0,
+        "max": 0,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 10,
+        "valid_count": 2,
+        "mean": 0.0003,
+        "median": 0.0003,
+        "p90": 0.0005,
+        "p95": 0.0005,
+        "max": 0.0005,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 10,
+        "valid_count": 10,
+        "mean": 0.9348,
+        "median": 0.9629,
+        "p90": 0.9867,
+        "p95": 0.9901,
+        "max": 0.9934,
+        "min": 0.7579
+      },
+      "safeCoverage": {
+        "count": 10,
+        "valid_count": 10,
+        "mean": 0.795,
+        "median": 1,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0
+      },
+      "safeAreaCoverage": {
+        "count": 10,
+        "valid_count": 10,
+        "mean": 0.681,
+        "median": 0.7797,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0
+      }
+    },
+    "stress-ambiguous": {
+      "headlineOverlapRatio": {
+        "count": 7,
+        "valid_count": 7,
+        "mean": 0.0165,
+        "median": 0.0127,
+        "p90": 0.0339,
+        "p95": 0.0413,
+        "max": 0.0487,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 7,
+        "valid_count": 4,
+        "mean": 0.0493,
+        "median": 0.0222,
+        "p90": 0.1154,
+        "p95": 0.134,
+        "max": 0.1527,
+        "min": 0
+      },
+      "logoOverlapRatio": {
+        "count": 7,
+        "valid_count": 6,
+        "mean": 0.0014,
+        "median": 0.0001,
+        "p90": 0.0041,
+        "p95": 0.0059,
+        "max": 0.0077,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 7,
+        "valid_count": 3,
+        "mean": 0.0069,
+        "median": 0.0029,
+        "p90": 0.0149,
+        "p95": 0.0164,
+        "max": 0.0179,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 7,
+        "valid_count": 7,
+        "mean": 0.878,
+        "median": 0.8789,
+        "p90": 0.9435,
+        "p95": 0.9593,
+        "max": 0.9751,
+        "min": 0.7807
+      },
+      "safeCoverage": {
+        "count": 7,
+        "valid_count": 7,
+        "mean": 0.6463,
+        "median": 0.7774,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0
+      },
+      "safeAreaCoverage": {
+        "count": 7,
+        "valid_count": 7,
+        "mean": 0.5823,
+        "median": 0.6505,
+        "p90": 0.8005,
+        "p95": 0.8126,
+        "max": 0.8247,
+        "min": 0
+      }
+    }
+  },
+  "groups": {
+    "core-clean": {
+      "headlineOverlapRatio": {
+        "count": 8,
+        "valid_count": 7,
+        "mean": 0.004,
+        "median": 0.0032,
+        "p90": 0.0094,
+        "p95": 0.0104,
+        "max": 0.0115,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 8,
+        "valid_count": 7,
+        "mean": 0.0058,
+        "median": 0.0027,
+        "p90": 0.0129,
+        "p95": 0.015,
+        "max": 0.017,
+        "min": 0.0007
+      },
+      "logoOverlapRatio": {
+        "count": 8,
+        "valid_count": 5,
+        "mean": 0.0006,
+        "median": 0.0001,
+        "p90": 0.0017,
+        "p95": 0.0022,
+        "max": 0.0027,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 8,
+        "valid_count": 5,
+        "mean": 0.0011,
+        "median": 0.0005,
+        "p90": 0.0027,
+        "p95": 0.0028,
+        "max": 0.003,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 8,
+        "valid_count": 7,
+        "mean": 0.9527,
+        "median": 0.9602,
+        "p90": 0.9907,
+        "p95": 0.9915,
+        "max": 0.9923,
+        "min": 0.8798
+      },
+      "safeCoverage": {
+        "count": 8,
+        "valid_count": 7,
+        "mean": 0.9218,
+        "median": 1,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0.4526
+      },
+      "safeAreaCoverage": {
+        "count": 8,
+        "valid_count": 7,
+        "mean": 0.4069,
+        "median": 0.4138,
+        "p90": 0.5178,
+        "p95": 0.5331,
+        "max": 0.5484,
+        "min": 0.2254
+      }
+    },
+    "core-ambiguous": {
+      "headlineOverlapRatio": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "subtitleOverlapRatio": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "logoOverlapRatio": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "badgeOverlapRatio": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "safeTextScore": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "safeCoverage": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "safeAreaCoverage": {
+        "count": 0,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      }
+    },
+    "stress-clean": {
+      "headlineOverlapRatio": {
+        "count": 15,
+        "valid_count": 15,
+        "mean": 0.0101,
+        "median": 0.0043,
+        "p90": 0.0227,
+        "p95": 0.0314,
+        "max": 0.0486,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 15,
+        "valid_count": 10,
+        "mean": 0.0252,
+        "median": 0.0037,
+        "p90": 0.0538,
+        "p95": 0.1032,
+        "max": 0.1527,
+        "min": 0
+      },
+      "logoOverlapRatio": {
+        "count": 15,
+        "valid_count": 6,
+        "mean": 0.0013,
+        "median": 0,
+        "p90": 0.0041,
+        "p95": 0.0059,
+        "max": 0.0077,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 15,
+        "valid_count": 5,
+        "mean": 0.0043,
+        "median": 0.0005,
+        "p90": 0.0119,
+        "p95": 0.0149,
+        "max": 0.0179,
+        "min": 0
+      },
+      "safeTextScore": {
+        "count": 15,
+        "valid_count": 15,
+        "mean": 0.926,
+        "median": 0.9345,
+        "p90": 0.9855,
+        "p95": 0.9882,
+        "max": 0.9934,
+        "min": 0.7579
+      },
+      "safeCoverage": {
+        "count": 15,
+        "valid_count": 15,
+        "mean": 0.8053,
+        "median": 1,
+        "p90": 1,
+        "p95": 1,
+        "max": 1,
+        "min": 0
+      },
+      "safeAreaCoverage": {
+        "count": 15,
+        "valid_count": 15,
+        "mean": 0.6917,
+        "median": 0.7353,
+        "p90": 0.9368,
+        "p95": 1,
+        "max": 1,
+        "min": 0
+      }
+    },
+    "stress-ambiguous": {
+      "headlineOverlapRatio": {
+        "count": 2,
+        "valid_count": 2,
+        "mean": 0.0244,
+        "median": 0.0244,
+        "p90": 0.0438,
+        "p95": 0.0463,
+        "max": 0.0487,
+        "min": 0
+      },
+      "subtitleOverlapRatio": {
+        "count": 2,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "logoOverlapRatio": {
+        "count": 2,
+        "valid_count": 2,
+        "mean": 0.0001,
+        "median": 0.0001,
+        "p90": 0.0001,
+        "p95": 0.0001,
+        "max": 0.0001,
+        "min": 0
+      },
+      "badgeOverlapRatio": {
+        "count": 2,
+        "valid_count": 0,
+        "mean": null,
+        "median": null,
+        "p90": null,
+        "p95": null,
+        "max": null,
+        "min": null
+      },
+      "safeTextScore": {
+        "count": 2,
+        "valid_count": 2,
+        "mean": 0.8018,
+        "median": 0.8018,
+        "p90": 0.8188,
+        "p95": 0.8209,
+        "max": 0.823,
+        "min": 0.7807
+      },
+      "safeCoverage": {
+        "count": 2,
+        "valid_count": 2,
+        "mean": 0.1971,
+        "median": 0.1971,
+        "p90": 0.3548,
+        "p95": 0.3745,
+        "max": 0.3942,
+        "min": 0
+      },
+      "safeAreaCoverage": {
+        "count": 2,
+        "valid_count": 2,
+        "mean": 0.2552,
+        "median": 0.2552,
+        "p90": 0.4594,
+        "p95": 0.4849,
+        "max": 0.5104,
+        "min": 0
+      }
+    }
+  },
+  "summaryDeltas": [
+    {
+      "group": "core-clean",
+      "metric": "headlineOverlapRatio",
+      "validCountBefore": 3,
+      "validCountAfter": 7,
+      "meanBefore": 0.003,
+      "meanAfter": 0.004,
+      "medianBefore": 0.0011,
+      "medianAfter": 0.0032
+    },
+    {
+      "group": "core-clean",
+      "metric": "subtitleOverlapRatio",
+      "validCountBefore": 3,
+      "validCountAfter": 7,
+      "meanBefore": 0.002,
+      "meanAfter": 0.0058,
+      "medianBefore": 0.0025,
+      "medianAfter": 0.0027
+    },
+    {
+      "group": "core-clean",
+      "metric": "logoOverlapRatio",
+      "validCountBefore": 1,
+      "validCountAfter": 5,
+      "meanBefore": 0,
+      "meanAfter": 0.0006,
+      "medianBefore": 0,
+      "medianAfter": 0.0001
+    },
+    {
+      "group": "core-clean",
+      "metric": "badgeOverlapRatio",
+      "validCountBefore": 3,
+      "validCountAfter": 5,
+      "meanBefore": 0.0012,
+      "meanAfter": 0.0011,
+      "medianBefore": 0.0005,
+      "medianAfter": 0.0005
+    },
+    {
+      "group": "core-clean",
+      "metric": "safeTextScore",
+      "validCountBefore": 3,
+      "validCountAfter": 7,
+      "meanBefore": 0.9556,
+      "meanAfter": 0.9527,
+      "medianBefore": 0.9428,
+      "medianAfter": 0.9602
+    },
+    {
+      "group": "core-clean",
+      "metric": "safeCoverage",
+      "validCountBefore": 3,
+      "validCountAfter": 7,
+      "meanBefore": 1,
+      "meanAfter": 0.9218,
+      "medianBefore": 1,
+      "medianAfter": 1
+    },
+    {
+      "group": "core-clean",
+      "metric": "safeAreaCoverage",
+      "validCountBefore": 3,
+      "validCountAfter": 7,
+      "meanBefore": 0.4157,
+      "meanAfter": 0.4069,
+      "medianBefore": 0.4733,
+      "medianAfter": 0.4138
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "headlineOverlapRatio",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.0048,
+      "meanAfter": null,
+      "medianBefore": 0.0039,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "subtitleOverlapRatio",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.0087,
+      "meanAfter": null,
+      "medianBefore": 0.0082,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "logoOverlapRatio",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.0007,
+      "meanAfter": null,
+      "medianBefore": 0.0001,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "badgeOverlapRatio",
+      "validCountBefore": 2,
+      "validCountAfter": 0,
+      "meanBefore": 0.0011,
+      "meanAfter": null,
+      "medianBefore": 0.0011,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "safeTextScore",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.9506,
+      "meanAfter": null,
+      "medianBefore": 0.9651,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "safeCoverage",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.8632,
+      "meanAfter": null,
+      "medianBefore": 1,
+      "medianAfter": null
+    },
+    {
+      "group": "core-ambiguous",
+      "metric": "safeAreaCoverage",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.4003,
+      "meanAfter": null,
+      "medianBefore": 0.4054,
+      "medianAfter": null
+    },
+    {
+      "group": "stress-clean",
+      "metric": "headlineOverlapRatio",
+      "validCountBefore": 10,
+      "validCountAfter": 15,
+      "meanBefore": 0.0085,
+      "meanAfter": 0.0101,
+      "medianBefore": 0.0019,
+      "medianAfter": 0.0043
+    },
+    {
+      "group": "stress-clean",
+      "metric": "subtitleOverlapRatio",
+      "validCountBefore": 6,
+      "validCountAfter": 10,
+      "meanBefore": 0.0091,
+      "meanAfter": 0.0252,
+      "medianBefore": 0.0024,
+      "medianAfter": 0.0037
+    },
+    {
+      "group": "stress-clean",
+      "metric": "logoOverlapRatio",
+      "validCountBefore": 2,
+      "validCountAfter": 6,
+      "meanBefore": 0,
+      "meanAfter": 0.0013,
+      "medianBefore": 0,
+      "medianAfter": 0
+    },
+    {
+      "group": "stress-clean",
+      "metric": "badgeOverlapRatio",
+      "validCountBefore": 2,
+      "validCountAfter": 5,
+      "meanBefore": 0.0003,
+      "meanAfter": 0.0043,
+      "medianBefore": 0.0003,
+      "medianAfter": 0.0005
+    },
+    {
+      "group": "stress-clean",
+      "metric": "safeTextScore",
+      "validCountBefore": 10,
+      "validCountAfter": 15,
+      "meanBefore": 0.9348,
+      "meanAfter": 0.926,
+      "medianBefore": 0.9629,
+      "medianAfter": 0.9345
+    },
+    {
+      "group": "stress-clean",
+      "metric": "safeCoverage",
+      "validCountBefore": 10,
+      "validCountAfter": 15,
+      "meanBefore": 0.795,
+      "meanAfter": 0.8053,
+      "medianBefore": 1,
+      "medianAfter": 1
+    },
+    {
+      "group": "stress-clean",
+      "metric": "safeAreaCoverage",
+      "validCountBefore": 10,
+      "validCountAfter": 15,
+      "meanBefore": 0.681,
+      "meanAfter": 0.6917,
+      "medianBefore": 0.7797,
+      "medianAfter": 0.7353
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "headlineOverlapRatio",
+      "validCountBefore": 7,
+      "validCountAfter": 2,
+      "meanBefore": 0.0165,
+      "meanAfter": 0.0244,
+      "medianBefore": 0.0127,
+      "medianAfter": 0.0244
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "subtitleOverlapRatio",
+      "validCountBefore": 4,
+      "validCountAfter": 0,
+      "meanBefore": 0.0493,
+      "meanAfter": null,
+      "medianBefore": 0.0222,
+      "medianAfter": null
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "logoOverlapRatio",
+      "validCountBefore": 6,
+      "validCountAfter": 2,
+      "meanBefore": 0.0014,
+      "meanAfter": 0.0001,
+      "medianBefore": 0.0001,
+      "medianAfter": 0.0001
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "badgeOverlapRatio",
+      "validCountBefore": 3,
+      "validCountAfter": 0,
+      "meanBefore": 0.0069,
+      "meanAfter": null,
+      "medianBefore": 0.0029,
+      "medianAfter": null
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "safeTextScore",
+      "validCountBefore": 7,
+      "validCountAfter": 2,
+      "meanBefore": 0.878,
+      "meanAfter": 0.8018,
+      "medianBefore": 0.8789,
+      "medianAfter": 0.8018
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "safeCoverage",
+      "validCountBefore": 7,
+      "validCountAfter": 2,
+      "meanBefore": 0.6463,
+      "meanAfter": 0.1971,
+      "medianBefore": 0.7774,
+      "medianAfter": 0.1971
+    },
+    {
+      "group": "stress-ambiguous",
+      "metric": "safeAreaCoverage",
+      "validCountBefore": 7,
+      "validCountAfter": 2,
+      "meanBefore": 0.5823,
+      "meanAfter": 0.2552,
+      "medianBefore": 0.6505,
+      "medianAfter": 0.2552
+    }
+  ],
+  "extremes": [
+    {
+      "metric": "headlineOverlapRatio",
+      "kind": "max",
+      "value": 0.0487,
+      "cases": [
+        {
+          "id": "Group 18",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "headlineOverlapRatio",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 4",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 8",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 3",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 5",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 13",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 15",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "metric": "subtitleOverlapRatio",
+      "kind": "max",
+      "value": 0.1527,
+      "cases": [
+        {
+          "id": "Group 20",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "subtitleOverlapRatio",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 17",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 19",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "logoOverlapRatio",
+      "kind": "max",
+      "value": 0.0077,
+      "cases": [
+        {
+          "id": "Group 21",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "logoOverlapRatio",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 23",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 25",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 17",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 18",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 19",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 22",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 24",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "badgeOverlapRatio",
+      "kind": "max",
+      "value": 0.0179,
+      "cases": [
+        {
+          "id": "Group 20",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "badgeOverlapRatio",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 7",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 25",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 2",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 21",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "safeTextScore",
+      "kind": "max",
+      "value": 0.9934,
+      "cases": [
+        {
+          "id": "Group 17",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "metric": "safeTextScore",
+      "kind": "min",
+      "value": 0.7579,
+      "cases": [
+        {
+          "id": "Group 22",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "metric": "safeCoverage",
+      "kind": "max",
+      "value": 1,
+      "cases": [
+        {
+          "id": "Group 1",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 4",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 7",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 8",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 9",
+          "bucket": "core",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 23",
+          "bucket": "core",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 2",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 6",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 11",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 13",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 14",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 15",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 16",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 17",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 19",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 24",
+          "bucket": "stress",
+          "ambiguous": true
+        }
+      ]
+    },
+    {
+      "metric": "safeCoverage",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 5",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 12",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 22",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "metric": "safeAreaCoverage",
+      "kind": "max",
+      "value": 1,
+      "cases": [
+        {
+          "id": "Group 12",
+          "bucket": "stress",
+          "ambiguous": false
+        },
+        {
+          "id": "Group 14",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    },
+    {
+      "metric": "safeAreaCoverage",
+      "kind": "min",
+      "value": 0,
+      "cases": [
+        {
+          "id": "Group 5",
+          "bucket": "stress",
+          "ambiguous": true
+        },
+        {
+          "id": "Group 15",
+          "bucket": "stress",
+          "ambiguous": false
+        }
+      ]
+    }
+  ],
+  "thresholdReadiness": [
+    {
+      "metric": "headline",
+      "sourceGroup": "core-clean",
+      "validCount": 7,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    },
+    {
+      "metric": "subtitle",
+      "sourceGroup": "core-clean",
+      "validCount": 7,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    },
+    {
+      "metric": "logo",
+      "sourceGroup": "core-clean",
+      "validCount": 5,
+      "sufficient": false,
+      "reason": "insufficient clean core samples or signal too sparse"
+    },
+    {
+      "metric": "badge",
+      "sourceGroup": "core-clean",
+      "validCount": 5,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    },
+    {
+      "metric": "safeTextScore",
+      "sourceGroup": "core-clean",
+      "validCount": 7,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    },
+    {
+      "metric": "safeCoverage",
+      "sourceGroup": "core-clean",
+      "validCount": 7,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    },
+    {
+      "metric": "safeAreaCoverage",
+      "sourceGroup": "core-clean",
+      "validCount": 7,
+      "sufficient": true,
+      "reason": "enough clean core samples for a first candidate pass"
+    }
+  ],
+  "ambiguousInfluence": [
+    {
+      "id": "Group 5",
+      "bucket": "stress",
+      "score": 1.8891,
+      "drivers": [
+        "safeCoverage: delta=1",
+        "safeAreaCoverage: delta=0.7353",
+        "safeTextScore: delta=0.1538"
+      ]
+    },
+    {
+      "id": "Group 18",
+      "bucket": "stress",
+      "score": 0.9866,
+      "drivers": [
+        "safeCoverage: delta=0.6058",
+        "safeAreaCoverage: delta=0.2249",
+        "safeTextScore: delta=0.1115",
+        "headlineOverlapRatio: delta=0.0444"
+      ]
+    }
+  ],
+  "provisionalCandidates": [
+    {
+      "metric": "headline maxOverlapRatio",
+      "currentPolicy": 0.0125,
+      "measured": {
+        "source": "core",
+        "p90": 0.0094,
+        "p95": 0.0104,
+        "max": 0.0115
+      },
+      "candidate": 0.02,
+      "status": "candidate",
+      "reason": "core upper-tail heuristic: max(p95, p90 + 0.01), rounded up to 0.01 and capped near observed max"
+    },
+    {
+      "metric": "subtitle maxOverlapRatio",
+      "currentPolicy": 0.015,
+      "measured": {
+        "source": "core",
+        "p90": 0.0129,
+        "p95": 0.015,
+        "max": 0.017
+      },
+      "candidate": 0.03,
+      "status": "candidate",
+      "reason": "core upper-tail heuristic: max(p95, p90 + 0.01), rounded up to 0.01 and capped near observed max"
+    },
+    {
+      "metric": "safeTextScoreMin",
+      "currentPolicy": 0.87,
+      "measured": {
+        "source": "core",
+        "p10": 0.9126
+      },
+      "candidate": 0.9,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic: p10 - 0.01, rounded down to 0.01"
+    },
+    {
+      "metric": "safeCoverageMin",
+      "currentPolicy": 0.7,
+      "measured": {
+        "source": "core",
+        "p10": 0.781
+      },
+      "candidate": 0.76,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic after recomputing coverage at candidate safeTextScoreMin: p10 - 0.02"
+    },
+    {
+      "metric": "safeAreaCoverageMin",
+      "currentPolicy": 0.22,
+      "measured": {
+        "source": "core",
+        "p10": 0.2659
+      },
+      "candidate": 0.24,
+      "status": "candidate",
+      "reason": "core lower-tail heuristic: p10 - 0.02, rounded down to 0.01"
+    }
+  ]
+}

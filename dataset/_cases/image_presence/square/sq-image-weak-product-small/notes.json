@@ -1,0 +1,19 @@
+{
+  "id": "sq-image-weak-product-small",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "image_presence",
+  "expectedProblems": [
+    "image_presence"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "image_presence",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from image_presence/square/sq-image-weak-product-small.png"
+}

@@ -1,0 +1,2100 @@
+{
+  "generatedAt": "2026-04-02T05:39:50.480Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases",
+  "strictMode": false,
+  "filters": {},
+  "previewGeneration": {
+    "requested": false,
+    "supported": false,
+    "generated": false,
+    "reason": "Preview generation not requested."
+  },
+  "summary": {
+    "totalCasesFound": 42,
+    "validCases": 42,
+    "invalidCases": 0,
+    "executedCases": 42,
+    "successCount": 11,
+    "parseErrorCount": 0,
+    "executionErrorCount": 31,
+    "skippedCount": 0,
+    "baselineWinCount": 11,
+    "candidateWinCount": 0,
+    "perFormatCounts": {
+      "square": 35,
+      "landscape": 7,
+      "portrait": 0
+    },
+    "perCategoryCounts": {
+      "balance": 5,
+      "cta": 5,
+      "grid": 1,
+      "hero": 4,
+      "image_presence": 2,
+      "layout_overlap": 1,
+      "marketplace": 2,
+      "product": 5,
+      "spacing": 8,
+      "structure": 5,
+      "text_priority": 2,
+      "visual_style": 2
+    },
+    "perFamilyCounts": {
+      "display": 35,
+      "marketplace": 7
+    },
+    "aggregateDelta": {
+      "total": 0,
+      "average": 0,
+      "max": 0,
+      "min": 0
+    },
+    "averageWinnerGain": 0,
+    "topRejectionReasons": [
+      {
+        "reason": "Error",
+        "count": 31
+      },
+      {
+        "reason": "insufficient-net-gain",
+        "count": 11
+      },
+      {
+        "reason": "weak-balance",
+        "count": 11
+      }
+    ],
+    "topDominantTags": [
+      {
+        "tag": "insufficient-breathing-room",
+        "count": 4
+      },
+      {
+        "tag": "structural-drift",
+        "count": 4
+      }
+    ],
+    "candidateKindWinDistribution": [
+      {
+        "candidateKind": "local-structural-repair",
+        "count": 11
+      }
+    ],
+    "failedCases": [
+      {
+        "caseId": "sq-balance-empty-right-minimal",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-balance-empty-side-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-balance-left-heavy",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-balance-weak-image-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-cta-low-contrast-hidden",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-cta-overlay-block-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-grid-misaligned-blocks",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "hero-product-red-tag-urgency-02-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "hero-product-soft-shapes-01-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "minimal-product-display-glass-01-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-balance-empty-hero-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-image-missing-text-only",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-image-weak-product-small",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-layout-overlap-elements",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "inefficient-layout-banner-04-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "inefficient-layout-blue-grid-01-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "inefficient-layout-card-variations-02-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "inefficient-layout-circle-focus-03-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-spacing-cramped-beauty",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-spacing-cramped-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-spacing-overflow-airy",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-spacing-overflow-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "geometric-modern-layout-01-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-structure-centered-minimal-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-structure-illustration-focus-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-structure-split-grid-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-structure-thumbnail-collapse",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-text-dominant-overlay-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-text-dominant-scene-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-visual-chaotic-abstract-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      {
+        "caseId": "sq-visual-rich-illustrative-png",
+        "status": "execution-error",
+        "reason": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      }
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "ls-balance-left-heavy-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\landscape\\ls-balance-left-heavy-png",
+      "relativeDir": "balance\\landscape\\ls-balance-left-heavy-png",
+      "status": "success",
+      "category": "balance",
+      "family": "display",
+      "format": "landscape",
+      "formatKey": "display-mpu",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 6,
+      "winnerConfidence": 6,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 10,
+      "rejectedCandidateCount": 10,
+      "topRejectionReasons": [
+        "role-placement-out-of-zone",
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "aggregate-below-baseline"
+      ],
+      "dominantTags": [
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 108,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "role-placement-out-of-zone",
+        "candidate-disagreement",
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal",
+      "relativeDir": "balance\\square\\sq-balance-empty-right-minimal",
+      "status": "execution-error",
+      "category": "balance",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-balance-empty-side-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png",
+      "relativeDir": "balance\\square\\sq-balance-empty-side-png",
+      "status": "execution-error",
+      "category": "balance",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-balance-left-heavy",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy",
+      "relativeDir": "balance\\square\\sq-balance-left-heavy",
+      "status": "execution-error",
+      "category": "balance",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-balance-weak-image-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png",
+      "relativeDir": "balance\\square\\sq-balance-weak-image-png",
+      "status": "execution-error",
+      "category": "balance",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "disconnected-cta-dark-split-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\landscape\\disconnected-cta-dark-split-01-png",
+      "relativeDir": "cta\\landscape\\disconnected-cta-dark-split-01-png",
+      "status": "success",
+      "category": "cta",
+      "family": "display",
+      "format": "landscape",
+      "formatKey": "display-mpu",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 6,
+      "winnerConfidence": 6,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 10,
+      "rejectedCandidateCount": 10,
+      "topRejectionReasons": [
+        "role-placement-out-of-zone",
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "aggregate-below-baseline"
+      ],
+      "dominantTags": [
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 108,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "role-placement-out-of-zone",
+        "candidate-disagreement",
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "disconnected-cta-skewed-layout-02-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\landscape\\disconnected-cta-skewed-layout-02-png",
+      "relativeDir": "cta\\landscape\\disconnected-cta-skewed-layout-02-png",
+      "status": "success",
+      "category": "cta",
+      "family": "display",
+      "format": "landscape",
+      "formatKey": "display-mpu",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 6,
+      "winnerConfidence": 6,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 10,
+      "rejectedCandidateCount": 10,
+      "topRejectionReasons": [
+        "role-placement-out-of-zone",
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "aggregate-below-baseline"
+      ],
+      "dominantTags": [
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 108,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "role-placement-out-of-zone",
+        "candidate-disagreement",
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "ls-cta-detached-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\landscape\\ls-cta-detached-png",
+      "relativeDir": "cta\\landscape\\ls-cta-detached-png",
+      "status": "success",
+      "category": "cta",
+      "family": "display",
+      "format": "landscape",
+      "formatKey": "display-mpu",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 6,
+      "winnerConfidence": 6,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 10,
+      "rejectedCandidateCount": 10,
+      "topRejectionReasons": [
+        "role-placement-out-of-zone",
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "aggregate-below-baseline"
+      ],
+      "dominantTags": [
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 108,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "role-placement-out-of-zone",
+        "candidate-disagreement",
+        "insufficient-breathing-room",
+        "structural-drift"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-cta-low-contrast-hidden",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden",
+      "relativeDir": "cta\\square\\sq-cta-low-contrast-hidden",
+      "status": "execution-error",
+      "category": "cta",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-cta-overlay-block-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png",
+      "relativeDir": "cta\\square\\sq-cta-overlay-block-png",
+      "status": "execution-error",
+      "category": "cta",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-grid-misaligned-blocks",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks",
+      "relativeDir": "grid\\square\\sq-grid-misaligned-blocks",
+      "status": "execution-error",
+      "category": "grid",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png",
+      "relativeDir": "hero\\square\\hero-product-red-tag-urgency-02-png",
+      "status": "execution-error",
+      "category": "hero",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png",
+      "relativeDir": "hero\\square\\hero-product-soft-shapes-01-png",
+      "status": "execution-error",
+      "category": "hero",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png",
+      "relativeDir": "hero\\square\\minimal-product-display-glass-01-png",
+      "status": "execution-error",
+      "category": "hero",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png",
+      "relativeDir": "hero\\square\\sq-balance-empty-hero-png",
+      "status": "execution-error",
+      "category": "hero",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-image-missing-text-only",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only",
+      "relativeDir": "image_presence\\square\\sq-image-missing-text-only",
+      "status": "execution-error",
+      "category": "image_presence",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-image-weak-product-small",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small",
+      "relativeDir": "image_presence\\square\\sq-image-weak-product-small",
+      "status": "execution-error",
+      "category": "image_presence",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-layout-overlap-elements",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements",
+      "relativeDir": "layout_overlap\\square\\sq-layout-overlap-elements",
+      "status": "execution-error",
+      "category": "layout_overlap",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "overloaded-marketplace-ui-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\marketplace\\landscape\\overloaded-marketplace-ui-01-png",
+      "relativeDir": "marketplace\\landscape\\overloaded-marketplace-ui-01-png",
+      "status": "success",
+      "category": "marketplace",
+      "family": "marketplace",
+      "format": "landscape",
+      "formatKey": "marketplace-tile",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 75,
+      "winnerAggregate": 75,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 26,
+      "winnerConfidence": 26,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection",
+        "repeat-suppressed"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "overloaded-marketplace-visual-02-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\marketplace\\landscape\\overloaded-marketplace-visual-02-png",
+      "relativeDir": "marketplace\\landscape\\overloaded-marketplace-visual-02-png",
+      "status": "success",
+      "category": "marketplace",
+      "family": "marketplace",
+      "format": "landscape",
+      "formatKey": "marketplace-tile",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 75,
+      "winnerAggregate": 75,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 26,
+      "winnerConfidence": 26,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection",
+        "repeat-suppressed"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "ls-product-closeup-headphones-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\product\\landscape\\ls-product-closeup-headphones-png",
+      "relativeDir": "product\\landscape\\ls-product-closeup-headphones-png",
+      "status": "success",
+      "category": "product",
+      "family": "marketplace",
+      "format": "landscape",
+      "formatKey": "marketplace-tile",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 75,
+      "winnerAggregate": 75,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 26,
+      "winnerConfidence": 26,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection",
+        "repeat-suppressed"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-product-abstract-headphones-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\product\\square\\sq-product-abstract-headphones-png",
+      "relativeDir": "product\\square\\sq-product-abstract-headphones-png",
+      "status": "success",
+      "category": "product",
+      "family": "marketplace",
+      "format": "square",
+      "formatKey": "marketplace-card",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 78,
+      "winnerAggregate": 78,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 37,
+      "winnerConfidence": 37,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "insufficient-net-gain",
+        "weak-balance"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-product-decorative-context-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\product\\square\\sq-product-decorative-context-png",
+      "relativeDir": "product\\square\\sq-product-decorative-context-png",
+      "status": "success",
+      "category": "product",
+      "family": "marketplace",
+      "format": "square",
+      "formatKey": "marketplace-card",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 78,
+      "winnerAggregate": 78,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 37,
+      "winnerConfidence": 37,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "insufficient-net-gain",
+        "weak-balance"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-product-hero-headphones-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\product\\square\\sq-product-hero-headphones-png",
+      "relativeDir": "product\\square\\sq-product-hero-headphones-png",
+      "status": "success",
+      "category": "product",
+      "family": "marketplace",
+      "format": "square",
+      "formatKey": "marketplace-card",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 78,
+      "winnerAggregate": 78,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 37,
+      "winnerConfidence": 37,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "insufficient-net-gain",
+        "weak-balance"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "sq-product-isolated-clean-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\product\\square\\sq-product-isolated-clean-png",
+      "relativeDir": "product\\square\\sq-product-isolated-clean-png",
+      "status": "success",
+      "category": "product",
+      "family": "marketplace",
+      "format": "square",
+      "formatKey": "marketplace-card",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "baselineAggregate": 78,
+      "winnerAggregate": 78,
+      "aggregateDelta": 0,
+      "baselineWon": true,
+      "winnerAccepted": false,
+      "winnerCandidateKind": "local-structural-repair",
+      "winnerStrategyLabel": "current",
+      "baselineConfidence": 37,
+      "winnerConfidence": 37,
+      "winnerConfidenceDelta": 0,
+      "candidateCount": 5,
+      "rejectedCandidateCount": 5,
+      "topRejectionReasons": [
+        "no-net-gain",
+        "legacy-safety-rejection",
+        "insufficient-net-gain",
+        "weak-balance"
+      ],
+      "dominantTags": [],
+      "dominantPenalties": [
+        "weak-balance",
+        "insufficient-net-gain"
+      ],
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "high-review",
+      "reviewScore": 78,
+      "whyReview": "Baseline retained despite available repair candidates",
+      "reasons": [
+        "baseline-retained",
+        "near-zero-delta",
+        "no-net-gain",
+        "candidate-disagreement"
+      ],
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png",
+      "relativeDir": "spacing\\square\\inefficient-layout-banner-04-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png",
+      "relativeDir": "spacing\\square\\inefficient-layout-blue-grid-01-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png",
+      "relativeDir": "spacing\\square\\inefficient-layout-card-variations-02-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png",
+      "relativeDir": "spacing\\square\\inefficient-layout-circle-focus-03-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-spacing-cramped-beauty",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty",
+      "relativeDir": "spacing\\square\\sq-spacing-cramped-beauty",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-spacing-cramped-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-png",
+      "relativeDir": "spacing\\square\\sq-spacing-cramped-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-spacing-overflow-airy",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-overflow-airy",
+      "relativeDir": "spacing\\square\\sq-spacing-overflow-airy",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-spacing-overflow-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-overflow-png",
+      "relativeDir": "spacing\\square\\sq-spacing-overflow-png",
+      "status": "execution-error",
+      "category": "spacing",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png",
+      "relativeDir": "structure\\square\\geometric-modern-layout-01-png",
+      "status": "execution-error",
+      "category": "structure",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-structure-centered-minimal-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\sq-structure-centered-minimal-png",
+      "relativeDir": "structure\\square\\sq-structure-centered-minimal-png",
+      "status": "execution-error",
+      "category": "structure",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-structure-illustration-focus-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\sq-structure-illustration-focus-png",
+      "relativeDir": "structure\\square\\sq-structure-illustration-focus-png",
+      "status": "execution-error",
+      "category": "structure",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-structure-split-grid-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\sq-structure-split-grid-png",
+      "relativeDir": "structure\\square\\sq-structure-split-grid-png",
+      "status": "execution-error",
+      "category": "structure",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-structure-thumbnail-collapse",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\sq-structure-thumbnail-collapse",
+      "relativeDir": "structure\\square\\sq-structure-thumbnail-collapse",
+      "status": "execution-error",
+      "category": "structure",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-text-dominant-overlay-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\text_priority\\square\\sq-text-dominant-overlay-png",
+      "relativeDir": "text_priority\\square\\sq-text-dominant-overlay-png",
+      "status": "execution-error",
+      "category": "text_priority",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-text-dominant-scene-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\text_priority\\square\\sq-text-dominant-scene-png",
+      "relativeDir": "text_priority\\square\\sq-text-dominant-scene-png",
+      "status": "execution-error",
+      "category": "text_priority",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-visual-chaotic-abstract-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\visual_style\\square\\sq-visual-chaotic-abstract-png",
+      "relativeDir": "visual_style\\square\\sq-visual-chaotic-abstract-png",
+      "status": "execution-error",
+      "category": "visual_style",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    },
+    {
+      "caseId": "sq-visual-rich-illustrative-png",
+      "caseDir": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\visual_style\\square\\sq-visual-rich-illustrative-png",
+      "relativeDir": "visual_style\\square\\sq-visual-rich-illustrative-png",
+      "status": "execution-error",
+      "category": "visual_style",
+      "family": "display",
+      "format": "square",
+      "artifactPaths": {
+        "input": "input.png",
+        "notes": "notes.json",
+        "baseline": "baseline.json",
+        "winner": "winner.json",
+        "telemetry": "telemetry.json",
+        "calibration": "calibration.json",
+        "report": "report.json",
+        "previewBaseline": "preview-baseline.png",
+        "previewWinner": "preview-winner.png"
+      },
+      "dominantTags": [],
+      "dominantPenalties": [],
+      "topRejectionReasons": [
+        "Error"
+      ],
+      "executionError": {
+        "name": "Error",
+        "message": "Unsupported family/format combination: display/square. Add notes.formatKey to make the case explicit."
+      },
+      "humanVerdictPresent": false,
+      "machineHumanAgreement": null,
+      "agreementType": null,
+      "reviewPriority": "urgent-review",
+      "reviewScore": 110,
+      "whyReview": "Execution failed during calibration batch run",
+      "reasons": [
+        "execution-error"
+      ],
+      "shortSummary": "Execution failed during calibration run; inspect the captured error before tuning."
+    }
+  ],
+  "parseErrors": []
+}

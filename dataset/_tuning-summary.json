@@ -1,0 +1,1025 @@
+{
+  "generatedAt": "2026-04-06T02:09:55.304Z",
+  "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
+  "totals": {
+    "totalCases": 42,
+    "successfulCases": 42,
+    "baselineWinCount": 38,
+    "candidateWinCount": 4,
+    "positiveRejectedCandidateCount": 35,
+    "singleGateBlockedCount": 31,
+    "confidenceImprovedRejectedCount": 4
+  },
+  "blockerFrequency": {
+    "bestRejectedCandidates": [
+      {
+        "blocker": "role-placement-out-of-zone",
+        "count": 35
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "count": 7
+      }
+    ],
+    "allRejectedCandidates": [
+      {
+        "blocker": "role-placement-out-of-zone",
+        "count": 35
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "count": 11
+      },
+      {
+        "blocker": "no-net-gain",
+        "count": 7
+      }
+    ]
+  },
+  "nearMisses": {
+    "positiveRejectedCases": [
+      "geometric-modern-layout-01-png",
+      "hero-product-red-tag-urgency-02-png",
+      "hero-product-soft-shapes-01-png",
+      "inefficient-layout-banner-04-png",
+      "inefficient-layout-blue-grid-01-png",
+      "inefficient-layout-card-variations-02-png",
+      "inefficient-layout-circle-focus-03-png",
+      "minimal-product-display-glass-01-png",
+      "sq-balance-empty-hero-png",
+      "sq-balance-empty-right-minimal",
+      "sq-balance-empty-side-png",
+      "sq-balance-left-heavy",
+      "sq-balance-weak-image-png",
+      "sq-cta-low-contrast-hidden",
+      "sq-cta-overlay-block-png",
+      "sq-grid-misaligned-blocks",
+      "sq-image-missing-text-only",
+      "sq-image-weak-product-small",
+      "sq-layout-overlap-elements",
+      "sq-spacing-cramped-beauty",
+      "sq-spacing-cramped-png",
+      "sq-spacing-overflow-airy",
+      "sq-spacing-overflow-png",
+      "sq-structure-centered-minimal-png",
+      "sq-structure-illustration-focus-png",
+      "sq-structure-split-grid-png",
+      "sq-structure-thumbnail-collapse",
+      "sq-text-dominant-overlay-png",
+      "sq-text-dominant-scene-png",
+      "sq-visual-chaotic-abstract-png",
+      "sq-visual-rich-illustrative-png",
+      "disconnected-cta-dark-split-01-png",
+      "disconnected-cta-skewed-layout-02-png",
+      "ls-balance-left-heavy-png",
+      "ls-cta-detached-png"
+    ],
+    "singleGateBlockedCases": [
+      "geometric-modern-layout-01-png",
+      "hero-product-red-tag-urgency-02-png",
+      "hero-product-soft-shapes-01-png",
+      "inefficient-layout-banner-04-png",
+      "inefficient-layout-blue-grid-01-png",
+      "inefficient-layout-card-variations-02-png",
+      "inefficient-layout-circle-focus-03-png",
+      "minimal-product-display-glass-01-png",
+      "sq-balance-empty-hero-png",
+      "sq-balance-empty-right-minimal",
+      "sq-balance-empty-side-png",
+      "sq-balance-left-heavy",
+      "sq-balance-weak-image-png",
+      "sq-cta-low-contrast-hidden",
+      "sq-cta-overlay-block-png",
+      "sq-grid-misaligned-blocks",
+      "sq-image-missing-text-only",
+      "sq-image-weak-product-small",
+      "sq-layout-overlap-elements",
+      "sq-spacing-cramped-beauty",
+      "sq-spacing-cramped-png",
+      "sq-spacing-overflow-airy",
+      "sq-spacing-overflow-png",
+      "sq-structure-centered-minimal-png",
+      "sq-structure-illustration-focus-png",
+      "sq-structure-split-grid-png",
+      "sq-structure-thumbnail-collapse",
+      "sq-text-dominant-overlay-png",
+      "sq-text-dominant-scene-png",
+      "sq-visual-chaotic-abstract-png",
+      "sq-visual-rich-illustrative-png"
+    ],
+    "confidenceImprovedRejectedCases": [
+      "disconnected-cta-dark-split-01-png",
+      "disconnected-cta-skewed-layout-02-png",
+      "ls-balance-left-heavy-png",
+      "ls-cta-detached-png"
+    ]
+  },
+  "byCategory": [
+    {
+      "key": "spacing",
+      "caseCount": 8,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 8,
+      "singleGateBlockedCount": 8,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 8
+        }
+      ],
+      "topAffectedCaseIds": [
+        "inefficient-layout-banner-04-png",
+        "inefficient-layout-blue-grid-01-png",
+        "inefficient-layout-card-variations-02-png",
+        "inefficient-layout-circle-focus-03-png",
+        "sq-spacing-cramped-beauty"
+      ]
+    },
+    {
+      "key": "balance",
+      "caseCount": 5,
+      "baselineWinRate": 0.8,
+      "positiveRejectedCandidateCount": 5,
+      "singleGateBlockedCount": 4,
+      "confidenceImprovedRejectedCount": 1,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 5
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-balance-empty-right-minimal",
+        "sq-balance-empty-side-png",
+        "sq-balance-left-heavy",
+        "sq-balance-weak-image-png",
+        "ls-balance-left-heavy-png"
+      ]
+    },
+    {
+      "key": "cta",
+      "caseCount": 5,
+      "baselineWinRate": 0.4,
+      "positiveRejectedCandidateCount": 5,
+      "singleGateBlockedCount": 2,
+      "confidenceImprovedRejectedCount": 3,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 5
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-cta-low-contrast-hidden",
+        "sq-cta-overlay-block-png",
+        "disconnected-cta-dark-split-01-png",
+        "disconnected-cta-skewed-layout-02-png",
+        "ls-cta-detached-png"
+      ]
+    },
+    {
+      "key": "product",
+      "caseCount": 5,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "legacy-safety-rejection",
+          "count": 5
+        }
+      ],
+      "topAffectedCaseIds": [
+        "ls-product-closeup-headphones-png",
+        "sq-product-abstract-headphones-png",
+        "sq-product-decorative-context-png",
+        "sq-product-hero-headphones-png",
+        "sq-product-isolated-clean-png"
+      ]
+    },
+    {
+      "key": "structure",
+      "caseCount": 5,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 5,
+      "singleGateBlockedCount": 5,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 5
+        }
+      ],
+      "topAffectedCaseIds": [
+        "geometric-modern-layout-01-png",
+        "sq-structure-centered-minimal-png",
+        "sq-structure-illustration-focus-png",
+        "sq-structure-split-grid-png",
+        "sq-structure-thumbnail-collapse"
+      ]
+    },
+    {
+      "key": "hero",
+      "caseCount": 4,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 4,
+      "singleGateBlockedCount": 4,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 4
+        }
+      ],
+      "topAffectedCaseIds": [
+        "hero-product-red-tag-urgency-02-png",
+        "hero-product-soft-shapes-01-png",
+        "minimal-product-display-glass-01-png",
+        "sq-balance-empty-hero-png"
+      ]
+    },
+    {
+      "key": "image_presence",
+      "caseCount": 2,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 2
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-image-missing-text-only",
+        "sq-image-weak-product-small"
+      ]
+    },
+    {
+      "key": "marketplace",
+      "caseCount": 2,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "legacy-safety-rejection",
+          "count": 2
+        }
+      ],
+      "topAffectedCaseIds": [
+        "overloaded-marketplace-ui-01-png",
+        "overloaded-marketplace-visual-02-png"
+      ]
+    },
+    {
+      "key": "text_priority",
+      "caseCount": 2,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 2
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-text-dominant-overlay-png",
+        "sq-text-dominant-scene-png"
+      ]
+    },
+    {
+      "key": "visual_style",
+      "caseCount": 2,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 2
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-visual-chaotic-abstract-png",
+        "sq-visual-rich-illustrative-png"
+      ]
+    },
+    {
+      "key": "grid",
+      "caseCount": 1,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 1,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 1
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-grid-misaligned-blocks"
+      ]
+    },
+    {
+      "key": "layout_overlap",
+      "caseCount": 1,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 1,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 1
+        }
+      ],
+      "topAffectedCaseIds": [
+        "sq-layout-overlap-elements"
+      ]
+    }
+  ],
+  "byFormat": [
+    {
+      "key": "square",
+      "caseCount": 35,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 31,
+      "singleGateBlockedCount": 31,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 31
+        },
+        {
+          "blocker": "legacy-safety-rejection",
+          "count": 4
+        }
+      ],
+      "topAffectedCaseIds": [
+        "geometric-modern-layout-01-png",
+        "hero-product-red-tag-urgency-02-png",
+        "hero-product-soft-shapes-01-png",
+        "inefficient-layout-banner-04-png",
+        "inefficient-layout-blue-grid-01-png"
+      ]
+    },
+    {
+      "key": "landscape",
+      "caseCount": 7,
+      "baselineWinRate": 0.43,
+      "positiveRejectedCandidateCount": 4,
+      "singleGateBlockedCount": 0,
+      "confidenceImprovedRejectedCount": 4,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 4
+        },
+        {
+          "blocker": "legacy-safety-rejection",
+          "count": 3
+        }
+      ],
+      "topAffectedCaseIds": [
+        "disconnected-cta-dark-split-01-png",
+        "disconnected-cta-skewed-layout-02-png",
+        "ls-balance-left-heavy-png",
+        "ls-cta-detached-png",
+        "ls-product-closeup-headphones-png"
+      ]
+    }
+  ],
+  "byFamily": [
+    {
+      "key": "display",
+      "caseCount": 35,
+      "baselineWinRate": 0.89,
+      "positiveRejectedCandidateCount": 35,
+      "singleGateBlockedCount": 31,
+      "confidenceImprovedRejectedCount": 4,
+      "dominantBlockers": [
+        {
+          "blocker": "role-placement-out-of-zone",
+          "count": 35
+        }
+      ],
+      "topAffectedCaseIds": [
+        "geometric-modern-layout-01-png",
+        "hero-product-red-tag-urgency-02-png",
+        "hero-product-soft-shapes-01-png",
+        "inefficient-layout-banner-04-png",
+        "inefficient-layout-blue-grid-01-png"
+      ]
+    },
+    {
+      "key": "marketplace",
+      "caseCount": 7,
+      "baselineWinRate": 1,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "confidenceImprovedRejectedCount": 0,
+      "dominantBlockers": [
+        {
+          "blocker": "legacy-safety-rejection",
+          "count": 7
+        }
+      ],
+      "topAffectedCaseIds": [
+        "ls-product-closeup-headphones-png",
+        "overloaded-marketplace-ui-01-png",
+        "overloaded-marketplace-visual-02-png",
+        "sq-product-abstract-headphones-png",
+        "sq-product-decorative-context-png"
+      ]
+    }
+  ],
+  "blockerHotspots": {
+    "byCategory": [
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "spacing",
+        "count": 8
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "key": "product",
+        "count": 5
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "balance",
+        "count": 5
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "cta",
+        "count": 5
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "structure",
+        "count": 5
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "hero",
+        "count": 4
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "key": "marketplace",
+        "count": 2
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "image_presence",
+        "count": 2
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "text_priority",
+        "count": 2
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "visual_style",
+        "count": 2
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "grid",
+        "count": 1
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "layout_overlap",
+        "count": 1
+      }
+    ],
+    "byFormat": [
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "square",
+        "count": 31
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "key": "square",
+        "count": 4
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "landscape",
+        "count": 4
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "key": "landscape",
+        "count": 3
+      }
+    ],
+    "byFamily": [
+      {
+        "blocker": "role-placement-out-of-zone",
+        "key": "display",
+        "count": 35
+      },
+      {
+        "blocker": "legacy-safety-rejection",
+        "key": "marketplace",
+        "count": 7
+      }
+    ]
+  },
+  "topTuningTargets": [
+    {
+      "theme": "role-placement-out-of-zone pressure in spacing square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "caseCount": 8,
+      "positiveRejectedCandidateCount": 8,
+      "singleGateBlockedCount": 8,
+      "topCaseIds": [
+        "inefficient-layout-banner-04-png",
+        "inefficient-layout-blue-grid-01-png",
+        "inefficient-layout-card-variations-02-png",
+        "inefficient-layout-circle-focus-03-png",
+        "sq-spacing-cramped-beauty"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in structure square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "caseCount": 5,
+      "positiveRejectedCandidateCount": 5,
+      "singleGateBlockedCount": 5,
+      "topCaseIds": [
+        "geometric-modern-layout-01-png",
+        "sq-structure-centered-minimal-png",
+        "sq-structure-illustration-focus-png",
+        "sq-structure-split-grid-png",
+        "sq-structure-thumbnail-collapse"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in balance square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "caseCount": 4,
+      "positiveRejectedCandidateCount": 4,
+      "singleGateBlockedCount": 4,
+      "topCaseIds": [
+        "sq-balance-empty-right-minimal",
+        "sq-balance-empty-side-png",
+        "sq-balance-left-heavy",
+        "sq-balance-weak-image-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in hero square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "caseCount": 4,
+      "positiveRejectedCandidateCount": 4,
+      "singleGateBlockedCount": 4,
+      "topCaseIds": [
+        "hero-product-red-tag-urgency-02-png",
+        "hero-product-soft-shapes-01-png",
+        "minimal-product-display-glass-01-png",
+        "sq-balance-empty-hero-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in cta landscape display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "cta",
+      "format": "landscape",
+      "family": "display",
+      "caseCount": 3,
+      "positiveRejectedCandidateCount": 3,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "disconnected-cta-dark-split-01-png",
+        "disconnected-cta-skewed-layout-02-png",
+        "ls-cta-detached-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in cta square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "cta",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "topCaseIds": [
+        "sq-cta-low-contrast-hidden",
+        "sq-cta-overlay-block-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in image_presence square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "image_presence",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "topCaseIds": [
+        "sq-image-missing-text-only",
+        "sq-image-weak-product-small"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in text_priority square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "text_priority",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "topCaseIds": [
+        "sq-text-dominant-overlay-png",
+        "sq-text-dominant-scene-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in visual_style square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "visual_style",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 2,
+      "singleGateBlockedCount": 2,
+      "topCaseIds": [
+        "sq-visual-chaotic-abstract-png",
+        "sq-visual-rich-illustrative-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in grid square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "grid",
+      "format": "square",
+      "family": "display",
+      "caseCount": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 1,
+      "topCaseIds": [
+        "sq-grid-misaligned-blocks"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in layout_overlap square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "layout_overlap",
+      "format": "square",
+      "family": "display",
+      "caseCount": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 1,
+      "topCaseIds": [
+        "sq-layout-overlap-elements"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in balance landscape display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "balance",
+      "format": "landscape",
+      "family": "display",
+      "caseCount": 1,
+      "positiveRejectedCandidateCount": 1,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "ls-balance-left-heavy-png"
+      ]
+    }
+  ],
+  "reviewFirst": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-card-variations-02-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "inefficient-layout-circle-focus-03-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "minimal-product-display-glass-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-empty-hero-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-empty-right-minimal",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-empty-side-png",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-left-heavy",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-balance-weak-image-png",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-cta-low-contrast-hidden",
+      "category": "cta",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-cta-overlay-block-png",
+      "category": "cta",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-grid-misaligned-blocks",
+      "category": "grid",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-image-missing-text-only",
+      "category": "image_presence",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-image-weak-product-small",
+      "category": "image_presence",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-layout-overlap-elements",
+      "category": "layout_overlap",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    },
+    {
+      "caseId": "sq-spacing-cramped-beauty",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "inputPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\input.png",
+      "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\report.json",
+      "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\telemetry.json",
+      "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\calibration.json",
+      "baselineAggregate": 44,
+      "winnerAggregate": 44,
+      "delta": 0,
+      "reviewPriority": "urgent-review",
+      "whyReview": "Baseline retained despite available repair candidates"
+    }
+  ],
+  "failedCases": []
+}

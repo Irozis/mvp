@@ -1,0 +1,19 @@
+{
+  "id": "sq-text-dominant-overlay-png",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "text_priority",
+  "expectedProblems": [
+    "text_priority"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "text_priority",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from text_priority/square/sq-text-dominant-overlay.png.png"
+}

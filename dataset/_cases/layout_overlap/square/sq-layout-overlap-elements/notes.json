@@ -1,0 +1,19 @@
+{
+  "id": "sq-layout-overlap-elements",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "layout_overlap",
+  "expectedProblems": [
+    "layout_overlap"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "layout_overlap",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from layout_overlap/square/sq-layout-overlap-elements.png"
+}

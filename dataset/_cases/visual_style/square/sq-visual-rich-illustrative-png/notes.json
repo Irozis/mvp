@@ -1,0 +1,19 @@
+{
+  "id": "sq-visual-rich-illustrative-png",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "visual_style",
+  "expectedProblems": [
+    "visual_style"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "visual_style",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from visual_style/square/sq-visual-rich-illustrative.png.png"
+}

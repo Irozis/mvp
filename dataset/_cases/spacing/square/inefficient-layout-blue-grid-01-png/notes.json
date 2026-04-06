@@ -1,0 +1,19 @@
+{
+  "id": "inefficient-layout-blue-grid-01-png",
+  "family": "display",
+  "format": "square",
+  "source": "legacy-flat-import",
+  "category": "spacing",
+  "expectedProblems": [
+    "spacing"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure"
+  ],
+  "tags": [
+    "spacing",
+    "square",
+    "display"
+  ],
+  "comment": "Auto-generated from spacing/square/inefficient_layout_blue_grid_01.png.png"
+}

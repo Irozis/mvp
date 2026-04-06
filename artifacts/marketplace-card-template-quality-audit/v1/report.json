@@ -1,0 +1,2036 @@
+{
+  "generatedAt": "2026-03-26T05:21:00.072Z",
+  "scope": "marketplace-card template quality audit",
+  "cases": [
+    {
+      "id": "default-no-image",
+      "label": "Default no-image",
+      "selector": {
+        "selectedTemplateId": "header-panel-card",
+        "alternativeTemplateIds": [
+          "text-first-promo",
+          "minimal-promo-card"
+        ],
+        "reasonCodes": [
+          "no-image",
+          "promo-default"
+        ],
+        "decisionSummary": "No-image marketplace-card with balanced copy; selected Header Panel Card (header-panel-card) because no-image, promo-default.",
+        "inputProfile": {
+          "hasRealImage": false,
+          "imageRegime": "no-image",
+          "copyDensity": "balanced",
+          "preferredMessageMode": "balanced",
+          "messageType": "corporate",
+          "promoIntensity": "low",
+          "ctaFlow": "strong",
+          "subtitlePresent": true,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "header-panel-card",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-primary",
+          "structuralStatus": "valid",
+          "effectiveScore": 26,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "minimal-promo-card",
+          "strategyLabel": "template-minimal-promo-card-alternative-2",
+          "structuralStatus": "invalid",
+          "effectiveScore": 24,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-alternative-1",
+          "structuralStatus": "invalid",
+          "effectiveScore": 24,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "header-panel-card",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "default-no-image",
+          "scenarioLabel": "Default no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 24,
+          "rawScore": 39,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 57,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "default-no-image--text-first-promo.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "default-no-image",
+          "scenarioLabel": "Default no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 26,
+          "rawScore": 40,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 62,
+            "compositionBalance": 100,
+            "textImageHarmony": 59,
+            "ctaQuality": 26,
+            "negativeSpaceQuality": 83,
+            "coherence": 66
+          },
+          "warnings": [
+            "CTA feels underweighted.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Image carries a clear primary focal role.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "8.8:55.7:85.2:0",
+            "subtitle": "8.8:63.9:85.2:0",
+            "image": "23.8:13:62.3:25.8",
+            "cta": "8:80.1:12:4.6",
+            "imageToTitleGap": 16.9,
+            "textToCtaGap": 16.2
+          },
+          "previewArtifact": "default-no-image--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.",
+          "failureModes": [
+            "weak-cta",
+            "detached-text-image",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "default-no-image",
+          "scenarioLabel": "Default no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 24,
+          "rawScore": 39,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 57,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "default-no-image--product-support-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "default-no-image",
+          "scenarioLabel": "Default no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 24,
+          "rawScore": 39,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 57,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "default-no-image--minimal-promo-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dense-no-image",
+      "label": "Dense no-image",
+      "selector": {
+        "selectedTemplateId": "text-first-promo",
+        "alternativeTemplateIds": [
+          "header-panel-card",
+          "minimal-promo-card"
+        ],
+        "reasonCodes": [
+          "no-image",
+          "dense-copy",
+          "text-dominant-message"
+        ],
+        "decisionSummary": "No-image marketplace-card with dense copy; selected Text-first Promo (text-first-promo) because no-image, dense-copy, text-dominant-message.",
+        "inputProfile": {
+          "hasRealImage": false,
+          "imageRegime": "no-image",
+          "copyDensity": "dense",
+          "preferredMessageMode": "balanced",
+          "messageType": "promo",
+          "promoIntensity": "high",
+          "ctaFlow": "strong",
+          "subtitlePresent": true,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "header-panel-card",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-alternative-1",
+          "structuralStatus": "valid",
+          "effectiveScore": 24,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "minimal-promo-card",
+          "strategyLabel": "template-minimal-promo-card-alternative-2",
+          "structuralStatus": "invalid",
+          "effectiveScore": 21,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-primary",
+          "structuralStatus": "invalid",
+          "effectiveScore": 21,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "header-panel-card",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "dense-no-image",
+          "scenarioLabel": "Dense no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 21,
+          "rawScore": 36,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 56,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "dense-no-image--text-first-promo.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "dense-no-image",
+          "scenarioLabel": "Dense no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 24,
+          "rawScore": 38,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 62,
+            "compositionBalance": 100,
+            "textImageHarmony": 59,
+            "ctaQuality": 26,
+            "negativeSpaceQuality": 83,
+            "coherence": 66
+          },
+          "warnings": [
+            "CTA feels underweighted.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Image carries a clear primary focal role.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "8.8:55.7:85.2:0",
+            "subtitle": "8.8:63.9:85.2:0",
+            "image": "23.8:13:62.3:25.8",
+            "cta": "8:80.1:12:4.6",
+            "imageToTitleGap": 16.9,
+            "textToCtaGap": 16.2
+          },
+          "previewArtifact": "dense-no-image--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.",
+          "failureModes": [
+            "weak-cta",
+            "detached-text-image",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "dense-no-image",
+          "scenarioLabel": "Dense no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 21,
+          "rawScore": 36,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 56,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "dense-no-image--product-support-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "dense-no-image",
+          "scenarioLabel": "Dense no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 21,
+          "rawScore": 36,
+          "visualScore": 54,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 92,
+            "textImageHarmony": 56,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 83,
+            "coherence": 73
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "text-cta-overlap",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:80.1:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "8:80:21:4.7",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": -0.1
+          },
+          "previewArtifact": "dense-no-image--minimal-promo-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minimal-no-image",
+      "label": "Minimal no-image",
+      "selector": {
+        "selectedTemplateId": "minimal-promo-card",
+        "alternativeTemplateIds": [
+          "header-panel-card",
+          "text-first-promo"
+        ],
+        "reasonCodes": [
+          "no-image",
+          "short-copy",
+          "minimal-copy-fit",
+          "compact-cta-flow"
+        ],
+        "decisionSummary": "No-image marketplace-card with short copy; selected Minimal Promo Card (minimal-promo-card) because no-image, short-copy, minimal-copy-fit, compact-cta-flow.",
+        "inputProfile": {
+          "hasRealImage": false,
+          "imageRegime": "no-image",
+          "copyDensity": "short",
+          "preferredMessageMode": "balanced",
+          "messageType": "corporate",
+          "promoIntensity": "low",
+          "ctaFlow": "compact",
+          "subtitlePresent": false,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "header-panel-card",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-alternative-1",
+          "structuralStatus": "valid",
+          "effectiveScore": 24,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "minimal-promo-card",
+          "strategyLabel": "template-minimal-promo-card-primary",
+          "structuralStatus": "invalid",
+          "effectiveScore": 22,
+          "visualScore": 55,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "structural-role-placement",
+            "imbalanced-square-composition"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-alternative-2",
+          "structuralStatus": "invalid",
+          "effectiveScore": 22,
+          "visualScore": 55,
+          "visualBand": "weak",
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "structural-role-placement",
+            "imbalanced-square-composition"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "header-panel-card",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "minimal-no-image",
+          "scenarioLabel": "Minimal no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 22,
+          "rawScore": 36,
+          "visualScore": 55,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 100,
+            "textImageHarmony": 55,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 82,
+            "coherence": 74
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned.",
+            "Overall composition reads as a coherent advertising layout."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "structural-role-placement",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:72:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "9.2:86:22:6",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": 14
+          },
+          "previewArtifact": "minimal-no-image--text-first-promo.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "minimal-no-image",
+          "scenarioLabel": "Minimal no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 24,
+          "rawScore": 38,
+          "visualScore": 67,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 62,
+            "compositionBalance": 100,
+            "textImageHarmony": 59,
+            "ctaQuality": 26,
+            "negativeSpaceQuality": 83,
+            "coherence": 66
+          },
+          "warnings": [
+            "CTA feels underweighted.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Image carries a clear primary focal role.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition",
+            "insufficient-breathing-room"
+          ],
+          "geometry": {
+            "title": "8.8:55.7:85.2:0",
+            "subtitle": "8.8:58.7:85.2:0",
+            "image": "23.8:13:62.3:25.8",
+            "cta": "8:80.1:12:4.6",
+            "imageToTitleGap": 16.9,
+            "textToCtaGap": 21.4
+          },
+          "previewArtifact": "minimal-no-image--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.",
+          "failureModes": [
+            "weak-cta",
+            "detached-text-image",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "minimal-no-image",
+          "scenarioLabel": "Minimal no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 22,
+          "rawScore": 36,
+          "visualScore": 55,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 100,
+            "textImageHarmony": 55,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 82,
+            "coherence": 74
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned.",
+            "Overall composition reads as a coherent advertising layout."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "structural-role-placement",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:72:56:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "9.2:86:22:6",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": 14
+          },
+          "previewArtifact": "minimal-no-image--product-support-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "minimal-no-image",
+          "scenarioLabel": "Minimal no-image",
+          "imageRegime": "no-image",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "invalid",
+          "effectiveScore": 22,
+          "rawScore": 36,
+          "visualScore": 55,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 57,
+            "compositionBalance": 100,
+            "textImageHarmony": 55,
+            "ctaQuality": 77,
+            "negativeSpaceQuality": 82,
+            "coherence": 74
+          },
+          "warnings": [
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message."
+          ],
+          "strengths": [
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned.",
+            "Overall composition reads as a coherent advertising layout."
+          ],
+          "issues": [
+            "structural-minimum-spacing",
+            "violates-allowed-zone",
+            "structural-role-placement",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.2:56:62:0",
+            "subtitle": "9.2:72:57:0",
+            "image": "22.5:14:57.1:22.5",
+            "cta": "9.2:86:22:6",
+            "imageToTitleGap": 19.5,
+            "textToCtaGap": 14
+          },
+          "previewArtifact": "minimal-no-image--minimal-promo-card.svg",
+          "productSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message. | CTA looks detached from the message..",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "weak-hierarchy",
+            "bland-composition",
+            "structural-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "default-image-square",
+      "label": "Default image-backed square",
+      "imageProfile": "square",
+      "selector": {
+        "selectedTemplateId": "product-support-card",
+        "alternativeTemplateIds": [
+          "header-panel-card",
+          "text-first-promo"
+        ],
+        "reasonCodes": [
+          "image-backed",
+          "product-support"
+        ],
+        "decisionSummary": "Image-backed marketplace-card with balanced copy; selected Product Support Card (product-support-card) because image-backed, product-support.",
+        "inputProfile": {
+          "hasRealImage": true,
+          "imageRegime": "image-backed",
+          "imageProfile": "square",
+          "copyDensity": "balanced",
+          "preferredMessageMode": "balanced",
+          "messageType": "corporate",
+          "promoIntensity": "low",
+          "ctaFlow": "strong",
+          "subtitlePresent": true,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "text-first-promo",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-alternative-2",
+          "structuralStatus": "valid",
+          "effectiveScore": 47,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-alternative-1",
+          "structuralStatus": "valid",
+          "effectiveScore": 16,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "product-support-card",
+          "strategyLabel": "template-product-support-card-primary",
+          "structuralStatus": "valid",
+          "effectiveScore": 16,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "text-first-promo",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "default-image-square",
+          "scenarioLabel": "Default image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 47,
+          "rawScore": 59,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "visualBreakdown": {
+            "focusHierarchy": 64,
+            "compositionBalance": 96,
+            "textImageHarmony": 46,
+            "ctaQuality": 58,
+            "negativeSpaceQuality": 80,
+            "coherence": 69
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster."
+          ],
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ],
+          "geometry": {
+            "title": "14:58:66:0",
+            "subtitle": "14:69:60:0",
+            "image": "49:12.3:35:27.6",
+            "cta": "8:80.3:18:4.4",
+            "imageToTitleGap": 18.1,
+            "textToCtaGap": 11.3
+          },
+          "previewArtifact": "default-image-square--text-first-promo.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "default-image-square",
+          "scenarioLabel": "Default image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 16,
+          "rawScore": 31,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 74,
+            "compositionBalance": 100,
+            "textImageHarmony": 18,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 81,
+            "coherence": 62
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67.1:82.2:0",
+            "image": "28.2:12:63.8:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 12.9
+          },
+          "previewArtifact": "default-image-square--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "default-image-square",
+          "scenarioLabel": "Default image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 16,
+          "rawScore": 31,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 81,
+            "compositionBalance": 100,
+            "textImageHarmony": 17,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67:82.2:0",
+            "image": "26.6:12:54.7:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 13
+          },
+          "previewArtifact": "default-image-square--product-support-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "default-image-square",
+          "scenarioLabel": "Default image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 16,
+          "rawScore": 31,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 82,
+            "compositionBalance": 100,
+            "textImageHarmony": 20,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.8:55.6:84.2:0",
+            "subtitle": "9.8:65.7:84.2:0",
+            "image": "26.6:13:54.7:14",
+            "cta": "15.8:80:12:4.4",
+            "imageToTitleGap": 28.6,
+            "textToCtaGap": 14.3
+          },
+          "previewArtifact": "default-image-square--minimal-promo-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dense-image-square",
+      "label": "Dense image-backed square",
+      "imageProfile": "square",
+      "selector": {
+        "selectedTemplateId": "product-support-card",
+        "alternativeTemplateIds": [
+          "header-panel-card",
+          "text-first-promo"
+        ],
+        "reasonCodes": [
+          "image-backed",
+          "product-support"
+        ],
+        "decisionSummary": "Image-backed marketplace-card with dense copy; selected Product Support Card (product-support-card) because image-backed, product-support.",
+        "inputProfile": {
+          "hasRealImage": true,
+          "imageRegime": "image-backed",
+          "imageProfile": "square",
+          "copyDensity": "dense",
+          "preferredMessageMode": "balanced",
+          "messageType": "promo",
+          "promoIntensity": "high",
+          "ctaFlow": "strong",
+          "subtitlePresent": true,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "text-first-promo",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-alternative-2",
+          "structuralStatus": "valid",
+          "effectiveScore": 45,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-alternative-1",
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "product-support-card",
+          "strategyLabel": "template-product-support-card-primary",
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "text-first-promo",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "dense-image-square",
+          "scenarioLabel": "Dense image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 45,
+          "rawScore": 57,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "visualBreakdown": {
+            "focusHierarchy": 64,
+            "compositionBalance": 96,
+            "textImageHarmony": 46,
+            "ctaQuality": 58,
+            "negativeSpaceQuality": 80,
+            "coherence": 69
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster."
+          ],
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ],
+          "geometry": {
+            "title": "14:58:66:0",
+            "subtitle": "14:69:60:0",
+            "image": "49:12.3:35:27.6",
+            "cta": "8:80.3:18:4.4",
+            "imageToTitleGap": 18.1,
+            "textToCtaGap": 11.3
+          },
+          "previewArtifact": "dense-image-square--text-first-promo.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "dense-image-square",
+          "scenarioLabel": "Dense image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 74,
+            "compositionBalance": 100,
+            "textImageHarmony": 18,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 81,
+            "coherence": 62
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67.1:82.2:0",
+            "image": "28.2:12:63.8:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 12.9
+          },
+          "previewArtifact": "dense-image-square--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "dense-image-square",
+          "scenarioLabel": "Dense image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 81,
+            "compositionBalance": 100,
+            "textImageHarmony": 17,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67:82.2:0",
+            "image": "26.6:12:54.7:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 13
+          },
+          "previewArtifact": "dense-image-square--product-support-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "dense-image-square",
+          "scenarioLabel": "Dense image-backed square",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 82,
+            "compositionBalance": 100,
+            "textImageHarmony": 20,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.8:55.6:84.2:0",
+            "subtitle": "9.8:65.7:84.2:0",
+            "image": "26.6:13:54.7:14",
+            "cta": "15.8:80:12:4.4",
+            "imageToTitleGap": 28.6,
+            "textToCtaGap": 14.3
+          },
+          "previewArtifact": "dense-image-square--minimal-promo-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "product-image-landscape",
+      "label": "Product-led image-backed landscape",
+      "imageProfile": "landscape",
+      "selector": {
+        "selectedTemplateId": "product-support-card",
+        "alternativeTemplateIds": [
+          "header-panel-card",
+          "text-first-promo"
+        ],
+        "reasonCodes": [
+          "image-backed",
+          "product-support"
+        ],
+        "decisionSummary": "Image-backed marketplace-card with balanced copy; selected Product Support Card (product-support-card) because image-backed, product-support.",
+        "inputProfile": {
+          "hasRealImage": true,
+          "imageRegime": "image-backed",
+          "imageProfile": "landscape",
+          "copyDensity": "balanced",
+          "preferredMessageMode": "image-first",
+          "messageType": "promo",
+          "promoIntensity": "high",
+          "ctaFlow": "strong",
+          "subtitlePresent": true,
+          "badgePresent": true,
+          "logoPresent": true,
+          "ctaPresent": true
+        }
+      },
+      "runtimeWinnerTemplateId": "text-first-promo",
+      "runtimeCandidates": [
+        {
+          "rank": 1,
+          "templateId": "text-first-promo",
+          "strategyLabel": "template-text-first-promo-alternative-2",
+          "structuralStatus": "valid",
+          "effectiveScore": 45,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ]
+        },
+        {
+          "rank": 2,
+          "templateId": "header-panel-card",
+          "strategyLabel": "template-header-panel-card-alternative-1",
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        },
+        {
+          "rank": 3,
+          "templateId": "product-support-card",
+          "strategyLabel": "template-product-support-card-primary",
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ]
+        }
+      ],
+      "forcedBestTemplateId": "text-first-promo",
+      "forcedEvaluations": [
+        {
+          "templateId": "text-first-promo",
+          "templateLabel": "Text-first Promo",
+          "scenarioId": "product-image-landscape",
+          "scenarioLabel": "Product-led image-backed landscape",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 1,
+          "runtimeWinner": true,
+          "structuralStatus": "valid",
+          "effectiveScore": 45,
+          "rawScore": 57,
+          "visualScore": 69,
+          "visualBand": "acceptable",
+          "visualBreakdown": {
+            "focusHierarchy": 64,
+            "compositionBalance": 96,
+            "textImageHarmony": 46,
+            "ctaQuality": 58,
+            "negativeSpaceQuality": 80,
+            "coherence": 69
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Image feels compositionally detached from the message.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "CTA feels integrated with the message cluster."
+          ],
+          "issues": [
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "insufficient-breathing-room",
+            "cta-low-contrast"
+          ],
+          "geometry": {
+            "title": "14:58:66:0",
+            "subtitle": "14:69:60:0",
+            "image": "49:12.3:35:27.6",
+            "cta": "8:80.3:18:4.4",
+            "imageToTitleGap": 18.1,
+            "textToCtaGap": 11.3
+          },
+          "previewArtifact": "product-image-landscape--text-first-promo.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "header-panel-card",
+          "templateLabel": "Header Panel Card",
+          "scenarioId": "product-image-landscape",
+          "scenarioLabel": "Product-led image-backed landscape",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 2,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 63,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 74,
+            "compositionBalance": 100,
+            "textImageHarmony": 18,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 81,
+            "coherence": 62
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67.1:82.2:0",
+            "image": "28.2:12:63.8:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 12.9
+          },
+          "previewArtifact": "product-image-landscape--header-panel-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "product-support-card",
+          "templateLabel": "Product Support Card",
+          "scenarioId": "product-image-landscape",
+          "scenarioLabel": "Product-led image-backed landscape",
+          "imageRegime": "image-backed",
+          "selectedBySelector": true,
+          "consideredInRuntimeSet": true,
+          "runtimeRank": 3,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 81,
+            "compositionBalance": 100,
+            "textImageHarmony": 17,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "11.8:56.7:82.2:0",
+            "subtitle": "11.8:67:82.2:0",
+            "image": "26.6:12:54.7:14",
+            "cta": "13.8:80:12:4.4",
+            "imageToTitleGap": 30.7,
+            "textToCtaGap": 13
+          },
+          "previewArtifact": "product-image-landscape--product-support-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        },
+        {
+          "templateId": "minimal-promo-card",
+          "templateLabel": "Minimal Promo Card",
+          "scenarioId": "product-image-landscape",
+          "scenarioLabel": "Product-led image-backed landscape",
+          "imageRegime": "image-backed",
+          "selectedBySelector": false,
+          "consideredInRuntimeSet": false,
+          "runtimeWinner": false,
+          "structuralStatus": "valid",
+          "effectiveScore": 13,
+          "rawScore": 28,
+          "visualScore": 65,
+          "visualBand": "weak",
+          "visualBreakdown": {
+            "focusHierarchy": 82,
+            "compositionBalance": 100,
+            "textImageHarmony": 20,
+            "ctaQuality": 35,
+            "negativeSpaceQuality": 80,
+            "coherence": 63
+          },
+          "warnings": [
+            "Image presence is too weak to support the message.",
+            "Text-image ratio feels weak.",
+            "Image feels compositionally detached from the message.",
+            "CTA feels underweighted.",
+            "CTA looks detached from the message.",
+            "Canvas underused without compositional payoff."
+          ],
+          "strengths": [
+            "Headline establishes a readable primary focus.",
+            "Asymmetry feels intentional rather than accidental.",
+            "Compact stack reads as a deliberate marketplace composition.",
+            "Negative space feels intentional rather than abandoned."
+          ],
+          "issues": [
+            "violates-cta-size-rule",
+            "violates-image-footprint-rule",
+            "violates-allowed-zone",
+            "imbalanced-square-composition"
+          ],
+          "geometry": {
+            "title": "9.8:55.6:84.2:0",
+            "subtitle": "9.8:65.7:84.2:0",
+            "image": "26.6:13:54.7:14",
+            "cta": "15.8:80:12:4.4",
+            "imageToTitleGap": 28.6,
+            "textToCtaGap": 14.3
+          },
+          "previewArtifact": "product-image-landscape--minimal-promo-card.svg",
+          "productSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+          "failureModes": [
+            "weak-cta",
+            "weak-top-support",
+            "detached-text-image",
+            "accidental-dead-space",
+            "structural-risk"
+          ]
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "templateId": "header-panel-card",
+      "templateLabel": "Header Panel Card",
+      "verdict": "keep, tune",
+      "action": "Keep, but target the leading failure modes",
+      "runtimeWinCount": 3,
+      "forcedTopRankCount": 3,
+      "avgEffectiveScore": 19.3,
+      "avgVisualScore": 65,
+      "validCount": 6,
+      "degradedCount": 0,
+      "invalidCount": 0,
+      "topFailureModes": [
+        "detached-text-image",
+        "structural-risk",
+        "weak-cta"
+      ],
+      "topWarnings": [
+        "CTA feels underweighted.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strongestScenario": "Default no-image",
+      "weakestScenario": "Dense image-backed square",
+      "strongestSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, detached-text-image.",
+      "weakestSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support."
+    },
+    {
+      "templateId": "minimal-promo-card",
+      "templateLabel": "Minimal Promo Card",
+      "verdict": "demote",
+      "action": "Demote in active rotation until tuned",
+      "runtimeWinCount": 0,
+      "forcedTopRankCount": 0,
+      "avgEffectiveScore": 18.2,
+      "avgVisualScore": 59.7,
+      "validCount": 3,
+      "degradedCount": 0,
+      "invalidCount": 3,
+      "topFailureModes": [
+        "detached-text-image",
+        "structural-risk",
+        "weak-cta"
+      ],
+      "topWarnings": [
+        "Image feels compositionally detached from the message.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strongestScenario": "Default image-backed square",
+      "weakestScenario": "Dense no-image",
+      "strongestSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+      "weakestSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message.."
+    },
+    {
+      "templateId": "product-support-card",
+      "templateLabel": "Product Support Card",
+      "verdict": "demote",
+      "action": "Demote in active rotation until tuned",
+      "runtimeWinCount": 0,
+      "forcedTopRankCount": 0,
+      "avgEffectiveScore": 18.2,
+      "avgVisualScore": 59.7,
+      "validCount": 3,
+      "degradedCount": 0,
+      "invalidCount": 3,
+      "topFailureModes": [
+        "detached-text-image",
+        "structural-risk",
+        "weak-cta"
+      ],
+      "topWarnings": [
+        "Image feels compositionally detached from the message.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strongestScenario": "Default image-backed square",
+      "weakestScenario": "Dense no-image",
+      "strongestSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+      "weakestSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message.."
+    },
+    {
+      "templateId": "text-first-promo",
+      "templateLabel": "Text-first Promo",
+      "verdict": "demote",
+      "action": "Demote in active rotation until tuned",
+      "runtimeWinCount": 3,
+      "forcedTopRankCount": 3,
+      "avgEffectiveScore": 34,
+      "avgVisualScore": 61.7,
+      "validCount": 3,
+      "degradedCount": 0,
+      "invalidCount": 3,
+      "topFailureModes": [
+        "detached-text-image",
+        "structural-risk",
+        "weak-cta"
+      ],
+      "topWarnings": [
+        "Image feels compositionally detached from the message.",
+        "CTA looks detached from the message.",
+        "Canvas underused without compositional payoff."
+      ],
+      "strongestScenario": "Default image-backed square",
+      "weakestScenario": "Dense no-image",
+      "strongestSummary": "Usable product card, but still carries visible polish debt. Main product weaknesses: weak-cta, weak-top-support.",
+      "weakestSummary": "Structurally risky product pattern. Main blockers: Image feels compositionally detached from the message.."
+    }
+  ],
+  "summary": {
+    "strongestNoImageTemplate": "header-panel-card",
+    "strongestNoImageCase": "Default no-image",
+    "strongestImageBackedTemplate": "text-first-promo",
+    "strongestImageBackedCase": "Default image-backed square",
+    "weakestTemplate": "text-first-promo",
+    "weakestCase": "Dense no-image",
+    "recurringFailureModes": [
+      {
+        "failureMode": "detached-text-image",
+        "count": 24
+      },
+      {
+        "failureMode": "structural-risk",
+        "count": 24
+      },
+      {
+        "failureMode": "weak-cta",
+        "count": 24
+      },
+      {
+        "failureMode": "weak-top-support",
+        "count": 21
+      },
+      {
+        "failureMode": "accidental-dead-space",
+        "count": 12
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "overloaded-marketplace-ui-01-png",
+  "family": "marketplace",
+  "format": "landscape",
+  "source": "legacy-flat-import",
+  "category": "marketplace",
+  "expectedProblems": [
+    "marketplace"
+  ],
+  "expectedBehavior": [
+    "preserve-layout-structure",
+    "keep-text-image-balance"
+  ],
+  "tags": [
+    "marketplace",
+    "landscape",
+    "marketplace"
+  ],
+  "comment": "Auto-generated from marketplace/landscape/overloaded_marketplace_ui_01.png.png"
+}
