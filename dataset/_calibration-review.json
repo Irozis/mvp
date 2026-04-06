@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T08:53:49.124Z",
+  "generatedAt": "2026-04-06T10:31:09.792Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "reviewConfig": {
     "reviewQueueSize": 10,
@@ -238,7 +238,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "hero-product-red-tag-urgency-02-png",
@@ -247,7 +247,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "hero-product-soft-shapes-01-png",
@@ -256,7 +256,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-banner-04-png",
@@ -265,7 +265,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-blue-grid-01-png",
@@ -274,7 +274,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-card-variations-02-png",
@@ -283,7 +283,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-circle-focus-03-png",
@@ -292,7 +292,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "ls-product-closeup-headphones-png",
@@ -310,7 +310,7 @@
       "family": "display",
       "delta": 0,
       "reviewPriority": "urgent-review",
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "overloaded-marketplace-ui-01-png",

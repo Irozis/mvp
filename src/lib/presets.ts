@@ -74,6 +74,9 @@ export const GOAL_PRESETS: GoalPreset[] = [
   },
 ]
 
+/** Shown in Campaign goal UI; full `GOAL_PRESETS` stays available for imports and internals. */
+export const UI_GOAL_PRESETS = GOAL_PRESETS.filter((goal) => goal.scopeStage === 'active')
+
 export const VISUAL_SYSTEMS: VisualSystem[] = [
   { key: 'minimal', label: 'Minimal', description: 'Clean, calm, premium spacing with restrained accents.', mood: 'quiet confidence', titleWeight: 700, subtitleOpacity: 0.78, imageTreatment: 'clean' },
   { key: 'bold-promo', label: 'Bold Promo', description: 'High-energy promo direction with stronger contrasts and CTA focus.', mood: 'urgent and commercial', titleWeight: 800, subtitleOpacity: 0.9, imageTreatment: 'immersive' },

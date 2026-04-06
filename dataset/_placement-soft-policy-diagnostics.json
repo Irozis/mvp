@@ -1,75 +1,75 @@
 {
-  "generatedAt": "2026-04-06T08:53:39.414Z",
+  "generatedAt": "2026-04-06T10:31:15.109Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "totals": {
-    "totalRolePlacementRejections": 195,
+    "totalRolePlacementRejections": 350,
     "severityCounts": {
       "none": 0,
-      "mild": 40,
-      "moderate": 93,
-      "severe": 62
+      "mild": 71,
+      "moderate": 0,
+      "severe": 279
     },
     "unlockedCandidateCount": 0,
     "unlockedCaseCount": 0
   },
   "byCategory": [
     {
-      "key": "cta",
-      "rolePlacementRejectionCount": 40,
-      "unlockedCaseCount": 0,
-      "unlockedCandidateCount": 0
-    },
-    {
       "key": "spacing",
-      "rolePlacementRejectionCount": 40,
+      "rolePlacementRejectionCount": 80,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "balance",
-      "rolePlacementRejectionCount": 30,
+      "rolePlacementRejectionCount": 50,
+      "unlockedCaseCount": 0,
+      "unlockedCandidateCount": 0
+    },
+    {
+      "key": "cta",
+      "rolePlacementRejectionCount": 50,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "structure",
-      "rolePlacementRejectionCount": 25,
+      "rolePlacementRejectionCount": 50,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "hero",
-      "rolePlacementRejectionCount": 20,
+      "rolePlacementRejectionCount": 40,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "image_presence",
-      "rolePlacementRejectionCount": 10,
+      "rolePlacementRejectionCount": 20,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "text_priority",
-      "rolePlacementRejectionCount": 10,
+      "rolePlacementRejectionCount": 20,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "visual_style",
-      "rolePlacementRejectionCount": 10,
+      "rolePlacementRejectionCount": 20,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "grid",
-      "rolePlacementRejectionCount": 5,
+      "rolePlacementRejectionCount": 10,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
     {
       "key": "layout_overlap",
-      "rolePlacementRejectionCount": 5,
+      "rolePlacementRejectionCount": 10,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     }
@@ -77,7 +77,7 @@
   "byFormat": [
     {
       "key": "square",
-      "rolePlacementRejectionCount": 155,
+      "rolePlacementRejectionCount": 310,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     },
@@ -91,7 +91,7 @@
   "byFamily": [
     {
       "key": "display",
-      "rolePlacementRejectionCount": 195,
+      "rolePlacementRejectionCount": 350,
       "unlockedCaseCount": 0,
       "unlockedCandidateCount": 0
     }

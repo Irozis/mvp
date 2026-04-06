@@ -20,12 +20,12 @@ import { BasicControls, BrandEditor, ElementEditor } from './components/Controls
 import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout, generateVariant, refreshProjectModel, regenerateFormats } from './lib/autoAdapt'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
-import { BRAND_TEMPLATES, CHANNEL_FORMATS, GOAL_PRESETS, LAYOUT_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
+import { BRAND_TEMPLATES, CHANNEL_FORMATS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
 import { buildPdfFromJpegs } from './lib/pdf'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
-import { getGoalScopeNote, getPrimaryPreviewFormats } from './lib/productScope'
+import { getPrimaryPreviewFormats } from './lib/productScope'
 import type {
   BrandTemplateKey,
   FormatKey,
@@ -60,14 +60,11 @@ function createDefaultProject() {
   })
 }
 
-function getSuggestedDirections(goal: GoalKey, imageProfile?: ImageProfile) {
+function getSuggestedDirections(imageProfile?: ImageProfile) {
   if (imageProfile === 'portrait' || imageProfile === 'tall') {
-    return ['bold-promo', 'luxury-clean', 'editorial', 'minimal'] as VisualSystemKey[]
+    return ['product-card', 'bold-promo', 'minimal', 'luxury-clean'] as VisualSystemKey[]
   }
-  if (goal === 'performance-banners') return ['bold-promo', 'product-card', 'minimal', 'luxury-clean'] as VisualSystemKey[]
-  if (goal === 'retail-flyer') return ['bold-promo', 'editorial', 'product-card', 'luxury-clean'] as VisualSystemKey[]
-  if (goal === 'stories-ads') return ['bold-promo', 'minimal', 'luxury-clean', 'editorial'] as VisualSystemKey[]
-  return ['bold-promo', 'minimal', 'editorial', 'product-card'] as VisualSystemKey[]
+  return ['product-card', 'bold-promo', 'minimal', 'editorial', 'luxury-clean'] as VisualSystemKey[]
 }
 
 function isProjectShape(value: unknown): value is Project {
@@ -160,7 +157,7 @@ export default function App() {
   })
   const [status, setStatus] = useState<{ tone: StatusTone; text: string }>({
     tone: 'neutral',
-    text: 'Build a marketplace-focused adaptive pack. Template-assisted generation is the primary product direction; broader freeform families remain legacy infrastructure.',
+    text: 'Build a marketplace adaptive pack: card, highlight, and tile outputs from one master.',
   })
 
   const refs = useRef<Partial<Record<FormatKey, HTMLDivElement | null>>>({})
@@ -174,6 +171,13 @@ export default function App() {
   useEffect(() => {
     setSavedProjects(localProjectRepository.loadAll())
   }, [])
+
+  useEffect(() => {
+    if (UI_GOAL_PRESETS.some((g) => g.key === project.goal)) return
+    setFixResults({})
+    setFixSessions({})
+    setProject((prev) => regenerateFormats({ ...prev, goal: 'promo-pack' }))
+  }, [project.goal])
 
   const currentGoalPreset = useMemo(() => GOAL_PRESETS.find((item) => item.key === project.goal), [project.goal])
   const goalFormats = useMemo(() => currentGoalPreset?.includedFormats || ['marketplace-card'], [currentGoalPreset])
@@ -194,7 +198,7 @@ export default function App() {
   const currentFormatKey = editMode === 'master' ? activeFormatKey : editMode
   const currentScene = editMode === 'master' ? project.master : resolvedFormats[editMode]
   const currentSavedProject = savedProjects.find((item) => item.id === currentSavedId) || null
-  const suggestedDirections = useMemo(() => getSuggestedDirections(project.goal, project.assetHint?.imageProfile), [project.goal, project.assetHint?.imageProfile])
+  const suggestedDirections = useMemo(() => getSuggestedDirections(project.assetHint?.imageProfile), [project.assetHint?.imageProfile])
   const structuralLogSignatureRef = useRef('')
 
   const assessments = useMemo(
@@ -469,13 +473,13 @@ export default function App() {
     const goalPreset = GOAL_PRESETS.find((item) => item.key === goal)
     const nextActive = getPrimaryPreviewFormats(CHANNEL_FORMATS, goalPreset)[0]
     if (nextActive) setActiveFormatKey(nextActive.key)
-    setStatus({ tone: 'success', text: `Preview scope updated. ${getGoalScopeNote(goalPreset)}` })
+    setStatus({ tone: 'success', text: 'Preview scope updated: marketplace card, highlight, and tile.' })
   }
 
   const applyVisualSystem = (visualSystem: VisualSystemKey) => {
     clearFixArtifacts()
     setProject((prev) => regenerateFormats({ ...prev, visualSystem }))
-    setStatus({ tone: 'success', text: `Direction changed to ${VISUAL_SYSTEMS.find((item) => item.key === visualSystem)?.label}. All output formats were refreshed.` })
+    setStatus({ tone: 'success', text: `Direction changed to ${VISUAL_SYSTEMS.find((item) => item.key === visualSystem)?.label}. Marketplace previews were refreshed.` })
   }
 
   const applyTemplate = (nextTemplate: TemplateKey) => {
@@ -722,16 +726,16 @@ export default function App() {
           <div className="eyebrow">Adaptive Creative Studio</div>
           <div className="title-row hero-title">
             <LayoutTemplate size={24} />
-            <h1>Build once. Ship a full channel pack.</h1>
+            <h1>Build once. Ship marketplace-ready layouts.</h1>
           </div>
           <p className="hero-text">
-            From one master creative, the app now builds export-ready formats for social, display, marketplace, print, and presentation workflows.
+            From one master creative, export marketplace card, product highlight, and promo tile formats with consistent branding and validation.
           </p>
         </div>
         <div className="step-grid">
           <StepCard title="1. Choose mode" text="Create from scratch, import a layout reference, or start from a brand template." />
-          <StepCard title="2. Define the pack" text="Choose the active marketplace scope first. Legacy multi-format presets remain available for diagnostics and fallback export only." />
-          <StepCard title="3. Select direction" text="Choose a marketplace-focused visual system, then review the active supported formats in one continuous feed." />
+          <StepCard title="2. Define the pack" text="This demo focuses on the marketplace adaptive pack: card, highlight, and tile outputs." />
+          <StepCard title="3. Select direction" text="Pick a visual system suited to product-led marketplace layouts, then review all sizes in the preview feed." />
           <StepCard title="4. Save and export" text="Track versions, reopen projects later, and export PNG, JPG, PDF, or JSON." />
         </div>
       </div>
@@ -783,14 +787,13 @@ export default function App() {
               <div className="field">
                 <label className="label">Campaign goal</label>
                 <select className="select" value={project.goal} onChange={(event) => applyGoal(event.target.value as GoalKey)}>
-                  {GOAL_PRESETS.map((goal) => (
+                  {UI_GOAL_PRESETS.map((goal) => (
                     <option key={goal.key} value={goal.key}>
                       {goal.label}
                     </option>
                   ))}
                 </select>
                 <div className="hint">{currentGoalPreset?.description}</div>
-                <div className="hint">{getGoalScopeNote(currentGoalPreset)}</div>
               </div>
 
               {entryMode === 'reference' && (
@@ -1017,8 +1020,8 @@ export default function App() {
               <div className="space-between">
                 <div>
                   <div className="section-kicker">Output pack</div>
-                  <h2>Real channel presets</h2>
-                  <p className="muted">The active diploma preview includes {previewFormats.length} marketplace-focused formats. Broader legacy families remain preserved in the codebase, but they are no longer treated as the main product promise.</p>
+                  <h2>Marketplace formats</h2>
+                  <p className="muted">Preview and export cover {previewFormats.length} marketplace sizes (card, highlight, tile) derived from your master.</p>
                 </div>
                 <div className="row wrap">
                   <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>
@@ -1052,7 +1055,7 @@ export default function App() {
             </div>
             <div className="card-body stack">
               <div className="pack-grid">
-                {GOAL_PRESETS.map((goal) => (
+                {UI_GOAL_PRESETS.map((goal) => (
                   <button key={goal.key} className={`pack-chip ${project.goal === goal.key ? 'active' : ''}`} onClick={() => applyGoal(goal.key)}>
                     <span>{goal.label}</span>
                     <small>{getPrimaryPreviewFormats(CHANNEL_FORMATS, goal).length} active preview</small>

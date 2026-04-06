@@ -1,15 +1,1576 @@
 {
-  "generatedAt": "2026-04-06T08:53:39.422Z",
+  "generatedAt": "2026-04-06T10:31:15.115Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "totals": {
-    "squareDisplayBlockedCandidates": 155,
-    "dominantTextCount": 0,
+    "squareDisplayBlockedCandidates": 310,
+    "dominantTextCount": 217,
     "textOnlyDominantCount": 0,
     "combinedBoundsSevereCount": 0,
-    "titleOnlyMilderThanCombinedCount": 0,
+    "titleOnlyMilderThanCombinedCount": 62,
     "improvedTextCandidateCount": 0,
     "wouldBecomeMilderCount": 0
   },
-  "topBlockedCandidates": [],
+  "topBlockedCandidates": [
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 47.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 31.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 48.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 48.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 8,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 42.592592592592595,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -5
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 47.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 31.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 48.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 48.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 8,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 42.592592592592595,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -5
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 47.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 31.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 48.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 48.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 8,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 42.592592592592595,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -5
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 47.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 31.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 48.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 48.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 8,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 42.592592592592595,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -5
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "local-structural-repair",
+      "strategyLabel": "local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 47.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 31.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 48.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 48.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 6.666666666666667,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 6.666666666666667,
+        "y": 33.48148148148148,
+        "w": 43.92592592592593,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 43.92592592592593,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -4
+    },
+    {
+      "caseId": "inefficient-layout-blue-grid-01-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "dominantRole": "text",
+      "titleRect": {
+        "label": "Headline",
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 27.6
+      },
+      "subtitleRect": {
+        "label": "Text",
+        "x": 8,
+        "y": 59.91851851851852,
+        "w": 30.24074074074074,
+        "h": 4.592592592592593
+      },
+      "combinedTextRect": {
+        "x": 8,
+        "y": 33.48148148148148,
+        "w": 42.592592592592595,
+        "h": 31.029629629629625
+      },
+      "allowedTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        },
+        {
+          "x": 11.11111111111111,
+          "y": 56.481481481481474,
+          "w": 77.77777777777779,
+          "h": 25.925925925925924
+        }
+      ],
+      "preferredTextZones": [
+        {
+          "x": 6.666666666666667,
+          "y": 57.407407407407405,
+          "w": 50,
+          "h": 27.77777777777778
+        }
+      ],
+      "allowedDistance": 23.93,
+      "preferredDistance": 23.93,
+      "combinedAllowedDistance": 23.93,
+      "combinedPreferredDistance": 23.93,
+      "zonePaddingApplied": 0,
+      "titleOnlyAllowedDistance": 23.93,
+      "titleOnlyPreferredDistance": 23.93,
+      "titlePlacementDistance": 23.93,
+      "subtitleAttachmentDistance": 0,
+      "subtitleInflationContribution": 3.43,
+      "titleSubtitleVerticalGap": -1.16,
+      "clusterHeight": 31.029629629629625,
+      "clusterWidth": 42.592592592592595,
+      "combinedClusterFootprint": 0,
+      "clusterRemainsCoherent": true,
+      "preservesReadingFlow": true,
+      "likelyAlignedWithStrategy": false,
+      "combinedInflatedMainlyBySubtitle": false,
+      "titleDominatesMainTextPlacement": false,
+      "subtitleDetached": false,
+      "titleOnlyWouldFitBetterThanCombined": false,
+      "combinedBoundsMainReason": false,
+      "severeDrivenByCombinedClusterOnly": false,
+      "wouldBecomeMilderUnderAttachmentAwarePolicy": false,
+      "improvedAggregateScore": false,
+      "aggregateDelta": -5
+    }
+  ],
   "topImprovedCandidates": []
 }

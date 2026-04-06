@@ -412,12 +412,12 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "local-structural-repair",
         "candidateKind": "local-structural-repair",
         "structuralStatus": "invalid",
-        "aggregateScore": 47,
-        "aggregateDelta": -3,
+        "aggregateScore": 46,
+        "aggregateDelta": -4,
         "accepted": false,
         "rejectionReasons": [
           "legacy-safety-rejection",
@@ -510,13 +510,12 @@
           "role": "text",
           "violatingRoles": [
             "text",
-            "image",
-            "cta"
+            "image"
           ],
           "preferredZoneDistance": 23.93,
           "allowedZoneDistance": 23.93,
-          "avgAllowedDistance": 11.52,
-          "avgPreferredDistance": 11.52,
+          "avgAllowedDistance": 15.37,
+          "avgPreferredDistance": 15.37,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -528,8 +527,8 @@
           "reasons": [
             "allowed-zone-drift:23.93",
             "preferred-zone-drift:23.93",
-            "avg-allowed-zone-drift:11.52",
-            "avg-preferred-zone-drift:11.52",
+            "avg-allowed-zone-drift:15.37",
+            "avg-preferred-zone-drift:15.37",
             "visual-hierarchy-weak",
             "multiple-roles-drifting"
           ],
@@ -576,12 +575,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 0.9,
+              "preferredDistance": 0.9,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 80.08148148148149,
                 "w": 20,
                 "h": 6
               },
@@ -762,7 +761,7 @@
           }
         },
         "softPlacementPenalty": 9,
-        "adjustedAggregateScore": 38,
+        "adjustedAggregateScore": 37,
         "wouldPassWithSoftPlacement": false,
         "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
@@ -795,7 +794,7 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "perceptual-rebalance-repair",
         "candidateKind": "perceptual-rebalance-repair",
         "structuralStatus": "invalid",
@@ -893,13 +892,12 @@
           "role": "text",
           "violatingRoles": [
             "text",
-            "image",
-            "cta"
+            "image"
           ],
           "preferredZoneDistance": 23.93,
           "allowedZoneDistance": 23.93,
-          "avgAllowedDistance": 11.52,
-          "avgPreferredDistance": 11.52,
+          "avgAllowedDistance": 15.37,
+          "avgPreferredDistance": 15.37,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -911,8 +909,8 @@
           "reasons": [
             "allowed-zone-drift:23.93",
             "preferred-zone-drift:23.93",
-            "avg-allowed-zone-drift:11.52",
-            "avg-preferred-zone-drift:11.52",
+            "avg-allowed-zone-drift:15.37",
+            "avg-preferred-zone-drift:15.37",
             "visual-hierarchy-weak",
             "multiple-roles-drifting"
           ],
@@ -959,12 +957,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 0.9,
+              "preferredDistance": 0.9,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 80.08148148148149,
                 "w": 20,
                 "h": 6
               },
@@ -1178,7 +1176,7 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "spacing-recovery-repair",
         "candidateKind": "spacing-recovery-repair",
         "structuralStatus": "invalid",
@@ -1276,13 +1274,12 @@
           "role": "text",
           "violatingRoles": [
             "text",
-            "image",
-            "cta"
+            "image"
           ],
           "preferredZoneDistance": 23.93,
           "allowedZoneDistance": 23.93,
-          "avgAllowedDistance": 11.52,
-          "avgPreferredDistance": 11.52,
+          "avgAllowedDistance": 15.37,
+          "avgPreferredDistance": 15.37,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -1294,8 +1291,8 @@
           "reasons": [
             "allowed-zone-drift:23.93",
             "preferred-zone-drift:23.93",
-            "avg-allowed-zone-drift:11.52",
-            "avg-preferred-zone-drift:11.52",
+            "avg-allowed-zone-drift:15.37",
+            "avg-preferred-zone-drift:15.37",
             "visual-hierarchy-weak",
             "multiple-roles-drifting"
           ],
@@ -1342,12 +1339,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 0.9,
+              "preferredDistance": 0.9,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 80.08148148148149,
                 "w": 20,
                 "h": 6
               },
@@ -1561,7 +1558,7 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":28.7,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":28.7,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "image-balance-repair",
         "candidateKind": "image-balance-repair",
         "structuralStatus": "invalid",
@@ -1588,6 +1585,7 @@
           "nearMissOverrideBlockedReasons": [
             "not-landscape-display",
             "dominant-blocker-not-image",
+            "placement-not-moderate",
             "landscape-image-policy-not-applicable",
             "non-positive-aggregate-delta",
             "spacing-collapse",
@@ -1604,7 +1602,6 @@
             "not-landscape-display",
             "not-best-rejected-candidate",
             "blocker-family:other",
-            "placement-severity:moderate",
             "non-positive-aggregate-delta",
             "title-would-not-pass",
             "message-cluster-would-not-pass",
@@ -1620,7 +1617,7 @@
             "landscapeDisplay": false,
             "bestRejectedCandidate": false,
             "blockerFamilyMatch": false,
-            "mildSeverity": false,
+            "mildSeverity": true,
             "positiveAggregateDelta": false,
             "nonNegativeConfidenceDelta": true,
             "titleOnlyWouldPass": false,
@@ -1653,16 +1650,14 @@
           "needsHumanAttention": true
         },
         "confidenceDelta": 3,
-        "placementSeverity": "moderate",
+        "placementSeverity": "mild",
         "placementDiagnostics": {
-          "role": "cta",
-          "violatingRoles": [
-            "cta"
-          ],
-          "preferredZoneDistance": 3.81,
-          "allowedZoneDistance": 3.81,
-          "avgAllowedDistance": 3.81,
-          "avgPreferredDistance": 3.81,
+          "role": "unknown",
+          "violatingRoles": [],
+          "preferredZoneDistance": 0,
+          "allowedZoneDistance": 0.91,
+          "avgAllowedDistance": 0,
+          "avgPreferredDistance": 0,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -1670,12 +1665,9 @@
           "badgeVisuallyCritical": false,
           "badgeAffectsCoreReadingFlow": false,
           "badgeLikelyOptional": false,
-          "severity": "moderate",
+          "severity": "mild",
           "reasons": [
-            "allowed-zone-drift:3.81",
-            "preferred-zone-drift:3.81",
-            "avg-allowed-zone-drift:3.81",
-            "avg-preferred-zone-drift:3.81",
+            "allowed-zone-drift:0.91",
             "visual-hierarchy-weak"
           ],
           "perRole": [
@@ -1757,12 +1749,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 0.9,
+              "preferredDistance": 0.9,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 80.08148148148149,
                 "w": 20,
                 "h": 6
               },
@@ -2012,8 +2004,8 @@
             "titlePreferredDistance": 0,
             "combinedAllowedDistance": 0.99,
             "combinedPreferredDistance": 0,
-            "rawCtaToCombinedTextDistance": 18.49,
-            "adjustedCtaToCombinedTextDistance": 21.3,
+            "rawCtaToCombinedTextDistance": 15.57,
+            "adjustedCtaToCombinedTextDistance": 18.38,
             "subtitleAttachmentDistance": 0,
             "subtitleAttachmentQuality": 100,
             "combinedClusterFootprint": 18.15,
@@ -2036,8 +2028,8 @@
             "adjustedPreferredDistance": 0
           }
         },
-        "softPlacementPenalty": 4,
-        "adjustedAggregateScore": 42,
+        "softPlacementPenalty": 1.5,
+        "adjustedAggregateScore": 44.5,
         "wouldPassWithSoftPlacement": false,
         "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
@@ -2051,7 +2043,7 @@
           "landscapeDisplay": false,
           "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
-          "mildSeverity": false,
+          "mildSeverity": true,
           "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
@@ -2070,12 +2062,12 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "stronger-local-structural-repair",
         "candidateKind": "stronger-local-structural-repair",
         "structuralStatus": "invalid",
-        "aggregateScore": 46,
-        "aggregateDelta": -4,
+        "aggregateScore": 45,
+        "aggregateDelta": -5,
         "accepted": false,
         "rejectionReasons": [
           "legacy-safety-rejection",
@@ -2168,13 +2160,12 @@
           "role": "text",
           "violatingRoles": [
             "text",
-            "image",
-            "cta"
+            "image"
           ],
           "preferredZoneDistance": 23.93,
           "allowedZoneDistance": 23.93,
-          "avgAllowedDistance": 11.52,
-          "avgPreferredDistance": 11.52,
+          "avgAllowedDistance": 15.37,
+          "avgPreferredDistance": 15.37,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -2186,8 +2177,8 @@
           "reasons": [
             "allowed-zone-drift:23.93",
             "preferred-zone-drift:23.93",
-            "avg-allowed-zone-drift:11.52",
-            "avg-preferred-zone-drift:11.52",
+            "avg-allowed-zone-drift:15.37",
+            "avg-preferred-zone-drift:15.37",
             "visual-hierarchy-weak",
             "multiple-roles-drifting"
           ],
@@ -2234,12 +2225,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 0.9,
+              "preferredDistance": 0.9,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 80.08148148148149,
                 "w": 20,
                 "h": 6
               },
@@ -2420,7 +2411,7 @@
           }
         },
         "softPlacementPenalty": 9,
-        "adjustedAggregateScore": 37,
+        "adjustedAggregateScore": 36,
         "wouldPassWithSoftPlacement": false,
         "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
@@ -2453,12 +2444,12 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":71.8,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "guided-split-vertical-regeneration",
         "candidateKind": "guided-regeneration-repair",
         "structuralStatus": "invalid",
-        "aggregateScore": 45,
-        "aggregateDelta": -5,
+        "aggregateScore": 41,
+        "aggregateDelta": -9,
         "accepted": false,
         "rejectionReasons": [
           "legacy-safety-rejection",
@@ -2479,6 +2470,7 @@
           "nearMissOverrideBlockedReasons": [
             "not-landscape-display",
             "dominant-blocker-not-image",
+            "placement-not-moderate",
             "landscape-image-policy-not-applicable",
             "non-positive-aggregate-delta",
             "critical-issues",
@@ -2493,7 +2485,7 @@
             "not-landscape-display",
             "not-best-rejected-candidate",
             "blocker-family:other",
-            "placement-severity:moderate",
+            "placement-severity:severe",
             "non-positive-aggregate-delta",
             "title-would-not-pass",
             "message-cluster-would-not-pass",
@@ -2539,16 +2531,16 @@
           "needsHumanAttention": true
         },
         "confidenceDelta": 0,
-        "placementSeverity": "moderate",
+        "placementSeverity": "severe",
         "placementDiagnostics": {
           "role": "cta",
           "violatingRoles": [
             "cta"
           ],
-          "preferredZoneDistance": 3.81,
-          "allowedZoneDistance": 3.81,
-          "avgAllowedDistance": 3.81,
-          "avgPreferredDistance": 3.81,
+          "preferredZoneDistance": 6.35,
+          "allowedZoneDistance": 6.35,
+          "avgAllowedDistance": 6.35,
+          "avgPreferredDistance": 6.35,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -2556,12 +2548,12 @@
           "badgeVisuallyCritical": false,
           "badgeAffectsCoreReadingFlow": false,
           "badgeLikelyOptional": false,
-          "severity": "moderate",
+          "severity": "severe",
           "reasons": [
-            "allowed-zone-drift:3.81",
-            "preferred-zone-drift:3.81",
-            "avg-allowed-zone-drift:3.81",
-            "avg-preferred-zone-drift:3.81",
+            "allowed-zone-drift:6.35",
+            "preferred-zone-drift:6.35",
+            "avg-allowed-zone-drift:6.35",
+            "avg-preferred-zone-drift:6.35",
             "visual-hierarchy-weak"
           ],
           "perRole": [
@@ -2643,12 +2635,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 3.81,
-              "preferredDistance": 3.81,
+              "allowedDistance": 6.35,
+              "preferredDistance": 6.35,
               "rect": {
                 "label": "CTA",
                 "x": 8,
-                "y": 83,
+                "y": 71.8,
                 "w": 20,
                 "h": 6
               },
@@ -2898,8 +2890,8 @@
             "titlePreferredDistance": 0,
             "combinedAllowedDistance": 0.89,
             "combinedPreferredDistance": 0,
-            "rawCtaToCombinedTextDistance": 22.13,
-            "adjustedCtaToCombinedTextDistance": 22.13,
+            "rawCtaToCombinedTextDistance": 10.93,
+            "adjustedCtaToCombinedTextDistance": 10.93,
             "subtitleAttachmentDistance": 0,
             "subtitleAttachmentQuality": 100,
             "combinedClusterFootprint": 12.36,
@@ -2922,8 +2914,8 @@
             "adjustedPreferredDistance": 0
           }
         },
-        "softPlacementPenalty": 4,
-        "adjustedAggregateScore": 41,
+        "softPlacementPenalty": 9,
+        "adjustedAggregateScore": 32,
         "wouldPassWithSoftPlacement": false,
         "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
@@ -2956,31 +2948,38 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":82.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":71.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "guided-stronger-overlay-balanced-regeneration",
         "candidateKind": "guided-regeneration-repair",
-        "structuralStatus": "degraded",
-        "aggregateScore": 63,
-        "aggregateDelta": 13,
+        "structuralStatus": "invalid",
+        "aggregateScore": 42,
+        "aggregateDelta": -8,
         "accepted": false,
         "rejectionReasons": [
-          "role-placement-out-of-zone"
+          "legacy-safety-rejection",
+          "role-placement-out-of-zone",
+          "aggregate-below-baseline",
+          "no-net-gain"
         ],
         "gateOutcomes": {
           "repeatSuppressed": false,
-          "legacySafetyRejected": false,
+          "legacySafetyRejected": true,
           "hardStructuralInvalidity": false,
           "rolePlacementOutOfZone": true,
           "spacingThresholdExceeded": false,
           "confidenceCollapse": false,
-          "aggregateBelowBaseline": false,
-          "noNetGain": false,
+          "aggregateBelowBaseline": true,
+          "noNetGain": true,
           "nearMissOverrideEligible": false,
           "nearMissOverrideBlockedReasons": [
             "not-landscape-display",
             "dominant-blocker-not-image",
+            "placement-not-moderate",
             "landscape-image-policy-not-applicable",
-            "critical-issues"
+            "non-positive-aggregate-delta",
+            "critical-issues",
+            "remaining-gate:legacy-safety-rejection",
+            "remaining-gate:aggregate-below-baseline"
           ],
           "nearMissOverrideSafeguardsSatisfied": false,
           "wouldWinUnderNearMissOverride": false,
@@ -2990,10 +2989,14 @@
             "not-landscape-display",
             "not-best-rejected-candidate",
             "blocker-family:other",
-            "placement-severity:moderate",
+            "placement-severity:severe",
+            "non-positive-aggregate-delta",
             "title-would-not-pass",
             "message-cluster-would-not-pass",
-            "remaining-blocker-not-milder"
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking",
+            "legacy-safety-rejection"
           ],
           "landscapeTextHeightNearMissSafeguardsSatisfied": false,
           "landscapeTextHeightNearMissSafeguardResults": {
@@ -3002,14 +3005,14 @@
             "bestRejectedCandidate": false,
             "blockerFamilyMatch": false,
             "mildSeverity": false,
-            "positiveAggregateDelta": true,
+            "positiveAggregateDelta": false,
             "nonNegativeConfidenceDelta": true,
             "titleOnlyWouldPass": false,
             "messageClusterWouldPass": false,
             "remainingBlockerWouldBecomeMilder": false,
-            "primaryBlockerRolePlacement": true,
-            "onlyBlockedByOneGate": true,
-            "noLegacySafetyRejection": true,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
+            "noLegacySafetyRejection": false,
             "noHardStructuralInvalidity": true,
             "noSpacingCollapse": true,
             "noCriticalOverlap": true,
@@ -3018,29 +3021,30 @@
           "wouldWinUnderLandscapeTextHeightNearMissOverride": false
         },
         "summaryTags": [
+          "insufficient-breathing-room",
           "structural-drift"
         ],
         "penaltyTags": [
           "high-side-effect-cost",
           "weak-balance",
-          "confidence-regression"
+          "insufficient-net-gain"
         ],
         "confidence": {
           "effectiveScore": 0,
-          "disagreement": 8,
+          "disagreement": 0,
           "needsHumanAttention": true
         },
-        "confidenceDelta": 8,
-        "placementSeverity": "moderate",
+        "confidenceDelta": 0,
+        "placementSeverity": "severe",
         "placementDiagnostics": {
           "role": "cta",
           "violatingRoles": [
             "cta"
           ],
-          "preferredZoneDistance": 4.01,
-          "allowedZoneDistance": 4.01,
-          "avgAllowedDistance": 4.01,
-          "avgPreferredDistance": 4.01,
+          "preferredZoneDistance": 6.35,
+          "allowedZoneDistance": 6.35,
+          "avgAllowedDistance": 6.35,
+          "avgPreferredDistance": 6.35,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -3048,12 +3052,12 @@
           "badgeVisuallyCritical": false,
           "badgeAffectsCoreReadingFlow": false,
           "badgeLikelyOptional": false,
-          "severity": "moderate",
+          "severity": "severe",
           "reasons": [
-            "allowed-zone-drift:4.01",
-            "preferred-zone-drift:4.01",
-            "avg-allowed-zone-drift:4.01",
-            "avg-preferred-zone-drift:4.01",
+            "allowed-zone-drift:6.35",
+            "preferred-zone-drift:6.35",
+            "avg-allowed-zone-drift:6.35",
+            "avg-preferred-zone-drift:6.35",
             "visual-hierarchy-weak"
           ],
           "perRole": [
@@ -3135,12 +3139,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 4.01,
-              "preferredDistance": 4.01,
+              "allowedDistance": 6.35,
+              "preferredDistance": 6.35,
               "rect": {
                 "label": "CTA",
                 "x": 8.888888888888893,
-                "y": 82.8,
+                "y": 71.8,
                 "w": 21.4,
                 "h": 6.4
               },
@@ -3396,8 +3400,8 @@
             "titlePreferredDistance": 0,
             "combinedAllowedDistance": 0.71,
             "combinedPreferredDistance": 0,
-            "rawCtaToCombinedTextDistance": 22.34,
-            "adjustedCtaToCombinedTextDistance": 22.34,
+            "rawCtaToCombinedTextDistance": 11.34,
+            "adjustedCtaToCombinedTextDistance": 11.34,
             "subtitleAttachmentDistance": 0,
             "subtitleAttachmentQuality": 100,
             "combinedClusterFootprint": 12.09,
@@ -3420,10 +3424,10 @@
             "adjustedPreferredDistance": 0
           }
         },
-        "softPlacementPenalty": 4,
-        "adjustedAggregateScore": 59,
-        "wouldPassWithSoftPlacement": true,
-        "wouldBeatBaselineWithSoftPlacement": true,
+        "softPlacementPenalty": 9,
+        "adjustedAggregateScore": 33,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
         "nearMissOverrideReason": "not-landscape-display",
         "wouldWinUnderNearMissOverride": false,
@@ -3436,14 +3440,14 @@
           "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
-          "positiveAggregateDelta": true,
+          "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
           "messageClusterWouldPass": false,
           "remainingBlockerWouldBecomeMilder": false,
-          "primaryBlockerRolePlacement": true,
-          "onlyBlockedByOneGate": true,
-          "noLegacySafetyRejection": true,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
           "noHardStructuralInvalidity": true,
           "noSpacingCollapse": true,
           "noCriticalOverlap": true,
@@ -3454,31 +3458,38 @@
         "finalWinnerChangedByOverride": false
       },
       {
-        "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":82.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+        "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":71.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
         "strategyLabel": "guided-stronger-compact-minimal-regeneration",
         "candidateKind": "guided-regeneration-repair",
-        "structuralStatus": "degraded",
-        "aggregateScore": 63,
-        "aggregateDelta": 13,
+        "structuralStatus": "invalid",
+        "aggregateScore": 42,
+        "aggregateDelta": -8,
         "accepted": false,
         "rejectionReasons": [
-          "role-placement-out-of-zone"
+          "repeat-suppressed",
+          "role-placement-out-of-zone",
+          "aggregate-below-baseline",
+          "no-net-gain"
         ],
         "gateOutcomes": {
-          "repeatSuppressed": false,
+          "repeatSuppressed": true,
           "legacySafetyRejected": false,
           "hardStructuralInvalidity": false,
           "rolePlacementOutOfZone": true,
           "spacingThresholdExceeded": false,
           "confidenceCollapse": false,
-          "aggregateBelowBaseline": false,
-          "noNetGain": false,
+          "aggregateBelowBaseline": true,
+          "noNetGain": true,
           "nearMissOverrideEligible": false,
           "nearMissOverrideBlockedReasons": [
             "not-landscape-display",
             "dominant-blocker-not-image",
+            "placement-not-moderate",
             "landscape-image-policy-not-applicable",
-            "critical-issues"
+            "non-positive-aggregate-delta",
+            "critical-issues",
+            "remaining-gate:repeat-suppressed",
+            "remaining-gate:aggregate-below-baseline"
           ],
           "nearMissOverrideSafeguardsSatisfied": false,
           "wouldWinUnderNearMissOverride": false,
@@ -3486,26 +3497,30 @@
           "landscapeTextHeightNearMissApplied": false,
           "landscapeTextHeightNearMissBlockedReasons": [
             "not-landscape-display",
+            "not-best-rejected-candidate",
             "blocker-family:other",
-            "placement-severity:moderate",
+            "placement-severity:severe",
+            "non-positive-aggregate-delta",
             "title-would-not-pass",
             "message-cluster-would-not-pass",
-            "remaining-blocker-not-milder"
+            "remaining-blocker-not-milder",
+            "primary-blocker-not-role-placement",
+            "multiple-gates-blocking"
           ],
           "landscapeTextHeightNearMissSafeguardsSatisfied": false,
           "landscapeTextHeightNearMissSafeguardResults": {
             "featureEnabled": true,
             "landscapeDisplay": false,
-            "bestRejectedCandidate": true,
+            "bestRejectedCandidate": false,
             "blockerFamilyMatch": false,
             "mildSeverity": false,
-            "positiveAggregateDelta": true,
+            "positiveAggregateDelta": false,
             "nonNegativeConfidenceDelta": true,
             "titleOnlyWouldPass": false,
             "messageClusterWouldPass": false,
             "remainingBlockerWouldBecomeMilder": false,
-            "primaryBlockerRolePlacement": true,
-            "onlyBlockedByOneGate": true,
+            "primaryBlockerRolePlacement": false,
+            "onlyBlockedByOneGate": false,
             "noLegacySafetyRejection": true,
             "noHardStructuralInvalidity": true,
             "noSpacingCollapse": true,
@@ -3515,29 +3530,30 @@
           "wouldWinUnderLandscapeTextHeightNearMissOverride": false
         },
         "summaryTags": [
+          "insufficient-breathing-room",
           "structural-drift"
         ],
         "penaltyTags": [
           "high-side-effect-cost",
           "weak-balance",
-          "confidence-regression"
+          "insufficient-net-gain"
         ],
         "confidence": {
           "effectiveScore": 0,
-          "disagreement": 8,
+          "disagreement": 0,
           "needsHumanAttention": true
         },
-        "confidenceDelta": 8,
-        "placementSeverity": "moderate",
+        "confidenceDelta": 0,
+        "placementSeverity": "severe",
         "placementDiagnostics": {
           "role": "cta",
           "violatingRoles": [
             "cta"
           ],
-          "preferredZoneDistance": 4.01,
-          "allowedZoneDistance": 4.01,
-          "avgAllowedDistance": 4.01,
-          "avgPreferredDistance": 4.01,
+          "preferredZoneDistance": 6.35,
+          "allowedZoneDistance": 6.35,
+          "avgAllowedDistance": 6.35,
+          "avgPreferredDistance": 6.35,
           "clusterIntegrity": 76,
           "visualHierarchyPreserved": false,
           "likelyIntentional": false,
@@ -3545,12 +3561,12 @@
           "badgeVisuallyCritical": false,
           "badgeAffectsCoreReadingFlow": false,
           "badgeLikelyOptional": false,
-          "severity": "moderate",
+          "severity": "severe",
           "reasons": [
-            "allowed-zone-drift:4.01",
-            "preferred-zone-drift:4.01",
-            "avg-allowed-zone-drift:4.01",
-            "avg-preferred-zone-drift:4.01",
+            "allowed-zone-drift:6.35",
+            "preferred-zone-drift:6.35",
+            "avg-allowed-zone-drift:6.35",
+            "avg-preferred-zone-drift:6.35",
             "visual-hierarchy-weak"
           ],
           "perRole": [
@@ -3632,12 +3648,12 @@
               "role": "cta",
               "eligible": true,
               "eligibilityReason": null,
-              "allowedDistance": 4.01,
-              "preferredDistance": 4.01,
+              "allowedDistance": 6.35,
+              "preferredDistance": 6.35,
               "rect": {
                 "label": "CTA",
                 "x": 8.888888888888893,
-                "y": 82.8,
+                "y": 71.8,
                 "w": 21.4,
                 "h": 6.4
               },
@@ -3893,8 +3909,8 @@
             "titlePreferredDistance": 0,
             "combinedAllowedDistance": 0.71,
             "combinedPreferredDistance": 0,
-            "rawCtaToCombinedTextDistance": 22.34,
-            "adjustedCtaToCombinedTextDistance": 22.34,
+            "rawCtaToCombinedTextDistance": 11.34,
+            "adjustedCtaToCombinedTextDistance": 11.34,
             "subtitleAttachmentDistance": 0,
             "subtitleAttachmentQuality": 100,
             "combinedClusterFootprint": 12.09,
@@ -3917,10 +3933,10 @@
             "adjustedPreferredDistance": 0
           }
         },
-        "softPlacementPenalty": 4,
-        "adjustedAggregateScore": 59,
-        "wouldPassWithSoftPlacement": true,
-        "wouldBeatBaselineWithSoftPlacement": true,
+        "softPlacementPenalty": 9,
+        "adjustedAggregateScore": 33,
+        "wouldPassWithSoftPlacement": false,
+        "wouldBeatBaselineWithSoftPlacement": false,
         "nearMissOverrideEligible": false,
         "nearMissOverrideReason": "not-landscape-display",
         "wouldWinUnderNearMissOverride": false,
@@ -3930,16 +3946,16 @@
         "landscapeTextHeightNearMissSafeguardResults": {
           "featureEnabled": true,
           "landscapeDisplay": false,
-          "bestRejectedCandidate": true,
+          "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
-          "positiveAggregateDelta": true,
+          "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
           "messageClusterWouldPass": false,
           "remainingBlockerWouldBecomeMilder": false,
-          "primaryBlockerRolePlacement": true,
-          "onlyBlockedByOneGate": true,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
           "noLegacySafetyRejection": true,
           "noHardStructuralInvalidity": true,
           "noSpacingCollapse": true,
@@ -3988,7 +4004,6 @@
           "landscapeTextHeightNearMissApplied": false,
           "landscapeTextHeightNearMissBlockedReasons": [
             "not-landscape-display",
-            "not-best-rejected-candidate",
             "blocker-family:other",
             "placement-severity:severe",
             "non-positive-aggregate-delta",
@@ -4003,7 +4018,7 @@
           "landscapeTextHeightNearMissSafeguardResults": {
             "featureEnabled": true,
             "landscapeDisplay": false,
-            "bestRejectedCandidate": false,
+            "bestRejectedCandidate": true,
             "blockerFamilyMatch": false,
             "mildSeverity": false,
             "positiveAggregateDelta": false,
@@ -4309,7 +4324,7 @@
         "landscapeTextHeightNearMissSafeguardResults": {
           "featureEnabled": true,
           "landscapeDisplay": false,
-          "bestRejectedCandidate": false,
+          "bestRejectedCandidate": true,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
           "positiveAggregateDelta": false,
@@ -4715,13 +4730,13 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "local-structural-repair",
       "candidateKind": "local-structural-repair",
       "structuralStatus": "invalid",
       "effectiveScore": 0,
-      "aggregateScore": 47,
-      "aggregateDelta": -3,
+      "aggregateScore": 46,
+      "aggregateDelta": -4,
       "accepted": false,
       "rejectionReasons": [
         "legacy-safety-rejection",
@@ -4804,12 +4819,12 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 19,
+        "structuralValidity": 17,
         "perceptualQuality": 70,
         "commercialStrength": 77,
         "familyFidelity": 100,
         "sideEffectCost": 38,
-        "aggregateScore": 47,
+        "aggregateScore": 46,
         "weights": {
           "structuralValidity": 0.36,
           "perceptualQuality": 0.24,
@@ -4830,13 +4845,12 @@
         "role": "text",
         "violatingRoles": [
           "text",
-          "image",
-          "cta"
+          "image"
         ],
         "preferredZoneDistance": 23.93,
         "allowedZoneDistance": 23.93,
-        "avgAllowedDistance": 11.52,
-        "avgPreferredDistance": 11.52,
+        "avgAllowedDistance": 15.37,
+        "avgPreferredDistance": 15.37,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -4848,8 +4862,8 @@
         "reasons": [
           "allowed-zone-drift:23.93",
           "preferred-zone-drift:23.93",
-          "avg-allowed-zone-drift:11.52",
-          "avg-preferred-zone-drift:11.52",
+          "avg-allowed-zone-drift:15.37",
+          "avg-preferred-zone-drift:15.37",
           "visual-hierarchy-weak",
           "multiple-roles-drifting"
         ],
@@ -4896,12 +4910,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 0.9,
+            "preferredDistance": 0.9,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 80.08148148148149,
               "w": 20,
               "h": 6
             },
@@ -5082,7 +5096,7 @@
         }
       },
       "softPlacementPenalty": 9,
-      "adjustedAggregateScore": 38,
+      "adjustedAggregateScore": 37,
       "wouldPassWithSoftPlacement": false,
       "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
@@ -5115,7 +5129,7 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "perceptual-rebalance-repair",
       "candidateKind": "perceptual-rebalance-repair",
       "structuralStatus": "invalid",
@@ -5204,7 +5218,7 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 16,
+        "structuralValidity": 15,
         "perceptualQuality": 71,
         "commercialStrength": 77,
         "familyFidelity": 100,
@@ -5230,13 +5244,12 @@
         "role": "text",
         "violatingRoles": [
           "text",
-          "image",
-          "cta"
+          "image"
         ],
         "preferredZoneDistance": 23.93,
         "allowedZoneDistance": 23.93,
-        "avgAllowedDistance": 11.52,
-        "avgPreferredDistance": 11.52,
+        "avgAllowedDistance": 15.37,
+        "avgPreferredDistance": 15.37,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -5248,8 +5261,8 @@
         "reasons": [
           "allowed-zone-drift:23.93",
           "preferred-zone-drift:23.93",
-          "avg-allowed-zone-drift:11.52",
-          "avg-preferred-zone-drift:11.52",
+          "avg-allowed-zone-drift:15.37",
+          "avg-preferred-zone-drift:15.37",
           "visual-hierarchy-weak",
           "multiple-roles-drifting"
         ],
@@ -5296,12 +5309,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 0.9,
+            "preferredDistance": 0.9,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 80.08148148148149,
               "w": 20,
               "h": 6
             },
@@ -5515,7 +5528,7 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "spacing-recovery-repair",
       "candidateKind": "spacing-recovery-repair",
       "structuralStatus": "invalid",
@@ -5604,7 +5617,7 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 16,
+        "structuralValidity": 15,
         "perceptualQuality": 71,
         "commercialStrength": 77,
         "familyFidelity": 100,
@@ -5630,13 +5643,12 @@
         "role": "text",
         "violatingRoles": [
           "text",
-          "image",
-          "cta"
+          "image"
         ],
         "preferredZoneDistance": 23.93,
         "allowedZoneDistance": 23.93,
-        "avgAllowedDistance": 11.52,
-        "avgPreferredDistance": 11.52,
+        "avgAllowedDistance": 15.37,
+        "avgPreferredDistance": 15.37,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -5648,8 +5660,8 @@
         "reasons": [
           "allowed-zone-drift:23.93",
           "preferred-zone-drift:23.93",
-          "avg-allowed-zone-drift:11.52",
-          "avg-preferred-zone-drift:11.52",
+          "avg-allowed-zone-drift:15.37",
+          "avg-preferred-zone-drift:15.37",
           "visual-hierarchy-weak",
           "multiple-roles-drifting"
         ],
@@ -5696,12 +5708,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 0.9,
+            "preferredDistance": 0.9,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 80.08148148148149,
               "w": 20,
               "h": 6
             },
@@ -5915,7 +5927,7 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":28.7,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "image-balance-repair:image-balance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":28.7,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "image-balance-repair",
       "candidateKind": "image-balance-repair",
       "structuralStatus": "invalid",
@@ -5943,6 +5955,7 @@
         "nearMissOverrideBlockedReasons": [
           "not-landscape-display",
           "dominant-blocker-not-image",
+          "placement-not-moderate",
           "landscape-image-policy-not-applicable",
           "non-positive-aggregate-delta",
           "spacing-collapse",
@@ -5959,7 +5972,6 @@
           "not-landscape-display",
           "not-best-rejected-candidate",
           "blocker-family:other",
-          "placement-severity:moderate",
           "non-positive-aggregate-delta",
           "title-would-not-pass",
           "message-cluster-would-not-pass",
@@ -5975,7 +5987,7 @@
           "landscapeDisplay": false,
           "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
-          "mildSeverity": false,
+          "mildSeverity": true,
           "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
@@ -6003,7 +6015,7 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 16,
+        "structuralValidity": 15,
         "perceptualQuality": 71,
         "commercialStrength": 77,
         "familyFidelity": 100,
@@ -6024,16 +6036,14 @@
       },
       "confidenceDelta": 3,
       "structuralFindingDelta": 0,
-      "placementSeverity": "moderate",
+      "placementSeverity": "mild",
       "placementDiagnostics": {
-        "role": "cta",
-        "violatingRoles": [
-          "cta"
-        ],
-        "preferredZoneDistance": 3.81,
-        "allowedZoneDistance": 3.81,
-        "avgAllowedDistance": 3.81,
-        "avgPreferredDistance": 3.81,
+        "role": "unknown",
+        "violatingRoles": [],
+        "preferredZoneDistance": 0,
+        "allowedZoneDistance": 0.91,
+        "avgAllowedDistance": 0,
+        "avgPreferredDistance": 0,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -6041,12 +6051,9 @@
         "badgeVisuallyCritical": false,
         "badgeAffectsCoreReadingFlow": false,
         "badgeLikelyOptional": false,
-        "severity": "moderate",
+        "severity": "mild",
         "reasons": [
-          "allowed-zone-drift:3.81",
-          "preferred-zone-drift:3.81",
-          "avg-allowed-zone-drift:3.81",
-          "avg-preferred-zone-drift:3.81",
+          "allowed-zone-drift:0.91",
           "visual-hierarchy-weak"
         ],
         "perRole": [
@@ -6128,12 +6135,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 0.9,
+            "preferredDistance": 0.9,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 80.08148148148149,
               "w": 20,
               "h": 6
             },
@@ -6383,8 +6390,8 @@
           "titlePreferredDistance": 0,
           "combinedAllowedDistance": 0.99,
           "combinedPreferredDistance": 0,
-          "rawCtaToCombinedTextDistance": 18.49,
-          "adjustedCtaToCombinedTextDistance": 21.3,
+          "rawCtaToCombinedTextDistance": 15.57,
+          "adjustedCtaToCombinedTextDistance": 18.38,
           "subtitleAttachmentDistance": 0,
           "subtitleAttachmentQuality": 100,
           "combinedClusterFootprint": 18.15,
@@ -6407,8 +6414,8 @@
           "adjustedPreferredDistance": 0
         }
       },
-      "softPlacementPenalty": 4,
-      "adjustedAggregateScore": 42,
+      "softPlacementPenalty": 1.5,
+      "adjustedAggregateScore": 44.5,
       "wouldPassWithSoftPlacement": false,
       "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
@@ -6422,7 +6429,7 @@
         "landscapeDisplay": false,
         "bestRejectedCandidate": false,
         "blockerFamilyMatch": false,
-        "mildSeverity": false,
+        "mildSeverity": true,
         "positiveAggregateDelta": false,
         "nonNegativeConfidenceDelta": true,
         "titleOnlyWouldPass": false,
@@ -6441,13 +6448,13 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "stronger-local-structural-repair",
       "candidateKind": "stronger-local-structural-repair",
       "structuralStatus": "invalid",
       "effectiveScore": 0,
-      "aggregateScore": 46,
-      "aggregateDelta": -4,
+      "aggregateScore": 45,
+      "aggregateDelta": -5,
       "accepted": false,
       "rejectionReasons": [
         "legacy-safety-rejection",
@@ -6530,12 +6537,12 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 15,
+        "structuralValidity": 14,
         "perceptualQuality": 71,
         "commercialStrength": 77,
         "familyFidelity": 100,
         "sideEffectCost": 36,
-        "aggregateScore": 46,
+        "aggregateScore": 45,
         "weights": {
           "structuralValidity": 0.36,
           "perceptualQuality": 0.24,
@@ -6556,13 +6563,12 @@
         "role": "text",
         "violatingRoles": [
           "text",
-          "image",
-          "cta"
+          "image"
         ],
         "preferredZoneDistance": 23.93,
         "allowedZoneDistance": 23.93,
-        "avgAllowedDistance": 11.52,
-        "avgPreferredDistance": 11.52,
+        "avgAllowedDistance": 15.37,
+        "avgPreferredDistance": 15.37,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -6574,8 +6580,8 @@
         "reasons": [
           "allowed-zone-drift:23.93",
           "preferred-zone-drift:23.93",
-          "avg-allowed-zone-drift:11.52",
-          "avg-preferred-zone-drift:11.52",
+          "avg-allowed-zone-drift:15.37",
+          "avg-preferred-zone-drift:15.37",
           "visual-hierarchy-weak",
           "multiple-roles-drifting"
         ],
@@ -6622,12 +6628,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 0.9,
+            "preferredDistance": 0.9,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 80.08148148148149,
               "w": 20,
               "h": 6
             },
@@ -6808,7 +6814,7 @@
         }
       },
       "softPlacementPenalty": 9,
-      "adjustedAggregateScore": 37,
+      "adjustedAggregateScore": 36,
       "wouldPassWithSoftPlacement": false,
       "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
@@ -6841,13 +6847,13 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":83,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "guided-regeneration-repair:guided-split-vertical-regeneration:{\"title\":{\"x\":8,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":91,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":71.8,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "guided-split-vertical-regeneration",
       "candidateKind": "guided-regeneration-repair",
       "structuralStatus": "invalid",
       "effectiveScore": 0,
-      "aggregateScore": 45,
-      "aggregateDelta": -5,
+      "aggregateScore": 41,
+      "aggregateDelta": -9,
       "accepted": false,
       "rejectionReasons": [
         "legacy-safety-rejection",
@@ -6868,6 +6874,7 @@
         "nearMissOverrideBlockedReasons": [
           "not-landscape-display",
           "dominant-blocker-not-image",
+          "placement-not-moderate",
           "landscape-image-policy-not-applicable",
           "non-positive-aggregate-delta",
           "critical-issues",
@@ -6882,7 +6889,7 @@
           "not-landscape-display",
           "not-best-rejected-candidate",
           "blocker-family:other",
-          "placement-severity:moderate",
+          "placement-severity:severe",
           "non-positive-aggregate-delta",
           "title-would-not-pass",
           "message-cluster-would-not-pass",
@@ -6923,12 +6930,12 @@
         "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 10,
+        "structuralValidity": 6,
         "perceptualQuality": 72,
         "commercialStrength": 74,
-        "familyFidelity": 100,
+        "familyFidelity": 88,
         "sideEffectCost": 25,
-        "aggregateScore": 45,
+        "aggregateScore": 41,
         "weights": {
           "structuralValidity": 0.36,
           "perceptualQuality": 0.24,
@@ -6944,16 +6951,16 @@
       },
       "confidenceDelta": 0,
       "structuralFindingDelta": 0,
-      "placementSeverity": "moderate",
+      "placementSeverity": "severe",
       "placementDiagnostics": {
         "role": "cta",
         "violatingRoles": [
           "cta"
         ],
-        "preferredZoneDistance": 3.81,
-        "allowedZoneDistance": 3.81,
-        "avgAllowedDistance": 3.81,
-        "avgPreferredDistance": 3.81,
+        "preferredZoneDistance": 6.35,
+        "allowedZoneDistance": 6.35,
+        "avgAllowedDistance": 6.35,
+        "avgPreferredDistance": 6.35,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -6961,12 +6968,12 @@
         "badgeVisuallyCritical": false,
         "badgeAffectsCoreReadingFlow": false,
         "badgeLikelyOptional": false,
-        "severity": "moderate",
+        "severity": "severe",
         "reasons": [
-          "allowed-zone-drift:3.81",
-          "preferred-zone-drift:3.81",
-          "avg-allowed-zone-drift:3.81",
-          "avg-preferred-zone-drift:3.81",
+          "allowed-zone-drift:6.35",
+          "preferred-zone-drift:6.35",
+          "avg-allowed-zone-drift:6.35",
+          "avg-preferred-zone-drift:6.35",
           "visual-hierarchy-weak"
         ],
         "perRole": [
@@ -7048,12 +7055,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 3.81,
-            "preferredDistance": 3.81,
+            "allowedDistance": 6.35,
+            "preferredDistance": 6.35,
             "rect": {
               "label": "CTA",
               "x": 8,
-              "y": 83,
+              "y": 71.8,
               "w": 20,
               "h": 6
             },
@@ -7303,8 +7310,8 @@
           "titlePreferredDistance": 0,
           "combinedAllowedDistance": 0.89,
           "combinedPreferredDistance": 0,
-          "rawCtaToCombinedTextDistance": 22.13,
-          "adjustedCtaToCombinedTextDistance": 22.13,
+          "rawCtaToCombinedTextDistance": 10.93,
+          "adjustedCtaToCombinedTextDistance": 10.93,
           "subtitleAttachmentDistance": 0,
           "subtitleAttachmentQuality": 100,
           "combinedClusterFootprint": 12.36,
@@ -7327,8 +7334,8 @@
           "adjustedPreferredDistance": 0
         }
       },
-      "softPlacementPenalty": 4,
-      "adjustedAggregateScore": 41,
+      "softPlacementPenalty": 9,
+      "adjustedAggregateScore": 32,
       "wouldPassWithSoftPlacement": false,
       "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
@@ -7361,32 +7368,39 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":82.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "guided-regeneration-repair:guided-stronger-overlay-balanced-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":71.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "guided-stronger-overlay-balanced-regeneration",
       "candidateKind": "guided-regeneration-repair",
-      "structuralStatus": "degraded",
+      "structuralStatus": "invalid",
       "effectiveScore": 0,
-      "aggregateScore": 63,
-      "aggregateDelta": 13,
+      "aggregateScore": 42,
+      "aggregateDelta": -8,
       "accepted": false,
       "rejectionReasons": [
-        "role-placement-out-of-zone"
+        "legacy-safety-rejection",
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "no-net-gain"
       ],
       "gateOutcomes": {
         "repeatSuppressed": false,
-        "legacySafetyRejected": false,
+        "legacySafetyRejected": true,
         "hardStructuralInvalidity": false,
         "rolePlacementOutOfZone": true,
         "spacingThresholdExceeded": false,
         "confidenceCollapse": false,
-        "aggregateBelowBaseline": false,
-        "noNetGain": false,
+        "aggregateBelowBaseline": true,
+        "noNetGain": true,
         "nearMissOverrideEligible": false,
         "nearMissOverrideBlockedReasons": [
           "not-landscape-display",
           "dominant-blocker-not-image",
+          "placement-not-moderate",
           "landscape-image-policy-not-applicable",
-          "critical-issues"
+          "non-positive-aggregate-delta",
+          "critical-issues",
+          "remaining-gate:legacy-safety-rejection",
+          "remaining-gate:aggregate-below-baseline"
         ],
         "nearMissOverrideSafeguardsSatisfied": false,
         "wouldWinUnderNearMissOverride": false,
@@ -7396,10 +7410,14 @@
           "not-landscape-display",
           "not-best-rejected-candidate",
           "blocker-family:other",
-          "placement-severity:moderate",
+          "placement-severity:severe",
+          "non-positive-aggregate-delta",
           "title-would-not-pass",
           "message-cluster-would-not-pass",
-          "remaining-blocker-not-milder"
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking",
+          "legacy-safety-rejection"
         ],
         "landscapeTextHeightNearMissSafeguardsSatisfied": false,
         "landscapeTextHeightNearMissSafeguardResults": {
@@ -7408,14 +7426,14 @@
           "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
-          "positiveAggregateDelta": true,
+          "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
           "messageClusterWouldPass": false,
           "remainingBlockerWouldBecomeMilder": false,
-          "primaryBlockerRolePlacement": true,
-          "onlyBlockedByOneGate": true,
-          "noLegacySafetyRejection": true,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
+          "noLegacySafetyRejection": false,
           "noHardStructuralInvalidity": true,
           "noSpacingCollapse": true,
           "noCriticalOverlap": true,
@@ -7424,20 +7442,21 @@
         "wouldWinUnderLandscapeTextHeightNearMissOverride": false
       },
       "summaryTags": [
+        "insufficient-breathing-room",
         "structural-drift"
       ],
       "penaltyTags": [
         "high-side-effect-cost",
         "weak-balance",
-        "confidence-regression"
+        "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 65,
+        "structuralValidity": 6,
         "perceptualQuality": 73,
         "commercialStrength": 79,
-        "familyFidelity": 100,
-        "sideEffectCost": 54,
-        "aggregateScore": 63,
+        "familyFidelity": 88,
+        "sideEffectCost": 25,
+        "aggregateScore": 42,
         "weights": {
           "structuralValidity": 0.36,
           "perceptualQuality": 0.24,
@@ -7448,21 +7467,21 @@
       },
       "confidence": {
         "effectiveScore": 0,
-        "disagreement": 8,
+        "disagreement": 0,
         "needsHumanAttention": true
       },
-      "confidenceDelta": 8,
-      "structuralFindingDelta": 3,
-      "placementSeverity": "moderate",
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "severe",
       "placementDiagnostics": {
         "role": "cta",
         "violatingRoles": [
           "cta"
         ],
-        "preferredZoneDistance": 4.01,
-        "allowedZoneDistance": 4.01,
-        "avgAllowedDistance": 4.01,
-        "avgPreferredDistance": 4.01,
+        "preferredZoneDistance": 6.35,
+        "allowedZoneDistance": 6.35,
+        "avgAllowedDistance": 6.35,
+        "avgPreferredDistance": 6.35,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -7470,12 +7489,12 @@
         "badgeVisuallyCritical": false,
         "badgeAffectsCoreReadingFlow": false,
         "badgeLikelyOptional": false,
-        "severity": "moderate",
+        "severity": "severe",
         "reasons": [
-          "allowed-zone-drift:4.01",
-          "preferred-zone-drift:4.01",
-          "avg-allowed-zone-drift:4.01",
-          "avg-preferred-zone-drift:4.01",
+          "allowed-zone-drift:6.35",
+          "preferred-zone-drift:6.35",
+          "avg-allowed-zone-drift:6.35",
+          "avg-preferred-zone-drift:6.35",
           "visual-hierarchy-weak"
         ],
         "perRole": [
@@ -7557,12 +7576,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 4.01,
-            "preferredDistance": 4.01,
+            "allowedDistance": 6.35,
+            "preferredDistance": 6.35,
             "rect": {
               "label": "CTA",
               "x": 8.888888888888893,
-              "y": 82.8,
+              "y": 71.8,
               "w": 21.4,
               "h": 6.4
             },
@@ -7818,8 +7837,8 @@
           "titlePreferredDistance": 0,
           "combinedAllowedDistance": 0.71,
           "combinedPreferredDistance": 0,
-          "rawCtaToCombinedTextDistance": 22.34,
-          "adjustedCtaToCombinedTextDistance": 22.34,
+          "rawCtaToCombinedTextDistance": 11.34,
+          "adjustedCtaToCombinedTextDistance": 11.34,
           "subtitleAttachmentDistance": 0,
           "subtitleAttachmentQuality": 100,
           "combinedClusterFootprint": 12.09,
@@ -7842,10 +7861,10 @@
           "adjustedPreferredDistance": 0
         }
       },
-      "softPlacementPenalty": 4,
-      "adjustedAggregateScore": 59,
-      "wouldPassWithSoftPlacement": true,
-      "wouldBeatBaselineWithSoftPlacement": true,
+      "softPlacementPenalty": 9,
+      "adjustedAggregateScore": 33,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
       "nearMissOverrideReason": "not-landscape-display",
       "wouldWinUnderNearMissOverride": false,
@@ -7858,14 +7877,14 @@
         "bestRejectedCandidate": false,
         "blockerFamilyMatch": false,
         "mildSeverity": false,
-        "positiveAggregateDelta": true,
+        "positiveAggregateDelta": false,
         "nonNegativeConfidenceDelta": true,
         "titleOnlyWouldPass": false,
         "messageClusterWouldPass": false,
         "remainingBlockerWouldBecomeMilder": false,
-        "primaryBlockerRolePlacement": true,
-        "onlyBlockedByOneGate": true,
-        "noLegacySafetyRejection": true,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
+        "noLegacySafetyRejection": false,
         "noHardStructuralInvalidity": true,
         "noSpacingCollapse": true,
         "noCriticalOverlap": true,
@@ -7876,32 +7895,39 @@
       "finalWinnerChangedByOverride": false
     },
     {
-      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":82.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateId": "guided-regeneration-repair:guided-stronger-compact-minimal-regeneration:{\"title\":{\"x\":8.9,\"y\":42,\"w\":34,\"h\":17.6,\"fontSize\":89,\"maxLines\":3,\"charsPerLine\":10},\"subtitle\":{\"x\":8.9,\"y\":61.4,\"w\":30,\"h\":5.8,\"fontSize\":16,\"opacity\":0.7},\"cta\":{\"x\":8.9,\"y\":71.8,\"w\":21.4,\"h\":6.4},\"badge\":{\"x\":76.7,\"y\":16.7,\"w\":13,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":12,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "strategyLabel": "guided-stronger-compact-minimal-regeneration",
       "candidateKind": "guided-regeneration-repair",
-      "structuralStatus": "degraded",
+      "structuralStatus": "invalid",
       "effectiveScore": 0,
-      "aggregateScore": 63,
-      "aggregateDelta": 13,
+      "aggregateScore": 42,
+      "aggregateDelta": -8,
       "accepted": false,
       "rejectionReasons": [
-        "role-placement-out-of-zone"
+        "repeat-suppressed",
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "no-net-gain"
       ],
       "gateOutcomes": {
-        "repeatSuppressed": false,
+        "repeatSuppressed": true,
         "legacySafetyRejected": false,
         "hardStructuralInvalidity": false,
         "rolePlacementOutOfZone": true,
         "spacingThresholdExceeded": false,
         "confidenceCollapse": false,
-        "aggregateBelowBaseline": false,
-        "noNetGain": false,
+        "aggregateBelowBaseline": true,
+        "noNetGain": true,
         "nearMissOverrideEligible": false,
         "nearMissOverrideBlockedReasons": [
           "not-landscape-display",
           "dominant-blocker-not-image",
+          "placement-not-moderate",
           "landscape-image-policy-not-applicable",
-          "critical-issues"
+          "non-positive-aggregate-delta",
+          "critical-issues",
+          "remaining-gate:repeat-suppressed",
+          "remaining-gate:aggregate-below-baseline"
         ],
         "nearMissOverrideSafeguardsSatisfied": false,
         "wouldWinUnderNearMissOverride": false,
@@ -7909,26 +7935,30 @@
         "landscapeTextHeightNearMissApplied": false,
         "landscapeTextHeightNearMissBlockedReasons": [
           "not-landscape-display",
+          "not-best-rejected-candidate",
           "blocker-family:other",
-          "placement-severity:moderate",
+          "placement-severity:severe",
+          "non-positive-aggregate-delta",
           "title-would-not-pass",
           "message-cluster-would-not-pass",
-          "remaining-blocker-not-milder"
+          "remaining-blocker-not-milder",
+          "primary-blocker-not-role-placement",
+          "multiple-gates-blocking"
         ],
         "landscapeTextHeightNearMissSafeguardsSatisfied": false,
         "landscapeTextHeightNearMissSafeguardResults": {
           "featureEnabled": true,
           "landscapeDisplay": false,
-          "bestRejectedCandidate": true,
+          "bestRejectedCandidate": false,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
-          "positiveAggregateDelta": true,
+          "positiveAggregateDelta": false,
           "nonNegativeConfidenceDelta": true,
           "titleOnlyWouldPass": false,
           "messageClusterWouldPass": false,
           "remainingBlockerWouldBecomeMilder": false,
-          "primaryBlockerRolePlacement": true,
-          "onlyBlockedByOneGate": true,
+          "primaryBlockerRolePlacement": false,
+          "onlyBlockedByOneGate": false,
           "noLegacySafetyRejection": true,
           "noHardStructuralInvalidity": true,
           "noSpacingCollapse": true,
@@ -7938,20 +7968,21 @@
         "wouldWinUnderLandscapeTextHeightNearMissOverride": false
       },
       "summaryTags": [
+        "insufficient-breathing-room",
         "structural-drift"
       ],
       "penaltyTags": [
         "high-side-effect-cost",
         "weak-balance",
-        "confidence-regression"
+        "insufficient-net-gain"
       ],
       "objective": {
-        "structuralValidity": 65,
+        "structuralValidity": 6,
         "perceptualQuality": 73,
         "commercialStrength": 79,
-        "familyFidelity": 100,
-        "sideEffectCost": 54,
-        "aggregateScore": 63,
+        "familyFidelity": 88,
+        "sideEffectCost": 25,
+        "aggregateScore": 42,
         "weights": {
           "structuralValidity": 0.36,
           "perceptualQuality": 0.24,
@@ -7962,21 +7993,21 @@
       },
       "confidence": {
         "effectiveScore": 0,
-        "disagreement": 8,
+        "disagreement": 0,
         "needsHumanAttention": true
       },
-      "confidenceDelta": 8,
-      "structuralFindingDelta": 3,
-      "placementSeverity": "moderate",
+      "confidenceDelta": 0,
+      "structuralFindingDelta": 0,
+      "placementSeverity": "severe",
       "placementDiagnostics": {
         "role": "cta",
         "violatingRoles": [
           "cta"
         ],
-        "preferredZoneDistance": 4.01,
-        "allowedZoneDistance": 4.01,
-        "avgAllowedDistance": 4.01,
-        "avgPreferredDistance": 4.01,
+        "preferredZoneDistance": 6.35,
+        "allowedZoneDistance": 6.35,
+        "avgAllowedDistance": 6.35,
+        "avgPreferredDistance": 6.35,
         "clusterIntegrity": 76,
         "visualHierarchyPreserved": false,
         "likelyIntentional": false,
@@ -7984,12 +8015,12 @@
         "badgeVisuallyCritical": false,
         "badgeAffectsCoreReadingFlow": false,
         "badgeLikelyOptional": false,
-        "severity": "moderate",
+        "severity": "severe",
         "reasons": [
-          "allowed-zone-drift:4.01",
-          "preferred-zone-drift:4.01",
-          "avg-allowed-zone-drift:4.01",
-          "avg-preferred-zone-drift:4.01",
+          "allowed-zone-drift:6.35",
+          "preferred-zone-drift:6.35",
+          "avg-allowed-zone-drift:6.35",
+          "avg-preferred-zone-drift:6.35",
           "visual-hierarchy-weak"
         ],
         "perRole": [
@@ -8071,12 +8102,12 @@
             "role": "cta",
             "eligible": true,
             "eligibilityReason": null,
-            "allowedDistance": 4.01,
-            "preferredDistance": 4.01,
+            "allowedDistance": 6.35,
+            "preferredDistance": 6.35,
             "rect": {
               "label": "CTA",
               "x": 8.888888888888893,
-              "y": 82.8,
+              "y": 71.8,
               "w": 21.4,
               "h": 6.4
             },
@@ -8332,8 +8363,8 @@
           "titlePreferredDistance": 0,
           "combinedAllowedDistance": 0.71,
           "combinedPreferredDistance": 0,
-          "rawCtaToCombinedTextDistance": 22.34,
-          "adjustedCtaToCombinedTextDistance": 22.34,
+          "rawCtaToCombinedTextDistance": 11.34,
+          "adjustedCtaToCombinedTextDistance": 11.34,
           "subtitleAttachmentDistance": 0,
           "subtitleAttachmentQuality": 100,
           "combinedClusterFootprint": 12.09,
@@ -8356,10 +8387,10 @@
           "adjustedPreferredDistance": 0
         }
       },
-      "softPlacementPenalty": 4,
-      "adjustedAggregateScore": 59,
-      "wouldPassWithSoftPlacement": true,
-      "wouldBeatBaselineWithSoftPlacement": true,
+      "softPlacementPenalty": 9,
+      "adjustedAggregateScore": 33,
+      "wouldPassWithSoftPlacement": false,
+      "wouldBeatBaselineWithSoftPlacement": false,
       "nearMissOverrideEligible": false,
       "nearMissOverrideReason": "not-landscape-display",
       "wouldWinUnderNearMissOverride": false,
@@ -8369,16 +8400,16 @@
       "landscapeTextHeightNearMissSafeguardResults": {
         "featureEnabled": true,
         "landscapeDisplay": false,
-        "bestRejectedCandidate": true,
+        "bestRejectedCandidate": false,
         "blockerFamilyMatch": false,
         "mildSeverity": false,
-        "positiveAggregateDelta": true,
+        "positiveAggregateDelta": false,
         "nonNegativeConfidenceDelta": true,
         "titleOnlyWouldPass": false,
         "messageClusterWouldPass": false,
         "remainingBlockerWouldBecomeMilder": false,
-        "primaryBlockerRolePlacement": true,
-        "onlyBlockedByOneGate": true,
+        "primaryBlockerRolePlacement": false,
+        "onlyBlockedByOneGate": false,
         "noLegacySafetyRejection": true,
         "noHardStructuralInvalidity": true,
         "noSpacingCollapse": true,
@@ -8428,7 +8459,6 @@
         "landscapeTextHeightNearMissApplied": false,
         "landscapeTextHeightNearMissBlockedReasons": [
           "not-landscape-display",
-          "not-best-rejected-candidate",
           "blocker-family:other",
           "placement-severity:severe",
           "non-positive-aggregate-delta",
@@ -8443,7 +8473,7 @@
         "landscapeTextHeightNearMissSafeguardResults": {
           "featureEnabled": true,
           "landscapeDisplay": false,
-          "bestRejectedCandidate": false,
+          "bestRejectedCandidate": true,
           "blockerFamilyMatch": false,
           "mildSeverity": false,
           "positiveAggregateDelta": false,
@@ -8765,7 +8795,7 @@
       "landscapeTextHeightNearMissSafeguardResults": {
         "featureEnabled": true,
         "landscapeDisplay": false,
-        "bestRejectedCandidate": false,
+        "bestRejectedCandidate": true,
         "blockerFamilyMatch": false,
         "mildSeverity": false,
         "positiveAggregateDelta": false,

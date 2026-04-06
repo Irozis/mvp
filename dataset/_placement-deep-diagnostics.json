@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T08:53:39.415Z",
+  "generatedAt": "2026-04-06T10:31:15.110Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "topBlockedCandidates": [
     {
@@ -7,33 +7,31 @@
       "category": "structure",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "strategyLabel": "local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "y": 33.48148148148148,
+            "w": 48.92592592592593,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -62,15 +60,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -95,17 +93,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -161,14 +159,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -228,22 +226,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
+          "y": 33.48148148148148,
+          "w": 47.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 31.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "y": 33.48148148148148,
+          "w": 48.92592592592593,
+          "h": 31.029629629629625
         }
       }
     },
@@ -252,33 +250,31 @@
       "category": "structure",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -307,15 +303,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -340,17 +336,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -406,14 +402,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -473,22 +469,508 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 6.666666666666667,
+            "y": 33.48148148148148,
+            "w": 43.92592592592593,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 1,
+          "preferredDistance": 1,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 15.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
           "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 6.666666666666667,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 6.666666666666667,
+          "y": 33.48148148148148,
+          "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "geometric-modern-layout-01-png",
+      "category": "structure",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 8,
+            "y": 33.48148148148148,
+            "w": 42.592592592592595,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 16.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 8,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 31.029629629629625
         }
       }
     },
@@ -497,33 +979,31 @@
       "category": "hero",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "strategyLabel": "local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "y": 33.48148148148148,
+            "w": 48.92592592592593,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -552,15 +1032,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -585,17 +1065,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -651,14 +1131,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -718,22 +1198,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
+          "y": 33.48148148148148,
+          "w": 47.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 31.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "y": 33.48148148148148,
+          "w": 48.92592592592593,
+          "h": 31.029629629629625
         }
       }
     },
@@ -742,33 +1222,31 @@
       "category": "hero",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -797,15 +1275,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -830,17 +1308,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -896,14 +1374,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -963,22 +1441,508 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 6.666666666666667,
+            "y": 33.48148148148148,
+            "w": 43.92592592592593,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 1,
+          "preferredDistance": 1,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 15.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
           "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 6.666666666666667,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 6.666666666666667,
+          "y": 33.48148148148148,
+          "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "hero-product-red-tag-urgency-02-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 8,
+            "y": 33.48148148148148,
+            "w": 42.592592592592595,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 16.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 8,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 31.029629629629625
         }
       }
     },
@@ -987,33 +1951,31 @@
       "category": "hero",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "strategyLabel": "local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "y": 33.48148148148148,
+            "w": 48.92592592592593,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -1042,15 +2004,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -1075,17 +2037,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -1141,14 +2103,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -1208,22 +2170,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
+          "y": 33.48148148148148,
+          "w": 47.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 31.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "y": 33.48148148148148,
+          "w": 48.92592592592593,
+          "h": 31.029629629629625
         }
       }
     },
@@ -1232,33 +2194,31 @@
       "category": "hero",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -1287,15 +2247,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -1320,17 +2280,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -1386,14 +2346,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -1453,22 +2413,508 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 6.666666666666667,
+            "y": 33.48148148148148,
+            "w": 43.92592592592593,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 1,
+          "preferredDistance": 1,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 15.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
           "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 6.666666666666667,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 6.666666666666667,
+          "y": 33.48148148148148,
+          "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "hero-product-soft-shapes-01-png",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 8,
+            "y": 33.48148148148148,
+            "w": 42.592592592592595,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 16.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 8,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 31.029629629629625
         }
       }
     },
@@ -1477,33 +2923,31 @@
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "strategyLabel": "local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "y": 33.48148148148148,
+            "w": 48.92592592592593,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -1532,15 +2976,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -1565,17 +3009,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -1631,14 +3075,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -1698,22 +3142,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
+          "y": 33.48148148148148,
+          "w": 47.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 31.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "y": 33.48148148148148,
+          "w": 48.92592592592593,
+          "h": 31.029629629629625
         }
       }
     },
@@ -1722,33 +3166,31 @@
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -1777,15 +3219,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -1810,17 +3252,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -1876,14 +3318,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -1943,22 +3385,508 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 6.666666666666667,
+            "y": 33.48148148148148,
+            "w": 43.92592592592593,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 1,
+          "preferredDistance": 1,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 15.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
           "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 6.666666666666667,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 6.666666666666667,
+          "y": 33.48148148148148,
+          "w": 43.92592592592593,
+          "h": 31.029629629629625
+        }
+      }
+    },
+    {
+      "caseId": "inefficient-layout-banner-04-png",
+      "category": "spacing",
+      "format": "square",
+      "family": "display",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
+      "placementSeverity": "severe",
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
+      "violatingRoles": [
+        "text",
+        "image"
+      ],
+      "perRoleDistances": [
+        {
+          "role": "text",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
+          "allowedZonesCount": 2,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "x": 8,
+            "y": 33.48148148148148,
+            "w": 42.592592592592595,
+            "h": 31.029629629629625
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            },
+            {
+              "x": 11.11111111111111,
+              "y": 56.481481481481474,
+              "w": 77.77777777777779,
+              "h": 25.925925925925924
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 57.407407407407405,
+              "w": 50,
+              "h": 27.77777777777778
+            }
+          ]
+        },
+        {
+          "role": "cta",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "CTA",
+            "x": 8,
+            "y": 80.08148148148149,
+            "w": 20,
+            "h": 6
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 78.14814814814814,
+              "w": 25.925925925925924,
+              "h": 7.037037037037037
+            }
+          ]
+        },
+        {
+          "role": "image",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Image",
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
+          },
+          "allowedZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 51.85185185185185,
+              "y": 12.962962962962962,
+              "w": 33.33333333333333,
+              "h": 38.88888888888889
+            }
+          ]
+        },
+        {
+          "role": "logo",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Logo",
+            "x": 6.666666666666667,
+            "y": 6.666666666666667,
+            "w": 11.481481481481481,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 6.666666666666667,
+              "y": 6.666666666666667,
+              "w": 20.37037037037037,
+              "h": 8.333333333333332
+            }
+          ]
+        },
+        {
+          "role": "badge",
+          "eligible": true,
+          "eligibilityReason": null,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": {
+            "label": "Badge",
+            "x": 77.62962962962962,
+            "y": 16.666666666666664,
+            "w": 12,
+            "h": 5
+          },
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 6.666666666666667
+            }
+          ]
+        },
+        {
+          "role": "price",
+          "eligible": false,
+          "eligibilityReason": "price-not-semantically-present",
+          "allowedDistance": 0,
+          "preferredDistance": 0,
+          "allowedZonesCount": 1,
+          "preferredZonesCount": 1,
+          "zonePaddingApplied": 0,
+          "rect": null,
+          "allowedZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ],
+          "preferredZones": [
+            {
+              "x": 72.96296296296296,
+              "y": 16.666666666666664,
+              "w": 16.666666666666664,
+              "h": 7.777777777777778
+            }
+          ]
+        }
+      ],
+      "skippedRoles": [
+        {
+          "role": "price",
+          "reason": "price-not-semantically-present"
+        }
+      ],
+      "textBoxes": {
+        "titleRect": {
+          "label": "Headline",
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 27.6
+        },
+        "subtitleRect": {
+          "label": "Text",
+          "x": 8,
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
+        },
+        "combinedBoundsRect": {
+          "x": 8,
+          "y": 33.48148148148148,
+          "w": 42.592592592592595,
+          "h": 31.029629629629625
         }
       }
     },
@@ -1967,33 +3895,31 @@
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
+      "candidateId": "local-structural-repair:local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":47.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":23},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":31.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
       "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "strategyLabel": "local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "y": 33.48148148148148,
+            "w": 48.92592592592593,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -2022,15 +3948,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -2055,17 +3981,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -2121,14 +4047,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -2188,22 +4114,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
+          "y": 33.48148148148148,
+          "w": 47.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 31.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "y": 33.48148148148148,
+          "w": 48.92592592592593,
+          "h": 31.029629629629625
         }
       }
     },
@@ -2212,33 +4138,31 @@
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "perceptual-rebalance-repair:perceptual-rebalance-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "perceptual-rebalance-repair",
+      "strategyLabel": "perceptual-rebalance-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -2267,15 +4191,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -2300,17 +4224,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -2366,14 +4290,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -2433,57 +4357,55 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
-          "h": 27.6
+          "h": 31.029629629629625
         }
       }
     },
     {
-      "caseId": "inefficient-layout-card-variations-02-png",
+      "caseId": "inefficient-layout-blue-grid-01-png",
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
+      "candidateId": "spacing-recovery-repair:spacing-recovery-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":15.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "spacing-recovery-repair",
+      "strategyLabel": "spacing-recovery-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "x": 6.666666666666667,
-            "y": 48.88888888888889,
+            "y": 33.48148148148148,
             "w": 43.92592592592593,
-            "h": 27.6
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -2512,15 +4434,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -2545,17 +4467,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -2611,15 +4533,15 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 1,
+          "preferredDistance": 1,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
+            "x": 77.62962962962962,
+            "y": 15.666666666666664,
             "w": 12,
             "h": 5
           },
@@ -2678,57 +4600,55 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
           "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
           "x": 6.666666666666667,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 43.92592592592593,
-          "h": 27.6
+          "h": 31.029629629629625
         }
       }
     },
     {
-      "caseId": "inefficient-layout-card-variations-02-png",
+      "caseId": "inefficient-layout-blue-grid-01-png",
       "category": "spacing",
       "format": "square",
       "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
+      "candidateId": "stronger-local-structural-repair:stronger-local-structural-repair:{\"title\":{\"x\":8,\"y\":42,\"w\":42.6,\"h\":17.6,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":8,\"y\":61.8,\"w\":30.2,\"h\":5.8,\"fontSize\":20,\"opacity\":0.7},\"cta\":{\"x\":8,\"y\":80.1,\"w\":20,\"h\":6},\"badge\":{\"x\":77.6,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":62,\"y\":13,\"w\":30,\"h\":34,\"opacity\":0,\"fit\":\"\"}}",
+      "candidateKind": "stronger-local-structural-repair",
+      "strategyLabel": "stronger-local-structural-repair",
       "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
+      "avgAllowedDistance": 15.37,
+      "avgPreferredDistance": 15.37,
       "violatingRoles": [
-        "image",
         "text",
-        "cta",
-        "badge"
+        "image"
       ],
       "perRoleDistances": [
         {
           "role": "text",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
+          "allowedDistance": 23.93,
+          "preferredDistance": 23.93,
           "allowedZonesCount": 2,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
+            "x": 8,
+            "y": 33.48148148148148,
+            "w": 42.592592592592595,
+            "h": 31.029629629629625
           },
           "allowedZones": [
             {
@@ -2757,15 +4677,15 @@
           "role": "cta",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
+          "allowedDistance": 0.9,
+          "preferredDistance": 0.9,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "CTA",
             "x": 8,
-            "y": 87.33333333333334,
+            "y": 80.08148148148149,
             "w": 20,
             "h": 6
           },
@@ -2790,17 +4710,17 @@
           "role": "image",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
+          "allowedDistance": 6.81,
+          "preferredDistance": 6.81,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
+            "x": 62,
+            "y": 12.962962962962962,
+            "w": 30,
+            "h": 34
           },
           "allowedZones": [
             {
@@ -2856,14 +4776,14 @@
           "role": "badge",
           "eligible": true,
           "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
+          "allowedDistance": 0,
+          "preferredDistance": 0,
           "allowedZonesCount": 1,
           "preferredZonesCount": 1,
           "zonePaddingApplied": 0,
           "rect": {
             "label": "Badge",
-            "x": 81.33333333333334,
+            "x": 77.62962962962962,
             "y": 16.666666666666664,
             "w": 12,
             "h": 5
@@ -2923,1982 +4843,22 @@
         "titleRect": {
           "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
           "h": 27.6
         },
         "subtitleRect": {
           "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "inefficient-layout-circle-focus-03-png",
-      "category": "spacing",
-      "format": "square",
-      "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
+          "y": 59.91851851851852,
+          "w": 30.24074074074074,
+          "h": 4.592592592592593
         },
         "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "inefficient-layout-circle-focus-03-png",
-      "category": "spacing",
-      "format": "square",
-      "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
           "x": 8,
-          "y": 48.88888888888889,
+          "y": 33.48148148148148,
           "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "minimal-product-display-glass-01-png",
-      "category": "hero",
-      "format": "square",
-      "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "minimal-product-display-glass-01-png",
-      "category": "hero",
-      "format": "square",
-      "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "sq-balance-empty-hero-png",
-      "category": "hero",
-      "format": "square",
-      "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "sq-balance-empty-hero-png",
-      "category": "hero",
-      "format": "square",
-      "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "sq-balance-empty-right-minimal",
-      "category": "balance",
-      "format": "square",
-      "family": "display",
-      "candidateId": "local-structural-repair:current:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "local-structural-repair",
-      "strategyLabel": "current",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
-        }
-      }
-    },
-    {
-      "caseId": "sq-balance-empty-right-minimal",
-      "category": "balance",
-      "format": "square",
-      "family": "display",
-      "candidateId": "validated-run-autofix:validated-run-autofix:{\"title\":{\"x\":8,\"y\":57.4,\"w\":42.6,\"h\":27.8,\"fontSize\":92,\"maxLines\":3,\"charsPerLine\":21},\"subtitle\":{\"x\":6.7,\"y\":59.3,\"w\":29.1,\"h\":27.8,\"fontSize\":30,\"opacity\":0.9},\"cta\":{\"x\":8,\"y\":87.3,\"w\":20,\"h\":6},\"badge\":{\"x\":81.3,\"y\":16.7,\"w\":12,\"h\":5,\"opacity\":0},\"logo\":{\"x\":6.7,\"y\":6.7,\"w\":11.5,\"h\":5},\"image\":{\"x\":43.6,\"y\":22,\"w\":49.7,\"h\":60.4,\"opacity\":0,\"fit\":\"xMidYMid slice\"}}",
-      "candidateKind": "validated-run-autofix",
-      "strategyLabel": "validated-run-autofix",
-      "placementSeverity": "severe",
-      "avgAllowedDistance": 16.8,
-      "avgPreferredDistance": 16.8,
-      "violatingRoles": [
-        "image",
-        "text",
-        "cta",
-        "badge"
-      ],
-      "perRoleDistances": [
-        {
-          "role": "text",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.52,
-          "preferredDistance": 8.52,
-          "allowedZonesCount": 2,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "x": 6.666666666666667,
-            "y": 48.88888888888889,
-            "w": 43.92592592592593,
-            "h": 27.6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            },
-            {
-              "x": 11.11111111111111,
-              "y": 56.481481481481474,
-              "w": 77.77777777777779,
-              "h": 25.925925925925924
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 57.407407407407405,
-              "w": 50,
-              "h": 27.77777777777778
-            }
-          ]
-        },
-        {
-          "role": "cta",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 8.15,
-          "preferredDistance": 8.15,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "CTA",
-            "x": 8,
-            "y": 87.33333333333334,
-            "w": 20,
-            "h": 6
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 78.14814814814814,
-              "w": 25.925925925925924,
-              "h": 7.037037037037037
-            }
-          ]
-        },
-        {
-          "role": "image",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 46.84,
-          "preferredDistance": 46.84,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Image",
-            "x": 43.64861306068384,
-            "y": 21.962962962962962,
-            "w": 49.6847202726495,
-            "h": 60.380736442456005
-          },
-          "allowedZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 51.85185185185185,
-              "y": 12.962962962962962,
-              "w": 33.33333333333333,
-              "h": 38.88888888888889
-            }
-          ]
-        },
-        {
-          "role": "logo",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Logo",
-            "x": 6.666666666666667,
-            "y": 6.666666666666667,
-            "w": 11.481481481481481,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 6.666666666666667,
-              "y": 6.666666666666667,
-              "w": 20.37037037037037,
-              "h": 8.333333333333332
-            }
-          ]
-        },
-        {
-          "role": "badge",
-          "eligible": true,
-          "eligibilityReason": null,
-          "allowedDistance": 3.7,
-          "preferredDistance": 3.7,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": {
-            "label": "Badge",
-            "x": 81.33333333333334,
-            "y": 16.666666666666664,
-            "w": 12,
-            "h": 5
-          },
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 6.666666666666667
-            }
-          ]
-        },
-        {
-          "role": "price",
-          "eligible": false,
-          "eligibilityReason": "price-not-semantically-present",
-          "allowedDistance": 0,
-          "preferredDistance": 0,
-          "allowedZonesCount": 1,
-          "preferredZonesCount": 1,
-          "zonePaddingApplied": 0,
-          "rect": null,
-          "allowedZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ],
-          "preferredZones": [
-            {
-              "x": 72.96296296296296,
-              "y": 16.666666666666664,
-              "w": 16.666666666666664,
-              "h": 7.777777777777778
-            }
-          ]
-        }
-      ],
-      "skippedRoles": [
-        {
-          "role": "price",
-          "reason": "price-not-semantically-present"
-        }
-      ],
-      "textBoxes": {
-        "titleRect": {
-          "label": "Headline",
-          "x": 8,
-          "y": 48.88888888888889,
-          "w": 42.592592592592595,
-          "h": 27.6
-        },
-        "subtitleRect": {
-          "label": "Text",
-          "x": 6.666666666666667,
-          "y": 56.55555555555556,
-          "w": 29.140740740740746,
-          "h": 13.777777777777779
-        },
-        "combinedBoundsRect": {
-          "x": 6.666666666666667,
-          "y": 48.88888888888889,
-          "w": 43.92592592592593,
-          "h": 27.6
+          "h": 31.029629629629625
         }
       }
     }

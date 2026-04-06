@@ -2229,7 +2229,8 @@ function applyPrimarySquareBaselineZoneGuard(
         : 32
   const imageMaxH = imageProfile === 'ultraWide' ? 26 : imageProfile === 'portrait' || imageProfile === 'tall' ? 34 : 32
   const ctaHeight = clamp(next.cta.h || 6, 5.6, 6.4)
-  const ctaY = clamp(Math.max(next.cta.y, 82), 80, 86)
+  const ctaYMax = 92 - ctaHeight
+  const ctaY = clamp(next.cta.y, 52, Math.min(ctaYMax, 90))
   const textX = clamp(Math.min(next.text.x, 8), 6.5, 10)
   const textY = clamp(Math.min(next.text.y, 18), 14, 22)
   const textW = clamp(Math.max(next.text.w, 38), 36, 42)
@@ -3791,7 +3792,9 @@ function fitTextClusterToZones(input: {
   )
   const blockers = [input.logoRect, input.badgeRect].filter((item): item is Rect => Boolean(item && item.w > 0 && item.h > 0))
   const ctaAnchors: Array<'start' | 'end'> = isPrimarySquareFormat
-    ? ['start']
+    ? input.ctaAnchors?.length
+      ? input.ctaAnchors
+      : ['start', 'end']
     : input.ctaAnchors?.length
       ? input.ctaAnchors
       : ['start', 'end']
@@ -3885,9 +3888,16 @@ function fitTextClusterToZones(input: {
       measurementHint: next.subtitle.measurementHint,
     })
 
+    const subtitleHasBody = Boolean((next.subtitle.text || '').trim())
+    const messageBottom = subtitleHasBody
+      ? subtitleBox.rect.y + subtitleBox.rect.h
+      : headlineBox.rect.y + headlineBox.rect.h
+    const messageCtaGap =
+      clusterGap + (subtitleHasBody ? pxToPercentY(2, input.format) : pxToPercentY(5, input.format))
+    const preferredCtaYFromMessage = messageBottom + messageCtaGap
     const preferredCtaY = isPrimarySquareFormat
       ? clamp(
-          input.ctaRegion.y + input.ctaRegion.h - ctaHeight,
+          preferredCtaYFromMessage,
           input.ctaRegion.y,
           input.ctaRegion.y + input.ctaRegion.h - ctaHeight
         )
@@ -3925,9 +3935,15 @@ function fitTextClusterToZones(input: {
       reasons.push('reservation-conflict')
       chosenCtaRect = {
         x: clamp(workingTextRegion.x, input.ctaRegion.x, input.ctaRegion.x + input.ctaRegion.w - ctaWidth),
-        y: isPrimaryBaselineFormat
-          ? clamp(input.ctaRegion.y + input.ctaRegion.h - ctaHeight, input.ctaRegion.y, input.ctaRegion.y + input.ctaRegion.h - ctaHeight)
-          : preferredCtaY,
+        y: isPrimarySquareFormat
+          ? clamp(preferredCtaY, input.ctaRegion.y, input.ctaRegion.y + input.ctaRegion.h - ctaHeight)
+          : isPrimaryBaselineFormat
+            ? clamp(
+                input.ctaRegion.y + input.ctaRegion.h - ctaHeight,
+                input.ctaRegion.y,
+                input.ctaRegion.y + input.ctaRegion.h - ctaHeight
+              )
+            : preferredCtaY,
         w: ctaWidth,
         h: ctaHeight,
       }
@@ -4238,6 +4254,14 @@ function refineLayout({
 }) {
   const next = clone(scene)
   const insets = getSafeInsets(format, brandKit.safeZone)
+  const socialSquareRelaxedCtaY = (subtitleTailGap: number, legacyLow: number, legacyHigh: number) =>
+    format.key === 'social-square'
+      ? clamp(
+          Math.max(next.cta.y || 0, (next.subtitle.y || 0) + subtitleTailGap),
+          52,
+          92 - (next.cta.h || 6)
+        )
+      : clamp(Math.max(next.cta.y || 0, (next.subtitle.y || 0) + subtitleTailGap), legacyLow, legacyHigh)
   const weights = getSceneWeights(next)
   const textGeometry = buildSceneTextGeometry(next, format)
   const textBottom = Math.max(
@@ -4323,7 +4347,7 @@ function refineLayout({
     next.cta.x = next.title.x
     next.cta.w = clamp(next.cta.w || 0, 18, 24)
     next.cta.h = clamp(next.cta.h || 0, 4.8, 5.8)
-    next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 7), 80, 84)
+    next.cta.y = socialSquareRelaxedCtaY(7, 80, 84)
     next.logo.x = clamp(next.logo.x || 0, insets.x, 12)
     next.logo.y = clamp(next.logo.y || 0, insets.y, 10)
     next.badge.x = clamp(next.badge.x || 0, 68, 80)
@@ -4346,7 +4370,7 @@ function refineLayout({
         next.subtitle.w = clamp(next.subtitle.w || 0, 50, 62)
         next.cta.x = next.title.x
         next.cta.w = clamp(next.cta.w || 0, 20, 24)
-        next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 6), 64, 72)
+        next.cta.y = socialSquareRelaxedCtaY(6, 64, 72)
       } else {
         next.image.x = clamp(next.image.x || 0, insets.x + 1, 12)
         next.image.y = clamp(next.image.y || 0, 10, 14)
@@ -4360,7 +4384,7 @@ function refineLayout({
         next.subtitle.w = clamp(next.subtitle.w || 0, 56, 74)
         next.cta.x = next.title.x
         next.cta.w = clamp(next.cta.w || 0, 22, 30)
-        next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 7), 78, 86)
+        next.cta.y = socialSquareRelaxedCtaY(7, 78, 86)
       }
       next.logo.x = clamp(next.logo.x || 0, insets.x, 12)
       next.logo.y = clamp(next.logo.y || 0, insets.y, 10)
@@ -4381,7 +4405,7 @@ function refineLayout({
           next.subtitle.w = clamp(next.subtitle.w || 0, 32, 40)
           next.cta.x = next.title.x
           next.cta.w = clamp(next.cta.w || 0, 20, 24)
-          next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 6), 78, 84)
+          next.cta.y = socialSquareRelaxedCtaY(6, 78, 84)
         } else if (intent.marketplaceTemplateVariant === 'commerce-lockup') {
           next.image.x = clamp(next.image.x || 0, 54, 60)
           next.image.y = clamp(next.image.y || 0, 14, 18)
@@ -4395,7 +4419,7 @@ function refineLayout({
           next.subtitle.w = clamp(next.subtitle.w || 0, 36, 44)
           next.cta.x = next.title.x
           next.cta.w = clamp(next.cta.w || 0, 20, 24)
-          next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 7), 72, 80)
+          next.cta.y = socialSquareRelaxedCtaY(7, 72, 80)
         } else {
           next.image.x = clamp(next.image.x || 0, 46, 54)
           next.image.y = clamp(next.image.y || 0, 12, 16)
@@ -4409,7 +4433,7 @@ function refineLayout({
           next.subtitle.w = clamp(next.subtitle.w || 0, 34, 42)
           next.cta.x = next.title.x
           next.cta.w = clamp(next.cta.w || 0, 20, 24)
-          next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 6), 76, 84)
+          next.cta.y = socialSquareRelaxedCtaY(6, 76, 84)
         }
         next.logo.x = clamp(next.logo.x || 0, insets.x, 12)
         next.logo.y = clamp(next.logo.y || 0, insets.y, 10)
@@ -4429,7 +4453,11 @@ function refineLayout({
         next.subtitle.w = clamp(next.subtitle.w || 0, proofBand ? 46 : 42, proofBand ? 52 : 48)
         next.cta.x = next.title.x
         next.cta.w = clamp(next.cta.w || 0, proofBand ? 20 : 18, proofBand ? 24 : 22)
-        next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + (proofBand ? 5 : 6)), proofBand ? 58 : 62, proofBand ? 66 : 72)
+        next.cta.y = socialSquareRelaxedCtaY(
+          proofBand ? 5 : 6,
+          proofBand ? 58 : 62,
+          proofBand ? 66 : 72
+        )
         next.logo.x = clamp(next.logo.x || 0, insets.x, 12)
         next.logo.y = clamp(next.logo.y || 0, insets.y, 10)
         next.badge.x = clamp(next.badge.x || 0, 8, 18)
@@ -4446,14 +4474,18 @@ function refineLayout({
         next.subtitle.y = clamp(Math.max(next.subtitle.y || 0, next.title.y + 11), 68, 80)
         next.subtitle.w = clamp(next.subtitle.w || 0, 44, 60)
         next.cta.x = next.title.x
-        next.cta.y = clamp(Math.max(next.cta.y || 0, next.subtitle.y + 8), 82, 92)
+        next.cta.y = socialSquareRelaxedCtaY(8, 82, 92)
         next.logo.x = clamp(next.logo.x || 0, insets.x, 12)
         next.logo.y = clamp(next.logo.y || 0, insets.y, 10)
       }
     }
   }
 
-  if (textBottom < 78 && (isSquareFamily(intent) || intent.family === 'portrait-bottom-card')) {
+  if (
+    textBottom < 78 &&
+    (isSquareFamily(intent) || intent.family === 'portrait-bottom-card') &&
+    format.key !== 'social-square'
+  ) {
     next.cta.y = clamp((next.cta.y || 0) + 2, next.cta.y || 0, 90)
   }
 

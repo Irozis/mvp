@@ -6917,8 +6917,7 @@ function applySquareSubtitleCtaPairingStructuralRepair(input: {
   const titleYDefault = clamp(Math.min(base.title.y || 38, 42), 24, 42)
   const ctaW = clamp(base.cta.w || 22, 18, 28)
   const ctaH = clamp(base.cta.h || 6.6, 6, 7.4)
-  const ctaLaneTopBase = denseSubtitle ? 80 : 82
-  const ctaLaneBottom = 92
+  const ctaYMax = 92 - ctaH
 
   const materializeMode = (mode: SquareSubtitleLaneMode) => {
     const candidate = clone(base)
@@ -6933,13 +6932,6 @@ function applySquareSubtitleCtaPairingStructuralRepair(input: {
     candidate.cta.h = ctaH
     candidate.cta.fontSize = clamp(candidate.cta.fontSize || 16, 15, 20)
 
-    const laneTop = ctaLaneTopBase
-    candidate.cta.y = clamp(
-      laneTop + Math.max((ctaLaneBottom - laneTop - ctaH) / 2, 0),
-      laneTop,
-      92 - ctaH
-    )
-
     if (mode === 'omitted' || !subtitleText) {
       candidate.subtitle.text = ''
       candidate.subtitle.opacity = 0
@@ -6947,6 +6939,9 @@ function applySquareSubtitleCtaPairingStructuralRepair(input: {
       candidate.subtitle.h = 0
       candidate.subtitle.maxLines = 1
       candidate.subtitle.y = clamp((candidate.title.y || 0) + (candidate.title.h || 0) + 1.2, 0, 88)
+      const titleBottom = (candidate.title.y || 0) + (candidate.title.h || 0)
+      const titleToCtaGap = denseSubtitle ? 3.2 : 2.6
+      candidate.cta.y = clamp(titleBottom + titleToCtaGap, titleBottom + 2, ctaYMax)
       return {
         scene: candidate,
         fit: true,
@@ -6996,16 +6991,26 @@ function applySquareSubtitleCtaPairingStructuralRepair(input: {
     candidate.subtitle.charsPerLine = Math.max((candidate.subtitle.charsPerLine || 16) + 8, 18)
     candidate.subtitle.y = (candidate.title.y || 0) + (candidate.title.h || 0) + settings.gap
 
-    const maxSubtitleBottom = (candidate.cta.y || 0) - settings.laneGap
-    const subtitleBottom = (candidate.subtitle.y || 0) + (candidate.subtitle.h || 0)
-    if (subtitleBottom > maxSubtitleBottom) {
-      const shiftUp = subtitleBottom - maxSubtitleBottom
-      candidate.title.y = clamp((candidate.title.y || 0) - shiftUp, 20, titleYDefault)
+    const subtitleBottom = () => (candidate.subtitle.y || 0) + (candidate.subtitle.h || 0)
+    const placeCtaBelowMessage = () => {
+      const bottom = subtitleBottom()
+      candidate.cta.y = clamp(bottom + settings.laneGap, bottom + 2.4, ctaYMax)
+    }
+    placeCtaBelowMessage()
+
+    let guard = 0
+    while (subtitleBottom() > (candidate.cta.y || 0) - settings.laneGap + 0.02 && guard < 10) {
+      const overflow = subtitleBottom() - ((candidate.cta.y || 0) - settings.laneGap)
+      const nextTitleY = clamp((candidate.title.y || 0) - Math.min(Math.max(overflow, 0.4), 5), 20, titleYDefault)
+      if (nextTitleY >= (candidate.title.y || 0) - 0.01) break
+      candidate.title.y = nextTitleY
       candidate.subtitle.y = (candidate.title.y || 0) + (candidate.title.h || 0) + settings.gap
+      placeCtaBelowMessage()
+      guard += 1
     }
 
-    const finalSubtitleBottom = (candidate.subtitle.y || 0) + (candidate.subtitle.h || 0)
-    const fit = finalSubtitleBottom <= (candidate.cta.y || 0) - settings.laneGap
+    const finalSubtitleBottom = subtitleBottom()
+    const fit = finalSubtitleBottom <= (candidate.cta.y || 0) - settings.laneGap + 0.02
     return {
       scene: candidate,
       fit,

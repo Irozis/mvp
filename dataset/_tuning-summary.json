@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-04-06T08:53:39.412Z",
+  "generatedAt": "2026-04-06T10:31:15.107Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "totals": {
     "totalCases": 42,
     "successfulCases": 42,
     "baselineWinCount": 38,
     "candidateWinCount": 4,
-    "positiveRejectedCandidateCount": 35,
+    "positiveRejectedCandidateCount": 4,
     "singleGateBlockedCount": 0,
     "confidenceImprovedRejectedCount": 4
   },
@@ -23,56 +23,21 @@
     ],
     "allRejectedCandidates": [
       {
-        "blocker": "role-placement-out-of-zone",
-        "count": 35
-      },
-      {
-        "blocker": "spacing-threshold-exceeded",
-        "count": 31
-      },
-      {
         "blocker": "legacy-safety-rejection",
-        "count": 11
+        "count": 42
       },
       {
         "blocker": "no-net-gain",
-        "count": 7
+        "count": 38
+      },
+      {
+        "blocker": "role-placement-out-of-zone",
+        "count": 35
       }
     ]
   },
   "nearMisses": {
     "positiveRejectedCases": [
-      "geometric-modern-layout-01-png",
-      "hero-product-red-tag-urgency-02-png",
-      "hero-product-soft-shapes-01-png",
-      "inefficient-layout-banner-04-png",
-      "inefficient-layout-blue-grid-01-png",
-      "inefficient-layout-card-variations-02-png",
-      "inefficient-layout-circle-focus-03-png",
-      "minimal-product-display-glass-01-png",
-      "sq-balance-empty-hero-png",
-      "sq-balance-empty-right-minimal",
-      "sq-balance-empty-side-png",
-      "sq-balance-left-heavy",
-      "sq-balance-weak-image-png",
-      "sq-cta-low-contrast-hidden",
-      "sq-cta-overlay-block-png",
-      "sq-grid-misaligned-blocks",
-      "sq-image-missing-text-only",
-      "sq-image-weak-product-small",
-      "sq-layout-overlap-elements",
-      "sq-spacing-cramped-beauty",
-      "sq-spacing-cramped-png",
-      "sq-spacing-overflow-airy",
-      "sq-spacing-overflow-png",
-      "sq-structure-centered-minimal-png",
-      "sq-structure-illustration-focus-png",
-      "sq-structure-split-grid-png",
-      "sq-structure-thumbnail-collapse",
-      "sq-text-dominant-overlay-png",
-      "sq-text-dominant-scene-png",
-      "sq-visual-chaotic-abstract-png",
-      "sq-visual-rich-illustrative-png",
       "disconnected-cta-dark-split-01-png",
       "disconnected-cta-skewed-layout-02-png",
       "ls-balance-left-heavy-png",
@@ -91,7 +56,7 @@
       "key": "spacing",
       "caseCount": 8,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 8,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -112,7 +77,7 @@
       "key": "balance",
       "caseCount": 5,
       "baselineWinRate": 0.8,
-      "positiveRejectedCandidateCount": 5,
+      "positiveRejectedCandidateCount": 1,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 1,
       "dominantBlockers": [
@@ -133,7 +98,7 @@
       "key": "cta",
       "caseCount": 5,
       "baselineWinRate": 0.4,
-      "positiveRejectedCandidateCount": 5,
+      "positiveRejectedCandidateCount": 3,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 3,
       "dominantBlockers": [
@@ -175,7 +140,7 @@
       "key": "structure",
       "caseCount": 5,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 5,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -196,7 +161,7 @@
       "key": "hero",
       "caseCount": 4,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 4,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -216,7 +181,7 @@
       "key": "image_presence",
       "caseCount": 2,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 2,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -252,7 +217,7 @@
       "key": "text_priority",
       "caseCount": 2,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 2,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -270,7 +235,7 @@
       "key": "visual_style",
       "caseCount": 2,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 2,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -288,7 +253,7 @@
       "key": "grid",
       "caseCount": 1,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 1,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -305,7 +270,7 @@
       "key": "layout_overlap",
       "caseCount": 1,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 1,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -324,7 +289,7 @@
       "key": "square",
       "caseCount": 35,
       "baselineWinRate": 1,
-      "positiveRejectedCandidateCount": 31,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 0,
       "dominantBlockers": [
@@ -376,7 +341,7 @@
       "key": "display",
       "caseCount": 35,
       "baselineWinRate": 0.89,
-      "positiveRejectedCandidateCount": 35,
+      "positiveRejectedCandidateCount": 4,
       "singleGateBlockedCount": 0,
       "confidenceImprovedRejectedCount": 4,
       "dominantBlockers": [
@@ -515,72 +480,6 @@
   },
   "topTuningTargets": [
     {
-      "theme": "role-placement-out-of-zone pressure in spacing square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "spacing",
-      "format": "square",
-      "family": "display",
-      "caseCount": 8,
-      "positiveRejectedCandidateCount": 8,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "inefficient-layout-banner-04-png",
-        "inefficient-layout-blue-grid-01-png",
-        "inefficient-layout-card-variations-02-png",
-        "inefficient-layout-circle-focus-03-png",
-        "sq-spacing-cramped-beauty"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in structure square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "structure",
-      "format": "square",
-      "family": "display",
-      "caseCount": 5,
-      "positiveRejectedCandidateCount": 5,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "geometric-modern-layout-01-png",
-        "sq-structure-centered-minimal-png",
-        "sq-structure-illustration-focus-png",
-        "sq-structure-split-grid-png",
-        "sq-structure-thumbnail-collapse"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in balance square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "balance",
-      "format": "square",
-      "family": "display",
-      "caseCount": 4,
-      "positiveRejectedCandidateCount": 4,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "sq-balance-empty-right-minimal",
-        "sq-balance-empty-side-png",
-        "sq-balance-left-heavy",
-        "sq-balance-weak-image-png"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in hero square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "hero",
-      "format": "square",
-      "family": "display",
-      "caseCount": 4,
-      "positiveRejectedCandidateCount": 4,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "hero-product-red-tag-urgency-02-png",
-        "hero-product-soft-shapes-01-png",
-        "minimal-product-display-glass-01-png",
-        "sq-balance-empty-hero-png"
-      ]
-    },
-    {
       "theme": "role-placement-out-of-zone pressure in cta landscape display cases",
       "blocker": "role-placement-out-of-zone",
       "category": "cta",
@@ -593,62 +492,6 @@
         "disconnected-cta-dark-split-01-png",
         "disconnected-cta-skewed-layout-02-png",
         "ls-cta-detached-png"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in cta square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "cta",
-      "format": "square",
-      "family": "display",
-      "caseCount": 2,
-      "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "sq-cta-low-contrast-hidden",
-        "sq-cta-overlay-block-png"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in image_presence square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "image_presence",
-      "format": "square",
-      "family": "display",
-      "caseCount": 2,
-      "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "sq-image-missing-text-only",
-        "sq-image-weak-product-small"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in text_priority square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "text_priority",
-      "format": "square",
-      "family": "display",
-      "caseCount": 2,
-      "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "sq-text-dominant-overlay-png",
-        "sq-text-dominant-scene-png"
-      ]
-    },
-    {
-      "theme": "role-placement-out-of-zone pressure in visual_style square display cases",
-      "blocker": "role-placement-out-of-zone",
-      "category": "visual_style",
-      "format": "square",
-      "family": "display",
-      "caseCount": 2,
-      "positiveRejectedCandidateCount": 2,
-      "singleGateBlockedCount": 0,
-      "topCaseIds": [
-        "sq-visual-chaotic-abstract-png",
-        "sq-visual-rich-illustrative-png"
       ]
     },
     {
@@ -665,29 +508,155 @@
       ]
     },
     {
-      "theme": "role-placement-out-of-zone pressure in grid square display cases",
+      "theme": "role-placement-out-of-zone pressure in spacing square display cases",
       "blocker": "role-placement-out-of-zone",
-      "category": "grid",
+      "category": "spacing",
       "format": "square",
       "family": "display",
-      "caseCount": 1,
-      "positiveRejectedCandidateCount": 1,
+      "caseCount": 8,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "topCaseIds": [
-        "sq-grid-misaligned-blocks"
+        "inefficient-layout-banner-04-png",
+        "inefficient-layout-blue-grid-01-png",
+        "inefficient-layout-card-variations-02-png",
+        "inefficient-layout-circle-focus-03-png",
+        "sq-spacing-cramped-beauty"
       ]
     },
     {
-      "theme": "role-placement-out-of-zone pressure in layout_overlap square display cases",
+      "theme": "role-placement-out-of-zone pressure in structure square display cases",
       "blocker": "role-placement-out-of-zone",
-      "category": "layout_overlap",
+      "category": "structure",
       "format": "square",
       "family": "display",
-      "caseCount": 1,
-      "positiveRejectedCandidateCount": 1,
+      "caseCount": 5,
+      "positiveRejectedCandidateCount": 0,
       "singleGateBlockedCount": 0,
       "topCaseIds": [
-        "sq-layout-overlap-elements"
+        "geometric-modern-layout-01-png",
+        "sq-structure-centered-minimal-png",
+        "sq-structure-illustration-focus-png",
+        "sq-structure-split-grid-png",
+        "sq-structure-thumbnail-collapse"
+      ]
+    },
+    {
+      "theme": "legacy-safety-rejection pressure in product square marketplace cases",
+      "blocker": "legacy-safety-rejection",
+      "category": "product",
+      "format": "square",
+      "family": "marketplace",
+      "caseCount": 4,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-product-abstract-headphones-png",
+        "sq-product-decorative-context-png",
+        "sq-product-hero-headphones-png",
+        "sq-product-isolated-clean-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in balance square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "balance",
+      "format": "square",
+      "family": "display",
+      "caseCount": 4,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-balance-empty-right-minimal",
+        "sq-balance-empty-side-png",
+        "sq-balance-left-heavy",
+        "sq-balance-weak-image-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in hero square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "hero",
+      "format": "square",
+      "family": "display",
+      "caseCount": 4,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "hero-product-red-tag-urgency-02-png",
+        "hero-product-soft-shapes-01-png",
+        "minimal-product-display-glass-01-png",
+        "sq-balance-empty-hero-png"
+      ]
+    },
+    {
+      "theme": "legacy-safety-rejection pressure in marketplace landscape marketplace cases",
+      "blocker": "legacy-safety-rejection",
+      "category": "marketplace",
+      "format": "landscape",
+      "family": "marketplace",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "overloaded-marketplace-ui-01-png",
+        "overloaded-marketplace-visual-02-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in cta square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "cta",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-cta-low-contrast-hidden",
+        "sq-cta-overlay-block-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in image_presence square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "image_presence",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-image-missing-text-only",
+        "sq-image-weak-product-small"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in text_priority square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "text_priority",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-text-dominant-overlay-png",
+        "sq-text-dominant-scene-png"
+      ]
+    },
+    {
+      "theme": "role-placement-out-of-zone pressure in visual_style square display cases",
+      "blocker": "role-placement-out-of-zone",
+      "category": "visual_style",
+      "format": "square",
+      "family": "display",
+      "caseCount": 2,
+      "positiveRejectedCandidateCount": 0,
+      "singleGateBlockedCount": 0,
+      "topCaseIds": [
+        "sq-visual-chaotic-abstract-png",
+        "sq-visual-rich-illustrative-png"
       ]
     }
   ],
@@ -701,8 +670,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\structure\\square\\geometric-modern-layout-01-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -716,8 +685,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-red-tag-urgency-02-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -731,8 +700,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\hero-product-soft-shapes-01-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -746,8 +715,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-banner-04-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -761,8 +730,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-blue-grid-01-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -776,8 +745,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-card-variations-02-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -791,8 +760,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\inefficient-layout-circle-focus-03-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -806,8 +775,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\minimal-product-display-glass-01-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -821,8 +790,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\hero\\square\\sq-balance-empty-hero-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -836,8 +805,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-right-minimal\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -851,8 +820,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-empty-side-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -866,8 +835,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-left-heavy\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -881,8 +850,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\balance\\square\\sq-balance-weak-image-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -896,8 +865,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-low-contrast-hidden\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -911,8 +880,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\cta\\square\\sq-cta-overlay-block-png\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -926,8 +895,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\grid\\square\\sq-grid-misaligned-blocks\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -941,8 +910,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-missing-text-only\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -956,8 +925,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\image_presence\\square\\sq-image-weak-product-small\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -971,8 +940,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\layout_overlap\\square\\sq-layout-overlap-elements\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"
@@ -986,8 +955,8 @@
       "reportPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\report.json",
       "telemetryPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\telemetry.json",
       "calibrationPath": "C:\\Users\\Fedelesh_dm\\mvp\\dataset\\_cases\\spacing\\square\\sq-spacing-cramped-beauty\\calibration.json",
-      "baselineAggregate": 44,
-      "winnerAggregate": 44,
+      "baselineAggregate": 50,
+      "winnerAggregate": 50,
       "delta": 0,
       "reviewPriority": "urgent-review",
       "whyReview": "Baseline retained despite available repair candidates"

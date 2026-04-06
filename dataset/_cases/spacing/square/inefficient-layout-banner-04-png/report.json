@@ -20,14 +20,14 @@
     "structural-drift"
   ],
   "topRejectionReasons": [
-    "role-placement-out-of-zone",
     "no-net-gain",
-    "legacy-safety-rejection",
-    "aggregate-below-baseline"
+    "role-placement-out-of-zone",
+    "aggregate-below-baseline",
+    "legacy-safety-rejection"
   ],
   "reviewPriority": "urgent-review",
   "whyReview": "Baseline retained despite available repair candidates",
-  "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain.",
+  "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain.",
   "humanVerdictPresent": false,
   "machineHumanAgreement": null,
   "agreementType": null,

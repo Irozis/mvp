@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T08:53:49.095Z",
+  "generatedAt": "2026-04-06T10:31:09.768Z",
   "root": "C:\\Users\\Fedelesh_dm\\mvp\\dataset",
   "strictMode": false,
   "filters": {},
@@ -176,10 +176,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -198,12 +198,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-balance-empty-side-png",
@@ -238,10 +238,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -260,12 +260,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-balance-left-heavy",
@@ -300,10 +300,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -322,12 +322,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-balance-weak-image-png",
@@ -362,10 +362,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -384,12 +384,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "disconnected-cta-dark-split-01-png",
@@ -604,10 +604,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -626,12 +626,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-cta-overlay-block-png",
@@ -666,10 +666,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -688,12 +688,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-grid-misaligned-blocks",
@@ -728,10 +728,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -750,12 +750,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "hero-product-red-tag-urgency-02-png",
@@ -790,10 +790,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -812,12 +812,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "hero-product-soft-shapes-01-png",
@@ -852,10 +852,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -874,12 +874,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "minimal-product-display-glass-01-png",
@@ -914,10 +914,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -936,12 +936,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-balance-empty-hero-png",
@@ -976,10 +976,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -998,12 +998,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-image-missing-text-only",
@@ -1038,10 +1038,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1060,12 +1060,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-image-weak-product-small",
@@ -1100,10 +1100,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1122,12 +1122,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-layout-overlap-elements",
@@ -1162,10 +1162,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1184,12 +1184,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "overloaded-marketplace-ui-01-png",
@@ -1623,10 +1623,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1645,12 +1645,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-blue-grid-01-png",
@@ -1685,10 +1685,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1707,12 +1707,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-card-variations-02-png",
@@ -1747,10 +1747,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1769,12 +1769,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "inefficient-layout-circle-focus-03-png",
@@ -1809,10 +1809,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1831,12 +1831,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-spacing-cramped-beauty",
@@ -1871,10 +1871,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1893,12 +1893,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-spacing-cramped-png",
@@ -1933,10 +1933,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -1955,12 +1955,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-spacing-overflow-airy",
@@ -1995,10 +1995,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2017,12 +2017,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-spacing-overflow-png",
@@ -2057,10 +2057,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2079,12 +2079,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "geometric-modern-layout-01-png",
@@ -2119,10 +2119,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2141,12 +2141,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-structure-centered-minimal-png",
@@ -2181,10 +2181,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2203,12 +2203,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-structure-illustration-focus-png",
@@ -2243,10 +2243,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2265,12 +2265,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-structure-split-grid-png",
@@ -2305,10 +2305,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2327,12 +2327,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-structure-thumbnail-collapse",
@@ -2367,10 +2367,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2389,12 +2389,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-text-dominant-overlay-png",
@@ -2429,10 +2429,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2451,12 +2451,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-text-dominant-scene-png",
@@ -2491,10 +2491,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2513,12 +2513,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-visual-chaotic-abstract-png",
@@ -2553,10 +2553,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2575,12 +2575,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     },
     {
       "caseId": "sq-visual-rich-illustrative-png",
@@ -2615,10 +2615,10 @@
       "candidateCount": 10,
       "rejectedCandidateCount": 10,
       "topRejectionReasons": [
-        "role-placement-out-of-zone",
         "no-net-gain",
-        "legacy-safety-rejection",
-        "aggregate-below-baseline"
+        "role-placement-out-of-zone",
+        "aggregate-below-baseline",
+        "legacy-safety-rejection"
       ],
       "dominantTags": [
         "insufficient-breathing-room",
@@ -2637,12 +2637,12 @@
       "reasons": [
         "baseline-retained",
         "near-zero-delta",
-        "role-placement-out-of-zone",
+        "no-net-gain",
         "candidate-disagreement",
         "insufficient-breathing-room",
         "structural-drift"
       ],
-      "shortSummary": "Baseline retained; candidates were blocked by role-placement-out-of-zone or failed to deliver a safe net gain."
+      "shortSummary": "Baseline retained; candidates were blocked by no-net-gain or failed to deliver a safe net gain."
     }
   ],
   "parseErrors": []
