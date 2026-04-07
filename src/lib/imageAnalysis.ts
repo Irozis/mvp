@@ -316,6 +316,10 @@ export function setAIImageAnalyzer(analyzer: ((image: ImageAsset) => Promise<Enh
   aiImageAnalyzer = analyzer
 }
 
+export const registerAiImageAnalyzer = setAIImageAnalyzer
+
+export type { EnhancedImageAnalysis, ImageAsset, ImageProfile } from './types'
+
 export async function aiAnalyzeImage(imageAsset: ImageAsset): Promise<EnhancedImageAnalysis> {
   if (!imageAsset.url || imageAsset.url.startsWith('data:application/pdf')) {
     return {

@@ -709,8 +709,13 @@ export default function App() {
       setFixSessions((prev) => ({ ...prev, [formatKey]: outcome.result.session }))
       setSelectedBlockId(null)
       setStatus({
-        tone: outcome.result.effectiveAfterScore > outcome.result.effectiveBeforeScore ? 'success' : 'warning',
-        text: `Fix complete for ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}. Effective score ${outcome.result.effectiveBeforeScore} -> ${outcome.result.effectiveAfterScore}.${outcome.result.canFixAgain ? ' You can fix again.' : ' Layout stabilized.'}`,
+        tone:
+          outcome.result.v2SlotLayoutPreserved || outcome.result.effectiveAfterScore > outcome.result.effectiveBeforeScore
+            ? 'success'
+            : 'warning',
+        text: outcome.result.v2SlotLayoutPreserved
+          ? `${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}: layout unchanged (V2 slot structure preserved).`
+          : `Fix complete for ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}. Effective score ${outcome.result.effectiveBeforeScore} -> ${outcome.result.effectiveAfterScore}.${outcome.result.canFixAgain ? ' You can fix again.' : ' Layout stabilized.'}`,
       })
     } catch (error) {
       setStatus({ tone: 'error', text: error instanceof Error ? error.message : 'Layout fix failed.' })

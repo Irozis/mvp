@@ -15,6 +15,13 @@ import { getRepairAspectMode, getRepairObjectiveProfile, resolveRepairSearchConf
 import { computeTypography, recomputeClusterTypography, recomputeTextBlockTypography } from './typographyEngine'
 import { aiReviewLayout, analyzeFullLayout, computeScoreTrust, getFormatAssessment, getFormatFamily, getModelComplianceScore } from './validation'
 import { buildMarketplaceCardTemplateVariantPlans } from './templateVariantGeneration'
+import {
+  allMarketplaceCardV2Archetypes,
+  allMarketplaceTileV2Archetypes,
+  isMarketplaceLayoutV2Enabled,
+  isMarketplaceV2FormatKey,
+  structuralArchetypeForMarketplaceV2Archetype,
+} from './marketplaceLayoutV2'
 import type {
   AIContentAnalysis,
   AIFixStrategy,
@@ -31,6 +38,7 @@ import type {
   FixCandidate,
   FixSessionState,
   FixResult,
+  FormatDefinition,
   FormatKey,
   FormatFamily,
   ImageProfile,
@@ -3733,6 +3741,33 @@ function normalizePreviewIntent(input: {
   const format = FORMAT_MAP[input.formatKey]
   const explicitOverride = input.override || {}
   const merged = { ...input.baseIntent, ...explicitOverride }
+  if (
+    isMarketplaceLayoutV2Enabled() &&
+    merged.marketplaceLayoutEngine === 'v2-slot' &&
+    (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
+  ) {
+    const arch = explicitOverride.marketplaceV2Archetype || merged.marketplaceV2Archetype
+    const family: LayoutIntent['family'] =
+      input.formatKey === 'marketplace-card' ? 'square-image-top-text-bottom' : 'landscape-balanced-split'
+    return {
+      ...input.baseIntent,
+      ...explicitOverride,
+      ...merged,
+      marketplaceLayoutEngine: 'v2-slot',
+      marketplaceV2Archetype: arch,
+      family,
+      presetId: family,
+      marketplaceTemplateId: undefined,
+      marketplaceTemplateZones: undefined,
+      marketplaceTemplateSelection: undefined,
+      marketplaceTemplateSummary: undefined,
+      marketplaceTemplateVariant: undefined,
+      compositionModelId: undefined,
+      structuralArchetype: merged.structuralArchetype,
+      balanceRegime: merged.balanceRegime || 'balanced',
+      occupancyMode: merged.occupancyMode || 'balanced',
+    } satisfies LayoutIntent
+  }
   const structuralArchetype =
     explicitOverride.structuralArchetype || merged.structuralArchetype || getIntentArchetype(merged, input.formatKey)
   const archetypeIntent = applyStructuralArchetypeIntent({
@@ -4283,17 +4318,6 @@ function buildPreviewCandidatePlans(input: {
   if (input.formatKey === 'marketplace-card') {
     const format = FORMAT_MAP[input.formatKey]
     const budget = input.budget || getDefaultPreviewCandidateBudget(input.formatKey)
-    const generated = buildMarketplaceCardTemplateVariantPlans({
-      format,
-      master: input.master,
-      profile: input.profile,
-      goal: input.goal,
-      visualSystem: input.visualSystem,
-      imageAnalysis: input.imageAnalysis,
-      assetHint: input.assetHint,
-      baseIntent: input.baseIntent,
-      baseFixStage: input.baseFixStage,
-    })
     const plans: PreviewCandidatePlan[] = []
     const meta = {
       attemptedPlans: 0,
@@ -4305,16 +4329,133 @@ function buildPreviewCandidatePlans(input: {
       acceptedSignatures: new Set<string>(),
     }
 
-    for (const generatedPlan of generated.plans.slice(0, budget)) {
-      const intent = normalizePreviewIntent({
-        formatKey: input.formatKey,
-        baseIntent: generatedPlan.intent,
+    if (isMarketplaceLayoutV2Enabled()) {
+      for (const arch of allMarketplaceCardV2Archetypes()) {
+        if (plans.length >= budget) break
+        const structuralArchetype = structuralArchetypeForMarketplaceV2Archetype(arch)
+        const intent = normalizePreviewIntent({
+          formatKey: input.formatKey,
+          baseIntent: input.baseIntent,
+          profile: input.profile,
+          goal: input.goal,
+          visualSystem: input.visualSystem,
+          imageAnalysis: input.imageAnalysis,
+          override: {
+            marketplaceLayoutEngine: 'v2-slot',
+            marketplaceV2Archetype: arch,
+            structuralArchetype,
+          },
+        })
+        const structuralSignature = buildIntentStructuralSignature({
+          formatKey: input.formatKey,
+          intent,
+          profile: input.profile,
+        })
+        pushPreviewCandidatePlan(
+          plans,
+          {
+            id: `v2-${arch}`,
+            strategyLabel: `marketplace-v2-${arch}`,
+            fixStage: input.baseFixStage || 'base',
+            intent,
+            structuralArchetype,
+            structuralSignature,
+            selectionReason: `Marketplace V2 slot layout (${arch})`,
+          },
+          input.formatKey,
+          meta,
+          budget
+        )
+      }
+    } else {
+      const generated = buildMarketplaceCardTemplateVariantPlans({
+        format,
+        master: input.master,
         profile: input.profile,
         goal: input.goal,
         visualSystem: input.visualSystem,
         imageAnalysis: input.imageAnalysis,
+        assetHint: input.assetHint,
+        baseIntent: input.baseIntent,
+        baseFixStage: input.baseFixStage,
       })
-      const structuralArchetype = getIntentArchetype(intent, input.formatKey)
+
+      for (const generatedPlan of generated.plans.slice(0, budget)) {
+        const intent = normalizePreviewIntent({
+          formatKey: input.formatKey,
+          baseIntent: generatedPlan.intent,
+          profile: input.profile,
+          goal: input.goal,
+          visualSystem: input.visualSystem,
+          imageAnalysis: input.imageAnalysis,
+        })
+        const structuralArchetype = getIntentArchetype(intent, input.formatKey)
+        const structuralSignature = buildIntentStructuralSignature({
+          formatKey: input.formatKey,
+          intent,
+          profile: input.profile,
+        })
+        pushPreviewCandidatePlan(
+          plans,
+          {
+            id: generatedPlan.id,
+            strategyLabel: generatedPlan.strategyLabel,
+            fixStage: generatedPlan.fixStage,
+            intent,
+            structuralArchetype,
+            structuralSignature,
+            selectionReason: generatedPlan.selectionReason,
+          },
+          input.formatKey,
+          meta,
+          budget
+        )
+      }
+    }
+
+    return {
+      plans,
+      meta: {
+        attemptedPlans: meta.attemptedPlans,
+        acceptedPlans: plans.length,
+        prunedStructuralDuplicates: meta.prunedStructuralDuplicates,
+        budgetRejectedPlans: meta.budgetRejectedPlans,
+        attemptedArchetypes: Array.from(meta.attemptedArchetypes).sort(),
+        acceptedArchetypes: Array.from(meta.acceptedArchetypes).sort(),
+        attemptedStructuralSignatures: meta.attemptedSignatures.size,
+        acceptedStructuralSignatures: meta.acceptedSignatures.size,
+      } satisfies PreviewPlanBuildMeta,
+    }
+  }
+
+  if (input.formatKey === 'marketplace-tile' && isMarketplaceLayoutV2Enabled()) {
+    const budget = input.budget || getDefaultPreviewCandidateBudget(input.formatKey)
+    const plans: PreviewCandidatePlan[] = []
+    const meta = {
+      attemptedPlans: 0,
+      prunedStructuralDuplicates: 0,
+      budgetRejectedPlans: 0,
+      attemptedArchetypes: new Set<StructuralArchetype>(),
+      acceptedArchetypes: new Set<StructuralArchetype>(),
+      attemptedSignatures: new Set<string>(),
+      acceptedSignatures: new Set<string>(),
+    }
+    for (const arch of allMarketplaceTileV2Archetypes()) {
+      if (plans.length >= budget) break
+      const structuralArchetype = structuralArchetypeForMarketplaceV2Archetype(arch)
+      const intent = normalizePreviewIntent({
+        formatKey: input.formatKey,
+        baseIntent: input.baseIntent,
+        profile: input.profile,
+        goal: input.goal,
+        visualSystem: input.visualSystem,
+        imageAnalysis: input.imageAnalysis,
+        override: {
+          marketplaceLayoutEngine: 'v2-slot',
+          marketplaceV2Archetype: arch,
+          structuralArchetype,
+        },
+      })
       const structuralSignature = buildIntentStructuralSignature({
         formatKey: input.formatKey,
         intent,
@@ -4323,20 +4464,19 @@ function buildPreviewCandidatePlans(input: {
       pushPreviewCandidatePlan(
         plans,
         {
-          id: generatedPlan.id,
-          strategyLabel: generatedPlan.strategyLabel,
-          fixStage: generatedPlan.fixStage,
+          id: `v2-${arch}`,
+          strategyLabel: `marketplace-v2-${arch}`,
+          fixStage: input.baseFixStage || 'base',
           intent,
           structuralArchetype,
           structuralSignature,
-          selectionReason: generatedPlan.selectionReason,
+          selectionReason: `Marketplace V2 slot layout (${arch})`,
         },
         input.formatKey,
         meta,
         budget
       )
     }
-
     return {
       plans,
       meta: {
@@ -4635,8 +4775,12 @@ function evaluatePreviewCandidatePlan(input: {
     perceptualSignals,
   } satisfies PreviewCandidateEvaluation
 
+  const skipMarketplaceV2Extras =
+    synthesizedIntent.marketplaceLayoutEngine === 'v2-slot' &&
+    (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
+
   const perceptualRefinement =
-    input.formatKey === 'marketplace-card'
+    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
       ? refineMarketplaceCardPerceptualComposition({
           scene,
           format,
@@ -4729,14 +4873,14 @@ function evaluatePreviewCandidatePlan(input: {
   }
 
   const perceptualPreference =
-    input.formatKey === 'marketplace-card'
+    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
       ? computeMarketplaceCardPerceptualPreference({
           candidate: candidateAfterPerceptualAdjustment,
         })
       : undefined
 
   const commercialPreference =
-    input.formatKey === 'marketplace-card'
+    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
       ? computeMarketplaceCardCommercialPreferenceScore({
           candidate: candidateAfterPerceptualAdjustment,
           profile: input.profile,
@@ -4750,7 +4894,7 @@ function evaluatePreviewCandidatePlan(input: {
   } satisfies PreviewCandidateEvaluation
 
   const evaluationAlignment =
-    input.formatKey === 'marketplace-card'
+    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
       ? computeMarketplaceCardTextFirstEvaluationAlignment({
           candidate: candidateWithCommercial,
           profile: input.profile,
@@ -7808,6 +7952,112 @@ function toRepairRegenerationCandidateDiagnostics(attempt: RepairAttempt): Repai
   }
 }
 
+/**
+ * Legacy repair/regeneration targets template/pack layouts and fights deterministic V2 slot scenes.
+ * Preserve the current scene and surface a no-op fix result when V2 is active for card/tile.
+ */
+async function buildMarketplaceV2SlotFixBypassOutcome(params: {
+  scene: Scene
+  regenerationMasterScene?: Scene
+  formatKey: FormatKey
+  previousFixState?: FixSessionState
+  currentFormat: FormatDefinition
+  formatFamily: FormatFamily
+  beforeAssessment: LayoutAssessment
+  beforeState: RepairEvaluatedScene
+  currentSceneSignature: string
+  regenerationSceneSignature: string
+}): Promise<{ scene: Scene; result: FixResult; assessment: LayoutAssessment; scoreTrust: ScoreTrust; diagnostics: RepairDiagnostics }> {
+  const beforeTrust = params.beforeState.scoreTrust
+  const beforeEffectiveScore = beforeTrust.effectiveScore
+  const classification = classifyStructuralFailure(params.beforeAssessment)
+  const remainingIssues = params.beforeAssessment.issues
+    .filter((issue) => issue.severity === 'high' || issue.severity === 'medium')
+    .map((issue) => issue.code)
+  const beforeAnalysis = params.beforeAssessment.layoutAnalysis || analyzeFullLayout(params.scene, params.currentFormat)
+  const issueBuckets = analysisToIssueBuckets(beforeAnalysis)
+
+  const session: FixSessionState = {
+    iteration: (params.previousFixState?.iteration || 0) + 1,
+    previousScores: [...(params.previousFixState?.previousScores || []), params.beforeAssessment.score],
+    effectiveScores: [...(params.previousFixState?.effectiveScores || []), beforeEffectiveScore],
+    unresolvedBlockIssues: issueBuckets.blockIssues,
+    unresolvedClusterIssues: issueBuckets.clusterIssues,
+    unresolvedGlobalIssues: issueBuckets.globalIssues,
+    actionsApplied: params.previousFixState?.actionsApplied || [],
+    failedStrategies: params.previousFixState?.failedStrategies || [],
+    rejectedActions: params.previousFixState?.rejectedActions || [],
+    unresolvedIssues: remainingIssues,
+    converged: true,
+    canFixAgain: false,
+    currentFormatFamily: params.formatFamily,
+    failedAttemptSignatures: (params.previousFixState?.failedAttemptSignatures || []).slice(-REPAIR_HISTORY_LIMIT),
+    recentOutcomeSignatures: unique([
+      ...(params.previousFixState?.recentOutcomeSignatures || []),
+      params.beforeState.sceneSignature,
+    ]).slice(-REPAIR_HISTORY_LIMIT),
+    lastSceneSignature: params.beforeState.sceneSignature,
+  }
+
+  const result: FixResult = {
+    beforeScore: params.beforeAssessment.score,
+    afterScore: params.beforeAssessment.score,
+    effectiveBeforeScore: beforeEffectiveScore,
+    effectiveAfterScore: beforeEffectiveScore,
+    actionsApplied: [],
+    actionsRejected: [],
+    resolvedIssues: [],
+    remainingIssues,
+    canFixAgain: false,
+    session,
+    scoreTrust: beforeTrust,
+    v2SlotLayoutPreserved: true,
+  }
+
+  const diagnostics: RepairDiagnostics = {
+    formatKey: params.formatKey,
+    classification,
+    regenerationSource: {
+      usesMasterScene: Boolean(params.regenerationMasterScene),
+      currentSceneSignature: params.currentSceneSignature,
+      regenerationSceneSignature: params.regenerationSceneSignature,
+      differsFromCurrent: params.currentSceneSignature !== params.regenerationSceneSignature,
+    },
+    before: {
+      structuralStatus: params.beforeState.structuralStatus,
+      effectiveScore: beforeEffectiveScore,
+      sceneSignature: params.beforeState.sceneSignature,
+    },
+    after: {
+      structuralStatus: params.beforeState.structuralStatus,
+      effectiveScore: beforeEffectiveScore,
+      sceneSignature: params.beforeState.sceneSignature,
+    },
+    finalChanged: false,
+    acceptedImprovement: false,
+    escalated: false,
+    escalationReasons: ['marketplace-v2-slot-layout-preserved'],
+    searchRuns: [],
+    attempts: [],
+    regenerationCandidates: [],
+    autoFix: {
+      attempted: false,
+      accepted: false,
+      scoreDelta: 0,
+      structuralBefore: params.beforeState.structuralStatus,
+      structuralAfter: params.beforeState.structuralStatus,
+    },
+  }
+
+  return {
+    scene: params.scene,
+    assessment: params.beforeAssessment,
+    scoreTrust: beforeTrust,
+    diagnostics,
+    result,
+  }
+}
+
 async function runRepairPipeline(input: {
   scene: Scene
   regenerationMasterScene?: Scene
@@ -7836,6 +8086,20 @@ async function runRepairPipeline(input: {
     assessment: beforeAssessment,
     strategyLabel: 'current',
   })
+  if (isMarketplaceLayoutV2Enabled() && isMarketplaceV2FormatKey(input.formatKey)) {
+    return buildMarketplaceV2SlotFixBypassOutcome({
+      scene: input.scene,
+      regenerationMasterScene: input.regenerationMasterScene,
+      formatKey: input.formatKey,
+      previousFixState: input.previousFixState,
+      currentFormat,
+      formatFamily,
+      beforeAssessment,
+      beforeState,
+      currentSceneSignature,
+      regenerationSceneSignature,
+    })
+  }
   const beforeTrust = beforeState.scoreTrust
   const beforeAnalysis = beforeAssessment.layoutAnalysis || analyzeFullLayout(input.scene, currentFormat)
   const currentSceneProfile = profileContent(input.scene)

@@ -120,6 +120,7 @@ export function CanvasPreview({
   const textPanelY = Math.max(titleY - (scene.title.fontSize || 32) * 1.05, 18)
   const textPanelW = Math.min(Math.max(percentX(Math.max(scene.title.w || 0, scene.subtitle.w || 0, scene.cta.w || 0) + 8, width), ctaX + ctaW - textPanelX + 24), width - textPanelX - 22)
   const textPanelH = Math.min(ctaY + ctaH - textPanelY + 30, height - textPanelY - 18)
+  const textPanelRx = Math.min(26, Math.max(textPanelW / 2 - 2, 4))
 
   const topIssues = assessment.issues.slice(0, 3)
   const shownScore = fixResult?.effectiveAfterScore ?? assessment.score
@@ -315,7 +316,18 @@ export function CanvasPreview({
             </g>
           )}
 
-          {immersiveImage && <rect x={textPanelX} y={textPanelY} width={textPanelW} height={textPanelH} rx="26" fill={`url(#${textPanelId})`} stroke="rgba(255,255,255,0.12)" />}
+          {immersiveImage && (
+            <rect
+              x={textPanelX}
+              y={textPanelY}
+              width={textPanelW}
+              height={textPanelH}
+              rx={textPanelRx}
+              ry={textPanelRx}
+              fill={`url(#${textPanelId})`}
+              stroke="rgba(255,255,255,0.12)"
+            />
+          )}
 
           <rect x={logoX} y={logoY} width={logoW} height={logoH} rx="14" fill={rgba(scene.logo.bg || '#ffffff', scene.logo.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.2)" />
           {logoUrl ? (

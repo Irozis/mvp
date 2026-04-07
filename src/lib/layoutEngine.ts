@@ -26,6 +26,7 @@ import { getFormatRuleSet } from './formatRules'
 import { getFormatContractOverride, getFormatDensityPreset, getFormatSafeFallbackArchetype, getFormatSafeInsetBias, getMarketplaceRoleContract } from './formatDefaults'
 import { getOverlaySafetyPolicy } from './overlayPolicies'
 import { resolveCompositionModelFamily, selectCompositionModel } from './formatCompositionModels'
+import { buildMarketplaceV2Scene, shouldSynthesizeMarketplaceLayoutV2 } from './marketplaceLayoutV2'
 import { computePerceptualSignals } from './perceptualSignals'
 import { resolveSharedBadgeSemantic } from './placementRoleMapping'
 import { refineMarketplaceCardPerceptualComposition, type MarketplacePerceptualAdjustment } from './perceptualRefinement'
@@ -70,6 +71,52 @@ type MarketplaceZoneProfile = {
 
 function isSquareFamily(intent: LayoutIntent) {
   return intent.family === 'square-hero-overlay' || intent.family === 'square-image-top-text-bottom'
+}
+
+/** Marketplace card/tile/highlight layout *families* already encode split or square shelf geometry; generic structural archetypes must not replace them with unrelated presets (e.g. wide compact-minimal hero + tiny text), which then forces adaptZonesToContract to over-shrink the image. */
+function shouldPreserveMarketplaceNativeFamilySeed(format: FormatDefinition, intent: LayoutIntent): boolean {
+  if (format.category !== 'marketplace') return false
+  if (format.key === 'marketplace-card') {
+    return intent.family === 'square-image-top-text-bottom' || intent.family === 'square-hero-overlay'
+  }
+  if (format.key === 'marketplace-tile') {
+    return (
+      intent.family === 'landscape-balanced-split' ||
+      intent.family === 'landscape-text-left-image-right' ||
+      intent.family === 'landscape-image-dominant'
+    )
+  }
+  if (format.key === 'marketplace-highlight') {
+    return intent.family === 'portrait-bottom-card' || intent.family === 'portrait-hero-overlay'
+  }
+  return false
+}
+
+function applyOccupancyModeToFamilyZones(
+  next: FamilyZoneSet,
+  input: {
+    intent: LayoutIntent
+    safeText: Region
+    insets: { x: number; y: number }
+  }
+): FamilyZoneSet {
+  const out = clone(next)
+  if (input.intent.occupancyMode === 'spacious') {
+    out.text = normalizeRegion({ ...out.text, w: out.text.w * 0.86, h: out.text.h * 0.86 })
+  } else if (input.intent.occupancyMode === 'compact') {
+    out.text = normalizeRegion({ ...out.text, w: out.text.w * 1.06, h: out.text.h * 1.08 })
+  } else if (input.intent.occupancyMode === 'visual-first') {
+    out.image = normalizeRegion({ ...out.image, w: out.image.w * 1.08, h: out.image.h * 1.04 })
+    out.text = normalizeRegion({ ...out.text, w: out.text.w * 0.92 })
+  } else if (input.intent.occupancyMode === 'text-safe') {
+    out.text = normalizeRegion({
+      x: clamp(Math.max(out.text.x, input.safeText.x), input.insets.x + 1, 100),
+      y: clamp(Math.max(out.text.y, input.safeText.y), input.insets.y + 1, 100),
+      w: Math.min(out.text.w, Math.max(input.safeText.w, 24)),
+      h: Math.min(out.text.h, Math.max(input.safeText.h, 18)),
+    })
+  }
+  return out
 }
 
 function compactProofSubtitleText(text: string) {
@@ -183,6 +230,14 @@ function applyStructuralArchetypeZoneBias(input: {
       badge: normalizeRegion(input.intent.marketplaceTemplateZones.badge),
       cta: normalizeRegion(input.intent.marketplaceTemplateZones.cta),
     }
+  }
+
+  if (archetype && shouldPreserveMarketplaceNativeFamilySeed(input.format, input.intent)) {
+    return applyOccupancyModeToFamilyZones(clone(input.current), {
+      intent: input.intent,
+      safeText: input.safeText,
+      insets: input.insets,
+    })
   }
 
   const wideLike = input.format.family === 'wide' || input.format.family === 'landscape'
@@ -1423,7 +1478,7 @@ function getArchetypeLayoutContract(
     contract = {
       ...contract,
       textCoverageRange: [Math.max(contract.textCoverageRange[0] - 0.02, 0.12), Math.min(contract.textCoverageRange[1], 0.26)],
-      imageCoverageRange: [contract.imageCoverageRange[0], Math.min(contract.imageCoverageRange[1], format.category === 'marketplace' ? 0.42 : 0.5)],
+      imageCoverageRange: [contract.imageCoverageRange[0], Math.min(contract.imageCoverageRange[1], format.category === 'marketplace' ? 0.48 : 0.5)],
       headlineMaxLines: Math.min(contract.headlineMaxLines, 3),
       subtitleMaxLines: Math.min(contract.subtitleMaxLines, format.category === 'display' || format.category === 'marketplace' ? 1 : 2),
       occupancyMode: contract.occupancyMode === 'visual-first' ? 'visual-first' : 'spacious',
@@ -1628,7 +1683,7 @@ function adaptZonesToContract(input: {
       : imageBackedProductSupport
         ? Math.max(contract.imageCoverageRange[1], wideLike ? 0.36 : 0.32)
     : marketplaceTight
-      ? Math.min(contract.imageCoverageRange[1], wideLike ? 0.22 : format.family === 'portrait' ? 0.26 : 0.24)
+      ? Math.min(contract.imageCoverageRange[1], getFormatRuleSet(format).composition.maxImageCoverage)
       : contract.imageCoverageRange[1]
   const textNeedsBoost =
     !imageBackedProductSupport &&
@@ -1636,14 +1691,8 @@ function adaptZonesToContract(input: {
     !(noImageTextFirst && proofBandTextFirst) &&
     (profile.density === 'dense' || profile.preferredMessageMode === 'text-first')
   const textGapStep = wideLike ? 6 : 8
-  const forceMarketplaceTextSafeRebalance =
-    marketplaceTight &&
-    contract.occupancyMode === 'text-safe' &&
-    !noImageHeaderPanel &&
-    !imageBackedTextFirst &&
-    !(noImageTextFirst && proofBandTextFirst)
 
-  if (textCoverage < targetTextCoverage || textNeedsBoost || forceMarketplaceTextSafeRebalance) {
+  if (textCoverage < targetTextCoverage || textNeedsBoost) {
     if (wideLike) {
       const delta = clamp((targetTextCoverage - textCoverage) * 120 + (textNeedsBoost ? 4 : 0) + (marketplaceTight ? 5 : 0), 0, marketplaceTight ? 20 : 14)
       next.text.w = clamp(next.text.w + delta, 24, 64)
@@ -1659,7 +1708,7 @@ function adaptZonesToContract(input: {
     }
   }
 
-  if (imageCoverage > targetImageMax || forceMarketplaceTextSafeRebalance) {
+  if (imageCoverage > targetImageMax) {
     if (wideLike) {
       const delta = marketplaceTight ? 12 : 8
       next.image.w = clamp(next.image.w - delta, marketplaceTight ? 16 : 18, 76)
@@ -6391,7 +6440,7 @@ export function finalizeSceneGeometry(scene: Scene, format: FormatDefinition, co
 
   const boxMap = buildSceneLayoutBoxes(next, format)
   const safeArea = rectToRegion(ruleSet.safeArea, format)
-  const collisionResolvedBoxes = resolveBoxCollisions(boxMap.boxes, safeArea, compositionModel)
+  const collisionResolvedBoxes = resolveBoxCollisions(boxMap.boxes, safeArea, compositionModel, format)
   const resolvedBoxes = resolveSpacingConflicts(collisionResolvedBoxes, safeArea, format, compositionModel)
   next = syncSceneWithBoxes(next, format, resolvedBoxes)
   return applyRuleConstraints(next, format, ruleSet)
@@ -6766,6 +6815,12 @@ function stabilizeMarketplaceLayout(scene: Scene, format: FormatDefinition, comp
   return accepted ? bestScene : scene
 }
 
+function lateStageMarketplaceImageShrinkScale(phase: 'collision-landscape' | 'collision-portrait' | 'spacing'): number {
+  if (phase === 'spacing') return 0.96
+  if (phase === 'collision-landscape') return 0.94
+  return 0.95
+}
+
 function moveBoxWithinCanvas(box: LayoutBox, canvas: Rect, dx: number, dy: number) {
   box.rect.x = clamp(box.rect.x + dx, canvas.x, canvas.x + canvas.w - box.rect.w)
   box.rect.y = clamp(box.rect.y + dy, canvas.y, canvas.y + canvas.h - box.rect.h)
@@ -6780,7 +6835,12 @@ function shrinkBox(box: LayoutBox, canvas: Rect, scale: number) {
   box.rect.y = clamp(box.rect.y, canvas.y, canvas.y + canvas.h - box.rect.h)
 }
 
-export function resolveBoxCollisions(boxes: LayoutBox[], canvas: Rect, compositionModel?: CompositionModel | null): LayoutBox[] {
+export function resolveBoxCollisions(
+  boxes: LayoutBox[],
+  canvas: Rect,
+  compositionModel?: CompositionModel | null,
+  format?: FormatDefinition
+): LayoutBox[] {
   const resolved = boxes.map((box) => clone(box))
   for (let pass = 0; pass < 6; pass += 1) {
     const collisions = detectBoxCollisions(resolved, compositionModel)
@@ -6796,10 +6856,10 @@ export function resolveBoxCollisions(boxes: LayoutBox[], canvas: Rect, compositi
         moveBoxWithinCanvas(movable, canvas, pushX ? 0 : collision.overlapX * 0.1, pushX ? collision.overlapY + 1.5 : 0)
       } else if (movable.kind === 'image') {
         if (canvas.w > canvas.h) {
-          shrinkBox(movable, canvas, 0.94)
+          shrinkBox(movable, canvas, lateStageMarketplaceImageShrinkScale('collision-landscape'))
           moveBoxWithinCanvas(movable, canvas, anchor.rect.x < movable.rect.x ? 1.5 : -1.5, 0)
         } else {
-          shrinkBox(movable, canvas, 0.95)
+          shrinkBox(movable, canvas, lateStageMarketplaceImageShrinkScale('collision-portrait'))
           moveBoxWithinCanvas(movable, canvas, 0, 1.5)
         }
       } else if (movable.kind === 'headline') {
@@ -6848,7 +6908,7 @@ function resolveSpacingConflicts(
           moveBoxWithinCanvas(movable, canvas, 0, anchor.rect.y <= movable.rect.y ? deficit + 1 : -(deficit + 1))
         }
       } else if (movable.kind === 'image') {
-        shrinkBox(movable, canvas, 0.96)
+        shrinkBox(movable, canvas, lateStageMarketplaceImageShrinkScale('spacing'))
         moveBoxWithinCanvas(movable, canvas, anchor.rect.x < movable.rect.x ? 1.5 : -1.5, 0)
       } else {
         moveBoxWithinCanvas(movable, canvas, anchor.rect.x <= movable.rect.x ? deficit + 1 : -(deficit + 1), 0)
@@ -7210,6 +7270,30 @@ export function synthesizeLayout({
     ruleSet.allowedLayoutFamilies.includes(intent.family)
       ? intent
       : { ...intent, family: ruleSet.allowedLayoutFamilies[0], presetId: ruleSet.allowedLayoutFamilies[0] }
+  if (shouldSynthesizeMarketplaceLayoutV2(format, resolvedIntent) && resolvedIntent.marketplaceV2Archetype) {
+    const effectiveIntent: LayoutIntent = {
+      ...resolvedIntent,
+      marketplaceTemplateId: undefined,
+      marketplaceTemplateZones: undefined,
+      marketplaceTemplateSelection: undefined,
+      marketplaceTemplateSummary: undefined,
+      marketplaceTemplateVariant: undefined,
+      compositionModelId: undefined,
+    }
+    let scene = applyPalette(master, palette, assetHint)
+    scene = applyTypography(scene, typography, brandKit)
+    scene.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+    scene = buildMarketplaceV2Scene({
+      scene,
+      format,
+      typography,
+      archetype: resolvedIntent.marketplaceV2Archetype,
+    })
+    scene = finalizeSceneGeometry(scene, format, null)
+    scene = stabilizeMarketplaceLayout(scene, format, null)
+    const structuralState = evaluateStructuralLayoutState({ scene, format, compositionModel: null })
+    return { scene, blocks: [], intent: effectiveIntent, structuralState }
+  }
   const useTemplateDrivenMarketplaceCard = format.key === 'marketplace-card' && Boolean(resolvedIntent.marketplaceTemplateId)
   const compositionModel = useTemplateDrivenMarketplaceCard
     ? null
@@ -7421,6 +7505,43 @@ export function getSynthesisStageDiagnostics({
     ruleSet.allowedLayoutFamilies.includes(intent.family)
       ? intent
       : { ...intent, family: ruleSet.allowedLayoutFamilies[0], presetId: ruleSet.allowedLayoutFamilies[0] }
+  if (shouldSynthesizeMarketplaceLayoutV2(format, resolvedIntent) && resolvedIntent.marketplaceV2Archetype) {
+    const effectiveIntent: LayoutIntent = {
+      ...resolvedIntent,
+      marketplaceTemplateId: undefined,
+      marketplaceTemplateZones: undefined,
+      marketplaceTemplateSelection: undefined,
+      marketplaceTemplateSummary: undefined,
+      marketplaceTemplateVariant: undefined,
+      compositionModelId: undefined,
+    }
+    let seeded = applyPalette(master, palette, assetHint)
+    seeded = applyTypography(seeded, typography, brandKit)
+    seeded.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+    const slotScene = buildMarketplaceV2Scene({
+      scene: seeded,
+      format,
+      typography,
+      archetype: resolvedIntent.marketplaceV2Archetype,
+    })
+    const finalized = finalizeSceneGeometry(slotScene, format, null)
+    const stabilized = stabilizeMarketplaceLayout(finalized, format, null)
+    const slotState = evaluateStructuralLayoutState({ scene: slotScene, format, compositionModel: null })
+    const finalizedState = evaluateStructuralLayoutState({ scene: finalized, format, compositionModel: null })
+    const finalState = evaluateStructuralLayoutState({ scene: stabilized, format, compositionModel: null })
+    return {
+      blocks: [],
+      intent: effectiveIntent,
+      compositionModelId: undefined,
+      repacked: false,
+      stages: [
+        { stage: 'packed', scene: slotScene, structuralState: slotState },
+        { stage: 'finalized', scene: finalized, structuralState: finalizedState },
+        { stage: 'stabilized', scene: stabilized, structuralState: finalState },
+        { stage: 'final-assessed', scene: stabilized, structuralState: finalState },
+      ],
+    }
+  }
   const useTemplateDrivenMarketplaceCard = format.key === 'marketplace-card' && Boolean(resolvedIntent.marketplaceTemplateId)
   const compositionModel = useTemplateDrivenMarketplaceCard
     ? null

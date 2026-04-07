@@ -12,6 +12,7 @@ import type {
   VisualSystemKey,
 } from './types'
 import { getFormatArchetypeRanking, getFormatBalanceDefaults } from './formatDefaults'
+import { buildMarketplaceV2BaseLayoutIntent, isMarketplaceLayoutV2Enabled } from './marketplaceLayoutV2'
 import { adaptMarketplaceCardTemplate } from './templateAdapter'
 
 let aiLayoutStrategySelector:
@@ -131,6 +132,9 @@ function buildHeuristicLayoutIntent({
     imageProfile: imageAnalysis?.imageProfile || assetHint?.imageProfile || imageProfile,
   })
   const preferredArchetype = rankedArchetypes[0]
+  if (isMarketplaceLayoutV2Enabled() && (format.key === 'marketplace-card' || format.key === 'marketplace-tile')) {
+    return buildMarketplaceV2BaseLayoutIntent({ formatKey: format.key, profile })
+  }
   if (format.key === 'marketplace-card') {
     // Marketplace-card now uses template adaptation as the primary intent path.
     // Legacy freeform behavior remains underneath as packing/validation support,

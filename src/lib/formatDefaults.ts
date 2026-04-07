@@ -148,7 +148,7 @@ const CATEGORY_DEFAULTS: Record<FormatDefinition['category'], FormatDefaultPrese
     contractOverrides: {
       default: {
         textCoverageRange: [0.22, 0.38],
-        imageCoverageRange: [0.12, 0.34],
+        imageCoverageRange: [0.14, 0.4],
         headlineMaxLines: 2,
         subtitleMaxLines: 2,
         clusterGapPx: 14,
@@ -157,13 +157,13 @@ const CATEGORY_DEFAULTS: Record<FormatDefinition['category'], FormatDefaultPrese
       },
       'overlay-balanced': {
         textCoverageRange: [0.22, 0.34],
-        imageCoverageRange: [0.12, 0.28],
+        imageCoverageRange: [0.14, 0.32],
         subtitleMaxLines: 1,
         fallbackMode: 'safe-shelf',
       },
       'compact-minimal': {
         textCoverageRange: [0.14, 0.24],
-        imageCoverageRange: [0.18, 0.34],
+        imageCoverageRange: [0.18, 0.38],
         subtitleMaxLines: 1,
       },
     },
@@ -377,7 +377,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
     contractOverrides: {
       default: {
         textCoverageRange: [0.26, 0.42],
-        imageCoverageRange: [0.1, 0.26],
+        imageCoverageRange: [0.12, 0.38],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 15,
@@ -389,7 +389,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'compact-minimal': {
         textCoverageRange: [0.18, 0.28],
-        imageCoverageRange: [0.12, 0.24],
+        imageCoverageRange: [0.14, 0.34],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 12,
@@ -400,7 +400,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'dense-information': {
         textCoverageRange: [0.28, 0.44],
-        imageCoverageRange: [0.1, 0.22],
+        imageCoverageRange: [0.12, 0.32],
         headlineMaxLines: 2,
         subtitleMaxLines: 2,
         clusterGapPx: 14,
@@ -411,7 +411,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'split-vertical': {
         textCoverageRange: [0.24, 0.4],
-        imageCoverageRange: [0.12, 0.26],
+        imageCoverageRange: [0.14, 0.36],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 14,
@@ -433,7 +433,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
     contractOverrides: {
       default: {
         textCoverageRange: [0.24, 0.38],
-        imageCoverageRange: [0.08, 0.24],
+        imageCoverageRange: [0.1, 0.34],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 12,
@@ -445,7 +445,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'compact-minimal': {
         textCoverageRange: [0.18, 0.28],
-        imageCoverageRange: [0.1, 0.22],
+        imageCoverageRange: [0.12, 0.3],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 11,
@@ -456,7 +456,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'dense-information': {
         textCoverageRange: [0.26, 0.4],
-        imageCoverageRange: [0.08, 0.22],
+        imageCoverageRange: [0.1, 0.32],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 12,
@@ -467,7 +467,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'split-horizontal': {
         textCoverageRange: [0.26, 0.42],
-        imageCoverageRange: [0.1, 0.24],
+        imageCoverageRange: [0.12, 0.34],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 12,
@@ -489,7 +489,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
     contractOverrides: {
       default: {
         textCoverageRange: [0.3, 0.46],
-        imageCoverageRange: [0.1, 0.28],
+        imageCoverageRange: [0.12, 0.38],
         headlineMaxLines: 3,
         subtitleMaxLines: 2,
         clusterGapPx: 16,
@@ -501,7 +501,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'compact-minimal': {
         textCoverageRange: [0.2, 0.3],
-        imageCoverageRange: [0.12, 0.24],
+        imageCoverageRange: [0.14, 0.32],
         headlineMaxLines: 2,
         subtitleMaxLines: 1,
         clusterGapPx: 12,
@@ -512,7 +512,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'dense-information': {
         textCoverageRange: [0.32, 0.48],
-        imageCoverageRange: [0.1, 0.24],
+        imageCoverageRange: [0.12, 0.34],
         headlineMaxLines: 3,
         subtitleMaxLines: 2,
         clusterGapPx: 15,
@@ -523,7 +523,7 @@ const FORMAT_DEFAULTS: Partial<Record<FormatDefinition['key'], Partial<FormatDef
       },
       'split-vertical': {
         textCoverageRange: [0.3, 0.44],
-        imageCoverageRange: [0.1, 0.28],
+        imageCoverageRange: [0.12, 0.36],
         headlineMaxLines: 3,
         subtitleMaxLines: 2,
         clusterGapPx: 15,

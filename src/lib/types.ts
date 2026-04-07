@@ -30,6 +30,16 @@ export type MarketplaceCardTemplateId =
   | 'header-panel-card'
   | 'product-support-card'
   | 'minimal-promo-card'
+
+/** Deterministic slot-based marketplace layouts (card + tile); see `marketplaceLayoutV2.ts`. */
+export type MarketplaceV2ArchetypeId =
+  | 'v2-card-split-image-right'
+  | 'v2-card-hero-shelf'
+  | 'v2-card-text-focus'
+  | 'v2-tile-split-balanced'
+  | 'v2-tile-image-forward'
+
+export type MarketplaceLayoutEngineMode = 'default' | 'v2-slot'
 export type TemplateSupportLevel = 'preferred' | 'supported' | 'avoid'
 export type TemplateContentBehavior = 'minimal' | 'balanced' | 'dense'
 export type SellingAngle =
@@ -1185,6 +1195,9 @@ export type StructuralSignature = {
 export type LayoutIntent = {
   family: LayoutIntentFamily
   compositionModelId?: CompositionModelId
+  /** When `v2-slot` and `VITE_MARKETPLACE_LAYOUT_V2=true`, card/tile use slot synthesis instead of pack/repair. */
+  marketplaceLayoutEngine?: MarketplaceLayoutEngineMode
+  marketplaceV2Archetype?: MarketplaceV2ArchetypeId
   marketplaceTemplateId?: MarketplaceCardTemplateId
   marketplaceTemplateVariant?:
     | 'base'
@@ -1855,6 +1868,8 @@ export type FixResult = {
   session: FixSessionState
   scoreTrust: ScoreTrust
   repair?: RepairResult
+  /** Set when Fix layout intentionally skipped legacy repair to preserve marketplace V2 slot synthesis. */
+  v2SlotLayoutPreserved?: boolean
 }
 
 export type SavedProject = {
