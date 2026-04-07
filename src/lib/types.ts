@@ -809,7 +809,7 @@ export type EnhancedImageAnalysis = {
   brightnessMap: Array<{ x: number; y: number; score: number }>
   contrastZones: EnhancedImageArea[]
   dominantColors: string[]
-  mood: 'light' | 'dark'
+  mood: 'light' | 'dark' | 'neutral'
   cropRisk: 'low' | 'medium' | 'high'
   imageProfile: ImageProfile
   detectedContrast: 'low' | 'medium' | 'high'

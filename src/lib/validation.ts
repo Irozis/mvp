@@ -148,7 +148,7 @@ function estimateBrightnessForArea(imageAnalysis: EnhancedImageAnalysis, area: R
     (point) => point.x >= area.x && point.x <= area.x + area.w && point.y >= area.y && point.y <= area.y + area.h
   )
   if (!points.length) {
-    return imageAnalysis.mood === 'dark' ? 0.22 : 0.78
+    return imageAnalysis.mood === 'dark' ? 0.22 : imageAnalysis.mood === 'light' ? 0.78 : 0.5
   }
   return average(points.map((point) => point.score))
 }

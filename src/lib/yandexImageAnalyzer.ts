@@ -1,24 +1,8 @@
 import type { EnhancedImageAnalysis, ImageAsset, ImageProfile } from './imageAnalysis'
 
-const MODEL = 'claude-sonnet-4-20250514'
-const ANTHROPIC_VERSION = '2023-06-01'
-const MAX_SIDE = 2048
-
-const SYSTEM_PROMPT = `You analyze images for advertising layout on marketplaces.
-
-Respond with ONLY valid JSON (no markdown, no code fences, no text before or after the JSON object).
-
-The JSON object must have exactly these keys:
-- focalPoint: { "x": number, "y": number } — main subject center in percent 0–100
-- visualMassCenter: { "x": number, "y": number } — weighted visual mass in percent 0–100
-- safeTextAreas: array of { "x", "y", "w", "h", "score" } — regions good for overlay text; x,y,w,h in percent 0–100, score in 0–1
-- mood: "light" | "dark" | "neutral"
-- cropRisk: "low" | "medium" | "high"
-- dominantColors: string[] — hex colors like "#RRGGBB"
-- imageProfile: "landscape" | "square" | "portrait" | "tall" | "ultraWide"
-- detectedContrast: "low" | "medium" | "high"`
-
-const USER_INSTRUCTION = `Return one JSON object with focalPoint, visualMassCenter, safeTextAreas, mood, cropRisk, dominantColors, imageProfile, and detectedContrast as specified.`
+const url = import.meta.env.DEV
+  ? '/yandex-api/foundationModels/v1/completion'
+  : 'https://llm.api.cloud.yandex.net/foundationModels/v1/completion'
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
@@ -45,57 +29,65 @@ function buildBrightnessMap(focal: { x: number; y: number }, mood: 'light' | 'da
   return map
 }
 
-function loadImageElement(url: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const image = new Image()
-    image.crossOrigin = 'anonymous'
-    image.onload = () => resolve(image)
-    image.onerror = () => reject(new Error('Could not load image.'))
-    image.src = url
-  })
+function arrayBufferToBase64(buffer: ArrayBuffer): string {
+  const bytes = new Uint8Array(buffer)
+  let binary = ''
+  for (let i = 0; i < bytes.byteLength; i += 1) {
+    binary += String.fromCharCode(bytes[i]!)
+  }
+  return btoa(binary)
 }
 
-async function loadImageForJpeg(url: string): Promise<HTMLImageElement> {
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    const response = await fetch(url, { mode: 'cors', credentials: 'omit' })
-    if (!response.ok) {
-      throw new Error(`Failed to fetch image: ${response.status} ${response.statusText}`)
-    }
-    const blob = await response.blob()
-    const objectUrl = URL.createObjectURL(blob)
-    try {
-      return await loadImageElement(objectUrl)
-    } finally {
-      URL.revokeObjectURL(objectUrl)
-    }
-  }
-  return loadImageElement(url)
+function mimeTypeFromDataUrl(url: string): string {
+  const match = url.match(/^data:([^;,]+)/)
+  return match?.[1]?.trim() || 'image/jpeg'
 }
 
-async function urlToJpegBase64(url: string): Promise<string> {
-  const img = await loadImageForJpeg(url)
-  let w = img.naturalWidth
-  let h = img.naturalHeight
-  if (w <= 0 || h <= 0) {
-    throw new Error('Invalid image dimensions.')
+function guessMimeTypeFromPath(url: string): string {
+  const lower = url.split('?')[0]?.toLowerCase() ?? ''
+  if (lower.endsWith('.png')) return 'image/png'
+  if (lower.endsWith('.webp')) return 'image/webp'
+  if (lower.endsWith('.gif')) return 'image/gif'
+  if (lower.endsWith('.bmp')) return 'image/bmp'
+  if (lower.endsWith('.svg')) return 'image/svg+xml'
+  return 'image/jpeg'
+}
+
+async function urlToBase64AndMime(url: string): Promise<{ base64: string; mimeType: string }> {
+  if (url.startsWith('data:')) {
+    const comma = url.indexOf(',')
+    if (comma < 0) {
+      throw new Error('Invalid data URL: missing comma separator.')
+    }
+    const mimeType = mimeTypeFromDataUrl(url)
+    const base64 = url.slice(comma + 1)
+    if (!base64) {
+      throw new Error('Invalid data URL: empty payload.')
+    }
+    return { base64, mimeType }
   }
-  const scale = Math.min(1, MAX_SIDE / Math.max(w, h))
-  w = Math.max(1, Math.round(w * scale))
-  h = Math.max(1, Math.round(h * scale))
-  const canvas = document.createElement('canvas')
-  canvas.width = w
-  canvas.height = h
-  const ctx = canvas.getContext('2d', { willReadFrequently: true })
-  if (!ctx) {
-    throw new Error('Could not render image for analysis.')
+
+  let response: Response
+  try {
+    response = await fetch(url, { mode: 'cors', credentials: 'omit' })
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e)
+    throw new Error(`Failed to fetch image: ${message}`)
   }
-  ctx.drawImage(img, 0, 0, w, h)
-  const dataUrl = canvas.toDataURL('image/jpeg', 0.92)
-  const comma = dataUrl.indexOf(',')
-  if (comma < 0) {
-    throw new Error('Could not encode image as JPEG.')
+  if (!response.ok) {
+    throw new Error(`Failed to fetch image: ${response.status} ${response.statusText}`)
   }
-  return dataUrl.slice(comma + 1)
+  let buffer: ArrayBuffer
+  try {
+    buffer = await response.arrayBuffer()
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e)
+    throw new Error(`Failed to read image data: ${message}`)
+  }
+  const base64 = arrayBufferToBase64(buffer)
+  const headerType = response.headers.get('content-type')?.split(';')[0]?.trim()
+  const mimeType = headerType && headerType.startsWith('image/') ? headerType : guessMimeTypeFromPath(url)
+  return { base64, mimeType }
 }
 
 function stripJsonFence(text: string): string {
@@ -197,6 +189,7 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
         }
       })
       .filter((x): x is NonNullable<typeof x> => x !== null)
+      .slice(0, 3)
   }
   if (safeTextAreas.length === 0) {
     safeTextAreas = [{ x: 8, y: 8, w: 36, h: 28, score: 0.72 }]
@@ -204,7 +197,9 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
 
   let dominantColors: string[] = []
   if (Array.isArray(o.dominantColors)) {
-    dominantColors = o.dominantColors.filter((c): c is string => typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c))
+    dominantColors = o.dominantColors
+      .filter((c): c is string => typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c))
+      .slice(0, 3)
   }
   if (dominantColors.length === 0) {
     dominantColors = ['#0f172a', '#1e293b', '#38bdf8', '#f8fafc']
@@ -236,81 +231,81 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
   }
 }
 
-export async function anthropicImageAnalyzer(image: ImageAsset): Promise<EnhancedImageAnalysis> {
-  const key = import.meta.env.VITE_ANTHROPIC_API_KEY
-  if (key === undefined || key === null || String(key).trim() === '') {
-    throw new Error('VITE_ANTHROPIC_API_KEY is not set')
+export async function yandexImageAnalyzer(image: ImageAsset): Promise<EnhancedImageAnalysis> {
+  const apiKey = import.meta.env.VITE_YANDEX_API_KEY
+  const folderId = import.meta.env.VITE_YANDEX_FOLDER_ID
+  const keyOk = typeof apiKey === 'string' && apiKey.trim() !== ''
+  const folderOk = typeof folderId === 'string' && folderId.trim() !== ''
+  if (!keyOk || !folderOk) {
+    throw new Error('Yandex API key or folder ID is not set')
   }
 
-  const base64 = await urlToJpegBase64(image.url)
+  const { base64, mimeType } = await urlToBase64AndMime(image.url)
+  const dataUrl = `data:${mimeType};base64,${base64}`
+
+  const modelUri = `gpt://${folderId}/qwen2.5-vl-32b-instruct/latest`
+
+  const body = {
+    modelUri,
+    completionOptions: { stream: false, temperature: 0.1, maxTokens: 800 },
+    messages: [
+      {
+        role: 'system',
+        text: 'You are an image analysis assistant. Respond ONLY with valid JSON, no markdown, no explanation.',
+      },
+      {
+        role: 'user',
+        content: [
+          {
+            type: 'image_url',
+            image_url: {
+              url: dataUrl,
+            },
+          },
+          {
+            type: 'text',
+            text: 'Analyze this image and return JSON with these fields: focalPoint ({x, y} as 0-100 percentages where main subject is), visualMassCenter ({x, y} 0-100), safeTextAreas (array of up to 3 zones {x, y, w, h, score} where text can be placed without blocking subject, score 0-1), mood ("light" | "dark" | "neutral"), cropRisk ("low" | "medium" | "high"), dominantColors (array of 3 hex colors), imageProfile ("landscape" | "square" | "portrait" | "tall" | "ultraWide"), detectedContrast ("low" | "medium" | "high")',
+          },
+        ],
+      },
+    ],
+  }
 
   let response: Response
   try {
-    response = await fetch('https://api.anthropic.com/v1/messages', {
+    response = await fetch(url, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
-        'x-api-key': String(key).trim(),
-        'anthropic-version': ANTHROPIC_VERSION,
-        'anthropic-dangerous-direct-browser-access': 'true',
+        Authorization: `Api-Key ${apiKey.trim()}`,
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: 4096,
-        system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: 'user',
-            content: [
-              {
-                type: 'image',
-                source: {
-                  type: 'base64',
-                  media_type: 'image/jpeg',
-                  data: base64,
-                },
-              },
-              {
-                type: 'text',
-                text: USER_INSTRUCTION,
-              },
-            ],
-          },
-        ],
-      }),
+      body: JSON.stringify(body),
     })
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e)
-    throw new Error(`Anthropic request failed: ${message}`)
+    throw new Error(`Yandex API request failed: ${message}`)
   }
 
   if (!response.ok) {
-    let detail = ''
-    try {
-      detail = await response.text()
-    } catch {
-      detail = ''
-    }
-    throw new Error(
-      `Anthropic API error ${response.status}: ${detail || response.statusText || 'Unknown error'}`
-    )
+    const errorText = await response.text()
+    console.error('Yandex API error:', response.status, errorText)
+    throw new Error(errorText || `${response.status} ${response.statusText || 'Unknown error'}`)
   }
 
-  let body: unknown
+  let payload: unknown
   try {
-    body = await response.json()
+    payload = await response.json()
   } catch {
-    throw new Error('Anthropic response was not valid JSON.')
+    throw new Error('Yandex API response was not valid JSON.')
   }
 
-  const content = (body as { content?: Array<{ type?: string; text?: string }> }).content
-  const textBlock = Array.isArray(content) ? content.find((b) => b?.type === 'text' && typeof b.text === 'string') : undefined
-  const rawText = textBlock?.text
-  if (typeof rawText !== 'string' || !rawText.trim()) {
-    throw new Error('Anthropic response did not include text content.')
+  const result = (payload as { result?: { alternatives?: Array<{ message?: { text?: string } }> } }).result
+  const text = result?.alternatives?.[0]?.message?.text
+  if (typeof text !== 'string' || !text.trim()) {
+    throw new Error('Yandex API response did not include result.alternatives[0].message.text.')
   }
 
-  const jsonText = stripJsonFence(rawText)
+  const jsonText = stripJsonFence(text)
 
   let parsed: unknown
   try {

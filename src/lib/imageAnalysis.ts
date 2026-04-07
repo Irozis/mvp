@@ -144,6 +144,329 @@ function quantizePalette(pixels: Uint8ClampedArray) {
   }
 }
 
+const CANVAS_ANALYSIS_SIZE = 64
+
+function canvasPixelBrightness(r: number, g: number, b: number): number {
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+}
+
+function canvasPixelSaturation(r: number, g: number, b: number): number {
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  return max === 0 ? 0 : (max - min) / max
+}
+
+function canvasPixelEnergy(r: number, g: number, b: number): number {
+  const br = canvasPixelBrightness(r, g, b)
+  const sat = canvasPixelSaturation(r, g, b)
+  const centerBias = 1 - Math.abs(br - 0.5) * 2
+  return sat * 0.6 + centerBias * 0.4
+}
+
+function stdDevOfBrightness(values: number[]): number {
+  if (values.length === 0) return 0
+  const mean = values.reduce((a, b) => a + b, 0) / values.length
+  const variance = values.reduce((sum, v) => sum + (v - mean) ** 2, 0) / values.length
+  return Math.sqrt(variance)
+}
+
+function focalSuggestionFromCanvasPoint(focal: { x: number; y: number }): EnhancedImageAnalysis['focalSuggestion'] {
+  if (focal.y < 34) return 'top'
+  if (focal.x < 36) return 'left'
+  if (focal.x > 64) return 'right'
+  return 'center'
+}
+
+function cropRiskFromFocalPoint(focal: { x: number; y: number }): EnhancedImageAnalysis['cropRisk'] {
+  const { x, y } = focal
+  if (x < 15 || x > 85 || y < 15 || y > 85) return 'high'
+  if (x < 25 || x > 75 || y < 25 || y > 75) return 'medium'
+  return 'low'
+}
+
+function imageProfileFromAspectRatio(ratio: number): EnhancedImageAnalysis['imageProfile'] {
+  if (ratio > 2.0) return 'ultraWide'
+  if (ratio > 1.3) return 'landscape'
+  if (ratio >= 0.85 && ratio <= 1.15) return 'square'
+  if (ratio >= 0.6 && ratio <= 0.85) return 'portrait'
+  return 'tall'
+}
+
+function zoneAxisBounds(index: number, divisions: number, total: number): [number, number] {
+  const start = Math.floor((index * total) / divisions)
+  const end = Math.floor(((index + 1) * total) / divisions)
+  return [start, end]
+}
+
+function topFrequentColorsFromPixels(pixels: Uint8ClampedArray, limit: number): string[] {
+  const buckets = new Map<string, { count: number; r: number; g: number; b: number }>()
+  for (let index = 0; index < pixels.length; index += 4) {
+    const r = pixels[index]!
+    const g = pixels[index + 1]!
+    const b = pixels[index + 2]!
+    const alpha = pixels[index + 3]!
+    if (alpha < 128) continue
+    const qr = Math.round(r / 32) * 32
+    const qg = Math.round(g / 32) * 32
+    const qb = Math.round(b / 32) * 32
+    const key = `${qr}-${qg}-${qb}`
+    const bucket = buckets.get(key)
+    if (bucket) {
+      bucket.count += 1
+      bucket.r += r
+      bucket.g += g
+      bucket.b += b
+    } else {
+      buckets.set(key, { count: 1, r, g, b })
+    }
+  }
+  return [...buckets.values()]
+    .sort((left, right) => right.count - left.count)
+    .slice(0, limit)
+    .map((bucket) => rgbToHex(bucket.r / bucket.count, bucket.g / bucket.count, bucket.b / bucket.count))
+}
+
+function buildCanvasEnhancedAnalysis(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  naturalWidth: number,
+  naturalHeight: number
+): EnhancedImageAnalysis {
+  const brightnessValues: number[] = []
+  let maxEnergy = -Infinity
+  let focalPx = 0
+  let focalPy = 0
+  let sumBrightness = 0
+  let sumBrightnessX = 0
+  let sumBrightnessY = 0
+
+  for (let py = 0; py < height; py += 1) {
+    for (let px = 0; px < width; px += 1) {
+      const i = (py * width + px) * 4
+      const r = pixels[i]!
+      const g = pixels[i + 1]!
+      const b = pixels[i + 2]!
+      const alpha = pixels[i + 3]!
+      if (alpha < 180) continue
+
+      const br = canvasPixelBrightness(r, g, b)
+      brightnessValues.push(br)
+      sumBrightness += br
+      sumBrightnessX += px * br
+      sumBrightnessY += py * br
+
+      const energy = canvasPixelEnergy(r, g, b)
+      if (energy > maxEnergy) {
+        maxEnergy = energy
+        focalPx = px
+        focalPy = py
+      }
+    }
+  }
+
+  const aspectRatio = naturalWidth / Math.max(1, naturalHeight)
+  const emptyFallback = (): EnhancedImageAnalysis => ({
+    focalPoint: { x: 50, y: 50 },
+    subjectBox: { x: 32, y: 30, w: 36, h: 40 },
+    safeTextAreas: [
+      { x: (100 / 3) * 0, y: (100 / 3) * 0, w: 100 / 3, h: 100 / 3, score: 0.5 },
+      { x: (100 / 3) * 1, y: (100 / 3) * 1, w: 100 / 3, h: 100 / 3, score: 0.5 },
+      { x: (100 / 3) * 2, y: (100 / 3) * 2, w: 100 / 3, h: 100 / 3, score: 0.5 },
+    ],
+    visualMassCenter: { x: 50, y: 50 },
+    brightnessMap: Array.from({ length: 9 }, (_, index) => {
+      const col = index % 3
+      const row = Math.floor(index / 3)
+      return { x: ((col + 0.5) / 3) * 100, y: ((row + 0.5) / 3) * 100, score: 0.5 }
+    }),
+    contrastZones: [],
+    dominantColors: FALLBACK_ANALYSIS.palette.slice(0, 3),
+    mood: 'neutral',
+    cropRisk: 'low',
+    imageProfile: imageProfileFromAspectRatio(aspectRatio),
+    detectedContrast: 'low',
+    focalSuggestion: 'center',
+  })
+
+  if (brightnessValues.length === 0) {
+    return emptyFallback()
+  }
+
+  const meanBrightness = sumBrightness / brightnessValues.length
+  const stdDev = stdDevOfBrightness(brightnessValues)
+
+  let mood: EnhancedImageAnalysis['mood']
+  if (meanBrightness > 0.6) mood = 'light'
+  else if (meanBrightness < 0.4) mood = 'dark'
+  else mood = 'neutral'
+
+  let detectedContrast: EnhancedImageAnalysis['detectedContrast']
+  if (stdDev > 0.25) detectedContrast = 'high'
+  else if (stdDev > 0.12) detectedContrast = 'medium'
+  else detectedContrast = 'low'
+
+  const hasFocal = Number.isFinite(maxEnergy)
+  const focalPoint = hasFocal
+    ? {
+        x: clamp(((focalPx + 0.5) / width) * 100, 0, 100),
+        y: clamp(((focalPy + 0.5) / height) * 100, 0, 100),
+      }
+    : { x: 50, y: 50 }
+
+  const totalW = sumBrightness
+  const visualMassCenter =
+    totalW > 1e-9
+      ? {
+          x: clamp(((sumBrightnessX / totalW + 0.5) / width) * 100, 0, 100),
+          y: clamp(((sumBrightnessY / totalW + 0.5) / height) * 100, 0, 100),
+        }
+      : { x: 50, y: 50 }
+
+  const cropRisk = cropRiskFromFocalPoint(focalPoint)
+  const imageProfile = imageProfileFromAspectRatio(aspectRatio)
+  const focalSuggestion = focalSuggestionFromCanvasPoint(focalPoint)
+
+  const gridDivisions = 3
+  const zoneScores: EnhancedImageAnalysis['safeTextAreas'] = []
+  for (let row = 0; row < gridDivisions; row += 1) {
+    for (let col = 0; col < gridDivisions; col += 1) {
+      const [x0, x1] = zoneAxisBounds(col, gridDivisions, width)
+      const [y0, y1] = zoneAxisBounds(row, gridDivisions, height)
+      const zoneBrightness: number[] = []
+      let minL = 1
+      let maxL = 0
+      for (let y = y0; y < y1; y += 1) {
+        for (let x = x0; x < x1; x += 1) {
+          const idx = (y * width + x) * 4
+          const r = pixels[idx]!
+          const g = pixels[idx + 1]!
+          const b = pixels[idx + 2]!
+          const a = pixels[idx + 3]!
+          if (a < 180) continue
+          const lb = canvasPixelBrightness(r, g, b)
+          zoneBrightness.push(lb)
+          minL = Math.min(minL, lb)
+          maxL = Math.max(maxL, lb)
+        }
+      }
+      if (zoneBrightness.length === 0) continue
+      const zoneStd = stdDevOfBrightness(zoneBrightness)
+      const uniformity = 1 - Math.min(1, Math.max(0, maxL - minL))
+      const score = clamp((1 - zoneStd) * 0.5 + uniformity * 0.5, 0, 1)
+      const zoneW = 100 / gridDivisions
+      zoneScores.push({
+        x: col * zoneW,
+        y: row * zoneW,
+        w: zoneW,
+        h: zoneW,
+        score,
+      })
+    }
+  }
+  zoneScores.sort((left, right) => right.score - left.score)
+  const safeTextAreas = zoneScores.slice(0, 3)
+
+  const brightnessMap: EnhancedImageAnalysis['brightnessMap'] = []
+  for (let row = 0; row < gridDivisions; row += 1) {
+    for (let col = 0; col < gridDivisions; col += 1) {
+      const pctX = ((col + 0.5) / gridDivisions) * 100
+      const pctY = ((row + 0.5) / gridDivisions) * 100
+      const sx = Math.min(width - 1, Math.max(0, Math.floor((pctX / 100) * width)))
+      const sy = Math.min(height - 1, Math.max(0, Math.floor((pctY / 100) * height)))
+      const idx = (sy * width + sx) * 4
+      const r = pixels[idx]!
+      const g = pixels[idx + 1]!
+      const b = pixels[idx + 2]!
+      const score = canvasPixelBrightness(r, g, b)
+      brightnessMap.push({ x: pctX, y: pctY, score: clamp(score, 0, 1) })
+    }
+  }
+
+  const { palette } = quantizePalette(pixels)
+  let dominantColors = palette.slice(0, 3)
+  if (dominantColors.length < 3) {
+    const extra = topFrequentColorsFromPixels(pixels, 6)
+    dominantColors = [...new Set([...dominantColors, ...extra])].slice(0, 3)
+  }
+  if (dominantColors.length === 0) {
+    dominantColors = FALLBACK_ANALYSIS.palette.slice(0, 3)
+  }
+
+  const subjectBox: EnhancedImageAnalysis['subjectBox'] = {
+    x: clamp(focalPoint.x - 18, 0, 82),
+    y: clamp(focalPoint.y - 20, 0, 80),
+    w: naturalWidth > naturalHeight ? 36 : 32,
+    h: naturalHeight >= naturalWidth ? 40 : 34,
+  }
+
+  return {
+    focalPoint,
+    subjectBox,
+    safeTextAreas,
+    visualMassCenter,
+    brightnessMap,
+    contrastZones: [],
+    dominantColors,
+    mood,
+    cropRisk,
+    imageProfile,
+    detectedContrast,
+    focalSuggestion,
+  }
+}
+
+export async function canvasAnalyzeImageUrl(url: string): Promise<EnhancedImageAnalysis> {
+  const image = await loadImage(url)
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('2d', { willReadFrequently: true })
+  if (!context) {
+    return {
+      focalPoint: { x: 50, y: 50 },
+      safeTextAreas: [{ x: 8, y: 8, w: 36, h: 28, score: 0.72 }],
+      visualMassCenter: { x: 50, y: 50 },
+      brightnessMap: [{ x: 50, y: 50, score: 0.5 }],
+      contrastZones: [],
+      dominantColors: FALLBACK_ANALYSIS.palette,
+      mood: 'dark',
+      cropRisk: 'medium',
+      imageProfile: imageProfileFromAspectRatio(image.naturalWidth / Math.max(1, image.naturalHeight)),
+      detectedContrast: 'medium',
+      focalSuggestion: 'center',
+    }
+  }
+  canvas.width = CANVAS_ANALYSIS_SIZE
+  canvas.height = CANVAS_ANALYSIS_SIZE
+  context.drawImage(image, 0, 0, CANVAS_ANALYSIS_SIZE, CANVAS_ANALYSIS_SIZE)
+  const pixels = context.getImageData(0, 0, CANVAS_ANALYSIS_SIZE, CANVAS_ANALYSIS_SIZE).data
+  return buildCanvasEnhancedAnalysis(
+    pixels,
+    CANVAS_ANALYSIS_SIZE,
+    CANVAS_ANALYSIS_SIZE,
+    image.naturalWidth,
+    image.naturalHeight
+  )
+}
+
+export async function canvasAnalyzeImage(image: ImageAsset): Promise<EnhancedImageAnalysis> {
+  if (!image.url || image.url.startsWith('data:application/pdf')) {
+    return {
+      focalPoint: { x: 50, y: 50 },
+      safeTextAreas: [{ x: 8, y: 8, w: 36, h: 28, score: 0.72 }],
+      visualMassCenter: { x: 50, y: 50 },
+      brightnessMap: [{ x: 50, y: 50, score: 0.5 }],
+      contrastZones: [],
+      dominantColors: FALLBACK_ANALYSIS.palette,
+      mood: 'dark',
+      cropRisk: 'medium',
+      imageProfile: 'landscape',
+      detectedContrast: 'medium',
+      focalSuggestion: 'center',
+    }
+  }
+  return canvasAnalyzeImageUrl(image.url)
+}
+
 function buildHeuristicImageAnalysis(image: HTMLImageElement, pixels: Uint8ClampedArray, width: number, height: number): EnhancedImageAnalysis {
   const gridSize = 6
   const cellW = Math.max(1, Math.floor(width / gridSize))
