@@ -1640,10 +1640,19 @@ function evaluateRepairSearchCandidate(input: {
   const candidateId = `${candidateKind}:${input.candidate.strategyLabel}:${input.candidate.sceneSignature}`
 
   if (candidateKind !== 'baseline') {
+    const escalationSourced = isEscalationSourcedRepairStrategy(input.strategy)
+    const fullRegenerationEscalation =
+      input.strategy?.candidateKind === 'guided-regeneration-repair' || input.strategy?.kind === 'structural-regeneration'
+    const skipLegacySafetyGateForEscalation =
+      escalationSourced &&
+      fullRegenerationEscalation &&
+      input.candidate.structuralStatus !== 'invalid' &&
+      objective.aggregateScore === input.baselineAggregateScore &&
+      input.decision?.noOp !== true
     if (input.decision?.suppressedAsRepeat || input.decision?.repeatedWeakOutcome) {
       gateOutcomes.repeatSuppressed = true
       rejectionReasons.push('repeat-suppressed')
-    } else if (input.decision && !input.decision.accepted) {
+    } else if (!skipLegacySafetyGateForEscalation && input.decision && !input.decision.accepted) {
       gateOutcomes.legacySafetyRejected = true
       rejectionReasons.push('legacy-safety-rejection')
     }
@@ -1657,7 +1666,7 @@ function evaluateRepairSearchCandidate(input: {
     }
 
     const enforceRolePlacementHardGate =
-      !input.thresholds.allowRolePlacement && !isEscalationSourcedRepairStrategy(input.strategy)
+      !input.thresholds.allowRolePlacement && input.candidate.structuralStatus === 'invalid'
     if (enforceRolePlacementHardGate && hasStructuralFinding(input.candidate, 'role-placement')) {
       gateOutcomes.rolePlacementOutOfZone = true
       rejectionReasons.push('role-placement-out-of-zone')
@@ -1691,7 +1700,10 @@ function evaluateRepairSearchCandidate(input: {
       gateOutcomes.aggregateBelowBaseline = true
       rejectionReasons.push('aggregate-below-baseline')
     }
-    if (aggregateDelta < input.thresholds.minAggregateGain) {
+    const hasNetGain =
+      objective.aggregateScore >=
+      input.baselineAggregateScore + (escalationSourced ? 0 : input.thresholds.minAggregateGain)
+    if (!hasNetGain) {
       gateOutcomes.noNetGain = true
       rejectionReasons.push('no-net-gain')
     }
@@ -2275,6 +2287,40 @@ function selectRepairSearchWinner(input: {
     baseline: baselineEvaluation,
     winner: winnerEvaluation,
     candidateComparisons: allEvaluations,
+  }
+
+  const baselineScore = baselineEvaluation.aggregateScore
+  const attempts = input.attempts
+  const baseline = input.baseline
+  const winner = winnerAttempt ? { index: input.attempts.findIndex((attempt) => attempt === winnerAttempt) } : null
+
+  if (import.meta.env.DEV) {
+    console.group('[repair-diag]')
+    console.log('baseline score:', baselineScore)
+    console.log('candidates evaluated:', attempts.length)
+    attempts.forEach((attempt, i) => {
+      const ev = evaluateRepairSearchCandidate({
+        baseline,
+        candidate: attempt.candidate,
+        strategy: attempt.strategy,
+        decision: attempt.decision,
+        formatFamily: input.formatFamily,
+        formatKey: input.formatKey,
+        objectiveProfile: objectiveContext.objectiveProfile,
+        thresholds: objectiveContext.thresholds,
+        expectedCompositionModelId: input.expectedCompositionModelId,
+        expectedFamily: input.expectedFamily,
+        baselineAggregateScore: baselineScore,
+      })
+      console.log(`candidate ${i}:`, {
+        score: ev.aggregateScore,
+        accepted: ev.accepted,
+        rejectionReasons: ev.rejectionReasons?.join(', ') ?? 'none',
+        isEscalation: isEscalationSourcedRepairStrategy(attempt.strategy),
+      })
+    })
+    console.log('winner:', winner ? 'candidate ' + winner.index : 'retained baseline')
+    console.groupEnd()
   }
 
   return {

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npx vite:*)",
+      "Bash(sort -t\"|\" -k2 -rn)",
+      "Bash(ls -la node_modules/html-to-image/es/*.js)",
+      "Bash(node -e ':*)"
+    ]
+  }
+}

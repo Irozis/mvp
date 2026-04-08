@@ -53,6 +53,7 @@ export function CanvasPreview({
   onFixLayout,
   onTryDifferentLayout,
   isFixing,
+  isExporting,
   fixResult,
   onExportPng,
   onExportJpg,
@@ -74,6 +75,7 @@ export function CanvasPreview({
   onFixLayout: () => void
   onTryDifferentLayout: () => void
   isFixing?: boolean
+  isExporting?: boolean
   fixResult?: FixResult | null
   onExportPng: () => void
   onExportJpg: () => void
@@ -213,17 +215,17 @@ export function CanvasPreview({
             Try different layout
           </button>
         )}
-        <button className="button button-outline" onClick={onExportPng}>
+        <button className="button button-outline" onClick={onExportPng} disabled={isExporting}>
           <Download size={16} />
-          PNG
+          {isExporting ? '...' : 'PNG'}
         </button>
-        <button className="button button-outline" onClick={onExportJpg}>
+        <button className="button button-outline" onClick={onExportJpg} disabled={isExporting}>
           <ImageIcon size={16} />
-          JPG
+          {isExporting ? '...' : 'JPG'}
         </button>
-        <button className="button button-outline" onClick={onExportPdf}>
+        <button className="button button-outline" onClick={onExportPdf} disabled={isExporting}>
           <FileText size={16} />
-          PDF
+          {isExporting ? '...' : 'PDF'}
         </button>
       </div>
 

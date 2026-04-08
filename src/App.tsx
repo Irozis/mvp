@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { toJpeg, toPng } from 'html-to-image'
 import {
   ArchiveRestore,
   Download,
@@ -17,11 +16,11 @@ import { CanvasPreview } from './components/CanvasPreview'
 import { VariantInspector } from './components/VariantInspector'
 import { ValidationSummary } from './components/ValidationSummary'
 import { BasicControls, BrandEditor, ElementEditor } from './components/Controls'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout, generateVariant, refreshProjectModel, regenerateFormats } from './lib/autoAdapt'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
 import { BRAND_TEMPLATES, CHANNEL_FORMATS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
-import { buildPdfFromJpegs } from './lib/pdf'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
@@ -145,6 +144,8 @@ export default function App() {
   const [currentSavedId, setCurrentSavedId] = useState<string | null>(null)
   const [selectedBrandTemplate, setSelectedBrandTemplate] = useState<BrandTemplateKey>('startup-blue')
   const [isAnalyzing, setIsAnalyzing] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
+  const [exportingFormatKey, setExportingFormatKey] = useState<FormatKey | null>(null)
   const [fixingFormatKey, setFixingFormatKey] = useState<FormatKey | null>(null)
   const [fixResults, setFixResults] = useState<Partial<Record<FormatKey, FixResult>>>({})
   const [fixSessions, setFixSessions] = useState<Partial<Record<FormatKey, FixSessionState>>>({})
@@ -271,8 +272,9 @@ export default function App() {
           })
         })
       })
-      .catch(() => {
+      .catch((error) => {
         if (cancelled) return
+        setStatus({ tone: 'warning', text: `Image analysis unavailable${error instanceof Error ? ': ' + error.message : ''}. Layouts will use default settings.` })
       })
 
     return () => {
@@ -615,50 +617,82 @@ export default function App() {
   const exportPng = async (formatKey: FormatKey) => {
     const node = refs.current[formatKey]
     if (!node) return
-    const dataUrl = await toPng(node, { cacheBust: true, pixelRatio: 2, backgroundColor: '#ffffff' })
-    const anchor = document.createElement('a')
-    anchor.href = dataUrl
-    anchor.download = `${slugify(projectName || 'project')}-${formatKey}.png`
-    anchor.click()
+    setExportingFormatKey(formatKey)
+    try {
+      const { toPng } = await import('html-to-image')
+      const dataUrl = await toPng(node, { cacheBust: true, pixelRatio: 2, backgroundColor: '#ffffff' })
+      const anchor = document.createElement('a')
+      anchor.href = dataUrl
+      anchor.download = `${slugify(projectName || 'project')}-${formatKey}.png`
+      anchor.click()
+    } finally {
+      setExportingFormatKey(null)
+    }
   }
 
   const exportJpg = async (formatKey: FormatKey) => {
     const node = refs.current[formatKey]
     if (!node) return
-    const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
-    const anchor = document.createElement('a')
-    anchor.href = dataUrl
-    anchor.download = `${slugify(projectName || 'project')}-${formatKey}.jpg`
-    anchor.click()
+    setExportingFormatKey(formatKey)
+    try {
+      const { toJpeg } = await import('html-to-image')
+      const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
+      const anchor = document.createElement('a')
+      anchor.href = dataUrl
+      anchor.download = `${slugify(projectName || 'project')}-${formatKey}.jpg`
+      anchor.click()
+    } finally {
+      setExportingFormatKey(null)
+    }
   }
 
   const exportPdf = async (formatKey: FormatKey) => {
     const format = CHANNEL_FORMATS.find((item) => item.key === formatKey)
     const node = refs.current[formatKey]
     if (!node || !format) return
-    const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
-    downloadBlob(buildPdfFromJpegs([{ dataUrl, width: format.width, height: format.height }]), `${slugify(projectName || 'project')}-${formatKey}.pdf`)
+    setExportingFormatKey(formatKey)
+    try {
+      const [{ toJpeg }, { buildPdfFromJpegs }] = await Promise.all([
+        import('html-to-image'),
+        import('./lib/pdf'),
+      ])
+      const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
+      downloadBlob(buildPdfFromJpegs([{ dataUrl, width: format.width, height: format.height }]), `${slugify(projectName || 'project')}-${formatKey}.pdf`)
+    } finally {
+      setExportingFormatKey(null)
+    }
   }
 
   const exportPack = async (kind: 'png' | 'jpg' | 'pdf') => {
-    if (kind === 'pdf') {
-      const pages = []
-      for (const format of previewFormats) {
-        const node = refs.current[format.key]
-        if (!node) continue
-        const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
-        pages.push({ dataUrl, width: format.width, height: format.height })
+    setIsExporting(true)
+    setStatus({ tone: 'neutral', text: `Exporting ${kind.toUpperCase()} pack...` })
+    try {
+      if (kind === 'pdf') {
+        const [{ toJpeg }, { buildPdfFromJpegs }] = await Promise.all([
+          import('html-to-image'),
+          import('./lib/pdf'),
+        ])
+        const pages = []
+        for (const format of previewFormats) {
+          const node = refs.current[format.key]
+          if (!node) continue
+          const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
+          pages.push({ dataUrl, width: format.width, height: format.height })
+        }
+        if (pages.length) downloadBlob(buildPdfFromJpegs(pages), `${slugify(projectName || 'project')}-${project.goal}.pdf`)
+      } else {
+        for (const format of previewFormats) {
+          if (kind === 'png') await exportPng(format.key)
+          if (kind === 'jpg') await exportJpg(format.key)
+          await new Promise((resolve) => window.setTimeout(resolve, 120))
+        }
       }
-      if (pages.length) downloadBlob(buildPdfFromJpegs(pages), `${slugify(projectName || 'project')}-${project.goal}.pdf`)
-    } else {
-      for (const format of previewFormats) {
-        if (kind === 'png') await exportPng(format.key)
-        if (kind === 'jpg') await exportJpg(format.key)
-        await new Promise((resolve) => window.setTimeout(resolve, 120))
-      }
+      setStatus({ tone: 'success', text: `Current goal pack exported as ${kind.toUpperCase()}.` })
+    } catch (error) {
+      setStatus({ tone: 'error', text: error instanceof Error ? error.message : 'Export failed.' })
+    } finally {
+      setIsExporting(false)
     }
-
-    setStatus({ tone: 'success', text: `Current goal pack exported as ${kind.toUpperCase()}.` })
   }
 
   const handleFixLayout = async (formatKey: FormatKey, forceAlternativeLayout = false) => {
@@ -904,24 +938,26 @@ export default function App() {
                 </div>
               )}
               <BrandEditor brandKit={project.brandKit} updateBrandKit={updateBrandKit} />
-              {editMode === 'master' ? (
-                <ElementEditor selectedElement={selectedElement} scene={currentScene} updateElement={updateElement} updateRoot={updateRoot} />
-              ) : (
-                <VariantInspector
-                  format={CHANNEL_FORMATS.find((item) => item.key === editMode) || CHANNEL_FORMATS[0]}
-                  scene={currentScene}
-                  assessment={currentAssessment}
-                  selectedBlockId={selectedBlockId}
-                  manualOverride={currentVariantOverride}
-                  onSelectBlock={setSelectedBlockId}
-                  onPatchBlock={(blockId, patch) => patchVariantOverride(editMode, blockId, patch)}
-                  onResetBlock={(blockId) => resetVariantBlock(editMode, blockId)}
-                  onResetVariant={() => resetVariantOverride(editMode)}
-                  onSelectImageRole={(role) => setVariantImageRole(editMode, role)}
-                  onApplyLayoutFamily={(family) => applyLayoutFamilyOverride(editMode, family)}
-                />
-              )}
-              <ValidationSummary assessment={currentAssessment} />
+              <ErrorBoundary>
+                {editMode === 'master' ? (
+                  <ElementEditor selectedElement={selectedElement} scene={currentScene} updateElement={updateElement} updateRoot={updateRoot} />
+                ) : (
+                  <VariantInspector
+                    format={CHANNEL_FORMATS.find((item) => item.key === editMode) || CHANNEL_FORMATS[0]}
+                    scene={currentScene}
+                    assessment={currentAssessment}
+                    selectedBlockId={selectedBlockId}
+                    manualOverride={currentVariantOverride}
+                    onSelectBlock={setSelectedBlockId}
+                    onPatchBlock={(blockId, patch) => patchVariantOverride(editMode, blockId, patch)}
+                    onResetBlock={(blockId) => resetVariantBlock(editMode, blockId)}
+                    onResetVariant={() => resetVariantOverride(editMode)}
+                    onSelectImageRole={(role) => setVariantImageRole(editMode, role)}
+                    onApplyLayoutFamily={(family) => applyLayoutFamilyOverride(editMode, family)}
+                  />
+                )}
+                <ValidationSummary assessment={currentAssessment} />
+              </ErrorBoundary>
             </div>
           </div>
 
@@ -1039,17 +1075,17 @@ export default function App() {
                     <Wand2 size={16} />
                     Regenerate all
                   </button>
-                  <button className="button button-outline" onClick={() => exportPack('png')}>
+                  <button className="button button-outline" onClick={() => exportPack('png')} disabled={isExporting}>
                     <Download size={16} />
-                    PNG pack
+                    {isExporting ? 'Exporting...' : 'PNG pack'}
                   </button>
-                  <button className="button button-outline" onClick={() => exportPack('jpg')}>
+                  <button className="button button-outline" onClick={() => exportPack('jpg')} disabled={isExporting}>
                     <Download size={16} />
-                    JPG pack
+                    {isExporting ? 'Exporting...' : 'JPG pack'}
                   </button>
-                  <button className="button button-outline" onClick={() => exportPack('pdf')}>
+                  <button className="button button-outline" onClick={() => exportPack('pdf')} disabled={isExporting}>
                     <Download size={16} />
-                    PDF pack
+                    {isExporting ? 'Exporting...' : 'PDF pack'}
                   </button>
                   <button className="button button-outline" onClick={exportJson}>
                     <FileJson size={16} />
@@ -1070,35 +1106,37 @@ export default function App() {
 
               <div className="preview-grid preview-grid-rich">
                 {previewFormats.map((format) => (
-                  <CanvasPreview
-                    key={format.key}
-                    format={format}
-                    scene={resolvedFormats[format.key]}
-                    brandKit={project.brandKit}
-                    assessment={assessments[format.key]}
-                    imageUrl={imageUrl}
-                    logoUrl={logoUrl}
-                    previewRef={(node) => {
-                      refs.current[format.key] = node
-                    }}
-                    onFixLayout={() => handleFixLayout(format.key)}
-                    onTryDifferentLayout={() => handleFixLayout(format.key, true)}
-                    isFixing={fixingFormatKey === format.key}
-                    fixResult={fixResults[format.key] || null}
-                    onExportPng={() => exportPng(format.key)}
-                    onExportJpg={() => exportJpg(format.key)}
-                    onExportPdf={() => exportPdf(format.key)}
-                    debugOptions={layoutDebug}
-                    editable={editMode === format.key}
-                    showSafeArea={layoutDebug.showSafeArea}
-                    selectedBlockId={editMode === format.key ? selectedBlockId : null}
-                    onSelectBlock={(blockId) => {
-                      setEditMode(format.key)
-                      setActiveFormatKey(format.key)
-                      setSelectedBlockId(blockId)
-                    }}
-                    onPatchBlock={(blockId, patch) => patchVariantOverride(format.key, blockId, patch)}
-                  />
+                  <ErrorBoundary key={format.key}>
+                    <CanvasPreview
+                      format={format}
+                      scene={resolvedFormats[format.key]}
+                      brandKit={project.brandKit}
+                      assessment={assessments[format.key]}
+                      imageUrl={imageUrl}
+                      logoUrl={logoUrl}
+                      previewRef={(node) => {
+                        refs.current[format.key] = node
+                      }}
+                      onFixLayout={() => handleFixLayout(format.key)}
+                      onTryDifferentLayout={() => handleFixLayout(format.key, true)}
+                      isFixing={fixingFormatKey === format.key}
+                      isExporting={exportingFormatKey === format.key}
+                      fixResult={fixResults[format.key] || null}
+                      onExportPng={() => exportPng(format.key)}
+                      onExportJpg={() => exportJpg(format.key)}
+                      onExportPdf={() => exportPdf(format.key)}
+                      debugOptions={layoutDebug}
+                      editable={editMode === format.key}
+                      showSafeArea={layoutDebug.showSafeArea}
+                      selectedBlockId={editMode === format.key ? selectedBlockId : null}
+                      onSelectBlock={(blockId) => {
+                        setEditMode(format.key)
+                        setActiveFormatKey(format.key)
+                        setSelectedBlockId(blockId)
+                      }}
+                      onPatchBlock={(blockId, patch) => patchVariantOverride(format.key, blockId, patch)}
+                    />
+                  </ErrorBoundary>
                 ))}
               </div>
             </div>
