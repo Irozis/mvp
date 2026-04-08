@@ -3600,6 +3600,7 @@ function buildGuidedRepairStrategies(input: {
   imageAnalysis?: EnhancedImageAnalysis
   classification: FailureClassification
   preferredAlternativeFamily?: LayoutIntentFamily
+  forceImageFootprintRecovery?: boolean
 }) {
   const rankedArchetypes = rankStructuralArchetypes({
     formatKey: input.formatKey,
@@ -3612,6 +3613,46 @@ function buildGuidedRepairStrategies(input: {
   }).filter((archetype) => archetype !== getIntentArchetype(input.baseIntent, input.formatKey))
 
   const strategies: RepairStrategy[] = []
+  if (input.forceImageFootprintRecovery) {
+    const alternativeIntent = getAlternativeIntent(
+      input.baseIntent,
+      input.formatKey,
+      input.formatFamily,
+      input.preferredAlternativeFamily
+    )
+    const baseImageMode = input.baseIntent.imageMode
+    const fallbackImageMode =
+      baseImageMode === 'background'
+        ? 'framed'
+        : baseImageMode === 'framed'
+          ? 'background'
+          : baseImageMode === 'hero'
+            ? 'split-right'
+            : 'hero'
+    const recoveredImageMode = (alternativeIntent.imageMode || fallbackImageMode) as LayoutIntent['imageMode']
+    const recoveryMode: LayoutIntent['mode'] =
+      recoveredImageMode === 'background'
+        ? 'overlay'
+        : recoveredImageMode === 'hero'
+          ? 'image-first'
+          : 'split'
+    strategies.push({
+      kind: 'structural-regeneration',
+      candidateKind: 'guided-regeneration-repair',
+      label: 'guided-image-footprint-regeneration',
+      reason: 'Force a structurally different image-mode regeneration when footprint coverage drifts out of range.',
+      actions:
+        recoveryMode === 'image-first'
+          ? ['change-layout-family', 'switch-to-image-first']
+          : ['change-layout-family'],
+      fixStage: 'structural',
+      overrideIntent: {
+        ...alternativeIntent,
+        imageMode: recoveredImageMode,
+        mode: recoveryMode,
+      },
+    })
+  }
   rankedArchetypes.slice(0, 3).forEach((archetype, index) => {
     const overrideIntent = applyStructuralArchetypeIntent({
       archetype,
@@ -7600,6 +7641,7 @@ async function attemptGuidedRegenerationRepair(input: {
   failedAttemptSignatures: Set<string>
   seenOutcomeSignatures: Set<string>
   strongerOnly?: boolean
+  forceImageFootprintRecovery?: boolean
 }): Promise<{ attempts: RepairAttempt[]; regenerationCandidates: RepairRegenerationCandidateDiagnostics[] }> {
   const attempts: RepairAttempt[] = []
   const regenerationCandidates: RepairRegenerationCandidateDiagnostics[] = []
@@ -7613,6 +7655,7 @@ async function attemptGuidedRegenerationRepair(input: {
     imageAnalysis: input.assetHint?.enhancedImage,
     classification: input.classification,
     preferredAlternativeFamily: input.preferredAlternativeFamily,
+    forceImageFootprintRecovery: input.forceImageFootprintRecovery,
   }).filter((strategy, index) => (input.strongerOnly ? index >= 1 : true))
 
   const marketplaceScenario =
@@ -8131,6 +8174,14 @@ async function runRepairPipeline(input: {
   const failedAttemptSignatures = new Set(input.previousFixState?.failedAttemptSignatures || [])
   const seenOutcomeSignatures = new Set(input.previousFixState?.recentOutcomeSignatures || [])
   seenOutcomeSignatures.add(beforeState.sceneSignature)
+  const beforeIssueCodes = new Set(beforeAssessment.issues.map((issue) => issue.code))
+  const beforeStructuralFindingNames = new Set(
+    (beforeAssessment.structuralState?.findings || []).map((finding) => finding.name)
+  )
+  const hasAllowedZoneViolation =
+    beforeIssueCodes.has('violates-allowed-zone') || beforeStructuralFindingNames.has('role-placement')
+  const hasImageFootprintViolation = beforeIssueCodes.has('violates-image-footprint-rule')
+  const forceGuidedRegeneration = Boolean(input.forceAlternativeLayout)
 
   let localAttempts: RepairAttempt[] = []
   if (shouldStartWithLocalRepair({ assessment: beforeAssessment, classification })) {
@@ -8161,6 +8212,8 @@ async function runRepairPipeline(input: {
     (attempt) => attempt.suppressed || attempt.decision.noOp || attempt.decision.suppressedAsRepeat
   )
   const escalationReasons = [
+    ...(hasAllowedZoneViolation ? ['allowed-zone-violation-forces-guided-regeneration'] : []),
+    ...(hasImageFootprintViolation ? ['image-footprint-violation-needs-image-mode-regeneration'] : []),
     ...(input.forceAlternativeLayout ? ['forced-alternative-layout'] : []),
     ...(!bestLocalCandidate ? ['no-accepted-local-repair'] : []),
     ...(bestLocalCandidate && !localImprovedTier ? ['local-did-not-improve-structural-tier'] : []),
@@ -8168,7 +8221,8 @@ async function runRepairPipeline(input: {
     ...(localWasSuppressedOrNoOp ? ['local-repair-no-op-or-repeat'] : []),
   ]
   const needsEscalation =
-    input.forceAlternativeLayout ||
+    forceGuidedRegeneration ||
+    hasImageFootprintViolation ||
     !bestLocalCandidate ||
     !localImprovedTier ||
     bestLocalCandidate.structuralStatus !== 'valid' ||
@@ -8192,7 +8246,11 @@ async function runRepairPipeline(input: {
       preferredAlternativeFamily: input.forceAlternativeLayout ? undefined : fixStrategy.suggestedFamily,
       failedAttemptSignatures,
       seenOutcomeSignatures,
-      strongerOnly: localWasSuppressedOrNoOp && !bestLocalCandidate,
+      strongerOnly:
+        forceGuidedRegeneration || hasAllowedZoneViolation || hasImageFootprintViolation
+          ? false
+          : localWasSuppressedOrNoOp && !bestLocalCandidate,
+      forceImageFootprintRecovery: hasImageFootprintViolation,
     })
     attempts.push(...guidedRegeneration.attempts)
     regenerationCandidates = guidedRegeneration.regenerationCandidates
