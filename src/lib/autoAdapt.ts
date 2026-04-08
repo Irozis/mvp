@@ -4817,7 +4817,7 @@ function evaluatePreviewCandidatePlan(input: {
   imageAnalysis?: EnhancedImageAnalysis
 }) {
   const format = FORMAT_MAP[input.formatKey]
-  const palette = computePalette({ brandKit: input.brandKit, visualSystem: input.visualSystem, scenario: input.scenario })
+  const palette = computePalette({ brandKit: input.brandKit, visualSystem: input.visualSystem, scenario: input.scenario, imageDominantColors: input.imageAnalysis?.dominantColors ?? input.assetHint?.enhancedImage?.dominantColors })
   const typography = computeTypography({
     format,
     profile: input.profile,
@@ -5781,7 +5781,7 @@ export function getPreviewCandidateStageDiagnostics(input: {
   })
 
   const buildCandidateStages = (candidate: PreviewCandidateEvaluation) => {
-    const palette = computePalette({ brandKit: input.brandKit, visualSystem: input.visualSystem, scenario })
+    const palette = computePalette({ brandKit: input.brandKit, visualSystem: input.visualSystem, scenario, imageDominantColors: input.assetHint?.enhancedImage?.dominantColors })
     const typography = computeTypography({
       format,
       profile,

@@ -911,6 +911,10 @@ export function recomputeImageCrop(input: {
   const coverage = ((next.image.w || 0) * (next.image.h || 0)) / 10000
   const wantsMeet = input.format.category === 'presentation' && coverage < 0.24
   next.image.fit = wantsMeet ? fit.replace('slice', 'meet') : fit
+  if (input.imageAnalysis?.focalPoint) {
+    next.image.focalX = input.imageAnalysis.focalPoint.x
+    next.image.focalY = input.imageAnalysis.focalPoint.y
+  }
   return next
 }
 

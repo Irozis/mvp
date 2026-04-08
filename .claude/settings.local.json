@@ -6,7 +6,11 @@
       "Bash(npx vite:*)",
       "Bash(sort -t\"|\" -k2 -rn)",
       "Bash(ls -la node_modules/html-to-image/es/*.js)",
-      "Bash(node -e ':*)"
+      "Bash(node -e ':*)",
+      "Bash(wc -l /c/Users/nowbo/OneDrive/Документы/GitHub/mvp/src/lib/*.ts)",
+      "Bash(xargs wc:*)",
+      "Bash(grep -n \"export function synth\\\\|export function adapt\\\\|export function render\\\\|export async function.*repair\" /c/Users/nowbo/OneDrive/Документы/GitHub/mvp/src/lib/*.ts)",
+      "Bash(grep -n \"computePalette\\(\" src/lib/*.ts)"
     ]
   }
 }

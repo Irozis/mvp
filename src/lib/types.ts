@@ -379,6 +379,8 @@ export type SceneElement = {
   h?: number
   rx?: number
   fit?: string
+  focalX?: number
+  focalY?: number
   fontSize?: number
   charsPerLine?: number
   maxLines?: number
@@ -398,6 +400,7 @@ export type Scene = {
   background: [string, string, string]
   accent: string
   chip?: string
+  overlayStrength?: number
   title: SceneElement
   subtitle: SceneElement
   cta: SceneElement

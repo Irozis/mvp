@@ -34,10 +34,12 @@ export function computePalette({
   brandKit,
   visualSystem,
   scenario,
+  imageDominantColors,
 }: {
   brandKit: BrandKit
   visualSystem: VisualSystemKey
   scenario: ScenarioKey
+  imageDominantColors?: string[]
 }): PalettePlan {
   const accent = brandKit.accentColor
   const baseBackground = [...brandKit.background] as [string, string, string]
@@ -45,13 +47,24 @@ export function computePalette({
   const isLuxury = scenario === 'luxury-minimal' || visualSystem === 'luxury-clean'
   const isEditorial = scenario === 'editorial-story' || visualSystem === 'editorial'
 
+  // Subtly blend the dominant image color into the background for visual harmony
+  // Only apply a light tint (12%) so brand identity is preserved
+  const dominantTint = imageDominantColors?.[0]
+  const tintedBase: [string, string, string] = dominantTint
+    ? [
+        mix(baseBackground[0], dominantTint, 0.12),
+        mix(baseBackground[1], dominantTint, 0.08),
+        mix(baseBackground[2], dominantTint, 0.10),
+      ]
+    : baseBackground
+
   const background: [string, string, string] = isLuxury
-    ? [mix(baseBackground[0], '#ffffff', 0.18), mix(baseBackground[1], '#f7f0e8', 0.2), mix(baseBackground[2], '#d9c7aa', 0.16)]
+    ? [mix(tintedBase[0], '#ffffff', 0.18), mix(tintedBase[1], '#f7f0e8', 0.2), mix(tintedBase[2], '#d9c7aa', 0.16)]
     : isPromo
-      ? [mix(baseBackground[0], accent, 0.1), baseBackground[1], mix(baseBackground[2], accent, 0.18)]
+      ? [mix(tintedBase[0], accent, 0.1), tintedBase[1], mix(tintedBase[2], accent, 0.18)]
       : isEditorial
-        ? [mix(baseBackground[0], '#ffffff', 0.08), mix(baseBackground[1], '#dbe4ea', 0.1), baseBackground[2]]
-        : baseBackground
+        ? [mix(tintedBase[0], '#ffffff', 0.08), mix(tintedBase[1], '#dbe4ea', 0.1), tintedBase[2]]
+        : tintedBase
 
   const textPrimary = getContrastingText(background[1])
   const textSecondary = mix(textPrimary, background[1], textPrimary === '#0f172a' ? 0.28 : 0.18)

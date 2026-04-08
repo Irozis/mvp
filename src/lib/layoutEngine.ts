@@ -639,6 +639,18 @@ function getFit(focalSuggestion?: AssetHint['focalSuggestion']) {
   return 'xMidYMid slice'
 }
 
+function applyFocalFit(
+  scene: Scene,
+  focalSuggestion: AssetHint['focalSuggestion'] | undefined,
+  focalPoint?: { x: number; y: number }
+): void {
+  scene.image.fit = getFit(focalSuggestion)
+  if (focalPoint) {
+    scene.image.focalX = focalPoint.x
+    scene.image.focalY = focalPoint.y
+  }
+}
+
 function getSafeInsets(format: FormatDefinition, safeZone: BrandKit['safeZone']) {
   const bias = safeZone === 'airy' ? 1.8 : safeZone === 'compact' ? -0.8 : 0
   const formatBias = getFormatSafeInsetBias(format)
@@ -5952,6 +5964,7 @@ function applyPalette(scene: Scene, palette: PalettePlan, assetHint?: AssetHint)
   const next = clone(scene)
   next.background = [...palette.background]
   next.accent = palette.accent
+  next.overlayStrength = palette.overlayStrength
   next.title.fill = palette.textPrimary
   next.subtitle.fill = palette.textSecondary
   next.subtitle.opacity = assetHint?.detectedContrast === 'low' ? Math.min((next.subtitle.opacity || 0.82) + 0.06, 0.96) : next.subtitle.opacity
@@ -5963,6 +5976,47 @@ function applyPalette(scene: Scene, palette: PalettePlan, assetHint?: AssetHint)
   next.logo.bg = palette.surface
   next.logo.bgOpacity = assetHint?.detectedContrast === 'high' ? 0.26 : 0.16
   next.logo.fill = palette.textPrimary
+  return next
+}
+
+function reanchorCtaToCluster(scene: Scene, format: FormatDefinition): Scene {
+  // Only apply to square and portrait formats with vertical text+CTA stacks
+  // Exclude marketplace formats — they have tightly calibrated CTA positions
+  if (format.family !== 'square' && format.family !== 'portrait') return scene
+  if (format.category === 'marketplace') return scene
+  const subtitleBottom = (scene.subtitle.y || 0) + (scene.subtitle.h || 0)
+  const ctaY = scene.cta.y || 0
+  const ctaH = scene.cta.h || 6
+  // Skip if CTA is horizontally beside the text cluster (not below)
+  const subtitleRight = (scene.subtitle.x || 0) + (scene.subtitle.w || 0)
+  if ((scene.cta.x || 0) > subtitleRight * 0.85) return scene
+  // Only adjust when gap is very large (> 18% of canvas height) to avoid disturbing calibrated layouts
+  if (ctaY - subtitleBottom <= 18) return scene
+  const next = clone(scene)
+  const ruleSet = getFormatRuleSet(format)
+  const safeMinY = (ruleSet.safeArea.y / format.height) * 100 + 1
+  const safeMaxY = ((ruleSet.safeArea.y + ruleSet.safeArea.h) / format.height) * 100 - ctaH - 1
+  next.cta.y = clamp(subtitleBottom + 6, safeMinY, safeMaxY)
+  return next
+}
+
+function adjustTextContrastForOverlay(scene: Scene, imageAnalysis?: EnhancedImageAnalysis): Scene {
+  if (!imageAnalysis?.mood || imageAnalysis.mood === 'neutral') return scene
+  // Only apply for hero/immersive layouts where text overlays the image
+  if ((scene.image.w || 0) < 74 && (scene.image.h || 0) < 64) return scene
+  const next = clone(scene)
+  const titleIsLight = (next.title.fill || '#f8fafc') !== '#0f172a' && (next.title.fill || '#f8fafc') !== '#1e293b'
+  const mismatch = (titleIsLight && imageAnalysis.mood === 'light') || (!titleIsLight && imageAnalysis.mood === 'dark')
+  if (!mismatch) return scene
+  if (imageAnalysis.mood === 'light') {
+    next.title.fill = '#0f172a'
+    next.subtitle.fill = '#1e293b'
+  } else {
+    next.title.fill = '#f8fafc'
+    next.subtitle.fill = '#e2e8f0'
+  }
+  // Boost overlay strength so scrim matches flipped text color
+  next.overlayStrength = Math.min((next.overlayStrength || 0.2) + 0.14, 0.40)
   return next
 }
 
@@ -7137,7 +7191,7 @@ function repackSceneForValidity(input: {
 
     let candidate = applyPalette(input.master, input.palette, input.assetHint)
     candidate = applyTypography(candidate, input.typography, input.brandKit)
-    candidate.image.fit = getFit(input.imageAnalysis?.focalSuggestion || input.assetHint?.focalSuggestion)
+    applyFocalFit(candidate, input.imageAnalysis?.focalSuggestion ?? input.assetHint?.focalSuggestion, input.imageAnalysis?.focalPoint ?? input.assetHint?.enhancedImage?.focalPoint)
     const blocks = buildLayoutBlocks({ master: candidate, format: input.format, profile: input.profile, typography: input.typography, intent: input.intent })
     candidate = packBlocks({
       blocks,
@@ -7282,7 +7336,7 @@ export function synthesizeLayout({
     }
     let scene = applyPalette(master, palette, assetHint)
     scene = applyTypography(scene, typography, brandKit)
-    scene.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+    applyFocalFit(scene, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
     scene = buildMarketplaceV2Scene({
       scene,
       format,
@@ -7291,6 +7345,7 @@ export function synthesizeLayout({
     })
     scene = finalizeSceneGeometry(scene, format, null)
     scene = stabilizeMarketplaceLayout(scene, format, null)
+    scene = adjustTextContrastForOverlay(scene, imageAnalysis)
     const structuralState = evaluateStructuralLayoutState({ scene, format, compositionModel: null })
     return { scene, blocks: [], intent: effectiveIntent, structuralState }
   }
@@ -7314,7 +7369,7 @@ export function synthesizeLayout({
       : resolvedIntent
   let scene = applyPalette(master, palette, assetHint)
   scene = applyTypography(scene, typography, brandKit)
-  scene.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+  applyFocalFit(scene, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
   const blocks = buildLayoutBlocks({ master: scene, format, profile, typography, intent: effectiveIntent })
   const zones =
     compositionModel
@@ -7382,6 +7437,8 @@ export function synthesizeLayout({
     scene = repacked.scene
     structuralState = repacked.structuralState
   }
+  scene = reanchorCtaToCluster(scene, format)
+  scene = adjustTextContrastForOverlay(scene, imageAnalysis)
   return { scene, blocks, intent: effectiveIntent, structuralState }
 }
 
@@ -7517,7 +7574,7 @@ export function getSynthesisStageDiagnostics({
     }
     let seeded = applyPalette(master, palette, assetHint)
     seeded = applyTypography(seeded, typography, brandKit)
-    seeded.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+    applyFocalFit(seeded, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
     const slotScene = buildMarketplaceV2Scene({
       scene: seeded,
       format,
@@ -7563,7 +7620,7 @@ export function getSynthesisStageDiagnostics({
 
   let seeded = applyPalette(master, palette, assetHint)
   seeded = applyTypography(seeded, typography, brandKit)
-  seeded.image.fit = getFit(imageAnalysis?.focalSuggestion || assetHint?.focalSuggestion)
+  applyFocalFit(seeded, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
   const blocks = buildLayoutBlocks({ master: seeded, format, profile, typography, intent: effectiveIntent })
   const zones =
     compositionModel
@@ -7660,6 +7717,9 @@ export function getSynthesisStageDiagnostics({
     finalState = repackResult.structuralState
     repacked = true
   }
+
+  finalScene = reanchorCtaToCluster(finalScene, format)
+  finalScene = adjustTextContrastForOverlay(finalScene, imageAnalysis)
 
   return {
     blocks,

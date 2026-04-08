@@ -81,27 +81,50 @@ export function classifyScenario({
   return 'short-promo'
 }
 
-function chooseFamily(format: FormatDefinition, profile: ContentProfile, visualSystem: VisualSystemKey): LayoutIntentFamily {
+function chooseFamily(
+  format: FormatDefinition,
+  profile: ContentProfile,
+  visualSystem: VisualSystemKey,
+  imageAnalysis?: EnhancedImageAnalysis
+): LayoutIntentFamily {
+  // Image-quality signals that should influence composition choice
+  const cropRiskHigh = imageAnalysis?.cropRisk === 'high'
+  const imageContrastLow = imageAnalysis?.detectedContrast === 'low'
+  // Avoid full-bleed hero/overlay when the subject would be cropped or image is flat
+  const avoidHeroOverlay = cropRiskHigh || imageContrastLow
+
   if (format.category === 'presentation' || format.key === 'presentation-hero' || format.key === 'presentation-cover' || format.key === 'presentation-onepager') {
     return visualSystem === 'minimal' || visualSystem === 'luxury-clean' ? 'presentation-clean-hero' : 'presentation-structured-cover'
   }
   if (format.key === 'display-mpu' || format.key === 'display-large-rect') {
+    // Avoid image-bg mode when image has low contrast (text will be unreadable)
+    if (imageContrastLow) return 'display-rectangle-balanced'
     return profile.preferredMessageMode === 'image-first' ? 'display-rectangle-image-bg' : 'display-rectangle-balanced'
   }
   if (format.key === 'display-leaderboard') return 'leaderboard-compact-horizontal'
   if (format.key === 'display-skyscraper' || format.key === 'display-halfpage') {
     return profile.density === 'dense' ? 'skyscraper-split-vertical' : 'skyscraper-image-top-text-stack'
   }
-  if (format.family === 'square') return profile.preferredMessageMode === 'image-first' ? 'square-hero-overlay' : 'square-image-top-text-bottom'
+  if (format.family === 'square') {
+    if (!avoidHeroOverlay && profile.preferredMessageMode === 'image-first') return 'square-hero-overlay'
+    return 'square-image-top-text-bottom'
+  }
   if (format.family === 'portrait') {
-    return profile.density === 'dense' || profile.preferredMessageMode === 'text-first' ? 'portrait-bottom-card' : 'portrait-hero-overlay'
+    // High crop risk in portrait = dangerous for full-bleed (subject edges get cut)
+    if (avoidHeroOverlay || profile.density === 'dense' || profile.preferredMessageMode === 'text-first') return 'portrait-bottom-card'
+    return 'portrait-hero-overlay'
   }
   if (format.family === 'wide') {
     if (format.category === 'print' || visualSystem === 'minimal' || visualSystem === 'luxury-clean') return 'billboard-wide-balanced'
+    // Avoid hero overlay for wide formats when image contrast is low
+    if (imageContrastLow) return 'billboard-wide-balanced'
     return 'billboard-wide-hero'
   }
-  if (profile.preferredMessageMode === 'image-first') return 'landscape-image-dominant'
+  // Landscape: use image aspect ratio to pick best split
+  if (profile.preferredMessageMode === 'image-first' && !avoidHeroOverlay) return 'landscape-image-dominant'
   if (profile.density === 'dense' || visualSystem === 'editorial') return 'landscape-text-left-image-right'
+  // Portrait/tall images fit naturally in a side column
+  if (imageAnalysis?.imageProfile === 'portrait' || imageAnalysis?.imageProfile === 'tall') return 'landscape-text-left-image-right'
   return 'landscape-balanced-split'
 }
 
@@ -152,7 +175,7 @@ function buildHeuristicLayoutIntent({
     return adaptation.intent
   }
   const tileCompactBase = format.key === 'marketplace-tile' && preferredArchetype === 'compact-minimal'
-  const family = tileCompactBase ? 'landscape-balanced-split' : chooseFamily(format, profile, visualSystem)
+  const family = tileCompactBase ? 'landscape-balanced-split' : chooseFamily(format, profile, visualSystem, imageAnalysis)
   const balanceDefaults = getFormatBalanceDefaults({
     format,
     profile,

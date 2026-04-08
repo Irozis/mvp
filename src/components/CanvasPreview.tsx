@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Download, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { percentX, percentY, rgba, splitTextIntoLines } from '../lib/utils'
 import { getFormatRuleSet } from '../lib/formatRules'
@@ -118,6 +118,13 @@ export function CanvasPreview({
   const logoW = percentX(scene.logo.w || 0, width)
   const logoH = percentY(scene.logo.h || 0, height)
   const immersiveImage = (scene.image.w || 0) >= 78 || (scene.image.h || 0) >= 70
+  // Determine panel base color: must contrast with the text fill to ensure readability on any image
+  const titleFill = scene.title.fill || '#f8fafc'
+  const titleIsLight = titleFill !== '#0f172a' && titleFill !== '#1e293b'
+  const panelBase = titleIsLight ? '#050d1a' : '#f0f4f8'
+  const overlayStr = scene.overlayStrength ?? 0.20
+  const panelOpacityTop = immersiveImage ? Math.min(0.62 + overlayStr * 1.4, 0.88) : 0.14
+  const panelOpacityBottom = immersiveImage ? Math.min(0.28 + overlayStr, 0.56) : 0.08
   const textPanelX = Math.max(titleX - 28, 22)
   const textPanelY = Math.max(titleY - (scene.title.fontSize || 32) * 1.05, 18)
   const textPanelW = Math.min(Math.max(percentX(Math.max(scene.title.w || 0, scene.subtitle.w || 0, scene.cta.w || 0) + 8, width), ctaX + ctaW - textPanelX + 24), width - textPanelX - 22)
@@ -133,6 +140,26 @@ export function CanvasPreview({
   const severityLabel = shownScore < 50 ? 'poor' : shownScore < 65 ? 'weak' : shownScore < 80 ? 'acceptable' : shownScore < 90 ? 'strong' : shownScore < 97 ? 'production-ready' : 'exceptional'
   const formatFamily = assessment.formatFamily || format.family
   const hasRemainingWork = (fixResult?.remainingIssues.length || 0) > 0 || (fixResult?.scoreTrust.needsHumanAttention ?? false)
+  const [imageDims, setImageDims] = useState<{ w: number; h: number } | null>(null)
+  useEffect(() => {
+    if (!imageUrl) { setImageDims(null); return }
+    const img = new window.Image()
+    img.onload = () => setImageDims({ w: img.naturalWidth, h: img.naturalHeight })
+    img.src = imageUrl
+  }, [imageUrl])
+
+  const [logoDims, setLogoDims] = useState<{ w: number; h: number } | null>(null)
+  useEffect(() => {
+    if (!logoUrl) { setLogoDims(null); return }
+    const img = new window.Image()
+    img.onload = () => setLogoDims({ w: img.naturalWidth, h: img.naturalHeight })
+    img.src = logoUrl
+  }, [logoUrl])
+
+  // Adjust logo container width to match the logo's actual aspect ratio
+  const logoAspect = logoDims && logoDims.h > 0 ? logoDims.w / logoDims.h : 2.8
+  const adjustedLogoW = Math.min(Math.max(logoH * logoAspect, logoH), logoW * 1.5)
+
   const svgRef = useRef<SVGSVGElement | null>(null)
   const dragState = useRef<{
     blockId: LayoutElementKind
@@ -280,8 +307,8 @@ export function CanvasPreview({
               <stop offset="100%" stopColor={scene.accent} stopOpacity="0" />
             </radialGradient>
             <linearGradient id={textPanelId} x1="0" y1="0" x2="0.92" y2="1">
-              <stop offset="0%" stopColor={rgba(scene.background[0], immersiveImage ? 0.82 : 0.16)} />
-              <stop offset="100%" stopColor={rgba(scene.background[1], immersiveImage ? 0.48 : 0.1)} />
+              <stop offset="0%" stopColor={rgba(panelBase, panelOpacityTop)} />
+              <stop offset="100%" stopColor={rgba(panelBase, panelOpacityBottom)} />
             </linearGradient>
             <linearGradient id={vignetteId} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="rgba(15,23,42,0)" />
@@ -297,15 +324,22 @@ export function CanvasPreview({
 
           {imageUrl ? (
             <g>
-              <image
-                href={imageUrl}
-                x={image.x}
-                y={image.y}
-                width={image.w}
-                height={image.h}
-                preserveAspectRatio={scene.image.fit || 'xMidYMid slice'}
-                clipPath={`url(#${clipId})`}
-              />
+              {(() => {
+                const focalX = scene.image.focalX ?? 50
+                const focalY = scene.image.focalY ?? 50
+                const wantsMeet = (scene.image.fit || '').endsWith('meet')
+                if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
+                  const scale = Math.max(image.w / imageDims.w, image.h / imageDims.h)
+                  const scaledW = imageDims.w * scale
+                  const scaledH = imageDims.h * scale
+                  const desiredX = image.x + image.w / 2 - (focalX / 100) * scaledW
+                  const desiredY = image.y + image.h / 2 - (focalY / 100) * scaledH
+                  const imgX = Math.min(Math.max(desiredX, image.x + image.w - scaledW), image.x)
+                  const imgY = Math.min(Math.max(desiredY, image.y + image.h - scaledH), image.y)
+                  return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={`url(#${clipId})`} />
+                }
+                return <image href={imageUrl} x={image.x} y={image.y} width={image.w} height={image.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={`url(#${clipId})`} />
+              })()}
               {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
               <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="none" stroke="rgba(255,255,255,0.2)" />
             </g>
@@ -331,11 +365,11 @@ export function CanvasPreview({
             />
           )}
 
-          <rect x={logoX} y={logoY} width={logoW} height={logoH} rx="14" fill={rgba(scene.logo.bg || '#ffffff', scene.logo.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.2)" />
+          <rect x={logoX} y={logoY} width={adjustedLogoW} height={logoH} rx="14" fill={rgba(scene.logo.bg || '#ffffff', scene.logo.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.2)" />
           {logoUrl ? (
-            <image href={logoUrl} x={logoX + 8} y={logoY + 6} width={logoW - 16} height={logoH - 12} preserveAspectRatio="xMidYMid meet" />
+            <image href={logoUrl} x={logoX + 8} y={logoY + 6} width={adjustedLogoW - 16} height={logoH - 12} preserveAspectRatio="xMidYMid meet" />
           ) : (
-            <text x={logoX + logoW / 2} y={logoY + logoH / 2 + 4} textAnchor="middle" fill={scene.logo.fill || '#fff'} fontSize="12" fontWeight="600" fontFamily={brandKit.fontFamily}>
+            <text x={logoX + adjustedLogoW / 2} y={logoY + logoH / 2 + 4} textAnchor="middle" fill={scene.logo.fill || scene.title.fill || '#fff'} fontSize="12" fontWeight="600" fontFamily={brandKit.fontFamily}>
               LOGO
             </text>
           )}
