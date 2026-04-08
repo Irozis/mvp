@@ -218,6 +218,7 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
 export async function groqImageAnalyzer(image: ImageAsset): Promise<EnhancedImageAnalysis> {
   const apiKey = import.meta.env.VITE_GROQ_API_KEY
   if (typeof apiKey !== 'string' || apiKey.trim() === '') {
+    console.warn('VITE_GROQ_API_KEY is not set — image analysis will use fallback values')
     throw new Error('Groq API key is not set (VITE_GROQ_API_KEY)')
   }
 

@@ -1,4 +1,8 @@
-import { afterEach, describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+
+vi.mock('./groqImageAnalyzer', () => ({
+  groqImageAnalyzer: vi.fn(),
+}))
 
 import {
   aiAnalyzeImage,
@@ -6,6 +10,9 @@ import {
   buildHeuristicImageAnalysisFromPixels,
   setAIImageAnalyzer,
 } from './imageAnalysis'
+import { groqImageAnalyzer } from './groqImageAnalyzer'
+
+const groqImageAnalyzerMock = vi.mocked(groqImageAnalyzer)
 
 function createPixels(width: number, height: number, rgb: [number, number, number]) {
   const pixels = new Uint8ClampedArray(width * height * 4)
@@ -78,6 +85,7 @@ function installImageCanvasStubs(input: { width: number; height: number; pixels:
 
 afterEach(() => {
   setAIImageAnalyzer(null)
+  groqImageAnalyzerMock.mockReset()
 })
 
 describe('image analysis', () => {
@@ -95,7 +103,7 @@ describe('image analysis', () => {
     expect(analysis.focalSuggestion).toBeTruthy()
   })
 
-  it('returns the injected AI analysis when a custom analyzer succeeds', async () => {
+  it('returns the mocked Groq analysis when analyzer succeeds', async () => {
     const expected = {
       focalPoint: { x: 42, y: 38 },
       safeTextAreas: [{ x: 8, y: 8, w: 24, h: 24, score: 0.8 }],
@@ -109,22 +117,20 @@ describe('image analysis', () => {
       detectedContrast: 'medium' as const,
       focalSuggestion: 'center' as const,
     }
-    setAIImageAnalyzer(async () => expected)
+    groqImageAnalyzerMock.mockResolvedValueOnce(expected)
 
     const result = await aiAnalyzeImage({ url: 'https://example.com/sample.png', role: 'main-image', id: 'asset-1', createdAt: '', updatedAt: '' })
 
     expect(result).toEqual(expected)
   })
 
-  it('falls back to deterministic heuristics when the injected analyzer fails', async () => {
+  it('falls back to deterministic heuristics when the Groq analyzer fails', async () => {
     const restore = installImageCanvasStubs({
       width: 120,
       height: 80,
       pixels: createPixels(32, 32, [180, 140, 90]),
     })
-    setAIImageAnalyzer(async () => {
-      throw new Error('fail')
-    })
+    groqImageAnalyzerMock.mockRejectedValueOnce(new Error('fail'))
 
     try {
       const result = await aiAnalyzeImage({ url: 'https://example.com/fallback.png', role: 'main-image', id: 'asset-1', createdAt: '', updatedAt: '' })

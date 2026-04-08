@@ -1,6 +1,7 @@
 import { getImageProfile } from './assetProfile'
 import type { EnhancedImageAnalysis, FormatDefinition, ImageAsset, ImageBlockAnalysis, LayoutFamily, Scene } from './types'
 import { getFormatRuleSet } from './formatRules'
+import { groqImageAnalyzer } from './groqImageAnalyzer'
 
 export type ReferenceAnalysis = {
   palette: string[]
@@ -660,12 +661,10 @@ export async function aiAnalyzeImage(imageAsset: ImageAsset): Promise<EnhancedIm
     }
   }
 
-  if (aiImageAnalyzer) {
-    try {
-      return await aiImageAnalyzer(imageAsset)
-    } catch {
-      // fall through to deterministic heuristics
-    }
+  try {
+    return await groqImageAnalyzer(imageAsset)
+  } catch {
+    // fall through to deterministic heuristics when Groq is unavailable
   }
 
   const image = await loadImage(imageAsset.url)
