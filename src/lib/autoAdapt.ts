@@ -1248,6 +1248,13 @@ function getRepairCandidateKind(strategy?: RepairStrategy): RepairCandidateKind 
   return 'local-structural-repair'
 }
 
+function isEscalationSourcedRepairStrategy(strategy?: RepairStrategy) {
+  if (!strategy) return false
+  if (strategy.candidateKind === 'guided-regeneration-repair') return true
+  if (strategy.kind === 'structural-regeneration') return true
+  return strategy.label.startsWith('run-auto-fix-escalation:')
+}
+
 function getRepairObjectiveContext(input: {
   formatKey: FormatKey
   formatFamily: FormatFamily
@@ -1649,7 +1656,9 @@ function evaluateRepairSearchCandidate(input: {
       rejectionReasons.push('hard-structural-invalidity')
     }
 
-    if (!input.thresholds.allowRolePlacement && hasStructuralFinding(input.candidate, 'role-placement')) {
+    const enforceRolePlacementHardGate =
+      !input.thresholds.allowRolePlacement && !isEscalationSourcedRepairStrategy(input.strategy)
+    if (enforceRolePlacementHardGate && hasStructuralFinding(input.candidate, 'role-placement')) {
       gateOutcomes.rolePlacementOutOfZone = true
       rejectionReasons.push('role-placement-out-of-zone')
     }
