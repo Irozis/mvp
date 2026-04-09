@@ -10,7 +10,9 @@
       "Bash(wc -l /c/Users/nowbo/OneDrive/Документы/GitHub/mvp/src/lib/*.ts)",
       "Bash(xargs wc:*)",
       "Bash(grep -n \"export function synth\\\\|export function adapt\\\\|export function render\\\\|export async function.*repair\" /c/Users/nowbo/OneDrive/Документы/GitHub/mvp/src/lib/*.ts)",
-      "Bash(grep -n \"computePalette\\(\" src/lib/*.ts)"
+      "Bash(grep -n \"computePalette\\(\" src/lib/*.ts)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

@@ -895,8 +895,10 @@ export default function App() {
               <h2>Master controls</h2>
             </div>
             <div className="card-body stack">
-              <FilePicker label="Main image" value={imageUrl} onUrlChange={setImageUrl} />
-              <FilePicker label="Logo" value={logoUrl} onUrlChange={setLogoUrl} />
+              <ErrorBoundary>
+                <FilePicker label="Main image" value={imageUrl} onUrlChange={setImageUrl} />
+                <FilePicker label="Logo" value={logoUrl} onUrlChange={setLogoUrl} />
+              </ErrorBoundary>
               <div className="field">
                 <label className="label">Edit mode</label>
                 <select className="select" value={editMode} onChange={(event) => setEditMode(event.target.value as 'master' | FormatKey)}>
@@ -1017,6 +1019,7 @@ export default function App() {
         </aside>
 
         <main className="main stack">
+          <ErrorBoundary>
           <div className="summary-grid">
             <SummaryCard label="Goal pack" value={currentGoalPreset?.label || project.goal} />
             <SummaryCard label="Direction" value={VISUAL_SYSTEMS.find((item) => item.key === project.visualSystem)?.label || project.visualSystem} />
@@ -1141,6 +1144,7 @@ export default function App() {
               </div>
             </div>
           </div>
+          </ErrorBoundary>
         </main>
       </div>
     </div>

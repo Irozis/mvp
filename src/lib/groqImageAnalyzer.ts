@@ -1,6 +1,6 @@
 import type { EnhancedImageAnalysis, ImageAsset, ImageProfile } from './imageAnalysis'
 
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
+const GROQ_PROXY_URL = '/api/analyze-image'
 const GROQ_MODEL = 'meta-llama/llama-4-scout-17b-16e-instruct'
 
 function clamp(value: number, min: number, max: number) {
@@ -216,12 +216,6 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
 }
 
 export async function groqImageAnalyzer(image: ImageAsset): Promise<EnhancedImageAnalysis> {
-  const apiKey = import.meta.env.VITE_GROQ_API_KEY
-  if (typeof apiKey !== 'string' || apiKey.trim() === '') {
-    console.warn('VITE_GROQ_API_KEY is not set — image analysis will use fallback values')
-    throw new Error('Groq API key is not set (VITE_GROQ_API_KEY)')
-  }
-
   const { base64, mimeType } = await urlToBase64AndMime(image.url)
   const dataUrl = `data:${mimeType};base64,${base64}`
 
@@ -252,12 +246,9 @@ export async function groqImageAnalyzer(image: ImageAsset): Promise<EnhancedImag
 
   let response: Response
   try {
-    response = await fetch(GROQ_API_URL, {
+    response = await fetch(GROQ_PROXY_URL, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey.trim()}`,
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
   } catch (e) {

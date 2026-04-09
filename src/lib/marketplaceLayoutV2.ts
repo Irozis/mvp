@@ -13,6 +13,9 @@ import { applyTextBoxToSceneElement, clampTextBoxToRegion, fitSceneTextToRule } 
 
 export type { MarketplaceV2ArchetypeId } from './types'
 
+// V2 is the default layout path as of 2026-04-09.
+// V1 fallback is preserved in layoutEngine.ts for rollback — do not delete until V2 is confirmed stable in prod.
+// To disable: set VITE_MARKETPLACE_LAYOUT_V2=false (or unset) in environment variables.
 export function isMarketplaceLayoutV2Enabled(): boolean {
   return import.meta.env.VITE_MARKETPLACE_LAYOUT_V2 === 'true'
 }

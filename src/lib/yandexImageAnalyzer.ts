@@ -1,8 +1,10 @@
 import type { EnhancedImageAnalysis, ImageAsset, ImageProfile } from './imageAnalysis'
 
+// In dev: vite proxy at /yandex-api forwards to Yandex with auth from VITE_YANDEX_API_KEY
+// In prod: /api/analyze-image-yandex edge function adds auth server-side
 const url = import.meta.env.DEV
   ? '/yandex-api/foundationModels/v1/completion'
-  : 'https://llm.api.cloud.yandex.net/foundationModels/v1/completion'
+  : '/api/analyze-image-yandex'
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
@@ -232,18 +234,26 @@ function parseEnhancedFromJson(parsed: unknown): EnhancedImageAnalysis {
 }
 
 export async function yandexImageAnalyzer(image: ImageAsset): Promise<EnhancedImageAnalysis> {
+  // In dev: VITE_YANDEX_API_KEY and VITE_YANDEX_FOLDER_ID are used from .env.local (not bundled in prod).
+  // In prod: /api/analyze-image-yandex edge function handles auth server-side.
+  const isDev = import.meta.env.DEV
   const apiKey = import.meta.env.VITE_YANDEX_API_KEY
   const folderId = import.meta.env.VITE_YANDEX_FOLDER_ID
-  const keyOk = typeof apiKey === 'string' && apiKey.trim() !== ''
-  const folderOk = typeof folderId === 'string' && folderId.trim() !== ''
-  if (!keyOk || !folderOk) {
-    throw new Error('Yandex API key or folder ID is not set')
+
+  if (isDev) {
+    const keyOk = typeof apiKey === 'string' && apiKey.trim() !== ''
+    const folderOk = typeof folderId === 'string' && folderId.trim() !== ''
+    if (!keyOk || !folderOk) {
+      throw new Error('Yandex API key or folder ID is not set (required in dev via .env.local)')
+    }
   }
 
   const { base64, mimeType } = await urlToBase64AndMime(image.url)
   const dataUrl = `data:${mimeType};base64,${base64}`
 
-  const modelUri = `gpt://${folderId}/qwen2.5-vl-32b-instruct/latest`
+  const modelUri = isDev && typeof folderId === 'string' && folderId.trim()
+    ? `gpt://${folderId}/qwen2.5-vl-32b-instruct/latest`
+    : 'gpt://placeholder/qwen2.5-vl-32b-instruct/latest'
 
   const body = {
     modelUri,
@@ -271,14 +281,16 @@ export async function yandexImageAnalyzer(image: ImageAsset): Promise<EnhancedIm
     ],
   }
 
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+  if (isDev && typeof apiKey === 'string' && apiKey.trim()) {
+    headers.Authorization = `Api-Key ${apiKey.trim()}`
+  }
+
   let response: Response
   try {
     response = await fetch(url, {
       method: 'POST',
-      headers: {
-        Authorization: `Api-Key ${apiKey.trim()}`,
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(body),
     })
   } catch (e) {

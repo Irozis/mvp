@@ -591,6 +591,7 @@ function getMinDistanceToZones(subject: Rect, zones: Rect[]) {
 }
 
 function shouldLogPlacementDebug() {
+  if (!import.meta.env.DEV) return false
   const runtime = globalThis as typeof globalThis & {
     process?: {
       env?: Record<string, string | undefined>

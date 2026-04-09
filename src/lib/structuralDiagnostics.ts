@@ -185,6 +185,7 @@ export function createStructuralDiagnosticsSignature(snapshot: StructuralDiagnos
 }
 
 export function logStructuralDiagnostics(snapshot: StructuralDiagnosticsSnapshot) {
+  if (!import.meta.env.DEV) return
   console.groupCollapsed('[layout] structural diagnostics')
   console.log('overall')
   console.table([snapshot.overallRow])
