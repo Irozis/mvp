@@ -48,7 +48,11 @@ function layoutCardPatternA(scene: Scene, width: number, height: number) {
   const pad = 40
   const leftW = width * 0.5
   const title = scene.title.text || ''
-  const titleFs = title.length > 15 ? Math.max(64, width * 0.07) : Math.max(80, width * 0.09)
+  let titleFs = title.length > 15 ? Math.max(64, width * 0.07) : Math.max(80, width * 0.09)
+  const leftPanelHeight = height
+  if (titleFs * 3 > leftPanelHeight * 0.6) {
+    titleFs *= 0.8
+  }
   const subFs = Math.min(scene.subtitle.fontSize || 16, 18)
   const ctaMinW = Math.max(140, (scene.cta.text || '').length * 9 + 56)
   const ctaH = Math.max(percentY(scene.cta.h || 7, height), 48)
@@ -324,6 +328,7 @@ export function CanvasPreview({
   const useCardPatternC = isMarketplaceCard && !imageUrl
   const useHighlightAltPatternA = isMarketplaceHighlight && Boolean(imageUrl) && assessment.compositionModelId === 'portrait-bottom-card'
   const useHighlightPatternB = isMarketplaceHighlight && Boolean(imageUrl) && !useHighlightAltPatternA
+  const showBadge = Boolean(scene.badge?.text) && !['Campaign', 'Badge', 'Label', 'Tag'].includes(scene.badge.text)
   const cardA = useCardPatternA ? layoutCardPatternA(scene, width, height) : null
   const cardC = useCardPatternC ? layoutCardPatternC(scene, width, height) : null
   const highlightB = useHighlightPatternB ? layoutHighlightPatternB(scene, width, height) : null
@@ -535,8 +540,12 @@ export function CanvasPreview({
             <g>
               <rect x={0} y={0} width={cardA.leftW} height={height} fill={scene.background[0]} />
               <image href={imageUrl} x={cardA.leftW} y={0} width={width - cardA.leftW} height={height} preserveAspectRatio={splitImageAspect} clipPath={`url(#${clipId}-right-half)`} />
-              <rect x={cardA.leftW - badgeW - cardA.pad} y={cardA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
-              <text x={cardA.leftW - badgeW / 2 - cardA.pad} y={cardA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              {showBadge ? (
+                <g>
+                  <rect x={cardA.leftW - badgeW - cardA.pad} y={cardA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+                  <text x={cardA.leftW - badgeW / 2 - cardA.pad} y={cardA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+                </g>
+              ) : null}
               <SvgText text={scene.title.text || ''} x={cardA.titleX} y={cardA.titleY} fontSize={cardA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 16} maxLines={scene.title.maxLines || 3} lineHeight={cardA.titleLH / cardA.titleFs} fontFamily={brandKit.fontFamily} />
               <SvgText text={scene.subtitle.text || ''} x={cardA.subX} y={cardA.subY} fontSize={cardA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 4} lineHeight={cardA.subLH / cardA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <rect x={cardA.ctaX} y={cardA.ctaY} width={cardA.ctaW} height={cardA.ctaH} rx={999} fill={scene.accent} />
@@ -553,8 +562,12 @@ export function CanvasPreview({
               <text x={cardC.ctaX + cardC.ctaW / 2} y={cardC.ctaY + cardC.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
               <rect x={width - cardC.imageBoxW - cardC.pad} y={height - cardC.imageBoxH - cardC.pad} width={cardC.imageBoxW} height={cardC.imageBoxH} rx={22} fill="rgba(255,255,255,0.12)" stroke="rgba(15,23,42,0.14)" />
               <text x={width - cardC.imageBoxW / 2 - cardC.pad} y={height - cardC.imageBoxH / 2 - cardC.pad + 5} textAnchor="middle" fill="rgba(15,23,42,0.5)" fontSize={17} fontFamily={brandKit.fontFamily}>Add main image</text>
-              <rect x={width - badgeW - cardC.pad} y={cardC.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
-              <text x={width - badgeW / 2 - cardC.pad} y={cardC.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              {showBadge ? (
+                <g>
+                  <rect x={width - badgeW - cardC.pad} y={cardC.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+                  <text x={width - badgeW / 2 - cardC.pad} y={cardC.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+                </g>
+              ) : null}
             </g>
           ) : null}
 
@@ -562,8 +575,12 @@ export function CanvasPreview({
             <g>
               {renderImage(imageUrl, { x: 0, y: 0, w: width, h: height }, scene, imageDims)}
               <rect x={0} y={0} width={width} height={height} fill={`url(#${gradientId}-highlight-overlay)`} />
-              <rect x={width - badgeW - highlightB.padX} y={highlightB.padX} width={badgeW} height={badgeH} rx={20} fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.25)" />
-              <text x={width - badgeW / 2 - highlightB.padX} y={highlightB.padX + badgeH / 2 + 6} textAnchor="middle" fill="#fff" fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              {showBadge ? (
+                <g>
+                  <rect x={width - badgeW - highlightB.padX} y={highlightB.padX} width={badgeW} height={badgeH} rx={20} fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.25)" />
+                  <text x={width - badgeW / 2 - highlightB.padX} y={highlightB.padX + badgeH / 2 + 6} textAnchor="middle" fill="#fff" fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+                </g>
+              ) : null}
               <SvgText text={scene.title.text || ''} x={highlightB.titleX} y={highlightB.titleY} fontSize={highlightB.titleFs} fill="#fff" weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 18} maxLines={scene.title.maxLines || 3} lineHeight={highlightB.titleLH / highlightB.titleFs} textAnchor="middle" fontFamily={brandKit.fontFamily} />
               <SvgText text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.6} textAnchor="middle" fontFamily={brandKit.fontFamily} />
               <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={scene.accent} stroke="#fff" strokeWidth={2} />
@@ -575,8 +592,12 @@ export function CanvasPreview({
             <g>
               {renderImage(imageUrl, { x: 0, y: 0, w: width, h: highlightA.splitY }, scene, imageDims, `${clipId}-top-split`)}
               <rect x={0} y={highlightA.splitY} width={width} height={height - highlightA.splitY} fill={scene.background[0]} />
-              <rect x={width - badgeW - highlightA.pad} y={highlightA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
-              <text x={width - badgeW / 2 - highlightA.pad} y={highlightA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              {showBadge ? (
+                <g>
+                  <rect x={width - badgeW - highlightA.pad} y={highlightA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+                  <text x={width - badgeW / 2 - highlightA.pad} y={highlightA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+                </g>
+              ) : null}
               <SvgText text={scene.title.text || ''} x={highlightA.titleX} y={highlightA.titleY} fontSize={highlightA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} lineHeight={highlightA.titleLH / highlightA.titleFs} fontFamily={brandKit.fontFamily} />
               <SvgText text={scene.subtitle.text || ''} x={highlightA.subX} y={highlightA.subY} fontSize={highlightA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 4} lineHeight={highlightA.subLH / highlightA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <rect x={highlightA.ctaX} y={highlightA.ctaY} width={highlightA.ctaW} height={highlightA.ctaH} rx={999} fill={scene.accent} />
@@ -639,10 +660,14 @@ export function CanvasPreview({
                 </g>
               ) : null}
 
-              <rect x={badgeX} y={badgeY} width={badgeW} height={badgeH} rx="20" fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.24)" />
-              <text x={badgeX + badgeW / 2} y={badgeY + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#fff'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
-                {scene.badge.text}
-              </text>
+              {showBadge ? (
+                <g>
+                  <rect x={badgeX} y={badgeY} width={badgeW} height={badgeH} rx="20" fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.24)" />
+                  <text x={badgeX + badgeW / 2} y={badgeY + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#fff'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
+                    {scene.badge.text}
+                  </text>
+                </g>
+              ) : null}
 
               <SvgText text={scene.title.text || ''} x={titleX} y={titleY} fontSize={scene.title.fontSize || 32} fill={scene.title.fill || '#fff'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} fontFamily={brandKit.fontFamily} />
               <SvgText text={scene.subtitle.text || ''} x={subtitleX} y={subtitleY} fontSize={scene.subtitle.fontSize || 16} fill={scene.subtitle.fill || '#fff'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 30} maxLines={scene.subtitle.maxLines || 4} lineHeight={1.28} opacity={scene.subtitle.opacity ?? 0.88} fontFamily={brandKit.fontFamily} />
