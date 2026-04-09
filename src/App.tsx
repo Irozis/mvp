@@ -20,7 +20,7 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout, generateVariant, refreshProjectModel, regenerateFormats } from './lib/autoAdapt'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
-import { BRAND_TEMPLATES, CHANNEL_FORMATS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
+import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
@@ -533,6 +533,25 @@ export default function App() {
     setStatus({ tone: 'success', text: `Brand template applied: ${BRAND_TEMPLATES.find((item) => item.key === selectedBrandTemplate)?.label}.` })
   }
 
+  const applyDemo = (demo: (typeof DEMO_PROJECTS)[number]) => {
+    clearFixArtifacts()
+    setImageUrl(demo.imageUrl)
+    setSelectedBrandTemplate(demo.brandTemplateKey)
+    setProject((prev) => {
+      const afterTemplate = applyBrandTemplate(prev, demo.brandTemplateKey)
+      return regenerateFormats({
+        ...afterTemplate,
+        master: {
+          ...afterTemplate.master,
+          title: { ...afterTemplate.master.title, text: demo.title },
+          subtitle: { ...afterTemplate.master.subtitle, text: demo.subtitle },
+          cta: { ...afterTemplate.master.cta, text: demo.cta },
+        },
+      })
+    })
+    setStatus({ tone: 'success', text: `Demo loaded: ${demo.label}.` })
+  }
+
   const reset = () => {
     clearFixArtifacts()
     setEntryMode('compose')
@@ -896,6 +915,16 @@ export default function App() {
             </div>
             <div className="card-body stack">
               <ErrorBoundary>
+                <div className="demo-bar">
+                  <div className="hint demo-try-label">Try a demo →</div>
+                  <div className="demo-pill-row">
+                    {DEMO_PROJECTS.map((demo) => (
+                      <button key={demo.key} type="button" className="demo-pill" onClick={() => applyDemo(demo)}>
+                        {demo.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
                 <FilePicker label="Main image" value={imageUrl} onUrlChange={setImageUrl} />
                 <FilePicker label="Logo" value={logoUrl} onUrlChange={setLogoUrl} />
               </ErrorBoundary>

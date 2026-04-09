@@ -1,5 +1,6 @@
 import type {
   BrandTemplate,
+  BrandTemplateKey,
   FormatDefinition,
   FormatKey,
   GoalPreset,
@@ -130,6 +131,36 @@ export const BRAND_TEMPLATES: BrandTemplate[] = [
       ctaStyle: 'sharp',
       safeZone: 'airy',
     },
+  },
+]
+
+export const DEMO_PROJECTS = [
+  {
+    key: 'demo-sneakers',
+    label: 'Sport shoes',
+    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop',
+    title: 'Run Faster',
+    subtitle: 'Professional sport collection',
+    cta: 'Shop now',
+    brandTemplateKey: 'retail-impact' as BrandTemplateKey,
+  },
+  {
+    key: 'demo-headphones',
+    label: 'Headphones',
+    imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop',
+    title: 'Pure Sound',
+    subtitle: 'Wireless noise cancelling',
+    cta: 'Buy now',
+    brandTemplateKey: 'startup-blue' as BrandTemplateKey,
+  },
+  {
+    key: 'demo-cosmetics',
+    label: 'Skincare',
+    imageUrl: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&auto=format&fit=crop',
+    title: 'Glow Up',
+    subtitle: 'Natural skincare collection',
+    cta: 'Discover',
+    brandTemplateKey: 'editorial-serene' as BrandTemplateKey,
   },
 ]
 

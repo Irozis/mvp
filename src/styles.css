@@ -15,6 +15,8 @@
   --warning-bg: #fff4d8;
   --error: #a33632;
   --error-bg: #ffe5e3;
+  --border: var(--line);
+  --surface-2: rgba(245, 239, 228, 0.85);
   font-family: "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--text);
   background:
@@ -735,4 +737,36 @@ input[type="range"] {
     align-items: flex-start;
     flex-direction: column;
   }
+}
+
+.demo-bar {
+  margin-bottom: 10px;
+}
+
+.demo-try-label {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.demo-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 2px;
+}
+
+.demo-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 0.5px solid var(--border);
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.demo-pill:hover {
+  background: var(--surface-2);
 }

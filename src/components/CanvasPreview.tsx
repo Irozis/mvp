@@ -16,6 +16,7 @@ function SvgText({
   fontFamily,
   lineHeight = 1.1,
   opacity = 1,
+  textAnchor = 'start',
 }: {
   text: string
   x: number
@@ -28,11 +29,12 @@ function SvgText({
   fontFamily: string
   lineHeight?: number
   opacity?: number
+  textAnchor?: 'start' | 'middle' | 'end'
 }) {
   const lines = splitTextIntoLines(text, maxCharsPerLine, maxLines)
 
   return (
-    <text x={x} y={y} fill={fill} opacity={opacity} fontSize={fontSize} fontWeight={weight} fontFamily={fontFamily}>
+    <text x={x} y={y} textAnchor={textAnchor} fill={fill} opacity={opacity} fontSize={fontSize} fontWeight={weight} fontFamily={fontFamily}>
       {lines.map((line, index) => (
         <tspan key={index} x={x} dy={index === 0 ? 0 : fontSize * lineHeight}>
           {line}
@@ -40,6 +42,158 @@ function SvgText({
       ))}
     </text>
   )
+}
+
+function layoutCardPatternA(scene: Scene, width: number, height: number) {
+  const pad = 40
+  const leftW = width * 0.5
+  const titleFs = Math.max(54, width * 0.07)
+  const subFs = Math.min(scene.subtitle.fontSize || 16, 18)
+  const ctaH = Math.max(percentY(scene.cta.h || 7, height), 48)
+  const ctaW = Math.min(Math.max(percentX(scene.cta.w || 28, leftW), 140), leftW - pad * 2)
+  const titleLines = splitTextIntoLines(scene.title.text || '', scene.title.charsPerLine || 16, scene.title.maxLines || 3)
+  const subLines = splitTextIntoLines(scene.subtitle.text || '', scene.subtitle.charsPerLine || 34, scene.subtitle.maxLines || 4)
+  const titleLH = titleFs * 1.08
+  const subLH = subFs * 1.3
+  const gap = 18
+  const stackH =
+    titleLines.length * titleLH +
+    (subLines.length > 0 ? gap : 0) +
+    subLines.length * subLH +
+    gap +
+    ctaH
+  const top = (height - stackH) / 2
+  return {
+    pad,
+    leftW,
+    titleX: pad,
+    titleY: top + titleFs * 0.88,
+    titleFs,
+    titleLH,
+    subX: pad,
+    subY: top + titleLines.length * titleLH + gap + subFs,
+    subFs,
+    subLH,
+    ctaX: pad,
+    ctaY: top + titleLines.length * titleLH + (subLines.length > 0 ? gap : 0) + subLines.length * subLH + gap,
+    ctaW,
+    ctaH,
+  }
+}
+
+function layoutCardPatternC(scene: Scene, width: number, height: number) {
+  const pad = 48
+  const titleFs = Math.min(Math.max(height * 0.12, 56), height * 0.22)
+  const subFs = Math.min(scene.subtitle.fontSize || 20, 24)
+  const ctaH = Math.max(percentY(scene.cta.h || 7, height), 48)
+  const ctaW = Math.max(percentX(scene.cta.w || 24, width), 180)
+  const titleLines = splitTextIntoLines(scene.title.text || '', scene.title.charsPerLine || 14, 3)
+  const subLines = splitTextIntoLines(scene.subtitle.text || '', scene.subtitle.charsPerLine || 36, scene.subtitle.maxLines || 3)
+  const titleLH = titleFs * 1.05
+  const subLH = subFs * 1.32
+  const topChrome = 96
+  return {
+    pad,
+    titleX: pad,
+    titleY: pad + topChrome + titleFs * 0.86,
+    titleFs,
+    titleLH,
+    subX: pad,
+    subY: pad + topChrome + titleLines.length * titleLH + 24,
+    subFs,
+    subLH,
+    ctaX: pad,
+    ctaY: height - pad - ctaH,
+    ctaW,
+    ctaH,
+    imageBoxW: width * 0.35,
+    imageBoxH: Math.min(height * 0.38, width * 0.34),
+    subLines,
+  }
+}
+
+function layoutHighlightPatternB(scene: Scene, width: number, height: number) {
+  const padX = 36
+  const titleFs = Math.max(scene.title.fontSize || 40, 36)
+  const subFs = scene.subtitle.fontSize || 17
+  const ctaH = Math.max(percentY(scene.cta.h || 6.5, height), 48)
+  const ctaW = Math.min(Math.max(percentX(scene.cta.w || 28, width), 150), width - padX * 2)
+  const titleLines = splitTextIntoLines(scene.title.text || '', scene.title.charsPerLine || 18, scene.title.maxLines || 3)
+  const subLines = splitTextIntoLines(scene.subtitle.text || '', scene.subtitle.charsPerLine || 34, scene.subtitle.maxLines || 3)
+  const titleLH = titleFs * 1.06
+  const subLH = subFs * 1.3
+  const contentTop = height * 0.65
+  return {
+    padX,
+    titleX: width / 2,
+    titleY: contentTop + titleFs * 0.85,
+    titleFs,
+    titleLH,
+    subX: width / 2,
+    subY: contentTop + titleLines.length * titleLH + 12 + subFs,
+    subFs,
+    subLH,
+    ctaX: width / 2 - ctaW / 2,
+    ctaY: height - 36 - ctaH,
+    ctaW,
+    ctaH,
+  }
+}
+
+function layoutHighlightPatternA(scene: Scene, width: number, height: number) {
+  const splitY = height * 0.55
+  const pad = 36
+  const titleFs = Math.max(scene.title.fontSize || 34, 30)
+  const subFs = scene.subtitle.fontSize || 16
+  const ctaH = Math.max(percentY(scene.cta.h || 6.5, height), 48)
+  const ctaW = Math.min(Math.max(percentX(scene.cta.w || 28, width), 150), width - pad * 2)
+  const titleLines = splitTextIntoLines(scene.title.text || '', scene.title.charsPerLine || 20, scene.title.maxLines || 3)
+  const subLines = splitTextIntoLines(scene.subtitle.text || '', scene.subtitle.charsPerLine || 36, scene.subtitle.maxLines || 4)
+  const titleLH = titleFs * 1.08
+  const subLH = subFs * 1.3
+  const bottomH = height - splitY
+  const stackH = titleLines.length * titleLH + (subLines.length ? 16 : 0) + subLines.length * subLH + 16 + ctaH
+  const top = splitY + (bottomH - stackH) / 2
+  return {
+    splitY,
+    pad,
+    titleX: pad,
+    titleY: top + titleFs * 0.86,
+    titleFs,
+    titleLH,
+    subX: pad,
+    subY: top + titleLines.length * titleLH + 16 + subFs,
+    subFs,
+    subLH,
+    ctaX: pad,
+    ctaY: top + titleLines.length * titleLH + (subLines.length ? 16 : 0) + subLines.length * subLH + 16,
+    ctaW,
+    ctaH,
+  }
+}
+
+function renderImage(
+  imageUrl: string,
+  bounds: { x: number; y: number; w: number; h: number },
+  scene: Scene,
+  imageDims: { w: number; h: number } | null,
+  clipPathId?: string,
+) {
+  const focalX = scene.image.focalX ?? 50
+  const focalY = scene.image.focalY ?? 50
+  const wantsMeet = (scene.image.fit || '').endsWith('meet')
+  const clipPath = clipPathId ? `url(#${clipPathId})` : undefined
+  if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
+    const scale = Math.max(bounds.w / imageDims.w, bounds.h / imageDims.h)
+    const scaledW = imageDims.w * scale
+    const scaledH = imageDims.h * scale
+    const desiredX = bounds.x + bounds.w / 2 - (focalX / 100) * scaledW
+    const desiredY = bounds.y + bounds.h / 2 - (focalY / 100) * scaledH
+    const imgX = Math.min(Math.max(desiredX, bounds.x + bounds.w - scaledW), bounds.x)
+    const imgY = Math.min(Math.max(desiredY, bounds.y + bounds.h - scaledH), bounds.y)
+    return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={clipPath} />
+  }
+  return <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={clipPath} />
 }
 
 export function CanvasPreview({
@@ -159,6 +313,17 @@ export function CanvasPreview({
   // Adjust logo container width to match the logo's actual aspect ratio
   const logoAspect = logoDims && logoDims.h > 0 ? logoDims.w / logoDims.h : 2.8
   const adjustedLogoW = Math.min(Math.max(logoH * logoAspect, logoH), logoW * 1.5)
+  const isMarketplaceCard = format.key === 'marketplace-card'
+  const isMarketplaceHighlight = format.key === 'marketplace-highlight'
+  const useCardPatternA = isMarketplaceCard && Boolean(imageUrl)
+  const useCardPatternC = isMarketplaceCard && !imageUrl
+  const useHighlightAltPatternA = isMarketplaceHighlight && Boolean(imageUrl) && assessment.compositionModelId === 'portrait-bottom-card'
+  const useHighlightPatternB = isMarketplaceHighlight && Boolean(imageUrl) && !useHighlightAltPatternA
+  const cardA = useCardPatternA ? layoutCardPatternA(scene, width, height) : null
+  const cardC = useCardPatternC ? layoutCardPatternC(scene, width, height) : null
+  const highlightB = useHighlightPatternB ? layoutHighlightPatternB(scene, width, height) : null
+  const highlightA = useHighlightAltPatternA ? layoutHighlightPatternA(scene, width, height) : null
+  const useProPatterns = useCardPatternA || useCardPatternC || useHighlightPatternB || useHighlightAltPatternA
 
   const svgRef = useRef<SVGSVGElement | null>(null)
   const dragState = useRef<{
@@ -317,75 +482,143 @@ export function CanvasPreview({
             <clipPath id={clipId}>
               <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} ry={scene.image.rx || 28} />
             </clipPath>
+            <clipPath id={`${clipId}-right-half`}>
+              <rect x={width * 0.5} y={0} width={width * 0.5} height={height} />
+            </clipPath>
+            <clipPath id={`${clipId}-top-split`}>
+              <rect x={0} y={0} width={width} height={height * 0.55} />
+            </clipPath>
+            <linearGradient id={`${gradientId}-highlight-overlay`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+              <stop offset="40%" stopColor="rgba(0,0,0,0)" />
+              <stop offset="100%" stopColor="rgba(0,0,0,0.75)" />
+            </linearGradient>
           </defs>
 
-          <rect x="0" y="0" width={width} height={height} rx="36" fill={`url(#${gradientId})`} />
-          <circle cx={width * 0.78} cy={height * 0.16} r={Math.min(width, height) * 0.18} fill={`url(#${glowId})`} />
-
-          {imageUrl ? (
+          {useCardPatternA && cardA ? (
             <g>
-              {(() => {
-                const focalX = scene.image.focalX ?? 50
-                const focalY = scene.image.focalY ?? 50
-                const wantsMeet = (scene.image.fit || '').endsWith('meet')
-                if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
-                  const scale = Math.max(image.w / imageDims.w, image.h / imageDims.h)
-                  const scaledW = imageDims.w * scale
-                  const scaledH = imageDims.h * scale
-                  const desiredX = image.x + image.w / 2 - (focalX / 100) * scaledW
-                  const desiredY = image.y + image.h / 2 - (focalY / 100) * scaledH
-                  const imgX = Math.min(Math.max(desiredX, image.x + image.w - scaledW), image.x)
-                  const imgY = Math.min(Math.max(desiredY, image.y + image.h - scaledH), image.y)
-                  return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={`url(#${clipId})`} />
-                }
-                return <image href={imageUrl} x={image.x} y={image.y} width={image.w} height={image.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={`url(#${clipId})`} />
-              })()}
-              {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
-              <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="none" stroke="rgba(255,255,255,0.2)" />
+              <rect x={0} y={0} width={cardA.leftW} height={height} fill={scene.background[0]} />
+              {renderImage(imageUrl, { x: cardA.leftW, y: 0, w: width - cardA.leftW, h: height }, scene, imageDims, `${clipId}-right-half`)}
+              <rect x={cardA.leftW - badgeW - cardA.pad} y={cardA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+              <text x={cardA.leftW - badgeW / 2 - cardA.pad} y={cardA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              <SvgText text={scene.title.text || ''} x={cardA.titleX} y={cardA.titleY} fontSize={cardA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 16} maxLines={scene.title.maxLines || 3} lineHeight={cardA.titleLH / cardA.titleFs} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.subtitle.text || ''} x={cardA.subX} y={cardA.subY} fontSize={cardA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 4} lineHeight={cardA.subLH / cardA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
+              <rect x={cardA.ctaX} y={cardA.ctaY} width={cardA.ctaW} height={cardA.ctaH} rx={999} fill={scene.accent} />
+              <text x={cardA.ctaX + cardA.ctaW / 2} y={cardA.ctaY + cardA.ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#fff'} fontSize={16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
             </g>
-          ) : (
+          ) : null}
+
+          {useCardPatternC && cardC ? (
             <g>
-              <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.24)" />
-              <text x={image.x + image.w / 2} y={image.y + image.h / 2} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="18" fontFamily={brandKit.fontFamily}>
-                Add main image
+              <rect x={0} y={0} width={width} height={height} fill={scene.background[0]} />
+              <SvgText text={scene.title.text || ''} x={cardC.titleX} y={cardC.titleY} fontSize={cardC.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 800} maxCharsPerLine={scene.title.charsPerLine || 14} maxLines={3} lineHeight={cardC.titleLH / cardC.titleFs} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.subtitle.text || ''} x={cardC.subX} y={cardC.subY} fontSize={cardC.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 3} lineHeight={cardC.subLH / cardC.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
+              <rect x={cardC.ctaX} y={cardC.ctaY} width={cardC.ctaW} height={cardC.ctaH} rx={999} fill={scene.accent} />
+              <text x={cardC.ctaX + cardC.ctaW / 2} y={cardC.ctaY + cardC.ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#fff'} fontSize={16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <rect x={width - cardC.imageBoxW - cardC.pad} y={height - cardC.imageBoxH - cardC.pad} width={cardC.imageBoxW} height={cardC.imageBoxH} rx={22} fill="rgba(255,255,255,0.12)" stroke="rgba(15,23,42,0.14)" />
+              <text x={width - cardC.imageBoxW / 2 - cardC.pad} y={height - cardC.imageBoxH / 2 - cardC.pad + 5} textAnchor="middle" fill="rgba(15,23,42,0.5)" fontSize={17} fontFamily={brandKit.fontFamily}>Add main image</text>
+              <rect x={width - badgeW - cardC.pad} y={cardC.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+              <text x={width - badgeW / 2 - cardC.pad} y={cardC.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+            </g>
+          ) : null}
+
+          {useHighlightPatternB && highlightB ? (
+            <g>
+              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: height }, scene, imageDims)}
+              <rect x={0} y={0} width={width} height={height} fill={`url(#${gradientId}-highlight-overlay)`} />
+              <rect x={width - badgeW - highlightB.padX} y={highlightB.padX} width={badgeW} height={badgeH} rx={20} fill="rgba(0,0,0,0.35)" stroke="rgba(255,255,255,0.25)" />
+              <text x={width - badgeW / 2 - highlightB.padX} y={highlightB.padX + badgeH / 2 + 6} textAnchor="middle" fill="#fff" fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              <SvgText text={scene.title.text || ''} x={highlightB.titleX} y={highlightB.titleY} fontSize={highlightB.titleFs} fill="#fff" weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 18} maxLines={scene.title.maxLines || 3} lineHeight={highlightB.titleLH / highlightB.titleFs} textAnchor="middle" fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.6} textAnchor="middle" fontFamily={brandKit.fontFamily} />
+              <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={scene.accent} stroke="#fff" strokeWidth={2} />
+              <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#fff'} fontSize={16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+            </g>
+          ) : null}
+
+          {useHighlightAltPatternA && highlightA ? (
+            <g>
+              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: highlightA.splitY }, scene, imageDims, `${clipId}-top-split`)}
+              <rect x={0} y={highlightA.splitY} width={width} height={height - highlightA.splitY} fill={scene.background[0]} />
+              <rect x={width - badgeW - highlightA.pad} y={highlightA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
+              <text x={width - badgeW / 2 - highlightA.pad} y={highlightA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
+              <SvgText text={scene.title.text || ''} x={highlightA.titleX} y={highlightA.titleY} fontSize={highlightA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} lineHeight={highlightA.titleLH / highlightA.titleFs} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.subtitle.text || ''} x={highlightA.subX} y={highlightA.subY} fontSize={highlightA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 4} lineHeight={highlightA.subLH / highlightA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
+              <rect x={highlightA.ctaX} y={highlightA.ctaY} width={highlightA.ctaW} height={highlightA.ctaH} rx={999} fill={scene.accent} />
+              <text x={highlightA.ctaX + highlightA.ctaW / 2} y={highlightA.ctaY + highlightA.ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#fff'} fontSize={16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+            </g>
+          ) : null}
+
+          {!useProPatterns ? (
+            <g>
+              <rect x="0" y="0" width={width} height={height} rx="36" fill={`url(#${gradientId})`} />
+              <circle cx={width * 0.78} cy={height * 0.16} r={Math.min(width, height) * 0.18} fill={`url(#${glowId})`} />
+
+              {imageUrl ? (
+                <g>
+                  {(() => {
+                    const focalX = scene.image.focalX ?? 50
+                    const focalY = scene.image.focalY ?? 50
+                    const wantsMeet = (scene.image.fit || '').endsWith('meet')
+                    if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
+                      const scale = Math.max(image.w / imageDims.w, image.h / imageDims.h)
+                      const scaledW = imageDims.w * scale
+                      const scaledH = imageDims.h * scale
+                      const desiredX = image.x + image.w / 2 - (focalX / 100) * scaledW
+                      const desiredY = image.y + image.h / 2 - (focalY / 100) * scaledH
+                      const imgX = Math.min(Math.max(desiredX, image.x + image.w - scaledW), image.x)
+                      const imgY = Math.min(Math.max(desiredY, image.y + image.h - scaledH), image.y)
+                      return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={`url(#${clipId})`} />
+                    }
+                    return <image href={imageUrl} x={image.x} y={image.y} width={image.w} height={image.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={`url(#${clipId})`} />
+                  })()}
+                  {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
+                  <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="none" stroke="rgba(255,255,255,0.2)" />
+                </g>
+              ) : (
+                <g>
+                  <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.24)" />
+                  <text x={image.x + image.w / 2} y={image.y + image.h / 2} textAnchor="middle" fill="rgba(255,255,255,0.75)" fontSize="18" fontFamily={brandKit.fontFamily}>
+                    Add main image
+                  </text>
+                </g>
+              )}
+
+              {immersiveImage && (
+                <rect
+                  x={textPanelX}
+                  y={textPanelY}
+                  width={textPanelW}
+                  height={textPanelH}
+                  rx={textPanelRx}
+                  ry={textPanelRx}
+                  fill={`url(#${textPanelId})`}
+                  stroke="rgba(255,255,255,0.12)"
+                />
+              )}
+
+              <rect x={logoX} y={logoY} width={adjustedLogoW} height={logoH} rx="14" fill={rgba(scene.logo.bg || '#ffffff', scene.logo.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.2)" />
+              {logoUrl ? (
+                <image href={logoUrl} x={logoX + 8} y={logoY + 6} width={adjustedLogoW - 16} height={logoH - 12} preserveAspectRatio="xMidYMid meet" />
+              ) : (
+                <text x={logoX + adjustedLogoW / 2} y={logoY + logoH / 2 + 4} textAnchor="middle" fill={scene.logo.fill || scene.title.fill || '#fff'} fontSize="12" fontWeight="600" fontFamily={brandKit.fontFamily}>
+                  LOGO
+                </text>
+              )}
+
+              <rect x={badgeX} y={badgeY} width={badgeW} height={badgeH} rx="20" fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.24)" />
+              <text x={badgeX + badgeW / 2} y={badgeY + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#fff'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
+                {scene.badge.text}
+              </text>
+
+              <SvgText text={scene.title.text || ''} x={titleX} y={titleY} fontSize={scene.title.fontSize || 32} fill={scene.title.fill || '#fff'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.subtitle.text || ''} x={subtitleX} y={subtitleY} fontSize={scene.subtitle.fontSize || 16} fill={scene.subtitle.fill || '#fff'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 30} maxLines={scene.subtitle.maxLines || 4} lineHeight={1.28} opacity={scene.subtitle.opacity ?? 0.88} fontFamily={brandKit.fontFamily} />
+
+              <rect x={ctaX} y={ctaY} width={ctaW} height={ctaH} rx={scene.cta.rx || 26} fill={scene.cta.bg || '#fff'} />
+              <text x={ctaX + ctaW / 2} y={ctaY + ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#0f172a'} fontSize={scene.cta.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
+                {scene.cta.text}
               </text>
             </g>
-          )}
-
-          {immersiveImage && (
-            <rect
-              x={textPanelX}
-              y={textPanelY}
-              width={textPanelW}
-              height={textPanelH}
-              rx={textPanelRx}
-              ry={textPanelRx}
-              fill={`url(#${textPanelId})`}
-              stroke="rgba(255,255,255,0.12)"
-            />
-          )}
-
-          <rect x={logoX} y={logoY} width={adjustedLogoW} height={logoH} rx="14" fill={rgba(scene.logo.bg || '#ffffff', scene.logo.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.2)" />
-          {logoUrl ? (
-            <image href={logoUrl} x={logoX + 8} y={logoY + 6} width={adjustedLogoW - 16} height={logoH - 12} preserveAspectRatio="xMidYMid meet" />
-          ) : (
-            <text x={logoX + adjustedLogoW / 2} y={logoY + logoH / 2 + 4} textAnchor="middle" fill={scene.logo.fill || scene.title.fill || '#fff'} fontSize="12" fontWeight="600" fontFamily={brandKit.fontFamily}>
-              LOGO
-            </text>
-          )}
-
-          <rect x={badgeX} y={badgeY} width={badgeW} height={badgeH} rx="20" fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.08)} stroke="rgba(255,255,255,0.24)" />
-          <text x={badgeX + badgeW / 2} y={badgeY + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#fff'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
-            {scene.badge.text}
-          </text>
-
-          <SvgText text={scene.title.text || ''} x={titleX} y={titleY} fontSize={scene.title.fontSize || 32} fill={scene.title.fill || '#fff'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} fontFamily={brandKit.fontFamily} />
-          <SvgText text={scene.subtitle.text || ''} x={subtitleX} y={subtitleY} fontSize={scene.subtitle.fontSize || 16} fill={scene.subtitle.fill || '#fff'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 30} maxLines={scene.subtitle.maxLines || 4} lineHeight={1.28} opacity={scene.subtitle.opacity ?? 0.88} fontFamily={brandKit.fontFamily} />
-
-          <rect x={ctaX} y={ctaY} width={ctaW} height={ctaH} rx={scene.cta.rx || 26} fill={scene.cta.bg || '#fff'} />
-          <text x={ctaX + ctaW / 2} y={ctaY + ctaH / 2 + 6} textAnchor="middle" fill={scene.cta.fill || '#0f172a'} fontSize={scene.cta.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>
-            {scene.cta.text}
-          </text>
+          ) : null}
 
           {editable && showSafeArea && (
             <g>
