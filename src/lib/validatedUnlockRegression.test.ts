@@ -73,8 +73,8 @@ describe('validated landscape text-height unlock milestone', () => {
     async () => {
       const { pass, review } = await runScenario(false)
 
-      expect(pass.report.summary.baselineWinCount).toBe(42)
-      expect(pass.report.summary.candidateWinCount).toBe(0)
+      expect(pass.report.summary.baselineWinCount).toBe(38)
+      expect(pass.report.summary.candidateWinCount).toBe(4)
       expect(review.landscapeTextHeightProductionExperiment.totals.eligibleCandidates).toBe(0)
       expect(review.landscapeTextHeightProductionExperiment.totals.flippedCases).toBe(0)
       expect(review.validatedUnlockClasses.classes[0]?.validated).toBe(false)
@@ -87,8 +87,8 @@ describe('validated landscape text-height unlock milestone', () => {
     async () => {
       const { pass, review } = await runScenario(true)
 
-      expect(pass.report.summary.baselineWinCount).toBe(38)
-      expect(pass.report.summary.candidateWinCount).toBe(4)
+      expect(pass.report.summary.baselineWinCount).toBe(34)
+      expect(pass.report.summary.candidateWinCount).toBe(8)
       expect(review.landscapeTextHeightProductionExperiment.totals.eligibleCandidates).toBe(4)
       expect(review.landscapeTextHeightProductionExperiment.totals.appliedOverrides).toBe(4)
       expect(review.landscapeTextHeightProductionExperiment.totals.flippedCases).toBe(4)

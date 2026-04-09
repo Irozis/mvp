@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { fixLayout } from './autoAdapt'
+import { getRepairDiagnostics } from './autoAdapt'
 import { computePalette } from './colorEngine'
 import { profileContent } from './contentProfile'
 import { synthesizeLayout } from './layoutEngine'
@@ -130,7 +130,7 @@ describe('marketplaceLayoutV2', () => {
     expect(scene.title.x || 0).toBeLessThan(10)
   })
 
-  it('fixLayout bypasses legacy repair for marketplace-card V2 and preserves the scene', async () => {
+  it('fixLayout falls through to legacy repair when V2 slot bypass does not improve score', async () => {
     vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', 'true')
     const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
     const master = baseScene('promo', brandKit.background, brandKit.accent)
@@ -165,8 +165,7 @@ describe('marketplaceLayoutV2', () => {
       intent,
       brandKit,
     })
-    const beforeSig = JSON.stringify(scene.image)
-    const { scene: after, result } = await fixLayout({
+    const { diagnostics, result } = await getRepairDiagnostics({
       scene,
       regenerationMasterScene: master,
       formatKey: 'marketplace-card',
@@ -174,8 +173,7 @@ describe('marketplaceLayoutV2', () => {
       brandKit,
       goal: 'promo-pack',
     })
-    expect(result.v2SlotLayoutPreserved).toBe(true)
-    expect(JSON.stringify(after.image)).toBe(beforeSig)
-    expect(result.canFixAgain).toBe(false)
+    expect(diagnostics.searchRuns.length).toBeGreaterThan(0)
+    expect(result.v2SlotLayoutPreserved).toBeUndefined()
   })
 })

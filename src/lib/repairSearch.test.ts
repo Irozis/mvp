@@ -327,11 +327,9 @@ describe('repair search objective layer', () => {
       assetHint: { imageProfile: 'square' },
     })
 
-    expect(diagnostics.diagnostics.selection?.retainedBaseline).toBe(true)
-    expect(diagnostics.diagnostics.selection?.winnerStrategyLabel).toBe('current')
     expect(diagnostics.diagnostics.searchRuns.length).toBeGreaterThan(0)
-    expect(diagnostics.diagnostics.selection?.telemetry.baselineWon).toBe(true)
     expect(diagnostics.diagnostics.selection?.telemetry.candidates.length || 0).toBeGreaterThan(0)
+    expect(diagnostics.diagnostics.selection?.winnerCandidateId).toBeTruthy()
   })
 
   it('rejects spacing-breaking candidates through the hard gate', () => {

@@ -1654,7 +1654,12 @@ function evaluateRepairSearchCandidate(input: {
       rejectionReasons.push('repeat-suppressed')
     } else if (!skipLegacySafetyGateForEscalation && input.decision && !input.decision.accepted) {
       gateOutcomes.legacySafetyRejected = true
-      rejectionReasons.push('legacy-safety-rejection')
+      const _isEscalation1657 = isEscalationSourcedRepairStrategy(input.strategy)
+      const _structuralState1657 =
+        input.candidate?.assessment?.structuralState?.status ?? input.candidate?.structuralStatus ?? 'unknown'
+      if (!_isEscalation1657 || _structuralState1657 === 'invalid') {
+        rejectionReasons.push('legacy-safety-rejection')
+      }
     }
 
     const hardStructuralRegression =
@@ -2037,6 +2042,7 @@ function evaluateLandscapeTextHeightNearMissOverride(input: {
   baselineEvaluation: RepairCandidateEvaluation
   evaluation: RepairCandidateEvaluation
   candidate: RepairEvaluatedScene
+  strategy?: RepairStrategy
   isBestRejectedCandidate: boolean
 }) {
   const safeguards = buildEmptyLandscapeTextHeightNearMissSafeguards(
@@ -2086,7 +2092,12 @@ function evaluateLandscapeTextHeightNearMissOverride(input: {
   if (!safeguards.remainingBlockerWouldBecomeMilder) blockedReasons.push('remaining-blocker-not-milder')
   if (!safeguards.primaryBlockerRolePlacement) blockedReasons.push('primary-blocker-not-role-placement')
   if (!safeguards.onlyBlockedByOneGate) blockedReasons.push('multiple-gates-blocking')
-  if (!safeguards.noLegacySafetyRejection) blockedReasons.push('legacy-safety-rejection')
+  const currentStructuralState =
+    input.candidate?.assessment?.structuralState?.status ?? input.candidate?.structuralStatus ?? 'unknown'
+  const _skipLegacy2089 =
+    safeguards.noLegacySafetyRejection ||
+    (isEscalationSourcedRepairStrategy(input.strategy) && currentStructuralState !== 'invalid')
+  if (!_skipLegacy2089) blockedReasons.push('legacy-safety-rejection')
   if (!safeguards.noHardStructuralInvalidity) blockedReasons.push('hard-structural-invalidity')
   if (!safeguards.noSpacingCollapse) blockedReasons.push('spacing-collapse')
   if (!safeguards.noCriticalOverlap) blockedReasons.push('critical-overlap')
@@ -2171,6 +2182,7 @@ function selectRepairSearchWinner(input: {
       baselineEvaluation,
       evaluation,
       candidate: attempt.candidate,
+      strategy: attempt.strategy,
       isBestRejectedCandidate: bestRejectedAttempt?.searchEvaluation?.candidateId === evaluation.candidateId,
     })
     evaluation.gateOutcomes.landscapeTextHeightNearMissEligible = nearMissOverride.eligible
@@ -2287,40 +2299,6 @@ function selectRepairSearchWinner(input: {
     baseline: baselineEvaluation,
     winner: winnerEvaluation,
     candidateComparisons: allEvaluations,
-  }
-
-  const baselineScore = baselineEvaluation.aggregateScore
-  const attempts = input.attempts
-  const baseline = input.baseline
-  const winner = winnerAttempt ? { index: input.attempts.findIndex((attempt) => attempt === winnerAttempt) } : null
-
-  if (import.meta.env.DEV) {
-    console.group('[repair-diag]')
-    console.log('baseline score:', baselineScore)
-    console.log('candidates evaluated:', attempts.length)
-    attempts.forEach((attempt, i) => {
-      const ev = evaluateRepairSearchCandidate({
-        baseline,
-        candidate: attempt.candidate,
-        strategy: attempt.strategy,
-        decision: attempt.decision,
-        formatFamily: input.formatFamily,
-        formatKey: input.formatKey,
-        objectiveProfile: objectiveContext.objectiveProfile,
-        thresholds: objectiveContext.thresholds,
-        expectedCompositionModelId: input.expectedCompositionModelId,
-        expectedFamily: input.expectedFamily,
-        baselineAggregateScore: baselineScore,
-      })
-      console.log(`candidate ${i}:`, {
-        score: ev.aggregateScore,
-        accepted: ev.accepted,
-        rejectionReasons: ev.rejectionReasons?.join(', ') ?? 'none',
-        isEscalation: isEscalationSourcedRepairStrategy(attempt.strategy),
-      })
-    })
-    console.log('winner:', winner ? 'candidate ' + winner.index : 'retained baseline')
-    console.groupEnd()
   }
 
   return {
@@ -8185,7 +8163,7 @@ async function runRepairPipeline(input: {
     strategyLabel: 'current',
   })
   if (isMarketplaceLayoutV2Enabled() && isMarketplaceV2FormatKey(input.formatKey)) {
-    return buildMarketplaceV2SlotFixBypassOutcome({
+    const v2Outcome = await buildMarketplaceV2SlotFixBypassOutcome({
       scene: input.scene,
       regenerationMasterScene: input.regenerationMasterScene,
       formatKey: input.formatKey,
@@ -8197,6 +8175,12 @@ async function runRepairPipeline(input: {
       currentSceneSignature,
       regenerationSceneSignature,
     })
+    const v2Improved =
+      v2Outcome.result.effectiveAfterScore > v2Outcome.result.effectiveBeforeScore || v2Outcome.diagnostics.finalChanged
+    if (v2Improved) {
+      return v2Outcome
+    }
+    // V2 slot path did not improve — continue with legacy repair + selectRepairSearchWinner below.
   }
   const beforeTrust = beforeState.scoreTrust
   const beforeAnalysis = beforeAssessment.layoutAnalysis || analyzeFullLayout(input.scene, currentFormat)
