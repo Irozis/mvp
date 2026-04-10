@@ -573,7 +573,6 @@ export function CanvasPreview({
           <FileText size={16} />
           {isExporting ? '...' : 'PDF'}
         </button>
-        {aiReviewed ? <span className="ai-reviewed-badge">AI reviewed</span> : null}
       </div>
 
       <div className="stack">
@@ -601,6 +600,10 @@ export function CanvasPreview({
           </div>
         )}
       </div>
+
+      {aiReviewed ? (
+        <span className="ai-reviewed-badge">✓ AI reviewed</span>
+      ) : null}
 
       <div ref={previewRef} className="preview-card">
         <svg
