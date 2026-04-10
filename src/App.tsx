@@ -536,9 +536,26 @@ export default function App() {
     setStatus({ tone: 'success', text: `Brand template applied: ${BRAND_TEMPLATES.find((item) => item.key === selectedBrandTemplate)?.label}.` })
   }
 
-  const applyDemo = (demo: (typeof DEMO_PROJECTS)[number]) => {
+  const applyDemo = async (demo: (typeof DEMO_PROJECTS)[number]) => {
     clearFixArtifacts()
     setSelectedBrandTemplate(demo.brandTemplateKey)
+
+    let dataUrl: string | null = null
+    try {
+      const response = await fetch(demo.imageUrl)
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      const blob = await response.blob()
+      dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onload = () => resolve(reader.result as string)
+        reader.onerror = () => reject(new Error('FileReader failed'))
+        reader.readAsDataURL(blob)
+      })
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e)
+      setStatus({ tone: 'warning', text: `Demo image could not be inlined (${message}). Copy and layout still applied.` })
+    }
+
     setProject((prev) => {
       const afterTemplate = applyBrandTemplate(prev, demo.brandTemplateKey)
       const nextMaster: Scene = {
@@ -547,14 +564,15 @@ export default function App() {
         subtitle: { ...afterTemplate.master.subtitle, text: demo.subtitle },
         cta: { ...afterTemplate.master.cta, text: demo.cta },
       }
-      console.log('[demo] applying:', demo.title, demo.subtitle, demo.cta)
       return regenerateFormats({ ...afterTemplate, master: nextMaster })
     })
     // Defer image URL so this render commits with demo copy in `formats` before the image analysis effect runs `regenerateFormats` on stale state.
     setTimeout(() => {
-      setImageUrl(demo.imageUrl)
+      setImageUrl(dataUrl ?? '')
     }, 0)
-    setStatus({ tone: 'success', text: `Demo loaded: ${demo.label}.` })
+    if (dataUrl) {
+      setStatus({ tone: 'success', text: `Demo loaded: ${demo.label}.` })
+    }
   }
 
   const reset = () => {
@@ -983,7 +1001,7 @@ export default function App() {
                   <div className="hint demo-try-label">Try a demo →</div>
                   <div className="demo-pill-row">
                     {DEMO_PROJECTS.map((demo) => (
-                      <button key={demo.key} type="button" className="demo-pill" onClick={() => applyDemo(demo)}>
+                      <button key={demo.key} type="button" className="demo-pill" onClick={() => void applyDemo(demo)}>
                         {demo.label}
                       </button>
                     ))}
