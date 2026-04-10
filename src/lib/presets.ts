@@ -70,7 +70,7 @@ export const GOAL_PRESETS: GoalPreset[] = [
     key: 'promo-pack',
     label: 'Marketplace adaptive pack',
     description: 'Primary diploma path: template-assisted adaptive marketplace layouts focused on card and highlight outputs.',
-    includedFormats: ['marketplace-card', 'marketplace-highlight', 'marketplace-tile'],
+    includedFormats: ['marketplace-card', 'marketplace-highlight'],
     scopeStage: 'active',
   },
 ]

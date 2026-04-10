@@ -158,7 +158,7 @@ export default function App() {
   })
   const [status, setStatus] = useState<{ tone: StatusTone; text: string }>({
     tone: 'neutral',
-    text: 'Build a marketplace adaptive pack: card, highlight, and tile outputs from one master.',
+    text: 'Build a marketplace adaptive pack: card and highlight outputs from one master.',
   })
 
   const refs = useRef<Partial<Record<FormatKey, HTMLDivElement | null>>>({})
@@ -181,7 +181,6 @@ export default function App() {
   }, [project.goal])
 
   const currentGoalPreset = useMemo(() => GOAL_PRESETS.find((item) => item.key === project.goal), [project.goal])
-  const goalFormats = useMemo(() => currentGoalPreset?.includedFormats || ['marketplace-card'], [currentGoalPreset])
   const previewFormats = useMemo(
     () => getPrimaryPreviewFormats(CHANNEL_FORMATS, currentGoalPreset),
     [currentGoalPreset]
@@ -475,7 +474,7 @@ export default function App() {
     const goalPreset = GOAL_PRESETS.find((item) => item.key === goal)
     const nextActive = getPrimaryPreviewFormats(CHANNEL_FORMATS, goalPreset)[0]
     if (nextActive) setActiveFormatKey(nextActive.key)
-    setStatus({ tone: 'success', text: 'Preview scope updated: marketplace card, highlight, and tile.' })
+    setStatus({ tone: 'success', text: 'Preview scope updated: marketplace card and product highlight.' })
   }
 
   const applyVisualSystem = (visualSystem: VisualSystemKey) => {
@@ -787,12 +786,12 @@ export default function App() {
             <h1>Build once. Ship marketplace-ready layouts.</h1>
           </div>
           <p className="hero-text">
-            From one master creative, export marketplace card, product highlight, and promo tile formats with consistent branding and validation.
+            From one master creative, export marketplace card and product highlight formats with consistent branding and validation.
           </p>
         </div>
         <div className="step-grid">
           <StepCard title="1. Choose mode" text="Create from scratch, import a layout reference, or start from a brand template." />
-          <StepCard title="2. Define the pack" text="This demo focuses on the marketplace adaptive pack: card, highlight, and tile outputs." />
+          <StepCard title="2. Define the pack" text="This demo focuses on the marketplace adaptive pack: card and highlight outputs." />
           <StepCard title="3. Select direction" text="Pick a visual system suited to product-led marketplace layouts, then review all sizes in the preview feed." />
           <StepCard title="4. Save and export" text="Track versions, reopen projects later, and export PNG, JPG, PDF, or JSON." />
         </div>
@@ -1094,7 +1093,7 @@ export default function App() {
                 <div>
                   <div className="section-kicker">Output pack</div>
                   <h2>Marketplace formats</h2>
-                  <p className="muted">Preview and export cover {previewFormats.length} marketplace sizes (card, highlight, tile) derived from your master.</p>
+                  <p className="muted">Preview and export cover {previewFormats.length} marketplace sizes (card and highlight) derived from your master.</p>
                 </div>
                 <div className="row wrap">
                   <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>

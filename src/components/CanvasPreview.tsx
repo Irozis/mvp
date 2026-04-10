@@ -53,6 +53,12 @@ function layoutCardPatternA(scene: Scene, width: number, height: number) {
   if (titleFs * 3 > leftPanelHeight * 0.6) {
     titleFs *= 0.8
   }
+  const leftPanelInner = leftW - pad * 2
+  if (title.length > 0) {
+    const maxFsByCharWidth = leftPanelInner / (title.length * 0.55)
+    if (titleFs > maxFsByCharWidth) titleFs = maxFsByCharWidth
+  }
+  titleFs = Math.min(titleFs, leftPanelInner / 6)
   const subFs = Math.min(scene.subtitle.fontSize || 16, 18)
   const ctaMinW = Math.max(140, (scene.cta.text || '').length * 9 + 56)
   const ctaH = Math.max(percentY(scene.cta.h || 7, height), 48)
@@ -165,6 +171,8 @@ function layoutHighlightPatternA(scene: Scene, width: number, height: number) {
   const top = splitY + (bottomH - stackH) / 2
   return {
     splitY,
+    /** Height of the top image panel (same as splitY). */
+    imageH: splitY,
     pad,
     titleX: pad,
     titleY: top + titleFs * 0.86,
@@ -200,9 +208,9 @@ function renderImage(
     const desiredY = bounds.y + bounds.h / 2 - (focalY / 100) * scaledH
     const imgX = Math.min(Math.max(desiredX, bounds.x + bounds.w - scaledW), bounds.x)
     const imgY = Math.min(Math.max(desiredY, bounds.y + bounds.h - scaledH), bounds.y)
-    return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={clipPath} />
+    return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
   }
-  return <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={clipPath} />
+  return <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
 }
 
 export function CanvasPreview({
@@ -363,8 +371,29 @@ export function CanvasPreview({
     if (!parsed) return scene.cta.fill || '#ffffff'
     return getRelativeLuminance(parsed) < 0.5 ? '#ffffff' : '#0f172a'
   })()
-  const splitFocalX = scene.image.focalX ?? 50
-  const splitImageAspect = splitFocalX > 50 ? 'xMaxYMid slice' : splitFocalX < 50 ? 'xMinYMid slice' : 'xMidYMid slice'
+  const highlightPatternBCtaBg = (() => {
+    const bg = scene.cta.bg?.trim()
+    if (bg && bg.toLowerCase() !== '#000000') return bg
+    return scene.accent || '#ff6b35'
+  })()
+  const highlightPatternBCtaFill = (() => {
+    const parsed = parseHexColor(highlightPatternBCtaBg)
+    if (!parsed) return scene.cta.fill || '#ffffff'
+    return getRelativeLuminance(parsed) < 0.5 ? '#ffffff' : '#0f172a'
+  })()
+  /** Mirrors `EnhancedImageAnalysis.focalPoint` once copied onto `scene.image` by layout / analysis. */
+  const focalX = scene.image.focalX
+  const focalY = scene.image.focalY
+  const hasAnalysisFocalPoint = focalX != null && focalY != null
+  const patternASplitPreserveAspect = !hasAnalysisFocalPoint
+    ? 'xMidYMid slice'
+    : focalX > 60
+      ? 'xMaxYMid slice'
+      : focalX < 40
+        ? 'xMinYMid slice'
+        : 'xMidYMid slice'
+
+  const leftPanelBg = scene.background[0] || '#1a1a1a'
 
   const svgRef = useRef<SVGSVGElement | null>(null)
   const dragState = useRef<{
@@ -538,8 +567,18 @@ export function CanvasPreview({
 
           {useCardPatternA && cardA ? (
             <g>
-              <rect x={0} y={0} width={cardA.leftW} height={height} fill={scene.background[0]} />
-              <image href={imageUrl} x={cardA.leftW} y={0} width={width - cardA.leftW} height={height} preserveAspectRatio={splitImageAspect} clipPath={`url(#${clipId}-right-half)`} />
+              <rect x={0} y={0} width={cardA.leftW} height={height} fill={leftPanelBg} />
+              <g clipPath={`url(#${clipId}-right-half)`}>
+                <rect x={cardA.leftW} y={0} width={width - cardA.leftW} height={height} fill="white" />
+                <image
+                  href={imageUrl}
+                  x={cardA.leftW}
+                  y={0}
+                  width={width - cardA.leftW}
+                  height={height}
+                  preserveAspectRatio={patternASplitPreserveAspect}
+                />
+              </g>
               {showBadge ? (
                 <g>
                   <rect x={cardA.leftW - badgeW - cardA.pad} y={cardA.pad} width={badgeW} height={badgeH} rx={20} fill={rgba(scene.badge.bg || '#fff', scene.badge.bgOpacity ?? 0.2)} stroke="rgba(15,23,42,0.1)" />
@@ -573,6 +612,7 @@ export function CanvasPreview({
 
           {useHighlightPatternB && highlightB ? (
             <g>
+              <rect x={0} y={0} width={width} height={height} fill="white" />
               {renderImage(imageUrl, { x: 0, y: 0, w: width, h: height }, scene, imageDims)}
               <rect x={0} y={0} width={width} height={height} fill={`url(#${gradientId}-highlight-overlay)`} />
               {showBadge ? (
@@ -583,13 +623,14 @@ export function CanvasPreview({
               ) : null}
               <SvgText text={scene.title.text || ''} x={highlightB.titleX} y={highlightB.titleY} fontSize={highlightB.titleFs} fill="#fff" weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 18} maxLines={scene.title.maxLines || 3} lineHeight={highlightB.titleLH / highlightB.titleFs} textAnchor="middle" fontFamily={brandKit.fontFamily} />
               <SvgText text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.6} textAnchor="middle" fontFamily={brandKit.fontFamily} />
-              <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={scene.accent} stroke="#fff" strokeWidth={2} />
-              <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={highlightPatternBCtaBg} stroke="#fff" strokeWidth={2} />
+              <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={highlightPatternBCtaFill} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
             </g>
           ) : null}
 
           {useHighlightAltPatternA && highlightA ? (
             <g>
+              <rect x={0} y={0} width={width} height={highlightA.imageH} fill="white" />
               {renderImage(imageUrl, { x: 0, y: 0, w: width, h: highlightA.splitY }, scene, imageDims, `${clipId}-top-split`)}
               <rect x={0} y={highlightA.splitY} width={width} height={height - highlightA.splitY} fill={scene.background[0]} />
               {showBadge ? (

@@ -8,7 +8,6 @@ import type { FormatDefinition, FormatKey, GoalPreset } from './types'
 export const ACTIVE_SUPPORTED_FORMATS: FormatKey[] = [
   'marketplace-card',
   'marketplace-highlight',
-  'marketplace-tile',
 ]
 
 export const PRIMARY_DIPLOMA_FORMATS: FormatKey[] = [
@@ -33,14 +32,18 @@ export function getPrimaryPreviewFormats(
   formats: FormatDefinition[],
   goalPreset?: GoalPreset
 ) {
-  const goalScoped = formats.filter((format) => goalPreset?.includedFormats.includes(format.key))
-  const activeGoalScoped = goalScoped.filter((format) => isActiveSupportedFormat(format.key))
-  if (activeGoalScoped.length) return activeGoalScoped
+  // Only keys that are both declared for the goal and in the active product scope (never e.g. legacy tile alone).
+  const goalKeysMatchingActive =
+    goalPreset?.includedFormats?.filter((key) => isActiveSupportedFormat(key)) ?? []
 
-  const activePrimary = formats.filter((format) => PRIMARY_DIPLOMA_FORMATS.includes(format.key))
-  if (activePrimary.length) return activePrimary
+  if (goalKeysMatchingActive.length) {
+    return formats.filter((format) => goalKeysMatchingActive.includes(format.key))
+  }
 
-  return goalScoped.length ? goalScoped : formats.filter((format) => isActiveSupportedFormat(format.key))
+  const primary = formats.filter((format) => PRIMARY_DIPLOMA_FORMATS.includes(format.key))
+  if (primary.length) return primary
+
+  return formats.filter((format) => isActiveSupportedFormat(format.key))
 }
 
 export function getGoalScopeNote(goalPreset?: GoalPreset) {
