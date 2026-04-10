@@ -18,6 +18,7 @@ import { ValidationSummary } from './components/ValidationSummary'
 import { BasicControls, BrandEditor, ElementEditor } from './components/Controls'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout, generateVariant, refreshProjectModel, regenerateFormats } from './lib/autoAdapt'
+import { analyzeBannerQuality, applyBannerQualityAutofixes, type BannerQualityResult } from './lib/bannerQualityAnalyzer'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
 import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
@@ -149,6 +150,7 @@ export default function App() {
   const [fixingFormatKey, setFixingFormatKey] = useState<FormatKey | null>(null)
   const [fixResults, setFixResults] = useState<Partial<Record<FormatKey, FixResult>>>({})
   const [fixSessions, setFixSessions] = useState<Partial<Record<FormatKey, FixSessionState>>>({})
+  const [bannerAiReviewByFormat, setBannerAiReviewByFormat] = useState<Partial<Record<FormatKey, BannerQualityResult>>>({})
   const [selectedBlockId, setSelectedBlockId] = useState<LayoutElementKind | null>(null)
   const [layoutDebug, setLayoutDebug] = useState<LayoutDebugOptions>({
     showBoxes: false,
@@ -167,6 +169,7 @@ export default function App() {
   const clearFixArtifacts = () => {
     setFixResults({})
     setFixSessions({})
+    setBannerAiReviewByFormat({})
   }
 
   useEffect(() => {
@@ -177,6 +180,7 @@ export default function App() {
     if (UI_GOAL_PRESETS.some((g) => g.key === project.goal)) return
     setFixResults({})
     setFixSessions({})
+    setBannerAiReviewByFormat({})
     setProject((prev) => regenerateFormats({ ...prev, goal: 'promo-pack' }))
   }, [project.goal])
 
@@ -717,6 +721,11 @@ export default function App() {
 
   const handleFixLayout = async (formatKey: FormatKey, forceAlternativeLayout = false) => {
     setFixingFormatKey(formatKey)
+    setBannerAiReviewByFormat((prev) => {
+      const next = { ...prev }
+      delete next[formatKey]
+      return next
+    })
     setStatus({ tone: 'neutral', text: `${forceAlternativeLayout ? 'Trying a different layout for' : 'Fixing'} ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}...` })
     try {
       const outcome = await fixLayout({
@@ -762,6 +771,60 @@ export default function App() {
       setFixResults((prev) => ({ ...prev, [formatKey]: outcome.result }))
       setFixSessions((prev) => ({ ...prev, [formatKey]: outcome.result.session }))
       setSelectedBlockId(null)
+
+      console.log('[banner-analysis] checking SVG, formatKey:', formatKey)
+      const previewRootRef = { current: refs.current[formatKey] ?? null }
+      console.log('[banner-analysis] previewRoot ref exists:', !!previewRootRef?.current)
+      const svgElImmediate = previewRootRef?.current?.querySelector?.('svg.preview-svg')
+      console.log('[banner-analysis] svgEl found:', !!svgElImmediate, svgElImmediate?.tagName)
+
+      await new Promise<void>((resolve) => {
+        setTimeout(async () => {
+          try {
+            const svgEl = document.querySelector(`[data-format-key="${formatKey}"] svg.preview-svg`)
+            if (!(svgEl instanceof SVGSVGElement)) {
+              console.warn('[banner-analysis] svg not found for format:', formatKey)
+              return
+            }
+            try {
+              console.log('[banner-analysis] starting for format:', formatKey)
+              const quality = await analyzeBannerQuality(svgEl, outcome.scene)
+              console.log('[banner-analysis] result:', quality)
+              const { scene: patchedScene, changed } = applyBannerQualityAutofixes(outcome.scene, quality)
+              if (changed) {
+                setProject((prev) => {
+                  const manualOverrides = { ...(prev.manualOverrides || {}) }
+                  delete manualOverrides[formatKey]
+                  const variants = { ...(prev.variants || {}) }
+                  if (variants[formatKey]) {
+                    variants[formatKey] = {
+                      ...variants[formatKey],
+                      scene: patchedScene,
+                      compositionModelId: outcome.assessment.compositionModelId,
+                      updatedAt: new Date().toISOString(),
+                    }
+                  }
+                  return refreshProjectModel({
+                    ...prev,
+                    formats: {
+                      ...prev.formats,
+                      [formatKey]: patchedScene,
+                    },
+                    variants,
+                    manualOverrides,
+                  })
+                })
+              }
+              setBannerAiReviewByFormat((prev) => ({ ...prev, [formatKey]: quality }))
+            } catch (bannerErr) {
+              console.error('[banner-analysis] error:', bannerErr)
+            }
+          } finally {
+            resolve()
+          }
+        }, 500)
+      })
+
       setStatus({
         tone:
           outcome.result.v2SlotLayoutPreserved || outcome.result.effectiveAfterScore > outcome.result.effectiveBeforeScore
@@ -1155,6 +1218,7 @@ export default function App() {
                       isFixing={fixingFormatKey === format.key}
                       isExporting={exportingFormatKey === format.key}
                       fixResult={fixResults[format.key] || null}
+                      aiReviewed={Boolean(bannerAiReviewByFormat[format.key])}
                       onExportPng={() => exportPng(format.key)}
                       onExportJpg={() => exportJpg(format.key)}
                       onExportPdf={() => exportPdf(format.key)}

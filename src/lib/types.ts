@@ -394,6 +394,8 @@ export type SceneElement = {
   sourceTextLength?: number
   normalizedTextLength?: number
   realizationFallback?: 'proof-compact'
+  /** Hero image zoom (>1) applied around bbox center after slice math (e.g. post AI review). */
+  imageZoom?: number
 }
 
 export type Scene = {

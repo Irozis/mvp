@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react'
 import { Download, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { percentX, percentY, rgba, splitTextIntoLines } from '../lib/utils'
 import { getFormatRuleSet } from '../lib/formatRules'
@@ -250,6 +250,18 @@ function layoutHighlightPatternA(scene: Scene, width: number, height: number) {
   }
 }
 
+function wrapImageZoom(
+  bounds: { x: number; y: number; w: number; h: number },
+  zoom: number | undefined,
+  node: ReactElement,
+) {
+  const z = zoom ?? 1
+  if (!Number.isFinite(z) || z <= 1) return node
+  const cx = bounds.x + bounds.w / 2
+  const cy = bounds.y + bounds.h / 2
+  return <g transform={`translate(${cx} ${cy}) scale(${z}) translate(${-cx} ${-cy})`}>{node}</g>
+}
+
 function renderImage(
   imageUrl: string,
   bounds: { x: number; y: number; w: number; h: number },
@@ -261,8 +273,9 @@ function renderImage(
   const focalY = scene.image.focalY ?? 50
   const wantsMeet = (scene.image.fit || '').endsWith('meet')
   const clipPath = clipPathId ? `url(#${clipPathId})` : undefined
+  const zoom = scene.image.imageZoom ?? 1
   if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
-    const scale = Math.max(bounds.w / imageDims.w, bounds.h / imageDims.h)
+    const scale = Math.max(bounds.w / imageDims.w, bounds.h / imageDims.h) * zoom
     const scaledW = imageDims.w * scale
     const scaledH = imageDims.h * scale
     const desiredX = bounds.x + bounds.w / 2 - (focalX / 100) * scaledW
@@ -271,7 +284,10 @@ function renderImage(
     const imgY = Math.min(Math.max(desiredY, bounds.y + bounds.h - scaledH), bounds.y)
     return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
   }
-  return <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
+  const img = (
+    <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
+  )
+  return wrapImageZoom(bounds, zoom > 1 ? zoom : undefined, img)
 }
 
 export function CanvasPreview({
@@ -287,6 +303,7 @@ export function CanvasPreview({
   isFixing,
   isExporting,
   fixResult,
+  aiReviewed,
   onExportPng,
   onExportJpg,
   onExportPdf,
@@ -309,6 +326,7 @@ export function CanvasPreview({
   isFixing?: boolean
   isExporting?: boolean
   fixResult?: FixResult | null
+  aiReviewed?: boolean
   onExportPng: () => void
   onExportJpg: () => void
   onExportPdf: () => void
@@ -519,7 +537,7 @@ export function CanvasPreview({
   }
 
   return (
-    <div className="preview-wrap">
+    <div className="preview-wrap" data-format-key={format.key}>
       <div className="space-between preview-head">
         <div>
           <div className="preview-title">{format.label}</div>
@@ -555,6 +573,7 @@ export function CanvasPreview({
           <FileText size={16} />
           {isExporting ? '...' : 'PDF'}
         </button>
+        {aiReviewed ? <span className="ai-reviewed-badge">AI reviewed</span> : null}
       </div>
 
       <div className="stack">
@@ -636,14 +655,20 @@ export function CanvasPreview({
               <rect x={0} y={0} width={cardA.leftW} height={height} fill={leftPanelBg} />
               <g clipPath={`url(#${clipId}-right-half)`}>
                 <rect x={cardA.leftW} y={0} width={width - cardA.leftW} height={height} fill="white" />
-                <image
-                  href={imageUrl}
-                  x={cardA.leftW}
-                  y={0}
-                  width={width - cardA.leftW}
-                  height={height}
-                  preserveAspectRatio={patternASplitPreserveAspect}
-                />
+                {wrapImageZoom(
+                  { x: cardA.leftW, y: 0, w: width - cardA.leftW, h: height },
+                  scene.image.imageZoom && scene.image.imageZoom > 1 ? scene.image.imageZoom : undefined,
+                  <image
+                    href={imageUrl}
+                    x={cardA.leftW}
+                    y={0}
+                    width={width - cardA.leftW}
+                    height={height}
+                    preserveAspectRatio={
+                      scene.image.imageZoom && scene.image.imageZoom > 1 ? 'xMidYMid slice' : patternASplitPreserveAspect
+                    }
+                  />,
+                )}
               </g>
               {showBadge ? (
                 <g>
@@ -729,7 +754,8 @@ export function CanvasPreview({
                     const focalY = scene.image.focalY ?? 50
                     const wantsMeet = (scene.image.fit || '').endsWith('meet')
                     if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
-                      const scale = Math.max(image.w / imageDims.w, image.h / imageDims.h)
+                      const zoom = scene.image.imageZoom ?? 1
+                      const scale = Math.max(image.w / imageDims.w, image.h / imageDims.h) * zoom
                       const scaledW = imageDims.w * scale
                       const scaledH = imageDims.h * scale
                       const desiredX = image.x + image.w / 2 - (focalX / 100) * scaledW
@@ -738,7 +764,21 @@ export function CanvasPreview({
                       const imgY = Math.min(Math.max(desiredY, image.y + image.h - scaledH), image.y)
                       return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} clipPath={`url(#${clipId})`} />
                     }
-                    return <image href={imageUrl} x={image.x} y={image.y} width={image.w} height={image.h} preserveAspectRatio={scene.image.fit || 'xMidYMid slice'} clipPath={`url(#${clipId})`} />
+                    const b = { x: image.x, y: image.y, w: image.w, h: image.h }
+                    const z = scene.image.imageZoom ?? 1
+                    return wrapImageZoom(
+                      b,
+                      z > 1 ? z : undefined,
+                      <image
+                        href={imageUrl}
+                        x={image.x}
+                        y={image.y}
+                        width={image.w}
+                        height={image.h}
+                        preserveAspectRatio={scene.image.fit || 'xMidYMid slice'}
+                        clipPath={`url(#${clipId})`}
+                      />,
+                    )
                   })()}
                   {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
                   <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="none" stroke="rgba(255,255,255,0.2)" />

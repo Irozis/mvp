@@ -5136,7 +5136,9 @@ function logPreviewCandidateSelection(input: {
   if (previewCandidateLogSignatures.get(input.formatKey) === signature) return
   previewCandidateLogSignatures.set(input.formatKey, signature)
 
-  console.debug('[layout] preview candidate selection', summary)
+  if (import.meta.env.DEV && false) {
+    console.debug('[layout] preview candidate selection', summary)
+  }
 }
 
 function selectBestPreviewCandidate(input: {
