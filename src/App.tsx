@@ -534,20 +534,22 @@ export default function App() {
 
   const applyDemo = (demo: (typeof DEMO_PROJECTS)[number]) => {
     clearFixArtifacts()
-    setImageUrl(demo.imageUrl)
     setSelectedBrandTemplate(demo.brandTemplateKey)
     setProject((prev) => {
       const afterTemplate = applyBrandTemplate(prev, demo.brandTemplateKey)
-      return regenerateFormats({
-        ...afterTemplate,
-        master: {
-          ...afterTemplate.master,
-          title: { ...afterTemplate.master.title, text: demo.title },
-          subtitle: { ...afterTemplate.master.subtitle, text: demo.subtitle },
-          cta: { ...afterTemplate.master.cta, text: demo.cta },
-        },
-      })
+      const nextMaster: Scene = {
+        ...afterTemplate.master,
+        title: { ...afterTemplate.master.title, text: demo.title },
+        subtitle: { ...afterTemplate.master.subtitle, text: demo.subtitle },
+        cta: { ...afterTemplate.master.cta, text: demo.cta },
+      }
+      console.log('[demo] applying:', demo.title, demo.subtitle, demo.cta)
+      return regenerateFormats({ ...afterTemplate, master: nextMaster })
     })
+    // Defer image URL so this render commits with demo copy in `formats` before the image analysis effect runs `regenerateFormats` on stale state.
+    setTimeout(() => {
+      setImageUrl(demo.imageUrl)
+    }, 0)
     setStatus({ tone: 'success', text: `Demo loaded: ${demo.label}.` })
   }
 

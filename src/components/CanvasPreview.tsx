@@ -4,6 +4,45 @@ import { percentX, percentY, rgba, splitTextIntoLines } from '../lib/utils'
 import { getFormatRuleSet } from '../lib/formatRules'
 import type { BrandKit, FixResult, FormatDefinition, LayoutAssessment, LayoutDebugOptions, LayoutElementKind, Scene } from '../lib/types'
 
+/** True when subtitle should render in full-bleed highlight (non-empty, not generic placeholder). */
+function hasRenderableSubtitle(text: string | undefined): boolean {
+  const t = (text ?? '').trim()
+  if (!t) return false
+  return !/^subtitle$/i.test(t)
+}
+
+function isLightColor(hex: string): boolean {
+  const r = parseInt(hex.slice(1, 3), 16) / 255
+  const g = parseInt(hex.slice(3, 5), 16) / 255
+  const b = parseInt(hex.slice(5, 7), 16) / 255
+  return (0.299 * r + 0.587 * g + 0.114 * b) > 0.5
+}
+
+/** Normalize to `#rrggbb` for luminance helpers; returns null if not parseable. */
+function normalizeHex6(color: string): string | null {
+  const raw = color.trim()
+  if (!raw.startsWith('#')) return null
+  if (raw.length === 4 && /^#[0-9a-fA-F]{3}$/.test(raw)) {
+    return `#${raw[1]}${raw[1]}${raw[2]}${raw[2]}${raw[3]}${raw[3]}`
+  }
+  if (raw.length === 7 && /^#[0-9a-fA-F]{6}$/.test(raw)) return raw
+  return null
+}
+
+/** Title / subtitle / CTA text on Pattern A left panel: extreme dark/light backgrounds get fixed fills. */
+function patternALeftPanelTextFill(hexBg: string): string | undefined {
+  const hex = normalizeHex6(hexBg)
+  if (!hex) return undefined
+  const r = parseInt(hex.slice(1, 3), 16) / 255
+  const g = parseInt(hex.slice(3, 5), 16) / 255
+  const b = parseInt(hex.slice(5, 7), 16) / 255
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b
+  const lightByMidpoint = isLightColor(hex)
+  if (luminance < 0.3) return '#ffffff'
+  if (luminance > 0.7 && lightByMidpoint) return '#1a1a1a'
+  return undefined
+}
+
 function SvgText({
   text,
   x,
@@ -17,6 +56,7 @@ function SvgText({
   lineHeight = 1.1,
   opacity = 1,
   textAnchor = 'start',
+  letterSpacing,
 }: {
   text: string
   x: number
@@ -30,11 +70,12 @@ function SvgText({
   lineHeight?: number
   opacity?: number
   textAnchor?: 'start' | 'middle' | 'end'
+  letterSpacing?: string | number
 }) {
   const lines = splitTextIntoLines(text, maxCharsPerLine, maxLines)
 
   return (
-    <text x={x} y={y} textAnchor={textAnchor} fill={fill} opacity={opacity} fontSize={fontSize} fontWeight={weight} fontFamily={fontFamily}>
+    <text x={x} y={y} textAnchor={textAnchor} fill={fill} opacity={opacity} fontSize={fontSize} fontWeight={weight} fontFamily={fontFamily} letterSpacing={letterSpacing}>
       {lines.map((line, index) => (
         <tspan key={index} x={x} dy={index === 0 ? 0 : fontSize * lineHeight}>
           {line}
@@ -58,8 +99,8 @@ function layoutCardPatternA(scene: Scene, width: number, height: number) {
     const maxFsByCharWidth = leftPanelInner / (title.length * 0.55)
     if (titleFs > maxFsByCharWidth) titleFs = maxFsByCharWidth
   }
-  titleFs = Math.min(titleFs, leftPanelInner / 6)
-  const subFs = Math.min(scene.subtitle.fontSize || 16, 18)
+  titleFs = Math.max(48, Math.min(titleFs, leftPanelInner / 5))
+  const subFs = Math.max(20, width * 0.018)
   const ctaMinW = Math.max(140, (scene.cta.text || '').length * 9 + 56)
   const ctaH = Math.max(percentY(scene.cta.h || 7, height), 48)
   const ctaW = Math.min(Math.max(percentX(scene.cta.w || 28, leftW), ctaMinW), leftW - pad * 2)
@@ -67,27 +108,46 @@ function layoutCardPatternA(scene: Scene, width: number, height: number) {
   const subLines = splitTextIntoLines(scene.subtitle.text || '', scene.subtitle.charsPerLine || 34, scene.subtitle.maxLines || 4)
   const titleLH = titleFs * 1.08
   const subLH = subFs * 1.3
-  const gap = 18
-  const stackH =
-    titleLines.length * titleLH +
-    (subLines.length > 0 ? gap : 0) +
-    subLines.length * subLH +
-    gap +
-    ctaH
-  const top = (height - stackH) / 2
+  const n = titleLines.length
+  const m = subLines.length
+  const hasSub = hasRenderableSubtitle(scene.subtitle.text) && m > 0
+  const titleBlockH = n * titleLH
+
+  let totalTextH: number
+  if (hasSub) {
+    totalTextH = titleFs + titleBlockH + 43 + (m - 1) * subLH + subFs + ctaH
+  } else {
+    totalTextH = titleFs + titleBlockH + 16 + ctaH
+  }
+
+  const clusterTop = (height - totalTextH) / 2
+  const titleY = clusterTop + titleFs
+  const accentLineY = titleY + (titleLines.length - 1) * titleLH + 8
+
+  let subY: number
+  let ctaY: number
+  if (hasSub) {
+    subY = accentLineY + 3 + 16 + subFs * 0.88
+    ctaY = clusterTop + totalTextH - ctaH
+  } else {
+    subY = titleY + titleBlockH + 16 + subFs
+    ctaY = clusterTop + totalTextH - ctaH
+  }
+
   return {
     pad,
     leftW,
     titleX: pad,
-    titleY: top + titleFs * 0.88,
+    titleY,
     titleFs,
     titleLH,
+    accentLineY,
     subX: pad,
-    subY: top + titleLines.length * titleLH + gap + subFs,
+    subY,
     subFs,
     subLH,
     ctaX: pad,
-    ctaY: top + titleLines.length * titleLH + (subLines.length > 0 ? gap : 0) + subLines.length * subLH + gap,
+    ctaY,
     ctaW,
     ctaH,
   }
@@ -128,7 +188,7 @@ function layoutCardPatternC(scene: Scene, width: number, height: number) {
 function layoutHighlightPatternB(scene: Scene, width: number, height: number) {
   const padX = 36
   const titleFs = Math.max(scene.title.fontSize || 40, 36)
-  const subFs = scene.subtitle.fontSize || 17
+  const subFs = Math.max(20, width * 0.018)
   const ctaMinW = Math.max(140, (scene.cta.text || '').length * 9 + 56)
   const ctaH = Math.max(percentY(scene.cta.h || 6.5, height), 48)
   const ctaW = Math.min(Math.max(percentX(scene.cta.w || 28, width), ctaMinW), width - padX * 2)
@@ -137,14 +197,15 @@ function layoutHighlightPatternB(scene: Scene, width: number, height: number) {
   const titleLH = titleFs * 1.06
   const subLH = subFs * 1.3
   const contentTop = height * 0.65
+  const titleY = contentTop + titleFs * 0.85
   return {
     padX,
     titleX: width / 2,
-    titleY: contentTop + titleFs * 0.85,
+    titleY,
     titleFs,
     titleLH,
     subX: width / 2,
-    subY: contentTop + titleLines.length * titleLH + 12 + subFs,
+    subY: titleY + (titleLines.length - 1) * titleLH + 16 + subFs,
     subFs,
     subLH,
     ctaX: width / 2 - ctaW / 2,
@@ -336,7 +397,8 @@ export function CanvasPreview({
   const useCardPatternC = isMarketplaceCard && !imageUrl
   const useHighlightAltPatternA = isMarketplaceHighlight && Boolean(imageUrl) && assessment.compositionModelId === 'portrait-bottom-card'
   const useHighlightPatternB = isMarketplaceHighlight && Boolean(imageUrl) && !useHighlightAltPatternA
-  const showBadge = Boolean(scene.badge?.text) && !['Campaign', 'Badge', 'Label', 'Tag'].includes(scene.badge.text)
+  const badgeText = scene.badge?.text ?? ''
+  const showBadge = Boolean(badgeText) && !['Campaign', 'Badge', 'Label', 'Tag'].includes(badgeText)
   const cardA = useCardPatternA ? layoutCardPatternA(scene, width, height) : null
   const cardC = useCardPatternC ? layoutCardPatternC(scene, width, height) : null
   const highlightB = useHighlightPatternB ? layoutHighlightPatternB(scene, width, height) : null
@@ -394,6 +456,10 @@ export function CanvasPreview({
         : 'xMidYMid slice'
 
   const leftPanelBg = scene.background[0] || '#1a1a1a'
+  const patternALeftAutoText = patternALeftPanelTextFill(leftPanelBg)
+  const patternATitleFill = patternALeftAutoText ?? scene.title.fill ?? '#0f172a'
+  const patternASubtitleFill = patternALeftAutoText ?? scene.subtitle.fill ?? '#0f172a'
+  const patternACtaTextFill = patternALeftAutoText ?? scene.cta.fill ?? ctaFillAuto
 
   const svgRef = useRef<SVGSVGElement | null>(null)
   const dragState = useRef<{
@@ -585,20 +651,23 @@ export function CanvasPreview({
                   <text x={cardA.leftW - badgeW / 2 - cardA.pad} y={cardA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
                 </g>
               ) : null}
-              <SvgText text={scene.title.text || ''} x={cardA.titleX} y={cardA.titleY} fontSize={cardA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 16} maxLines={scene.title.maxLines || 3} lineHeight={cardA.titleLH / cardA.titleFs} fontFamily={brandKit.fontFamily} />
-              <SvgText text={scene.subtitle.text || ''} x={cardA.subX} y={cardA.subY} fontSize={cardA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 4} lineHeight={cardA.subLH / cardA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.title.text || ''} x={cardA.titleX} y={cardA.titleY} fontSize={cardA.titleFs} fill={patternATitleFill} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 16} maxLines={scene.title.maxLines || 3} lineHeight={cardA.titleLH / cardA.titleFs} fontFamily={brandKit.fontFamily} letterSpacing={cardA.titleFs > 60 ? -0.5 : undefined} />
+              {hasRenderableSubtitle(scene.subtitle.text) ? (
+                <rect x={cardA.pad} y={cardA.accentLineY} width={40} height={3} rx={1.5} fill={scene.accent || scene.cta.bg} />
+              ) : null}
+              <SvgText text={scene.subtitle.text || ''} x={cardA.subX} y={cardA.subY} fontSize={cardA.subFs} fill={patternASubtitleFill} weight={500} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 4} lineHeight={cardA.subLH / cardA.subFs} opacity={0.88} fontFamily={brandKit.fontFamily} letterSpacing={0.3} />
               <rect x={cardA.ctaX} y={cardA.ctaY} width={cardA.ctaW} height={cardA.ctaH} rx={999} fill={scene.accent} />
-              <text x={cardA.ctaX + cardA.ctaW / 2} y={cardA.ctaY + cardA.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <text x={cardA.ctaX + cardA.ctaW / 2} y={cardA.ctaY + cardA.ctaH / 2 + 6} textAnchor="middle" fill={patternACtaTextFill} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
             </g>
           ) : null}
 
           {useCardPatternC && cardC ? (
             <g>
               <rect x={0} y={0} width={width} height={height} fill={scene.background[0]} />
-              <SvgText text={scene.title.text || ''} x={cardC.titleX} y={cardC.titleY} fontSize={cardC.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 800} maxCharsPerLine={scene.title.charsPerLine || 14} maxLines={3} lineHeight={cardC.titleLH / cardC.titleFs} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.title.text || ''} x={cardC.titleX} y={cardC.titleY} fontSize={cardC.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 800} maxCharsPerLine={scene.title.charsPerLine || 14} maxLines={3} lineHeight={cardC.titleLH / cardC.titleFs} fontFamily={brandKit.fontFamily} letterSpacing={cardC.titleFs > 60 ? -0.5 : undefined} />
               <SvgText text={scene.subtitle.text || ''} x={cardC.subX} y={cardC.subY} fontSize={cardC.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 3} lineHeight={cardC.subLH / cardC.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <rect x={cardC.ctaX} y={cardC.ctaY} width={cardC.ctaW} height={cardC.ctaH} rx={999} fill={scene.accent} />
-              <text x={cardC.ctaX + cardC.ctaW / 2} y={cardC.ctaY + cardC.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <text x={cardC.ctaX + cardC.ctaW / 2} y={cardC.ctaY + cardC.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
               <rect x={width - cardC.imageBoxW - cardC.pad} y={height - cardC.imageBoxH - cardC.pad} width={cardC.imageBoxW} height={cardC.imageBoxH} rx={22} fill="rgba(255,255,255,0.12)" stroke="rgba(15,23,42,0.14)" />
               <text x={width - cardC.imageBoxW / 2 - cardC.pad} y={height - cardC.imageBoxH / 2 - cardC.pad + 5} textAnchor="middle" fill="rgba(15,23,42,0.5)" fontSize={17} fontFamily={brandKit.fontFamily}>Add main image</text>
               {showBadge ? (
@@ -621,10 +690,12 @@ export function CanvasPreview({
                   <text x={width - badgeW / 2 - highlightB.padX} y={highlightB.padX + badgeH / 2 + 6} textAnchor="middle" fill="#fff" fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
                 </g>
               ) : null}
-              <SvgText text={scene.title.text || ''} x={highlightB.titleX} y={highlightB.titleY} fontSize={highlightB.titleFs} fill="#fff" weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 18} maxLines={scene.title.maxLines || 3} lineHeight={highlightB.titleLH / highlightB.titleFs} textAnchor="middle" fontFamily={brandKit.fontFamily} />
-              <SvgText text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.6} textAnchor="middle" fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.title.text || ''} x={highlightB.titleX} y={highlightB.titleY} fontSize={highlightB.titleFs} fill="#fff" weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 18} maxLines={scene.title.maxLines || 3} lineHeight={highlightB.titleLH / highlightB.titleFs} textAnchor="middle" fontFamily={brandKit.fontFamily} letterSpacing={highlightB.titleFs > 60 ? -0.5 : undefined} />
+              {hasRenderableSubtitle(scene.subtitle.text) ? (
+                <SvgText text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={500} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.88} textAnchor="middle" fontFamily={brandKit.fontFamily} letterSpacing={0.3} />
+              ) : null}
               <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={highlightPatternBCtaBg} stroke="#fff" strokeWidth={2} />
-              <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={highlightPatternBCtaFill} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={highlightPatternBCtaFill} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
             </g>
           ) : null}
 
@@ -639,10 +710,10 @@ export function CanvasPreview({
                   <text x={width - badgeW / 2 - highlightA.pad} y={highlightA.pad + badgeH / 2 + 6} textAnchor="middle" fill={scene.badge.fill || '#0f172a'} fontSize={scene.badge.fontSize || 16} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.badge.text}</text>
                 </g>
               ) : null}
-              <SvgText text={scene.title.text || ''} x={highlightA.titleX} y={highlightA.titleY} fontSize={highlightA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} lineHeight={highlightA.titleLH / highlightA.titleFs} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.title.text || ''} x={highlightA.titleX} y={highlightA.titleY} fontSize={highlightA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} lineHeight={highlightA.titleLH / highlightA.titleFs} fontFamily={brandKit.fontFamily} letterSpacing={highlightA.titleFs > 60 ? -0.5 : undefined} />
               <SvgText text={scene.subtitle.text || ''} x={highlightA.subX} y={highlightA.subY} fontSize={highlightA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 4} lineHeight={highlightA.subLH / highlightA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <rect x={highlightA.ctaX} y={highlightA.ctaY} width={highlightA.ctaW} height={highlightA.ctaH} rx={999} fill={scene.accent} />
-              <text x={highlightA.ctaX + highlightA.ctaW / 2} y={highlightA.ctaY + highlightA.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>{scene.cta.text}</text>
+              <text x={highlightA.ctaX + highlightA.ctaW / 2} y={highlightA.ctaY + highlightA.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
             </g>
           ) : null}
 
@@ -710,7 +781,7 @@ export function CanvasPreview({
                 </g>
               ) : null}
 
-              <SvgText text={scene.title.text || ''} x={titleX} y={titleY} fontSize={scene.title.fontSize || 32} fill={scene.title.fill || '#fff'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} fontFamily={brandKit.fontFamily} />
+              <SvgText text={scene.title.text || ''} x={titleX} y={titleY} fontSize={scene.title.fontSize || 32} fill={scene.title.fill || '#fff'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} fontFamily={brandKit.fontFamily} letterSpacing={(scene.title.fontSize || 32) > 60 ? -0.5 : undefined} />
               <SvgText text={scene.subtitle.text || ''} x={subtitleX} y={subtitleY} fontSize={scene.subtitle.fontSize || 16} fill={scene.subtitle.fill || '#fff'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 30} maxLines={scene.subtitle.maxLines || 4} lineHeight={1.28} opacity={scene.subtitle.opacity ?? 0.88} fontFamily={brandKit.fontFamily} />
 
               <rect x={ctaX} y={ctaY} width={fallbackCtaW} height={fallbackCtaH} rx={scene.cta.rx || 26} fill={scene.cta.bg || '#fff'} />
