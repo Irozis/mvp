@@ -581,6 +581,8 @@ export type LayoutEvaluation = {
     bottomLeft: number
     bottomRight: number
   }
+  /** True when `evaluateLayout` used `imageAnalysis.focalPoint` for image quadrant weight. */
+  focalAwareBalance?: boolean
 }
 
 export type Variant = {

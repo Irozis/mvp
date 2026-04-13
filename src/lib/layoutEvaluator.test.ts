@@ -1,14 +1,15 @@
 import { describe, expect, test } from 'vitest'
 
 import { evaluateLayout } from './layoutEvaluator'
-import type { FormatDefinition, Scene } from './types'
+import type { EnhancedImageAnalysis, FormatDefinition, Scene } from './types'
 
 function makeScene(overrides?: Partial<Scene>): Scene {
   const base: Scene = {
     background: ['#ffffff', '#ffffff', '#ffffff'],
     accent: '#111111',
-    title: { x: 5, y: 5, w: 90, h: 15, fontSize: 24, text: 'Headline' },
-    subtitle: { x: 5, y: 25, w: 90, h: 10, fontSize: 14, text: 'Sub' },
+    // Text kept left of x=50 so default layout avoids headline/subtitle/cta vs image overlap (text-over-image metric).
+    title: { x: 5, y: 10, w: 40, h: 15, fontSize: 24, text: 'Headline' },
+    subtitle: { x: 5, y: 28, w: 40, h: 10, fontSize: 14, text: 'Sub' },
     cta: { x: 5, y: 75, w: 40, h: 10, text: 'Buy now' },
     badge: { x: 5, y: 92, w: 12, h: 4, text: 'New', fontSize: 10 },
     logo: { x: 88, y: 3, w: 8, h: 6, text: '' },
@@ -113,14 +114,15 @@ describe('hierarchyClarity', () => {
     expect(result.hierarchyClarity).toBe(1.0)
   })
 
-  test('headline smaller than subtitle scores 0.4', () => {
+  test('headline smaller than subtitle scores 0.2 (strongly inverted)', () => {
     const base = makeScene()
     const scene = makeScene({
       title: { ...base.title, fontSize: 12 },
       subtitle: { ...base.subtitle, fontSize: 24 },
     })
     const result = evaluateLayout(scene, makeFormat())
-    expect(result.hierarchyClarity).toBe(0.4)
+    // ratio 12/24 = 0.5 — below 0.8 band → graduated hierarchy uses 0.2
+    expect(result.hierarchyClarity).toBe(0.2)
   })
 
   test('no subtitle defaults to 1.0', () => {
@@ -200,5 +202,150 @@ describe('visualBalance', () => {
     const withImage = evaluateLayout(makeScene(), makeFormat())
     const withoutImage = evaluateLayout(makeScene({ image: undefined as unknown as Scene['image'] }), makeFormat())
     expect(withImage.quadrantWeights).not.toEqual(withoutImage.quadrantWeights)
+  })
+})
+
+function makeImageAnalysis(overrides?: Partial<EnhancedImageAnalysis>): EnhancedImageAnalysis {
+  return {
+    focalPoint: { x: 50, y: 50 },
+    safeTextAreas: [],
+    visualMassCenter: { x: 50, y: 50 },
+    brightnessMap: [],
+    contrastZones: [],
+    dominantColors: [],
+    mood: 'neutral',
+    cropRisk: 'low',
+    imageProfile: 'square',
+    detectedContrast: 'medium',
+    focalSuggestion: 'center',
+    ...overrides,
+  }
+}
+
+describe('hierarchyClarity — graduated scoring', () => {
+  test('ratio >= 1.5 scores 1.0', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, fontSize: 30 },
+      subtitle: { ...makeScene().subtitle!, fontSize: 14 },
+    })
+    expect(evaluateLayout(scene, makeFormat()).hierarchyClarity).toBe(1.0)
+  })
+
+  test('ratio 1.2–1.5 scores 0.85', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, fontSize: 18 },
+      subtitle: { ...makeScene().subtitle!, fontSize: 14 },
+    })
+    expect(evaluateLayout(scene, makeFormat()).hierarchyClarity).toBe(0.85)
+  })
+
+  test('ratio 1.0–1.2 scores 0.65', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, fontSize: 15 },
+      subtitle: { ...makeScene().subtitle!, fontSize: 14 },
+    })
+    expect(evaluateLayout(scene, makeFormat()).hierarchyClarity).toBe(0.65)
+  })
+
+  test('inverted hierarchy (ratio < 1.0) scores <= 0.4', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, fontSize: 12 },
+      subtitle: { ...makeScene().subtitle!, fontSize: 24 },
+    })
+    expect(evaluateLayout(scene, makeFormat()).hierarchyClarity).toBeLessThanOrEqual(0.4)
+  })
+
+  test('cta larger than headline clamps hierarchyClarity to <= 0.3', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, fontSize: 14 },
+      cta: { ...makeScene().cta!, fontSize: 20 },
+    })
+    const result = evaluateLayout(scene, makeFormat())
+    expect(result.hierarchyClarity).toBeLessThanOrEqual(0.3)
+    expect(result.issues.some((i) => i.includes('cta'))).toBe(true)
+  })
+})
+
+describe('readability — text over image', () => {
+  test('text overlapping image without safe area reduces readability', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, x: 52, y: 6, w: 40, h: 20 },
+      image: { x: 50, y: 5, w: 45, h: 60 },
+    })
+    const withOverlap = evaluateLayout(scene, makeFormat())
+    const withoutOverlap = evaluateLayout(makeScene(), makeFormat())
+    expect(withOverlap.readability).toBeLessThan(withoutOverlap.readability)
+  })
+
+  test('text overlapping image WITH safe area does not reduce readability', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, x: 52, y: 6, w: 40, h: 20 },
+      image: { x: 50, y: 5, w: 45, h: 60 },
+    })
+    const analysis = makeImageAnalysis({
+      safeTextAreas: [{ x: 50, y: 5, w: 45, h: 25, score: 0.9 }],
+    })
+    const withSafe = evaluateLayout(scene, makeFormat(), analysis)
+    const withoutSafe = evaluateLayout(scene, makeFormat())
+    expect(withSafe.readability).toBeGreaterThanOrEqual(withoutSafe.readability)
+  })
+
+  test('low contrast adds extra penalty when text overlaps image', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, x: 52, y: 6, w: 40, h: 20 },
+      image: { x: 50, y: 5, w: 45, h: 60 },
+    })
+    const lowContrast = makeImageAnalysis({ detectedContrast: 'low' })
+    const highContrast = makeImageAnalysis({ detectedContrast: 'high' })
+    const low = evaluateLayout(scene, makeFormat(), lowContrast)
+    const high = evaluateLayout(scene, makeFormat(), highContrast)
+    expect(low.readability).toBeLessThan(high.readability)
+  })
+
+  test('small thumbnail image does not trigger text-over-image check', () => {
+    const scene = makeScene({
+      title: { ...makeScene().title!, x: 5, y: 18, w: 58, h: 28 },
+      image: { x: 68, y: 28, w: 20, h: 20 },
+    })
+    const result = evaluateLayout(scene, makeFormat())
+    expect(result.issues.filter((i) => i.includes('Text over image'))).toHaveLength(0)
+  })
+})
+
+describe('visualBalance — focal point awareness', () => {
+  test('focalAwareBalance is true when imageAnalysis is passed', () => {
+    const result = evaluateLayout(makeScene(), makeFormat(), makeImageAnalysis({ focalPoint: { x: 30, y: 40 } }))
+    expect(result.focalAwareBalance).toBe(true)
+  })
+
+  test('focalAwareBalance is false when no imageAnalysis', () => {
+    const result = evaluateLayout(makeScene(), makeFormat())
+    expect(result.focalAwareBalance).toBeFalsy()
+  })
+
+  test('off-center focal point changes quadrantWeights vs centered', () => {
+    // Extreme focal points so image weight (3.0) shifts across quadrants despite text/logo weights.
+    const topLeftFocal = evaluateLayout(makeScene(), makeFormat(), makeImageAnalysis({ focalPoint: { x: 10, y: 15 } }))
+    const bottomRightFocal = evaluateLayout(makeScene(), makeFormat(), makeImageAnalysis({ focalPoint: { x: 92, y: 88 } }))
+    expect(topLeftFocal.quadrantWeights).not.toEqual(bottomRightFocal.quadrantWeights)
+  })
+
+  test('subjectBox shifts weight to its quadrant', () => {
+    const withSubject = evaluateLayout(
+      makeScene(),
+      makeFormat(),
+      makeImageAnalysis({
+        focalPoint: { x: 50, y: 50 },
+        subjectBox: { x: 60, y: 60, w: 30, h: 30 },
+      }),
+    )
+    const withoutSubject = evaluateLayout(
+      makeScene(),
+      makeFormat(),
+      makeImageAnalysis({ focalPoint: { x: 50, y: 50 } }),
+    )
+    expect(withSubject.quadrantWeights?.bottomRight).toBeGreaterThan(
+      withoutSubject.quadrantWeights?.bottomRight ?? 0,
+    )
   })
 })

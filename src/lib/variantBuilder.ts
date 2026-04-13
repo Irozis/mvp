@@ -178,14 +178,14 @@ export function buildDeterministicVariant({
           imageAnalysis: assetHint?.enhancedImage,
         })
         const fallbackAdapted = applyDeterministicPostLayout(rawFallback)
-        const fallbackEval = evaluateLayout(fallbackAdapted, format)
+        const fallbackEval = evaluateLayout(fallbackAdapted, format, assetHint?.enhancedImage)
         if (fallbackEval.overallScore > baselineOverallScore) {
           return fallbackAdapted
         }
         return null
       }
 
-      const _evaluation = evaluateLayout(sceneForEval, format)
+      const _evaluation = evaluateLayout(sceneForEval, format, assetHint?.enhancedImage)
 
       if (
         initialResolution.confidence < 0.65 &&
@@ -196,7 +196,7 @@ export function buildDeterministicVariant({
           _evaluation.overallScore,
         )
         if (proactiveScene) {
-          const proactiveEval = evaluateLayout(proactiveScene, format)
+          const proactiveEval = evaluateLayout(proactiveScene, format, assetHint?.enhancedImage)
           console.info('[ArchetypeGate] Low confidence, proactive archetype switch', {
             confidence: initialResolution.confidence,
             breakdown: initialResolution.confidenceBreakdown,
@@ -226,7 +226,7 @@ export function buildDeterministicVariant({
             _evaluation.overallScore,
           )
           if (reactiveScene) {
-            const reactiveEval = evaluateLayout(reactiveScene, format)
+            const reactiveEval = evaluateLayout(reactiveScene, format, assetHint?.enhancedImage)
             console.info('[ArchetypeGate] Accepted fallback archetype', {
               archetypeId: initialResolution.fallback,
               score: reactiveEval.overallScore,
@@ -239,7 +239,7 @@ export function buildDeterministicVariant({
       return finish(sceneForEval, false, _evaluation)
     } catch (_gateErr) {
       console.warn('[ArchetypeGate] Evaluation error (non-fatal):', _gateErr)
-      return finish(sceneForEval, false, evaluateLayout(sceneForEval, format))
+      return finish(sceneForEval, false, evaluateLayout(sceneForEval, format, assetHint?.enhancedImage))
     }
   }
 
