@@ -45,6 +45,14 @@ function resolvePrimaryTextFill(brandKit: BrandKit, imageAnalysis: EnhancedImage
   return fill
 }
 
+/** Heuristic: marketplace card/tile/highlight use strict layout zones — skip adaptive text/CTA geometry. */
+function isMarketplaceZoneLayoutScene(scene: Scene): boolean {
+  const iw = scene.image.w ?? 0
+  const ih = scene.image.h ?? 0
+  if (iw <= 0 || ih <= 0) return false
+  return (scene.title.y || 0) > 55 || ih > 50
+}
+
 export function adaptCtaToParent(
   scene: Scene,
   imageAnalysis: EnhancedImageAnalysis | undefined,
@@ -69,9 +77,11 @@ export function adaptCtaToParent(
     } else {
       next.cta.rx = 4
     }
-    const imageArea = (imgW * imgH) / 10000
-    next.cta.w = clamp(imageArea * 28, 14, 30)
-    next.cta.h = clamp(imageArea * 9, 5, 8)
+    if (!isMarketplaceZoneLayoutScene(next)) {
+      const imageArea = (imgW * imgH) / 10000
+      next.cta.w = clamp(imageArea * 28, 14, 30)
+      next.cta.h = clamp(imageArea * 9, 5, 8)
+    }
   } else {
     const bgMid = next.background[1]
     next.cta.bg = mostContrastingColor(bgMid, candidates)
@@ -129,8 +139,10 @@ export function adaptTextAndLogoToParent(
     const baseForTitle = imageAnalysis?.dominantColors?.[0] ?? next.background[1]
     next.title.fill = mostContrastingColor(baseForTitle, titleCandidates)
 
+    const isMarketplaceFormat = isMarketplaceZoneLayoutScene(next)
     const bestArea = pickBestSafeTextArea(imageAnalysis?.safeTextAreas)
-    if (bestArea) {
+
+    if (bestArea && !isMarketplaceFormat) {
       const availableW = bestArea.w
       const baseFs = next.title.fontSize ?? 48
       let fs = baseFs
@@ -140,16 +152,23 @@ export function adaptTextAndLogoToParent(
       next.title.x = bestArea.x + 2
       next.title.y = bestArea.y + 4
       next.title.w = bestArea.w - 4
+      const fsAfter = next.title.fontSize ?? 48
+      const maxLines = next.title.maxLines ?? 2
+      const estimatedTitleH = (fsAfter / 1080) * 100 * maxLines * 1.1
+      next.subtitle.x = next.title.x
+      next.subtitle.y = next.title.y + estimatedTitleH + 2
+      next.subtitle.w = next.title.w
+    } else if (!isMarketplaceFormat && !bestArea) {
+      const fs = next.title.fontSize ?? 48
+      const maxLines = next.title.maxLines ?? 2
+      const estimatedTitleH = (fs / 1080) * 100 * maxLines * 1.1
+      next.subtitle.x = next.title.x
+      next.subtitle.y = next.title.y + estimatedTitleH + 2
+      next.subtitle.w = next.title.w
     }
 
     next.subtitle.opacity = subtitleOpacityFromContrast(imageAnalysis)
     next.subtitle.fill = next.title.fill
-    const fs = next.title.fontSize ?? 48
-    const maxLines = next.title.maxLines ?? 2
-    const estimatedTitleH = (fs / 1080) * 100 * maxLines * 1.1
-    next.subtitle.x = next.title.x
-    next.subtitle.y = next.title.y + estimatedTitleH + 2
-    next.subtitle.w = next.title.w
 
     const contrast = imageAnalysis?.detectedContrast
     if (contrast === 'high') next.logo.bgOpacity = 0.28
