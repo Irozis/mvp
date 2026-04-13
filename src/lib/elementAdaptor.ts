@@ -60,6 +60,13 @@ function mostVividColor(colors: string[]): string {
   return bestColor
 }
 
+function isGoodCtaColor(h: { s: number; l: number }): boolean {
+  if (h.s < 40) return false
+  if (h.l > 72) return false
+  if (h.l < 18) return false
+  return true
+}
+
 function mostContrastingColor(against: string, candidates: string[]): string {
   let best = candidates[0]
   let bestScore = contrastRatio(best, against)
@@ -130,12 +137,28 @@ export function adaptCtaToParent(
 
   if (parentIsImage) {
     const palette = imageAnalysis?.dominantColors?.filter(Boolean) ?? []
+    const dominant = imageAnalysis?.dominantColors?.[0] ?? next.background[1]
+    const fallbackCtaColors = ['#E11D48', '#2563EB', '#D97706', '#16A34A']
     if (palette.length) {
       const vividColor = mostVividColor(palette)
       const hsl = hexToHsl(vividColor)
-      next.cta.bg = hsl.s > 25 ? vividColor : brandKit.accentColor
+      if (hsl.s > 25 && isGoodCtaColor(hsl)) {
+        next.cta.bg = vividColor
+      } else {
+        const accentHsl = hexToHsl(brandKit.accentColor)
+        if (isGoodCtaColor(accentHsl)) {
+          next.cta.bg = brandKit.accentColor
+        } else {
+          next.cta.bg = mostContrastingColor(dominant, fallbackCtaColors)
+        }
+      }
     } else {
-      next.cta.bg = brandKit.accentColor
+      const accentHsl = hexToHsl(brandKit.accentColor)
+      if (isGoodCtaColor(accentHsl)) {
+        next.cta.bg = brandKit.accentColor
+      } else {
+        next.cta.bg = mostContrastingColor(dominant, fallbackCtaColors)
+      }
     }
     next.cta.fill = getContrastingText(next.cta.bg)
     if (!isMarketplaceZoneLayoutScene(next, formatKey)) {
@@ -159,6 +182,12 @@ export function adaptCtaToParent(
       next.cta.rx = 4
     }
   }
+
+  const CTA_MIN_W = 16
+  const CTA_MIN_H = 6
+  if ((next.cta.w || 0) < CTA_MIN_W) next.cta.w = CTA_MIN_W
+  if ((next.cta.h || 0) < CTA_MIN_H) next.cta.h = CTA_MIN_H
+  if ((next.cta.fontSize || 0) < 14) next.cta.fontSize = 14
 
   if (manualOverride) {
     Object.assign(next.cta, manualOverride)

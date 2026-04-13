@@ -2482,6 +2482,28 @@ function buildFamilyZones({
       current.text = { x: insets.x + 2, y: 46, w: 76, h: 28 }
       current.cta = { x: insets.x + 2, y: 80, w: 28, h: 6 }
     }
+    if (format.key === 'marketplace-card') {
+      current.image = {
+        x: 48,
+        y: 0,
+        w: 52,
+        h: 100,
+      }
+      current.text = {
+        x: insets.x + 1,
+        y: 18,
+        w: 44,
+        h: 56,
+      }
+      current.cta = {
+        x: insets.x + 2,
+        y: 80,
+        w: 38,
+        h: 8,
+      }
+      current.logo = { x: insets.x, y: insets.y, w: 14, h: 5.5 }
+      current.badge = { x: insets.x, y: 10, w: 18, h: 5.5 }
+    }
     return applyPrimarySquareBaselineZoneGuard(
       finalizeFamilyZones({
       current,
@@ -2578,6 +2600,28 @@ function buildFamilyZones({
       logo: { x: insets.x, y: insets.y, w: format.family === 'skyscraper' ? 22 : 12, h: format.family === 'skyscraper' ? 5 : 4.8 },
       badge: { x: insets.x, y: format.family === 'skyscraper' ? 38 : 44, w: 18, h: format.family === 'skyscraper' ? 5 : 4.8 },
       cta: { x: format.family === 'skyscraper' ? 10 : insets.x + 1, y: format.family === 'skyscraper' ? 82 : isPrimaryPortrait ? 84 : 86, w: 24, h: isPrimaryPortrait ? 6.6 : 7.2 },
+    }
+    if (format.key === 'marketplace-highlight') {
+      current.image = {
+        x: 0,
+        y: 0,
+        w: 100,
+        h: 62,
+      }
+      current.text = {
+        x: insets.x + 1,
+        y: 64,
+        w: 86,
+        h: 22,
+      }
+      current.cta = {
+        x: insets.x + 1,
+        y: 88,
+        w: 42,
+        h: 7.5,
+      }
+      current.logo = { x: insets.x, y: insets.y + 1, w: 14, h: 5.5 }
+      current.badge = { x: 100 - insets.x - 20, y: insets.y + 1, w: 18, h: 5.5 }
     }
     return finalizeFamilyZones({
       current,

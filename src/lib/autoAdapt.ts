@@ -6392,6 +6392,15 @@ export function createMasterScene(template: TemplateKey, brandKit: BrandKit) {
   return clone(baseScene(template, brandKit.background, brandKit.accentColor))
 }
 
+function clampMarketplaceSceneReadability(scene: Scene, formatKey: FormatKey): Scene {
+  if (formatKey !== 'marketplace-card' && formatKey !== 'marketplace-highlight') return scene
+  const next = clone(scene)
+  if ((next.title.fontSize || 0) < 32) next.title.fontSize = 32
+  if ((next.cta.w || 0) < 20) next.cta.w = 20
+  if ((next.cta.h || 0) < 7) next.cta.h = 7
+  return next
+}
+
 function normalizeImageHint(assetHint?: AssetHint, imageAnalysis?: EnhancedImageAnalysis): AssetHint | undefined {
   const base = assetHint ? clone(assetHint) : {}
   const enhanced = imageAnalysis || assetHint?.enhancedImage
@@ -6515,11 +6524,7 @@ function buildDeterministicVariant({
       image: blocks?.image,
     }, formatKey)
   }
-  console.log('[adapt-debug] formatKey:', formatKey)
-  console.log('[adapt-debug] cta.bg:', scene.cta.bg)
-  console.log('[adapt-debug] cta.rx:', scene.cta.rx)
-  console.log('[adapt-debug] title.fill:', scene.title.fill)
-  console.log('[adapt-debug] assetHint.enhancedImage exists:', Boolean(assetHint?.enhancedImage))
+  scene = clampMarketplaceSceneReadability(scene, formatKey)
   return scene
 }
 
@@ -6687,6 +6692,7 @@ export async function generateVariant(input: {
     scene = adaptTextAndLogoToParent(scene, imageAnalysis, input.brandKit, input.textLogoManualOverrides, input.formatKey)
     scene = adaptBadgeAndImageToParent(scene, imageAnalysis, input.brandKit, input.badgeImageManualOverrides, input.formatKey)
   }
+  scene = clampMarketplaceSceneReadability(scene, input.formatKey)
 
   return {
     scene,
