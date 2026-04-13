@@ -21,7 +21,7 @@ import {
   clampMarketplaceSceneReadability,
   finalizePrimarySelectedOutcomeSync,
   selectBestPreviewCandidate,
-} from './autoAdapt'
+} from './layoutPipelineCore'
 import type {
   AssetHint,
   BrandKit,

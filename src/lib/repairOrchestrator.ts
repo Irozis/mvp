@@ -38,7 +38,7 @@ import type {
   RepairAttempt,
   RepairDiagnostics,
   RepairRegenerationCandidateDiagnostics,
-} from './repairPipelineSupport'
+} from './repairHelpers'
 import {
   REPAIR_HISTORY_LIMIT,
   analysisToIssueBuckets,
@@ -70,7 +70,7 @@ import {
   toRepairRegenerationCandidateDiagnostics,
   unique,
   unresolvedIssueCount,
-} from './repairPipelineSupport'
+} from './repairHelpers'
 
 export function runAutoFix(
   scene: Scene,

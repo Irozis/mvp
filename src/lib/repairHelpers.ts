@@ -1,13 +1,23 @@
-/**
- * Repair pipeline internals re-exported from autoAdapt for repairOrchestrator.
- * Keeps repairOrchestrator from importing autoAdapt.ts directly.
- */
+// Repair pipeline helpers.
+// Extracted from autoAdapt.ts to break the repair cycle.
+// repairOrchestrator imports from here directly.
+
+export type { AutoFixStructuralEscalationContext } from './layoutPipelineCore'
+
 export type {
-  AutoFixStructuralEscalationContext,
   RepairAttempt,
   RepairDiagnostics,
   RepairRegenerationCandidateDiagnostics,
 } from './autoAdapt'
+
+export {
+  clone,
+  getDefaultPreviewCandidateBudget,
+  getStructuralTierRank,
+  selectBestPreviewCandidate,
+  unique,
+  unresolvedIssueCount,
+} from './layoutPipelineCore'
 
 export {
   REPAIR_HISTORY_LIMIT,
@@ -20,24 +30,18 @@ export {
   buildRepairDecision,
   chooseFixStrategy,
   classifyStructuralFailure,
-  clone,
   collectFixActions,
   createRepairAttemptSignature,
   createRepairSceneSignature,
   evaluateRepairScene,
   evaluateRepairSceneSync,
-  getDefaultPreviewCandidateBudget,
-  getStructuralTierRank,
   logRepairAttemptSummary,
   pickBestAcceptedRepair,
   pickPrimaryStructuralEscalationCandidate,
-  selectBestPreviewCandidate,
   selectRepairSearchWinner,
   shouldAllowAnotherFix,
   shouldStartWithLocalRepair,
   supportsPrimaryStructuralEscalation,
   toRepairAttemptDiagnostics,
   toRepairRegenerationCandidateDiagnostics,
-  unique,
-  unresolvedIssueCount,
 } from './autoAdapt'
