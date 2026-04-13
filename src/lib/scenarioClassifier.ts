@@ -159,7 +159,7 @@ function buildHeuristicLayoutIntent({
   })
   const preferredArchetype = rankedArchetypes[0]
   if (isMarketplaceLayoutV2Enabled() && (format.key === 'marketplace-card' || format.key === 'marketplace-tile')) {
-    return buildMarketplaceV2BaseLayoutIntent({ formatKey: format.key, profile })
+    return buildMarketplaceV2BaseLayoutIntent({ formatKey: format.key, profile, master, imageAnalysis })
   }
   if (format.key === 'marketplace-card') {
     // Marketplace-card now uses template adaptation as the primary intent path.
@@ -414,6 +414,12 @@ export function resolveArchetype(
     archetypeId === 'v2-card-text-focus'
   ) {
     if (formatAspect === 'portrait') formatMismatch += 0.05
+  }
+  if (archetypeId === 'v2-card-full-bleed-overlay') {
+    if (formatAspect === 'landscape') formatMismatch += 0.1
+  }
+  if (archetypeId === 'v2-card-text-only') {
+    if (formatAspect === 'landscape') formatMismatch += 0.05
   }
 
   const rawConfidence =

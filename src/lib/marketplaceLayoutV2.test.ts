@@ -79,8 +79,8 @@ describe('marketplaceLayoutV2', () => {
     expect(scene.cta.h || 0).toBeGreaterThan(4)
   })
 
-  it('exposes three card archetypes for preview enumeration', () => {
-    expect(allMarketplaceCardV2Archetypes()).toHaveLength(3)
+  it('exposes card archetypes for preview enumeration', () => {
+    expect(allMarketplaceCardV2Archetypes()).toHaveLength(6)
   })
 
   it('selects hero-shelf for balanced copy even when profile is text-first (e.g. marketplace-benefit-stack)', () => {

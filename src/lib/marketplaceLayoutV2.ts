@@ -1,5 +1,6 @@
 import type {
   ContentProfile,
+  EnhancedImageAnalysis,
   FormatDefinition,
   FormatKey,
   LayoutIntent,
@@ -29,15 +30,42 @@ export function isMarketplaceV2FormatKey(key: FormatKey): boolean {
 }
 
 export function allMarketplaceCardV2Archetypes(): MarketplaceV2ArchetypeId[] {
-  return ['v2-card-split-image-right', 'v2-card-hero-shelf', 'v2-card-text-focus']
+  return [
+    'v2-card-split-image-right',
+    'v2-card-hero-shelf',
+    'v2-card-text-focus',
+    'v2-card-split-image-left',
+    'v2-card-full-bleed-overlay',
+    'v2-card-text-only',
+  ]
 }
 
 export function allMarketplaceTileV2Archetypes(): MarketplaceV2ArchetypeId[] {
-  return ['v2-tile-split-balanced', 'v2-tile-image-forward']
+  return ['v2-tile-split-balanced', 'v2-tile-image-forward', 'v2-tile-image-left']
 }
 
 function cloneScene(scene: Scene): Scene {
   return JSON.parse(JSON.stringify(scene)) as Scene
+}
+
+/**
+ * Heuristic for full-bleed overlay: `EnhancedImageAnalysis` has no `dominantMood` / `visualComplexity`;
+ * we use mood + profile tone/semanticType, subject-box area as focal strength, and crop/contrast guards.
+ */
+function wantsMarketplaceCardFullBleedOverlay(
+  imageAnalysis: EnhancedImageAnalysis,
+  profile: ContentProfile
+): boolean {
+  if (imageAnalysis.cropRisk === 'high' || imageAnalysis.detectedContrast === 'low') return false
+  const strongVisual =
+    imageAnalysis.mood === 'dark' ||
+    profile.semanticType === 'luxury' ||
+    profile.tone === 'bold' ||
+    profile.tone === 'premium'
+  const subjectCoverageHigh =
+    imageAnalysis.subjectBox != null &&
+    imageAnalysis.subjectBox.w * imageAnalysis.subjectBox.h >= 24 * 24
+  return Boolean(imageAnalysis.focalPoint) && (strongVisual || subjectCoverageHigh)
 }
 
 /**
@@ -48,12 +76,33 @@ function cloneScene(scene: Scene): Scene {
 export function selectPrimaryMarketplaceV2Archetype(input: {
   formatKey: 'marketplace-card' | 'marketplace-tile'
   profile: ContentProfile
+  /** Used for text-length signals; optional for callers that only have profile. */
+  master?: Scene
+  imageAnalysis?: EnhancedImageAnalysis
 }): MarketplaceV2ArchetypeId {
+  const titleLen = (input.master?.title.text ?? '').length
+  // Scene has no `body` field; `profile.bodyLength` / subtitle length reflect master copy from `extractCreativeInput`.
+  const textHeavyCard =
+    input.profile.bodyLength > 180 || input.profile.subtitleLength > 180 || titleLen > 60
+
   if (input.formatKey === 'marketplace-tile') {
+    if (input.imageAnalysis && input.imageAnalysis.focalPoint.x < 0.4) {
+      return 'v2-tile-image-left'
+    }
     if (input.profile.preferredMessageMode === 'image-first' || input.profile.productVisualNeed === 'critical') {
       return 'v2-tile-image-forward'
     }
     return 'v2-tile-split-balanced'
+  }
+
+  if (textHeavyCard) {
+    return 'v2-card-text-only'
+  }
+  if (input.imageAnalysis && wantsMarketplaceCardFullBleedOverlay(input.imageAnalysis, input.profile)) {
+    return 'v2-card-full-bleed-overlay'
+  }
+  if (input.imageAnalysis && input.imageAnalysis.focalPoint.x < 0.4) {
+    return 'v2-card-split-image-left'
   }
   if (input.profile.density === 'dense') {
     return 'v2-card-text-focus'
@@ -67,21 +116,47 @@ export function selectPrimaryMarketplaceV2Archetype(input: {
 export function buildMarketplaceV2BaseLayoutIntent(input: {
   formatKey: 'marketplace-card' | 'marketplace-tile'
   profile: ContentProfile
+  master?: Scene
+  imageAnalysis?: EnhancedImageAnalysis
 }): LayoutIntent {
   const archetype = selectPrimaryMarketplaceV2Archetype(input)
   if (input.formatKey === 'marketplace-card') {
+    const imageMode: LayoutIntent['imageMode'] =
+      archetype === 'v2-card-full-bleed-overlay'
+        ? 'background'
+        : archetype === 'v2-card-text-only'
+          ? 'framed'
+          : archetype === 'v2-card-split-image-left'
+            ? 'split-left'
+            : 'split-right'
+    const textMode: LayoutIntent['textMode'] =
+      archetype === 'v2-card-full-bleed-overlay' ? 'overlay' : 'cluster-left'
+    const mode: LayoutIntent['mode'] =
+      archetype === 'v2-card-full-bleed-overlay'
+        ? 'overlay'
+        : archetype === 'v2-card-text-only'
+          ? 'text-first'
+          : 'split'
+    const structuralArchetype: StructuralArchetype =
+      archetype === 'v2-card-text-focus' || archetype === 'v2-card-text-only'
+        ? 'dense-information'
+        : archetype === 'v2-card-full-bleed-overlay'
+          ? 'overlay-balanced'
+          : archetype === 'v2-card-hero-shelf'
+            ? 'image-hero'
+            : 'split-horizontal'
     return {
       family: 'square-image-top-text-bottom',
       presetId: 'square-image-top-text-bottom',
       marketplaceLayoutEngine: 'v2-slot',
       marketplaceV2Archetype: archetype,
-      imageMode: 'split-right',
-      textMode: 'cluster-left',
+      imageMode,
+      textMode,
       balanceMode: 'balanced',
       tension: 'calm',
-      mode: 'split',
+      mode,
       sourceFamily: 'square',
-      structuralArchetype: archetype === 'v2-card-text-focus' ? 'dense-information' : archetype === 'v2-card-hero-shelf' ? 'image-hero' : 'split-horizontal',
+      structuralArchetype,
     }
   }
   return {
@@ -89,7 +164,7 @@ export function buildMarketplaceV2BaseLayoutIntent(input: {
     presetId: 'landscape-balanced-split',
     marketplaceLayoutEngine: 'v2-slot',
     marketplaceV2Archetype: archetype,
-    imageMode: 'split-right',
+    imageMode: archetype === 'v2-tile-image-left' ? 'split-left' : 'split-right',
     textMode: 'cluster-left',
     balanceMode: 'balanced',
     tension: 'calm',
@@ -108,7 +183,7 @@ type SlotPack = {
   cta: { x: number; y: number; w: number; h: number }
 }
 
-function slotsForArchetype(format: FormatDefinition, archetype: MarketplaceV2ArchetypeId): SlotPack {
+export function slotsForArchetype(format: FormatDefinition, archetype: MarketplaceV2ArchetypeId): SlotPack {
   if (format.key === 'marketplace-card') {
     if (archetype === 'v2-card-split-image-right') {
       // Text column + inset image: ≥12% width gap (here ~12.5%) so image sits closer to copy for a single composition; logo/badge in format zones.
@@ -132,6 +207,36 @@ function slotsForArchetype(format: FormatDefinition, archetype: MarketplaceV2Arc
         cta: { x: 8, y: 80, w: 21, h: 4.6 },
       }
     }
+    if (archetype === 'v2-card-split-image-left') {
+      return {
+        image: { x: 10, y: 12, w: 37, h: 76, rx: 3.2 },
+        logo: { x: 82, y: 6, w: 11, h: 4.2 },
+        badge: { x: 10, y: 12, w: 12.5, h: 4.2 },
+        headline: { x: 53, y: 28, w: 34, h: 28 },
+        subtitle: { x: 53, y: 54, w: 34, h: 24 },
+        cta: { x: 56, y: 80, w: 21, h: 4.6 },
+      }
+    }
+    if (archetype === 'v2-card-full-bleed-overlay') {
+      return {
+        image: { x: 0, y: 0, w: 100, h: 100, rx: 0 },
+        logo: { x: 6.5, y: 6, w: 11, h: 4.2 },
+        badge: { x: 76, y: 6, w: 14, h: 4.2 },
+        headline: { x: 6.5, y: 52, w: 86, h: 16 },
+        subtitle: { x: 6.5, y: 68, w: 82, h: 10 },
+        cta: { x: 8, y: 82, w: 21, h: 4.6 },
+      }
+    }
+    if (archetype === 'v2-card-text-only') {
+      return {
+        image: { x: 68, y: 28, w: 25, h: 22, rx: 2 },
+        logo: { x: 6.5, y: 6, w: 11, h: 4.2 },
+        badge: { x: 72, y: 6, w: 18, h: 4.2 },
+        headline: { x: 6.5, y: 18, w: 58, h: 28 },
+        subtitle: { x: 6.5, y: 50, w: 86, h: 22 },
+        cta: { x: 8, y: 80, w: 21, h: 4.6 },
+      }
+    }
     // v2-card-hero-shelf — shorter hero band so headline clears image by ≥12%; badge/CTA aligned to rule zones.
     return {
       image: { x: 7, y: 27, w: 86, h: 17, rx: 2.8 },
@@ -151,6 +256,16 @@ function slotsForArchetype(format: FormatDefinition, archetype: MarketplaceV2Arc
       headline: { x: 5, y: 28, w: 38, h: 22 },
       subtitle: { x: 5, y: 44, w: 38, h: 18 },
       cta: { x: 5, y: 71.02, w: 18, h: 5.73 },
+    }
+  }
+  if (archetype === 'v2-tile-image-left') {
+    return {
+      image: { x: 8, y: 11, w: 35, h: 78, rx: 2.2 },
+      logo: { x: 79, y: 7.05, w: 11, h: 6.25 },
+      badge: { x: 8, y: 15.5, w: 11, h: 5.5 },
+      headline: { x: 50, y: 28, w: 42, h: 22 },
+      subtitle: { x: 50, y: 44, w: 42, h: 18 },
+      cta: { x: 50, y: 71.02, w: 18, h: 5.73 },
     }
   }
   // v2-tile-split-balanced
@@ -285,7 +400,10 @@ export function buildMarketplaceV2Scene(input: {
 export function structuralArchetypeForMarketplaceV2Archetype(arch: MarketplaceV2ArchetypeId): StructuralArchetype {
   switch (arch) {
     case 'v2-card-text-focus':
+    case 'v2-card-text-only':
       return 'dense-information'
+    case 'v2-card-full-bleed-overlay':
+      return 'overlay-balanced'
     case 'v2-card-hero-shelf':
       return 'image-hero'
     default:

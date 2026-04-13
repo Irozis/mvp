@@ -36,8 +36,12 @@ export type MarketplaceV2ArchetypeId =
   | 'v2-card-split-image-right'
   | 'v2-card-hero-shelf'
   | 'v2-card-text-focus'
+  | 'v2-card-split-image-left'
+  | 'v2-card-full-bleed-overlay'
+  | 'v2-card-text-only'
   | 'v2-tile-split-balanced'
   | 'v2-tile-image-forward'
+  | 'v2-tile-image-left'
 
 export type MarketplaceTemplateVariant =
   | 'base'
