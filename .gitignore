@@ -8,6 +8,9 @@ dataset/_*.json
 dataset/_*.csv
 dataset/_*.md
 
+# Playwright visual QA artifacts (generated locally / CI)
+e2e/test-results/
+
 # Common local files
 .DS_Store
 Thumbs.db

@@ -13,6 +13,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:visual": "playwright test e2e/visualQuality.test.ts --reporter=list",
     "extract:social-square": "vite-node scripts/calibration/socialSquareExtraction.ts",
     "metrics:social-square": "vite-node scripts/calibration/socialSquareMetrics.ts",
     "fit-thresholds:social-square": "vite-node scripts/calibration/socialSquareThresholdFitting.ts",
