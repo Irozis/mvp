@@ -10,6 +10,7 @@ import type {
   Scene,
   Variant,
   VariantManualOverride,
+  SessionTelemetry,
 } from '../lib/types'
 
 type BlockAnalysisLike = {
@@ -87,6 +88,8 @@ export function VariantInspector({
   onApplyLayoutFamily,
   archetypeResolution,
   layoutEvaluation,
+  sessionTelemetry,
+  onResetTelemetry,
 }: {
   format: FormatDefinition
   scene: Scene
@@ -95,6 +98,8 @@ export function VariantInspector({
   manualOverride?: VariantManualOverride
   archetypeResolution?: Variant['archetypeResolution']
   layoutEvaluation?: LayoutEvaluation
+  sessionTelemetry?: SessionTelemetry | null
+  onResetTelemetry?: () => void
   onSelectBlock: (blockId: LayoutElementKind) => void
   onPatchBlock: (blockId: LayoutElementKind, patch: Partial<ManualBlockOverride>) => void
   onResetBlock: (blockId: LayoutElementKind) => void
@@ -370,6 +375,182 @@ export function VariantInspector({
                 ))}
               </div>
             )}
+          </div>
+        </details>
+      )}
+
+      {sessionTelemetry && sessionTelemetry.exportCount > 0 && (
+        <details className="stack" style={{ marginTop: 8 }}>
+          <summary className="section-title" style={{ cursor: 'pointer', listStyle: 'none' }}>
+            Session stats
+          </summary>
+          <div className="stack" style={{ marginTop: 8 }}>
+            <div>
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: 11,
+                  background: 'var(--color-background-secondary, #f3f4f6)',
+                  border: '1px solid var(--color-border-tertiary, #e5e7eb)',
+                  borderRadius: 'var(--border-radius-md, 6px)',
+                  padding: '2px 8px',
+                  marginRight: 6,
+                }}
+              >
+                Exports: {sessionTelemetry.exportCount}
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: 11,
+                  background: 'var(--color-background-secondary, #f3f4f6)',
+                  border: '1px solid var(--color-border-tertiary, #e5e7eb)',
+                  borderRadius: 'var(--border-radius-md, 6px)',
+                  padding: '2px 8px',
+                  marginRight: 6,
+                }}
+              >
+                Variants: {sessionTelemetry.variantCount}
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: 11,
+                  background: 'var(--color-background-secondary, #f3f4f6)',
+                  border: '1px solid var(--color-border-tertiary, #e5e7eb)',
+                  borderRadius: 'var(--border-radius-md, 6px)',
+                  padding: '2px 8px',
+                  marginRight: 6,
+                }}
+              >
+                Avg score: {sessionTelemetry.avgOverallScore.toFixed(2)}
+              </span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: 11,
+                  background: 'var(--color-background-secondary, #f3f4f6)',
+                  border: '1px solid var(--color-border-tertiary, #e5e7eb)',
+                  borderRadius: 'var(--border-radius-md, 6px)',
+                  padding: '2px 8px',
+                  marginRight: 6,
+                }}
+              >
+                Fallback rate: {Math.round(sessionTelemetry.fallbackRate * 100)}%
+              </span>
+            </div>
+
+            <table
+              style={{
+                width: '100%',
+                fontSize: 11,
+                borderCollapse: 'collapse',
+                marginTop: 8,
+              }}
+            >
+              <thead>
+                <tr
+                  style={{
+                    background: 'var(--color-background-secondary, #f3f4f6)',
+                    color: 'var(--color-text-secondary, #6b7280)',
+                  }}
+                >
+                  <th style={{ textAlign: 'left', padding: '4px 6px' }}>Archetype</th>
+                  <th style={{ textAlign: 'right', padding: '4px 6px' }}>Uses</th>
+                  <th style={{ textAlign: 'right', padding: '4px 6px' }}>Avg score</th>
+                  <th style={{ textAlign: 'right', padding: '4px 6px' }}>Fallbacks</th>
+                  <th style={{ textAlign: 'right', padding: '4px 6px' }}>Low conf</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.values(sessionTelemetry.archetypes)
+                  .sort((a, b) => b.count - a.count)
+                  .slice(0, 5)
+                  .map((row, index) => {
+                    const avg = row.count > 0 ? row.totalScore / row.count : 0
+                    const avgColor =
+                      avg >= 0.8
+                        ? 'var(--color-text-success, #16a34a)'
+                        : avg >= 0.65
+                          ? 'var(--color-text-warning, #d97706)'
+                          : 'var(--color-text-danger, #dc2626)'
+                    const label =
+                      row.archetypeId.length > 28 ? `${row.archetypeId.slice(0, 25)}…` : row.archetypeId
+                    return (
+                      <tr
+                        key={row.archetypeId}
+                        style={{
+                          background: index % 2 === 1 ? 'rgba(243, 244, 246, 0.5)' : 'transparent',
+                        }}
+                      >
+                        <td
+                          style={{
+                            fontFamily: 'ui-monospace, monospace',
+                            maxWidth: 160,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            padding: '4px 6px',
+                          }}
+                          title={row.archetypeId}
+                        >
+                          {label}
+                        </td>
+                        <td style={{ textAlign: 'right', padding: '4px 6px' }}>{row.count}</td>
+                        <td style={{ textAlign: 'right', padding: '4px 6px', color: avgColor }}>{avg.toFixed(2)}</td>
+                        <td
+                          style={{
+                            textAlign: 'right',
+                            padding: '4px 6px',
+                            color: row.fallbacks > 0 ? '#dc2626' : 'var(--color-text-secondary, #9ca3af)',
+                          }}
+                        >
+                          {row.fallbacks}
+                        </td>
+                        <td
+                          style={{
+                            textAlign: 'right',
+                            padding: '4px 6px',
+                            color: row.lowConfidence > 0 ? '#d97706' : 'var(--color-text-secondary, #9ca3af)',
+                          }}
+                        >
+                          {row.lowConfidence}
+                        </td>
+                      </tr>
+                    )
+                  })}
+              </tbody>
+            </table>
+
+            <div
+              style={{
+                marginTop: 8,
+                fontSize: 11,
+                color: 'var(--color-text-secondary, #6b7280)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <span>Total issues flagged: {sessionTelemetry.totalIssues}</span>
+              {onResetTelemetry && (
+                <button
+                  type="button"
+                  onClick={onResetTelemetry}
+                  style={{
+                    fontSize: 11,
+                    color: 'var(--color-text-danger, #dc2626)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                  }}
+                >
+                  Clear session
+                </button>
+              )}
+            </div>
           </div>
         </details>
       )}

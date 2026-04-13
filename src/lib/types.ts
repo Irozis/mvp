@@ -1983,3 +1983,5 @@ export type CreativeExportJSON = Omit<Project, 'variants'> & {
     Record<FormatKey, Variant & { archetype: CreativeArchetypeExport; evaluation: CreativeEvaluationExport }>
   >
 }
+
+export type { SessionTelemetry } from './sessionTelemetry'

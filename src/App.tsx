@@ -33,6 +33,7 @@ import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type Referen
 import { getFormatRuleSet } from './lib/formatRules'
 import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, FORMAT_MAP, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
 import { buildCreativeExportJSON } from './lib/creativeJsonExport'
+import { loadTelemetry, recordExport, resetTelemetry } from './lib/sessionTelemetry'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
@@ -51,6 +52,7 @@ import type {
   ManualBlockOverride,
   Project,
   SavedProject,
+  SessionTelemetry,
   Scene,
   SelectedElement,
   TemplateKey,
@@ -207,6 +209,7 @@ export default function App() {
   const [fixSessions, setFixSessions] = useState<Partial<Record<FormatKey, FixSessionState>>>({})
   const [bannerAiReviewByFormat, setBannerAiReviewByFormat] = useState<Partial<Record<FormatKey, BannerQualityResult>>>({})
   const [selectedBlockId, setSelectedBlockId] = useState<LayoutElementKind | null>(null)
+  const [sessionTelemetry, setSessionTelemetry] = useState<SessionTelemetry | null>(() => loadTelemetry())
   const [layoutDebug, setLayoutDebug] = useState<LayoutDebugOptions>({
     showBoxes: false,
     showBoxLabels: true,
@@ -791,6 +794,8 @@ export default function App() {
       new Blob([JSON.stringify(buildCreativeExportJSON(project), null, 2)], { type: 'application/json' }),
       `${slugify(projectName || 'project')}.json`,
     )
+    const updated = recordExport(project)
+    setSessionTelemetry(updated)
     setStatus({ tone: 'success', text: 'Project JSON exported.' })
   }
 
@@ -1225,6 +1230,11 @@ export default function App() {
                     archetypeResolution={project.variants?.[editMode]?.archetypeResolution}
                     layoutEvaluation={project.variants?.[editMode]?.layoutEvaluation}
                     manualOverride={currentVariantOverride}
+                    sessionTelemetry={sessionTelemetry}
+                    onResetTelemetry={() => {
+                      resetTelemetry()
+                      setSessionTelemetry(null)
+                    }}
                     onSelectBlock={setSelectedBlockId}
                     onPatchBlock={(blockId, patch) => patchVariantOverride(editMode, blockId, patch)}
                     onResetBlock={(blockId) => resetVariantBlock(editMode, blockId)}
