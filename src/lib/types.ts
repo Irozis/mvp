@@ -72,7 +72,7 @@ export type TemplateZonePattern =
   | 'text-led-card-with-support-accent'
   | 'product-support-with-grounded-copy'
   | 'minimal-stack-with-quiet-support'
-export type BrandTemplateKey = 'startup-blue' | 'retail-impact' | 'editorial-serene'
+export type BrandTemplateKey = 'startup-blue' | 'retail-impact' | 'editorial-serene' | 'dark-premium'
 export type UserRole = 'owner' | 'editor' | 'viewer'
 export type SelectedElement = 'title' | 'subtitle' | 'cta' | 'badge' | 'logo' | 'image'
 export type ImageProfile = 'ultraWide' | 'landscape' | 'square' | 'portrait' | 'tall'
@@ -385,6 +385,8 @@ export type SceneElement = {
   charsPerLine?: number
   maxLines?: number
   weight?: number
+  /** When set, preview may prefer this over global brand font. */
+  fontFamily?: string
   bg?: string
   fill?: string
   text?: string
@@ -396,6 +398,8 @@ export type SceneElement = {
   realizationFallback?: 'proof-compact'
   /** Hero image zoom (>1) applied around bbox center after slice math (e.g. post AI review). */
   imageZoom?: number
+  /** CSS color for image frame border in preview (e.g. rgba). */
+  strokeColor?: string
 }
 
 export type Scene = {
@@ -518,12 +522,20 @@ export type ManualBlockOverride = {
   fontSize?: number
   charsPerLine?: number
   maxLines?: number
+  bg?: string
+  fill?: string
+  opacity?: number
+  bgOpacity?: number
+  strokeColor?: string
 }
 
 export type ImageRolePreset = 'hero' | 'background' | 'framed' | 'split-left' | 'split-right' | 'accent'
 
 export type VariantManualOverride = {
-  blocks?: Partial<Record<LayoutElementKind, ManualBlockOverride>>
+  blocks?: Partial<Record<LayoutElementKind, ManualBlockOverride>> & {
+    /** Convenience alias for `headline` (maps to scene `title`) */
+    title?: ManualBlockOverride
+  }
   selectedLayoutFamily?: LayoutIntentFamily
   imageRolePreset?: ImageRolePreset
   updatedAt: string

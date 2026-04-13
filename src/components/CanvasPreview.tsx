@@ -262,15 +262,32 @@ function wrapImageZoom(
   return <g transform={`translate(${cx} ${cy}) scale(${z}) translate(${-cx} ${-cy})`}>{node}</g>
 }
 
+/** SVG preserveAspectRatio alignment (before ` slice`) from focal point and format family. */
+function focalSliceAlign(format: FormatDefinition, focalX: number, focalY: number): string {
+  if (format.family === 'square') {
+    if (focalX < 35) return 'xMinYMid'
+    if (focalX > 65) return 'xMaxYMid'
+    return 'xMidYMid'
+  }
+  if (format.family === 'portrait') {
+    if (focalY < 40) return 'xMidYMin'
+    if (focalY > 60) return 'xMidYMax'
+    return 'xMidYMid'
+  }
+  return 'xMidYMid'
+}
+
 function renderImage(
   imageUrl: string,
   bounds: { x: number; y: number; w: number; h: number },
   scene: Scene,
+  format: FormatDefinition,
   imageDims: { w: number; h: number } | null,
   clipPathId?: string,
 ) {
   const focalX = scene.image.focalX ?? 50
   const focalY = scene.image.focalY ?? 50
+  const align = focalSliceAlign(format, focalX, focalY)
   const wantsMeet = (scene.image.fit || '').endsWith('meet')
   const clipPath = clipPathId ? `url(#${clipPathId})` : undefined
   const zoom = scene.image.imageZoom ?? 1
@@ -285,7 +302,7 @@ function renderImage(
     return <image href={imageUrl} x={imgX} y={imgY} width={scaledW} height={scaledH} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
   }
   const img = (
-    <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio="xMidYMid slice" clipPath={clipPath} />
+    <image href={imageUrl} x={bounds.x} y={bounds.y} width={bounds.w} height={bounds.h} preserveAspectRatio={`${align} slice`} clipPath={clipPath} />
   )
   return wrapImageZoom(bounds, zoom > 1 ? zoom : undefined, img)
 }
@@ -710,7 +727,7 @@ export function CanvasPreview({
           {useHighlightPatternB && highlightB ? (
             <g>
               <rect x={0} y={0} width={width} height={height} fill="white" />
-              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: height }, scene, imageDims)}
+              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: height }, scene, format, imageDims)}
               <rect x={0} y={0} width={width} height={height} fill={`url(#${gradientId}-highlight-overlay)`} />
               {showBadge ? (
                 <g>
@@ -730,7 +747,7 @@ export function CanvasPreview({
           {useHighlightAltPatternA && highlightA ? (
             <g>
               <rect x={0} y={0} width={width} height={highlightA.imageH} fill="white" />
-              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: highlightA.splitY }, scene, imageDims, `${clipId}-top-split`)}
+              {renderImage(imageUrl, { x: 0, y: 0, w: width, h: highlightA.splitY }, scene, format, imageDims, `${clipId}-top-split`)}
               <rect x={0} y={highlightA.splitY} width={width} height={height - highlightA.splitY} fill={scene.background[0]} />
               {showBadge ? (
                 <g>
@@ -755,6 +772,7 @@ export function CanvasPreview({
                   {(() => {
                     const focalX = scene.image.focalX ?? 50
                     const focalY = scene.image.focalY ?? 50
+                    const align = focalSliceAlign(format, focalX, focalY)
                     const wantsMeet = (scene.image.fit || '').endsWith('meet')
                     if (!wantsMeet && imageDims && imageDims.w > 0 && imageDims.h > 0) {
                       const zoom = scene.image.imageZoom ?? 1
@@ -778,13 +796,21 @@ export function CanvasPreview({
                         y={image.y}
                         width={image.w}
                         height={image.h}
-                        preserveAspectRatio={scene.image.fit || 'xMidYMid slice'}
+                        preserveAspectRatio={scene.image.fit || `${align} slice`}
                         clipPath={`url(#${clipId})`}
                       />,
                     )
                   })()}
                   {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
-                  <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill="none" stroke="rgba(255,255,255,0.2)" />
+                  <rect
+                    x={image.x}
+                    y={image.y}
+                    width={image.w}
+                    height={image.h}
+                    rx={scene.image.rx || 28}
+                    fill="none"
+                    stroke={scene.image.strokeColor || 'rgba(255,255,255,0.2)'}
+                  />
                 </g>
               ) : (
                 <g>

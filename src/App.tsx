@@ -21,7 +21,8 @@ import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout
 import { analyzeBannerQuality, applyBannerQualityAutofixes, type BannerQualityResult } from './lib/bannerQualityAnalyzer'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
-import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
+import { getFormatRuleSet } from './lib/formatRules'
+import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, FORMAT_MAP, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
@@ -35,6 +36,7 @@ import type {
   ImageProfile,
   LayoutDebugOptions,
   LayoutElementKind,
+  LayoutIntent,
   LayoutIntentFamily,
   ManualBlockOverride,
   Project,
@@ -84,6 +86,53 @@ function downloadBlob(blob: Blob, filename: string) {
 
 function slugify(value: string) {
   return value.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-_]+/g, '')
+}
+
+/** Rotates structural layout families for "Try different layout" (0=text-stack, 1=image-hero, 2=split-style). */
+function tryDifferentLayoutOverride(formatKey: FormatKey, rotationIndex: number): Partial<LayoutIntent> {
+  const format = FORMAT_MAP[formatKey]
+  const allowed = getFormatRuleSet(format).allowedLayoutFamilies
+  const i = rotationIndex % 3
+
+  const resolve = (preferred: [LayoutIntentFamily, LayoutIntentFamily, LayoutIntentFamily]): LayoutIntentFamily => {
+    const raw = preferred[i]
+    if (allowed.includes(raw)) return raw
+    return allowed[i % allowed.length]
+  }
+
+  let family: LayoutIntentFamily
+  if (allowed.length > 0 && allowed.every((f) => f.startsWith('presentation-'))) {
+    family = resolve(['presentation-clean-hero', 'presentation-structured-cover', 'presentation-clean-hero'])
+  } else switch (format.family) {
+    case 'square':
+      family = resolve(['square-image-top-text-bottom', 'square-hero-overlay', 'portrait-hero-overlay'])
+      break
+    case 'portrait':
+      family = resolve(['portrait-bottom-card', 'portrait-hero-overlay', 'portrait-hero-overlay'])
+      break
+    case 'landscape':
+      family = resolve(['landscape-text-left-image-right', 'landscape-image-dominant', 'landscape-balanced-split'])
+      break
+    case 'wide':
+      family = resolve(['billboard-wide-balanced', 'billboard-wide-hero', 'billboard-wide-balanced'])
+      break
+    case 'skyscraper':
+      family = resolve(['skyscraper-image-top-text-stack', 'skyscraper-split-vertical', 'skyscraper-image-top-text-stack'])
+      break
+    case 'printPortrait':
+      family = resolve(['portrait-bottom-card', 'presentation-structured-cover', 'portrait-bottom-card'])
+      break
+    case 'billboard':
+    case 'flyer':
+    case 'poster':
+    case 'display-rectangle':
+    case 'display-skyscraper':
+    case 'display-leaderboard':
+    default:
+      family = allowed[i % allowed.length]
+  }
+
+  return { family, presetId: family }
 }
 
 function applyReferenceToProject(current: Project, analysis: ReferenceAnalysis) {
@@ -148,6 +197,7 @@ export default function App() {
   const [isExporting, setIsExporting] = useState(false)
   const [exportingFormatKey, setExportingFormatKey] = useState<FormatKey | null>(null)
   const [fixingFormatKey, setFixingFormatKey] = useState<FormatKey | null>(null)
+  const tryDifferentLayoutIndex = useRef<Record<FormatKey, number>>({} as Record<FormatKey, number>)
   const [fixResults, setFixResults] = useState<Partial<Record<FormatKey, FixResult>>>({})
   const [fixSessions, setFixSessions] = useState<Partial<Record<FormatKey, FixSessionState>>>({})
   const [bannerAiReviewByFormat, setBannerAiReviewByFormat] = useState<Partial<Record<FormatKey, BannerQualityResult>>>({})
@@ -374,10 +424,80 @@ export default function App() {
     })
   }
 
+  const handleTryDifferentLayout = async (formatKey: FormatKey) => {
+    const nextIdx = ((tryDifferentLayoutIndex.current[formatKey] ?? -1) + 1) % 3
+    tryDifferentLayoutIndex.current[formatKey] = nextIdx
+    const overrideIntent = tryDifferentLayoutOverride(formatKey, nextIdx)
+    setFixingFormatKey(formatKey)
+    setBannerAiReviewByFormat((prev) => {
+      const next = { ...prev }
+      delete next[formatKey]
+      return next
+    })
+    setStatus({ tone: 'neutral', text: `Trying a different layout for ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}...` })
+    try {
+      const mo = project.manualOverrides?.[formatKey]
+      const outcome = await generateVariant({
+        master: resolvedFormats[formatKey],
+        formatKey,
+        visualSystem: project.visualSystem,
+        brandKit: project.brandKit,
+        goal: project.goal,
+        imageUrl,
+        assetHint: project.assetHint,
+        overrideIntent,
+        fixStage: 'structural',
+        ctaManualOverride: mo?.blocks?.cta,
+        textLogoManualOverrides: {
+          title: mo?.blocks?.title ?? mo?.blocks?.headline,
+          subtitle: mo?.blocks?.subtitle,
+          logo: mo?.blocks?.logo,
+        },
+        badgeImageManualOverrides: {
+          badge: mo?.blocks?.badge,
+          image: mo?.blocks?.image,
+        },
+      })
+      setProject((prev) => {
+        const manualOverrides = { ...(prev.manualOverrides || {}) }
+        delete manualOverrides[formatKey]
+        const variants = { ...(prev.variants || {}) }
+        if (variants[formatKey]) {
+          variants[formatKey] = {
+            ...variants[formatKey],
+            scene: outcome.scene,
+            layoutIntentFamily: outcome.intent.family,
+            compositionModelId: outcome.assessment.compositionModelId,
+            updatedAt: new Date().toISOString(),
+          }
+        }
+        return refreshProjectModel({
+          ...prev,
+          formats: {
+            ...prev.formats,
+            [formatKey]: outcome.scene,
+          },
+          variants,
+          manualOverrides,
+        })
+      })
+      setSelectedBlockId(null)
+      setStatus({
+        tone: 'success',
+        text: `Applied alternate layout (${overrideIntent.family}) to ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey}.`,
+      })
+    } catch (error) {
+      setStatus({ tone: 'error', text: error instanceof Error ? error.message : 'Failed to try a different layout.' })
+    } finally {
+      setFixingFormatKey(null)
+    }
+  }
+
   const applyLayoutFamilyOverride = async (formatKey: FormatKey, family: LayoutIntentFamily) => {
     setFixingFormatKey(formatKey)
     setStatus({ tone: 'neutral', text: `Rebuilding ${CHANNEL_FORMATS.find((item) => item.key === formatKey)?.label || formatKey} with ${family}.` })
     try {
+      const mo = project.manualOverrides?.[formatKey]
       const outcome = await generateVariant({
         master: resolvedFormats[formatKey],
         formatKey,
@@ -388,6 +508,16 @@ export default function App() {
         assetHint: project.assetHint,
         overrideIntent: { family, presetId: family },
         fixStage: 'structural',
+        ctaManualOverride: mo?.blocks?.cta,
+        textLogoManualOverrides: {
+          title: mo?.blocks?.title ?? mo?.blocks?.headline,
+          subtitle: mo?.blocks?.subtitle,
+          logo: mo?.blocks?.logo,
+        },
+        badgeImageManualOverrides: {
+          badge: mo?.blocks?.badge,
+          image: mo?.blocks?.image,
+        },
       })
       setProject((prev) => {
         const manualOverrides = { ...(prev.manualOverrides || {}) }
@@ -989,6 +1119,15 @@ export default function App() {
             </div>
             <div className="card-body stack">
               <ErrorBoundary>
+                {!imageUrl && (
+                  <div className="onboarding-steps">
+                    <span className="step">1. Click a demo or upload your photo</span>
+                    <span className="step-arrow">→</span>
+                    <span className="step">2. Edit your text</span>
+                    <span className="step-arrow">→</span>
+                    <span className="step">3. Download PNG or JPG</span>
+                  </div>
+                )}
                 <div className="demo-bar">
                   <div className="hint demo-try-label">Try a demo →</div>
                   <div className="demo-pill-row">
@@ -1228,7 +1367,7 @@ export default function App() {
                         refs.current[format.key] = node
                       }}
                       onFixLayout={() => handleFixLayout(format.key)}
-                      onTryDifferentLayout={() => handleFixLayout(format.key, true)}
+                      onTryDifferentLayout={() => handleTryDifferentLayout(format.key)}
                       isFixing={fixingFormatKey === format.key}
                       isExporting={exportingFormatKey === format.key}
                       fixResult={fixResults[format.key] || null}

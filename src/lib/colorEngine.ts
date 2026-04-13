@@ -1,6 +1,8 @@
 import { getContrastingText } from './imageAnalysis'
 import type { BrandKit, PalettePlan, ScenarioKey, VisualSystemKey } from './types'
 
+export { getContrastingText } from './imageAnalysis'
+
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
@@ -86,4 +88,25 @@ export function computePalette({
     badgeText,
     overlayStrength: isPromo ? 0.26 : isLuxury ? 0.14 : isEditorial ? 0.18 : 0.2,
   }
+}
+
+function relativeLuminanceWcag(hex: string) {
+  const { r, g, b } = hexToRgb(hex)
+  const normalize = (channel: number) => {
+    const value = channel / 255
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+  }
+  const sr = normalize(r)
+  const sg = normalize(g)
+  const sb = normalize(b)
+  return 0.2126 * sr + 0.7152 * sg + 0.0722 * sb
+}
+
+/** WCAG contrast ratio (higher = more contrast). */
+export function contrastRatio(left: string, right: string) {
+  const a = relativeLuminanceWcag(left)
+  const b = relativeLuminanceWcag(right)
+  const lighter = Math.max(a, b)
+  const darker = Math.min(a, b)
+  return (lighter + 0.05) / (darker + 0.05)
 }

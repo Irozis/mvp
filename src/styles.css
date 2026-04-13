@@ -786,3 +786,24 @@ input[type="range"] {
 .demo-pill:hover {
   background: var(--surface-2);
 }
+
+.onboarding-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--success-bg);
+  border: 1px solid rgba(15, 123, 95, 0.14);
+  border-radius: 18px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.step {
+  font-weight: 700;
+  color: var(--text);
+}
+.step-arrow {
+  opacity: 0.35;
+}

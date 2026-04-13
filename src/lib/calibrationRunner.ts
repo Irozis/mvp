@@ -385,7 +385,7 @@ export async function executeCalibrationCase(
   })
 
   const repaired = await getRepairDiagnostics({
-    scene: generated.scene,
+    scene: generated.sceneRepairBaseline,
     regenerationMasterScene: master,
     formatKey,
     visualSystem,

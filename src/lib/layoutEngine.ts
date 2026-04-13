@@ -22,6 +22,7 @@ import type {
   StructuralLayoutState,
   TypographyPlan,
 } from './types'
+import { adaptElementsToContext } from './elementAdaptor'
 import { getFormatRuleSet } from './formatRules'
 import { getFormatContractOverride, getFormatDensityPreset, getFormatSafeFallbackArchetype, getFormatSafeInsetBias, getMarketplaceRoleContract } from './formatDefaults'
 import { getOverlaySafetyPolicy } from './overlayPolicies'
@@ -7191,6 +7192,7 @@ function repackSceneForValidity(input: {
 
     let candidate = applyPalette(input.master, input.palette, input.assetHint)
     candidate = applyTypography(candidate, input.typography, input.brandKit)
+    candidate = adaptElementsToContext(candidate, input.imageAnalysis ?? input.assetHint?.enhancedImage, input.brandKit)
     applyFocalFit(candidate, input.imageAnalysis?.focalSuggestion ?? input.assetHint?.focalSuggestion, input.imageAnalysis?.focalPoint ?? input.assetHint?.enhancedImage?.focalPoint)
     const blocks = buildLayoutBlocks({ master: candidate, format: input.format, profile: input.profile, typography: input.typography, intent: input.intent })
     candidate = packBlocks({
@@ -7336,6 +7338,7 @@ export function synthesizeLayout({
     }
     let scene = applyPalette(master, palette, assetHint)
     scene = applyTypography(scene, typography, brandKit)
+    scene = adaptElementsToContext(scene, imageAnalysis ?? assetHint?.enhancedImage, brandKit)
     applyFocalFit(scene, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
     scene = buildMarketplaceV2Scene({
       scene,
@@ -7369,6 +7372,7 @@ export function synthesizeLayout({
       : resolvedIntent
   let scene = applyPalette(master, palette, assetHint)
   scene = applyTypography(scene, typography, brandKit)
+  scene = adaptElementsToContext(scene, imageAnalysis ?? assetHint?.enhancedImage, brandKit)
   applyFocalFit(scene, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
   const blocks = buildLayoutBlocks({ master: scene, format, profile, typography, intent: effectiveIntent })
   const zones =
@@ -7574,6 +7578,7 @@ export function getSynthesisStageDiagnostics({
     }
     let seeded = applyPalette(master, palette, assetHint)
     seeded = applyTypography(seeded, typography, brandKit)
+    seeded = adaptElementsToContext(seeded, imageAnalysis ?? assetHint?.enhancedImage, brandKit)
     applyFocalFit(seeded, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
     const slotScene = buildMarketplaceV2Scene({
       scene: seeded,
@@ -7620,6 +7625,7 @@ export function getSynthesisStageDiagnostics({
 
   let seeded = applyPalette(master, palette, assetHint)
   seeded = applyTypography(seeded, typography, brandKit)
+  seeded = adaptElementsToContext(seeded, imageAnalysis ?? assetHint?.enhancedImage, brandKit)
   applyFocalFit(seeded, imageAnalysis?.focalSuggestion ?? assetHint?.focalSuggestion, imageAnalysis?.focalPoint ?? assetHint?.enhancedImage?.focalPoint)
   const blocks = buildLayoutBlocks({ master: seeded, format, profile, typography, intent: effectiveIntent })
   const zones =

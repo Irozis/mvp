@@ -1,4 +1,10 @@
 import { BRAND_TEMPLATES, CHANNEL_FORMATS, FORMAT_MAP, VISUAL_SYSTEMS, baseScene } from './presets'
+import {
+  adaptBadgeAndImageToParent,
+  adaptCtaToParent,
+  adaptElementsToBrandKit,
+  adaptTextAndLogoToParent,
+} from './elementAdaptor'
 import { computePalette } from './colorEngine'
 import { aiAnalyzeContent, buildEnhancedContentProfile, extractCreativeInput, profileContent } from './contentProfile'
 import { aiAnalyzeImage } from './imageAnalysis'
@@ -69,6 +75,7 @@ import type {
   RepairStrategy,
   RejectedFixAction,
   Scene,
+  SceneElement,
   ScoreTrust,
   StructuralArchetype,
   StructuralInvariantName,
@@ -6407,6 +6414,7 @@ function buildDeterministicVariant({
   brandKit,
   goal,
   assetHint,
+  manualOverrides,
 }: {
   master: Scene
   formatKey: FormatKey
@@ -6414,6 +6422,7 @@ function buildDeterministicVariant({
   brandKit: BrandKit
   goal: Project['goal']
   assetHint?: AssetHint
+  manualOverrides?: VariantManualOverride
 }) {
   const format = FORMAT_MAP[formatKey]
   const contentProfile = profileContent(master)
@@ -6472,7 +6481,7 @@ function buildDeterministicVariant({
     assetHint?.enhancedImage
   )
   const fixedTrust = computeScoreTrust(fixedAssessment)
-  return finalizePrimarySelectedOutcomeSync({
+  const finalized = finalizePrimarySelectedOutcomeSync({
     formatKey,
     selection,
     currentScene: fixedScene,
@@ -6491,6 +6500,22 @@ function buildDeterministicVariant({
       baseIntent: intent,
     },
   }).scene
+  let scene = adaptElementsToBrandKit(finalized, brandKit)
+  const ctaManualOverride = manualOverrides?.blocks?.cta
+  scene = adaptCtaToParent(scene, assetHint?.enhancedImage, brandKit, ctaManualOverride)
+  if (assetHint?.enhancedImage) {
+    const blocks = manualOverrides?.blocks
+    scene = adaptTextAndLogoToParent(scene, assetHint.enhancedImage, brandKit, {
+      title: blocks?.title ?? blocks?.headline,
+      subtitle: blocks?.subtitle,
+      logo: blocks?.logo,
+    })
+    scene = adaptBadgeAndImageToParent(scene, assetHint.enhancedImage, brandKit, {
+      badge: blocks?.badge,
+      image: blocks?.image,
+    })
+  }
+  return scene
 }
 
 export async function generateVariant(input: {
@@ -6503,8 +6528,20 @@ export async function generateVariant(input: {
   assetHint?: AssetHint
   overrideIntent?: Partial<LayoutIntent>
   fixStage?: 'base' | 'local' | 'regional' | 'structural'
+  ctaManualOverride?: Partial<SceneElement>
+  textLogoManualOverrides?: {
+    title?: Partial<SceneElement>
+    subtitle?: Partial<SceneElement>
+    logo?: Partial<SceneElement>
+  }
+  badgeImageManualOverrides?: {
+    badge?: Partial<SceneElement>
+    image?: Partial<SceneElement>
+  }
 }): Promise<{
   scene: Scene
+  /** Scene after brand-kit adaptation, before `adaptCtaToParent` — use as repair/search baseline so CTA styling does not skew calibration. */
+  sceneRepairBaseline: Scene
   profile: ContentProfile
   contentAnalysis: AIContentAnalysis
   imageAnalysis?: EnhancedImageAnalysis
@@ -6639,8 +6676,16 @@ export async function generateVariant(input: {
   const finalAssessment = { ...finalAssessmentBase, aiReview: finalAIReview }
   const scoreTrust = computeScoreTrust(finalAssessment, finalAIReview)
 
+  const sceneRepairBaseline = adaptElementsToBrandKit(squareSubtitleCtaRepaired, input.brandKit)
+  let scene = adaptCtaToParent(sceneRepairBaseline, imageAnalysis, input.brandKit, input.ctaManualOverride)
+  if (imageAnalysis) {
+    scene = adaptTextAndLogoToParent(scene, imageAnalysis, input.brandKit, input.textLogoManualOverrides)
+    scene = adaptBadgeAndImageToParent(scene, imageAnalysis, input.brandKit, input.badgeImageManualOverrides)
+  }
+
   return {
-    scene: squareSubtitleCtaRepaired,
+    scene,
+    sceneRepairBaseline,
     profile,
     contentAnalysis,
     imageAnalysis,
@@ -8758,7 +8803,7 @@ export function autoAdaptFormat(master: Scene, formatKey: FormatKey, visualSyste
 }
 
 function buildVariant(
-  project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal'>,
+  project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>,
   formatKey: FormatKey
 ) {
   return buildDeterministicVariant({
@@ -8768,10 +8813,11 @@ function buildVariant(
     brandKit: project.brandKit,
     goal: project.goal,
     assetHint: project.assetHint,
+    manualOverrides: project.manualOverrides?.[formatKey],
   })
 }
 
-function buildFormatRecord(project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal'>) {
+function buildFormatRecord(project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>) {
   return Object.fromEntries(
     CHANNEL_FORMATS.map((format) => [
       format.key,

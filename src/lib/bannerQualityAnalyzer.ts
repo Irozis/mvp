@@ -2,7 +2,7 @@ import { getContrastingText } from './imageAnalysis'
 import type { Scene } from './types'
 import type { BannerQualityResult, BannerSceneSummaryPayload } from './bannerQualityGroqShared'
 
-export type { BannerQualityResult, BannerQualityAxis } from './bannerQualityGroqShared'
+export type { BannerAutofixItem, BannerQualityAxis, BannerQualityBand, BannerQualityResult } from './bannerQualityGroqShared'
 
 function hasRenderableSubtitle(text: string | undefined): boolean {
   const t = (text ?? '').trim()
@@ -75,6 +75,30 @@ export function applyBannerQualityAutofixes(scene: Scene, result: BannerQualityR
     subtitle: { ...scene.subtitle },
     cta: { ...scene.cta },
     image: { ...scene.image },
+  }
+
+  for (const item of result.autofixes ?? []) {
+    const action = item.action.trim()
+    if (action === 'zoom_in') {
+      const w = next.image.w ?? 0
+      const h = next.image.h ?? 0
+      next.image.w = Math.min(96, w + 8)
+      next.image.h = Math.min(96, h + 8)
+      next.image.x = next.image.x - 4
+      next.image.y = next.image.y - 4
+      changed = true
+    } else if (action === 'rebalance') {
+      if (next.image.x > 50) {
+        next.title.x = 6
+        next.subtitle.x = 6
+        next.cta.x = 6
+      } else {
+        next.title.x = 54
+        next.subtitle.x = 54
+        next.cta.x = 54
+      }
+      changed = true
+    }
   }
 
   if (result.title.score < 7 && result.title.fix === 'increase_size') {
