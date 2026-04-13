@@ -6395,9 +6395,37 @@ export function createMasterScene(template: TemplateKey, brandKit: BrandKit) {
 function clampMarketplaceSceneReadability(scene: Scene, formatKey: FormatKey): Scene {
   if (formatKey !== 'marketplace-card' && formatKey !== 'marketplace-highlight') return scene
   const next = clone(scene)
-  if ((next.title.fontSize || 0) < 32) next.title.fontSize = 32
-  if ((next.cta.w || 0) < 20) next.cta.w = 20
-  if ((next.cta.h || 0) < 7) next.cta.h = 7
+
+  if (formatKey === 'marketplace-card') {
+    // Headline: large, bold, dominant
+    if ((next.title.fontSize || 0) < 40) next.title.fontSize = 40
+    if ((next.title.weight || 0) < 700) next.title.weight = 700
+    if ((next.title.maxLines || 0) > 3) next.title.maxLines = 3
+
+    // Subtitle: quiet, supporting
+    if ((next.subtitle.fontSize || 0) > 18) next.subtitle.fontSize = 18
+    if (next.subtitle.opacity === undefined || next.subtitle.opacity > 0.72) next.subtitle.opacity = 0.72
+
+    // CTA: second most important element
+    if ((next.cta.w || 0) < 22) next.cta.w = 22
+    if ((next.cta.h || 0) < 8) next.cta.h = 8
+    if ((next.cta.fontSize || 0) < 15) next.cta.fontSize = 15
+
+    // Title fill: always white on dark panel
+    next.title.fill = '#FFFFFF'
+    next.subtitle.fill = '#FFFFFF'
+  } else if (formatKey === 'marketplace-highlight') {
+    if ((next.title.fontSize || 0) < 32) next.title.fontSize = 32
+    if ((next.cta.w || 0) < 20) next.cta.w = 20
+    if ((next.cta.h || 0) < 7) next.cta.h = 7
+  }
+
+  const titleFs = next.title.fontSize || 40
+  const subtitleFs = next.subtitle.fontSize || 16
+  if (titleFs < subtitleFs * 2) {
+    next.title.fontSize = Math.round(subtitleFs * 2.2)
+  }
+
   return next
 }
 

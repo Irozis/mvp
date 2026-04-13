@@ -2484,25 +2484,25 @@ function buildFamilyZones({
     }
     if (format.key === 'marketplace-card') {
       current.image = {
-        x: 48,
+        x: 42, // right 58% — image is hero, not decoration
         y: 0,
-        w: 52,
+        w: 58,
         h: 100,
       }
       current.text = {
-        x: insets.x + 1,
-        y: 18,
-        w: 44,
-        h: 56,
+        x: 8, // left margin ~8%
+        y: 22, // vertically centered in left zone
+        w: 30, // 30% width — fits left zone with breathing room
+        h: 44, // compact cluster — headline + subtitle
       }
       current.cta = {
-        x: insets.x + 2,
-        y: 80,
-        w: 38,
-        h: 8,
+        x: 8,
+        y: 70, // close to text, NOT at bottom edge
+        w: 22, // 120–160px equivalent in percent
+        h: 8, // 40–48px equivalent
       }
-      current.logo = { x: insets.x, y: insets.y, w: 14, h: 5.5 }
-      current.badge = { x: insets.x, y: 10, w: 18, h: 5.5 }
+      current.logo = { x: 8, y: 4, w: 12, h: 5 }
+      current.badge = { x: 8, y: 11, w: 18, h: 5 }
     }
     return applyPrimarySquareBaselineZoneGuard(
       finalizeFamilyZones({

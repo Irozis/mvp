@@ -87,7 +87,7 @@ function SvgText({
 
 function layoutCardPatternA(scene: Scene, width: number, height: number) {
   const pad = 40
-  const leftW = width * 0.5
+  const leftW = width * 0.44
   const title = scene.title.text || ''
   let titleFs = title.length > 15 ? Math.max(64, width * 0.07) : Math.max(80, width * 0.09)
   const leftPanelHeight = height
@@ -492,7 +492,7 @@ export function CanvasPreview({
         ? 'xMinYMid slice'
         : 'xMidYMid slice'
 
-  const leftPanelBg = scene.background[0] || '#1a1a1a'
+  const leftPanelBg = useCardPatternA ? '#1A1F2E' : scene.background[0] || '#1a1a1a'
   const patternALeftAutoText = patternALeftPanelTextFill(leftPanelBg)
   const patternATitleFill = patternALeftAutoText ?? scene.title.fill ?? '#0f172a'
   const patternASubtitleFill = patternALeftAutoText ?? scene.subtitle.fill ?? '#0f172a'
@@ -661,7 +661,12 @@ export function CanvasPreview({
               <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} ry={scene.image.rx || 28} />
             </clipPath>
             <clipPath id={`${clipId}-right-half`}>
-              <rect x={width * 0.5} y={0} width={width * 0.5} height={height} />
+              <rect
+                x={useCardPatternA && cardA ? cardA.leftW : width * 0.5}
+                y={0}
+                width={useCardPatternA && cardA ? width - cardA.leftW : width * 0.5}
+                height={height}
+              />
             </clipPath>
             <clipPath id={`${clipId}-top-split`}>
               <rect x={0} y={0} width={width} height={height * 0.55} />
@@ -675,7 +680,9 @@ export function CanvasPreview({
 
           {useCardPatternA && cardA ? (
             <g>
-              <rect x={0} y={0} width={cardA.leftW} height={height} fill={leftPanelBg} />
+              {format.key === 'marketplace-card' && imageUrl && (
+                <rect x={0} y={0} width={width * 0.44} height={height} rx={0} fill="#1A1F2E" opacity={0.97} />
+              )}
               <g clipPath={`url(#${clipId}-right-half)`}>
                 <rect x={cardA.leftW} y={0} width={width - cardA.leftW} height={height} fill="white" />
                 {wrapImageZoom(
