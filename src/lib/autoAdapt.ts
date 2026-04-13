@@ -6502,18 +6502,18 @@ function buildDeterministicVariant({
   }).scene
   let scene = adaptElementsToBrandKit(finalized, brandKit)
   const ctaManualOverride = manualOverrides?.blocks?.cta
-  scene = adaptCtaToParent(scene, assetHint?.enhancedImage, brandKit, ctaManualOverride)
+  scene = adaptCtaToParent(scene, assetHint?.enhancedImage, brandKit, ctaManualOverride, formatKey)
   if (assetHint?.enhancedImage) {
     const blocks = manualOverrides?.blocks
     scene = adaptTextAndLogoToParent(scene, assetHint.enhancedImage, brandKit, {
       title: blocks?.title ?? blocks?.headline,
       subtitle: blocks?.subtitle,
       logo: blocks?.logo,
-    })
+    }, formatKey)
     scene = adaptBadgeAndImageToParent(scene, assetHint.enhancedImage, brandKit, {
       badge: blocks?.badge,
       image: blocks?.image,
-    })
+    }, formatKey)
   }
   return scene
 }
@@ -6677,10 +6677,10 @@ export async function generateVariant(input: {
   const scoreTrust = computeScoreTrust(finalAssessment, finalAIReview)
 
   const sceneRepairBaseline = adaptElementsToBrandKit(squareSubtitleCtaRepaired, input.brandKit)
-  let scene = adaptCtaToParent(sceneRepairBaseline, imageAnalysis, input.brandKit, input.ctaManualOverride)
+  let scene = adaptCtaToParent(sceneRepairBaseline, imageAnalysis, input.brandKit, input.ctaManualOverride, input.formatKey)
   if (imageAnalysis) {
-    scene = adaptTextAndLogoToParent(scene, imageAnalysis, input.brandKit, input.textLogoManualOverrides)
-    scene = adaptBadgeAndImageToParent(scene, imageAnalysis, input.brandKit, input.badgeImageManualOverrides)
+    scene = adaptTextAndLogoToParent(scene, imageAnalysis, input.brandKit, input.textLogoManualOverrides, input.formatKey)
+    scene = adaptBadgeAndImageToParent(scene, imageAnalysis, input.brandKit, input.badgeImageManualOverrides, input.formatKey)
   }
 
   return {

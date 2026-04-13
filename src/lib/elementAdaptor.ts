@@ -1,5 +1,5 @@
 import { contrastRatio, getContrastingText } from './colorEngine'
-import type { BrandKit, EnhancedImageAnalysis, EnhancedImageArea, Scene, SceneElement } from './types'
+import type { BrandKit, EnhancedImageAnalysis, EnhancedImageArea, FormatKey, Scene, SceneElement } from './types'
 
 function clamp(n: number, lo: number, hi: number): number {
   return Math.max(lo, Math.min(hi, n))
@@ -45,12 +45,19 @@ function resolvePrimaryTextFill(brandKit: BrandKit, imageAnalysis: EnhancedImage
   return fill
 }
 
-/** Heuristic: marketplace card/tile/highlight use strict layout zones — skip adaptive text/CTA geometry. */
-function isMarketplaceZoneLayoutScene(scene: Scene): boolean {
-  const iw = scene.image.w ?? 0
-  const ih = scene.image.h ?? 0
-  if (iw <= 0 || ih <= 0) return false
-  return (scene.title.y || 0) > 55 || ih > 50
+/**
+ * Marketplace card/tile/highlight use strict layout zones — skip adaptive text/CTA geometry.
+ * Prefer explicit `formatKey` when available; otherwise use geometry heuristic.
+ */
+function isMarketplaceZoneLayoutScene(scene: Scene, formatKey?: FormatKey | string): boolean {
+  if (formatKey === 'marketplace-highlight' || formatKey === 'marketplace-card' || formatKey === 'marketplace-tile') {
+    return true
+  }
+  return (
+    scene.image.w > 0 &&
+    scene.image.h > 0 &&
+    ((scene.title.y || 0) > 55 || (scene.image.h || 0) > 50)
+  )
 }
 
 export function adaptCtaToParent(
@@ -58,6 +65,7 @@ export function adaptCtaToParent(
   imageAnalysis: EnhancedImageAnalysis | undefined,
   brandKit: BrandKit,
   manualOverride?: Partial<SceneElement>,
+  formatKey?: FormatKey | string,
 ): Scene {
   const next: Scene = JSON.parse(JSON.stringify(scene)) as Scene
   const candidates = ['#FFFFFF', '#000000', brandKit.accentColor, brandKit.primaryColor]
@@ -69,18 +77,14 @@ export function adaptCtaToParent(
     const baseColor = imageAnalysis?.dominantColors?.[0] ?? brandKit.accentColor
     next.cta.bg = mostContrastingColor(baseColor, candidates)
     next.cta.fill = getContrastingText(next.cta.bg)
-    const irx = next.image.rx ?? 0
-    if (irx >= 24) {
-      next.cta.rx = 26
-    } else if (irx >= 10) {
-      next.cta.rx = 14
-    } else {
-      next.cta.rx = 4
-    }
-    if (!isMarketplaceZoneLayoutScene(next)) {
+    if (!isMarketplaceZoneLayoutScene(next, formatKey)) {
+      const irx = next.image.rx ?? 0
+      next.cta.rx = irx >= 24 ? 26 : irx >= 10 ? 14 : 4
       const imageArea = (imgW * imgH) / 10000
       next.cta.w = clamp(imageArea * 28, 14, 30)
       next.cta.h = clamp(imageArea * 9, 5, 8)
+    } else {
+      next.cta.rx = brandKit.ctaStyle === 'pill' ? 26 : brandKit.ctaStyle === 'rounded' ? 14 : 4
     }
   } else {
     const bgMid = next.background[1]
@@ -127,6 +131,7 @@ export function adaptTextAndLogoToParent(
     subtitle?: Partial<SceneElement>
     logo?: Partial<SceneElement>
   },
+  formatKey?: FormatKey | string,
 ): Scene {
   const next: Scene = JSON.parse(JSON.stringify(scene)) as Scene
   const imgW = next.image.w ?? 0
@@ -139,7 +144,7 @@ export function adaptTextAndLogoToParent(
     const baseForTitle = imageAnalysis?.dominantColors?.[0] ?? next.background[1]
     next.title.fill = mostContrastingColor(baseForTitle, titleCandidates)
 
-    const isMarketplaceFormat = isMarketplaceZoneLayoutScene(next)
+    const isMarketplaceFormat = isMarketplaceZoneLayoutScene(next, formatKey)
     const bestArea = pickBestSafeTextArea(imageAnalysis?.safeTextAreas)
 
     if (bestArea && !isMarketplaceFormat) {
@@ -222,6 +227,7 @@ export function adaptBadgeAndImageToParent(
     badge?: Partial<SceneElement>
     image?: Partial<SceneElement>
   },
+  formatKey?: FormatKey | string,
 ): Scene {
   const next: Scene = JSON.parse(JSON.stringify(scene)) as Scene
   const imgW = next.image.w ?? 0
@@ -235,26 +241,37 @@ export function adaptBadgeAndImageToParent(
     next.badge.fill = getContrastingText(next.badge.bg)
     next.badge.bgOpacity = 1
 
-    const irx = next.image.rx ?? 0
-    if (irx >= 24) {
-      next.badge.rx = 20
-    } else if (irx >= 10) {
-      next.badge.rx = 10
+    const mp = isMarketplaceZoneLayoutScene(next, formatKey)
+    if (!mp) {
+      const irx = next.image.rx ?? 0
+      if (irx >= 24) {
+        next.badge.rx = 20
+      } else if (irx >= 10) {
+        next.badge.rx = 10
+      } else {
+        next.badge.rx = 4
+      }
+
+      const imageArea = (imgW * imgH) / 10000
+      next.badge.w = clamp(imageArea * 18, 10, 22)
+      next.badge.h = clamp(imageArea * 6, 4, 7)
+
+      const bgTopLum = hexLuminance(next.background[0]) ?? 0.5
+      if (bgTopLum >= 0.15) {
+        const rx = next.image.rx ?? 0
+        if (rx >= 24) {
+          next.image.rx = 20
+        } else if (rx < 10) {
+          next.image.rx = 14
+        }
+      }
     } else {
-      next.badge.rx = 4
-    }
-
-    const imageArea = (imgW * imgH) / 10000
-    next.badge.w = clamp(imageArea * 18, 10, 22)
-    next.badge.h = clamp(imageArea * 6, 4, 7)
-
-    const bgTopLum = hexLuminance(next.background[0]) ?? 0.5
-    if (bgTopLum >= 0.15) {
-      const rx = next.image.rx ?? 0
-      if (rx >= 24) {
-        next.image.rx = 20
-      } else if (rx < 10) {
-        next.image.rx = 14
+      if (brandKit.ctaStyle === 'pill') {
+        next.badge.rx = 20
+      } else if (brandKit.ctaStyle === 'rounded') {
+        next.badge.rx = 10
+      } else {
+        next.badge.rx = 4
       }
     }
 
