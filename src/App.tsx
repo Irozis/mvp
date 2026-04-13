@@ -17,12 +17,22 @@ import { VariantInspector } from './components/VariantInspector'
 import { ValidationSummary } from './components/ValidationSummary'
 import { BasicControls, BrandEditor, ElementEditor } from './components/Controls'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { applyBrandTemplate, applyVariantManualOverride, buildProject, fixLayout, generateVariant, refreshProjectModel, regenerateFormats } from './lib/autoAdapt'
+import {
+  applyBrandTemplate,
+  applyVariantManualOverride,
+  buildProject,
+  fixLayout,
+  generateVariant,
+  refreshProjectModel,
+  regenerateFormats,
+  setLayoutEngineV2,
+} from './lib/autoAdapt'
 import { analyzeBannerQuality, applyBannerQualityAutofixes, type BannerQualityResult } from './lib/bannerQualityAnalyzer'
 import { analyzeAssetCharacteristics, getImageProfileLabel } from './lib/assetProfile'
 import { aiAnalyzeImage, analyzeReferenceImage, getContrastingText, type ReferenceAnalysis } from './lib/imageAnalysis'
 import { getFormatRuleSet } from './lib/formatRules'
 import { BRAND_TEMPLATES, CHANNEL_FORMATS, DEMO_PROJECTS, FORMAT_MAP, GOAL_PRESETS, LAYOUT_PRESETS, UI_GOAL_PRESETS, VISUAL_SYSTEMS } from './lib/presets'
+import { buildCreativeExportJSON } from './lib/creativeJsonExport'
 import { localProjectRepository } from './lib/storage'
 import { buildStructuralDiagnosticsSnapshot, createStructuralDiagnosticsSignature, logStructuralDiagnostics } from './lib/structuralDiagnostics'
 import { getFormatAssessment } from './lib/validation'
@@ -122,14 +132,8 @@ function tryDifferentLayoutOverride(formatKey: FormatKey, rotationIndex: number)
     case 'printPortrait':
       family = resolve(['portrait-bottom-card', 'presentation-structured-cover', 'portrait-bottom-card'])
       break
-    case 'billboard':
-    case 'flyer':
-    case 'poster':
-    case 'display-rectangle':
-    case 'display-skyscraper':
-    case 'display-leaderboard':
     default:
-      family = allowed[i % allowed.length]
+      throw new Error(`Unhandled LayoutFamily: ${format.family}`)
   }
 
   return { family, presetId: family }
@@ -193,6 +197,7 @@ export default function App() {
   const [savedProjects, setSavedProjects] = useState<SavedProject[]>([])
   const [currentSavedId, setCurrentSavedId] = useState<string | null>(null)
   const [selectedBrandTemplate, setSelectedBrandTemplate] = useState<BrandTemplateKey>('startup-blue')
+  const [v2Enabled, setV2Enabled] = useState(false)
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
   const [exportingFormatKey, setExportingFormatKey] = useState<FormatKey | null>(null)
@@ -782,7 +787,10 @@ export default function App() {
   }
 
   const exportJson = () => {
-    downloadBlob(new Blob([JSON.stringify(project, null, 2)], { type: 'application/json' }), `${slugify(projectName || 'project')}.json`)
+    downloadBlob(
+      new Blob([JSON.stringify(buildCreativeExportJSON(project), null, 2)], { type: 'application/json' }),
+      `${slugify(projectName || 'project')}.json`,
+    )
     setStatus({ tone: 'success', text: 'Project JSON exported.' })
   }
 
@@ -1109,6 +1117,29 @@ export default function App() {
                   )
                 })}
               </div>
+              {import.meta.env.DEV && (
+                <div className="panel" style={{ marginTop: 8 }}>
+                  <div className="section-title">Layout engine</div>
+                  <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+                    <button
+                      className={`button button-outline${v2Enabled ? ' active' : ''}`}
+                      onClick={() => {
+                        const next = !v2Enabled
+                        setV2Enabled(next)
+                        setLayoutEngineV2(next)
+                        setProject((prev) => regenerateFormats(prev))
+                      }}
+                    >
+                      {v2Enabled ? 'V2 engine on' : 'V2 engine off'}
+                    </button>
+                    {v2Enabled && (
+                      <span className="hint" style={{ fontSize: 11 }}>
+                        archetype-driven layout active
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -1191,6 +1222,8 @@ export default function App() {
                     scene={currentScene}
                     assessment={currentAssessment}
                     selectedBlockId={selectedBlockId}
+                    archetypeResolution={project.variants?.[editMode]?.archetypeResolution}
+                    layoutEvaluation={project.variants?.[editMode]?.layoutEvaluation}
                     manualOverride={currentVariantOverride}
                     onSelectBlock={setSelectedBlockId}
                     onPatchBlock={(blockId, patch) => patchVariantOverride(editMode, blockId, patch)}

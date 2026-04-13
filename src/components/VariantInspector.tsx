@@ -4,9 +4,11 @@ import type {
   FormatDefinition,
   LayoutAssessment,
   LayoutElementKind,
+  LayoutEvaluation,
   LayoutIntentFamily,
   ManualBlockOverride,
   Scene,
+  Variant,
   VariantManualOverride,
 } from '../lib/types'
 
@@ -83,12 +85,16 @@ export function VariantInspector({
   onResetVariant,
   onSelectImageRole,
   onApplyLayoutFamily,
+  archetypeResolution,
+  layoutEvaluation,
 }: {
   format: FormatDefinition
   scene: Scene
   assessment: LayoutAssessment
   selectedBlockId?: LayoutElementKind | null
   manualOverride?: VariantManualOverride
+  archetypeResolution?: Variant['archetypeResolution']
+  layoutEvaluation?: LayoutEvaluation
   onSelectBlock: (blockId: LayoutElementKind) => void
   onPatchBlock: (blockId: LayoutElementKind, patch: Partial<ManualBlockOverride>) => void
   onResetBlock: (blockId: LayoutElementKind) => void
@@ -106,6 +112,24 @@ export function VariantInspector({
   )
   const selectedBox = (assessment.layoutBoxes?.boxes || []).find((box) => box.kind === selectedBlockId) || null
   const selectedAnalysis = getBlockAnalysis(assessment, selectedBlockId)
+
+  const effectiveArchetypeId = archetypeResolution
+    ? archetypeResolution.effectiveArchetypeId ?? archetypeResolution.archetypeId
+    : undefined
+  const originalArchetypeId = archetypeResolution?.archetypeId
+  const showFallbackUsed =
+    archetypeResolution &&
+    originalArchetypeId != null &&
+    effectiveArchetypeId != null &&
+    effectiveArchetypeId !== originalArchetypeId
+  const confidenceBarColor =
+    archetypeResolution == null
+      ? '#e5e7eb'
+      : archetypeResolution.confidence >= 0.8
+        ? '#16a34a'
+        : archetypeResolution.confidence >= 0.65
+          ? '#d97706'
+          : '#dc2626'
 
   return (
     <div className="panel stack">
@@ -242,6 +266,113 @@ export function VariantInspector({
           ))}
         </div>
       </div>
+
+      {archetypeResolution && (
+        <details className="stack" style={{ marginTop: 8 }}>
+          <summary className="section-title" style={{ cursor: 'pointer', listStyle: 'none' }}>
+            Archetype
+          </summary>
+          <div className="stack" style={{ marginTop: 8 }}>
+            <div className="space-between small">
+              <span className="label">
+                <strong>Archetype ID</strong>
+              </span>
+              <code style={{ fontSize: '0.85em' }}>{effectiveArchetypeId}</code>
+            </div>
+            <div className="field">
+              <div className="space-between small">
+                <span className="label">Confidence</span>
+                <span>{archetypeResolution.confidence.toFixed(2)}</span>
+              </div>
+              <div style={{ height: 4, background: '#e5e7eb', borderRadius: 2, overflow: 'hidden' }}>
+                <div
+                  style={{
+                    width: `${archetypeResolution.confidence * 100}%`,
+                    height: '100%',
+                    background: confidenceBarColor,
+                  }}
+                />
+              </div>
+            </div>
+            {layoutEvaluation?.quadrantWeights && (() => {
+              const vb = layoutEvaluation.visualBalance
+              const tier = vb >= 0.8 ? 'green' : vb >= 0.65 ? 'amber' : 'red'
+              const rgba =
+                tier === 'green' ? ([34, 197, 94] as const) : tier === 'amber' ? ([245, 158, 11] as const) : ([239, 68, 68] as const)
+              const labelColor = tier === 'green' ? '#15803d' : tier === 'amber' ? '#b45309' : '#b91c1c'
+              const qw = layoutEvaluation.quadrantWeights!
+              const cells = [qw.topLeft, qw.topRight, qw.bottomLeft, qw.bottomRight]
+              const cellAlpha = (w: number) => Math.min(0.9, Math.max(0.15, 0.15 + w * 2.5))
+              return (
+                <div style={{ marginTop: 6 }}>
+                  <div className="muted" style={{ fontSize: 12 }}>
+                    Balance {vb.toFixed(2)}
+                  </div>
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '38px 38px',
+                      gridTemplateRows: '38px 38px',
+                      gap: 4,
+                      width: 'fit-content',
+                      margin: '8px 0',
+                    }}
+                  >
+                    {cells.map((w, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: 4,
+                          backgroundColor: `rgba(${rgba[0]}, ${rgba[1]}, ${rgba[2]}, ${cellAlpha(w)})`,
+                          fontSize: 11,
+                          fontWeight: 500,
+                          color: labelColor,
+                        }}
+                      >
+                        {Math.round(w * 100)}%
+                      </div>
+                    ))}
+                  </div>
+                  <div className="muted" style={{ fontSize: 11, textAlign: 'center' }}>
+                    Visual weight distribution
+                  </div>
+                </div>
+              )
+            })()}
+            <div className="muted" style={{ fontSize: '0.85em' }}>
+              {archetypeResolution.reason}
+            </div>
+            {showFallbackUsed && (
+              <div className="small">
+                <span className="label">Fallback used</span>
+                <div className="muted" style={{ fontSize: '0.85em' }}>
+                  Yes — <code>{effectiveArchetypeId}</code> (initial selection: <code>{originalArchetypeId}</code>)
+                </div>
+              </div>
+            )}
+            {archetypeResolution.confidence < 0.8 && archetypeResolution.confidenceBreakdown && (
+              <div className="metric-list" style={{ marginTop: 4 }}>
+                {(
+                  [
+                    ['Archetype source', archetypeResolution.confidenceBreakdown.archetypeSource],
+                    ['Scenario ambiguity', archetypeResolution.confidenceBreakdown.scenarioAmbiguity],
+                    ['Missing image data', archetypeResolution.confidenceBreakdown.missingImageData],
+                    ['Format mismatch', archetypeResolution.confidenceBreakdown.formatMismatch],
+                  ] as const
+                ).map(([label, amount]) => (
+                  <div key={label} className="metric-row">
+                    <span>{label}</span>
+                    <span style={{ color: amount > 0 ? '#dc2626' : '#9ca3af' }}>{amount.toFixed(2)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </details>
+      )}
     </div>
   )
 }

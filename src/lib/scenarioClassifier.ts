@@ -1,14 +1,17 @@
 import type {
+  ArchetypeResolution,
   AssetHint,
   ContentProfile,
   EnhancedImageAnalysis,
   FormatDefinition,
   GoalKey,
   ImageProfile,
+  LayoutArchetypeId,
   LayoutIntent,
   LayoutIntentFamily,
   Scene,
   ScenarioKey,
+  StructuralArchetype,
   VisualSystemKey,
 } from './types'
 import { getFormatArchetypeRanking, getFormatBalanceDefaults } from './formatDefaults'
@@ -305,6 +308,7 @@ export function chooseLayoutIntent({
   visualSystem,
   goal,
   assetHint,
+  forcedStructuralArchetype,
 }: {
   format: FormatDefinition
   master: Scene
@@ -313,8 +317,9 @@ export function chooseLayoutIntent({
   visualSystem: VisualSystemKey
   goal: GoalKey
   assetHint?: AssetHint
+  forcedStructuralArchetype?: LayoutArchetypeId
 }): LayoutIntent {
-  return buildHeuristicLayoutIntent({
+  const intent = buildHeuristicLayoutIntent({
     format,
     master,
     profile,
@@ -323,4 +328,109 @@ export function chooseLayoutIntent({
     goal,
     assetHint,
   })
+  if (forcedStructuralArchetype) {
+    return { ...intent, structuralArchetype: forcedStructuralArchetype as StructuralArchetype }
+  }
+  return intent
+}
+
+export function resolveArchetype(
+  ...args: Parameters<typeof chooseLayoutIntent>
+): ArchetypeResolution {
+  const [{ format, profile, visualSystem, goal, assetHint }] = args
+  const intent = chooseLayoutIntent(...args)
+
+  // Priority order: V2 archetype > template variant > structural archetype
+  const archetypeId =
+    intent.marketplaceV2Archetype ??
+    intent.marketplaceTemplateVariant ??
+    intent.structuralArchetype ??
+    'text-stack' // safe fallback — most forgiving archetype
+
+  const reason =
+    (intent as any).selectionDebug
+      ? String((intent as any).selectionDebug)
+      : intent.marketplaceV2Archetype
+        ? 'marketplace-v2'
+        : intent.marketplaceTemplateVariant
+          ? 'marketplace-template'
+          : 'structural-heuristic'
+
+  // SIGNAL 1 — archetype source certainty (deductions)
+  let archetypeSource = 0
+  if (intent.marketplaceV2Archetype) {
+    archetypeSource = 0
+  } else if (intent.marketplaceTemplateVariant) {
+    archetypeSource = 0.05
+  } else {
+    archetypeSource = 0.2
+  }
+
+  // SIGNAL 2 — ambiguous / high-conflict scenarios
+  const classified = classifyScenario({
+    profile,
+    goal,
+    visualSystem,
+    imageProfile: assetHint?.imageProfile,
+  })
+  let scenarioAmbiguity = 0
+  if (classified === 'text-heavy-ad' || classified === 'bold-offer') {
+    scenarioAmbiguity = 0.1
+  }
+
+  // SIGNAL 3 — missing image analysis on the asset hint
+  let missingImageData = 0
+  if (assetHint?.enhancedImage == null) {
+    missingImageData = 0.15
+  }
+
+  // SIGNAL 4 — format vs archetype heuristics
+  const { width: fw, height: fh } = format
+  const formatAspect: 'portrait' | 'landscape' | 'square' =
+    fw > 0 &&
+    fh > 0 &&
+    Math.abs(fw - fh) / Math.max(fw, fh) < 0.02
+      ? 'square'
+      : fh > fw
+        ? 'portrait'
+        : fw > fh
+          ? 'landscape'
+          : format.family === 'square'
+            ? 'square'
+            : format.family === 'portrait' ||
+                format.family === 'skyscraper' ||
+                format.family === 'printPortrait'
+              ? 'portrait'
+              : 'landscape'
+
+  let formatMismatch = 0
+  if (archetypeId === 'image-hero' || archetypeId === 'v2-card-hero-shelf') {
+    if (formatAspect === 'landscape') formatMismatch += 0.1
+    else if (formatAspect === 'square') formatMismatch += 0.05
+  }
+  if (
+    archetypeId === 'text-stack' ||
+    archetypeId === 'dense-information' ||
+    archetypeId === 'v2-card-text-focus'
+  ) {
+    if (formatAspect === 'portrait') formatMismatch += 0.05
+  }
+
+  const rawConfidence =
+    1.0 - archetypeSource - scenarioAmbiguity - missingImageData - formatMismatch
+  const confidence = Math.min(1.0, Math.max(0.1, rawConfidence))
+
+  return {
+    archetypeId,
+    confidence,
+    reason,
+    fallback:
+      intent.structuralArchetype !== archetypeId ? intent.structuralArchetype : undefined,
+    confidenceBreakdown: {
+      archetypeSource,
+      scenarioAmbiguity,
+      missingImageData,
+      formatMismatch,
+    },
+  }
 }

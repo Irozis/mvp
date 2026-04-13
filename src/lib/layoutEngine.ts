@@ -6731,7 +6731,7 @@ function maybeLogMarketplaceStabilization(input: {
   })
 }
 
-function stabilizeMarketplaceLayout(scene: Scene, format: FormatDefinition, compositionModel?: CompositionModel | null) {
+export function stabilizeMarketplaceLayout(scene: Scene, format: FormatDefinition, compositionModel?: CompositionModel | null) {
   if (!isConstrainedMarketplaceFormat(format)) return scene
 
   const originalMetrics = getMarketplaceStabilizationMetrics(scene, format, compositionModel)

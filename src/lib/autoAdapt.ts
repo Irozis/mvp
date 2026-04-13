@@ -11,7 +11,15 @@ import { aiAnalyzeImage } from './imageAnalysis'
 import { getFormatRuleSet } from './formatRules'
 import { getFormatArchetypeRanking, getFormatBalanceDefaults, getFormatDensityPreset, getFormatWeakArchetypes } from './formatDefaults'
 import { getAlternativeCompositionModel, getCompositionModel, resolveCompositionModelFamily, selectCompositionModel } from './formatCompositionModels'
-import { applyBlockFixes, applyFixAction, finalizeSceneGeometry, getSynthesisStageDiagnostics, synthesizeLayout } from './layoutEngine'
+import {
+  applyBlockFixes,
+  applyFixAction,
+  evaluateStructuralLayoutState,
+  finalizeSceneGeometry,
+  getSynthesisStageDiagnostics,
+  synthesizeLayout,
+} from './layoutEngine'
+import { applyV1LayoutGeometryAfterV2, synthesizeLayoutV2 } from './layoutEngineV2'
 import { aiChooseLayoutStrategy, chooseLayoutIntent, classifyScenario } from './scenarioClassifier'
 import { getMarketplaceCardTemplateById } from './templateDefinitions'
 import { computePerceptualSignals } from './perceptualSignals'
@@ -55,6 +63,7 @@ import type {
   LayoutFixPlan,
   LayoutIntent,
   LayoutIntentFamily,
+  LayoutEvaluation,
   LandscapeTextHeightNearMissSafeguardResults,
   OccupancyMode,
   Project,
@@ -92,7 +101,20 @@ import type {
   VisualSystemKey,
 } from './types'
 
-function clone<T>(value: T): T {
+import { runAutoFix, fixLayout, runRepairPipeline } from './repairOrchestrator'
+export { runAutoFix, fixLayout, runRepairPipeline }
+import { buildDeterministicVariant, buildVariant, buildFormatRecord } from './variantBuilder'
+export { buildDeterministicVariant, buildVariant, buildFormatRecord }
+
+// V2 engine flag — mutable module state for dev experimentation
+// Note: resets on HMR reload; not suitable for production state
+export let LAYOUT_ENGINE_V2_ENABLED = false
+
+export function setLayoutEngineV2(enabled: boolean): void {
+  LAYOUT_ENGINE_V2_ENABLED = enabled
+}
+
+export function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value))
 }
 
@@ -313,7 +335,7 @@ const previewCandidateLogSignatures = new Map<string, string>()
 const REPAIR_SIGNIFICANT_SCORE_REGRESSION = 3
 const REPAIR_MEANINGFUL_FINDING_DELTA = 2
 const REPAIR_MIN_GEOMETRY_DELTA = 3
-const REPAIR_HISTORY_LIMIT = 16
+export const REPAIR_HISTORY_LIMIT = 16
 
 type RepairEvaluatedScene = {
   formatKey: FormatKey
@@ -355,7 +377,7 @@ const PRIMARY_FINAL_QUALITY_FINDINGS = new Set([
   'safe-area-compliance',
 ])
 
-type RepairAttempt = {
+export type RepairAttempt = {
   strategy: RepairStrategy
   candidate: RepairEvaluatedScene
   decision: RepairResult
@@ -454,29 +476,29 @@ function createTimestamp() {
   return new Date().toISOString()
 }
 
-function getStructuralTierRank(status: NonNullable<LayoutAssessment['structuralState']>['status']) {
+export function getStructuralTierRank(status: NonNullable<LayoutAssessment['structuralState']>['status']) {
   if (status === 'valid') return 2
   if (status === 'degraded') return 1
   return 0
 }
 
-function countHighStructuralFindings(assessment: LayoutAssessment) {
+export function countHighStructuralFindings(assessment: LayoutAssessment) {
   return (assessment.structuralState?.findings || []).filter((finding) => finding.severity === 'high').length
 }
 
-function countCriticalIssues(assessment: LayoutAssessment) {
+export function countCriticalIssues(assessment: LayoutAssessment) {
   return assessment.issues.filter((issue) => issue.severity === 'critical').length
 }
 
-function countHighIssues(assessment: LayoutAssessment) {
+export function countHighIssues(assessment: LayoutAssessment) {
   return assessment.issues.filter((issue) => issue.severity === 'high').length
 }
 
-function getVisualTieBreakScore(assessment: LayoutAssessment) {
+export function getVisualTieBreakScore(assessment: LayoutAssessment) {
   return assessment.visual?.overallScore || 0
 }
 
-function shouldUseMarketplaceCardVisualRerank(input: {
+export function shouldUseMarketplaceCardVisualRerank(input: {
   leftFormatKey: FormatKey
   rightFormatKey: FormatKey
   leftStructuralStatus: StructuralLayoutStatus
@@ -492,12 +514,12 @@ function shouldUseMarketplaceCardVisualRerank(input: {
   )
 }
 
-function getMarketplaceCardVisualDecisionDelta(left: LayoutAssessment, right: LayoutAssessment) {
+export function getMarketplaceCardVisualDecisionDelta(left: LayoutAssessment, right: LayoutAssessment) {
   const visualDelta = getVisualTieBreakScore(right) - getVisualTieBreakScore(left)
   return Math.abs(visualDelta) >= 4 ? visualDelta : 0
 }
 
-function getVisualBandRank(assessment: LayoutAssessment) {
+export function getVisualBandRank(assessment: LayoutAssessment) {
   const band = assessment.visual?.band || 'poor'
   if (band === 'strong') return 3
   if (band === 'acceptable') return 2
@@ -505,26 +527,26 @@ function getVisualBandRank(assessment: LayoutAssessment) {
   return 0
 }
 
-function isMarketplaceCardTemplateVariantCandidate(candidate: PreviewCandidateEvaluation) {
+export function isMarketplaceCardTemplateVariantCandidate(candidate: PreviewCandidateEvaluation) {
   return (
     candidate.formatKey === 'marketplace-card' &&
     Boolean(candidate.intent.marketplaceTemplateId)
   )
 }
 
-function getMarketplaceCardSemanticPrimaryTemplateId(candidate: PreviewCandidateEvaluation) {
+export function getMarketplaceCardSemanticPrimaryTemplateId(candidate: PreviewCandidateEvaluation) {
   const selection = candidate.intent.marketplaceTemplateSelection
   return selection?.debug?.rankedTemplates[0]?.templateId || selection?.selectedTemplateId
 }
 
-function getMarketplaceCardTemplateSemanticScore(candidate: PreviewCandidateEvaluation) {
+export function getMarketplaceCardTemplateSemanticScore(candidate: PreviewCandidateEvaluation) {
   const selection = candidate.intent.marketplaceTemplateSelection
   const templateId = candidate.intent.marketplaceTemplateId
   if (!selection?.debug?.rankedTemplates?.length || !templateId) return 0
   return selection.debug.rankedTemplates.find((entry) => entry.templateId === templateId)?.totalScore || 0
 }
 
-function getMarketplaceCardCommercialConfidence(candidate: PreviewCandidateEvaluation): 'weak' | 'medium' | 'strong' {
+export function getMarketplaceCardCommercialConfidence(candidate: PreviewCandidateEvaluation): 'weak' | 'medium' | 'strong' {
   const ranked = candidate.intent.marketplaceTemplateSelection?.debug?.rankedTemplates || []
   const primary = ranked[0]?.totalScore || 0
   const runnerUp = ranked[1]?.totalScore || 0
@@ -534,7 +556,7 @@ function getMarketplaceCardCommercialConfidence(candidate: PreviewCandidateEvalu
   return 'weak'
 }
 
-function computeMarketplaceCardCommercialPreferenceScore(input: {
+export function computeMarketplaceCardCommercialPreferenceScore(input: {
   candidate: PreviewCandidateEvaluation
   profile: ContentProfile
 }) {
@@ -596,7 +618,7 @@ function computeMarketplaceCardCommercialPreferenceScore(input: {
   } satisfies NonNullable<PreviewCandidateEvaluation['commercialPreference']>
 }
 
-function buildBlockedMarketplaceCardEvaluationAlignment(
+export function buildBlockedMarketplaceCardEvaluationAlignment(
   candidate: PreviewCandidateEvaluation,
   blockedBy: string,
   reasons: string[]
@@ -620,11 +642,11 @@ function buildBlockedMarketplaceCardEvaluationAlignment(
   } satisfies NonNullable<PreviewCandidateEvaluation['evaluationAlignment']>
 }
 
-function clampCandidateScore(value: number) {
+export function clampCandidateScore(value: number) {
   return Math.max(0, Math.min(100, Math.round(value)))
 }
 
-function getPerceptualCompositeScore(signals?: PerceptualSignals) {
+export function getPerceptualCompositeScore(signals?: PerceptualSignals) {
   if (!signals) return 0
   return (
     signals.clusterCohesion * 0.28 +
@@ -636,7 +658,7 @@ function getPerceptualCompositeScore(signals?: PerceptualSignals) {
   )
 }
 
-function shouldAcceptMarketplacePerceptualAdjustment(input: {
+export function shouldAcceptMarketplacePerceptualAdjustment(input: {
   beforeCandidate: PreviewCandidateEvaluation
   afterAssessment: LayoutAssessment
   afterSignals: PerceptualSignals
@@ -670,7 +692,7 @@ function shouldAcceptMarketplacePerceptualAdjustment(input: {
   return afterComposite >= beforeComposite + 6 || improvedCta || improvedCluster || reducedDeadSpace || improvedPrimary
 }
 
-function computeMarketplaceCardTextFirstEvaluationAlignment(input: {
+export function computeMarketplaceCardTextFirstEvaluationAlignment(input: {
   candidate: PreviewCandidateEvaluation
   profile: ContentProfile
 }) {
@@ -832,14 +854,14 @@ function computeMarketplaceCardTextFirstEvaluationAlignment(input: {
   } satisfies NonNullable<PreviewCandidateEvaluation['evaluationAlignment']>
 }
 
-function getCommercialConfidenceRank(value: PreviewCandidateEvaluation['commercialPreference']) {
+export function getCommercialConfidenceRank(value: PreviewCandidateEvaluation['commercialPreference']) {
   if (!value) return 0
   if (value.confidence === 'strong') return 3
   if (value.confidence === 'medium') return 2
   return 1
 }
 
-function computeMarketplaceCardPerceptualPreference(input: {
+export function computeMarketplaceCardPerceptualPreference(input: {
   candidate: PreviewCandidateEvaluation
 }) {
   const signals = input.candidate.perceptualSignals
@@ -879,7 +901,7 @@ function computeMarketplaceCardPerceptualPreference(input: {
   }
 }
 
-function explainMarketplaceCardCommercialDecision(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function explainMarketplaceCardCommercialDecision(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   const leftCommercial = left.commercialPreference
   const rightCommercial = right.commercialPreference
   const structuralScoreDelta = right.scoreTrust.effectiveScore - left.scoreTrust.effectiveScore
@@ -954,12 +976,12 @@ function explainMarketplaceCardCommercialDecision(left: PreviewCandidateEvaluati
   }
 }
 
-function getMarketplaceCardCommercialDecisionDelta(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function getMarketplaceCardCommercialDecisionDelta(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   const decision = explainMarketplaceCardCommercialDecision(left, right)
   return decision.applied ? decision.commercialScoreDelta : 0
 }
 
-function explainMarketplaceCardPerceptualDecision(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function explainMarketplaceCardPerceptualDecision(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   const structuralScoreDelta = right.scoreTrust.effectiveScore - left.scoreTrust.effectiveScore
 
   if (left.structuralStatus !== right.structuralStatus) {
@@ -1031,12 +1053,12 @@ function explainMarketplaceCardPerceptualDecision(left: PreviewCandidateEvaluati
   }
 }
 
-function getMarketplaceCardPerceptualDecisionDelta(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function getMarketplaceCardPerceptualDecisionDelta(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   const decision = explainMarketplaceCardPerceptualDecision(left, right)
   return decision.applied ? decision.perceptualScoreDelta : 0
 }
 
-function compareMarketplaceCardTemplateVariantCandidates(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function compareMarketplaceCardTemplateVariantCandidates(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   const tierDelta = getStructuralTierRank(right.structuralStatus) - getStructuralTierRank(left.structuralStatus)
   if (tierDelta !== 0) return tierDelta
 
@@ -1075,15 +1097,15 @@ function compareMarketplaceCardTemplateVariantCandidates(left: PreviewCandidateE
   return left.strategyLabel.localeCompare(right.strategyLabel)
 }
 
-function getStructuralStatus(assessment: LayoutAssessment): StructuralLayoutStatus {
+export function getStructuralStatus(assessment: LayoutAssessment): StructuralLayoutStatus {
   return assessment.structuralState?.status || 'valid'
 }
 
-function getStructuralFindings(assessment: LayoutAssessment): StructuralLayoutFinding[] {
+export function getStructuralFindings(assessment: LayoutAssessment): StructuralLayoutFinding[] {
   return assessment.structuralState?.findings || []
 }
 
-function getStructuralFindingWeight(findings: StructuralLayoutFinding[]) {
+export function getStructuralFindingWeight(findings: StructuralLayoutFinding[]) {
   return findings.reduce((sum, finding) => {
     const weight = finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1
     return sum + weight
@@ -1095,7 +1117,7 @@ function normalizeSceneMetric(value: unknown) {
   return Math.round(numeric * 10) / 10
 }
 
-function createRepairSceneSignature(scene: Scene) {
+export function createRepairSceneSignature(scene: Scene) {
   const snapshot = {
     title: {
       x: normalizeSceneMetric(scene.title.x),
@@ -1145,7 +1167,7 @@ function createRepairSceneSignature(scene: Scene) {
   return JSON.stringify(snapshot)
 }
 
-function computeSceneGeometryDelta(left: Scene, right: Scene) {
+export function computeSceneGeometryDelta(left: Scene, right: Scene) {
   const pairs: Array<[unknown, unknown]> = [
     [left.title.x, right.title.x],
     [left.title.y, right.title.y],
@@ -1173,7 +1195,7 @@ function computeSceneGeometryDelta(left: Scene, right: Scene) {
   return pairs.reduce((sum, [a, b]) => sum + Math.abs((typeof a === 'number' ? a : 0) - (typeof b === 'number' ? b : 0)), 0)
 }
 
-function createRepairAttemptSignature(input: {
+export function createRepairAttemptSignature(input: {
   beforeSceneSignature: string
   strategy: RepairStrategy
   classification: FailureClassification
@@ -1189,7 +1211,7 @@ function createRepairAttemptSignature(input: {
   })
 }
 
-function evaluateRepairSceneSync(input: {
+export function evaluateRepairSceneSync(input: {
   scene: Scene
   formatKey: FormatKey
   assessment?: LayoutAssessment
@@ -1224,7 +1246,7 @@ function evaluateRepairSceneSync(input: {
   }
 }
 
-async function evaluateRepairScene(input: {
+export async function evaluateRepairScene(input: {
   scene: Scene
   formatKey: FormatKey
   expectedCompositionModelId?: Variant['compositionModelId']
@@ -1241,13 +1263,13 @@ async function evaluateRepairScene(input: {
   })
 }
 
-function averageNumbers(values: number[]) {
+export function averageNumbers(values: number[]) {
   const usable = values.filter((value) => Number.isFinite(value))
   if (!usable.length) return 0
   return usable.reduce((sum, value) => sum + value, 0) / usable.length
 }
 
-function getRepairCandidateKind(strategy?: RepairStrategy): RepairCandidateKind {
+export function getRepairCandidateKind(strategy?: RepairStrategy): RepairCandidateKind {
   if (strategy?.candidateKind) return strategy.candidateKind
   if (strategy?.kind === 'structural-regeneration') return 'guided-regeneration-repair'
   if (strategy?.label === 'validated-run-autofix') return 'validated-run-autofix'
@@ -1255,14 +1277,14 @@ function getRepairCandidateKind(strategy?: RepairStrategy): RepairCandidateKind 
   return 'local-structural-repair'
 }
 
-function isEscalationSourcedRepairStrategy(strategy?: RepairStrategy) {
+export function isEscalationSourcedRepairStrategy(strategy?: RepairStrategy) {
   if (!strategy) return false
   if (strategy.candidateKind === 'guided-regeneration-repair') return true
   if (strategy.kind === 'structural-regeneration') return true
   return strategy.label.startsWith('run-auto-fix-escalation:')
 }
 
-function getRepairObjectiveContext(input: {
+export function getRepairObjectiveContext(input: {
   formatKey: FormatKey
   formatFamily: FormatFamily
   repairConfig: RepairSearchConfig
@@ -1281,7 +1303,7 @@ function getRepairObjectiveContext(input: {
   }
 }
 
-function getRepairClusterMetric(assessment: LayoutAssessment) {
+export function getRepairClusterMetric(assessment: LayoutAssessment) {
   return (
     assessment.perceptual?.clusterCohesion ??
     assessment.layoutAnalysis?.clusters.textCluster?.metrics.cohesion ??
@@ -1291,7 +1313,7 @@ function getRepairClusterMetric(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairCtaIntegrationMetric(assessment: LayoutAssessment) {
+export function getRepairCtaIntegrationMetric(assessment: LayoutAssessment) {
   return (
     assessment.perceptual?.ctaIntegration ??
     assessment.layoutAnalysis?.blocks.cta?.metrics.clusterIntegration ??
@@ -1301,7 +1323,7 @@ function getRepairCtaIntegrationMetric(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairBalanceMetric(assessment: LayoutAssessment) {
+export function getRepairBalanceMetric(assessment: LayoutAssessment) {
   return (
     assessment.perceptual?.visualBalance ??
     assessment.layoutAnalysis?.global.metrics.visualBalance ??
@@ -1311,7 +1333,7 @@ function getRepairBalanceMetric(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairReadingFlowMetric(assessment: LayoutAssessment) {
+export function getRepairReadingFlowMetric(assessment: LayoutAssessment) {
   return (
     assessment.perceptual?.readingFlowClarity ??
     assessment.layoutAnalysis?.clusters.textCluster?.metrics.horizontalFlow ??
@@ -1321,7 +1343,7 @@ function getRepairReadingFlowMetric(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairVerticalSeparationMetric(assessment: LayoutAssessment) {
+export function getRepairVerticalSeparationMetric(assessment: LayoutAssessment) {
   return (
     assessment.layoutAnalysis?.clusters.textCluster?.metrics.verticalFlow ??
     assessment.metrics?.textRhythm ??
@@ -1330,11 +1352,11 @@ function getRepairVerticalSeparationMetric(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairNegativeSpaceQuality(assessment: LayoutAssessment) {
+export function getRepairNegativeSpaceQuality(assessment: LayoutAssessment) {
   return assessment.perceptual ? 100 - assessment.perceptual.deadSpaceScore : assessment.metrics?.negativeSpaceBalance ?? 0
 }
 
-function getRepairPerceptualQuality(input: {
+export function getRepairPerceptualQuality(input: {
   assessment: LayoutAssessment
   objectiveProfile: RepairObjectiveProfile
 }) {
@@ -1359,7 +1381,7 @@ function getRepairPerceptualQuality(input: {
   )
 }
 
-function getRepairCommercialStrength(assessment: LayoutAssessment) {
+export function getRepairCommercialStrength(assessment: LayoutAssessment) {
   const metrics = assessment.metrics
   const visual = assessment.visual
   const signals = assessment.perceptual
@@ -1376,7 +1398,7 @@ function getRepairCommercialStrength(assessment: LayoutAssessment) {
   )
 }
 
-function getRepairFamilyFidelity(input: {
+export function getRepairFamilyFidelity(input: {
   candidate: RepairEvaluatedScene
   formatKey: FormatKey
   expectedCompositionModelId?: Variant['compositionModelId']
@@ -1413,7 +1435,7 @@ function getRepairFamilyFidelity(input: {
   return clamp(Math.round(complianceScore * 0.78 + formatSuitability * 0.22 + sameModelBonus + familyBonus), 0, 100)
 }
 
-function getRepairStructuralValidity(candidate: RepairEvaluatedScene) {
+export function getRepairStructuralValidity(candidate: RepairEvaluatedScene) {
   const metrics = candidate.assessment.structuralState?.metrics
   const base =
     candidate.structuralStatus === 'valid'
@@ -1430,7 +1452,7 @@ function getRepairStructuralValidity(candidate: RepairEvaluatedScene) {
   return clamp(Math.round(base - penalty + occupancyBonus), 0, 100)
 }
 
-function getRepairSideEffectCost(input: {
+export function getRepairSideEffectCost(input: {
   baseline: RepairEvaluatedScene
   candidate: RepairEvaluatedScene
   objectiveProfile: RepairObjectiveProfile
@@ -1481,7 +1503,7 @@ function getRepairSideEffectCost(input: {
   )
 }
 
-function evaluateRepairObjective(input: {
+export function evaluateRepairObjective(input: {
   baseline: RepairEvaluatedScene
   candidate: RepairEvaluatedScene
   formatFamily: FormatFamily
@@ -1531,22 +1553,22 @@ function evaluateRepairObjective(input: {
   }
 }
 
-function getStructuralFindingMetrics(candidate: RepairEvaluatedScene, name: StructuralInvariantName) {
+export function getStructuralFindingMetrics(candidate: RepairEvaluatedScene, name: StructuralInvariantName) {
   const finding = getStructuralFindings(candidate.assessment).find((entry) => entry.name === name)
   return finding?.metrics || {}
 }
 
-function hasStructuralFinding(candidate: RepairEvaluatedScene, name: StructuralInvariantName) {
+export function hasStructuralFinding(candidate: RepairEvaluatedScene, name: StructuralInvariantName) {
   return getStructuralFindings(candidate.assessment).some((finding) => finding.name === name)
 }
 
-function countHardStructuralFindings(candidate: RepairEvaluatedScene) {
+export function countHardStructuralFindings(candidate: RepairEvaluatedScene) {
   return getStructuralFindings(candidate.assessment).filter(
     (finding) => finding.name === 'major-overlap' || finding.name === 'safe-area-compliance'
   ).length
 }
 
-function deriveRepairSummaryTags(input: {
+export function deriveRepairSummaryTags(input: {
   candidate: RepairEvaluatedScene
   familyFidelity: number
 }): string[] {
@@ -1575,7 +1597,7 @@ function deriveRepairSummaryTags(input: {
   return unique(tags)
 }
 
-function deriveRepairPenaltyTags(input: {
+export function deriveRepairPenaltyTags(input: {
   candidate: RepairEvaluatedScene
   objective: RepairObjectiveBreakdown
   confidenceDelta: number
@@ -1597,7 +1619,7 @@ function deriveRepairPenaltyTags(input: {
   return unique(tags)
 }
 
-function evaluateRepairSearchCandidate(input: {
+export function evaluateRepairSearchCandidate(input: {
   baseline: RepairEvaluatedScene
   candidate: RepairEvaluatedScene
   strategy?: RepairStrategy
@@ -1800,7 +1822,7 @@ function evaluateRepairSearchCandidate(input: {
   }
 }
 
-function simulateLandscapeImageNearMissOverride(input: {
+export function simulateLandscapeImageNearMissOverride(input: {
   formatKey: FormatKey
   baseline: RepairEvaluatedScene
   candidate: RepairEvaluatedScene
@@ -1854,7 +1876,7 @@ function simulateLandscapeImageNearMissOverride(input: {
   }
 }
 
-function buildEmptyLandscapeTextHeightNearMissSafeguards(
+export function buildEmptyLandscapeTextHeightNearMissSafeguards(
   featureEnabled: boolean
 ): LandscapeTextHeightNearMissSafeguardResults {
   return {
@@ -1878,7 +1900,7 @@ function buildEmptyLandscapeTextHeightNearMissSafeguards(
   }
 }
 
-function getLandscapeTextHeightNearMissBestRejectedAttempt(attempts: RepairAttempt[]) {
+export function getLandscapeTextHeightNearMissBestRejectedAttempt(attempts: RepairAttempt[]) {
   const rejected = attempts.filter(
     (attempt) =>
       attempt.searchEvaluation &&
@@ -1907,14 +1929,14 @@ function getLandscapeTextHeightNearMissBestRejectedAttempt(attempts: RepairAttem
   })[0]
 }
 
-function getLandscapeNearMissRoleEntry(
+export function getLandscapeNearMissRoleEntry(
   placement: PlacementViolationDiagnostics,
   role: 'text' | 'cta' | 'image'
 ) {
   return placement.perRole.find((entry) => entry.role === role && entry.eligible) || null
 }
 
-function getLandscapeNearMissRectUnion(
+export function getLandscapeNearMissRectUnion(
   rects: Array<{ x: number; y: number; w: number; h: number } | null | undefined>
 ) {
   const filtered = rects.filter(
@@ -1933,7 +1955,7 @@ function getLandscapeNearMissRectUnion(
   }
 }
 
-function getLandscapeNearMissMaxZoneDimension(
+export function getLandscapeNearMissMaxZoneDimension(
   zones: Array<{ x: number; y: number; w: number; h: number }>,
   dimension: 'w' | 'h'
 ) {
@@ -1941,7 +1963,7 @@ function getLandscapeNearMissMaxZoneDimension(
   return Math.max(...zones.map((zone) => zone[dimension]))
 }
 
-function getLandscapeNearMissOverlapArea(
+export function getLandscapeNearMissOverlapArea(
   a: { x: number; y: number; w: number; h: number } | null,
   b: { x: number; y: number; w: number; h: number } | null
 ) {
@@ -1951,7 +1973,7 @@ function getLandscapeNearMissOverlapArea(
   return Math.round(overlapWidth * overlapHeight * 100) / 100
 }
 
-function deriveLandscapeTextHeightNearMissBlocker(input: {
+export function deriveLandscapeTextHeightNearMissBlocker(input: {
   formatKey: FormatKey
   evaluation: RepairCandidateEvaluation
 }) {
@@ -2043,7 +2065,7 @@ function deriveLandscapeTextHeightNearMissBlocker(input: {
   }
 }
 
-function evaluateLandscapeTextHeightNearMissOverride(input: {
+export function evaluateLandscapeTextHeightNearMissOverride(input: {
   formatKey: FormatKey
   repairConfig: RepairSearchConfig
   baselineEvaluation: RepairCandidateEvaluation
@@ -2125,7 +2147,7 @@ function evaluateLandscapeTextHeightNearMissOverride(input: {
   }
 }
 
-function selectRepairSearchWinner(input: {
+export function selectRepairSearchWinner(input: {
   baseline: RepairEvaluatedScene
   attempts: RepairAttempt[]
   formatKey: FormatKey
@@ -2327,7 +2349,7 @@ function selectRepairSearchWinner(input: {
   }
 }
 
-function classifyStructuralFailure(assessment: LayoutAssessment): FailureClassification {
+export function classifyStructuralFailure(assessment: LayoutAssessment): FailureClassification {
   const weightedFindings: Record<RepairFailureType, number> = {
     'overlap-dominant': 0,
     'spacing-dominant': 0,
@@ -2380,13 +2402,13 @@ function classifyStructuralFailure(assessment: LayoutAssessment): FailureClassif
   }
 }
 
-function getRepairStructuralFindingPenalty(candidate: RepairEvaluatedScene, name: string) {
+export function getRepairStructuralFindingPenalty(candidate: RepairEvaluatedScene, name: string) {
   return getStructuralFindings(candidate.assessment)
     .filter((finding) => finding.name === name)
     .reduce((sum, finding) => sum + (finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1), 0)
 }
 
-function getRepairInvalidRecoveryPenalty(candidate: RepairEvaluatedScene) {
+export function getRepairInvalidRecoveryPenalty(candidate: RepairEvaluatedScene) {
   return (
     getRepairStructuralFindingPenalty(candidate, 'major-overlap') * 100 +
     getRepairStructuralFindingPenalty(candidate, 'minimum-spacing') * 70 +
@@ -2398,7 +2420,7 @@ function getRepairInvalidRecoveryPenalty(candidate: RepairEvaluatedScene) {
   )
 }
 
-function buildRepairDecision(input: {
+export function buildRepairDecision(input: {
   before: RepairEvaluatedScene
   after: RepairEvaluatedScene
   strategy: RepairStrategy
@@ -2549,7 +2571,7 @@ function buildRepairDecision(input: {
   }
 }
 
-function compareRepairEvaluations(left: RepairEvaluatedScene, right: RepairEvaluatedScene) {
+export function compareRepairEvaluations(left: RepairEvaluatedScene, right: RepairEvaluatedScene) {
   const leftTier = getStructuralTierRank(left.structuralStatus)
   const rightTier = getStructuralTierRank(right.structuralStatus)
   if (leftTier !== rightTier) return rightTier - leftTier
@@ -2568,7 +2590,7 @@ function compareRepairEvaluations(left: RepairEvaluatedScene, right: RepairEvalu
   return left.strategyLabel.localeCompare(right.strategyLabel)
 }
 
-function compareMarketplaceRepairPreviewWinner(
+export function compareMarketplaceRepairPreviewWinner(
   left: RepairEvaluatedScene,
   right: RepairEvaluatedScene,
   baselineSceneSignature: string
@@ -2613,7 +2635,7 @@ function compareMarketplaceRepairPreviewWinner(
   return 0
 }
 
-function isMarketplaceCardNoImageRepairInput(input: {
+export function isMarketplaceCardNoImageRepairInput(input: {
   formatKey: FormatKey
   assetHint?: AssetHint
   imageUrl?: string
@@ -2626,7 +2648,7 @@ function isMarketplaceCardNoImageRepairInput(input: {
   )
 }
 
-function getMarketplaceCardNoImageRepairArchetypeRank(archetype?: StructuralArchetype) {
+export function getMarketplaceCardNoImageRepairArchetypeRank(archetype?: StructuralArchetype) {
   switch (archetype) {
     case 'split-vertical':
       return 0
@@ -2647,7 +2669,7 @@ function getMarketplaceCardNoImageRepairArchetypeRank(archetype?: StructuralArch
   }
 }
 
-function compareMarketplaceRepairPreviewWinnerEntry(
+export function compareMarketplaceRepairPreviewWinnerEntry(
   left: {
     strategy: RepairStrategy
     candidate: RepairEvaluatedScene
@@ -2680,7 +2702,7 @@ function compareMarketplaceRepairPreviewWinnerEntry(
   return left.strategy.label.localeCompare(right.strategy.label)
 }
 
-function buildMarketplaceRepairSafetyDecision(input: {
+export function buildMarketplaceRepairSafetyDecision(input: {
   before: RepairEvaluatedScene
   after: RepairEvaluatedScene
   strategy: RepairStrategy
@@ -2789,7 +2811,7 @@ function buildMarketplaceRepairSafetyDecision(input: {
   } satisfies RepairResult
 }
 
-function compareMarketplaceCardNoImageAcceptedRepairAttempts(
+export function compareMarketplaceCardNoImageAcceptedRepairAttempts(
   left: RepairAttempt,
   right: RepairAttempt,
   baselineSceneSignature: string
@@ -2846,7 +2868,7 @@ function compareMarketplaceCardNoImageAcceptedRepairAttempts(
   return left.candidate.strategyLabel.localeCompare(right.candidate.strategyLabel)
 }
 
-function pickBestAcceptedRepair(
+export function pickBestAcceptedRepair(
   before: RepairEvaluatedScene,
   attempts: RepairAttempt[],
   options?: {
@@ -2876,7 +2898,7 @@ function pickBestAcceptedRepair(
     .sort(compareRepairEvaluations)[0] || before
 }
 
-function createSuppressedRepairAttempt(input: {
+export function createSuppressedRepairAttempt(input: {
   before: RepairEvaluatedScene
   strategy: RepairStrategy
   classification: FailureClassification
@@ -2900,7 +2922,7 @@ function createSuppressedRepairAttempt(input: {
   }
 }
 
-function recordAttemptArtifacts(input: {
+export function recordAttemptArtifacts(input: {
   attempt: RepairAttempt
   failedAttemptSignatures: Set<string>
   seenOutcomeSignatures: Set<string>
@@ -2911,7 +2933,7 @@ function recordAttemptArtifacts(input: {
   input.seenOutcomeSignatures.add(input.attempt.candidate.sceneSignature)
 }
 
-function buildFailureDrivenLocalActions(input: {
+export function buildFailureDrivenLocalActions(input: {
   classification: FailureClassification
   assessment: LayoutAssessment
   formatFamily: FormatFamily
@@ -2974,23 +2996,23 @@ const REPAIR_ACTION_CONFLICTS: Array<[FixAction, FixAction]> = [
   ['switch-to-text-first', 'switch-to-image-first'],
 ]
 
-function buildRepairActionSubset(actions: FixAction[], allowed: FixAction[], limit = 4) {
+export function buildRepairActionSubset(actions: FixAction[], allowed: FixAction[], limit = 4) {
   return sortActionsByPriority(actions.filter((action) => allowed.includes(action))).slice(0, limit)
 }
 
-function areRepairActionSetsCompatible(left: FixAction[], right: FixAction[]) {
+export function areRepairActionSetsCompatible(left: FixAction[], right: FixAction[]) {
   const merged = new Set([...left, ...right])
   return REPAIR_ACTION_CONFLICTS.every(([first, second]) => !(merged.has(first) && merged.has(second)))
 }
 
-function combineRepairActionSets(left: FixAction[], right: FixAction[], limit = 6) {
+export function combineRepairActionSets(left: FixAction[], right: FixAction[], limit = 6) {
   if (!left.length || !right.length) return null
   if (!areRepairActionSetsCompatible(left, right)) return null
   const combined = sortActionsByPriority(unique([...left, ...right]))
   return combined.slice(0, limit)
 }
 
-function buildLocalRepairStrategies(input: {
+export function buildLocalRepairStrategies(input: {
   classification: FailureClassification
   assessment: LayoutAssessment
   formatFamily: FormatFamily
@@ -3107,7 +3129,7 @@ function buildLocalRepairStrategies(input: {
   return strategies.slice(0, Math.max(1, input.repairConfig.candidateBudget - MARKETPLACE_CARD_REPAIR_RETAIN_LIMIT))
 }
 
-async function materializeRepairAttempt(input: {
+export async function materializeRepairAttempt(input: {
   before: RepairEvaluatedScene
   strategy: RepairStrategy
   classification: FailureClassification
@@ -3165,7 +3187,7 @@ async function materializeRepairAttempt(input: {
   }
 }
 
-function shouldStartWithLocalRepair(input: {
+export function shouldStartWithLocalRepair(input: {
   assessment: LayoutAssessment
   classification: FailureClassification
 }) {
@@ -3175,7 +3197,7 @@ function shouldStartWithLocalRepair(input: {
   return input.classification.highSeverityFindingCount <= 1 && input.classification.findingCount <= 3
 }
 
-function getIntentArchetype(intent: LayoutIntent, formatKey: FormatKey): StructuralArchetype {
+export function getIntentArchetype(intent: LayoutIntent, formatKey: FormatKey): StructuralArchetype {
   if (intent.structuralArchetype) return intent.structuralArchetype
   const format = FORMAT_MAP[formatKey]
   if (intent.textMode === 'overlay') return 'overlay-balanced'
@@ -3186,7 +3208,7 @@ function getIntentArchetype(intent: LayoutIntent, formatKey: FormatKey): Structu
   return 'text-stack'
 }
 
-function getDefaultBalanceRegime(archetype: StructuralArchetype): BalanceRegime {
+export function getDefaultBalanceRegime(archetype: StructuralArchetype): BalanceRegime {
   switch (archetype) {
     case 'text-stack':
       return 'text-first'
@@ -3201,7 +3223,7 @@ function getDefaultBalanceRegime(archetype: StructuralArchetype): BalanceRegime 
   }
 }
 
-function getDefaultOccupancyMode(archetype: StructuralArchetype): OccupancyMode {
+export function getDefaultOccupancyMode(archetype: StructuralArchetype): OccupancyMode {
   switch (archetype) {
     case 'image-hero':
       return 'visual-first'
@@ -3218,7 +3240,7 @@ function getDefaultOccupancyMode(archetype: StructuralArchetype): OccupancyMode 
   }
 }
 
-function buildIntentStructuralSignature(input: {
+export function buildIntentStructuralSignature(input: {
   formatKey: FormatKey
   intent: LayoutIntent
   profile?: ContentProfile
@@ -3285,7 +3307,7 @@ function buildIntentStructuralSignature(input: {
   }
 }
 
-function buildSceneStructuralSignature(input: {
+export function buildSceneStructuralSignature(input: {
   scene: Scene
   intent: LayoutIntent
   formatKey: FormatKey
@@ -3331,7 +3353,7 @@ function buildSceneStructuralSignature(input: {
   }
 }
 
-function createStructuralSignatureKey(signature: StructuralSignature) {
+export function createStructuralSignatureKey(signature: StructuralSignature) {
   return [
     signature.archetype,
     signature.flowDirection,
@@ -3345,7 +3367,7 @@ function createStructuralSignatureKey(signature: StructuralSignature) {
   ].join('|')
 }
 
-function createSceneGeometrySignature(scene: Scene) {
+export function createSceneGeometrySignature(scene: Scene) {
   const round = (value?: number) => Math.round((value || 0) * 10) / 10
   return [
     ['title', round(scene.title.x), round(scene.title.y), round(scene.title.w), round(scene.title.h)].join(':'),
@@ -3357,7 +3379,7 @@ function createSceneGeometrySignature(scene: Scene) {
   ].join('|')
 }
 
-function applyStructuralArchetypeIntent(input: {
+export function applyStructuralArchetypeIntent(input: {
   archetype: StructuralArchetype
   formatKey: FormatKey
   baseIntent: LayoutIntent
@@ -3525,7 +3547,7 @@ function applyStructuralArchetypeIntent(input: {
   }
 }
 
-function rankStructuralArchetypes(input: {
+export function rankStructuralArchetypes(input: {
   formatKey: FormatKey
   profile: ContentProfile
   baseIntent: LayoutIntent
@@ -3630,7 +3652,7 @@ function rankStructuralArchetypes(input: {
     .map(([archetype]) => archetype)
 }
 
-function buildGuidedRepairStrategies(input: {
+export function buildGuidedRepairStrategies(input: {
   formatKey: FormatKey
   formatFamily: FormatFamily
   baseIntent: LayoutIntent
@@ -3756,7 +3778,7 @@ function buildGuidedRepairStrategies(input: {
   }).slice(0, 3)
 }
 
-function logRepairAttemptSummary(input: {
+export function logRepairAttemptSummary(input: {
   formatKey: FormatKey
   before: RepairEvaluatedScene
   classification: FailureClassification
@@ -3810,7 +3832,7 @@ function logRepairAttemptSummary(input: {
   console.groupEnd()
 }
 
-function normalizePreviewIntent(input: {
+export function normalizePreviewIntent(input: {
   formatKey: FormatKey
   baseIntent: LayoutIntent
   profile: ContentProfile
@@ -3900,7 +3922,7 @@ function normalizePreviewIntent(input: {
   }
 }
 
-function shouldAddRegionalCandidate(formatKey: FormatKey, profile: ContentProfile) {
+export function shouldAddRegionalCandidate(formatKey: FormatKey, profile: ContentProfile) {
   const format = FORMAT_MAP[formatKey]
   return (
     profile.density === 'dense' ||
@@ -3914,25 +3936,25 @@ function shouldAddRegionalCandidate(formatKey: FormatKey, profile: ContentProfil
   )
 }
 
-function isPrimaryGenerationRecoveryFormat(formatKey: FormatKey) {
+export function isPrimaryGenerationRecoveryFormat(formatKey: FormatKey) {
   return PRIMARY_GENERATION_RECOVERY_FORMATS.has(formatKey)
 }
 
-function supportsPrimaryStructuralEscalation(formatKey: FormatKey) {
+export function supportsPrimaryStructuralEscalation(formatKey: FormatKey) {
   return PRIMARY_STRUCTURAL_ESCALATION_FORMATS.has(formatKey)
 }
 
-function supportsPrimaryFinalQualityGate(formatKey: FormatKey) {
+export function supportsPrimaryFinalQualityGate(formatKey: FormatKey) {
   return isPrimaryGenerationRecoveryFormat(formatKey)
 }
 
-function countPrimaryFinalCriticalFindings(assessment: LayoutAssessment) {
+export function countPrimaryFinalCriticalFindings(assessment: LayoutAssessment) {
   return (assessment.structuralState?.findings || []).filter(
     (finding) => finding.severity === 'high' && PRIMARY_FINAL_QUALITY_FINDINGS.has(finding.name)
   ).length
 }
 
-function getPrimaryFinalStructuralPenalty(assessment: LayoutAssessment) {
+export function getPrimaryFinalStructuralPenalty(assessment: LayoutAssessment) {
   return (assessment.structuralState?.findings || []).reduce((sum, finding) => {
     const severityWeight = finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1
     const findingWeight =
@@ -3963,7 +3985,7 @@ type PrimaryFinalizationState = {
   intent: LayoutIntent
 }
 
-function isBetterPrimaryFinalizationState(candidate: PrimaryFinalizationState, current: PrimaryFinalizationState) {
+export function isBetterPrimaryFinalizationState(candidate: PrimaryFinalizationState, current: PrimaryFinalizationState) {
   const candidateStatusRank = getStructuralTierRank(candidate.assessment.structuralState?.status || 'invalid')
   const currentStatusRank = getStructuralTierRank(current.assessment.structuralState?.status || 'invalid')
   if (candidateStatusRank !== currentStatusRank) return candidateStatusRank > currentStatusRank
@@ -3987,7 +4009,7 @@ function isBetterPrimaryFinalizationState(candidate: PrimaryFinalizationState, c
   return candidate.scoreTrust.effectiveScore > current.scoreTrust.effectiveScore
 }
 
-function shouldConsiderPrimaryFinalizationAlternative(
+export function shouldConsiderPrimaryFinalizationAlternative(
   candidate: PreviewCandidateEvaluation,
   current: PrimaryFinalizationState,
   selected: PreviewCandidateEvaluation
@@ -4017,7 +4039,7 @@ function shouldConsiderPrimaryFinalizationAlternative(
   return getPrimaryFinalStructuralPenalty(candidate.assessment) < getPrimaryFinalStructuralPenalty(current.assessment)
 }
 
-function shouldRunPrimaryFinalizationReselection(assessment: LayoutAssessment) {
+export function shouldRunPrimaryFinalizationReselection(assessment: LayoutAssessment) {
   return (
     (assessment.structuralState?.status || 'invalid') === 'invalid' &&
     (
@@ -4028,7 +4050,7 @@ function shouldRunPrimaryFinalizationReselection(assessment: LayoutAssessment) {
   )
 }
 
-function finalizePrimarySelectedOutcomeSync(input: {
+export function finalizePrimarySelectedOutcomeSync(input: {
   formatKey: FormatKey
   selection: PreviewCandidateSelection
   currentScene: Scene
@@ -4092,7 +4114,7 @@ function finalizePrimarySelectedOutcomeSync(input: {
   return best
 }
 
-function buildPrimaryRecoveryPreviewVariants(input: {
+export function buildPrimaryRecoveryPreviewVariants(input: {
   formatKey: FormatKey
   baseIntent: LayoutIntent
   profile: ContentProfile
@@ -4255,17 +4277,17 @@ function buildPrimaryRecoveryPreviewVariants(input: {
   return variants
 }
 
-function getDefaultPreviewCandidateBudget(formatKey: FormatKey) {
+export function getDefaultPreviewCandidateBudget(formatKey: FormatKey) {
   if (formatKey === 'marketplace-card') return MARKETPLACE_CARD_PREVIEW_CANDIDATE_BUDGET
   if (isPrimaryGenerationRecoveryFormat(formatKey)) return PREVIEW_CANDIDATE_BUDGET + 1
   return PREVIEW_CANDIDATE_BUDGET
 }
 
-function shouldUseExpandedPreviewPlanning(formatKey: FormatKey, includeExtendedDiagnostics?: boolean) {
+export function shouldUseExpandedPreviewPlanning(formatKey: FormatKey, includeExtendedDiagnostics?: boolean) {
   return includeExtendedDiagnostics || formatKey === 'marketplace-card'
 }
 
-function createPreviewPlanVariantKey(plan: PreviewCandidatePlan) {
+export function createPreviewPlanVariantKey(plan: PreviewCandidatePlan) {
   return [
     plan.fixStage,
     plan.intent.family,
@@ -4279,7 +4301,7 @@ function createPreviewPlanVariantKey(plan: PreviewCandidatePlan) {
   ].join('|')
 }
 
-function buildMarketplaceCardGeometryProbeOverrides(input: {
+export function buildMarketplaceCardGeometryProbeOverrides(input: {
   intent: LayoutIntent
 }): Array<{
   id: string
@@ -4333,7 +4355,7 @@ function buildMarketplaceCardGeometryProbeOverrides(input: {
   return probes
 }
 
-function pushPreviewCandidatePlan(
+export function pushPreviewCandidatePlan(
   plans: PreviewCandidatePlan[],
   plan: PreviewCandidatePlan,
   formatKey: FormatKey,
@@ -4380,7 +4402,7 @@ function pushPreviewCandidatePlan(
   }
 }
 
-function buildPreviewCandidatePlans(input: {
+export function buildPreviewCandidatePlans(input: {
   formatKey: FormatKey
   master: Scene
   profile: ContentProfile
@@ -4771,7 +4793,7 @@ function buildPreviewCandidatePlans(input: {
   }
 }
 
-function retainSelectionCandidatesForFormat(formatKey: FormatKey, candidates: PreviewCandidateEvaluation[]) {
+export function retainSelectionCandidatesForFormat(formatKey: FormatKey, candidates: PreviewCandidateEvaluation[]) {
   const sorted = [...candidates].sort(comparePreviewCandidates)
   if (formatKey !== 'marketplace-card') return sorted
 
@@ -4790,7 +4812,7 @@ function retainSelectionCandidatesForFormat(formatKey: FormatKey, candidates: Pr
   return retained
 }
 
-function evaluatePreviewCandidatePlan(input: {
+export function evaluatePreviewCandidatePlan(input: {
   plan: PreviewCandidatePlan
   master: Scene
   formatKey: FormatKey
@@ -5005,13 +5027,13 @@ function evaluatePreviewCandidatePlan(input: {
   } satisfies PreviewCandidateEvaluation
 }
 
-function getPreviewStructuralFindingPenalty(candidate: PreviewCandidateEvaluation, name: string) {
+export function getPreviewStructuralFindingPenalty(candidate: PreviewCandidateEvaluation, name: string) {
   return (candidate.assessment.structuralState?.findings || [])
     .filter((finding) => finding.name === name)
     .reduce((sum, finding) => sum + (finding.severity === 'high' ? 3 : finding.severity === 'medium' ? 2 : 1), 0)
 }
 
-function getPreviewInvalidRecoveryPenalty(candidate: PreviewCandidateEvaluation) {
+export function getPreviewInvalidRecoveryPenalty(candidate: PreviewCandidateEvaluation) {
   return (
     getPreviewStructuralFindingPenalty(candidate, 'major-overlap') * 100 +
     getPreviewStructuralFindingPenalty(candidate, 'minimum-spacing') * 70 +
@@ -5023,7 +5045,7 @@ function getPreviewInvalidRecoveryPenalty(candidate: PreviewCandidateEvaluation)
   )
 }
 
-function getPreviewInvalidRecoveryPreference(candidate: PreviewCandidateEvaluation) {
+export function getPreviewInvalidRecoveryPreference(candidate: PreviewCandidateEvaluation) {
   let preference = 0
   if (candidate.strategyLabel.startsWith('recovery-')) preference += 8
   if (candidate.fixStage === 'structural') preference += 5
@@ -5033,7 +5055,7 @@ function getPreviewInvalidRecoveryPreference(candidate: PreviewCandidateEvaluati
   return preference
 }
 
-function comparePreviewCandidates(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
+export function comparePreviewCandidates(left: PreviewCandidateEvaluation, right: PreviewCandidateEvaluation) {
   if (
     isMarketplaceCardTemplateVariantCandidate(left) &&
     isMarketplaceCardTemplateVariantCandidate(right)
@@ -5090,7 +5112,7 @@ function comparePreviewCandidates(left: PreviewCandidateEvaluation, right: Previ
   return left.strategyLabel.localeCompare(right.strategyLabel)
 }
 
-function logPreviewCandidateSelection(input: {
+export function logPreviewCandidateSelection(input: {
   formatKey: FormatKey
   selection: PreviewCandidateSelection
 }) {
@@ -5148,7 +5170,7 @@ function logPreviewCandidateSelection(input: {
   }
 }
 
-function selectBestPreviewCandidate(input: {
+export function selectBestPreviewCandidate(input: {
   master: Scene
   formatKey: FormatKey
   profile: ContentProfile
@@ -5815,15 +5837,15 @@ export function getPreviewCandidateStageDiagnostics(input: {
   }
 }
 
-function findBrandTemplate(key: BrandTemplateKey) {
+export function findBrandTemplate(key: BrandTemplateKey) {
   return BRAND_TEMPLATES.find((item) => item.key === key) || BRAND_TEMPLATES[0]
 }
 
-function defaultBrandKit() {
+export function defaultBrandKit() {
   return clone(findBrandTemplate('startup-blue').brandKit)
 }
 
-function sceneToContentBlocks(scene: Scene): ContentBlock[] {
+export function sceneToContentBlocks(scene: Scene): ContentBlock[] {
   const now = createTimestamp()
   return [
     { id: 'headline', role: 'headline', text: scene.title.text || '', enabled: Boolean((scene.title.text || '').trim()), createdAt: now, updatedAt: now },
@@ -5833,7 +5855,7 @@ function sceneToContentBlocks(scene: Scene): ContentBlock[] {
   ]
 }
 
-function buildVariantRecord(project: Project, formatKey: FormatKey): Variant {
+export function buildVariantRecord(project: Project, formatKey: FormatKey): Variant {
   const format = FORMAT_MAP[formatKey]
   const scene = applyVariantManualOverride(project.formats[formatKey], formatKey, project.manualOverrides?.[formatKey])
   const expectedCompositionModelId =
@@ -5866,7 +5888,7 @@ export function refreshProjectModel(project: Project) {
   return syncProjectModel(project)
 }
 
-function syncProjectModel(project: Project): Project {
+export function syncProjectModel(project: Project): Project {
   const now = createTimestamp()
   const next: Project = {
     ...project,
@@ -5886,18 +5908,18 @@ function syncProjectModel(project: Project): Project {
   return next
 }
 
-function elementKeyFromBlock(kind: keyof NonNullable<VariantManualOverride['blocks']> | string) {
+export function elementKeyFromBlock(kind: keyof NonNullable<VariantManualOverride['blocks']> | string) {
   if (kind === 'headline') return 'title'
   if (kind === 'subtitle' || kind === 'body') return 'subtitle'
   if (kind === 'price' || kind === 'badge') return 'badge'
   return kind
 }
 
-function clamp(value: number, min: number, max: number) {
+export function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
 
-function buildManualTypographyPlan(scene: Scene): TypographyPlan {
+export function buildManualTypographyPlan(scene: Scene): TypographyPlan {
   return {
     titleSize: scene.title.fontSize || 32,
     titleWeight: scene.title.weight || 700,
@@ -5919,7 +5941,7 @@ function buildManualTypographyPlan(scene: Scene): TypographyPlan {
   }
 }
 
-function reflowManualTypography(scene: Scene, formatKey: FormatKey) {
+export function reflowManualTypography(scene: Scene, formatKey: FormatKey) {
   const format = FORMAT_MAP[formatKey]
   const ruleSet = getFormatRuleSet(format)
   const plan = buildManualTypographyPlan(scene)
@@ -5952,7 +5974,7 @@ function reflowManualTypography(scene: Scene, formatKey: FormatKey) {
   }
 }
 
-function applyImageRolePreset(scene: Scene, format: FormatKey, role?: VariantManualOverride['imageRolePreset']) {
+export function applyImageRolePreset(scene: Scene, format: FormatKey, role?: VariantManualOverride['imageRolePreset']) {
   if (!role) return scene
   const next = clone(scene)
   const definition = FORMAT_MAP[format]
@@ -6020,7 +6042,7 @@ export function applyVariantManualOverride(scene: Scene, formatKey: FormatKey, o
   return finalizeSceneGeometry(next, format, compositionModel)
 }
 
-function getVisualSystem(key: VisualSystemKey) {
+export function getVisualSystem(key: VisualSystemKey) {
   return VISUAL_SYSTEMS.find((item) => item.key === key) || VISUAL_SYSTEMS[0]
 }
 
@@ -6054,11 +6076,11 @@ export function setAIFixStrategySelector(
   aiFixStrategySelector = selector
 }
 
-function unique<T>(items: T[]) {
+export function unique<T>(items: T[]) {
   return [...new Set(items)]
 }
 
-type AutoFixStructuralEscalationContext = {
+export type AutoFixStructuralEscalationContext = {
   master: Scene
   profile: ContentProfile
   scenario: ReturnType<typeof classifyScenario>
@@ -6084,7 +6106,7 @@ const BLOCK_FIX_PRIORITY: Record<BlockFixSuggestion['target'], number> = {
   global: 70,
 }
 
-function mapPlanActionToFixAction(action: string, formatFamily: FormatFamily): FixAction | null {
+export function mapPlanActionToFixAction(action: string, formatFamily: FormatFamily): FixAction | null {
   const directMap: Partial<Record<string, FixAction>> = {
     'increase-headline-size': 'increase-headline-size',
     'reduce-headline-size': 'reduce-headline-size',
@@ -6124,7 +6146,7 @@ function mapPlanActionToFixAction(action: string, formatFamily: FormatFamily): F
   return directMap[action] || null
 }
 
-function analysisToIssueBuckets(analysis: LayoutAnalysis) {
+export function analysisToIssueBuckets(analysis: LayoutAnalysis) {
   const blockIssues = unique([
     ...(analysis.blocks.headline?.issues || []),
     ...(analysis.blocks.subtitle?.issues || []),
@@ -6144,7 +6166,7 @@ function analysisToIssueBuckets(analysis: LayoutAnalysis) {
   return { blockIssues, clusterIssues, globalIssues }
 }
 
-function buildFixPlanFromAnalysis(analysis: LayoutAnalysis, formatKey: FormatKey, formatFamily: FormatFamily, intent: LayoutIntent): LayoutFixPlan {
+export function buildFixPlanFromAnalysis(analysis: LayoutAnalysis, formatKey: FormatKey, formatFamily: FormatFamily, intent: LayoutIntent): LayoutFixPlan {
   const blockFixes: BlockFixSuggestion[] = []
   const addFix = (target: BlockFixSuggestion['target'], score: number | undefined, issues: string[] | undefined, suggestedFixes: string[] | undefined) => {
     if (!issues?.length && (score || 100) >= 78) return
@@ -6187,11 +6209,11 @@ function buildFixPlanFromAnalysis(analysis: LayoutAnalysis, formatKey: FormatKey
   }
 }
 
-function uniqueStringFixes(fixes: string[]) {
+export function uniqueStringFixes(fixes: string[]) {
   return [...new Set(fixes.filter(Boolean))]
 }
 
-function planToActions(plan: LayoutFixPlan, formatFamily: FormatFamily, limit = 6) {
+export function planToActions(plan: LayoutFixPlan, formatFamily: FormatFamily, limit = 6) {
   return unique(
     plan.blockFixes
       .flatMap((fix) => fix.actions)
@@ -6200,12 +6222,12 @@ function planToActions(plan: LayoutFixPlan, formatFamily: FormatFamily, limit = 
   ).slice(0, limit)
 }
 
-function resolveAllowedFamily(formatKey: FormatKey, family: LayoutIntentFamily) {
+export function resolveAllowedFamily(formatKey: FormatKey, family: LayoutIntentFamily) {
   const ruleSet = getFormatRuleSet(FORMAT_MAP[formatKey])
   return ruleSet.allowedLayoutFamilies.includes(family) ? family : ruleSet.allowedLayoutFamilies[0]
 }
 
-function collectFixActions(messages: string[]): FixAction[] {
+export function collectFixActions(messages: string[]): FixAction[] {
   const actions: FixAction[] = []
 
   for (const message of messages) {
@@ -6227,7 +6249,7 @@ function collectFixActions(messages: string[]): FixAction[] {
   return unique(actions)
 }
 
-function buildPrimaryStructuralEscalationStrategy(formatKey: FormatKey, candidate: PreviewCandidateEvaluation): RepairStrategy {
+export function buildPrimaryStructuralEscalationStrategy(formatKey: FormatKey, candidate: PreviewCandidateEvaluation): RepairStrategy {
   return {
     kind: 'structural-regeneration',
     candidateKind: 'guided-regeneration-repair',
@@ -6239,7 +6261,7 @@ function buildPrimaryStructuralEscalationStrategy(formatKey: FormatKey, candidat
   }
 }
 
-function pickPrimaryStructuralEscalationCandidate(input: {
+export function pickPrimaryStructuralEscalationCandidate(input: {
   current: RepairEvaluatedScene
   selection: PreviewCandidateSelection
 }) {
@@ -6250,149 +6272,12 @@ function pickPrimaryStructuralEscalationCandidate(input: {
   })
 }
 
-function runAutoFix(
-  scene: Scene,
-  formatKey: FormatKey,
-  assessment?: LayoutAssessment,
-  imageAnalysis?: EnhancedImageAnalysis,
-  expectedCompositionModelId?: Variant['compositionModelId'],
-  escalationContext?: AutoFixStructuralEscalationContext,
-  allowStructuralEscalation = true
-) {
-  const format = FORMAT_MAP[formatKey]
-  const compositionModel = expectedCompositionModelId ? getCompositionModel(format, expectedCompositionModelId) : null
-  let best = evaluateRepairSceneSync({
-    scene: clone(scene),
-    formatKey,
-    assessment,
-    expectedCompositionModelId,
-    imageAnalysis,
-    strategyLabel: 'run-auto-fix-current',
-  })
-  const triedAttemptSignatures = new Set<string>()
-  const seenOutcomeSignatures = new Set<string>([best.sceneSignature])
-  const classification = classifyStructuralFailure(best.assessment)
-
-  for (let pass = 0; pass < 3; pass += 1) {
-    const currentAssessment = pass === 0 ? best.assessment : getFormatAssessment(formatKey, best.scene, expectedCompositionModelId, imageAnalysis)
-    if (currentAssessment.score >= 88 && best.structuralStatus === 'valid') return best.scene
-    const actions = (
-      currentAssessment.recommendedFixes && currentAssessment.recommendedFixes.length
-        ? currentAssessment.recommendedFixes
-        : collectFixActions(currentAssessment.issues.map((issue) => issue.message || issue.text || ''))
-    ).slice(0, 4)
-    if (!actions.length) return best.scene
-    const strategy: RepairStrategy = {
-      kind: 'local-structural',
-      label: `run-auto-fix-pass-${pass + 1}`,
-      reason: 'Apply lightweight local fixes only when they actually improve the scene.',
-      actions,
-      fixStage: 'local',
-    }
-    const attemptSignature = createRepairAttemptSignature({
-      beforeSceneSignature: best.sceneSignature,
-      strategy,
-      classification,
-    })
-    if (triedAttemptSignatures.has(attemptSignature)) return best.scene
-    triedAttemptSignatures.add(attemptSignature)
-    let candidate = clone(best.scene)
-    actions.forEach((action) => {
-      candidate = applyFixAction({ scene: candidate, action, format, imageAnalysis, compositionModel })
-    })
-    candidate = finalizeSceneGeometry(candidate, format, compositionModel)
-    const candidateEvaluation = evaluateRepairSceneSync({
-      scene: candidate,
-      formatKey,
-      expectedCompositionModelId,
-      imageAnalysis,
-      strategyLabel: strategy.label,
-      actions,
-    })
-    const decision = buildRepairDecision({
-      before: best,
-      after: candidateEvaluation,
-      strategy,
-      classification,
-      attemptSignature,
-      knownOutcomeRepeat:
-        seenOutcomeSignatures.has(candidateEvaluation.sceneSignature) &&
-        candidateEvaluation.sceneSignature !== best.sceneSignature,
-    })
-    if (decision.accepted) {
-      best = candidateEvaluation
-      seenOutcomeSignatures.add(best.sceneSignature)
-    } else {
-      break
-    }
-  }
-
-  if (
-    allowStructuralEscalation &&
-    escalationContext &&
-    supportsPrimaryStructuralEscalation(formatKey) &&
-    best.structuralStatus === 'invalid'
-  ) {
-    const escalationSelection = selectBestPreviewCandidate({
-      master: escalationContext.master,
-      formatKey,
-      profile: escalationContext.profile,
-      scenario: escalationContext.scenario,
-      visualSystem: escalationContext.visualSystem,
-      brandKit: escalationContext.brandKit,
-      assetHint: escalationContext.assetHint,
-      imageAnalysis: escalationContext.imageAnalysis,
-      baseIntent: escalationContext.baseIntent,
-      goal: escalationContext.goal,
-      baseFixStage: 'regional',
-      allowFamilyAlternatives: true,
-      allowModelAlternatives: true,
-      budget: getDefaultPreviewCandidateBudget(formatKey) + 1,
-      includeExtendedDiagnostics: true,
-      failureType: classifyStructuralFailure(best.assessment).dominantType,
-    })
-    const escalationCandidate = pickPrimaryStructuralEscalationCandidate({
-      current: best,
-      selection: escalationSelection,
-    })
-
-    if (escalationCandidate) {
-      const escalatedScene = runAutoFix(
-        escalationCandidate.scene,
-        formatKey,
-        escalationCandidate.assessment,
-        escalationContext.imageAnalysis,
-        escalationCandidate.intent.compositionModelId,
-        undefined,
-        false
-      )
-      const escalatedEvaluation = evaluateRepairSceneSync({
-        scene: escalatedScene,
-        formatKey,
-        expectedCompositionModelId: escalationCandidate.intent.compositionModelId,
-        imageAnalysis: escalationContext.imageAnalysis,
-        strategyLabel: `run-auto-fix-escalated:${escalationCandidate.strategyLabel}`,
-      })
-      const escalationDecision = buildRepairDecision({
-        before: best,
-        after: escalatedEvaluation,
-        strategy: buildPrimaryStructuralEscalationStrategy(formatKey, escalationCandidate),
-        classification: classifyStructuralFailure(best.assessment),
-      })
-      if (escalationDecision.accepted) {
-        best = escalatedEvaluation
-      }
-    }
-  }
-
-  return best.scene
-}
 
 export function createMasterScene(template: TemplateKey, brandKit: BrandKit) {
   return clone(baseScene(template, brandKit.background, brandKit.accentColor))
 }
 
-function clampMarketplaceSceneReadability(scene: Scene, formatKey: FormatKey): Scene {
+export function clampMarketplaceSceneReadability(scene: Scene, formatKey: FormatKey): Scene {
   if (formatKey !== 'marketplace-card' && formatKey !== 'marketplace-highlight') return scene
   const next = clone(scene)
 
@@ -6429,7 +6314,7 @@ function clampMarketplaceSceneReadability(scene: Scene, formatKey: FormatKey): S
   return next
 }
 
-function normalizeImageHint(assetHint?: AssetHint, imageAnalysis?: EnhancedImageAnalysis): AssetHint | undefined {
+export function normalizeImageHint(assetHint?: AssetHint, imageAnalysis?: EnhancedImageAnalysis): AssetHint | undefined {
   const base = assetHint ? clone(assetHint) : {}
   const enhanced = imageAnalysis || assetHint?.enhancedImage
   if (!enhanced && !assetHint) return undefined
@@ -6444,117 +6329,6 @@ function normalizeImageHint(assetHint?: AssetHint, imageAnalysis?: EnhancedImage
   }
 }
 
-function buildDeterministicVariant({
-  master,
-  formatKey,
-  visualSystem,
-  brandKit,
-  goal,
-  assetHint,
-  manualOverrides,
-}: {
-  master: Scene
-  formatKey: FormatKey
-  visualSystem: VisualSystemKey
-  brandKit: BrandKit
-  goal: Project['goal']
-  assetHint?: AssetHint
-  manualOverrides?: VariantManualOverride
-}) {
-  const format = FORMAT_MAP[formatKey]
-  const contentProfile = profileContent(master)
-  const scenario = classifyScenario({
-    profile: contentProfile,
-    goal,
-    visualSystem,
-    imageProfile: assetHint?.imageProfile,
-  })
-  const intent = chooseLayoutIntent({
-    format,
-    master,
-    profile: contentProfile,
-    imageAnalysis: assetHint?.enhancedImage,
-    visualSystem,
-    goal,
-    assetHint,
-  })
-  const selection = selectBestPreviewCandidate({
-    master,
-    formatKey,
-    profile: contentProfile,
-    scenario,
-    visualSystem,
-    brandKit,
-    assetHint,
-    imageAnalysis: assetHint?.enhancedImage,
-    baseIntent: intent,
-    goal,
-    baseFixStage: 'base',
-    allowFamilyAlternatives: true,
-    allowModelAlternatives: true,
-  })
-  const fixedScene = runAutoFix(
-    selection.selected.scene,
-    formatKey,
-    selection.selected.assessment,
-    assetHint?.enhancedImage,
-    selection.selected.intent.compositionModelId,
-    {
-      master,
-      profile: contentProfile,
-      scenario,
-      visualSystem,
-      brandKit,
-      goal,
-      assetHint,
-      imageAnalysis: assetHint?.enhancedImage,
-      baseIntent: intent,
-    }
-  )
-  const fixedAssessment = getFormatAssessment(
-    formatKey,
-    fixedScene,
-    selection.selected.intent.compositionModelId,
-    assetHint?.enhancedImage
-  )
-  const fixedTrust = computeScoreTrust(fixedAssessment)
-  const finalized = finalizePrimarySelectedOutcomeSync({
-    formatKey,
-    selection,
-    currentScene: fixedScene,
-    currentAssessment: fixedAssessment,
-    currentScoreTrust: fixedTrust,
-    imageAnalysis: assetHint?.enhancedImage,
-    escalationContext: {
-      master,
-      profile: contentProfile,
-      scenario,
-      visualSystem,
-      brandKit,
-      goal,
-      assetHint,
-      imageAnalysis: assetHint?.enhancedImage,
-      baseIntent: intent,
-    },
-  }).scene
-  let scene = adaptElementsToBrandKit(finalized, brandKit)
-  const ctaManualOverride = manualOverrides?.blocks?.cta
-  scene = adaptCtaToParent(scene, assetHint?.enhancedImage, brandKit, ctaManualOverride, formatKey)
-  if (assetHint?.enhancedImage) {
-    const blocks = manualOverrides?.blocks
-    scene = adaptTextAndLogoToParent(scene, assetHint.enhancedImage, brandKit, {
-      title: blocks?.title ?? blocks?.headline,
-      subtitle: blocks?.subtitle,
-      logo: blocks?.logo,
-    }, formatKey)
-    scene = adaptBadgeAndImageToParent(scene, assetHint.enhancedImage, brandKit, {
-      badge: blocks?.badge,
-      image: blocks?.image,
-    }, formatKey)
-  }
-  scene = clampMarketplaceSceneReadability(scene, formatKey)
-  return scene
-}
 
 export async function generateVariant(input: {
   master: Scene
@@ -6734,7 +6508,7 @@ export async function generateVariant(input: {
   }
 }
 
-function heuristicFixStrategy({
+export function heuristicFixStrategy({
   assessment,
   review,
   intent,
@@ -6839,7 +6613,7 @@ function heuristicFixStrategy({
   }
 }
 
-async function chooseFixStrategy(input: {
+export async function chooseFixStrategy(input: {
   assessment: LayoutAssessment
   review?: LayoutAssessment['aiReview']
   intent: LayoutIntent
@@ -6860,7 +6634,7 @@ async function chooseFixStrategy(input: {
   }
 }
 
-function fixActionsFromStrategy(strategy: AIFixStrategy, assessment: LayoutAssessment, formatFamily: FormatFamily): FixAction[] {
+export function fixActionsFromStrategy(strategy: AIFixStrategy, assessment: LayoutAssessment, formatFamily: FormatFamily): FixAction[] {
   const actions: FixAction[] = []
   const issueCodes = assessment.issues.map((issue) => issue.code)
   const squareStructuralIssue =
@@ -6940,7 +6714,7 @@ function fixActionsFromStrategy(strategy: AIFixStrategy, assessment: LayoutAsses
   return unique([...actions, ...assessmentActions])
 }
 
-function sortActionsByPriority(actions: FixAction[]) {
+export function sortActionsByPriority(actions: FixAction[]) {
   const order: FixAction[] = [
     'change-layout-family',
     'increase-scale-to-canvas',
@@ -6977,7 +6751,7 @@ function sortActionsByPriority(actions: FixAction[]) {
   })
 }
 
-function getAlternativeIntent(intent: LayoutIntent, formatKey: FormatKey, formatFamily: FormatFamily, suggestedFamily?: LayoutIntentFamily): Partial<LayoutIntent> {
+export function getAlternativeIntent(intent: LayoutIntent, formatKey: FormatKey, formatFamily: FormatFamily, suggestedFamily?: LayoutIntentFamily): Partial<LayoutIntent> {
   const allowedFamily = suggestedFamily ? resolveAllowedFamily(formatKey, suggestedFamily) : undefined
   const format = FORMAT_MAP[formatKey]
   const alternativeModel = getAlternativeCompositionModel(format, intent.compositionModelId)
@@ -7128,11 +6902,11 @@ const STRUCTURAL_FIX_ACTIONS: FixAction[] = [
   'switch-to-image-first',
 ]
 
-function unresolvedIssueCount(issues: LayoutAssessment['issues']) {
+export function unresolvedIssueCount(issues: LayoutAssessment['issues']) {
   return issues.filter((issue) => issue.severity === 'high' || issue.severity === 'medium').length
 }
 
-function isSquareOverlayExhaustedScenario(input: {
+export function isSquareOverlayExhaustedScenario(input: {
   assessment: LayoutAssessment
   intent: LayoutIntent
   formatFamily: FormatFamily
@@ -7154,7 +6928,7 @@ function isSquareOverlayExhaustedScenario(input: {
   )
 }
 
-function isSquareNearMissSafeTextScenario(assessment: LayoutAssessment, formatFamily: FormatFamily) {
+export function isSquareNearMissSafeTextScenario(assessment: LayoutAssessment, formatFamily: FormatFamily) {
   if (formatFamily !== 'square') return false
   const significantIssues = assessment.issues.filter(
     (issue) => issue.severity === 'critical' || issue.severity === 'high' || issue.severity === 'medium'
@@ -7165,13 +6939,13 @@ function isSquareNearMissSafeTextScenario(assessment: LayoutAssessment, formatFa
   return significantIssues.every((issue) => issue.code === 'overlay-outside-safe-text-area')
 }
 
-function normalizeSceneText(value?: string) {
+export function normalizeSceneText(value?: string) {
   return (value || '').replace(/\s+/g, ' ').trim()
 }
 
 type SquareSubtitleLaneMode = 'kept' | 'compact' | 'one-line' | 'omitted'
 
-function applySquareSubtitleCtaPairingStructuralRepair(input: {
+export function applySquareSubtitleCtaPairingStructuralRepair(input: {
   scene: Scene
   formatKey: FormatKey
   profile?: ContentProfile
@@ -7345,7 +7119,7 @@ export function applySquareSubtitleCtaPairingStructuralRepairDebug(input: {
   return applySquareSubtitleCtaPairingStructuralRepair(input)
 }
 
-function applySquareConstrainedTextModel(input: {
+export function applySquareConstrainedTextModel(input: {
   scene: Scene
   formatKey: FormatKey
   profile: ContentProfile
@@ -7405,11 +7179,11 @@ function applySquareConstrainedTextModel(input: {
   return next
 }
 
-function rectArea(rect: { w: number; h: number }) {
+export function rectArea(rect: { w: number; h: number }) {
   return Math.max(rect.w, 0) * Math.max(rect.h, 0)
 }
 
-function rectIntersection(
+export function rectIntersection(
   left: { x: number; y: number; w: number; h: number },
   right: { x: number; y: number; w: number; h: number }
 ) {
@@ -7420,7 +7194,7 @@ function rectIntersection(
   return w > 0 && h > 0 ? { x, y, w, h } : null
 }
 
-function normalizeOverlayRectWithinImage(
+export function normalizeOverlayRectWithinImage(
   overlay: { x: number; y: number; w: number; h: number },
   image: { x: number; y: number; w: number; h: number }
 ) {
@@ -7432,7 +7206,7 @@ function normalizeOverlayRectWithinImage(
   }
 }
 
-function scoreSquareOverlayRectAgainstSafeAreas(scene: Scene, imageAnalysis: EnhancedImageAnalysis | undefined, rect: {
+export function scoreSquareOverlayRectAgainstSafeAreas(scene: Scene, imageAnalysis: EnhancedImageAnalysis | undefined, rect: {
   x: number
   y: number
   w: number
@@ -7464,7 +7238,7 @@ function scoreSquareOverlayRectAgainstSafeAreas(scene: Scene, imageAnalysis: Enh
   }
 }
 
-function applySquareUltraConstrainedMicroBandModel(input: {
+export function applySquareUltraConstrainedMicroBandModel(input: {
   scene: Scene
   imageAnalysis?: EnhancedImageAnalysis
 }) {
@@ -7538,7 +7312,7 @@ function applySquareUltraConstrainedMicroBandModel(input: {
   return best
 }
 
-async function evaluateFixCandidate(input: {
+export async function evaluateFixCandidate(input: {
   scene: Scene
   formatKey: FormatKey
   actions: FixAction[]
@@ -7572,7 +7346,7 @@ async function evaluateFixCandidate(input: {
   }
 }
 
-function getDominanceIntent(formatFamily: FormatFamily, mode: 'text' | 'image'): Partial<LayoutIntent> {
+export function getDominanceIntent(formatFamily: FormatFamily, mode: 'text' | 'image'): Partial<LayoutIntent> {
   if (mode === 'text') {
     return {
       mode: 'text-first',
@@ -7590,12 +7364,12 @@ function getDominanceIntent(formatFamily: FormatFamily, mode: 'text' | 'image'):
   }
 }
 
-function filterActionsByStage(actions: FixAction[], stage: 'local' | 'regional' | 'structural') {
+export function filterActionsByStage(actions: FixAction[], stage: 'local' | 'regional' | 'structural') {
   const lookup = stage === 'local' ? LOCAL_FIX_ACTIONS : stage === 'regional' ? REGIONAL_FIX_ACTIONS : STRUCTURAL_FIX_ACTIONS
   return actions.filter((action) => lookup.includes(action))
 }
 
-function pickBestCandidate(current: FixCandidate, candidates: FixCandidate[]) {
+export function pickBestCandidate(current: FixCandidate, candidates: FixCandidate[]) {
   let best = current
   for (const candidate of candidates) {
     const currentUnresolved = unresolvedIssueCount(best.issues)
@@ -7637,7 +7411,7 @@ function pickBestCandidate(current: FixCandidate, candidates: FixCandidate[]) {
   return best
 }
 
-function shouldAllowAnotherFix({
+export function shouldAllowAnotherFix({
   effectiveScore,
   unresolvedIssues,
   session,
@@ -7670,7 +7444,7 @@ function shouldAllowAnotherFix({
   return effectiveScore < target || unresolvedCount > 0 || scoreTrust.needsHumanAttention
 }
 
-function applyRepairActionsToScene(input: {
+export function applyRepairActionsToScene(input: {
   scene: Scene
   formatKey: FormatKey
   actions: FixAction[]
@@ -7698,7 +7472,7 @@ function applyRepairActionsToScene(input: {
   return finalizeSceneGeometry(next, format, compositionModel)
 }
 
-async function attemptLocalStructuralRepair(input: {
+export async function attemptLocalStructuralRepair(input: {
   before: RepairEvaluatedScene
   formatKey: FormatKey
   formatFamily: FormatFamily
@@ -7742,7 +7516,7 @@ async function attemptLocalStructuralRepair(input: {
   return attempts
 }
 
-async function attemptGuidedRegenerationRepair(input: {
+export async function attemptGuidedRegenerationRepair(input: {
   before: RepairEvaluatedScene
   scene: Scene
   regenerationMasterScene: Scene
@@ -8059,7 +7833,7 @@ async function attemptGuidedRegenerationRepair(input: {
   return { attempts, regenerationCandidates }
 }
 
-function toRepairAttemptDiagnostics(attempt: RepairAttempt): RepairAttemptDiagnostics {
+export function toRepairAttemptDiagnostics(attempt: RepairAttempt): RepairAttemptDiagnostics {
   return {
     strategyLabel: attempt.strategy.label,
     strategyKind: attempt.strategy.kind,
@@ -8087,7 +7861,7 @@ function toRepairAttemptDiagnostics(attempt: RepairAttempt): RepairAttemptDiagno
   }
 }
 
-function toRepairRegenerationCandidateDiagnostics(attempt: RepairAttempt): RepairRegenerationCandidateDiagnostics | null {
+export function toRepairRegenerationCandidateDiagnostics(attempt: RepairAttempt): RepairRegenerationCandidateDiagnostics | null {
   if (attempt.strategy.kind !== 'structural-regeneration') return null
   const base = attempt.regenerationCandidate || {
     strategyLabel: attempt.strategy.label,
@@ -8118,7 +7892,7 @@ function toRepairRegenerationCandidateDiagnostics(attempt: RepairAttempt): Repai
  * Legacy repair/regeneration targets template/pack layouts and fights deterministic V2 slot scenes.
  * Preserve the current scene and surface a no-op fix result when V2 is active for card/tile.
  */
-async function buildMarketplaceV2SlotFixBypassOutcome(params: {
+export async function buildMarketplaceV2SlotFixBypassOutcome(params: {
   scene: Scene
   regenerationMasterScene?: Scene
   formatKey: FormatKey
@@ -8220,386 +7994,6 @@ async function buildMarketplaceV2SlotFixBypassOutcome(params: {
   }
 }
 
-async function runRepairPipeline(input: {
-  scene: Scene
-  regenerationMasterScene?: Scene
-  formatKey: FormatKey
-  visualSystem: VisualSystemKey
-  brandKit: BrandKit
-  goal: Project['goal']
-  assetHint?: AssetHint
-  imageUrl?: string
-  previousFixState?: FixSessionState
-  forceAlternativeLayout?: boolean
-  repairConfig?: RepairSearchConfigOverride
-}): Promise<{ scene: Scene; result: FixResult; assessment: LayoutAssessment; scoreTrust: ScoreTrust; diagnostics: RepairDiagnostics }> {
-  const currentFormat = FORMAT_MAP[input.formatKey]
-  const formatFamily = getFormatFamily(currentFormat)
-  const repairConfig = resolveRepairSearchConfig(input.repairConfig)
-  const regenerationMasterScene = input.regenerationMasterScene || input.scene
-  const currentSceneSignature = createRepairSceneSignature(input.scene)
-  const regenerationSceneSignature = createRepairSceneSignature(regenerationMasterScene)
-  const beforeAssessmentBase = getFormatAssessment(input.formatKey, input.scene, undefined, input.assetHint?.enhancedImage)
-  const beforeAIReview = await aiReviewLayout(input.scene, { format: currentFormat, assessment: beforeAssessmentBase })
-  const beforeAssessment = { ...beforeAssessmentBase, aiReview: beforeAIReview }
-  const beforeState = evaluateRepairSceneSync({
-    scene: input.scene,
-    formatKey: input.formatKey,
-    assessment: beforeAssessment,
-    strategyLabel: 'current',
-  })
-  if (isMarketplaceLayoutV2Enabled() && isMarketplaceV2FormatKey(input.formatKey)) {
-    const v2Outcome = await buildMarketplaceV2SlotFixBypassOutcome({
-      scene: input.scene,
-      regenerationMasterScene: input.regenerationMasterScene,
-      formatKey: input.formatKey,
-      previousFixState: input.previousFixState,
-      currentFormat,
-      formatFamily,
-      beforeAssessment,
-      beforeState,
-      currentSceneSignature,
-      regenerationSceneSignature,
-    })
-    const v2Improved =
-      v2Outcome.result.effectiveAfterScore > v2Outcome.result.effectiveBeforeScore || v2Outcome.diagnostics.finalChanged
-    if (v2Improved) {
-      return v2Outcome
-    }
-    // V2 slot path did not improve — continue with legacy repair + selectRepairSearchWinner below.
-  }
-  const beforeTrust = beforeState.scoreTrust
-  const beforeAnalysis = beforeAssessment.layoutAnalysis || analyzeFullLayout(input.scene, currentFormat)
-  const currentSceneProfile = profileContent(input.scene)
-  const regenerationProfile = profileContent(regenerationMasterScene)
-  const regenerationBaseIntent = chooseLayoutIntent({
-    format: currentFormat,
-    master: regenerationMasterScene,
-    profile: regenerationProfile,
-    imageAnalysis: input.assetHint?.enhancedImage,
-    visualSystem: input.visualSystem,
-    goal: input.goal,
-    assetHint: input.assetHint,
-  })
-  const classification = classifyStructuralFailure(beforeAssessment)
-  const fixPlan = buildFixPlanFromAnalysis(beforeAnalysis, input.formatKey, formatFamily, regenerationBaseIntent)
-  const fixStrategy = await chooseFixStrategy({
-    assessment: beforeAssessment,
-    review: beforeAssessment.aiReview,
-    intent: regenerationBaseIntent,
-    profile: currentSceneProfile,
-    formatKey: input.formatKey,
-    formatFamily,
-    previousFixState: input.previousFixState,
-    scoreTrust: beforeTrust,
-  })
-
-  const attempts: RepairAttempt[] = []
-  let regenerationCandidates: RepairRegenerationCandidateDiagnostics[] = []
-  const failedAttemptSignatures = new Set(input.previousFixState?.failedAttemptSignatures || [])
-  const seenOutcomeSignatures = new Set(input.previousFixState?.recentOutcomeSignatures || [])
-  seenOutcomeSignatures.add(beforeState.sceneSignature)
-  const beforeIssueCodes = new Set(beforeAssessment.issues.map((issue) => issue.code))
-  const beforeStructuralFindingNames = new Set(
-    (beforeAssessment.structuralState?.findings || []).map((finding) => finding.name)
-  )
-  const hasAllowedZoneViolation =
-    beforeIssueCodes.has('violates-allowed-zone') || beforeStructuralFindingNames.has('role-placement')
-  const hasImageFootprintViolation = beforeIssueCodes.has('violates-image-footprint-rule')
-  const forceGuidedRegeneration = Boolean(input.forceAlternativeLayout)
-
-  let localAttempts: RepairAttempt[] = []
-  if (shouldStartWithLocalRepair({ assessment: beforeAssessment, classification })) {
-    localAttempts = await attemptLocalStructuralRepair({
-      before: beforeState,
-      formatKey: input.formatKey,
-      formatFamily,
-      assessment: beforeAssessment,
-      classification,
-      fixPlan,
-      compositionModelId: regenerationBaseIntent.compositionModelId,
-      imageAnalysis: input.assetHint?.enhancedImage,
-      failedAttemptSignatures,
-      seenOutcomeSignatures,
-      repairConfig,
-    })
-    attempts.push(...localAttempts)
-  }
-
-  const bestLocalCandidate = pickBestAcceptedRepair(beforeState, localAttempts, {
-    formatKey: input.formatKey,
-    assetHint: input.assetHint,
-    imageUrl: input.imageUrl,
-  })
-  const localImprovedTier =
-    bestLocalCandidate && getStructuralTierRank(bestLocalCandidate.structuralStatus) > getStructuralTierRank(beforeState.structuralStatus)
-  const localWasSuppressedOrNoOp = localAttempts.some(
-    (attempt) => attempt.suppressed || attempt.decision.noOp || attempt.decision.suppressedAsRepeat
-  )
-  const escalationReasons = [
-    ...(hasAllowedZoneViolation ? ['allowed-zone-violation-forces-guided-regeneration'] : []),
-    ...(hasImageFootprintViolation ? ['image-footprint-violation-needs-image-mode-regeneration'] : []),
-    ...(input.forceAlternativeLayout ? ['forced-alternative-layout'] : []),
-    ...(!bestLocalCandidate ? ['no-accepted-local-repair'] : []),
-    ...(bestLocalCandidate && !localImprovedTier ? ['local-did-not-improve-structural-tier'] : []),
-    ...(bestLocalCandidate && bestLocalCandidate.structuralStatus !== 'valid' ? ['still-structurally-weak-after-local-repair'] : []),
-    ...(localWasSuppressedOrNoOp ? ['local-repair-no-op-or-repeat'] : []),
-  ]
-  const needsEscalation =
-    forceGuidedRegeneration ||
-    hasImageFootprintViolation ||
-    !bestLocalCandidate ||
-    !localImprovedTier ||
-    bestLocalCandidate.structuralStatus !== 'valid' ||
-    localWasSuppressedOrNoOp
-
-  if (needsEscalation) {
-    const guidedRegeneration = await attemptGuidedRegenerationRepair({
-      before: beforeState,
-      scene: input.scene,
-      regenerationMasterScene,
-      formatKey: input.formatKey,
-      formatFamily,
-      visualSystem: input.visualSystem,
-      brandKit: input.brandKit,
-      goal: input.goal,
-      assetHint: input.assetHint,
-      imageUrl: input.imageUrl,
-      baseIntent: regenerationBaseIntent,
-      profile: regenerationProfile,
-      classification,
-      preferredAlternativeFamily: input.forceAlternativeLayout ? undefined : fixStrategy.suggestedFamily,
-      failedAttemptSignatures,
-      seenOutcomeSignatures,
-      strongerOnly:
-        forceGuidedRegeneration || hasAllowedZoneViolation || hasImageFootprintViolation
-          ? false
-          : localWasSuppressedOrNoOp && !bestLocalCandidate,
-      forceImageFootprintRecovery: hasImageFootprintViolation,
-    })
-    attempts.push(...guidedRegeneration.attempts)
-    regenerationCandidates = guidedRegeneration.regenerationCandidates
-  }
-
-  let repairSelection = selectRepairSearchWinner({
-    baseline: beforeState,
-    attempts,
-    formatKey: input.formatKey,
-    formatFamily,
-    repairConfig,
-    expectedCompositionModelId: regenerationBaseIntent.compositionModelId,
-    expectedFamily: regenerationBaseIntent.family,
-  })
-  const searchRuns: RepairSearchTelemetry[] = [repairSelection.selection.telemetry]
-  let finalState = repairSelection.finalState
-  let acceptedDecision = repairSelection.acceptedDecision
-
-  const autoFixedScene = runAutoFix(
-    finalState.scene,
-    input.formatKey,
-    finalState.assessment,
-    input.assetHint?.enhancedImage,
-    finalState.compositionModelId
-  )
-  const autoFixedState = await evaluateRepairScene({
-    scene: autoFixedScene,
-    formatKey: input.formatKey,
-    expectedCompositionModelId: finalState.compositionModelId,
-    imageAnalysis: input.assetHint?.enhancedImage,
-    strategyLabel: 'validated-run-autofix',
-  })
-  const autoFixStrategy: RepairStrategy = {
-    kind: 'local-structural',
-    candidateKind: 'validated-run-autofix',
-    label: 'validated-run-autofix',
-    reason: 'Apply lightweight post-repair polish only when it keeps or improves structural quality.',
-    fixStage: 'local',
-  }
-  const autoFixDecision = buildRepairDecision({
-    before: finalState,
-    after: autoFixedState,
-    strategy: autoFixStrategy,
-    classification,
-  })
-  const autoFixAttempt: RepairAttempt = {
-    strategy: autoFixStrategy,
-    candidate: autoFixedState,
-    decision: autoFixDecision,
-  }
-  attempts.push(autoFixAttempt)
-  repairSelection = selectRepairSearchWinner({
-    baseline: beforeState,
-    attempts,
-    formatKey: input.formatKey,
-    formatFamily,
-    repairConfig,
-    expectedCompositionModelId: regenerationBaseIntent.compositionModelId,
-    expectedFamily: regenerationBaseIntent.family,
-  })
-  searchRuns.push(repairSelection.selection.telemetry)
-  finalState = repairSelection.finalState
-  acceptedDecision = repairSelection.acceptedDecision
-
-  const finalAssessment = finalState.assessment
-  const finalTrust = finalState.scoreTrust
-  const beforeEffectiveScore = beforeTrust.effectiveScore
-  const afterEffectiveScore = finalTrust.effectiveScore
-  const improvement = afterEffectiveScore - beforeEffectiveScore
-  const remainingIssues = finalAssessment.issues
-    .filter((issue) => issue.severity === 'high' || issue.severity === 'medium')
-    .map((issue) => issue.code)
-  const finalAnalysis = finalAssessment.layoutAnalysis || analyzeFullLayout(finalState.scene, currentFormat)
-  const finalIssueBuckets = analysisToIssueBuckets(finalAnalysis)
-
-  const failedStrategies = unique([
-    ...(input.previousFixState?.failedStrategies || []),
-    ...attempts
-      .filter((attempt) => !attempt.decision.accepted)
-      .map((attempt) => attempt.strategy.label),
-  ].filter(Boolean))
-
-  const rejectedActions: RejectedFixAction[] = [
-    ...(input.previousFixState?.rejectedActions || []),
-    ...attempts
-      .filter((attempt) => !attempt.decision.accepted || attempt.candidate.strategyLabel !== finalState.strategyLabel)
-      .flatMap((attempt) =>
-        (attempt.strategy.actions || attempt.candidate.actions).map((action) => ({
-          action,
-          reason: attempt.decision.rejectionReason || `Not selected because ${attempt.strategy.label} scored weaker than ${finalState.strategyLabel}.`,
-        }))
-      ),
-  ]
-
-  const session: FixSessionState = {
-    iteration: (input.previousFixState?.iteration || 0) + 1,
-    previousScores: [...(input.previousFixState?.previousScores || []), beforeAssessment.score, finalAssessment.score],
-    effectiveScores: [...(input.previousFixState?.effectiveScores || []), beforeEffectiveScore, afterEffectiveScore],
-    unresolvedBlockIssues: finalIssueBuckets.blockIssues,
-    unresolvedClusterIssues: finalIssueBuckets.clusterIssues,
-    unresolvedGlobalIssues: finalIssueBuckets.globalIssues,
-    actionsApplied: unique<FixAction>([...(input.previousFixState?.actionsApplied || []), ...finalState.actions]),
-    failedStrategies,
-    rejectedActions,
-    unresolvedIssues: remainingIssues,
-    converged:
-      finalState.strategyLabel === beforeState.strategyLabel &&
-      unresolvedIssueCount(finalAssessment.issues) === unresolvedIssueCount(beforeAssessment.issues) &&
-      finalIssueBuckets.blockIssues.length + finalIssueBuckets.clusterIssues.length + finalIssueBuckets.globalIssues.length <= 1 &&
-      !finalTrust.needsHumanAttention,
-    canFixAgain: false,
-    currentFormatFamily: formatFamily,
-    failedAttemptSignatures: unique([
-      ...(input.previousFixState?.failedAttemptSignatures || []),
-      ...attempts
-        .filter((attempt) => !attempt.decision.accepted && attempt.decision.attemptSignature)
-        .map((attempt) => attempt.decision.attemptSignature as string),
-    ]).slice(-REPAIR_HISTORY_LIMIT),
-    recentOutcomeSignatures: unique([
-      ...(input.previousFixState?.recentOutcomeSignatures || []),
-      ...attempts.map((attempt) => attempt.candidate.sceneSignature),
-      finalState.sceneSignature,
-    ]).slice(-REPAIR_HISTORY_LIMIT),
-    lastSceneSignature: finalState.sceneSignature,
-  }
-
-  session.canFixAgain = shouldAllowAnotherFix({
-    effectiveScore: afterEffectiveScore,
-    unresolvedIssues: remainingIssues,
-    session,
-    improvement,
-    scoreTrust: finalTrust,
-    formatFamily,
-  })
-
-  logRepairAttemptSummary({
-    formatKey: input.formatKey,
-    before: beforeState,
-    classification,
-    attempts,
-    selected: finalState,
-    escalated: needsEscalation,
-  })
-
-  return {
-    scene: finalState.scene,
-    assessment: finalAssessment,
-    scoreTrust: finalTrust,
-    diagnostics: {
-      formatKey: input.formatKey,
-      classification,
-      regenerationSource: {
-        usesMasterScene: Boolean(input.regenerationMasterScene),
-        currentSceneSignature,
-        regenerationSceneSignature,
-        differsFromCurrent: currentSceneSignature !== regenerationSceneSignature,
-      },
-      before: {
-        structuralStatus: beforeState.structuralStatus,
-        effectiveScore: beforeState.scoreTrust.effectiveScore,
-        sceneSignature: beforeState.sceneSignature,
-      },
-      after: {
-        structuralStatus: finalState.structuralStatus,
-        effectiveScore: finalState.scoreTrust.effectiveScore,
-        sceneSignature: finalState.sceneSignature,
-      },
-      finalChanged: beforeState.sceneSignature !== finalState.sceneSignature,
-      acceptedImprovement: finalState.sceneSignature !== beforeState.sceneSignature && Boolean(acceptedDecision?.accepted),
-      escalated: needsEscalation,
-      escalationReasons,
-      acceptedStrategyLabel: finalState.strategyLabel !== beforeState.strategyLabel ? finalState.strategyLabel : acceptedDecision?.accepted ? finalState.strategyLabel : undefined,
-      selection: repairSelection.selection,
-      searchRuns,
-      attempts: attempts.map(toRepairAttemptDiagnostics),
-      regenerationCandidates: regenerationCandidates.length
-        ? regenerationCandidates
-        : attempts
-            .map(toRepairRegenerationCandidateDiagnostics)
-            .filter((candidate): candidate is RepairRegenerationCandidateDiagnostics => Boolean(candidate)),
-      autoFix: {
-        attempted: true,
-        accepted: finalState.strategyLabel === autoFixedState.strategyLabel && Boolean(autoFixAttempt.searchEvaluation?.accepted),
-        scoreDelta: autoFixDecision.scoreDelta,
-        structuralBefore: autoFixDecision.beforeStructuralStatus,
-        structuralAfter: autoFixDecision.afterStructuralStatus,
-        rejectionReason: autoFixDecision.rejectionReason,
-      },
-    },
-    result: {
-      beforeScore: beforeAssessment.score,
-      afterScore: finalAssessment.score,
-      effectiveBeforeScore: beforeEffectiveScore,
-      effectiveAfterScore: afterEffectiveScore,
-      actionsApplied: finalState.actions,
-      actionsRejected: rejectedActions,
-      resolvedIssues: beforeAssessment.issues
-        .map((issue) => issue.code)
-        .filter((code) => !finalAssessment.issues.some((nextIssue) => nextIssue.code === code)),
-      remainingIssues,
-      canFixAgain: session.canFixAgain,
-      session,
-      scoreTrust: finalTrust,
-      repair: acceptedDecision,
-    },
-  }
-}
-
-export async function fixLayout(input: {
-  scene: Scene
-  regenerationMasterScene?: Scene
-  formatKey: FormatKey
-  visualSystem: VisualSystemKey
-  brandKit: BrandKit
-  goal: Project['goal']
-  assetHint?: AssetHint
-  imageUrl?: string
-  previousFixState?: FixSessionState
-  forceAlternativeLayout?: boolean
-  repairConfig?: RepairSearchConfigOverride
-}): Promise<{ scene: Scene; result: FixResult; assessment: LayoutAssessment; scoreTrust: ScoreTrust }> {
-  const { diagnostics: _diagnostics, ...result } = await runRepairPipeline(input)
-  return result
-}
 
 export async function getRepairDiagnostics(input: {
   scene: Scene
@@ -8838,31 +8232,31 @@ export function autoAdaptFormat(master: Scene, formatKey: FormatKey, visualSyste
     brandKit,
     goal: 'promo-pack',
     assetHint: imageProfile ? { imageProfile } : undefined,
-  })
+  }).scene
 }
 
-function buildVariant(
-  project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>,
-  formatKey: FormatKey
-) {
-  return buildDeterministicVariant({
-    master: project.master,
-    formatKey,
-    visualSystem: project.visualSystem,
-    brandKit: project.brandKit,
-    goal: project.goal,
-    assetHint: project.assetHint,
-    manualOverrides: project.manualOverrides?.[formatKey],
-  })
-}
-
-function buildFormatRecord(project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>) {
-  return Object.fromEntries(
-    CHANNEL_FORMATS.map((format) => [
-      format.key,
-      buildVariant(project, format.key),
-    ])
-  ) as Record<FormatKey, Scene>
+function applyVariantBuildMetadataToVariants(
+  project: Project,
+  archetypeResolutionByFormat: Partial<Record<FormatKey, NonNullable<Variant['archetypeResolution']>>>,
+  layoutEvaluationByFormat: Partial<Record<FormatKey, LayoutEvaluation>>,
+): Project {
+  const variants = { ...project.variants }
+  const fkSet = new Set([
+    ...Object.keys(archetypeResolutionByFormat),
+    ...Object.keys(layoutEvaluationByFormat),
+  ])
+  for (const fk of fkSet) {
+    const formatKey = fk as FormatKey
+    const ar = archetypeResolutionByFormat[formatKey]
+    const le = layoutEvaluationByFormat[formatKey]
+    const existing = variants[formatKey]
+    if (!existing) continue
+    let next = existing
+    if (ar !== undefined) next = { ...next, archetypeResolution: ar }
+    if (le !== undefined) next = { ...next, layoutEvaluation: le }
+    variants[formatKey] = next
+  }
+  return { ...project, variants }
 }
 
 export function buildProject(
@@ -8878,28 +8272,32 @@ export function buildProject(
   const visualSystem = options?.visualSystem || 'bold-promo'
   const master = createMasterScene(template, brandKit)
 
-  return syncProjectModel({
+  const { formats, archetypeResolutionByFormat, layoutEvaluationByFormat } = buildFormatRecord({
+    master,
+    goal: options?.goal || 'promo-pack',
+    visualSystem,
+    brandKit,
+    assetHint: options?.imageProfile ? { imageProfile: options.imageProfile } : undefined,
+  })
+  const synced = syncProjectModel({
     template,
     goal: options?.goal || 'promo-pack',
     visualSystem,
     brandKit,
     master,
-    formats: buildFormatRecord({
-      master,
-      goal: options?.goal || 'promo-pack',
-      visualSystem,
-      brandKit,
-      assetHint: options?.imageProfile ? { imageProfile: options.imageProfile } : undefined,
-    }),
+    formats,
     assetHint: options?.imageProfile ? { imageProfile: options.imageProfile } : undefined,
   })
+  return applyVariantBuildMetadataToVariants(synced, archetypeResolutionByFormat, layoutEvaluationByFormat)
 }
 
 export function regenerateFormats(project: Project): Project {
-  return syncProjectModel({
+  const { formats, archetypeResolutionByFormat, layoutEvaluationByFormat } = buildFormatRecord(project)
+  const synced = syncProjectModel({
     ...project,
-    formats: buildFormatRecord(project),
+    formats,
   })
+  return applyVariantBuildMetadataToVariants(synced, archetypeResolutionByFormat, layoutEvaluationByFormat)
 }
 
 export function applyBrandTemplate(project: Project, brandTemplateKey: BrandTemplateKey): Project {

@@ -115,6 +115,7 @@ function isMarketplaceZoneLayoutScene(scene: Scene, formatKey?: FormatKey | stri
   if (formatKey === 'marketplace-highlight' || formatKey === 'marketplace-card' || formatKey === 'marketplace-tile') {
     return true
   }
+  if (!scene.image?.w || !scene.image?.h) return false
   return (
     scene.image.w > 0 &&
     scene.image.h > 0 &&

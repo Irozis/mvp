@@ -39,6 +39,13 @@ export type MarketplaceV2ArchetypeId =
   | 'v2-tile-split-balanced'
   | 'v2-tile-image-forward'
 
+export type MarketplaceTemplateVariant =
+  | 'base'
+  | 'commerce-lockup'
+  | 'image-dominant-square'
+  | 'proof-band'
+  | 'comparison-lockup'
+
 export type MarketplaceLayoutEngineMode = 'default' | 'v2-slot'
 export type TemplateSupportLevel = 'preferred' | 'supported' | 'avoid'
 export type TemplateContentBehavior = 'minimal' | 'balanced' | 'dense'
@@ -555,6 +562,23 @@ export type VariantManualOverrideItem = {
   payload: unknown
 }
 
+/** Output of `evaluateLayout` — pure metrics from scene geometry in percent space (0–100). */
+export type LayoutEvaluation = {
+  hierarchyClarity: number
+  visualBalance: number
+  readability: number
+  structuralValidity: boolean
+  overallScore: number
+  issues: string[]
+  /** Normalized visual weight per quadrant (sums to ~1). */
+  quadrantWeights?: {
+    topLeft: number
+    topRight: number
+    bottomLeft: number
+    bottomRight: number
+  }
+}
+
 export type Variant = {
   id: string
   formatKey: FormatKey
@@ -568,6 +592,13 @@ export type Variant = {
   manualOverride?: VariantManualOverride
   structuralState?: StructuralLayoutState
   updatedAt: string
+  /** Populated when the variant scene was built via deterministic variant pipeline. */
+  archetypeResolution?: ArchetypeResolution & {
+    fallbackApplied?: boolean
+    effectiveArchetypeId?: LayoutArchetypeId
+  }
+  /** From `evaluateLayout` on the final built scene (deterministic pipeline). */
+  layoutEvaluation?: LayoutEvaluation
 }
 
 export type ExportJobStatus = 'queued' | 'running' | 'completed' | 'failed'
@@ -1193,6 +1224,34 @@ export type StructuralArchetype =
   | 'compact-minimal'
   | 'dense-information'
 
+export type LayoutArchetypeId =
+  | StructuralArchetype
+  | MarketplaceV2ArchetypeId
+  | MarketplaceTemplateVariant
+
+export interface ArchetypeResolution {
+  archetypeId: LayoutArchetypeId
+  confidence: number
+  reason: string
+  fallback?: LayoutArchetypeId
+  /** Deduction amounts per signal (populated by `resolveArchetype`). */
+  confidenceBreakdown?: {
+    archetypeSource: number
+    scenarioAmbiguity: number
+    missingImageData: number
+    formatMismatch: number
+  }
+}
+
+/** Archetype diagnostic block written on each variant when exporting a project as JSON. */
+export type CreativeArchetypeExport = {
+  id: string
+  confidence: number | null
+  fallbackUsed: boolean
+  reason: string | null
+  breakdown: NonNullable<ArchetypeResolution['confidenceBreakdown']> | null
+}
+
 export type BalanceRegime = 'text-first' | 'image-first' | 'balanced' | 'minimal-copy' | 'dense-copy'
 export type OccupancyMode = 'spacious' | 'balanced' | 'compact' | 'text-safe' | 'visual-first'
 export type StructuralFlowDirection = 'vertical' | 'horizontal' | 'overlay'
@@ -1216,12 +1275,7 @@ export type LayoutIntent = {
   marketplaceLayoutEngine?: MarketplaceLayoutEngineMode
   marketplaceV2Archetype?: MarketplaceV2ArchetypeId
   marketplaceTemplateId?: MarketplaceCardTemplateId
-  marketplaceTemplateVariant?:
-    | 'base'
-    | 'commerce-lockup'
-    | 'image-dominant-square'
-    | 'proof-band'
-    | 'comparison-lockup'
+  marketplaceTemplateVariant?: MarketplaceTemplateVariant
   marketplaceTemplateSelection?: MarketplaceCardTemplateSelectionResult
   marketplaceTemplateZones?: MarketplaceCardTemplateZoneStructure
   marketplaceTemplateSummary?: string
@@ -1901,4 +1955,25 @@ export type ProjectRepository = {
   loadAll: () => SavedProject[]
   save: (existingId: string | null, name: string, project: Project, note: string) => SavedProject[]
   remove: (id: string) => SavedProject[]
+}
+
+/** Per-variant layout metrics included in JSON project export. */
+export type CreativeEvaluationExport = {
+  overallScore: number | null
+  structuralValidity: boolean | null
+  readability: number | null
+  hierarchyClarity: number | null
+  visualBalance: number | null
+  quadrantWeights: LayoutEvaluation['quadrantWeights'] | null
+  issues: string[]
+}
+
+/**
+ * Shape of the project payload written by JSON export (`buildCreativeExportJSON`).
+ * Mirrors `Project` with each variant carrying `archetype` and `evaluation` summaries.
+ */
+export type CreativeExportJSON = Omit<Project, 'variants'> & {
+  variants?: Partial<
+    Record<FormatKey, Variant & { archetype: CreativeArchetypeExport; evaluation: CreativeEvaluationExport }>
+  >
 }
