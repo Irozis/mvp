@@ -48,17 +48,18 @@ export async function analyzeBannerQuality(svgElement: SVGSVGElement, sceneFallb
   const { toPng } = await import('html-to-image')
 
   try {
-    console.log('[banner-analysis] toPng starting')
     const pngDataUrl = await Promise.race([
-      toPng(svgElement as unknown as HTMLElement, { cacheBust: true }),
-      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('toPng timeout')), 3000)),
+      toPng(svgElement as unknown as HTMLElement, {
+        cacheBust: true,
+        skipFonts: true,
+        backgroundColor: '#ffffff',
+      }),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('toPng timeout')), 5000)),
     ])
-    console.log('[banner-analysis] toPng done, size:', pngDataUrl.length)
     return postAnalyzeBanner({ svgDataUrl: pngDataUrl })
   } catch (e) {
     console.warn('[banner-analysis] toPng failed or timed out (CORS/timeout); trying scene-summary fallback if available', e)
     if (sceneFallback) {
-      console.log('[banner-analysis] using scene-summary placeholder request')
       return postAnalyzeBanner({ sceneSummary: sceneToSummary(sceneFallback) })
     }
     console.warn('[banner-analysis] skipping banner analysis (no scene fallback)')

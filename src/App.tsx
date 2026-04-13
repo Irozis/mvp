@@ -790,12 +790,6 @@ export default function App() {
       setFixSessions((prev) => ({ ...prev, [formatKey]: outcome.result.session }))
       setSelectedBlockId(null)
 
-      console.log('[banner-analysis] checking SVG, formatKey:', formatKey)
-      const previewRootRef = { current: refs.current[formatKey] ?? null }
-      console.log('[banner-analysis] previewRoot ref exists:', !!previewRootRef?.current)
-      const svgElImmediate = previewRootRef?.current?.querySelector?.('svg.preview-svg')
-      console.log('[banner-analysis] svgEl found:', !!svgElImmediate, svgElImmediate?.tagName)
-
       await new Promise<void>((resolve) => {
         setTimeout(async () => {
           try {
@@ -805,9 +799,7 @@ export default function App() {
               return
             }
             try {
-              console.log('[banner-analysis] starting for format:', formatKey)
               const quality = await analyzeBannerQuality(svgEl, outcome.scene)
-              console.log('[banner-analysis] result:', quality)
               const { scene: patchedScene, changed } = applyBannerQualityAutofixes(outcome.scene, quality)
               if (changed) {
                 setProject((prev) => {
@@ -1179,12 +1171,16 @@ export default function App() {
                   <p className="muted">Preview and export cover {previewFormats.length} marketplace sizes (card and highlight) derived from your master.</p>
                 </div>
                 <div className="row wrap">
-                  <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>
-                    Debug boxes
-                  </button>
-                  <button className={`button button-outline ${layoutDebug.showSafeArea ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showSafeArea: !prev.showSafeArea }))}>
-                    Safe area
-                  </button>
+                  {import.meta.env.DEV && (
+                    <>
+                      <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>
+                        Debug boxes
+                      </button>
+                      <button className={`button button-outline ${layoutDebug.showSafeArea ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showSafeArea: !prev.showSafeArea }))}>
+                        Safe area
+                      </button>
+                    </>
+                  )}
                   <button className="button" onClick={() => { clearFixArtifacts(); setProject((prev) => regenerateFormats(prev)) }}>
                     <Wand2 size={16} />
                     Regenerate all
