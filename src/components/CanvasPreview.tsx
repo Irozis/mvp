@@ -385,6 +385,8 @@ export function CanvasPreview({
   const logoW = percentX(scene.logo.w || 0, width)
   const logoH = percentY(scene.logo.h || 0, height)
   const immersiveImage = (scene.image.w || 0) >= 78 || (scene.image.h || 0) >= 70
+  const needsVignette =
+    immersiveImage || format.family === 'portrait' || (scene.image.h || 0) >= 55
   // Determine panel base color: must contrast with the text fill to ensure readability on any image
   const titleFill = scene.title.fill || '#f8fafc'
   const titleIsLight = titleFill !== '#0f172a' && titleFill !== '#1e293b'
@@ -651,8 +653,9 @@ export function CanvasPreview({
               <stop offset="100%" stopColor={rgba(panelBase, panelOpacityBottom)} />
             </linearGradient>
             <linearGradient id={vignetteId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(15,23,42,0)" />
-              <stop offset="100%" stopColor="rgba(15,23,42,0.34)" />
+              <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+              <stop offset="45%" stopColor="rgba(0,0,0,0)" />
+              <stop offset="100%" stopColor="rgba(0,0,0,0.72)" />
             </linearGradient>
             <clipPath id={clipId}>
               <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} ry={scene.image.rx || 28} />
@@ -801,7 +804,46 @@ export function CanvasPreview({
                       />,
                     )
                   })()}
-                  {immersiveImage && <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />}
+                  {needsVignette && (
+                    <rect x={image.x} y={image.y} width={image.w} height={image.h} rx={scene.image.rx || 28} fill={`url(#${vignetteId})`} />
+                  )}
+                  {(() => {
+                    const titleOverImage =
+                      (scene.title.y || 0) > (scene.image.y || 0) &&
+                      (scene.title.y || 0) < (scene.image.y || 0) + (scene.image.h || 0)
+                    if (!titleOverImage || !imageUrl) return null
+                    const scrimId = `scrim-${format.key}`
+                    const scrimY = Math.max(titleY - 24, image.y)
+                    const scrimH = Math.min(ctaY + ctaH - scrimY + 32, image.y + image.h - scrimY)
+                    return (
+                      <g>
+                        <defs>
+                          <linearGradient id={scrimId} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+                            <stop offset="30%" stopColor="rgba(0,0,0,0.52)" />
+                            <stop offset="100%" stopColor="rgba(0,0,0,0.72)" />
+                          </linearGradient>
+                        </defs>
+                        <rect x={image.x} y={scrimY} width={image.w} height={scrimH} rx={0} fill={`url(#${scrimId})`} />
+                      </g>
+                    )
+                  })()}
+                  {imageUrl &&
+                    immersiveImage &&
+                    assessment?.visual &&
+                    (() => {
+                      const f = (scene.title.fill || '').toUpperCase()
+                      return f === '#0F172A' || f === '#1C1917'
+                    })() && (
+                      <rect
+                        x={image.x}
+                        y={image.y}
+                        width={image.w}
+                        height={image.h}
+                        rx={scene.image.rx || 28}
+                        fill="rgba(0,0,0,0.18)"
+                      />
+                    )}
                   <rect
                     x={image.x}
                     y={image.y}

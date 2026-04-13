@@ -6515,6 +6515,11 @@ function buildDeterministicVariant({
       image: blocks?.image,
     }, formatKey)
   }
+  console.log('[adapt-debug] formatKey:', formatKey)
+  console.log('[adapt-debug] cta.bg:', scene.cta.bg)
+  console.log('[adapt-debug] cta.rx:', scene.cta.rx)
+  console.log('[adapt-debug] title.fill:', scene.title.fill)
+  console.log('[adapt-debug] assetHint.enhancedImage exists:', Boolean(assetHint?.enhancedImage))
   return scene
 }
 

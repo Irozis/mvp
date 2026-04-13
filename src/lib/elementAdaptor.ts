@@ -5,6 +5,61 @@ function clamp(n: number, lo: number, hi: number): number {
   return Math.max(lo, Math.min(hi, n))
 }
 
+function normalizeHex6(hex: string): string | null {
+  const raw = hex.trim()
+  if (!raw.startsWith('#')) return null
+  const n = raw.slice(1)
+  if (n.length === 3 && /^[0-9a-fA-F]{3}$/.test(n)) {
+    return `#${n[0]}${n[0]}${n[1]}${n[1]}${n[2]}${n[2]}`
+  }
+  if (n.length === 6 && /^[0-9a-fA-F]{6}$/.test(n)) return `#${n}`
+  return null
+}
+
+function hexToHsl(hex: string): { h: number; s: number; l: number } {
+  const full = normalizeHex6(hex)
+  if (!full) return { h: 0, s: 0, l: 0 }
+  const r = parseInt(full.slice(1, 3), 16) / 255
+  const g = parseInt(full.slice(3, 5), 16) / 255
+  const b = parseInt(full.slice(5, 7), 16) / 255
+  const max = Math.max(r, g, b)
+  const min = Math.min(r, g, b)
+  const l = (max + min) / 2
+  if (max === min) return { h: 0, s: 0, l: l * 100 }
+  const d = max - min
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+  const hRaw =
+    max === r ? ((g - b) / d + (g < b ? 6 : 0)) / 6 : max === g ? ((b - r) / d + 2) / 6 : ((r - g) / d + 4) / 6
+  return { h: hRaw * 360, s: s * 100, l: l * 100 }
+}
+
+function mostVividColor(colors: string[]): string {
+  const parsed = colors.map((c) => normalizeHex6(c)).filter((c): c is string => Boolean(c))
+  if (!parsed.length) return '#000000'
+  let bestColor = parsed[0]
+  let bestSaturation = -1
+  for (const color of parsed) {
+    const hsl = hexToHsl(color)
+    if (hsl.s > bestSaturation) {
+      bestSaturation = hsl.s
+      bestColor = color
+    }
+  }
+  if (bestSaturation < 20) {
+    let darkest = parsed[0]
+    let lowestL = 101
+    for (const color of parsed) {
+      const hsl = hexToHsl(color)
+      if (hsl.l < lowestL) {
+        lowestL = hsl.l
+        darkest = color
+      }
+    }
+    return darkest
+  }
+  return bestColor
+}
+
 function mostContrastingColor(against: string, candidates: string[]): string {
   let best = candidates[0]
   let bestScore = contrastRatio(best, against)
@@ -74,8 +129,14 @@ export function adaptCtaToParent(
   const parentIsImage = imgW > 0 && imgH > 0
 
   if (parentIsImage) {
-    const baseColor = imageAnalysis?.dominantColors?.[0] ?? brandKit.accentColor
-    next.cta.bg = mostContrastingColor(baseColor, candidates)
+    const palette = imageAnalysis?.dominantColors?.filter(Boolean) ?? []
+    if (palette.length) {
+      const vividColor = mostVividColor(palette)
+      const hsl = hexToHsl(vividColor)
+      next.cta.bg = hsl.s > 25 ? vividColor : brandKit.accentColor
+    } else {
+      next.cta.bg = brandKit.accentColor
+    }
     next.cta.fill = getContrastingText(next.cta.bg)
     if (!isMarketplaceZoneLayoutScene(next, formatKey)) {
       const irx = next.image.rx ?? 0
@@ -141,8 +202,17 @@ export function adaptTextAndLogoToParent(
   const titleCandidates = [...TEXT_LOGO_TITLE_CANDIDATES, brandKit.primaryColor]
 
   if (parentIsImage) {
-    const baseForTitle = imageAnalysis?.dominantColors?.[0] ?? next.background[1]
-    next.title.fill = mostContrastingColor(baseForTitle, titleCandidates)
+    const mood = imageAnalysis?.mood
+    if (mood === 'light') {
+      next.title.fill = '#0F172A'
+    } else if (mood === 'dark') {
+      next.title.fill = '#FFFFFF'
+    } else if (mood === 'neutral') {
+      next.title.fill = '#FFFFFF'
+    } else {
+      const baseForTitle = imageAnalysis?.dominantColors?.[0] ?? next.background[1]
+      next.title.fill = mostContrastingColor(baseForTitle, titleCandidates)
+    }
 
     const isMarketplaceFormat = isMarketplaceZoneLayoutScene(next, formatKey)
     const bestArea = pickBestSafeTextArea(imageAnalysis?.safeTextAreas)
