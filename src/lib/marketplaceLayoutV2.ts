@@ -68,6 +68,55 @@ function wantsMarketplaceCardFullBleedOverlay(
   return Boolean(imageAnalysis.focalPoint) && (strongVisual || subjectCoverageHigh)
 }
 
+type TextSide = 'left' | 'right' | 'none'
+
+function preferredTextSide(
+  imageAnalysis: EnhancedImageAnalysis
+): TextSide {
+  // Priority 1: use focalSuggestion if it clearly indicates a side
+  if (imageAnalysis.focalSuggestion === 'right') {
+    // Subject is on the right side of the image
+    // -> text goes on the LEFT side of the layout
+    // -> use split-image-RIGHT (image right, text left)
+    return 'left'
+  }
+  if (imageAnalysis.focalSuggestion === 'left') {
+    // Subject is on the left side
+    // -> text goes on the RIGHT side
+    // -> use split-image-LEFT (image left, text right)
+    return 'right'
+  }
+
+  // Priority 2: focalPoint.x for intermediate cases
+  // (focalSuggestion='center' or 'top')
+  const fxRaw = imageAnalysis.focalPoint.x
+  const fx = fxRaw <= 1 ? fxRaw * 100 : fxRaw
+  if (fx > 58) {
+    // Subject noticeably right of center -> text left
+    return 'left'
+  }
+  if (fx < 42) {
+    // Subject noticeably left of center -> text right
+    return 'right'
+  }
+
+  // Priority 3: safeTextAreas — find which side has more safe area
+  if (imageAnalysis.safeTextAreas?.length) {
+    const leftScore = imageAnalysis.safeTextAreas
+      .filter(a => a.x + a.w / 2 < 50)
+      .reduce((sum, a) => sum + a.score * a.w * a.h, 0)
+    const rightScore = imageAnalysis.safeTextAreas
+      .filter(a => a.x + a.w / 2 >= 50)
+      .reduce((sum, a) => sum + a.score * a.w * a.h, 0)
+
+    if (leftScore > rightScore * 1.3) return 'left'
+    if (rightScore > leftScore * 1.3) return 'right'
+  }
+
+  // No clear preference
+  return 'none'
+}
+
 /**
  * Primary archetype for base intent: image-forward promos → split; dense copy → text-focus; default hero shelf.
  * Marketplace-card: only dense copy routes to text-focus. A broad `text-first` mode (e.g. from
@@ -86,8 +135,14 @@ export function selectPrimaryMarketplaceV2Archetype(input: {
     input.profile.bodyLength > 180 || input.profile.subtitleLength > 180 || titleLen > 60
 
   if (input.formatKey === 'marketplace-tile') {
-    if (input.imageAnalysis && input.imageAnalysis.focalPoint.x < 0.4) {
-      return 'v2-tile-image-left'
+    if (input.imageAnalysis) {
+      const textSide = preferredTextSide(input.imageAnalysis)
+      if (textSide === 'right') {
+        return 'v2-tile-image-left'   // image left, text right
+      }
+      if (textSide === 'left') {
+        return 'v2-tile-split-balanced'  // image right, text left
+      }
     }
     if (input.profile.preferredMessageMode === 'image-first' || input.profile.productVisualNeed === 'critical') {
       return 'v2-tile-image-forward'
@@ -101,8 +156,18 @@ export function selectPrimaryMarketplaceV2Archetype(input: {
   if (input.imageAnalysis && wantsMarketplaceCardFullBleedOverlay(input.imageAnalysis, input.profile)) {
     return 'v2-card-full-bleed-overlay'
   }
-  if (input.imageAnalysis && input.imageAnalysis.focalPoint.x < 0.4) {
-    return 'v2-card-split-image-left'
+  if (input.imageAnalysis) {
+    const textSide = preferredTextSide(input.imageAnalysis)
+
+    if (textSide === 'left') {
+      // Text on left -> image on right
+      return 'v2-card-split-image-right'
+    }
+    if (textSide === 'right') {
+      // Text on right -> image on left
+      return 'v2-card-split-image-left'
+    }
+    // textSide === 'none' -> subject centered -> hero shelf
   }
   if (input.profile.density === 'dense') {
     return 'v2-card-text-focus'

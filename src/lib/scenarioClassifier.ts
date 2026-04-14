@@ -337,7 +337,7 @@ export function chooseLayoutIntent({
 export function resolveArchetype(
   ...args: Parameters<typeof chooseLayoutIntent>
 ): ArchetypeResolution {
-  const [{ format, profile, visualSystem, goal, assetHint }] = args
+  const [{ format, profile, visualSystem, goal, assetHint, imageAnalysis }] = args
   const intent = chooseLayoutIntent(...args)
 
   // Priority order: V2 archetype > template variant > structural archetype
@@ -420,6 +420,14 @@ export function resolveArchetype(
   }
   if (archetypeId === 'v2-card-text-only') {
     if (formatAspect === 'landscape') formatMismatch += 0.05
+  }
+  if (
+    imageAnalysis?.focalSuggestion === 'left' ||
+    imageAnalysis?.focalSuggestion === 'right'
+  ) {
+    // Clear focal signal -> more confident archetype selection
+    // Reduce format mismatch deduction by 0.05
+    formatMismatch = Math.max(0, formatMismatch - 0.05)
   }
 
   const rawConfidence =

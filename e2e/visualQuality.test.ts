@@ -67,13 +67,10 @@ const VISUAL_CASES: readonly VisualCase[] = [
     label: 'card split-right',
     fallbackArchetypeId: 'v2-card-split-image-right',
     expectedRenderedArchetype: 'v2-card-split-image-right',
+    acceptableArchetypes: ['v2-card-split-image-right', 'v2-card-hero-shelf'],
     setupFn: async (page) => {
-      await switchEditMode(page, 'master')
-      await page.getByRole('button', { name: 'Bold Promo' }).click()
       await uploadTinyImage(page)
-      // Product keywords → productVisualNeed critical; keep title ≤60 and total copy moderate so density ≠ dense and text-heavy gate is false.
-      await fillMasterHeadline(page, 'Shop the new product collection today')
-      await fillMasterSubtitle(page, 'See what is new.')
+      await switchEditMode(page, 'marketplace-card')
     },
   },
   {

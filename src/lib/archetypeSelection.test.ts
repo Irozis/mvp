@@ -184,14 +184,14 @@ describe('card archetype selection', () => {
     expect(result).toBe('v2-card-split-image-left')
   })
 
-  test('right focal point → NOT v2-card-split-image-left', () => {
+  test('right focal point → v2-card-split-image-right', () => {
     const result = selectPrimaryMarketplaceV2Archetype({
       formatKey: 'marketplace-card',
       profile: makeProfile(),
       master: makeMaster(),
       imageAnalysis: makeImageAnalysis({ focalPoint: { x: 0.8, y: 0.5 } }),
     })
-    expect(result).not.toBe('v2-card-split-image-left')
+    expect(result).toBe('v2-card-split-image-right')
   })
 
   test('dark mood + readable image → v2-card-full-bleed-overlay before split-left', () => {
@@ -262,14 +262,14 @@ describe('tile archetype selection', () => {
     expect(result).not.toBe('v2-tile-image-left')
   })
 
-  test('image-first tile → v2-tile-image-forward when focal not left', () => {
+  test('image-first tile + right-side subject → v2-tile-split-balanced', () => {
     const result = selectPrimaryMarketplaceV2Archetype({
       formatKey: 'marketplace-tile',
       profile: makeProfile({ preferredMessageMode: 'image-first', productVisualNeed: 'critical' }),
       master: makeMaster(),
       imageAnalysis: makeImageAnalysis({ focalPoint: { x: 0.75, y: 0.5 } }),
     })
-    expect(result).toBe('v2-tile-image-forward')
+    expect(result).toBe('v2-tile-split-balanced')
   })
 })
 
