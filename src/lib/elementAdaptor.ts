@@ -164,22 +164,22 @@ export function adaptCtaToParent(
     }
     if (!isMarketplaceZoneLayoutScene(next, formatKey)) {
       const irx = next.image.rx ?? 0
-      next.cta.rx = irx >= 24 ? 26 : irx >= 10 ? 14 : 4
+      next.cta.rx = irx >= 24 ? 8 : irx >= 10 ? 5 : 2
       const imageArea = (imgW * imgH) / 10000
       next.cta.w = clamp(imageArea * 28, 14, 30)
       next.cta.h = clamp(imageArea * 9, 5, 8)
     } else {
-      next.cta.rx = brandKit.ctaStyle === 'pill' ? 26 : brandKit.ctaStyle === 'rounded' ? 14 : 4
+      next.cta.rx = brandKit.ctaStyle === 'pill' ? 8 : brandKit.ctaStyle === 'rounded' ? 5 : 2
     }
   } else {
     const bgMid = next.background[1]
     next.cta.bg = mostContrastingColor(bgMid, candidates)
     if (brandKit.ctaStyle === 'pill') {
-      next.cta.rx = 26
+      next.cta.rx = 8
     } else if (brandKit.ctaStyle === 'rounded') {
-      next.cta.rx = 14
+      next.cta.rx = 5
     } else {
-      next.cta.rx = 4
+      next.cta.rx = 2
     }
   }
 
@@ -454,11 +454,11 @@ export function adaptElementsToContext(
   next.cta.bg = brandKit.accentColor
   next.cta.fill = getContrastingText(brandKit.accentColor)
   if (brandKit.ctaStyle === 'pill') {
-    next.cta.rx = 26
+    next.cta.rx = 8
   } else if (brandKit.ctaStyle === 'rounded') {
-    next.cta.rx = 14
+    next.cta.rx = 5
   } else {
-    next.cta.rx = 4
+    next.cta.rx = 2
   }
 
   next.logo.bgOpacity = imageAnalysis?.detectedContrast === 'high' ? 0.22 : 0.12
@@ -494,11 +494,11 @@ export function adaptElementsToBrandKit(scene: Scene, brandKit: BrandKit): Scene
   next.cta.bg = brandKit.accentColor
   next.cta.fill = getContrastingText(brandKit.accentColor)
   if (brandKit.ctaStyle === 'pill') {
-    next.cta.rx = 26
+    next.cta.rx = 8
   } else if (brandKit.ctaStyle === 'rounded') {
-    next.cta.rx = 14
+    next.cta.rx = 5
   } else {
-    next.cta.rx = 4
+    next.cta.rx = 2
   }
 
   next.logo.bg = brandKit.primaryColor

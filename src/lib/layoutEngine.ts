@@ -6119,7 +6119,7 @@ function applyTypography(scene: Scene, typography: TypographyPlan, brandKit: Bra
   next.subtitle.opacity = typography.subtitleOpacity
   next.cta.fontSize = typography.ctaSize
   next.badge.fontSize = typography.badgeSize
-  next.cta.rx = brandKit.ctaStyle === 'pill' ? 26 : brandKit.ctaStyle === 'rounded' ? 18 : 10
+  next.cta.rx = brandKit.ctaStyle === 'pill' ? 8 : brandKit.ctaStyle === 'rounded' ? 5 : 2
   return next
 }
 
