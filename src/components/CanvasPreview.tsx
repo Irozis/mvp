@@ -713,7 +713,7 @@ export function CanvasPreview({
               ) : null}
               <SvgText dataRole="subtitle" text={scene.subtitle.text || ''} x={cardA.subX} y={cardA.subY} fontSize={cardA.subFs} fill={patternASubtitleFill} weight={500} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 4} lineHeight={cardA.subLH / cardA.subFs} opacity={0.88} fontFamily={brandKit.fontFamily} letterSpacing={0.3} />
               <g data-role="cta">
-                <rect x={cardA.ctaX} y={cardA.ctaY} width={cardA.ctaW} height={cardA.ctaH} rx={999} fill={scene.accent} />
+                <rect x={cardA.ctaX} y={cardA.ctaY} width={cardA.ctaW} height={cardA.ctaH} rx={scene.cta.rx ?? 8} fill={scene.accent} />
                 <text x={cardA.ctaX + cardA.ctaW / 2} y={cardA.ctaY + cardA.ctaH / 2 + 6} textAnchor="middle" fill={patternACtaTextFill} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
               </g>
             </g>
@@ -725,7 +725,7 @@ export function CanvasPreview({
               <SvgText dataRole="headline" text={scene.title.text || ''} x={cardC.titleX} y={cardC.titleY} fontSize={cardC.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 800} maxCharsPerLine={scene.title.charsPerLine || 14} maxLines={3} lineHeight={cardC.titleLH / cardC.titleFs} fontFamily={brandKit.fontFamily} letterSpacing={cardC.titleFs > 60 ? -0.5 : undefined} />
               <SvgText dataRole="subtitle" text={scene.subtitle.text || ''} x={cardC.subX} y={cardC.subY} fontSize={cardC.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 3} lineHeight={cardC.subLH / cardC.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <g data-role="cta">
-                <rect x={cardC.ctaX} y={cardC.ctaY} width={cardC.ctaW} height={cardC.ctaH} rx={999} fill={scene.accent} />
+                <rect x={cardC.ctaX} y={cardC.ctaY} width={cardC.ctaW} height={cardC.ctaH} rx={scene.cta.rx ?? 8} fill={scene.accent} />
                 <text x={cardC.ctaX + cardC.ctaW / 2} y={cardC.ctaY + cardC.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
               </g>
               <rect x={width - cardC.imageBoxW - cardC.pad} y={height - cardC.imageBoxH - cardC.pad} width={cardC.imageBoxW} height={cardC.imageBoxH} rx={22} fill="rgba(255,255,255,0.12)" stroke="rgba(15,23,42,0.14)" />
@@ -755,7 +755,7 @@ export function CanvasPreview({
                 <SvgText dataRole="subtitle" text={scene.subtitle.text || ''} x={highlightB.subX} y={highlightB.subY} fontSize={highlightB.subFs} fill="#fff" weight={500} maxCharsPerLine={scene.subtitle.charsPerLine || 34} maxLines={scene.subtitle.maxLines || 3} lineHeight={highlightB.subLH / highlightB.subFs} opacity={0.88} textAnchor="middle" fontFamily={brandKit.fontFamily} letterSpacing={0.3} />
               ) : null}
               <g data-role="cta">
-                <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={999} fill={highlightPatternBCtaBg} stroke="#fff" strokeWidth={2} />
+                <rect x={highlightB.ctaX} y={highlightB.ctaY} width={highlightB.ctaW} height={highlightB.ctaH} rx={scene.cta.rx ?? 8} fill={highlightPatternBCtaBg} stroke="#fff" strokeWidth={2} />
                 <text x={highlightB.ctaX + highlightB.ctaW / 2} y={highlightB.ctaY + highlightB.ctaH / 2 + 6} textAnchor="middle" fill={highlightPatternBCtaFill} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
               </g>
             </g>
@@ -775,7 +775,7 @@ export function CanvasPreview({
               <SvgText dataRole="headline" text={scene.title.text || ''} x={highlightA.titleX} y={highlightA.titleY} fontSize={highlightA.titleFs} fill={scene.title.fill || '#0f172a'} weight={scene.title.weight || 700} maxCharsPerLine={scene.title.charsPerLine || 20} maxLines={scene.title.maxLines || 3} lineHeight={highlightA.titleLH / highlightA.titleFs} fontFamily={brandKit.fontFamily} letterSpacing={highlightA.titleFs > 60 ? -0.5 : undefined} />
               <SvgText dataRole="subtitle" text={scene.subtitle.text || ''} x={highlightA.subX} y={highlightA.subY} fontSize={highlightA.subFs} fill={scene.subtitle.fill || '#0f172a'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 36} maxLines={scene.subtitle.maxLines || 4} lineHeight={highlightA.subLH / highlightA.subFs} opacity={0.6} fontFamily={brandKit.fontFamily} />
               <g data-role="cta">
-                <rect x={highlightA.ctaX} y={highlightA.ctaY} width={highlightA.ctaW} height={highlightA.ctaH} rx={999} fill={scene.accent} />
+                <rect x={highlightA.ctaX} y={highlightA.ctaY} width={highlightA.ctaW} height={highlightA.ctaH} rx={scene.cta.rx ?? 8} fill={scene.accent} />
                 <text x={highlightA.ctaX + highlightA.ctaW / 2} y={highlightA.ctaY + highlightA.ctaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={15} fontWeight="700" letterSpacing={0.8} fontFamily={brandKit.fontFamily}>{(scene.cta.text || '').toUpperCase()}</text>
               </g>
             </g>
@@ -911,7 +911,7 @@ export function CanvasPreview({
               <SvgText dataRole="subtitle" text={scene.subtitle.text || ''} x={subtitleX} y={subtitleY} fontSize={scene.subtitle.fontSize || 16} fill={scene.subtitle.fill || '#fff'} weight={scene.subtitle.weight || 400} maxCharsPerLine={scene.subtitle.charsPerLine || 30} maxLines={scene.subtitle.maxLines || 4} lineHeight={1.28} opacity={scene.subtitle.opacity ?? 0.88} fontFamily={brandKit.fontFamily} />
 
               <g data-role="cta">
-                <rect x={ctaX} y={ctaY} width={fallbackCtaW} height={fallbackCtaH} rx={scene.cta.rx || 26} fill={scene.cta.bg || '#fff'} />
+                <rect x={ctaX} y={ctaY} width={fallbackCtaW} height={fallbackCtaH} rx={scene.cta.rx ?? 8} fill={scene.cta.bg || '#fff'} />
                 <text x={ctaX + fallbackCtaW / 2} y={ctaY + fallbackCtaH / 2 + 6} textAnchor="middle" fill={ctaFillAuto} fontSize={ctaFontSize} fontWeight="700" fontFamily={brandKit.fontFamily}>
                   {scene.cta.text}
                 </text>
