@@ -330,6 +330,8 @@ export function CanvasPreview({
   showSafeArea,
   onSelectBlock,
   onPatchBlock,
+  /** Effective layout archetype for diagnostics (e2e reads `data-archetype-id` on `.preview-wrap`). */
+  previewArchetypeId,
 }: {
   format: FormatDefinition
   scene: Scene
@@ -353,6 +355,7 @@ export function CanvasPreview({
   showSafeArea?: boolean
   onSelectBlock?: (blockId: LayoutElementKind | null) => void
   onPatchBlock?: (blockId: LayoutElementKind, patch: { x?: number; y?: number; w?: number; h?: number }) => void
+  previewArchetypeId?: string
 }) {
   const { width, height } = format
   const gradientId = `grad-${format.key}`
@@ -556,7 +559,7 @@ export function CanvasPreview({
   }
 
   return (
-    <div className="preview-wrap" data-format-key={format.key}>
+    <div className="preview-wrap" data-format-key={format.key} data-archetype-id={previewArchetypeId ?? undefined}>
       <div className="space-between preview-head">
         <div>
           <div className="preview-title">{format.label}</div>

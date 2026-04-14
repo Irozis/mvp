@@ -1397,10 +1397,14 @@ export default function App() {
               </div>
 
               <div className="preview-grid preview-grid-rich">
-                {previewFormats.map((format) => (
+                {previewFormats.map((format) => {
+                  const archetypeResolution = project.variants?.[format.key]?.archetypeResolution
+                  const previewArchetypeId = archetypeResolution?.effectiveArchetypeId ?? archetypeResolution?.archetypeId
+                  return (
                   <ErrorBoundary key={format.key}>
                     <CanvasPreview
                       format={format}
+                      previewArchetypeId={previewArchetypeId}
                       scene={resolvedFormats[format.key]}
                       brandKit={project.brandKit}
                       assessment={assessments[format.key]}
@@ -1430,7 +1434,8 @@ export default function App() {
                       onPatchBlock={(blockId, patch) => patchVariantOverride(format.key, blockId, patch)}
                     />
                   </ErrorBoundary>
-                ))}
+                  )
+                })}
               </div>
             </div>
           </div>

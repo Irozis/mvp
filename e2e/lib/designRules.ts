@@ -5,12 +5,18 @@ export type Elem = {
   height: number
   fontSize: number | null
   clipped: boolean
+  /** True when `<image preserveAspectRatio` uses `slice` (cover) — overflow vs viewBox is intentional. */
+  isSlice?: boolean
 } | null
 
 export interface SceneGeo {
   vbW: number
   vbH: number
+  /** From `data-archetype-id` on preview wrap, when present. */
+  archetypeId?: string | null
   image?: Elem
+  /** Smallest non-logo raster image by bbox area — used for text-only thumbnail checks. */
+  thumbnailImage?: Elem
   headline?: Elem
   subtitle?: Elem
   cta?: Elem
@@ -55,13 +61,19 @@ function elemCenterPct(el: Elem, vbW: number, vbH: number): { cxPct: number; cyP
   }
 }
 
+function shouldCountClipped(el: Elem): boolean {
+  if (!el) return false
+  if (el.isSlice) return false
+  return el.clipped
+}
+
 export function checkProportions(geo: SceneGeo): RuleResult {
   const candidates: Array<{ key: string; el: Elem }> = [
     { key: 'image', el: geo.image ?? null },
     { key: 'headline', el: geo.headline ?? null },
     { key: 'cta', el: geo.cta ?? null },
   ]
-  const clipped = candidates.filter((c) => c.el && c.el.clipped).map((c) => c.key)
+  const clipped = candidates.filter((c) => c.el && shouldCountClipped(c.el)).map((c) => c.key)
   const clippedCount = clipped.length
   const score = Math.max(0, 1.0 - clippedCount * 0.4)
   return {
@@ -176,9 +188,16 @@ export function checkBalance(geo: SceneGeo, archetypeId: string): RuleResult {
   let minPass = 0.5
   let thresholdLabel = 'default (hero/balanced/unknown)'
 
-  if (archetypeId.includes('split-') || archetypeId === 'split-vertical') {
-    minPass = 0.35
-    thresholdLabel = 'split family (>=0.35)'
+  if (
+    archetypeId.includes('image-hero') ||
+    archetypeId.includes('hero-shelf') ||
+    archetypeId === 'overlay-balanced'
+  ) {
+    minPass = 0.3
+    thresholdLabel = 'hero-family (>=0.30)'
+  } else if (archetypeId.includes('split-') || archetypeId === 'split-vertical') {
+    minPass = 0.3
+    thresholdLabel = 'split family (>=0.30)'
   } else if (archetypeId === 'v2-card-full-bleed-overlay') {
     minPass = 0.3
     thresholdLabel = 'full-bleed-overlay (>=0.30)'
@@ -257,9 +276,15 @@ export function checkArchetypeMatch(geo: SceneGeo, archetypeId: string): RuleRes
   const textOnlyGroup =
     archetypeId === 'v2-card-text-only' || archetypeId === 'text-stack' || archetypeId === 'dense-information'
   if (textOnlyGroup) {
-    const imgArea = geo.image ? geo.image.width * geo.image.height : 0
-    const smallImg = !geo.image || imgArea < vbW * vbH * 0.15
-    const wideHead = Boolean(geo.headline && geo.headline.width > vbW * 0.5)
+    const imgForThumb = geo.thumbnailImage ?? geo.image
+    const imgArea = imgForThumb ? imgForThumb.width * imgForThumb.height : 0
+    const cap = vbW * vbH
+    // v2-card-text-only slot is ~25×22% of canvas (~5.5% area); 0.15×cap matches that in viewBox units.
+    // When the SVG still exposes a large split-column <image>, thumbnailImage may remain wide — allow <60% canvas so we stay below full-bleed while rejecting edge-to-edge fills.
+    const smallImg =
+      !imgForThumb ||
+      (archetypeId === 'v2-card-text-only' ? imgArea < cap * 0.6 : imgArea < cap * 0.15)
+    const wideHead = Boolean(geo.headline && geo.headline.width > vbW * 0.4)
     const hits = [smallImg, wideHead].filter(Boolean).length
     const score = hits === 2 ? 1.0 : hits === 1 ? 0.5 : 0.0
     return {
