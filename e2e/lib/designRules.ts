@@ -1,28 +1,4 @@
-export type Elem = {
-  x: number
-  y: number
-  width: number
-  height: number
-  fontSize: number | null
-  clipped: boolean
-  /** True when `<image preserveAspectRatio` uses `slice` (cover) — overflow vs viewBox is intentional. */
-  isSlice?: boolean
-} | null
-
-export interface SceneGeo {
-  vbW: number
-  vbH: number
-  /** From `data-archetype-id` on preview wrap, when present. */
-  archetypeId?: string | null
-  image?: Elem
-  /** Smallest non-logo raster image by bbox area — used for text-only thumbnail checks. */
-  thumbnailImage?: Elem
-  headline?: Elem
-  subtitle?: Elem
-  cta?: Elem
-  badge?: Elem
-  logo?: Elem
-}
+import type { Elem, SceneGeo } from './svgGeometry'
 
 export interface RuleResult {
   rule: string
@@ -270,6 +246,22 @@ export function checkArchetypeMatch(geo: SceneGeo, archetypeId: string): RuleRes
       passed: score >= 0.5,
       score,
       detail: `full-bleed: fillsW=${fillsW} fillsH=${fillsH} textLow=${textLow}`,
+    }
+  }
+
+  if (archetypeId === 'v2-card-hero-shelf') {
+    const shelfImg = Boolean(geo.image && geo.image.height < geo.vbH * 0.30)
+    const headlineBelow = Boolean(
+      geo.headline &&
+      (geo.headline.y + geo.headline.height / 2) > geo.vbH * 0.40
+    )
+    const hits = [shelfImg, headlineBelow].filter(Boolean).length
+    const score = hits === 2 ? 1.0 : hits === 1 ? 0.5 : 0.3
+    return {
+      rule: 'archetype match',
+      passed: score >= 0.5,
+      score,
+      detail: `hero-shelf: shelfImg=${shelfImg} headlineBelow=${headlineBelow}`,
     }
   }
 

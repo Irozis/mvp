@@ -6046,22 +6046,62 @@ function reanchorCtaToCluster(scene: Scene, format: FormatDefinition): Scene {
 }
 
 function adjustTextContrastForOverlay(scene: Scene, imageAnalysis?: EnhancedImageAnalysis): Scene {
-  if (!imageAnalysis?.mood || imageAnalysis.mood === 'neutral') return scene
+  if (!imageAnalysis?.mood) return scene
+  // neutral mood still requires contrast check —
+  // a neutral image can still have very light or very dark regions
   // Only apply for hero/immersive layouts where text overlays the image
   if ((scene.image.w || 0) < 74 && (scene.image.h || 0) < 64) return scene
   const next = clone(scene)
   const titleIsLight = (next.title.fill || '#f8fafc') !== '#0f172a' && (next.title.fill || '#f8fafc') !== '#1e293b'
   const mismatch = (titleIsLight && imageAnalysis.mood === 'light') || (!titleIsLight && imageAnalysis.mood === 'dark')
-  if (!mismatch) return scene
-  if (imageAnalysis.mood === 'light') {
-    next.title.fill = '#0f172a'
-    next.subtitle.fill = '#1e293b'
-  } else {
-    next.title.fill = '#f8fafc'
-    next.subtitle.fill = '#e2e8f0'
+  if (mismatch) {
+    if (imageAnalysis.mood === 'light') {
+      next.title.fill = '#0f172a'
+      next.subtitle.fill = '#1e293b'
+    } else {
+      next.title.fill = '#f8fafc'
+      next.subtitle.fill = '#e2e8f0'
+    }
   }
   // Boost overlay strength so scrim matches flipped text color
-  next.overlayStrength = Math.min((next.overlayStrength || 0.2) + 0.14, 0.40)
+  if (imageAnalysis.mood === 'light') {
+    next.overlayStrength = Math.min((next.overlayStrength || 0.2) + 0.25, 0.55)
+  } else {
+    next.overlayStrength = Math.min((next.overlayStrength || 0.2) + 0.14, 0.40)
+  }
+
+  if (imageAnalysis?.detectedContrast === 'low') {
+    next.overlayStrength = Math.min((next.overlayStrength || 0.3) + 0.35, 0.65)
+    if (imageAnalysis.mood === 'light' || imageAnalysis.mood === 'neutral') {
+      next.title.fill = '#0f172a'
+      next.subtitle.fill = '#1e293b'
+    }
+  }
+
+  if (imageAnalysis?.brightnessMap?.length && scene.title) {
+    const titleY  = (scene.title.y  ?? 0)  / 100
+    const titleH  = (scene.title.h  ?? 10) / 100
+
+    const samplesUnderTitle = imageAnalysis.brightnessMap.filter(
+      s => s.y >= titleY - 0.1 && s.y <= titleY + titleH + 0.1
+    )
+
+    if (samplesUnderTitle.length > 0) {
+      const avgBrightness =
+        samplesUnderTitle.reduce((sum, s) => sum + s.score, 0) /
+        samplesUnderTitle.length
+
+      if (avgBrightness > 0.7) {
+        next.title.fill    = '#0f172a'
+        next.subtitle.fill = '#1e293b'
+        next.overlayStrength = Math.max(next.overlayStrength ?? 0.3, 0.55)
+      } else if (avgBrightness < 0.3) {
+        next.title.fill    = '#f8fafc'
+        next.subtitle.fill = '#e2e8f0'
+      }
+    }
+  }
+
   return next
 }
 

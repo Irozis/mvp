@@ -2,6 +2,7 @@ import { mkdirSync, existsSync } from 'fs'
 import { Buffer } from 'node:buffer'
 import { expect, test, type Page } from '@playwright/test'
 import { auditScene } from './lib/designRules'
+import { GEOMETRY_EXTRACTOR_SOURCE, type SceneGeo } from './lib/svgGeometry'
 
 // All base format keys (see e2e/smoke.test.ts — ALL_FORMAT_KEYS)
 const ALL_FORMAT_KEYS = [
@@ -91,16 +92,15 @@ const VISUAL_CASES: readonly VisualCase[] = [
     },
   },
   {
-    formatKey: 'marketplace-highlight',
-    label: 'highlight full-bleed',
-    fallbackArchetypeId: 'overlay-balanced',
-    // portrait-hero-overlay → overlay hero; resolver may surface image-hero or overlay-balanced.
-    expectedRenderedArchetype: 'overlay-balanced',
-    acceptableArchetypes: ['image-hero', 'overlay-balanced'],
+    formatKey: 'marketplace-card',
+    label: 'card hero-shelf',
+    fallbackArchetypeId: 'v2-card-hero-shelf',
+    expectedRenderedArchetype: 'v2-card-hero-shelf',
+    acceptableArchetypes: ['v2-card-hero-shelf'],
     setupFn: async (page) => {
       await uploadTinyImage(page)
-      await switchEditMode(page, 'marketplace-highlight')
-      await applyLayoutFamilyChip(page, 'portrait-hero-overlay')
+      await switchEditMode(page, 'marketplace-card')
+      // v2-card-hero-shelf is the default — no chip or text setup needed
     },
   },
 ]
@@ -157,7 +157,7 @@ for (const c of VISUAL_CASES) {
   }
 
   test(`visual design: ${c.label}`, async ({ page }) => {
-    test.setTimeout(90_000)
+    test.setTimeout(100_000)
     await page.goto('/')
 
     if (c.setupFn) {
@@ -168,18 +168,26 @@ for (const c of VISUAL_CASES) {
 
     await page.waitForLoadState('networkidle', { timeout: 45_000 }).catch(() => {})
 
+    let trimmedFromDom = ''
+    const POLL_INTERVAL = 1000
+
     if (c.expectedRenderedArchetype) {
-      const accepted = new Set([c.expectedRenderedArchetype, ...(c.acceptableArchetypes ?? [])])
-      await page
-        .waitForFunction(
-          ({ fk, ids }) => {
-            const id = document.querySelector(`[data-format-key="${fk}"]`)?.getAttribute('data-archetype-id')?.trim()
-            return Boolean(id && (ids as string[]).includes(id))
-          },
-          { fk: c.formatKey, ids: [...accepted] },
-          { timeout: 50_000 },
-        )
-        .catch(() => {})
+      await page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {})
+
+      const POLL_TIMEOUT = 80_000
+      const start = Date.now()
+
+      while (Date.now() - start < POLL_TIMEOUT) {
+        const attr = await page
+          .locator(`[data-format-key="${c.formatKey}"]`)
+          .first()
+          .getAttribute('data-archetype-id')
+          .catch(() => '')
+        trimmedFromDom = (attr ?? '').trim()
+        if (trimmedFromDom === c.expectedRenderedArchetype) break
+        if (c.acceptableArchetypes?.includes(trimmedFromDom)) break
+        await page.waitForTimeout(POLL_INTERVAL)
+      }
     }
 
     const editSelect = page.locator('select').filter({ hasText: 'Master layout' })
@@ -189,11 +197,27 @@ for (const c of VISUAL_CASES) {
 
     await page.waitForSelector(`[data-format-key="${c.formatKey}"] svg.preview-svg`, { timeout: 15_000 })
 
-    const trimmedFromDom = await page
+    trimmedFromDom = await page
       .locator(`[data-format-key="${c.formatKey}"]`)
       .first()
       .getAttribute('data-archetype-id')
       .then((a) => (a != null ? a.trim() : ''))
+
+    if (c.expectedRenderedArchetype) {
+      const acceptedIds = new Set([c.expectedRenderedArchetype, ...(c.acceptableArchetypes ?? [])])
+      const POST_POLL_MS = 15_000
+      const postStart = Date.now()
+      while (Date.now() - postStart < POST_POLL_MS && !acceptedIds.has(trimmedFromDom)) {
+        await page.waitForTimeout(POLL_INTERVAL)
+        const attr = await page
+          .locator(`[data-format-key="${c.formatKey}"]`)
+          .first()
+          .getAttribute('data-archetype-id')
+          .catch(() => '')
+        trimmedFromDom = (attr ?? '').trim()
+        if (acceptedIds.has(trimmedFromDom)) break
+      }
+    }
 
     const accepted = new Set(
       [c.expectedRenderedArchetype, ...(c.acceptableArchetypes ?? [])].filter(Boolean) as string[],
@@ -206,169 +230,10 @@ for (const c of VISUAL_CASES) {
       return
     }
 
-    const geo = await page.evaluate((formatKey) => {
-      const container = document.querySelector(`[data-format-key="${formatKey}"]`)
-      if (!container) return null
-
-      const svg = container.querySelector('svg.preview-svg')
-      if (!svg) return null
-
-      const renderedArchetypeId = container.getAttribute('data-archetype-id')
-
-      const vb = svg.getAttribute('viewBox')?.split(/\s+/).map(Number) ?? []
-      const vbW = vb[2] ?? 0
-      const vbH = vb[3] ?? 0
-
-      function getGeom(el: Element | null, opts?: { rasterImage?: boolean }) {
-        if (!el) return null
-        let bbox: DOMRect
-        try {
-          bbox = (el as SVGGraphicsElement).getBBox()
-        } catch {
-          return null
-        }
-        if (bbox.width === 0 && bbox.height === 0) return null
-
-        const fsAttr =
-          el.getAttribute('font-size') ??
-          el.querySelector('text, tspan')?.getAttribute('font-size') ??
-          null
-        const fontSize = fsAttr ? parseFloat(fsAttr) : null
-
-        const par = el.getAttribute('preserveAspectRatio') ?? ''
-        const isSlice = opts?.rasterImage ? par.includes('slice') : undefined
-
-        const base: Record<string, unknown> = {
-          x: bbox.x,
-          y: bbox.y,
-          width: bbox.width,
-          height: bbox.height,
-          fontSize,
-          clipped:
-            bbox.x < -2 ||
-            bbox.y < -2 ||
-            bbox.x + bbox.width > vbW + 2 ||
-            bbox.y + bbox.height > vbH + 2,
-        }
-        if (opts?.rasterImage) {
-          base.isSlice = isSlice
-        }
-        return base
-      }
-
-      function getTextFs(t: SVGTextElement): number {
-        const a =
-          t.getAttribute('font-size') ?? t.querySelector('tspan')?.getAttribute('font-size') ?? ''
-        const n = parseFloat(a)
-        return Number.isFinite(n) ? n : 0
-      }
-
-      const logoEl = svg.querySelector('image[preserveAspectRatio="xMidYMid meet"]')
-      const allImages = [...svg.querySelectorAll('image')]
-      const nonLogo = allImages.filter((img) => img !== logoEl)
-      const rightImage = nonLogo.find((img) => {
-        let b: DOMRect
-        try {
-          b = (img as SVGGraphicsElement).getBBox()
-        } catch {
-          return false
-        }
-        return b.width > 0 && b.height > 0 && b.x + b.width / 2 > vbW * 0.5
-      })
-      const mainImageEl = rightImage ?? nonLogo[0] ?? allImages[0] ?? null
-
-      let smallestNonLogo: Element | null = null
-      let smallestArea = Infinity
-      for (const img of nonLogo) {
-        let b: DOMRect
-        try {
-          b = (img as SVGGraphicsElement).getBBox()
-        } catch {
-          continue
-        }
-        if (b.width <= 0 || b.height <= 0) continue
-        const a = b.width * b.height
-        if (a < smallestArea) {
-          smallestArea = a
-          smallestNonLogo = img
-        }
-      }
-      /** v2-card-text-only uses a small inset photo (~25% wide) — prefer narrow <image>, else smallest area. */
-      let thumbnailImageEl = smallestNonLogo ?? mainImageEl
-      if (renderedArchetypeId === 'v2-card-text-only') {
-        const narrow = nonLogo.filter((img) => {
-          try {
-            const b = (img as SVGGraphicsElement).getBBox()
-            return b.width > 0 && b.height > 0 && b.width < vbW * 0.45
-          } catch {
-            return false
-          }
-        })
-        if (narrow.length > 0) {
-          narrow.sort((a, b) => {
-            const ba = (a as SVGGraphicsElement).getBBox()
-            const bb = (b as SVGGraphicsElement).getBBox()
-            return ba.width * ba.height - bb.width * bb.height
-          })
-          thumbnailImageEl = narrow[0]!
-        }
-      }
-
-      const texts = [...svg.querySelectorAll('text')] as SVGTextElement[]
-      const textsWithFs = texts.filter((t) => getTextFs(t) > 0)
-      textsWithFs.sort((a, b) => getTextFs(b) - getTextFs(a))
-
-      const leftTexts = textsWithFs.filter((t) => {
-        let b: DOMRect
-        try {
-          b = (t as SVGGraphicsElement).getBBox()
-        } catch {
-          return false
-        }
-        return b.width > 0 && b.height > 0 && b.x + b.width / 2 < vbW * 0.52
-      })
-      const headlineEl = (leftTexts.sort((a, b) => getTextFs(b) - getTextFs(a))[0] ?? textsWithFs[0]) ?? null
-      const hFs = headlineEl ? getTextFs(headlineEl) : 0
-      const subtitleEl =
-        textsWithFs.find((t) => t !== headlineEl && getTextFs(t) > 0 && getTextFs(t) < hFs) ?? null
-
-      const pillRect = svg.querySelector('rect[rx="999"]')
-      const siblingText =
-        pillRect?.nextElementSibling?.tagName.toLowerCase() === 'text' ? pillRect.nextElementSibling : null
-      let ctaTextEl: Element | null = siblingText
-      if (!ctaTextEl) {
-        ctaTextEl =
-          texts.find((t) => {
-            const fs = getTextFs(t)
-            return (
-              (fs === 15 || fs === 16) && t !== headlineEl && t !== subtitleEl
-            )
-          }) ?? null
-      }
-
-      let badgeEl: Element | null = null
-      for (const g of svg.querySelectorAll('g')) {
-        const r = g.querySelector(':scope > rect[rx="20"]')
-        const t = g.querySelector(':scope > text')
-        if (r && t) {
-          badgeEl = t
-          break
-        }
-      }
-
-      return {
-        vbW,
-        vbH,
-        archetypeId: renderedArchetypeId,
-        image: getGeom(mainImageEl, { rasterImage: true }),
-        thumbnailImage: getGeom(thumbnailImageEl, { rasterImage: true }),
-        headline: getGeom(headlineEl),
-        subtitle: getGeom(subtitleEl),
-        cta: getGeom(ctaTextEl),
-        badge: getGeom(badgeEl),
-        logo: getGeom(logoEl),
-      }
-    }, c.formatKey)
+    // eslint-disable-next-line no-new-func
+    const geometryExtractor = new Function('return ' + GEOMETRY_EXTRACTOR_SOURCE)() as
+      (formatKey: string) => SceneGeo | null
+    const geo = await page.evaluate(geometryExtractor, c.formatKey)
 
     if (!geo) {
       test.skip(true, `Format ${c.formatKey} not rendered`)

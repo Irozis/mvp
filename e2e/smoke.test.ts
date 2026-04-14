@@ -35,15 +35,15 @@ test('all goal packs render at least one canvas without errors', async ({ page }
   await page.goto('/')
 
   // Wait for initial render
-  await page.waitForSelector('canvas', { timeout: 10_000 })
+  await page.waitForSelector('svg.preview-svg', { timeout: 10_000 })
 
   // No error boundary fallbacks should be visible
   const errorBoundaries = page.locator('.error-boundary')
   await expect(errorBoundaries).toHaveCount(0)
 
   // At least one canvas should be present
-  const canvases = page.locator('canvas')
-  await expect(canvases).not.toHaveCount(0)
+  const previews = page.locator('svg.preview-svg')
+  await expect(previews).not.toHaveCount(0)
 })
 
 test.describe('format renders without error', () => {
@@ -54,13 +54,16 @@ test.describe('format renders without error', () => {
       // Switch edit mode to this format to ensure it's rendered
       const editSelect = page.locator('select').filter({ hasText: 'Master layout' })
       if (await editSelect.count() > 0) {
-        await editSelect.selectOption(formatKey).catch(() => {
-          // Format may not be in edit mode dropdown — that's OK, it still renders in preview grid
-        })
+        const optionExists = (await editSelect.locator(`option[value="${formatKey}"]`).count()) > 0
+        if (optionExists) {
+          await editSelect.selectOption(formatKey).catch(() => {
+            // Format may still fail to switch transiently — keep smoke assertion focused on render stability.
+          })
+        }
       }
 
-      // Wait for canvas elements to appear
-      await page.waitForSelector('canvas', { timeout: 10_000 })
+      // Wait for preview SVG elements to appear
+      await page.waitForSelector('svg.preview-svg', { timeout: 10_000 })
 
       // No error boundary fallbacks should be showing
       const errorBoundaries = page.locator('.error-boundary')

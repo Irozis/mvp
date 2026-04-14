@@ -132,6 +132,7 @@ export function adaptCtaToParent(
 ): Scene {
   const next: Scene = JSON.parse(JSON.stringify(scene)) as Scene
   const candidates = ['#FFFFFF', '#000000', brandKit.accentColor, brandKit.primaryColor]
+  const MIN_CTA_BG_CONTRAST = 2.5
   const imgW = next.image.w ?? 0
   const imgH = next.image.h ?? 0
   const parentIsImage = imgW > 0 && imgH > 0
@@ -161,7 +162,6 @@ export function adaptCtaToParent(
         next.cta.bg = mostContrastingColor(dominant, fallbackCtaColors)
       }
     }
-    next.cta.fill = getContrastingText(next.cta.bg)
     if (!isMarketplaceZoneLayoutScene(next, formatKey)) {
       const irx = next.image.rx ?? 0
       next.cta.rx = irx >= 24 ? 26 : irx >= 10 ? 14 : 4
@@ -174,7 +174,6 @@ export function adaptCtaToParent(
   } else {
     const bgMid = next.background[1]
     next.cta.bg = mostContrastingColor(bgMid, candidates)
-    next.cta.fill = getContrastingText(next.cta.bg)
     if (brandKit.ctaStyle === 'pill') {
       next.cta.rx = 26
     } else if (brandKit.ctaStyle === 'rounded') {
@@ -183,6 +182,28 @@ export function adaptCtaToParent(
       next.cta.rx = 4
     }
   }
+
+  const ctaY = next.cta.y ?? 0
+  const imageY = next.image.y ?? 0
+  const imageBottom = imageY + (next.image.h ?? 0)
+  const ctaIsOverImage = ctaY > imageY && ctaY < imageBottom
+  const sceneBg = next.background[1] || '#FFFFFF'
+  const localBg = ctaIsOverImage ? (imageAnalysis?.dominantColors?.[0] ?? sceneBg) : sceneBg
+  const ctaBg = next.cta.bg || brandKit.accentColor
+  const ctaBgContrast = contrastRatio(ctaBg, localBg)
+  if (ctaBgContrast < MIN_CTA_BG_CONTRAST) {
+    const safeOptions = [
+      brandKit.accentColor,
+      '#FFFFFF',
+      '#000000',
+      '#E11D48',
+      '#2563EB',
+    ]
+    next.cta.bg = mostContrastingColor(localBg, safeOptions)
+  } else {
+    next.cta.bg = ctaBg
+  }
+  next.cta.fill = getContrastingText(next.cta.bg)
 
   const CTA_MIN_W = 16
   const CTA_MIN_H = 6
