@@ -331,6 +331,7 @@ export function CanvasPreview({
   selectedBlockId,
   editable,
   showSafeArea,
+  qualityOpen,
   onSelectBlock,
   onPatchBlock,
   /** Effective layout archetype for diagnostics (e2e reads `data-archetype-id` on `.preview-wrap`). */
@@ -356,6 +357,7 @@ export function CanvasPreview({
   selectedBlockId?: LayoutElementKind | null
   editable?: boolean
   showSafeArea?: boolean
+  qualityOpen?: boolean
   onSelectBlock?: (blockId: LayoutElementKind | null) => void
   onPatchBlock?: (blockId: LayoutElementKind, patch: { x?: number; y?: number; w?: number; h?: number }) => void
   previewArchetypeId?: string
@@ -559,69 +561,12 @@ export function CanvasPreview({
       <div className="space-between preview-head">
         <div>
           <div className="preview-title">{format.label}</div>
-          <div className="muted">{format.name} | {format.category}</div>
-          <div className="muted">Format family: <strong>{formatFamily}</strong></div>
-          {assessment.structuralState && <div className="muted">Structural state: <strong>{assessment.structuralState.status}</strong></div>}
-          {assessment.visual && <div className="muted">Visual quality: <strong>{assessment.visual.overallScore}/100 | {assessment.visual.band}</strong></div>}
+          <div className="preview-meta">{format.name} | {format.category}</div>
         </div>
         <div className={`score-pill score-${shownScore >= 97 ? 'excellent' : shownScore >= 80 ? 'good' : shownScore >= 65 ? 'fair' : 'weak'}`}>
           {shownScore}/100 | {severityLabel}
         </div>
       </div>
-
-      <div className="preview-toolbar">
-        <button className="button" onClick={onFixLayout} disabled={isFixing}>
-          <Sparkles size={16} />
-          {isFixing ? 'Fixing...' : fixResult?.canFixAgain ? 'Fix again' : 'Fix layout'}
-        </button>
-        {fixResult?.canFixAgain && (
-          <button className="button button-outline" onClick={onTryDifferentLayout} disabled={isFixing}>
-            Try different layout
-          </button>
-        )}
-        <button className="button button-outline" onClick={onExportPng} disabled={isExporting}>
-          <Download size={16} />
-          {isExporting ? '...' : 'PNG'}
-        </button>
-        <button className="button button-outline" onClick={onExportJpg} disabled={isExporting}>
-          <ImageIcon size={16} />
-          {isExporting ? '...' : 'JPG'}
-        </button>
-        <button className="button button-outline" onClick={onExportPdf} disabled={isExporting}>
-          <FileText size={16} />
-          {isExporting ? '...' : 'PDF'}
-        </button>
-      </div>
-
-      <div className="stack">
-        <div className="muted">Quality: <strong>{severityLabel}</strong></div>
-        <div className="muted">Confidence: <strong>{confidence}</strong></div>
-        {assessment.visual?.warnings[0] ? (
-          <div className="muted">Visual note: <strong>{assessment.visual.warnings[0]}</strong></div>
-        ) : null}
-        {topIssues.map((issue) => (
-          <div key={issue.code} className={`alert ${issue.severity === 'high' ? 'error' : issue.severity === 'medium' ? 'warning' : 'ok'}`}>
-            {issue.message}
-          </div>
-        ))}
-        {fixResult && (
-          <div className="panel">
-            <div className="section-title">What changed</div>
-            <div className="muted">Score: {fixResult.beforeScore} {'->'} {fixResult.afterScore}</div>
-            <div className="muted">Effective: {fixResult.effectiveBeforeScore} {'->'} {fixResult.effectiveAfterScore}</div>
-            <div className="muted">Confidence: {confidence}</div>
-            {fixResult.actionsApplied.slice(0, 4).map((action) => (
-              <div key={action} className="hint">{action}</div>
-            ))}
-            {fixResult.remainingIssues.length > 0 && <div className="hint">Still weak: {fixResult.remainingIssues.slice(0, 3).join(', ')}</div>}
-            {!fixResult.canFixAgain && !hasRemainingWork && <div className="hint">Layout stabilized.</div>}
-          </div>
-        )}
-      </div>
-
-      {aiReviewed ? (
-        <span className="ai-reviewed-badge">✓ AI reviewed</span>
-      ) : null}
 
       <div ref={previewRef} className="preview-card">
         <svg
@@ -1063,6 +1008,64 @@ export function CanvasPreview({
           )}
         </svg>
       </div>
+      <div className="preview-toolbar">
+        <button className="button" onClick={onFixLayout} disabled={isFixing}>
+          <Sparkles size={16} />
+          {isFixing ? 'Fixing...' : fixResult?.canFixAgain ? 'Fix again' : 'Fix layout'}
+        </button>
+        {fixResult?.canFixAgain && (
+          <button className="button button-outline" onClick={onTryDifferentLayout} disabled={isFixing}>
+            Try different layout
+          </button>
+        )}
+        <button className="button button-outline" onClick={onExportPng} disabled={isExporting}>
+          <Download size={16} />
+          {isExporting ? '...' : 'PNG'}
+        </button>
+        <button className="button button-outline" onClick={onExportJpg} disabled={isExporting}>
+          <ImageIcon size={16} />
+          {isExporting ? '...' : 'JPG'}
+        </button>
+        <button className="button button-outline" onClick={onExportPdf} disabled={isExporting}>
+          <FileText size={16} />
+          {isExporting ? '...' : 'PDF'}
+        </button>
+      </div>
+
+      {qualityOpen && (
+      <div className="preview-notes">
+        <div className="muted">Format family: <strong>{formatFamily}</strong></div>
+        {assessment.structuralState && <div className="muted">Structural state: <strong>{assessment.structuralState.status}</strong></div>}
+        {assessment.visual && <div className="muted">Visual quality: <strong>{assessment.visual.overallScore}/100 | {assessment.visual.band}</strong></div>}
+        <div className="muted">Quality: <strong>{severityLabel}</strong></div>
+        <div className="muted">Confidence: <strong>{confidence}</strong></div>
+        {assessment.visual?.warnings[0] ? (
+          <div className="muted">Visual note: <strong>{assessment.visual.warnings[0]}</strong></div>
+        ) : null}
+        {topIssues.map((issue) => (
+          <div key={issue.code} className={`alert ${issue.severity === 'high' ? 'error' : issue.severity === 'medium' ? 'warning' : 'ok'}`}>
+            {issue.message}
+          </div>
+        ))}
+        {fixResult && (
+          <div className="panel">
+            <div className="section-title">What changed</div>
+            <div className="muted">Score: {fixResult.beforeScore} {'->'} {fixResult.afterScore}</div>
+            <div className="muted">Effective: {fixResult.effectiveBeforeScore} {'->'} {fixResult.effectiveAfterScore}</div>
+            <div className="muted">Confidence: {confidence}</div>
+            {fixResult.actionsApplied.slice(0, 4).map((action) => (
+              <div key={action} className="hint">{action}</div>
+            ))}
+            {fixResult.remainingIssues.length > 0 && <div className="hint">Still weak: {fixResult.remainingIssues.slice(0, 3).join(', ')}</div>}
+            {!fixResult.canFixAgain && !hasRemainingWork && <div className="hint">Layout stabilized.</div>}
+          </div>
+        )}
+      </div>
+      )}
+
+      {aiReviewed ? (
+        <span className="ai-reviewed-badge">✓ AI reviewed</span>
+      ) : null}
     </div>
   )
 }

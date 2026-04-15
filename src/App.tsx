@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArchiveRestore,
+  ChevronDown,
   Download,
   FileJson,
   FolderOpen,
-  LayoutTemplate,
   Library,
   RefreshCcw,
   Save,
@@ -16,7 +16,7 @@ import { FilePicker } from './components/FilePicker'
 import { CanvasPreview } from './components/CanvasPreview'
 import { VariantInspector } from './components/VariantInspector'
 import { ValidationSummary } from './components/ValidationSummary'
-import { BasicControls, BrandEditor, ElementEditor } from './components/Controls'
+import { BrandEditor, ElementEditor } from './components/Controls'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import {
   applyBrandTemplate,
@@ -163,24 +163,6 @@ function applyReferenceToProject(current: Project, analysis: ReferenceAnalysis) 
   return regenerateFormats(next)
 }
 
-function StepCard({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="step-card">
-      <div className="step-title">{title}</div>
-      <div className="step-text">{text}</div>
-    </div>
-  )
-}
-
-function SummaryCard({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="summary-card">
-      <div className="summary-label">{label}</div>
-      <div className="summary-value">{value}</div>
-    </div>
-  )
-}
-
 function StatusBanner({ tone, text }: { tone: StatusTone; text: string }) {
   return <div className={`status-banner ${tone}`}>{text}</div>
 }
@@ -222,6 +204,21 @@ export default function App() {
     text: 'Build a marketplace adaptive pack: card and highlight outputs from one master.',
   })
   const [view, setView] = useState<'onboarding' | 'editor'>('onboarding')
+  const [brandOpen, setBrandOpen] = useState(true)
+  const [elementOpen, setElementOpen] = useState(false)
+  const [qualityOpen, setQualityOpen] = useState(false)
+  const [directionOpen, setDirectionOpen] = useState(false)
+  const [workspaceOpen, setWorkspaceOpen] = useState(false)
+  const [sidebarTab, setSidebarTab] = useState<'setup' | 'assets'>('setup')
+  const [enabledElements, setEnabledElements] = useState<Record<string, boolean>>({
+    title: true,
+    subtitle: true,
+    cta: true,
+    badge: false,
+    logo: true,
+    image: true,
+  })
+  const [expandedElement, setExpandedElement] = useState<string | null>('title')
 
   const refs = useRef<Partial<Record<FormatKey, HTMLDivElement | null>>>({})
   const projectImportRef = useRef<HTMLInputElement | null>(null)
@@ -264,6 +261,34 @@ export default function App() {
   const currentSavedProject = savedProjects.find((item) => item.id === currentSavedId) || null
   const suggestedDirections = useMemo(() => getSuggestedDirections(project.assetHint?.imageProfile), [project.assetHint?.imageProfile])
   const structuralLogSignatureRef = useRef('')
+  const goalLabel = currentGoalPreset?.label || project.goal
+  const visualSystemLabel = VISUAL_SYSTEMS.find((item) => item.key === project.visualSystem)?.label || project.visualSystem
+  const imageProfileLabel = project.assetHint?.imageProfile ? getImageProfileLabel(project.assetHint.imageProfile) : 'Image not analyzed'
+
+  const handleRegenerateAll = () => {
+    clearFixArtifacts()
+    setProject((prev) => regenerateFormats(prev))
+  }
+
+  const toggleElement = (key: string) => {
+    setEnabledElements((prev) => {
+      const nextValue = !prev[key]
+      if (!nextValue && expandedElement === key) {
+        setExpandedElement(null)
+        setElementOpen(false)
+      }
+      return { ...prev, [key]: nextValue }
+    })
+  }
+
+  const toggleExpand = (key: string) => {
+    setExpandedElement((prev) => {
+      const next = prev === key ? null : key
+      setElementOpen(next !== null)
+      return next
+    })
+    setSelectedElement(key as SelectedElement)
+  }
 
   const assessments = useMemo(
     () =>
@@ -730,6 +755,7 @@ export default function App() {
     setProjectName('campaign-master')
     setCurrentSavedId(null)
     setStatus({ tone: 'neutral', text: 'Workspace reset. Start with a fresh marketplace adaptive pack.' })
+    setView('onboarding')
   }
 
   const handleProjectImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -1005,6 +1031,7 @@ export default function App() {
             setReferenceUrl(imageUrl)
             setImageUrl(imageUrl)
           }
+          setSidebarTab('assets')
           setView('editor')
         }}
       />
@@ -1013,27 +1040,34 @@ export default function App() {
 
   return (
     <div className="page">
-      <div className="hero card">
-        <div className="hero-copy">
-          <div className="eyebrow">Adaptive Creative Studio</div>
-          <div className="title-row hero-title">
-            <LayoutTemplate size={24} />
-            <h1>Build once. Ship marketplace-ready layouts.</h1>
-          </div>
-          <p className="hero-text">
-            From one master creative, export marketplace card and product highlight formats with consistent branding and validation.
-          </p>
+      <header className="editor-header">
+        <div className="editor-header-left">
+          <button className="editor-back" onClick={() => setView('onboarding')}>
+            ← Back
+          </button>
+          <span className="editor-project-name">{projectName}</span>
         </div>
-        <div className="step-grid">
-          <StepCard title="1. Choose mode" text="Create from scratch, import a layout reference, or start from a brand template." />
-          <StepCard title="2. Define the pack" text="This demo focuses on the marketplace adaptive pack: card and highlight outputs." />
-          <StepCard title="3. Select direction" text="Pick a visual system suited to product-led marketplace layouts, then review all sizes in the preview feed." />
-          <StepCard title="4. Save and export" text="Track versions, reopen projects later, and export PNG, JPG, PDF, or JSON." />
+        <div className="editor-header-right">
+          <span className="editor-meta">{goalLabel} · {visualSystemLabel}</span>
+          <button className="button" onClick={handleRegenerateAll}>
+            <Wand2 size={16} />
+            Regenerate all
+          </button>
         </div>
-      </div>
+      </header>
 
       <div className="layout">
         <aside className="sidebar stack">
+          <div className="sidebar-tabs">
+            <button className={sidebarTab === 'setup' ? 'sidebar-tab active' : 'sidebar-tab'} onClick={() => setSidebarTab('setup')}>
+              Setup
+            </button>
+            <button className={sidebarTab === 'assets' ? 'sidebar-tab active' : 'sidebar-tab'} onClick={() => setSidebarTab('assets')}>
+              Assets
+            </button>
+          </div>
+          {sidebarTab === 'setup' && (
+            <>
           <div className="card">
             <div className="card-header">
               <div className="space-between">
@@ -1124,211 +1158,198 @@ export default function App() {
 
           <div className="card">
             <div className="card-header">
-              <div className="section-kicker">Design direction</div>
-              <h2>Suggested visual systems</h2>
-            </div>
-            <div className="card-body stack">
-              <div className="direction-grid">
-                {suggestedDirections.map((directionKey) => {
-                  const system = VISUAL_SYSTEMS.find((item) => item.key === directionKey)!
-                  return (
-                    <button key={directionKey} className={`direction-card ${project.visualSystem === directionKey ? 'active' : ''}`} onClick={() => applyVisualSystem(directionKey)}>
-                      <div className="direction-title">{system.label}</div>
-                      <div className="direction-text">{system.description}</div>
-                    </button>
-                  )
-                })}
-              </div>
-              {import.meta.env.DEV && (
-                <div className="panel" style={{ marginTop: 8 }}>
-                  <div className="section-title">Layout engine</div>
-                  <div className="row" style={{ gap: 8, alignItems: 'center' }}>
-                    <button
-                      className={`button button-outline${v2Enabled ? ' active' : ''}`}
-                      onClick={() => {
-                        const next = !v2Enabled
-                        setV2Enabled(next)
-                        setLayoutEngineV2(next)
-                        setProject((prev) => regenerateFormats(prev))
-                      }}
-                    >
-                      {v2Enabled ? 'V2 engine on' : 'V2 engine off'}
-                    </button>
-                    {v2Enabled && (
-                      <span className="hint" style={{ fontSize: 11 }}>
-                        archetype-driven layout active
-                      </span>
-                    )}
-                  </div>
+              <button className="collapsible-trigger" onClick={() => setDirectionOpen((open) => !open)}>
+                <div>
+                  <div className="section-kicker">Design direction</div>
+                  <h2>Suggested visual systems</h2>
                 </div>
-              )}
+                <ChevronDown size={14} className={directionOpen ? 'rotated' : ''} />
+              </button>
             </div>
-          </div>
-
-          <div className="card">
-            <div className="card-header">
-              <div className="section-kicker">Assets & brand</div>
-              <h2>Master controls</h2>
-            </div>
-            <div className="card-body stack">
-              <ErrorBoundary>
-                {!imageUrl && (
-                  <div className="onboarding-steps">
-                    <span className="step">1. Click a demo or upload your photo</span>
-                    <span className="step-arrow">→</span>
-                    <span className="step">2. Edit your text</span>
-                    <span className="step-arrow">→</span>
-                    <span className="step">3. Download PNG or JPG</span>
-                  </div>
-                )}
-                <div className="demo-bar">
-                  <div className="hint demo-try-label">Try a demo →</div>
-                  <div className="demo-pill-row">
-                    {DEMO_PROJECTS.map((demo) => (
-                      <button key={demo.key} type="button" className="demo-pill" onClick={() => void applyDemo(demo)}>
-                        {demo.label}
+            {directionOpen && (
+              <div className="card-body stack collapsible-body">
+                <div className="direction-grid">
+                  {suggestedDirections.map((directionKey) => {
+                    const system = VISUAL_SYSTEMS.find((item) => item.key === directionKey)!
+                    return (
+                      <button key={directionKey} className={`direction-card ${project.visualSystem === directionKey ? 'active' : ''}`} onClick={() => applyVisualSystem(directionKey)}>
+                        <div className="direction-title">{system.label}</div>
+                        <div className="direction-text">{system.description}</div>
                       </button>
-                    ))}
-                  </div>
+                    )
+                  })}
                 </div>
-                <FilePicker label="Main image" value={imageUrl} onUrlChange={setImageUrl} />
-                <FilePicker label="Logo" value={logoUrl} onUrlChange={setLogoUrl} />
-              </ErrorBoundary>
-              <div className="field">
-                <label className="label">Edit mode</label>
-                <select className="select" value={editMode} onChange={(event) => setEditMode(event.target.value as 'master' | FormatKey)}>
-                  <option value="master">Master layout</option>
-                  {previewFormats.map((format) => (
-                    <option key={format.key} value={format.key}>
-                      {format.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="field">
-                <label className="label">Master preview family</label>
-                <select className="select" value={activeFormatKey} onChange={(event) => setActiveFormatKey(event.target.value as FormatKey)}>
-                  {previewFormats.map((format) => (
-                    <option key={format.key} value={format.key}>
-                      {format.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              {editMode === 'master' ? (
-                <>
-                  <div className="field">
-                    <label className="label">Editable element</label>
-                    <select className="select" value={selectedElement} onChange={(event) => setSelectedElement(event.target.value as SelectedElement)}>
-                      {selectedOptions.map((item) => (
-                        <option key={item} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                    </select>
+                {import.meta.env.DEV && (
+                  <div className="panel" style={{ marginTop: 8 }}>
+                    <div className="section-title">Layout engine</div>
+                    <div className="row" style={{ gap: 8, alignItems: 'center' }}>
+                      <button
+                        className={`button button-outline${v2Enabled ? ' active' : ''}`}
+                        onClick={() => {
+                          const next = !v2Enabled
+                          setV2Enabled(next)
+                          setLayoutEngineV2(next)
+                          setProject((prev) => regenerateFormats(prev))
+                        }}
+                      >
+                        {v2Enabled ? 'V2 engine on' : 'V2 engine off'}
+                      </button>
+                      {v2Enabled && (
+                        <span className="hint" style={{ fontSize: 11 }}>
+                          archetype-driven layout active
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <BasicControls formatKey={currentFormatKey} applyLayoutPreset={applyLayoutPreset} />
-                </>
-              ) : (
-                <div className="callout">
-                  Manual polish mode is active for <strong>{CHANNEL_FORMATS.find((item) => item.key === editMode)?.label || editMode}</strong>. Select a block in the preview to inspect and adjust it.
-                </div>
-              )}
-              <BrandEditor brandKit={project.brandKit} updateBrandKit={updateBrandKit} />
-              <ErrorBoundary>
-                {editMode === 'master' ? (
-                  <ElementEditor selectedElement={selectedElement} scene={currentScene} updateElement={updateElement} updateRoot={updateRoot} />
-                ) : (
-                  <VariantInspector
-                    format={CHANNEL_FORMATS.find((item) => item.key === editMode) || CHANNEL_FORMATS[0]}
-                    scene={currentScene}
-                    assessment={currentAssessment}
-                    selectedBlockId={selectedBlockId}
-                    archetypeResolution={project.variants?.[editMode]?.archetypeResolution}
-                    layoutEvaluation={project.variants?.[editMode]?.layoutEvaluation}
-                    manualOverride={currentVariantOverride}
-                    sessionTelemetry={sessionTelemetry}
-                    onResetTelemetry={() => {
-                      resetTelemetry()
-                      setSessionTelemetry(null)
-                    }}
-                    onSelectBlock={setSelectedBlockId}
-                    onPatchBlock={(blockId, patch) => patchVariantOverride(editMode, blockId, patch)}
-                    onResetBlock={(blockId) => resetVariantBlock(editMode, blockId)}
-                    onResetVariant={() => resetVariantOverride(editMode)}
-                    onSelectImageRole={(role) => setVariantImageRole(editMode, role)}
-                    onApplyLayoutFamily={(family) => applyLayoutFamilyOverride(editMode, family)}
-                  />
                 )}
-                <ValidationSummary assessment={currentAssessment} />
-              </ErrorBoundary>
-            </div>
+              </div>
+            )}
           </div>
+            </>
+          )}
 
+          {sidebarTab === 'assets' && (
+            <>
           <div className="card">
             <div className="card-header">
-              <div className="section-kicker">Workspace</div>
-              <h2>Save, reopen, restore</h2>
+              <h2 className="sidebar-card-title">Master controls</h2>
             </div>
             <div className="card-body stack">
-              <div className="row wrap">
-                <button className="button" onClick={handleSaveProject}>
-                  <Save size={16} />
-                  Save project
-                </button>
-                <button className="button button-outline" onClick={() => projectImportRef.current?.click()}>
-                  <FolderOpen size={16} />
-                  Import JSON
-                </button>
-                <input ref={projectImportRef} type="file" hidden accept="application/json,.json" onChange={handleProjectImport} />
+              <div className="sidebar-section">
+                <div className="sidebar-section-label">Images</div>
+                <ErrorBoundary>
+                  <FilePicker label="Main image" value={imageUrl} onUrlChange={setImageUrl} />
+                  <FilePicker label="Logo" value={logoUrl} onUrlChange={setLogoUrl} />
+                </ErrorBoundary>
               </div>
-
-              <div className="saved-list">
-                {savedProjects.length === 0 && <div className="callout">No saved projects yet. Saving creates a reusable local workspace plus a version trail.</div>}
-                {savedProjects.map((saved) => (
-                  <div key={saved.id} className={`saved-card ${currentSavedId === saved.id ? 'active' : ''}`}>
-                    <div className="space-between">
-                      <div>
-                        <div className="saved-title">{saved.name}</div>
-                        <div className="muted">Updated {new Date(saved.updatedAt).toLocaleString()}</div>
-                      </div>
-                      <div className="row">
-                        <button className="button button-outline" onClick={() => handleLoadSaved(saved)}>
-                          Load
+              <div className="sidebar-section">
+                <div className="sidebar-section-label">Elements</div>
+                {(['title', 'subtitle', 'cta', 'badge', 'logo', 'image'] as const).map((key) => (
+                  <div key={key} className={`element-row ${!enabledElements[key] ? 'element-row--disabled' : ''}`}>
+                    <div className="element-row-header">
+                      <label className="element-checkbox">
+                        <input
+                          type="checkbox"
+                          checked={enabledElements[key]}
+                          onChange={() => toggleElement(key)}
+                        />
+                      </label>
+                      <span className="element-row-label">{key}</span>
+                      {enabledElements[key] && (
+                        <button
+                          className={`element-expand-btn ${expandedElement === key ? 'active' : ''}`}
+                          onClick={() => toggleExpand(key)}
+                        >
+                          {expandedElement === key ? '▴' : '▾'}
                         </button>
-                        <button className="button button-outline" onClick={() => handleDeleteSaved(saved.id)}>
-                          Delete
-                        </button>
-                      </div>
+                      )}
                     </div>
-                    {currentSavedId === saved.id && (
-                      <div className="version-list">
-                        {saved.versions.slice(0, 5).map((version) => (
-                          <button key={version.id} className="version-item" onClick={() => handleRestoreVersion(saved, version.id)}>
-                            <ArchiveRestore size={14} />
-                            <span>{version.name}</span>
-                            <span className="muted">{new Date(version.createdAt).toLocaleString()}</span>
-                          </button>
-                        ))}
+                    {enabledElements[key] && expandedElement === key && elementOpen && (
+                      <div className="element-panel">
+                        <ElementEditor
+                          selectedElement={key as SelectedElement}
+                          scene={currentScene}
+                          updateElement={updateElement}
+                          updateRoot={updateRoot}
+                        />
                       </div>
                     )}
                   </div>
                 ))}
               </div>
-              {currentSavedProject && <div className="hint">Version history is stored locally for the active saved project.</div>}
+              <div className="collapsible">
+                <button className="collapsible-trigger" onClick={() => setBrandOpen((open) => !open)}>
+                  <span>Brand system</span>
+                  <ChevronDown size={14} className={brandOpen ? 'rotated' : ''} />
+                </button>
+                {brandOpen && (
+                  <div className="collapsible-body">
+                    <BrandEditor brandKit={project.brandKit} updateBrandKit={updateBrandKit} />
+                  </div>
+                )}
+              </div>
+              <div className="collapsible">
+                <button className="collapsible-trigger" onClick={() => setQualityOpen((open) => !open)}>
+                  <span>Layout quality</span>
+                  <ChevronDown size={14} className={qualityOpen ? 'rotated' : ''} />
+                </button>
+                {qualityOpen && (
+                  <div className="collapsible-body">
+                    <ErrorBoundary>
+                      <ValidationSummary assessment={currentAssessment} />
+                    </ErrorBoundary>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
+
+          <div className="card">
+            <div className="card-header">
+              <button className="collapsible-trigger" onClick={() => setWorkspaceOpen((open) => !open)}>
+                <div>
+                  <div className="section-kicker">Workspace</div>
+                  <h2>Save, reopen, restore</h2>
+                </div>
+                <ChevronDown size={14} className={workspaceOpen ? 'rotated' : ''} />
+              </button>
+            </div>
+            {workspaceOpen && (
+              <div className="card-body stack collapsible-body">
+                <div className="row wrap">
+                  <button className="button" onClick={handleSaveProject}>
+                    <Save size={16} />
+                    Save project
+                  </button>
+                  <button className="button button-outline" onClick={() => projectImportRef.current?.click()}>
+                    <FolderOpen size={16} />
+                    Import JSON
+                  </button>
+                  <input ref={projectImportRef} type="file" hidden accept="application/json,.json" onChange={handleProjectImport} />
+                </div>
+
+                <div className="saved-list">
+                  {savedProjects.length === 0 && <div className="callout">No saved projects yet. Saving creates a reusable local workspace plus a version trail.</div>}
+                  {savedProjects.map((saved) => (
+                    <div key={saved.id} className={`saved-card ${currentSavedId === saved.id ? 'active' : ''}`}>
+                      <div className="space-between">
+                        <div>
+                          <div className="saved-title">{saved.name}</div>
+                          <div className="muted">Updated {new Date(saved.updatedAt).toLocaleString()}</div>
+                        </div>
+                        <div className="row">
+                          <button className="button button-outline" onClick={() => handleLoadSaved(saved)}>
+                            Load
+                          </button>
+                          <button className="button button-outline" onClick={() => handleDeleteSaved(saved.id)}>
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      {currentSavedId === saved.id && (
+                        <div className="version-list">
+                          {saved.versions.slice(0, 5).map((version) => (
+                            <button key={version.id} className="version-item" onClick={() => handleRestoreVersion(saved, version.id)}>
+                              <ArchiveRestore size={14} />
+                              <span>{version.name}</span>
+                              <span className="muted">{new Date(version.createdAt).toLocaleString()}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                {currentSavedProject && <div className="hint">Version history is stored locally for the active saved project.</div>}
+              </div>
+            )}
+          </div>
+            </>
+          )}
         </aside>
 
         <main className="main stack">
           <ErrorBoundary>
-          <div className="summary-grid">
-            <SummaryCard label="Goal pack" value={currentGoalPreset?.label || project.goal} />
-            <SummaryCard label="Direction" value={VISUAL_SYSTEMS.find((item) => item.key === project.visualSystem)?.label || project.visualSystem} />
-            <SummaryCard label="Brand system" value={project.brandKit.name} />
-            <SummaryCard label="Image profile" value={project.assetHint?.imageProfile ? getImageProfileLabel(project.assetHint.imageProfile) : 'Not analyzed'} />
-          </div>
-
           {(referenceAnalysis || referenceUrl) && (
             <div className="insight-grid">
               {referenceUrl && (
@@ -1363,27 +1384,30 @@ export default function App() {
 
           <div className="card">
             <div className="card-header">
-              <div className="space-between">
+              <div className="output-title-row">
                 <div>
-                  <div className="section-kicker">Output pack</div>
+                  <div className="section-kicker">OUTPUT PACK</div>
                   <h2>Marketplace formats</h2>
-                  <p className="muted">Preview and export cover {previewFormats.length} marketplace sizes (card and highlight) derived from your master.</p>
                 </div>
-                <div className="row wrap">
-                  {import.meta.env.DEV && (
-                    <>
-                      <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>
-                        Debug boxes
-                      </button>
-                      <button className={`button button-outline ${layoutDebug.showSafeArea ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showSafeArea: !prev.showSafeArea }))}>
-                        Safe area
-                      </button>
-                    </>
-                  )}
-                  <button className="button" onClick={() => { clearFixArtifacts(); setProject((prev) => regenerateFormats(prev)) }}>
-                    <Wand2 size={16} />
-                    Regenerate all
-                  </button>
+                <div className="output-chips">
+                  <span className="chip">{goalLabel}</span>
+                  <span className="chip">{visualSystemLabel}</span>
+                  <span className="chip chip--brand">{project.brandKit.name}</span>
+                  <span className="chip">{imageProfileLabel}</span>
+                </div>
+              </div>
+              <p className="muted small">Preview and export cover 2 marketplace sizes derived from your master.</p>
+              <div className="card-actions row wrap">
+                {import.meta.env.DEV && (
+                  <>
+                    <button className={`button button-outline ${layoutDebug.showBoxes ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showBoxes: !prev.showBoxes }))}>
+                      Debug boxes
+                    </button>
+                    <button className={`button button-outline ${layoutDebug.showSafeArea ? 'active' : ''}`} onClick={() => setLayoutDebug((prev) => ({ ...prev, showSafeArea: !prev.showSafeArea }))}>
+                      Safe area
+                    </button>
+                  </>
+                )}
                   <button className="button button-outline" onClick={() => exportPack('png')} disabled={isExporting}>
                     <Download size={16} />
                     {isExporting ? 'Exporting...' : 'PNG pack'}
@@ -1400,7 +1424,6 @@ export default function App() {
                     <FileJson size={16} />
                     JSON
                   </button>
-                </div>
               </div>
             </div>
             <div className="card-body stack">
@@ -1442,6 +1465,7 @@ export default function App() {
                       debugOptions={layoutDebug}
                       editable={editMode === format.key}
                       showSafeArea={layoutDebug.showSafeArea}
+                      qualityOpen={qualityOpen}
                       selectedBlockId={editMode === format.key ? selectedBlockId : null}
                       onSelectBlock={(blockId) => {
                         setEditMode(format.key)
