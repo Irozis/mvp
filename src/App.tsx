@@ -11,6 +11,7 @@ import {
   Sparkles,
   Wand2,
 } from 'lucide-react'
+import { Onboarding } from './components/Onboarding'
 import { FilePicker } from './components/FilePicker'
 import { CanvasPreview } from './components/CanvasPreview'
 import { VariantInspector } from './components/VariantInspector'
@@ -220,6 +221,7 @@ export default function App() {
     tone: 'neutral',
     text: 'Build a marketplace adaptive pack: card and highlight outputs from one master.',
   })
+  const [view, setView] = useState<'onboarding' | 'editor'>('onboarding')
 
   const refs = useRef<Partial<Record<FormatKey, HTMLDivElement | null>>>({})
   const projectImportRef = useRef<HTMLInputElement | null>(null)
@@ -992,6 +994,21 @@ export default function App() {
     } finally {
       setFixingFormatKey(null)
     }
+  }
+
+  if (view === 'onboarding') {
+    return (
+      <Onboarding
+        onStart={(mode, imageUrl) => {
+          setEntryMode(mode)
+          if (mode === 'reference' && imageUrl) {
+            setReferenceUrl(imageUrl)
+            setImageUrl(imageUrl)
+          }
+          setView('editor')
+        }}
+      />
+    )
   }
 
   return (
