@@ -2066,7 +2066,7 @@ export function buildPreviewCandidatePlans(input: {
         baseFixStage: input.baseFixStage,
       })
 
-      for (const generatedPlan of generated.plans.slice(0, budget)) {
+      for (const generatedPlan of generated.plans.slice(0, Math.min(budget, allMarketplaceCardV2Archetypes().length))) {
         const intent = normalizePreviewIntent({
           formatKey: input.formatKey,
           baseIntent: generatedPlan.intent,
