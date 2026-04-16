@@ -368,6 +368,22 @@ export function isMarketplaceCardTemplateVariantCandidate(candidate: PreviewCand
   )
 }
 
+/** Pure predicate for `evaluatePreviewCandidatePlan` marketplace-card template adjuncts (perceptual refine, prefs, text-first alignment). */
+export function shouldRunMarketplaceCardTemplateAdjunctPipeline(input: {
+  formatKey: FormatKey
+  marketplaceLayoutEngine?: LayoutIntent['marketplaceLayoutEngine']
+  marketplaceTemplateId?: string
+}): boolean {
+  const skipMarketplaceV2Extras =
+    input.marketplaceLayoutEngine === 'v2-slot' &&
+    (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
+  return (
+    !skipMarketplaceV2Extras &&
+    input.formatKey === 'marketplace-card' &&
+    Boolean(input.marketplaceTemplateId)
+  )
+}
+
 export function getMarketplaceCardSemanticPrimaryTemplateId(candidate: PreviewCandidateEvaluation) {
   const selection = candidate.intent.marketplaceTemplateSelection
   return selection?.debug?.rankedTemplates[0]?.templateId || selection?.selectedTemplateId
@@ -2445,14 +2461,11 @@ export function evaluatePreviewCandidatePlan(input: {
     perceptualSignals,
   } satisfies PreviewCandidateEvaluation
 
-  const skipMarketplaceV2Extras =
-    synthesizedIntent.marketplaceLayoutEngine === 'v2-slot' &&
-    (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
-
-  const shouldRunMarketplaceCardTemplateAdjuncts =
-    !skipMarketplaceV2Extras &&
-    input.formatKey === 'marketplace-card' &&
-    Boolean(synthesizedIntent.marketplaceTemplateId)
+  const shouldRunMarketplaceCardTemplateAdjuncts = shouldRunMarketplaceCardTemplateAdjunctPipeline({
+    formatKey: input.formatKey,
+    marketplaceLayoutEngine: synthesizedIntent.marketplaceLayoutEngine,
+    marketplaceTemplateId: synthesizedIntent.marketplaceTemplateId,
+  })
 
   const perceptualRefinement =
     shouldRunMarketplaceCardTemplateAdjuncts
