@@ -39,6 +39,8 @@ import {
   recomputeImageFootprint as applyRecomputeImageFootprint,
 } from './imageAnalysis'
 
+const MARKETPLACE_CARD_V2_SLOT_PATH_METADATA = 'layout-path:marketplace-card:v2-slot'
+
 type Region = { x: number; y: number; w: number; h: number }
 type ArchetypeLayoutContract = {
   archetype: StructuralArchetype
@@ -7434,7 +7436,9 @@ export function synthesizeLayout({
     scene = stabilizeMarketplaceLayout(scene, format, null)
     scene = adjustTextContrastForOverlay(scene, imageAnalysis)
     const structuralState = evaluateStructuralLayoutState({ scene, format, compositionModel: null })
-    return { scene, blocks: [], intent: effectiveIntent, structuralState }
+    return format.key === 'marketplace-card'
+      ? { scene, blocks: [], intent: effectiveIntent, structuralState, layoutPathMetadata: MARKETPLACE_CARD_V2_SLOT_PATH_METADATA }
+      : { scene, blocks: [], intent: effectiveIntent, structuralState }
   }
   const useTemplateDrivenMarketplaceCard = format.key === 'marketplace-card' && Boolean(resolvedIntent.marketplaceTemplateId)
   const compositionModel = useTemplateDrivenMarketplaceCard

@@ -72,6 +72,8 @@ import {
   unresolvedIssueCount,
 } from './repairHelpers'
 
+const MARKETPLACE_CARD_V2_BYPASS_REASON_CODE = 'repair-bypass:marketplace-card:v2-slot-preserved'
+
 export function runAutoFix(
   scene: Scene,
   formatKey: FormatKey,
@@ -254,6 +256,12 @@ export async function runRepairPipeline(input: {
     const v2Improved =
       v2Outcome.result.effectiveAfterScore > v2Outcome.result.effectiveBeforeScore || v2Outcome.diagnostics.finalChanged
     if (v2Improved) {
+      if (input.formatKey === 'marketplace-card') {
+        const hasV2BypassReason = v2Outcome.diagnostics.escalationReasons.includes(MARKETPLACE_CARD_V2_BYPASS_REASON_CODE)
+        v2Outcome.diagnostics.escalationReasons = hasV2BypassReason
+          ? v2Outcome.diagnostics.escalationReasons
+          : [...v2Outcome.diagnostics.escalationReasons, MARKETPLACE_CARD_V2_BYPASS_REASON_CODE]
+      }
       return v2Outcome
     }
     // V2 slot path did not improve — continue with legacy repair + selectRepairSearchWinner below.

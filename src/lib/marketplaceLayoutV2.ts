@@ -18,6 +18,7 @@ export type { MarketplaceV2ArchetypeId } from './types'
 // V1 fallback is preserved in layoutEngine.ts for rollback — do not delete until V2 is confirmed stable in prod.
 // To disable: set VITE_MARKETPLACE_LAYOUT_V2=false (or unset) in environment variables.
 export function isMarketplaceLayoutV2Enabled(): boolean {
+  // Source-of-truth gate: V2 path is opt-in only when env flag is explicitly "true".
   return import.meta.env.VITE_MARKETPLACE_LAYOUT_V2 === 'true'
 }
 
@@ -183,8 +184,15 @@ export function buildMarketplaceV2BaseLayoutIntent(input: {
   profile: ContentProfile
   master?: Scene
   imageAnalysis?: EnhancedImageAnalysis
+  /** Shifts primary V2 archetype along the format's archetype pool (Regenerate all). */
+  rotationIndex?: number
 }): LayoutIntent {
-  const archetype = selectPrimaryMarketplaceV2Archetype(input)
+  const primary = selectPrimaryMarketplaceV2Archetype(input)
+  const pool =
+    input.formatKey === 'marketplace-card' ? allMarketplaceCardV2Archetypes() : allMarketplaceTileV2Archetypes()
+  const p0 = Math.max(0, pool.indexOf(primary))
+  const rot = input.rotationIndex ?? 0
+  const archetype = pool[(p0 + rot) % pool.length]
   if (input.formatKey === 'marketplace-card') {
     const imageMode: LayoutIntent['imageMode'] =
       archetype === 'v2-card-full-bleed-overlay'
@@ -477,6 +485,8 @@ export function structuralArchetypeForMarketplaceV2Archetype(arch: MarketplaceV2
 }
 
 export function shouldSynthesizeMarketplaceLayoutV2(format: FormatDefinition, intent: LayoutIntent): boolean {
+  // Gate semantics are source-of-truth for the V2 slot path:
+  // env flag + explicit `marketplaceLayoutEngine: 'v2-slot'` + supported format + concrete archetype.
   return (
     isMarketplaceLayoutV2Enabled() &&
     intent.marketplaceLayoutEngine === 'v2-slot' &&
