@@ -2449,8 +2449,13 @@ export function evaluatePreviewCandidatePlan(input: {
     synthesizedIntent.marketplaceLayoutEngine === 'v2-slot' &&
     (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
 
+  const shouldRunMarketplaceCardTemplateAdjuncts =
+    !skipMarketplaceV2Extras &&
+    input.formatKey === 'marketplace-card' &&
+    Boolean(synthesizedIntent.marketplaceTemplateId)
+
   const perceptualRefinement =
-    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
+    shouldRunMarketplaceCardTemplateAdjuncts
       ? refineMarketplaceCardPerceptualComposition({
           scene,
           format,
@@ -2543,14 +2548,14 @@ export function evaluatePreviewCandidatePlan(input: {
   }
 
   const perceptualPreference =
-    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
+    shouldRunMarketplaceCardTemplateAdjuncts
       ? computeMarketplaceCardPerceptualPreference({
           candidate: candidateAfterPerceptualAdjustment,
         })
       : undefined
 
   const commercialPreference =
-    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
+    shouldRunMarketplaceCardTemplateAdjuncts
       ? computeMarketplaceCardCommercialPreferenceScore({
           candidate: candidateAfterPerceptualAdjustment,
           profile: input.profile,
@@ -2564,7 +2569,7 @@ export function evaluatePreviewCandidatePlan(input: {
   } satisfies PreviewCandidateEvaluation
 
   const evaluationAlignment =
-    !skipMarketplaceV2Extras && input.formatKey === 'marketplace-card'
+    shouldRunMarketplaceCardTemplateAdjuncts
       ? computeMarketplaceCardTextFirstEvaluationAlignment({
           candidate: candidateWithCommercial,
           profile: input.profile,
@@ -2754,6 +2759,8 @@ export function selectBestPreviewCandidate(input: {
   budget?: number
   includeExtendedDiagnostics?: boolean
   failureType?: RepairFailureType
+  /** Optional; reserved for preview rotation parity with variant builds. */
+  rotationIndex?: number
 }) {
   const effectiveBudget = input.budget || getDefaultPreviewCandidateBudget(input.formatKey)
   const useExtendedDiagnostics = shouldUseExpandedPreviewPlanning(input.formatKey, input.includeExtendedDiagnostics)

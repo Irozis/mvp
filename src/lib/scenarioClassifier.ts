@@ -140,6 +140,7 @@ function buildHeuristicLayoutIntent({
   goal,
   assetHint,
   imageProfile,
+  rotationIndex,
 }: {
   format: FormatDefinition
   master: Scene
@@ -149,6 +150,7 @@ function buildHeuristicLayoutIntent({
   goal: GoalKey
   assetHint?: AssetHint
   imageProfile?: ImageProfile
+  rotationIndex?: number
 }): LayoutIntent {
   const rankedArchetypes = getFormatArchetypeRanking({
     format,
@@ -159,7 +161,13 @@ function buildHeuristicLayoutIntent({
   })
   const preferredArchetype = rankedArchetypes[0]
   if (isMarketplaceLayoutV2Enabled() && (format.key === 'marketplace-card' || format.key === 'marketplace-tile')) {
-    return buildMarketplaceV2BaseLayoutIntent({ formatKey: format.key, profile, master, imageAnalysis })
+    return buildMarketplaceV2BaseLayoutIntent({
+      formatKey: format.key,
+      profile,
+      master,
+      imageAnalysis,
+      rotationIndex,
+    })
   }
   if (format.key === 'marketplace-card') {
     // Marketplace-card now uses template adaptation as the primary intent path.
@@ -309,6 +317,7 @@ export function chooseLayoutIntent({
   goal,
   assetHint,
   forcedStructuralArchetype,
+  rotationIndex,
 }: {
   format: FormatDefinition
   master: Scene
@@ -318,6 +327,7 @@ export function chooseLayoutIntent({
   goal: GoalKey
   assetHint?: AssetHint
   forcedStructuralArchetype?: LayoutArchetypeId
+  rotationIndex?: number
 }): LayoutIntent {
   const intent = buildHeuristicLayoutIntent({
     format,
@@ -327,6 +337,7 @@ export function chooseLayoutIntent({
     visualSystem,
     goal,
     assetHint,
+    rotationIndex,
   })
   if (forcedStructuralArchetype) {
     return { ...intent, structuralArchetype: forcedStructuralArchetype as StructuralArchetype }

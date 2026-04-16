@@ -663,6 +663,8 @@ export function synthesizeLayoutV2(input: {
   imageAnalysis?: EnhancedImageAnalysis
   visualSystem: VisualSystemKey
   weights?: ObjectiveWeights
+  /** Reserved for callers that rotate marketplace V2 synthesis; optional for API compatibility. */
+  rotationIndex?: number
 }): V2LayoutResult {
   const archetypeId = selectArchetypeForFormat(
     input.format,
