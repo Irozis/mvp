@@ -22,6 +22,7 @@ import {
   finalizePrimarySelectedOutcomeSync,
   selectBestPreviewCandidate,
 } from './layoutPipelineCore'
+import { applySceneVariation } from './sceneVariation'
 import type {
   AssetHint,
   BrandKit,
@@ -35,6 +36,16 @@ import type {
   VisualSystemKey,
 } from './types'
 
+/** Marketplace previews use layoutEngineV2 (`synthesizeLayoutV2`) even when global V2 is off; Regenerate varies numeric scene params, not archetype pools. */
+function usePreviewLayoutEngineV2ForFormat(formatKey: FormatKey): boolean {
+  return (
+    LAYOUT_ENGINE_V2_ENABLED ||
+    formatKey === 'marketplace-card' ||
+    formatKey === 'marketplace-tile' ||
+    formatKey === 'marketplace-highlight'
+  )
+}
+
 export function buildDeterministicVariant({
   master,
   formatKey,
@@ -43,6 +54,7 @@ export function buildDeterministicVariant({
   goal,
   assetHint,
   manualOverrides,
+  rotationIndex,
 }: {
   master: Scene
   formatKey: FormatKey
@@ -51,6 +63,7 @@ export function buildDeterministicVariant({
   goal: Project['goal']
   assetHint?: AssetHint
   manualOverrides?: VariantManualOverride
+  rotationIndex?: number
 }): {
   scene: Scene
   archetypeResolution: NonNullable<Variant['archetypeResolution']>
@@ -72,6 +85,7 @@ export function buildDeterministicVariant({
     visualSystem,
     goal,
     assetHint,
+    rotationIndex,
   })
 
   const applyDeterministicPostLayout = (base: Scene): Scene => {
@@ -148,6 +162,7 @@ export function buildDeterministicVariant({
           goal,
           assetHint,
           forcedStructuralArchetype: fallbackArchetypeId,
+          rotationIndex,
         })
         const palette = computePalette({
           brandKit,
@@ -243,7 +258,7 @@ export function buildDeterministicVariant({
     }
   }
 
-  if (LAYOUT_ENGINE_V2_ENABLED) {
+  if (usePreviewLayoutEngineV2ForFormat(formatKey)) {
     try {
       const v2Result = synthesizeLayoutV2({
         master,
@@ -252,6 +267,7 @@ export function buildDeterministicVariant({
         brandKit,
         imageAnalysis: assetHint?.enhancedImage,
         visualSystem,
+        rotationIndex,
       })
 
       if (v2Result.constraintViolations.length <= 3) {
@@ -269,9 +285,12 @@ export function buildDeterministicVariant({
           }
           v2Scene = clampMarketplaceSceneReadability(v2Scene, formatKey)
           const v2Gate = tryArchetypeFallbackOnce(v2Scene)
+          const variedScene = rotationIndex
+            ? applySceneVariation(v2Gate.scene, rotationIndex)
+            : v2Gate.scene
 
           return {
-            scene: v2Gate.scene,
+            scene: variedScene,
             archetypeResolution: v2Gate.resolution,
             layoutEvaluation: v2Gate.evaluation,
           }
@@ -294,8 +313,9 @@ export function buildDeterministicVariant({
     baseIntent: intent,
     goal,
     baseFixStage: 'base',
-    allowFamilyAlternatives: true,
-    allowModelAlternatives: true,
+    allowFamilyAlternatives: formatKey === 'marketplace-card' ? false : true,
+    allowModelAlternatives: formatKey === 'marketplace-card' ? false : true,
+    rotationIndex,
   })
   const fixedScene = runAutoFix(
     selection.selected.scene,
@@ -343,16 +363,17 @@ export function buildDeterministicVariant({
   }).scene
   let scene = applyDeterministicPostLayout(finalized)
   const v1Gate = tryArchetypeFallbackOnce(scene)
+  const variedScene = rotationIndex ? applySceneVariation(v1Gate.scene, rotationIndex) : v1Gate.scene
 
   return {
-    scene: v1Gate.scene,
+    scene: variedScene,
     archetypeResolution: v1Gate.resolution,
     layoutEvaluation: v1Gate.evaluation,
   }
 }
 
 export function buildVariant(
-  project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>,
+  project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides' | 'rotationIndex'>,
   formatKey: FormatKey
 ) {
   return buildDeterministicVariant({
@@ -363,10 +384,11 @@ export function buildVariant(
     goal: project.goal,
     assetHint: project.assetHint,
     manualOverrides: project.manualOverrides?.[formatKey],
+    rotationIndex: project.rotationIndex,
   })
 }
 
-export function buildFormatRecord(project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides'>): {
+export function buildFormatRecord(project: Pick<Project, 'master' | 'visualSystem' | 'brandKit' | 'assetHint' | 'goal' | 'manualOverrides' | 'rotationIndex'>): {
   formats: Record<FormatKey, Scene>
   archetypeResolutionByFormat: Partial<Record<FormatKey, NonNullable<Variant['archetypeResolution']>>>
   layoutEvaluationByFormat: Partial<Record<FormatKey, LayoutEvaluation>>
