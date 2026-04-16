@@ -373,7 +373,11 @@ export function shouldRunMarketplaceCardTemplateAdjunctPipeline(input: {
   formatKey: FormatKey
   marketplaceLayoutEngine?: LayoutIntent['marketplaceLayoutEngine']
   marketplaceTemplateId?: string
+  marketplaceV2Archetype?: LayoutIntent['marketplaceV2Archetype']
 }): boolean {
+  if (input.formatKey === 'marketplace-card' && input.marketplaceV2Archetype != null) {
+    return false
+  }
   const skipMarketplaceV2Extras =
     input.marketplaceLayoutEngine === 'v2-slot' &&
     (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
@@ -2465,6 +2469,7 @@ export function evaluatePreviewCandidatePlan(input: {
     formatKey: input.formatKey,
     marketplaceLayoutEngine: synthesizedIntent.marketplaceLayoutEngine,
     marketplaceTemplateId: synthesizedIntent.marketplaceTemplateId,
+    marketplaceV2Archetype: synthesizedIntent.marketplaceV2Archetype,
   })
 
   const perceptualRefinement =
