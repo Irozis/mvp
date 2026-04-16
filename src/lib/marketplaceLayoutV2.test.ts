@@ -61,7 +61,7 @@ describe('marketplaceLayoutV2', () => {
       headlineText: master.title.text,
       subtitleText: master.subtitle.text,
     })
-    const { scene, intent: outIntent, blocks } = synthesizeLayout({
+    const { scene, intent: outIntent, blocks, layoutPathMetadata } = synthesizeLayout({
       master,
       format,
       profile,
@@ -72,11 +72,48 @@ describe('marketplaceLayoutV2', () => {
     })
 
     expect(outIntent.marketplaceLayoutEngine).toBe('v2-slot')
+    expect(layoutPathMetadata).toBe('layout-path:marketplace-card:v2-slot')
     expect(blocks).toEqual([])
     expect(scene.image.w || 0).toBeGreaterThan(30)
     expect(scene.image.x || 0).toBeGreaterThan(40)
     expect(scene.title.x || 0).toBeLessThan(50)
     expect(scene.cta.h || 0).toBeGreaterThan(4)
+  })
+
+  it('does not expose marketplace-card slot marker for non-marketplace-card flows', () => {
+    vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', 'true')
+    const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
+    const master = baseScene('promo', brandKit.background, brandKit.accent)
+    const format = FORMAT_MAP['social-square']
+    const profile = profileContent(master)
+    const scenario = classifyScenario({
+      profile,
+      goal: 'promo-pack',
+      visualSystem: 'product-card',
+    })
+    const palette = computePalette({ brandKit, visualSystem: 'product-card', scenario })
+    const intent = buildMarketplaceV2BaseLayoutIntent({ formatKey: 'marketplace-card', profile })
+    const typography = computeTypography({
+      format,
+      profile,
+      scenario,
+      visualSystem: 'product-card',
+      brandKit,
+      intent,
+      headlineText: master.title.text,
+      subtitleText: master.subtitle.text,
+    })
+    const result = synthesizeLayout({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+
+    expect(result.layoutPathMetadata).toBeUndefined()
   })
 
   it('exposes card archetypes for preview enumeration', () => {
