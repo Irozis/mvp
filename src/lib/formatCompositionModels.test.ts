@@ -17,6 +17,16 @@ describe('formatCompositionModels', () => {
     expect(selected?.id).toBe(requested.id)
   })
 
+  it('selectCompositionModel rotates default pick with rotationOffset', () => {
+    const format = FORMAT_MAP['social-square']
+    const models = getCompositionModelsForFormat(format)
+    expect(models.length).toBeGreaterThanOrEqual(2)
+    const a = selectCompositionModel({ format, rotationOffset: 0 })
+    const b = selectCompositionModel({ format, rotationOffset: 1 })
+    expect(a?.id).toBe(models[0]!.id)
+    expect(b?.id).toBe(models[1]!.id)
+  })
+
   it('supports a dedicated hero overlay model for social landscape', () => {
     const format = FORMAT_MAP['social-landscape']
     const selected = selectCompositionModel({ format, requestedFamily: 'landscape-image-dominant' })

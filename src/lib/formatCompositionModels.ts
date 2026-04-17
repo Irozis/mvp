@@ -748,6 +748,10 @@ export function selectCompositionModel(input: {
   requestedModelId?: CompositionModelId
   requestedFamily?: LayoutIntentFamily
   denseText?: boolean
+  /** Shifts default model pick: `(baseIdx + rotationOffset) % models.length`. */
+  rotationOffset?: number
+  /** Same as rotationOffset (project Regenerate all); rotationOffset wins if both set. */
+  rotationIndex?: number
 }): CompositionModel | null {
   const models = getCompositionModelsForFormat(input.format)
   if (!models.length) return null
@@ -756,11 +760,18 @@ export function selectCompositionModel(input: {
     if (explicit) return explicit
   }
   if (input.requestedFamily) {
+    const filtered = models.filter((model) => MODEL_LAYOUT_FAMILY_MAP[model.id] === input.requestedFamily)
+    if (filtered.length) {
+      const rot = input.rotationOffset ?? input.rotationIndex ?? 0
+      const baseIdx = input.denseText && filtered.length > 1 ? 1 : 0
+      return filtered[(baseIdx + rot) % filtered.length]
+    }
     const byFamily = models.find((model) => MODEL_LAYOUT_FAMILY_MAP[model.id] === input.requestedFamily)
     if (byFamily) return byFamily
   }
-  if (input.denseText && models[1]) return models[1]
-  return models[0]
+  const rot = input.rotationOffset ?? input.rotationIndex ?? 0
+  const baseIdx = input.denseText && models.length > 1 ? 1 : 0
+  return models[(baseIdx + rot) % models.length]
 }
 
 export function getAlternativeCompositionModel(formatOrKey: FormatDefinition | FormatKey, currentModelId?: CompositionModelId) {

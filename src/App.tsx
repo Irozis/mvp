@@ -267,7 +267,12 @@ export default function App() {
 
   const handleRegenerateAll = () => {
     clearFixArtifacts()
-    setProject((prev) => regenerateFormats(prev))
+    setProject((prev) =>
+      regenerateFormats({
+        ...prev,
+        rotationIndex: (prev.rotationIndex ?? 0) + 1,
+      })
+    )
   }
 
   const toggleElement = (key: string) => {

@@ -360,11 +360,12 @@ export function selectArchetypeForFormat(
   profile: ContentProfile,
   _visualSystem: VisualSystemKey
 ): ArchetypeId {
-  if (format.key === 'marketplace-card') return 'split-right-image'
-  if (format.key === 'marketplace-highlight') return 'hero-overlay-bottom'
-  if (format.key === 'marketplace-tile') return 'leaderboard-split'
   if (format.key === 'display-skyscraper' || format.key === 'display-halfpage') return 'skyscraper-stack'
   if (format.key === 'display-leaderboard' || format.key === 'display-billboard') return 'leaderboard-split'
+  /** Fixed V2 archetype per marketplace format (variation is applied in `applySceneVariation`, not here). */
+  if (format.key === 'marketplace-card') return 'split-right-image'
+  if (format.key === 'marketplace-tile') return 'leaderboard-split'
+  if (format.key === 'marketplace-highlight') return 'hero-overlay-bottom'
 
   const family = format.family as string
   const hasImage = Boolean(imageAnalysis?.imageProfile)
@@ -663,7 +664,6 @@ export function synthesizeLayoutV2(input: {
   imageAnalysis?: EnhancedImageAnalysis
   visualSystem: VisualSystemKey
   weights?: ObjectiveWeights
-  /** Reserved for callers that rotate marketplace V2 synthesis; optional for API compatibility. */
   rotationIndex?: number
 }): V2LayoutResult {
   const archetypeId = selectArchetypeForFormat(

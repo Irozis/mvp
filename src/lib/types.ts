@@ -901,7 +901,6 @@ export type Project = {
   fixHistory?: Partial<Record<FormatKey, FixResult[]>>
   updatedAt?: string
   assetHint?: AssetHint
-  /** Optional layout rotation for preview/regenerate flows (e.g. marketplace-card pool shift). */
   rotationIndex?: number
 }
 

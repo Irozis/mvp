@@ -26,6 +26,8 @@ export type MarketplaceCardTemplateAdapterInput = {
   imageProfile?: ImageProfile
   selectedTemplate?: MarketplaceCardTemplateSelectionResult
   variantMode?: 'base' | 'commerce-lockup' | 'image-dominant-square' | 'proof-band' | 'comparison-lockup'
+  /** Rotates ranked template pick (Regenerate all). */
+  rotationIndex?: number
 }
 
 export type MarketplaceCardTemplateAdaptationResult = {
@@ -244,6 +246,7 @@ export function adaptMarketplaceCardTemplate(
       assetHint: input.assetHint,
       imageProfile: input.imageProfile,
       hasLogo: Boolean(input.master.logo?.w && input.master.logo?.h),
+      rotationIndex: input.rotationIndex,
     })
   const template = getMarketplaceCardTemplateById(selection.selectedTemplateId)
   const variantMode = input.variantMode || 'base'

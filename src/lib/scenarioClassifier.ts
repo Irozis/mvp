@@ -15,6 +15,7 @@ import type {
   VisualSystemKey,
 } from './types'
 import { getFormatArchetypeRanking, getFormatBalanceDefaults } from './formatDefaults'
+import { getFormatRuleSet } from './formatRules'
 import { buildMarketplaceV2BaseLayoutIntent, isMarketplaceLayoutV2Enabled } from './marketplaceLayoutV2'
 import { adaptMarketplaceCardTemplate } from './templateAdapter'
 
@@ -84,7 +85,21 @@ export function classifyScenario({
   return 'short-promo'
 }
 
-function chooseFamily(
+function applyRotatedLayoutFamily(
+  format: FormatDefinition,
+  heuristicFamily: LayoutIntentFamily,
+  rotationIndex?: number
+): LayoutIntentFamily {
+  const allowed = getFormatRuleSet(format).allowedLayoutFamilies
+  if (allowed.length <= 1) return heuristicFamily
+  const base = allowed.includes(heuristicFamily) ? heuristicFamily : allowed[0]
+  const start = Math.max(0, allowed.indexOf(base))
+  const rot = rotationIndex ?? 0
+  return allowed[(start + rot) % allowed.length]
+}
+
+/** Heuristic family before format-rule rotation (Regenerate all). */
+function computeHeuristicFamily(
   format: FormatDefinition,
   profile: ContentProfile,
   visualSystem: VisualSystemKey,
@@ -131,6 +146,17 @@ function chooseFamily(
   return 'landscape-balanced-split'
 }
 
+function chooseFamily(
+  format: FormatDefinition,
+  profile: ContentProfile,
+  visualSystem: VisualSystemKey,
+  imageAnalysis?: EnhancedImageAnalysis,
+  rotationIndex?: number
+): LayoutIntentFamily {
+  const heuristic = computeHeuristicFamily(format, profile, visualSystem, imageAnalysis)
+  return applyRotatedLayoutFamily(format, heuristic, rotationIndex)
+}
+
 function buildHeuristicLayoutIntent({
   format,
   master,
@@ -159,7 +185,11 @@ function buildHeuristicLayoutIntent({
     visualSystem,
     imageProfile: imageAnalysis?.imageProfile || assetHint?.imageProfile || imageProfile,
   })
-  const preferredArchetype = rankedArchetypes[0]
+  const rot = rotationIndex ?? 0
+  const preferredArchetype =
+    rankedArchetypes.length > 0
+      ? rankedArchetypes[rot % rankedArchetypes.length]
+      : ('text-stack' as StructuralArchetype)
   if (isMarketplaceLayoutV2Enabled() && (format.key === 'marketplace-card' || format.key === 'marketplace-tile')) {
     return buildMarketplaceV2BaseLayoutIntent({
       formatKey: format.key,
@@ -182,11 +212,14 @@ function buildHeuristicLayoutIntent({
       imageAnalysis,
       assetHint,
       imageProfile,
+      rotationIndex,
     })
     return adaptation.intent
   }
   const tileCompactBase = format.key === 'marketplace-tile' && preferredArchetype === 'compact-minimal'
-  const family = tileCompactBase ? 'landscape-balanced-split' : chooseFamily(format, profile, visualSystem, imageAnalysis)
+  const family = tileCompactBase
+    ? 'landscape-balanced-split'
+    : chooseFamily(format, profile, visualSystem, imageAnalysis, rotationIndex)
   const balanceDefaults = getFormatBalanceDefaults({
     format,
     profile,

@@ -24,6 +24,7 @@ export type MarketplaceCardTemplateSelectionInput = {
   assetHint?: AssetHint
   imageProfile?: ImageProfile
   hasLogo?: boolean
+  rotationIndex?: number
 }
 
 type TemplateScore = {
@@ -309,7 +310,11 @@ export function selectMarketplaceCardTemplate(
   input: MarketplaceCardTemplateSelectionInput
 ): MarketplaceCardTemplateSelectionResult {
   const { inputProfile, rankedTemplates } = rankMarketplaceCardTemplates(input)
-  const selected = rankedTemplates[0]
+  if (!rankedTemplates.length) {
+    throw new Error('No marketplace card templates available for selection.')
+  }
+  const rot = input.rotationIndex ?? 0
+  const selected = rankedTemplates[rot % rankedTemplates.length]
   const alternativeTemplateIds = dedupeTemplateIds(rankedTemplates.slice(1, 4).map((entry) => entry.templateId))
   const reasonCodes = Array.from(new Set(selected.reasonCodes))
 

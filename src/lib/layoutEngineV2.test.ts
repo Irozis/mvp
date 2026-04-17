@@ -44,6 +44,14 @@ describe('layoutEngineV2', () => {
     )
   })
 
+  it('selectArchetypeForFormat: marketplace-card rotationIndex cycles layout archetype pool', () => {
+    const f = mockFormat('marketplace-card', 'square')
+    expect(selectArchetypeForFormat(f, undefined, mockProfile(), 'minimal', 0)).toBe('split-right-image')
+    expect(selectArchetypeForFormat(f, undefined, mockProfile(), 'minimal', 1)).toBe('split-left-image')
+    expect(selectArchetypeForFormat(f, undefined, mockProfile(), 'minimal', 2)).toBe('hero-overlay-bottom')
+    expect(selectArchetypeForFormat(f, undefined, mockProfile(), 'minimal', 3)).toBe('product-card-top')
+  })
+
   it("selectArchetypeForFormat('marketplace-highlight') → 'hero-overlay-bottom'", () => {
     expect(
       selectArchetypeForFormat(mockFormat('marketplace-highlight', 'portrait'), undefined, mockProfile(), 'minimal')
