@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { getRepairDiagnostics } from './autoAdapt'
 import { computePalette } from './colorEngine'
 import { profileContent } from './contentProfile'
-import { synthesizeLayout } from './layoutEngine'
+import { getSynthesisStageDiagnostics, synthesizeLayout } from './layoutEngine'
 import {
   allMarketplaceCardV2Archetypes,
   buildMarketplaceV2BaseLayoutIntent,
@@ -13,11 +13,20 @@ import {
 } from './marketplaceLayoutV2'
 import { BRAND_TEMPLATES, FORMAT_MAP, baseScene } from './presets'
 import { computeTypography } from './typographyEngine'
-import { classifyScenario } from './scenarioClassifier'
+import { chooseLayoutIntent, classifyScenario } from './scenarioClassifier'
 import type { BrandKit } from './types'
 
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
+}
+
+function assertSynthesisMatchesDiagnostics(
+  synth: ReturnType<typeof synthesizeLayout>,
+  diag: ReturnType<typeof getSynthesisStageDiagnostics>,
+) {
+  expect(synth.blocks).toEqual(diag.blocks)
+  expect(synth.intent).toEqual(diag.intent)
+  expect(diag.compositionModelId).toBe(synth.intent.compositionModelId)
 }
 
 describe('marketplaceLayoutV2', () => {
@@ -212,5 +221,216 @@ describe('marketplaceLayoutV2', () => {
     })
     expect(diagnostics.searchRuns.length).toBeGreaterThan(0)
     expect(result.v2SlotLayoutPreserved).toBeUndefined()
+  })
+})
+
+describe('marketplace synthesis route selection (regression)', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs()
+  })
+
+  it('selects marketplace-v2-slot when shouldSynthesizeMarketplaceLayoutV2 holds; diagnostics stay aligned with synthesizeLayout', () => {
+    vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', 'true')
+    const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
+    const master = baseScene('promo', brandKit.background, brandKit.accent)
+    const format = FORMAT_MAP['marketplace-card']
+    const profile = profileContent(master)
+    const scenario = classifyScenario({
+      profile,
+      goal: 'promo-pack',
+      visualSystem: 'product-card',
+    })
+    const palette = computePalette({ brandKit, visualSystem: 'product-card', scenario })
+    const intent = {
+      ...buildMarketplaceV2BaseLayoutIntent({ formatKey: 'marketplace-card', profile }),
+      marketplaceV2Archetype: 'v2-card-split-image-right' as const,
+    }
+    const typography = computeTypography({
+      format,
+      profile,
+      scenario,
+      visualSystem: 'product-card',
+      brandKit,
+      intent,
+      headlineText: master.title.text,
+      subtitleText: master.subtitle.text,
+    })
+    const synth = synthesizeLayout({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+    const diag = getSynthesisStageDiagnostics({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+
+    expect(synth.blocks).toEqual([])
+    expect(diag.blocks).toEqual([])
+    expect(diag.stages.map((s) => s.stage)).toEqual(['packed', 'finalized', 'stabilized', 'final-assessed'])
+    expect(diag.stages.some((s) => s.stage === 'refined')).toBe(false)
+    assertSynthesisMatchesDiagnostics(synth, diag)
+  })
+
+  it('selects marketplace-card-template-driven for marketplace-card + marketplaceTemplateId when not on V2 slot; diagnostics stay aligned', () => {
+    vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', '')
+    const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
+    const master = baseScene('promo', brandKit.background, brandKit.accent)
+    const format = FORMAT_MAP['marketplace-card']
+    const profile = profileContent(master)
+    const scenario = classifyScenario({
+      profile,
+      goal: 'promo-pack',
+      visualSystem: 'product-card',
+    })
+    const palette = computePalette({ brandKit, visualSystem: 'product-card', scenario })
+    const intent = {
+      ...buildMarketplaceV2BaseLayoutIntent({ formatKey: 'marketplace-card', profile }),
+      marketplaceTemplateId: 'regression-template-driven-route',
+    }
+    const typography = computeTypography({
+      format,
+      profile,
+      scenario,
+      visualSystem: 'product-card',
+      brandKit,
+      intent,
+      headlineText: master.title.text,
+      subtitleText: master.subtitle.text,
+    })
+    const synth = synthesizeLayout({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+    const diag = getSynthesisStageDiagnostics({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+
+    expect(synth.intent.marketplaceTemplateId).toBe('regression-template-driven-route')
+    expect(diag.compositionModelId).toBeUndefined()
+    expect(diag.stages.some((s) => s.stage === 'refined')).toBe(true)
+    assertSynthesisMatchesDiagnostics(synth, diag)
+  })
+
+  it('selects composition-packing for non-marketplace V2 template routes; diagnostics stay aligned', () => {
+    vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', 'true')
+    const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
+    const master = baseScene('promo', brandKit.background, brandKit.accent)
+    const format = FORMAT_MAP['social-square']
+    const profile = profileContent(master)
+    const scenario = classifyScenario({
+      profile,
+      goal: 'promo-pack',
+      visualSystem: 'product-card',
+    })
+    const palette = computePalette({ brandKit, visualSystem: 'product-card', scenario })
+    const intent = chooseLayoutIntent({
+      format,
+      master,
+      profile,
+      visualSystem: 'product-card',
+      goal: 'promo-pack',
+    })
+    const typography = computeTypography({
+      format,
+      profile,
+      scenario,
+      visualSystem: 'product-card',
+      brandKit,
+      intent,
+      headlineText: master.title.text,
+      subtitleText: master.subtitle.text,
+    })
+    const synth = synthesizeLayout({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+    const diag = getSynthesisStageDiagnostics({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+
+    expect(diag.stages.map((s) => s.stage)).not.toEqual(['packed', 'finalized', 'stabilized', 'final-assessed'])
+    expect(diag.stages.some((s) => s.stage === 'refined')).toBe(true)
+    expect(diag.compositionModelId).toBe(synth.intent.compositionModelId)
+    expect(diag.compositionModelId).toBeTruthy()
+    assertSynthesisMatchesDiagnostics(synth, diag)
+  })
+
+  it('selects composition-packing for marketplace-card without template id when V2 is off; diagnostics stay aligned', () => {
+    vi.stubEnv('VITE_MARKETPLACE_LAYOUT_V2', '')
+    const brandKit = clone(BRAND_TEMPLATES[0].brandKit) as BrandKit
+    const master = baseScene('promo', brandKit.background, brandKit.accent)
+    const format = FORMAT_MAP['marketplace-card']
+    const profile = profileContent(master)
+    const scenario = classifyScenario({
+      profile,
+      goal: 'promo-pack',
+      visualSystem: 'product-card',
+    })
+    const palette = computePalette({ brandKit, visualSystem: 'product-card', scenario })
+    const intent = buildMarketplaceV2BaseLayoutIntent({ formatKey: 'marketplace-card', profile })
+    const typography = computeTypography({
+      format,
+      profile,
+      scenario,
+      visualSystem: 'product-card',
+      brandKit,
+      intent,
+      headlineText: master.title.text,
+      subtitleText: master.subtitle.text,
+    })
+    const synth = synthesizeLayout({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+    const diag = getSynthesisStageDiagnostics({
+      master,
+      format,
+      profile,
+      palette,
+      typography,
+      intent,
+      brandKit,
+    })
+
+    expect(intent.marketplaceTemplateId).toBeUndefined()
+    expect(diag.stages.some((s) => s.stage === 'refined')).toBe(true)
+    assertSynthesisMatchesDiagnostics(synth, diag)
   })
 })
