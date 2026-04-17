@@ -167,6 +167,11 @@ function StatusBanner({ tone, text }: { tone: StatusTone; text: string }) {
   return <div className={`status-banner ${tone}`}>{text}</div>
 }
 
+const prepareExportFrame = (): Promise<void> =>
+  document.fonts.ready.then(
+    () => new Promise((resolve) => requestAnimationFrame(() => resolve())),
+  )
+
 export default function App() {
   const [entryMode, setEntryMode] = useState<EntryMode>('compose')
   const [template, setTemplate] = useState<TemplateKey>('promo')
@@ -838,6 +843,7 @@ export default function App() {
     setExportingFormatKey(formatKey)
     try {
       const { toPng } = await import('html-to-image')
+      await prepareExportFrame()
       const dataUrl = await toPng(node, { cacheBust: true, pixelRatio: 2, backgroundColor: '#ffffff' })
       const anchor = document.createElement('a')
       anchor.href = dataUrl
@@ -854,6 +860,7 @@ export default function App() {
     setExportingFormatKey(formatKey)
     try {
       const { toJpeg } = await import('html-to-image')
+      await prepareExportFrame()
       const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
       const anchor = document.createElement('a')
       anchor.href = dataUrl
@@ -874,6 +881,7 @@ export default function App() {
         import('html-to-image'),
         import('./lib/pdf'),
       ])
+      await prepareExportFrame()
       const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
       downloadBlob(buildPdfFromJpegs([{ dataUrl, width: format.width, height: format.height }]), `${slugify(projectName || 'project')}-${formatKey}.pdf`)
     } finally {
@@ -894,6 +902,7 @@ export default function App() {
         for (const format of previewFormats) {
           const node = refs.current[format.key]
           if (!node) continue
+          await prepareExportFrame()
           const dataUrl = await toJpeg(node, { cacheBust: true, pixelRatio: 2, quality: 0.96, backgroundColor: '#ffffff' })
           pages.push({ dataUrl, width: format.width, height: format.height })
         }

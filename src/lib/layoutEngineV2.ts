@@ -5,6 +5,8 @@ import type {
   ContentProfile,
   EnhancedImageAnalysis,
   FormatDefinition,
+  MarketplaceCardTemplateZoneStructure,
+  Rect,
   Scene,
   SceneElement,
   VisualSystemKey,
@@ -396,6 +398,70 @@ function applySlotToElement(el: SceneElement, s: Slot): void {
   if (s.h != null) el.h = s.h
 }
 
+/** Matches `layoutEngine.normalizeRegion` so template zones align with V1 marketplace-card bias. */
+function normalizeMarketplaceTemplateZoneRect(region: Rect): Rect {
+  const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n))
+  return {
+    x: clamp(region.x, 0, 100),
+    y: clamp(region.y, 0, 100),
+    w: clamp(region.w, 6, 100 - region.x),
+    h: clamp(region.h, 4, 100 - region.y),
+  }
+}
+
+/**
+ * Overwrites split-right-image slot geometry with template zones before `optimizeLayoutV2`.
+ * Text zone maps to title + subtitle using the same vertical share as the archetype headline/subtitle slots (26:12).
+ */
+function applyMarketplaceTemplateZonesToV2InitialScene(
+  scene: Scene,
+  zones: MarketplaceCardTemplateZoneStructure
+): void {
+  const img = normalizeMarketplaceTemplateZoneRect(zones.image)
+  scene.image.x = img.x
+  scene.image.y = img.y
+  scene.image.w = img.w
+  scene.image.h = img.h
+
+  const text = normalizeMarketplaceTemplateZoneRect(zones.text)
+  const headShare = 26 / (26 + 12)
+  let hHead = text.h * headShare
+  let hSub = text.h - hHead
+  if (hSub < 4 && text.h > 8) {
+    hSub = 4
+    hHead = text.h - hSub
+  } else if (hHead < 4 && text.h > 8) {
+    hHead = 4
+    hSub = text.h - hHead
+  }
+  scene.title.x = text.x
+  scene.title.y = text.y
+  scene.title.w = text.w
+  scene.title.h = hHead
+  scene.subtitle.x = text.x
+  scene.subtitle.y = text.y + hHead
+  scene.subtitle.w = text.w
+  scene.subtitle.h = hSub
+
+  const cta = normalizeMarketplaceTemplateZoneRect(zones.cta)
+  scene.cta.x = cta.x
+  scene.cta.y = cta.y
+  scene.cta.w = cta.w
+  scene.cta.h = cta.h
+
+  const logo = normalizeMarketplaceTemplateZoneRect(zones.logo)
+  scene.logo.x = logo.x
+  scene.logo.y = logo.y
+  scene.logo.w = logo.w
+  scene.logo.h = logo.h
+
+  const badge = normalizeMarketplaceTemplateZoneRect(zones.badge)
+  scene.badge.x = badge.x
+  scene.badge.y = badge.y
+  scene.badge.w = badge.w
+  scene.badge.h = badge.h
+}
+
 export function buildSceneFromArchetypeV2(
   master: Scene,
   archetype: V2Archetype,
@@ -665,6 +731,8 @@ export function synthesizeLayoutV2(input: {
   visualSystem: VisualSystemKey
   weights?: ObjectiveWeights
   rotationIndex?: number
+  /** When set for marketplace-card, seeds element rects before optimization (preview path). */
+  marketplaceTemplateZones?: MarketplaceCardTemplateZoneStructure
 }): V2LayoutResult {
   const archetypeId = selectArchetypeForFormat(
     input.format,
@@ -676,6 +744,10 @@ export function synthesizeLayoutV2(input: {
   const weights = input.weights ?? DEFAULT_WEIGHTS_V2
 
   const initial = buildSceneFromArchetypeV2(input.master, archetype, input.brandKit, input.imageAnalysis)
+
+  if (input.format.key === 'marketplace-card' && input.marketplaceTemplateZones) {
+    applyMarketplaceTemplateZonesToV2InitialScene(initial, input.marketplaceTemplateZones)
+  }
 
   return optimizeLayoutV2(initial, archetype, input.imageAnalysis, weights)
 }

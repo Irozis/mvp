@@ -12,7 +12,21 @@
       "Bash(grep -n \"export function synth\\\\|export function adapt\\\\|export function render\\\\|export async function.*repair\" /c/Users/nowbo/OneDrive/Документы/GitHub/mvp/src/lib/*.ts)",
       "Bash(grep -n \"computePalette\\(\" src/lib/*.ts)",
       "Bash(npm run:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm test *)",
+      "Bash(cmd.exe /c \"npm test -- --run 2>&1\")",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(node -e \"console.log\\('ok'\\)\")",
+      "Bash(node node_modules/.bin/vitest run)",
+      "Bash(node node_modules/vitest/vitest.mjs run)",
+      "Bash(node node_modules/vitest/vitest.mjs run --reporter=dot)",
+      "Bash(node -e \"const r=require\\('/tmp/vitest.json'\\); const fails=r.testResults.filter\\(f=>f.status!=='passed'\\); console.log\\('numTotalTests', r.numTotalTests, 'numPassed', r.numPassedTests, 'numFailed', r.numFailedTests\\); fails.forEach\\(f=>{f.assertionResults.filter\\(a=>a.status!=='passed'\\).forEach\\(a=>console.log\\(' FAIL',f.name,'>',a.fullName,'\\\\\\\\n  ',a.failureMessages && a.failureMessages[0] && a.failureMessages[0].split\\('\\\\\\\\n'\\).slice\\(0,3\\).join\\(' | '\\)\\)\\)}\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const r=JSON.parse\\(fs.readFileSync\\('./vitest-out.json','utf8'\\)\\);console.log\\('numTotal',r.numTotalTests,'passed',r.numPassedTests,'failed',r.numFailedTests\\);r.testResults.forEach\\(f=>{f.assertionResults.filter\\(a=>a.status!=='passed'\\).forEach\\(a=>{console.log\\('FAIL file:',f.name\\);console.log\\(' test:',a.fullName\\);console.log\\(' msg:',\\(a.failureMessages&&a.failureMessages[0]||''\\).split\\('\\\\\\\\n'\\).slice\\(0,6\\).join\\('\\\\\\\\n   '\\)\\)}\\)}\\)\")",
+      "Bash(node node_modules/vitest/vitest.mjs run --reporter=json --outputFile=./vitest-out.json)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const r=JSON.parse\\(fs.readFileSync\\('./vitest-out.json','utf8'\\)\\);console.log\\('total',r.numTotalTests,'pass',r.numPassedTests,'fail',r.numFailedTests\\);r.testResults.forEach\\(f=>{f.assertionResults.filter\\(a=>a.status!=='passed'\\).forEach\\(a=>{console.log\\('FAIL:',f.name.split\\(/[\\\\\\\\\\\\\\\\/]/\\).pop\\(\\)\\);console.log\\(' >',a.fullName\\);console.log\\(' ',\\(\\(a.failureMessages&&a.failureMessages[0]\\)||''\\).split\\('\\\\\\\\n'\\)[0]\\)}\\)}\\)\")",
+      "Bash(node node_modules/vitest/vitest.mjs run src/lib/templateZoneOwnership.test.ts)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const s=fs.readFileSync\\('./zoneout.log','utf8'\\).replace\\(/\\\\u001b\\\\[[0-9;]*m/g,''\\);const lines=s.split\\('\\\\n'\\);const keep=lines.filter\\(l=>/FAIL|PASS|✓|×|Error|expect|Test Files|Tests|at /.test\\(l\\)\\).slice\\(0,60\\);console.log\\(keep.join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const r=JSON.parse\\(fs.readFileSync\\('./vitest-out.json','utf8'\\)\\);console.log\\('total',r.numTotalTests,'pass',r.numPassedTests,'fail',r.numFailedTests\\);r.testResults.forEach\\(f=>{f.assertionResults.filter\\(a=>a.status!=='passed'\\).forEach\\(a=>console.log\\('FAIL',f.name.split\\(/[\\\\\\\\\\\\\\\\/]/\\).pop\\(\\),'>',a.fullName\\)\\)}\\)\")"
     ]
   }
 }

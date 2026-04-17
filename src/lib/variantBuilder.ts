@@ -268,6 +268,7 @@ export function buildDeterministicVariant({
         imageAnalysis: assetHint?.enhancedImage,
         visualSystem,
         rotationIndex,
+        marketplaceTemplateZones: intent.marketplaceTemplateZones,
       })
 
       if (v2Result.constraintViolations.length <= 3) {

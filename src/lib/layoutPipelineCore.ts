@@ -350,7 +350,7 @@ export function shouldUseMarketplaceCardVisualRerank(input: {
 
 export function getMarketplaceCardVisualDecisionDelta(left: LayoutAssessment, right: LayoutAssessment) {
   const visualDelta = getVisualTieBreakScore(right) - getVisualTieBreakScore(left)
-  return Math.abs(visualDelta) >= 4 ? visualDelta : 0
+  return Math.abs(visualDelta) >= 2 ? visualDelta : 0
 }
 
 export function getVisualBandRank(assessment: LayoutAssessment) {
@@ -930,17 +930,17 @@ export function compareMarketplaceCardTemplateVariantCandidates(left: PreviewCan
   const highIssueDelta = left.highIssueCount - right.highIssueCount
   if (highIssueDelta !== 0) return highIssueDelta
 
-  const commercialDelta = getMarketplaceCardCommercialDecisionDelta(left, right)
-  if (commercialDelta !== 0) return commercialDelta
-
-  const perceptualDelta = getMarketplaceCardPerceptualDecisionDelta(left, right)
-  if (perceptualDelta !== 0) return perceptualDelta
-
   const visualDelta = getMarketplaceCardVisualDecisionDelta(left.assessment, right.assessment)
   if (visualDelta !== 0) return visualDelta
 
   const visualBandDelta = getVisualBandRank(right.assessment) - getVisualBandRank(left.assessment)
   if (visualBandDelta !== 0) return visualBandDelta
+
+  const commercialDelta = getMarketplaceCardCommercialDecisionDelta(left, right)
+  if (commercialDelta !== 0) return commercialDelta
+
+  const perceptualDelta = getMarketplaceCardPerceptualDecisionDelta(left, right)
+  if (perceptualDelta !== 0) return perceptualDelta
 
   if (scoreDelta !== 0) return scoreDelta
 

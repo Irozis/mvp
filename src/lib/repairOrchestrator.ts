@@ -83,6 +83,7 @@ export function runAutoFix(
   escalationContext?: AutoFixStructuralEscalationContext,
   allowStructuralEscalation = true
 ) {
+  if (formatKey === 'marketplace-card') return clone(scene)
   const format = FORMAT_MAP[formatKey]
   const compositionModel = expectedCompositionModelId ? getCompositionModel(format, expectedCompositionModelId) : null
   let best = evaluateRepairSceneSync({
