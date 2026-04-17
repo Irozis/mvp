@@ -191,13 +191,31 @@ function buildHeuristicLayoutIntent({
       ? rankedArchetypes[rot % rankedArchetypes.length]
       : ('text-stack' as StructuralArchetype)
   if (isMarketplaceLayoutV2Enabled() && (format.key === 'marketplace-card' || format.key === 'marketplace-tile')) {
-    return buildMarketplaceV2BaseLayoutIntent({
+    const v2Intent = buildMarketplaceV2BaseLayoutIntent({
       formatKey: format.key,
       profile,
       master,
       imageAnalysis,
       rotationIndex,
     })
+    if (format.key === 'marketplace-card') {
+      const adaptation = adaptMarketplaceCardTemplate({
+        format,
+        master,
+        profile,
+        goal,
+        visualSystem,
+        imageAnalysis,
+        assetHint,
+        imageProfile,
+        rotationIndex,
+      })
+      const zones = adaptation.intent.marketplaceTemplateZones
+      if (zones) {
+        return { ...v2Intent, marketplaceTemplateZones: zones }
+      }
+    }
+    return v2Intent
   }
   if (format.key === 'marketplace-card') {
     // Marketplace-card now uses template adaptation as the primary intent path.
