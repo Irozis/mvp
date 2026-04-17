@@ -378,9 +378,11 @@ export function shouldRunMarketplaceCardTemplateAdjunctPipeline(input: {
   if (input.formatKey === 'marketplace-card' && input.marketplaceV2Archetype != null) {
     return false
   }
+
   const skipMarketplaceV2Extras =
     input.marketplaceLayoutEngine === 'v2-slot' &&
     (input.formatKey === 'marketplace-card' || input.formatKey === 'marketplace-tile')
+
   return (
     !skipMarketplaceV2Extras &&
     input.formatKey === 'marketplace-card' &&
@@ -1419,6 +1421,7 @@ export function normalizePreviewIntent(input: {
   visualSystem?: VisualSystemKey
   imageAnalysis?: EnhancedImageAnalysis
   override?: Partial<LayoutIntent>
+  rotationIndex?: number
 }) {
   const format = FORMAT_MAP[input.formatKey]
   const explicitOverride = input.override || {}
@@ -2004,6 +2007,7 @@ export function buildPreviewCandidatePlans(input: {
   allowModelAlternatives?: boolean
   budget?: number
   includeExtendedDiagnostics?: boolean
+  rotationIndex?: number
 }) {
   if (input.formatKey === 'marketplace-card') {
     const format = FORMAT_MAP[input.formatKey]
@@ -2030,6 +2034,7 @@ export function buildPreviewCandidatePlans(input: {
           goal: input.goal,
           visualSystem: input.visualSystem,
           imageAnalysis: input.imageAnalysis,
+          rotationIndex: input.rotationIndex,
           override: {
             marketplaceLayoutEngine: 'v2-slot',
             marketplaceV2Archetype: arch,
@@ -2078,6 +2083,7 @@ export function buildPreviewCandidatePlans(input: {
           goal: input.goal,
           visualSystem: input.visualSystem,
           imageAnalysis: input.imageAnalysis,
+          rotationIndex: input.rotationIndex,
         })
         const structuralArchetype = getIntentArchetype(intent, input.formatKey)
         const structuralSignature = buildIntentStructuralSignature({
@@ -2140,6 +2146,7 @@ export function buildPreviewCandidatePlans(input: {
         goal: input.goal,
         visualSystem: input.visualSystem,
         imageAnalysis: input.imageAnalysis,
+        rotationIndex: input.rotationIndex,
         override: {
           marketplaceLayoutEngine: 'v2-slot',
           marketplaceV2Archetype: arch,
@@ -2189,6 +2196,7 @@ export function buildPreviewCandidatePlans(input: {
     goal: input.goal,
     visualSystem: input.visualSystem,
     imageAnalysis: input.imageAnalysis,
+    rotationIndex: input.rotationIndex,
   })
   const plans: PreviewCandidatePlan[] = []
   const meta = {
@@ -2239,6 +2247,7 @@ export function buildPreviewCandidatePlans(input: {
       goal: input.goal,
       visualSystem: input.visualSystem,
       imageAnalysis: input.imageAnalysis,
+      rotationIndex: input.rotationIndex,
       override: applyStructuralArchetypeIntent({
         archetype,
         formatKey: input.formatKey,
@@ -2278,6 +2287,7 @@ export function buildPreviewCandidatePlans(input: {
         goal: input.goal,
         visualSystem: input.visualSystem,
         imageAnalysis: input.imageAnalysis,
+        rotationIndex: input.rotationIndex,
         override: {
           compositionModelId: alternativeModel.id,
           family: resolveCompositionModelFamily(alternativeModel.id),
@@ -2309,6 +2319,7 @@ export function buildPreviewCandidatePlans(input: {
       goal: input.goal,
       visualSystem: input.visualSystem,
       imageAnalysis: input.imageAnalysis,
+      rotationIndex: input.rotationIndex,
       override: {
         occupancyMode: 'text-safe',
         balanceRegime: input.profile.density === 'dense' ? 'dense-copy' : regionalBase.balanceRegime,
@@ -2347,6 +2358,7 @@ export function buildPreviewCandidatePlans(input: {
         goal: input.goal,
         visualSystem: input.visualSystem,
         imageAnalysis: input.imageAnalysis,
+        rotationIndex: input.rotationIndex,
         override: variant.override,
       })
       pushPreviewCandidatePlan(plans, {
@@ -2777,7 +2789,6 @@ export function selectBestPreviewCandidate(input: {
   budget?: number
   includeExtendedDiagnostics?: boolean
   failureType?: RepairFailureType
-  /** Optional; reserved for preview rotation parity with variant builds. */
   rotationIndex?: number
 }) {
   const effectiveBudget = input.budget || getDefaultPreviewCandidateBudget(input.formatKey)
@@ -2797,6 +2808,7 @@ export function selectBestPreviewCandidate(input: {
     allowModelAlternatives: input.allowModelAlternatives,
     budget: effectiveBudget,
     includeExtendedDiagnostics: useExtendedDiagnostics,
+    rotationIndex: input.rotationIndex,
   })
   const candidates = plans.map((plan) =>
     evaluatePreviewCandidatePlan({
@@ -2827,7 +2839,9 @@ export function selectBestPreviewCandidate(input: {
     return acc
   }, {})
   const rankingDiagnostics =
-    input.formatKey === 'marketplace-card' && sorted.length > 1
+    input.formatKey === 'marketplace-card' &&
+    sorted.length > 1 &&
+    input.includeExtendedDiagnostics === true
       ? {
           commercialDecision: explainMarketplaceCardCommercialDecision(sorted[1], sorted[0]),
           perceptualDecision: explainMarketplaceCardPerceptualDecision(sorted[1], sorted[0]),
