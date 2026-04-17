@@ -7386,6 +7386,35 @@ export function applyBlockFixes(
   return next
 }
 
+type MarketplaceLayoutSynthesisRoute =
+  | { kind: 'marketplace-v2-slot'; marketplaceV2Archetype: NonNullable<LayoutIntent['marketplaceV2Archetype']> }
+  | { kind: 'marketplace-card-template-driven' }
+  | { kind: 'composition-packing'; compositionModel: CompositionModel | null }
+
+/** Single routing decision for marketplace synthesis: V2 slot vs template-driven marketplace-card vs composition model / family packing. */
+function resolveMarketplaceLayoutSynthesisRoute(input: {
+  format: FormatDefinition
+  resolvedIntent: LayoutIntent
+  profile: ContentProfile
+}): MarketplaceLayoutSynthesisRoute {
+  const marketplaceV2Archetype = input.resolvedIntent.marketplaceV2Archetype
+  if (shouldSynthesizeMarketplaceLayoutV2(input.format, input.resolvedIntent) && marketplaceV2Archetype) {
+    return { kind: 'marketplace-v2-slot', marketplaceV2Archetype }
+  }
+  const useTemplateDrivenMarketplaceCard =
+    input.format.key === 'marketplace-card' && Boolean(input.resolvedIntent.marketplaceTemplateId)
+  if (useTemplateDrivenMarketplaceCard) {
+    return { kind: 'marketplace-card-template-driven' }
+  }
+  const compositionModel = selectCompositionModel({
+    format: input.format,
+    requestedModelId: input.resolvedIntent.compositionModelId,
+    requestedFamily: input.resolvedIntent.family,
+    denseText: input.profile.density === 'dense',
+  })
+  return { kind: 'composition-packing', compositionModel }
+}
+
 export function synthesizeLayout({
   master,
   format,
@@ -7412,7 +7441,8 @@ export function synthesizeLayout({
     ruleSet.allowedLayoutFamilies.includes(intent.family)
       ? intent
       : { ...intent, family: ruleSet.allowedLayoutFamilies[0], presetId: ruleSet.allowedLayoutFamilies[0] }
-  if (shouldSynthesizeMarketplaceLayoutV2(format, resolvedIntent) && resolvedIntent.marketplaceV2Archetype) {
+  const synthesisRoute = resolveMarketplaceLayoutSynthesisRoute({ format, resolvedIntent, profile })
+  if (synthesisRoute.kind === 'marketplace-v2-slot') {
     const effectiveIntent: LayoutIntent = {
       ...resolvedIntent,
       marketplaceTemplateId: undefined,
@@ -7430,7 +7460,7 @@ export function synthesizeLayout({
       scene,
       format,
       typography,
-      archetype: resolvedIntent.marketplaceV2Archetype,
+      archetype: synthesisRoute.marketplaceV2Archetype,
     })
     scene = finalizeSceneGeometry(scene, format, null)
     scene = stabilizeMarketplaceLayout(scene, format, null)
@@ -7440,15 +7470,8 @@ export function synthesizeLayout({
       ? { scene, blocks: [], intent: effectiveIntent, structuralState, layoutPathMetadata: MARKETPLACE_CARD_V2_SLOT_PATH_METADATA }
       : { scene, blocks: [], intent: effectiveIntent, structuralState }
   }
-  const useTemplateDrivenMarketplaceCard = format.key === 'marketplace-card' && Boolean(resolvedIntent.marketplaceTemplateId)
-  const compositionModel = useTemplateDrivenMarketplaceCard
-    ? null
-    : selectCompositionModel({
-        format,
-        requestedModelId: resolvedIntent.compositionModelId,
-        requestedFamily: resolvedIntent.family,
-        denseText: profile.density === 'dense',
-      })
+  const compositionModel =
+    synthesisRoute.kind === 'marketplace-card-template-driven' ? null : synthesisRoute.compositionModel
   const effectiveIntent =
     compositionModel
       ? {
@@ -7654,7 +7677,8 @@ export function getSynthesisStageDiagnostics({
     ruleSet.allowedLayoutFamilies.includes(intent.family)
       ? intent
       : { ...intent, family: ruleSet.allowedLayoutFamilies[0], presetId: ruleSet.allowedLayoutFamilies[0] }
-  if (shouldSynthesizeMarketplaceLayoutV2(format, resolvedIntent) && resolvedIntent.marketplaceV2Archetype) {
+  const synthesisRoute = resolveMarketplaceLayoutSynthesisRoute({ format, resolvedIntent, profile })
+  if (synthesisRoute.kind === 'marketplace-v2-slot') {
     const effectiveIntent: LayoutIntent = {
       ...resolvedIntent,
       marketplaceTemplateId: undefined,
@@ -7672,7 +7696,7 @@ export function getSynthesisStageDiagnostics({
       scene: seeded,
       format,
       typography,
-      archetype: resolvedIntent.marketplaceV2Archetype,
+      archetype: synthesisRoute.marketplaceV2Archetype,
     })
     const finalized = finalizeSceneGeometry(slotScene, format, null)
     const stabilized = stabilizeMarketplaceLayout(finalized, format, null)
@@ -7692,15 +7716,8 @@ export function getSynthesisStageDiagnostics({
       ],
     }
   }
-  const useTemplateDrivenMarketplaceCard = format.key === 'marketplace-card' && Boolean(resolvedIntent.marketplaceTemplateId)
-  const compositionModel = useTemplateDrivenMarketplaceCard
-    ? null
-    : selectCompositionModel({
-        format,
-        requestedModelId: resolvedIntent.compositionModelId,
-        requestedFamily: resolvedIntent.family,
-        denseText: profile.density === 'dense',
-      })
+  const compositionModel =
+    synthesisRoute.kind === 'marketplace-card-template-driven' ? null : synthesisRoute.compositionModel
   const effectiveIntent =
     compositionModel
       ? {
